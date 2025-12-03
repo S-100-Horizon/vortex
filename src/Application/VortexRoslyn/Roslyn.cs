@@ -2271,13 +2271,61 @@ namespace S100Framework.Applications
 
                 foreach (var association in associations) {
                     builder.AppendLine();
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : featureBindingViewModel<{productId}.{association}ViewModel>, IFeatureBindings {{");
+                    //builder.AppendLine($"\t\tpublic class {association}ViewModel : featureBindingViewModel<{productId}.{association}ViewModel>, IFeatureBindings {{");
+                    builder.AppendLine($"\t\tpublic class {association}ViewModel : ViewModelBase, IFeatureBindings {{");
                     builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
                     builder.AppendLine("\t\t\t\tif (featureBindings.Length == 1)");
-                    builder.AppendLine("\t\t\t\t\tbase.role = featureBindings[0].role;");
+                    builder.AppendLine("\t\t\t\t\tthis.role = featureBindings[0].role;");
                     builder.AppendLine("\t\t\t}");
 
                     builder.AppendLine();
+
+
+                    //  featureBindingViewModel
+                    builder.AppendLine($"\t\t\tprivate string _role = string.Empty;");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]");
+                    builder.AppendLine($"\t\t\tpublic string role {{");
+                    builder.AppendLine($"\t\t\t\tget {{ return _role; }}");
+                    builder.AppendLine($"\t\t\t\tset {{");
+                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _role, value);");
+                    builder.AppendLine($"\t\t\t\t}}");
+                    builder.AppendLine($"\t\t\t}}");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tprivate string _referenceId = string.Empty;");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]");
+                    builder.AppendLine($"\t\t\tpublic string featureId {{");
+                    builder.AppendLine($"\t\t\t\tget {{ return _referenceId; }}");
+                    builder.AppendLine($"\t\t\t\tset {{");
+                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _referenceId, value);");
+                    builder.AppendLine($"\t\t\t\t}}");
+                    builder.AppendLine($"\t\t\t}}");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tprivate string? _featureType = default;");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\t[ReadOnly(true)]");
+                    builder.AppendLine($"\t\t\tpublic string? featureType {{");
+                    builder.AppendLine($"\t\t\t\tget {{ return _featureType; }}");
+                    builder.AppendLine($"\t\t\t\tset {{");
+                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _featureType, value);");
+                    builder.AppendLine($"\t\t\t\t}}");
+                    builder.AppendLine($"\t\t\t}}");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tprivate {productId}.{association}ViewModel _association = new();");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\t[ExpandableObject]");
+                    builder.AppendLine($"\t\t\tpublic {productId}.{association}ViewModel association {{");
+                    builder.AppendLine($"\t\t\t\tget {{ return _association; }}");
+                    builder.AppendLine($"\t\t\t\tset {{");
+                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _association, value);");
+                    builder.AppendLine($"\t\t\t\t}}");
+                    builder.AppendLine($"\t\t\t}}");
+                    builder.AppendLine();
+                    builder.AppendLine($"\t\t\tprotected override void Validate() {{");
+                    builder.AppendLine($"\t\t\t\t//TODO: Validate role and referenceId");
+                    builder.AppendLine($"\t\t\t}}");
+
                     builder.AppendLine("\t\t\t[Browsable(false)]");
                     builder.AppendLine("\t\t\tpublic featureBindingDefinition[] featureBindings => [");
                     foreach (var binding in bindings[association].Distinct()) {

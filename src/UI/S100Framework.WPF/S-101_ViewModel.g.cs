@@ -4425,12 +4425,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -4743,12 +4786,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -4915,12 +5001,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -5195,12 +5324,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -5376,12 +5548,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -5520,12 +5735,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -5853,12 +6111,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6125,12 +6426,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdateAggregationViewModel : featureBindingViewModel<S101.UpdateAggregationViewModel>, IFeatureBindings {
+		public class UpdateAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdateAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdateAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdateAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6164,12 +6508,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6416,12 +6803,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6631,12 +7061,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6662,12 +7135,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6954,12 +7470,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -6985,12 +7544,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7269,12 +7871,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : featureBindingViewModel<S101.IslandAggregationViewModel>, IFeatureBindings {
+		public class IslandAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.IslandAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.IslandAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7300,12 +7945,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7331,12 +8019,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7549,12 +8280,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : featureBindingViewModel<S101.IslandAggregationViewModel>, IFeatureBindings {
+		public class IslandAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.IslandAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.IslandAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7588,12 +8362,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7619,12 +8436,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7859,12 +8719,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7890,12 +8793,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8116,12 +9062,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8147,12 +9136,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8367,12 +9399,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8398,12 +9473,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8635,12 +9753,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8666,12 +9827,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8906,12 +10110,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8937,12 +10184,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9177,12 +10467,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9208,12 +10541,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9510,12 +10886,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9541,12 +10960,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9861,12 +11323,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9892,12 +11397,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10195,12 +11743,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10226,12 +11817,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10534,12 +12168,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10565,12 +12242,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10800,12 +12520,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10831,12 +12594,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11156,12 +12962,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11187,12 +13036,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11623,12 +13515,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11654,12 +13589,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11685,12 +13663,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11716,12 +13737,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11747,12 +13811,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12107,12 +14214,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12138,12 +14288,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12420,12 +14613,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12451,12 +14687,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12740,12 +15019,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12771,12 +15093,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12802,12 +15167,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13245,12 +15653,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.BridgeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.BridgeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13276,12 +15727,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13307,12 +15801,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13338,12 +15875,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13369,12 +15949,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13735,12 +16358,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.BridgeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.BridgeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13766,12 +16432,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13797,12 +16506,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13828,12 +16580,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -13859,12 +16654,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14177,12 +17015,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.BridgeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.BridgeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14208,12 +17089,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14239,12 +17163,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14270,12 +17237,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14301,12 +17311,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14775,12 +17828,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14806,12 +17902,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14837,12 +17976,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -14868,12 +18050,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15338,12 +18563,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15369,12 +18637,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15400,12 +18711,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15817,12 +19171,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15848,12 +19245,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15879,12 +19319,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -15910,12 +19393,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16386,12 +19912,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.BridgeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.BridgeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16417,12 +19986,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RoofedStructureAggregationViewModel : featureBindingViewModel<S101.RoofedStructureAggregationViewModel>, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RoofedStructureAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RoofedStructureAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16448,12 +20060,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16479,12 +20134,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16510,12 +20208,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -16541,12 +20282,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17000,12 +20784,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17031,12 +20858,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17344,12 +21214,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17375,12 +21288,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17660,12 +21616,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -17691,12 +21690,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18021,12 +22063,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18052,12 +22137,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18495,12 +22623,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18526,12 +22697,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18557,12 +22771,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18588,12 +22845,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18619,12 +22919,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -18650,12 +22993,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19199,12 +23585,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19230,12 +23659,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19261,12 +23733,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19292,12 +23807,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19323,12 +23881,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19873,12 +24474,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19904,12 +24548,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19935,12 +24622,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -19966,12 +24696,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20415,12 +25188,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20446,12 +25262,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20477,12 +25336,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20508,12 +25410,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20539,12 +25484,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -20971,12 +25959,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21002,12 +26033,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21282,12 +26356,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21313,12 +26430,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21697,12 +26857,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21728,12 +26931,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21759,12 +27005,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21790,12 +27079,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22235,12 +27567,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22266,12 +27641,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22297,12 +27715,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22328,12 +27789,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22359,12 +27863,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22390,12 +27937,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22782,12 +28372,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22813,12 +28446,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23269,12 +28945,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23300,12 +29019,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23331,12 +29093,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23362,12 +29167,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23910,12 +29758,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23941,12 +29832,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RoofedStructureAggregationViewModel : featureBindingViewModel<S101.RoofedStructureAggregationViewModel>, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RoofedStructureAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RoofedStructureAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23972,12 +29906,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24003,12 +29980,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24034,12 +30054,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24422,12 +30485,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24453,12 +30559,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24783,12 +30932,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24814,12 +31006,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25093,12 +31328,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25124,12 +31402,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25155,12 +31476,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25507,12 +31871,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25538,12 +31945,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25963,12 +32413,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -25994,12 +32487,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26482,12 +33018,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26513,12 +33092,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26544,12 +33166,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26575,12 +33240,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26967,12 +33675,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.MooringTrotAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.MooringTrotAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -26998,12 +33749,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27029,12 +33823,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27484,12 +34321,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27515,12 +34395,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27546,12 +34469,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27577,12 +34543,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27608,12 +34617,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27983,12 +35035,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28014,12 +35109,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28045,12 +35183,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28446,12 +35627,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28477,12 +35701,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28955,12 +36222,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -28986,12 +36296,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29017,12 +36370,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29048,12 +36444,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29429,12 +36868,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.BridgeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.BridgeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29460,12 +36942,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29491,12 +37016,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29522,12 +37090,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29553,12 +37164,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29930,12 +37584,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -29961,12 +37658,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30284,12 +38024,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30315,12 +38098,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30617,12 +38443,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30648,12 +38517,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30903,12 +38815,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.MooringTrotAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.MooringTrotAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30934,12 +38889,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -30965,12 +38963,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31197,12 +39238,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31228,12 +39312,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31493,12 +39620,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31524,12 +39694,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31811,12 +40024,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -31842,12 +40098,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32093,12 +40392,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32124,12 +40466,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32362,12 +40747,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32393,12 +40821,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32658,12 +41129,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -32689,12 +41203,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33010,12 +41567,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33041,12 +41641,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33072,12 +41715,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33354,12 +42040,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33385,12 +42114,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33416,12 +42188,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33631,12 +42446,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -33831,12 +42689,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34024,12 +42925,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34203,12 +43147,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34408,12 +43395,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34439,12 +43469,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34672,12 +43745,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34703,12 +43819,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34909,12 +44068,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -34940,12 +44142,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -35153,12 +44398,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -35343,12 +44631,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -35374,12 +44705,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -35716,12 +45090,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -35747,12 +45164,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36182,12 +45642,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36213,12 +45716,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36244,12 +45790,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36718,12 +46307,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.MooringTrotAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.MooringTrotAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36749,12 +46381,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -36780,12 +46455,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37136,12 +46854,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37167,12 +46928,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37423,12 +47227,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37687,12 +47534,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37718,12 +47608,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37749,12 +47682,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -37780,12 +47756,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38177,12 +48196,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38208,12 +48270,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38679,12 +48784,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38710,12 +48858,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38741,12 +48932,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -38772,12 +49006,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39122,12 +49399,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.MooringTrotAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.MooringTrotAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39153,12 +49473,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39184,12 +49547,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39457,12 +49863,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39488,12 +49937,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39881,12 +50373,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -39912,12 +50447,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -40231,12 +50809,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -40262,12 +50883,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -40685,12 +51349,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -40716,12 +51423,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41055,12 +51805,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41086,12 +51879,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41443,12 +52279,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41474,12 +52353,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41505,12 +52427,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41536,12 +52501,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41846,12 +52854,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41885,12 +52936,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41916,12 +53010,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -41947,12 +53084,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42283,12 +53463,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAggregationViewModel : featureBindingViewModel<S101.FairwayAggregationViewModel>, IFeatureBindings {
+		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42314,12 +53537,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42345,12 +53611,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42376,12 +53685,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42687,12 +54039,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42718,12 +54113,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAggregationViewModel : featureBindingViewModel<S101.FairwayAggregationViewModel>, IFeatureBindings {
+		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42749,12 +54187,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -42780,12 +54261,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43126,12 +54650,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43157,12 +54724,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43188,12 +54798,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43219,12 +54872,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43602,12 +55298,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TwoWayRouteAggregationViewModel : featureBindingViewModel<S101.TwoWayRouteAggregationViewModel>, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TwoWayRouteAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TwoWayRouteAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43633,12 +55372,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43664,12 +55446,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43945,12 +55770,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -43976,12 +55844,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TwoWayRouteAggregationViewModel : featureBindingViewModel<S101.TwoWayRouteAggregationViewModel>, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TwoWayRouteAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TwoWayRouteAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44007,12 +55918,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44038,12 +55992,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44069,12 +56066,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44330,12 +56370,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44658,12 +56741,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.DeepWaterRouteAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.DeepWaterRouteAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44689,12 +56815,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44720,12 +56889,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -44751,12 +56963,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45142,12 +57397,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.DeepWaterRouteAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.DeepWaterRouteAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45173,12 +57471,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45204,12 +57545,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45235,12 +57619,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45552,12 +57979,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45583,12 +58053,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.DeepWaterRouteAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.DeepWaterRouteAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45614,12 +58127,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45645,12 +58201,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45676,12 +58275,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45934,12 +58576,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -45965,12 +58650,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46240,12 +58968,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46271,12 +59042,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46302,12 +59116,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46592,12 +59449,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46623,12 +59523,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46872,12 +59815,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -46903,12 +59889,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47129,12 +60158,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47160,12 +60232,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47397,12 +60512,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47428,12 +60586,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47685,12 +60886,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47716,12 +60960,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -47987,12 +61274,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48018,12 +61348,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48057,12 +61430,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.CautionAreaAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.CautionAreaAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48088,12 +61504,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48119,12 +61578,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48380,12 +61882,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.ASLAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.ASLAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48411,12 +61956,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48442,12 +62030,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48688,12 +62319,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.ASLAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.ASLAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48719,12 +62393,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48750,12 +62467,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -48996,12 +62756,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49027,12 +62830,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.ASLAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.ASLAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49058,12 +62904,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.CautionAreaAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.CautionAreaAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49089,12 +62978,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49120,12 +63052,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49400,12 +63375,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49431,12 +63449,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49715,12 +63776,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -49746,12 +63850,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50006,12 +64153,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50037,12 +64227,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50278,12 +64511,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50309,12 +64585,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50602,12 +64921,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50633,12 +64995,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50935,12 +65340,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -50966,12 +65414,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51306,12 +65797,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51337,12 +65871,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51655,12 +66232,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51686,12 +66306,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51960,12 +66623,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -51991,12 +66697,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52274,12 +67023,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52305,12 +67097,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52608,12 +67443,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52639,12 +67517,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52950,12 +67871,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -52981,12 +67945,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53239,12 +68246,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53270,12 +68320,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53596,12 +68689,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.CautionAreaAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.CautionAreaAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53627,12 +68763,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53658,12 +68837,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53932,12 +69154,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -53963,12 +69228,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -54216,12 +69524,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -54426,12 +69777,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -54457,12 +69851,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -54680,12 +70117,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -54884,12 +70364,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55105,12 +70628,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55136,12 +70702,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55374,12 +70983,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55405,12 +71057,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55655,12 +71350,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55686,12 +71424,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55906,12 +71687,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -55937,12 +71761,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56161,12 +72028,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56192,12 +72102,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56485,12 +72438,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56516,12 +72512,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56754,12 +72793,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -56969,12 +73051,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57214,12 +73339,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57245,12 +73413,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57475,12 +73686,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : featureBindingViewModel<S101.PilotageDistrictAssociationViewModel>, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.PilotageDistrictAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.PilotageDistrictAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57506,12 +73760,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57537,12 +73834,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57788,12 +74128,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -57819,12 +74202,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58055,12 +74481,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58086,12 +74555,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58335,12 +74847,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58366,12 +74921,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TrafficSeparationSchemeAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TrafficSeparationSchemeAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58397,12 +74995,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58428,12 +75069,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58921,12 +75605,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58960,12 +75687,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -58991,12 +75761,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59022,12 +75835,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59457,12 +76313,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59496,12 +76395,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59527,12 +76469,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59558,12 +76543,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59962,12 +76990,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -59993,12 +77064,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60024,12 +77138,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60433,12 +77590,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60464,12 +77664,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60495,12 +77738,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60940,12 +78226,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -60971,12 +78300,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61002,12 +78374,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61033,12 +78448,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61064,12 +78522,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61521,12 +79022,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61552,12 +79096,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61583,12 +79170,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61614,12 +79244,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -61645,12 +79318,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62085,12 +79801,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62116,12 +79875,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62147,12 +79949,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62178,12 +80023,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62209,12 +80097,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62646,12 +80577,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62677,12 +80651,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62708,12 +80725,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62739,12 +80799,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -62770,12 +80873,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63214,12 +81360,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63245,12 +81434,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63276,12 +81508,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63307,12 +81582,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63338,12 +81656,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63774,12 +82135,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63805,12 +82209,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63836,12 +82283,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -63867,12 +82357,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64274,12 +82807,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64305,12 +82881,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64336,12 +82955,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64762,12 +83424,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64793,12 +83498,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64824,12 +83572,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.MooringTrotAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.MooringTrotAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64855,12 +83646,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -64886,12 +83720,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65414,12 +84291,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65445,12 +84365,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65476,12 +84439,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65507,12 +84513,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65538,12 +84587,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -65569,12 +84661,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66124,12 +85259,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66155,12 +85333,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66186,12 +85407,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66217,12 +85481,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66248,12 +85555,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66279,12 +85629,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66817,12 +86210,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66848,12 +86284,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66879,12 +86358,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66910,12 +86432,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66941,12 +86506,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -66972,12 +86580,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67507,12 +87158,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67538,12 +87232,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67569,12 +87306,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67600,12 +87380,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67631,12 +87454,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -67662,12 +87528,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68204,12 +88113,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68235,12 +88187,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68266,12 +88261,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68297,12 +88335,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68328,12 +88409,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68359,12 +88483,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68835,12 +89002,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68874,12 +89084,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68905,12 +89158,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68936,12 +89232,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68967,12 +89306,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -68998,12 +89380,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -69469,12 +89894,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -69500,12 +89968,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -69531,12 +90042,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -69562,12 +90116,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -69593,12 +90190,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70030,12 +90670,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70061,12 +90744,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.AidsToNavigationAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.AidsToNavigationAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70092,12 +90818,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.FairwayAuxiliaryViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.FairwayAuxiliaryViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70123,12 +90892,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70154,12 +90966,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70501,12 +91356,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70532,12 +91430,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70802,12 +91743,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -70833,12 +91817,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71174,12 +92201,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71205,12 +92275,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71236,12 +92349,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71562,12 +92718,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71593,12 +92792,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71624,12 +92866,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71938,12 +93223,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -71969,12 +93297,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72278,12 +93649,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72309,12 +93723,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72662,12 +94119,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72693,12 +94193,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72724,12 +94267,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -72755,12 +94341,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.RangeSystemAggregationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.RangeSystemAggregationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73105,12 +94734,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : featureBindingViewModel<S101.PilotageDistrictAssociationViewModel>, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.PilotageDistrictAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.PilotageDistrictAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73136,12 +94808,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73167,12 +94882,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73438,12 +95196,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73469,12 +95270,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73715,12 +95559,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -73746,12 +95633,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74024,12 +95954,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74055,12 +96028,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74086,12 +96102,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74377,12 +96436,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.StructureEquipmentViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.StructureEquipmentViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74408,12 +96510,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74439,12 +96584,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74730,12 +96918,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -74761,12 +96992,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75127,12 +97401,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75158,12 +97475,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75481,12 +97841,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.UpdatedInformationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.UpdatedInformationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75512,12 +97915,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75736,12 +98182,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -75859,12 +98348,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
 			}
 
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S101.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S101.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {

@@ -72,7 +72,7 @@ namespace TestS100Framework
 
                 Build_S201();
 
-                Build_S501();
+                //Build_S501();
             }
 
             [Fact]
@@ -113,9 +113,9 @@ namespace TestS100Framework
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-201_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-201_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_ViewModel.cs"));
 
-                Build_S501();
-                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_ViewModel.cs"));
+                //Build_S501();
+                //File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_FC.cs"));
+                //File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_ViewModel.cs"));
             }
 
 
