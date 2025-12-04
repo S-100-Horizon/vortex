@@ -565,7 +565,7 @@ namespace S100Framework.WPF.Editors
     public class FeatureBindingRoleEditor : BindingRoleEditor
     {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
-            var bindings = propertyItem.Instance as IFeatureBindings;
+            var bindings = propertyItem.Instance as IFeatureBinding;
             return bindings!.featureBindings.Select(e => e.role);
         }
     }
@@ -658,7 +658,7 @@ namespace S100Framework.WPF.Editors
                 }
 
                 control.DropDownOpened += (s, e) => {
-                    var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == featureBindingViewModel.role)!;
+                    var association = (viewModel as IFeatureBinding)!.featureBindings.SingleOrDefault(f => f.role == featureBindingViewModel.role)!;
 
                     var parameter = new QueryFeatureTypesEventArgs(association.roleType, association.association, featureBindingViewModel.role, association.featureTypes, (items) => {
                         if (!string.IsNullOrEmpty(featureBindingViewModel.featureId)) {

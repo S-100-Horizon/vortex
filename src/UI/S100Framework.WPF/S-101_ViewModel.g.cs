@@ -4425,7 +4425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -4786,7 +4786,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -5001,7 +5001,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -5324,7 +5324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -5548,7 +5548,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -5735,7 +5735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -6111,7 +6111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -6426,7 +6426,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdateAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdateAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdateAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -6508,7 +6508,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -6803,7 +6803,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7061,7 +7061,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7135,7 +7135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7470,7 +7470,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7544,7 +7544,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7871,7 +7871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class IslandAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7945,7 +7945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8019,7 +8019,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8280,7 +8280,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class IslandAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8362,7 +8362,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8436,7 +8436,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8719,7 +8719,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8793,7 +8793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9062,7 +9062,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9136,7 +9136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9399,7 +9399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9473,7 +9473,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9753,7 +9753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9827,7 +9827,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10110,7 +10110,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10184,7 +10184,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10467,7 +10467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10541,7 +10541,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10886,7 +10886,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10960,7 +10960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11323,7 +11323,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11397,7 +11397,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11743,7 +11743,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11817,7 +11817,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12168,7 +12168,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12242,7 +12242,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12520,7 +12520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12594,7 +12594,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12962,7 +12962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13036,7 +13036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13515,7 +13515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13589,7 +13589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13663,7 +13663,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13737,7 +13737,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -13811,7 +13811,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14214,7 +14214,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14288,7 +14288,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14613,7 +14613,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14687,7 +14687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15019,7 +15019,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15093,7 +15093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15167,7 +15167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15653,7 +15653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15727,7 +15727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15801,7 +15801,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15875,7 +15875,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15949,7 +15949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -16358,7 +16358,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -16432,7 +16432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -16506,7 +16506,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -16580,7 +16580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -16654,7 +16654,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17015,7 +17015,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17089,7 +17089,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17163,7 +17163,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17237,7 +17237,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17311,7 +17311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17828,7 +17828,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17902,7 +17902,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17976,7 +17976,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18050,7 +18050,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18563,7 +18563,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18637,7 +18637,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18711,7 +18711,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19171,7 +19171,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19245,7 +19245,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19319,7 +19319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19393,7 +19393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19912,7 +19912,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -19986,7 +19986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20060,7 +20060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20134,7 +20134,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20208,7 +20208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20282,7 +20282,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20784,7 +20784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -20858,7 +20858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21214,7 +21214,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21288,7 +21288,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21616,7 +21616,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21690,7 +21690,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22063,7 +22063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22137,7 +22137,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22623,7 +22623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22697,7 +22697,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22771,7 +22771,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22845,7 +22845,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22919,7 +22919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22993,7 +22993,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23585,7 +23585,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23659,7 +23659,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23733,7 +23733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23807,7 +23807,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23881,7 +23881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24474,7 +24474,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24548,7 +24548,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24622,7 +24622,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24696,7 +24696,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25188,7 +25188,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25262,7 +25262,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25336,7 +25336,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25410,7 +25410,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25484,7 +25484,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -25959,7 +25959,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -26033,7 +26033,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -26356,7 +26356,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -26430,7 +26430,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -26857,7 +26857,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -26931,7 +26931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27005,7 +27005,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27079,7 +27079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27567,7 +27567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27641,7 +27641,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27715,7 +27715,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27789,7 +27789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27863,7 +27863,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27937,7 +27937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -28372,7 +28372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -28446,7 +28446,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -28945,7 +28945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29019,7 +29019,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29093,7 +29093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29167,7 +29167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29758,7 +29758,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29832,7 +29832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29906,7 +29906,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -29980,7 +29980,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -30054,7 +30054,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -30485,7 +30485,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -30559,7 +30559,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -30932,7 +30932,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31006,7 +31006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31328,7 +31328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31402,7 +31402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31476,7 +31476,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31871,7 +31871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -31945,7 +31945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -32413,7 +32413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -32487,7 +32487,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33018,7 +33018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33092,7 +33092,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33166,7 +33166,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33240,7 +33240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33675,7 +33675,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33749,7 +33749,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -33823,7 +33823,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -34321,7 +34321,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -34395,7 +34395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -34469,7 +34469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -34543,7 +34543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -34617,7 +34617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -35035,7 +35035,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -35109,7 +35109,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -35183,7 +35183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -35627,7 +35627,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -35701,7 +35701,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36222,7 +36222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36296,7 +36296,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36370,7 +36370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36444,7 +36444,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36868,7 +36868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class BridgeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -36942,7 +36942,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -37016,7 +37016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -37090,7 +37090,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -37164,7 +37164,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -37584,7 +37584,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -37658,7 +37658,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38024,7 +38024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38098,7 +38098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38443,7 +38443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38517,7 +38517,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38815,7 +38815,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38889,7 +38889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -38963,7 +38963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -39238,7 +39238,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -39312,7 +39312,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -39620,7 +39620,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -39694,7 +39694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40024,7 +40024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40098,7 +40098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40392,7 +40392,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40466,7 +40466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40747,7 +40747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -40821,7 +40821,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -41129,7 +41129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -41203,7 +41203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -41567,7 +41567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -41641,7 +41641,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -41715,7 +41715,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42040,7 +42040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42114,7 +42114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42188,7 +42188,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42446,7 +42446,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42689,7 +42689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -42925,7 +42925,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -43147,7 +43147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -43395,7 +43395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -43469,7 +43469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -43745,7 +43745,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -43819,7 +43819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -44068,7 +44068,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -44142,7 +44142,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -44398,7 +44398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -44631,7 +44631,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -44705,7 +44705,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -45090,7 +45090,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -45164,7 +45164,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -45642,7 +45642,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -45716,7 +45716,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -45790,7 +45790,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -46307,7 +46307,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -46381,7 +46381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -46455,7 +46455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -46854,7 +46854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -46928,7 +46928,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -47227,7 +47227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -47534,7 +47534,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -47608,7 +47608,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -47682,7 +47682,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -47756,7 +47756,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -48196,7 +48196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -48270,7 +48270,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -48784,7 +48784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -48858,7 +48858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -48932,7 +48932,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49006,7 +49006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49399,7 +49399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49473,7 +49473,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49547,7 +49547,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49863,7 +49863,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -49937,7 +49937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -50373,7 +50373,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -50447,7 +50447,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -50809,7 +50809,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -50883,7 +50883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -51349,7 +51349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -51423,7 +51423,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -51805,7 +51805,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -51879,7 +51879,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52279,7 +52279,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52353,7 +52353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52427,7 +52427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52501,7 +52501,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52854,7 +52854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -52936,7 +52936,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53010,7 +53010,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53084,7 +53084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53463,7 +53463,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53537,7 +53537,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53611,7 +53611,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -53685,7 +53685,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54039,7 +54039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54113,7 +54113,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54187,7 +54187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54261,7 +54261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54650,7 +54650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54724,7 +54724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54798,7 +54798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -54872,7 +54872,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55298,7 +55298,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55372,7 +55372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55446,7 +55446,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55770,7 +55770,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55844,7 +55844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55918,7 +55918,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -55992,7 +55992,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56066,7 +56066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56370,7 +56370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56741,7 +56741,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56815,7 +56815,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56889,7 +56889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -56963,7 +56963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -57397,7 +57397,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -57471,7 +57471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -57545,7 +57545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -57619,7 +57619,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -57979,7 +57979,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58053,7 +58053,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58127,7 +58127,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58201,7 +58201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58275,7 +58275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58576,7 +58576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58650,7 +58650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -58968,7 +58968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59042,7 +59042,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59116,7 +59116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59449,7 +59449,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59523,7 +59523,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59815,7 +59815,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -59889,7 +59889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60158,7 +60158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60232,7 +60232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60512,7 +60512,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60586,7 +60586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60886,7 +60886,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -60960,7 +60960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61274,7 +61274,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61348,7 +61348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61430,7 +61430,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61504,7 +61504,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61578,7 +61578,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61882,7 +61882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -61956,7 +61956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62030,7 +62030,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62319,7 +62319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62393,7 +62393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62467,7 +62467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62756,7 +62756,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62830,7 +62830,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class ASLAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class ASLAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62904,7 +62904,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -62978,7 +62978,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -63052,7 +63052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -63375,7 +63375,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -63449,7 +63449,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -63776,7 +63776,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -63850,7 +63850,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64153,7 +64153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64227,7 +64227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64511,7 +64511,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64585,7 +64585,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64921,7 +64921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -64995,7 +64995,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -65340,7 +65340,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -65414,7 +65414,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -65797,7 +65797,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -65871,7 +65871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -66232,7 +66232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -66306,7 +66306,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -66623,7 +66623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -66697,7 +66697,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67023,7 +67023,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67097,7 +67097,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67443,7 +67443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67517,7 +67517,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67871,7 +67871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -67945,7 +67945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -68246,7 +68246,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -68320,7 +68320,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -68689,7 +68689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -68763,7 +68763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -68837,7 +68837,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -69154,7 +69154,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -69228,7 +69228,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -69524,7 +69524,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -69777,7 +69777,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -69851,7 +69851,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -70117,7 +70117,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -70364,7 +70364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -70628,7 +70628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -70702,7 +70702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -70983,7 +70983,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -71057,7 +71057,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -71350,7 +71350,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -71424,7 +71424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -71687,7 +71687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -71761,7 +71761,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -72028,7 +72028,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -72102,7 +72102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -72438,7 +72438,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -72512,7 +72512,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -72793,7 +72793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73051,7 +73051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73339,7 +73339,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73413,7 +73413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73686,7 +73686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73760,7 +73760,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -73834,7 +73834,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74128,7 +74128,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74202,7 +74202,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74481,7 +74481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74555,7 +74555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74847,7 +74847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74921,7 +74921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -74995,7 +74995,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -75069,7 +75069,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -75605,7 +75605,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -75687,7 +75687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -75761,7 +75761,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -75835,7 +75835,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -76313,7 +76313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -76395,7 +76395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -76469,7 +76469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -76543,7 +76543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -76990,7 +76990,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -77064,7 +77064,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -77138,7 +77138,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -77590,7 +77590,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -77664,7 +77664,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -77738,7 +77738,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -78226,7 +78226,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -78300,7 +78300,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -78374,7 +78374,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -78448,7 +78448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -78522,7 +78522,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79022,7 +79022,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79096,7 +79096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79170,7 +79170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79244,7 +79244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79318,7 +79318,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79801,7 +79801,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79875,7 +79875,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -79949,7 +79949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80023,7 +80023,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80097,7 +80097,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80577,7 +80577,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80651,7 +80651,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80725,7 +80725,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80799,7 +80799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -80873,7 +80873,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -81360,7 +81360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -81434,7 +81434,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -81508,7 +81508,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -81582,7 +81582,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -81656,7 +81656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82135,7 +82135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82209,7 +82209,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82283,7 +82283,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82357,7 +82357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82807,7 +82807,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82881,7 +82881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -82955,7 +82955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -83424,7 +83424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -83498,7 +83498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -83572,7 +83572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -83646,7 +83646,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -83720,7 +83720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84291,7 +84291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84365,7 +84365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84439,7 +84439,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84513,7 +84513,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84587,7 +84587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -84661,7 +84661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85259,7 +85259,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85333,7 +85333,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85407,7 +85407,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85481,7 +85481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85555,7 +85555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -85629,7 +85629,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86210,7 +86210,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86284,7 +86284,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86358,7 +86358,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86432,7 +86432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86506,7 +86506,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -86580,7 +86580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87158,7 +87158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87232,7 +87232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87306,7 +87306,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87380,7 +87380,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87454,7 +87454,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -87528,7 +87528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88113,7 +88113,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88187,7 +88187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88261,7 +88261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88335,7 +88335,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88409,7 +88409,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -88483,7 +88483,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89002,7 +89002,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89084,7 +89084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89158,7 +89158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89232,7 +89232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89306,7 +89306,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89380,7 +89380,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89894,7 +89894,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -89968,7 +89968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90042,7 +90042,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90116,7 +90116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90190,7 +90190,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90670,7 +90670,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90744,7 +90744,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90818,7 +90818,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : ViewModelBase, IFeatureBinding {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90892,7 +90892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -90966,7 +90966,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -91356,7 +91356,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -91430,7 +91430,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -91743,7 +91743,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -91817,7 +91817,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92201,7 +92201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92275,7 +92275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92349,7 +92349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92718,7 +92718,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92792,7 +92792,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -92866,7 +92866,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -93223,7 +93223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -93297,7 +93297,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -93649,7 +93649,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -93723,7 +93723,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94119,7 +94119,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94193,7 +94193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94267,7 +94267,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94341,7 +94341,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94734,7 +94734,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94808,7 +94808,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -94882,7 +94882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -95196,7 +95196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -95270,7 +95270,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -95559,7 +95559,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -95633,7 +95633,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -95954,7 +95954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96028,7 +96028,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96102,7 +96102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96436,7 +96436,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96510,7 +96510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96584,7 +96584,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96918,7 +96918,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -96992,7 +96992,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -97401,7 +97401,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -97475,7 +97475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -97841,7 +97841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBindings {
+		public class UpdatedInformationViewModel : ViewModelBase, IFeatureBinding {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -97915,7 +97915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -98182,7 +98182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -98348,7 +98348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;

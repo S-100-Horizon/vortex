@@ -5004,7 +5004,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -5519,7 +5519,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9340,7 +9340,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBindings {
+		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9414,7 +9414,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBindings {
+		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9488,7 +9488,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBindings {
+		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11368,7 +11368,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBindings {
+		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11810,7 +11810,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBindings {
+		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12269,7 +12269,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBindings {
+		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21139,7 +21139,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class ShackleToAnchorConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToAnchorConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToAnchorConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21573,7 +21573,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class ShackleConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21647,7 +21647,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleToBridleConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToBridleConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToBridleConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21721,7 +21721,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public BridleCableConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21795,7 +21795,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleToSwivelConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToSwivelConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToSwivelConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -21869,7 +21869,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleToAnchorConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToAnchorConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToAnchorConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22311,7 +22311,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public BridleCableConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22385,7 +22385,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class SwivelCableConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class SwivelCableConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public SwivelCableConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22459,7 +22459,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleConnectionFromCableViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleConnectionFromCableViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleConnectionFromCableViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22906,7 +22906,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class SwivelConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class SwivelConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public SwivelConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -22980,7 +22980,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class SwivelCableConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class SwivelCableConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public SwivelCableConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23054,7 +23054,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleToSwivelConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToSwivelConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToSwivelConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23474,7 +23474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class BridleConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class BridleConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public BridleConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23548,7 +23548,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class SwivelConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class SwivelConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public SwivelConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23622,7 +23622,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class ShackleToBridleConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class ShackleToBridleConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public ShackleToBridleConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -23696,7 +23696,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBindings {
+		public class BridleCableConnectionViewModel : ViewModelBase, IFeatureBinding {
 			public BridleCableConnectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24136,7 +24136,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class BuoyCounterWeightViewModel : ViewModelBase, IFeatureBindings {
+		public class BuoyCounterWeightViewModel : ViewModelBase, IFeatureBinding {
 			public BuoyCounterWeightViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -24568,7 +24568,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBindings {
+		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBinding {
 			public BuoyTopmarkViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27079,7 +27079,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27242,7 +27242,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class AtonAggregationsViewModel : ViewModelBase, IFeatureBindings {
+		public class AtonAggregationsViewModel : ViewModelBase, IFeatureBinding {
 			public AtonAggregationsViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27398,7 +27398,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -27472,7 +27472,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 
-		public class AtonAssociationsViewModel : ViewModelBase, IFeatureBindings {
+		public class AtonAssociationsViewModel : ViewModelBase, IFeatureBinding {
 			public AtonAssociationsViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;

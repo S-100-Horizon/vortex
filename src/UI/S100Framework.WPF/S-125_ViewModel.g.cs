@@ -2109,7 +2109,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -2536,7 +2536,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBindings {
+		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBinding {
 			public BuoyTopmarkViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8089,7 +8089,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8556,7 +8556,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBindings {
+		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8988,7 +8988,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBindings {
+		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9728,7 +9728,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBindings {
+		public class StructureEquipmentViewModel : ViewModelBase, IFeatureBinding {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11486,7 +11486,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBindings {
+		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11560,7 +11560,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 		}
 
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBindings {
+		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11634,7 +11634,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 		}
 
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBindings {
+		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17091,7 +17091,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17257,7 +17257,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17331,7 +17331,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 		}
 
-		public class AtonAssociationsViewModel : ViewModelBase, IFeatureBindings {
+		public class AtonAssociationsViewModel : ViewModelBase, IFeatureBinding {
 			public AtonAssociationsViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17493,7 +17493,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class AtonAggregationsViewModel : ViewModelBase, IFeatureBindings {
+		public class AtonAggregationsViewModel : ViewModelBase, IFeatureBinding {
 			public AtonAggregationsViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17804,7 +17804,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBindings {
+		public class BuoyTopmarkViewModel : ViewModelBase, IFeatureBinding {
 			public BuoyTopmarkViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18212,7 +18212,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBindings {
+		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18623,7 +18623,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBindings {
+		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;

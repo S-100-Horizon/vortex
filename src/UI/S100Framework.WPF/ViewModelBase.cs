@@ -328,7 +328,7 @@ namespace S100Framework.WPF.ViewModel
 
 
 
-    public interface IFeatureBindings
+    public interface IFeatureBinding
     {
         abstract featureBindingDefinition[] featureBindings { get; }
     }

@@ -6062,7 +6062,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -6535,7 +6535,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7524,7 +7524,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : ViewModelBase, IFeatureBindings {
+		public class DemarcationViewModel : ViewModelBase, IFeatureBinding {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7598,7 +7598,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8141,7 +8141,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : ViewModelBase, IFeatureBindings {
+		public class DemarcationViewModel : ViewModelBase, IFeatureBinding {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8215,7 +8215,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8984,7 +8984,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10025,7 +10025,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10392,7 +10392,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11512,7 +11512,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBinding {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11586,7 +11586,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12086,7 +12086,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12168,7 +12168,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class SubsectionViewModel : ViewModelBase, IFeatureBindings {
+		public class SubsectionViewModel : ViewModelBase, IFeatureBinding {
 			public SubsectionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12250,7 +12250,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class InfrastructureViewModel : ViewModelBase, IFeatureBindings {
+		public class InfrastructureViewModel : ViewModelBase, IFeatureBinding {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -12720,7 +12720,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14146,7 +14146,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -14980,7 +14980,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBinding {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15476,7 +15476,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -15937,7 +15937,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17046,7 +17046,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17128,7 +17128,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class InfrastructureViewModel : ViewModelBase, IFeatureBindings {
+		public class InfrastructureViewModel : ViewModelBase, IFeatureBinding {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -17605,7 +17605,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18056,7 +18056,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -18805,7 +18805,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;

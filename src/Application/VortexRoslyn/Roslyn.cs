@@ -2272,7 +2272,7 @@ namespace S100Framework.Applications
                 foreach (var association in associations) {
                     builder.AppendLine();
                     //builder.AppendLine($"\t\tpublic class {association}ViewModel : featureBindingViewModel<{productId}.{association}ViewModel>, IFeatureBindings {{");
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : ViewModelBase, IFeatureBindings {{");
+                    builder.AppendLine($"\t\tpublic class {association}ViewModel : ViewModelBase, IFeatureBinding {{");
                     builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
                     builder.AppendLine("\t\t\t\tif (featureBindings.Length == 1)");
                     builder.AppendLine("\t\t\t\t\tthis.role = featureBindings[0].role;");

@@ -6665,7 +6665,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7155,7 +7155,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7453,7 +7453,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class fuzzyZoneAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class fuzzyZoneAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public fuzzyZoneAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -7899,7 +7899,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8370,7 +8370,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -8899,7 +8899,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9461,7 +9461,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -9535,7 +9535,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class coreAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class coreAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public coreAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -10141,7 +10141,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11015,7 +11015,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : ViewModelBase, IFeatureBinding {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -11294,7 +11294,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region FeatureBindings
 
-		public class coreAggregationViewModel : ViewModelBase, IFeatureBindings {
+		public class coreAggregationViewModel : ViewModelBase, IFeatureBinding {
 			public coreAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;

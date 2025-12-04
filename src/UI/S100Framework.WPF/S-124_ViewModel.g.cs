@@ -1674,7 +1674,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : ViewModelBase, IFeatureBindings {
+		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -1748,7 +1748,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -1933,7 +1933,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : ViewModelBase, IFeatureBindings {
+		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
@@ -2141,7 +2141,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					this.role = featureBindings[0].role;
