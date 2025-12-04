@@ -5053,6 +5053,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -5568,6 +5569,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9389,6 +9391,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9463,6 +9466,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9537,6 +9541,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11417,6 +11422,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11859,6 +11865,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -12318,6 +12325,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21188,6 +21196,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21622,6 +21631,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21696,6 +21706,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21770,6 +21781,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21844,6 +21856,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -21918,6 +21931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22360,6 +22374,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22434,6 +22449,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22508,6 +22524,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -22955,6 +22972,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23029,6 +23047,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23103,6 +23122,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23523,6 +23543,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23597,6 +23618,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23671,6 +23693,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -23745,6 +23768,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24185,6 +24209,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -24617,6 +24642,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27128,6 +27154,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27291,6 +27318,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27447,6 +27475,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -27521,6 +27550,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {

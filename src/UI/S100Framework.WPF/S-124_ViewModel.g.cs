@@ -1185,10 +1185,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
+		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1372,10 +1406,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
+		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1632,10 +1700,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnPreambleContentViewModel : informationBindingViewModel<S124.navwarnPreambleContentViewModel>, IInformationBindings {
+		public class navwarnPreambleContentViewModel : ViewModelBase, IInformationBinding {
 			public navwarnPreambleContentViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1723,6 +1825,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -1797,6 +1900,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -1982,6 +2086,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -2190,6 +2295,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {

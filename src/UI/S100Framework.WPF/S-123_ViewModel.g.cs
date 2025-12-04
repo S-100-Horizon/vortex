@@ -3000,10 +3000,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class InclusionTypeViewModel : informationBindingViewModel<S123.InclusionTypeViewModel>, IInformationBindings {
+		public class InclusionTypeViewModel : ViewModelBase, IInformationBinding {
 			public InclusionTypeViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3261,10 +3295,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
+		public class AuthorityContactViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3292,10 +3360,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
+		public class AuthorityHoursViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3519,10 +3621,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class BroadcastTransmissionViewModel : informationBindingViewModel<S123.BroadcastTransmissionViewModel>, IInformationBindings {
+		public class BroadcastTransmissionViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastTransmissionViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4076,10 +4212,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
+		public class AuthorityContactViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4522,10 +4692,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S123.ExceptionalWorkdayViewModel>, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : ViewModelBase, IInformationBinding {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4763,10 +4967,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
+		public class AuthorityContactViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4794,10 +5032,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
+		public class AuthorityHoursViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4825,10 +5097,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
+		public class TMASViewModel : ViewModelBase, IInformationBinding {
 			public TMASViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -5623,10 +5929,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
+		public class AuthorityHoursViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -5654,10 +5994,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S123.ExceptionalWorkdayViewModel>, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : ViewModelBase, IInformationBinding {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -5972,10 +6346,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
+		public class RadioServiceControlViewModel : ViewModelBase, IInformationBinding {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6235,10 +6643,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class BroadcastTransmissionViewModel : informationBindingViewModel<S123.BroadcastTransmissionViewModel>, IInformationBindings {
+		public class BroadcastTransmissionViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastTransmissionViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6521,10 +6963,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ConnectivityServiceViewModel : informationBindingViewModel<S123.ConnectivityServiceViewModel>, IInformationBindings {
+		public class ConnectivityServiceViewModel : ViewModelBase, IInformationBinding {
 			public ConnectivityServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6552,10 +7028,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6583,10 +7093,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6614,10 +7158,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class AvailableQoSViewModel : informationBindingViewModel<S123.AvailableQoSViewModel>, IInformationBindings {
+		public class AvailableQoSViewModel : ViewModelBase, IInformationBinding {
 			public AvailableQoSViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6714,6 +7292,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7011,10 +7590,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7042,10 +7655,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
+		public class RadioServiceControlViewModel : ViewModelBase, IInformationBinding {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7073,10 +7720,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7104,10 +7785,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7204,6 +7919,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7502,6 +8218,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -7721,10 +8438,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7752,10 +8503,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7783,10 +8568,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7814,10 +8633,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7845,10 +8698,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7948,6 +8835,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8192,10 +9080,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8223,10 +9145,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8254,10 +9210,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8285,10 +9275,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8316,10 +9340,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8419,6 +9477,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -8721,10 +9780,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8752,10 +9845,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8783,10 +9910,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8814,10 +9975,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8845,10 +10040,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8948,6 +10177,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9249,10 +10479,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9280,10 +10544,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
+		public class RadioServiceControlViewModel : ViewModelBase, IInformationBinding {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9311,10 +10609,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9342,10 +10674,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9373,10 +10739,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9404,10 +10804,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9510,6 +10944,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9584,6 +11019,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -9929,10 +11365,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9960,10 +11430,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
+		public class RadioServiceControlViewModel : ViewModelBase, IInformationBinding {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9991,10 +11495,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10022,10 +11560,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10053,10 +11625,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10084,10 +11690,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10190,6 +11830,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -10454,10 +12095,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10485,10 +12160,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
+		public class RadioServiceControlViewModel : ViewModelBase, IInformationBinding {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10516,10 +12225,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
+		public class TMASViewModel : ViewModelBase, IInformationBinding {
 			public TMASViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10547,10 +12290,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10837,10 +12614,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
+		public class ServiceCoordinationViewModel : ViewModelBase, IInformationBinding {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10868,10 +12679,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
+		public class ServiceContactViewModel : ViewModelBase, IInformationBinding {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10899,10 +12744,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10930,10 +12809,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
+		public class BroadcastServiceViewModel : ViewModelBase, IInformationBinding {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10961,10 +12874,44 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 
-		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
+		public class TransmissionServiceViewModel : ViewModelBase, IInformationBinding {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11064,6 +13011,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
@@ -11343,6 +13291,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			protected override void Validate() {
 				//TODO: Validate role and referenceId
 			}
+
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {

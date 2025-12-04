@@ -557,7 +557,7 @@ namespace S100Framework.WPF.Editors
     public class InformationBindingRoleEditor : BindingRoleEditor
     {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
-            var bindings = propertyItem.Instance as IInformationBindings;
+            var bindings = propertyItem.Instance as IInformationBinding;
             return bindings!.informationBindings.Select(e => e.role);
         }
     }
@@ -596,11 +596,11 @@ namespace S100Framework.WPF.Editors
             newBinding.Converter = new BrushValidatorConvertor();
             border.SetBinding(Border.BorderBrushProperty, newBinding);
 
-            if (propertyItem.Instance is informationBindingViewModel informationBindingViewModel) {
+            if (propertyItem.Instance is IInformationBinding informationBindingViewModel) {
                 control.IsEnabled = !string.IsNullOrEmpty(informationBindingViewModel.role);
 
                 viewModel.PropertyChanged += (s, e) => {
-                    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
+                    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(IInformationBinding.role)))
                         return;
                     control.IsEnabled = !string.IsNullOrEmpty(informationBindingViewModel.role);
                 };
@@ -612,7 +612,7 @@ namespace S100Framework.WPF.Editors
                 }
 
                 control.DropDownOpened += (s, e) => {
-                    var association = (viewModel as IInformationBindings)!.informationBindings.SingleOrDefault(f => f.role == informationBindingViewModel.role)!;
+                    var association = (viewModel as IInformationBinding)!.informationBindings.SingleOrDefault(f => f.role == informationBindingViewModel.role)!;
 
                     var parameter = new QueryInformationTypesEventArgs(association.roleType, association.association, informationBindingViewModel.role, association.informationTypes, (items) => {
                         if (!string.IsNullOrEmpty(informationBindingViewModel.informationId)) {
@@ -642,11 +642,11 @@ namespace S100Framework.WPF.Editors
                     }
                 };
             }
-            else if (propertyItem.Instance is featureBindingViewModel featureBindingViewModel) {
+            else if (propertyItem.Instance is IFeatureBinding featureBindingViewModel) {
                 control.IsEnabled = !string.IsNullOrEmpty(featureBindingViewModel.role);
 
                 viewModel.PropertyChanged += (s, e) => {
-                    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
+                    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(IFeatureBinding.role)))
                         return;
                     control.IsEnabled = !string.IsNullOrEmpty(featureBindingViewModel.role);
                 };
