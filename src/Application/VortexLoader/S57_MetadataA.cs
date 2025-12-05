@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 
 namespace S100Framework.Applications
 {
@@ -435,7 +436,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUAPOS.HasValue) {
-                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<QualityOfSurvey, qualityOfHorizontalMeasurement>(current.QUAPOS);
+                                instance.qualityOfHorizontalMeasurement = current.QUAPOS.Value switch {
+                                    4 => qualityOfHorizontalMeasurement.Approximate,
+                                    _ => default,
+                                };
                             }
 
                             if (current.QUASOU != default) {
