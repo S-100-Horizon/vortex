@@ -11,7 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
     <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF.PropertyGrid\S100Framework.WPF.PropertyGrid.csproj" />
-    <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
   </ItemGroup>
 
 </Project>

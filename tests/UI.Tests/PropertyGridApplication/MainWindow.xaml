@@ -4,9 +4,84 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PropertyGridApplication"
+        xmlns:pg="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF.PropertyGrid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
+        Title="Property Grid Test - Change Log" Height="600" Width="1200" Loaded="Window_Loaded">
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Venstre side: Change Log -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#E0E0E0" BorderBrush="#999" BorderThickness="0,0,0,2" Padding="10">
+                <StackPanel>
+                    <TextBlock Text="Change Log" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="Registrerer alle ændringer til properties og collections" 
+                               FontSize="10" Foreground="#666" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Log TextBox -->
+            <TextBox Grid.Row="1" 
+                     x:Name="ChangeLogTextBox"
+                     Margin="10"
+                     Padding="5"
+                     IsReadOnly="True"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     TextWrapping="Wrap"
+                     FontFamily="Consolas"
+                     FontSize="11"
+                     Background="#F5F5F5"
+                     BorderBrush="#CCC"
+                     BorderThickness="1"/>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Content="Ryd Log" 
+                        Click="ClearLog_Click"
+                        Padding="10,5"
+                        Margin="0,0,5,0"/>
+                <Button Content="Gem Log" 
+                        Click="SaveLog_Click"
+                        Padding="10,5"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- GridSplitter -->
+        <GridSplitter Grid.Column="1" 
+                      Width="5" 
+                      HorizontalAlignment="Stretch" 
+                      Background="#DDD"/>
+
+        <!-- Højre side: PropertyGrid -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#E0E0E0" BorderBrush="#999" BorderThickness="0,0,0,2" Padding="10">
+                <TextBlock Text="Property Grid" FontWeight="Bold" FontSize="14"/>
+            </Border>
+
+            <!-- PropertyGrid -->
+            <pg:PropertyGrid Grid.Row="1"
+                             x:Name="MainPropertyGrid"
+                             Margin="10"/>
+        </Grid>
     </Grid>
+
 </Window>
