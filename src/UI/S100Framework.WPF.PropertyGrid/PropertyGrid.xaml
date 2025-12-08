@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="S100Framework.WPF"
+             xmlns:local="clr-namespace:S100Framework.WPF"
              xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
              xmlns:selectors="clr-namespace:S100Framework.WPF.Selectors"
              xmlns:models="clr-namespace:S100Framework.WPF.Models"
@@ -134,7 +134,7 @@
                     <Run Text="{Binding Children.Count, Mode=OneWay}"/>
                 </TextBlock>
                 <Button Content="+" 
-                        Command="{Binding DataContext.AddCollectionItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Command="{Binding AddCollectionItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                         CommandParameter="{Binding}"
                         Margin="5,0,0,0"
                         Padding="5,0"
@@ -199,7 +199,7 @@
                             Margin="6,0,0,0"
                             ToolTip="Remove from collection"
                             Visibility="{Binding Name, Converter={StaticResource CollectionItemVisibilityConverter}}"
-                            Command="{Binding DataContext.RemoveCollectionItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Command="{Binding RemoveCollectionItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                             CommandParameter="{Binding}"/>
                 </Border>
             </Grid>
@@ -238,7 +238,7 @@
         <!-- Property TreeView -->
         <TreeView Grid.Row="1" 
                   x:Name="PropertyTreeView"
-                  ItemsSource="{Binding Properties}"
+                  ItemsSource="{Binding Properties, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                   ItemTemplate="{StaticResource PropertyItemTemplate}"
                   BorderThickness="0"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"

@@ -24,7 +24,7 @@ namespace S100Framework.WPF
         {
             InitializeComponent();
             _properties = new ObservableCollection<PropertyItem>();
-            DataContext = this;
+            // DataContext is no longer set here - control is independent
 
             // Initialize commands
             AddCollectionItemCommand = new RelayCommand(ExecuteAddCollectionItem, CanExecuteAddCollectionItem);
@@ -227,7 +227,6 @@ namespace S100Framework.WPF
             Regex regex = new Regex("[^0-9.-]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
 
         #endregion
 
