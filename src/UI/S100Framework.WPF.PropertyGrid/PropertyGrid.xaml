@@ -162,6 +162,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="150"/>
                     <ColumnDefinition Width="2*" MinWidth="200"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Property Name Column -->
@@ -185,6 +186,21 @@
                     <ContentPresenter Content="{Binding}" 
                                     ContentTemplateSelector="{StaticResource PropertyEditorTemplateSelector}"
                                     VerticalAlignment="Center"/>
+                </Border>
+
+                <!-- Inline remove button for collection items -->
+                <Border Grid.Column="2"
+                        Background="White"
+                        BorderBrush="#DDD"
+                        BorderThickness="0,0,0,1"
+                        Padding="2,0,2,0">
+                    <Button Content="-"
+                            Width="22" Height="22"
+                            Margin="6,0,0,0"
+                            ToolTip="Remove from collection"
+                            Visibility="{Binding Name, Converter={StaticResource CollectionItemVisibilityConverter}}"
+                            Command="{Binding DataContext.RemoveCollectionItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            CommandParameter="{Binding}"/>
                 </Border>
             </Grid>
         </HierarchicalDataTemplate>
@@ -233,18 +249,6 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Margin" Value="0"/>
                     <Setter Property="Padding" Value="0"/>
-                    <Setter Property="ContextMenu">
-                        <Setter.Value>
-                            <ContextMenu>
-                                <MenuItem Header="Remove from Collection" 
-                                          Command="{Binding PlacementTarget.Tag.RemoveCollectionItemCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
-                                          CommandParameter="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
-                                          Visibility="{Binding PlacementTarget.DataContext.Name, RelativeSource={RelativeSource AncestorType=ContextMenu}, Converter={StaticResource CollectionItemVisibilityConverter}}"
-                                          Click="MenuItem_RemoveFromCollection_Click"/>
-                            </ContextMenu>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Tag" Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType=TreeView}}"/>
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>
