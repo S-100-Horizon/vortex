@@ -86,10 +86,10 @@ namespace PropertyGridApplication
                         {
                             foreach (var item in enumerable)
                             {
-                                if (item != null && item.GetType().IsClass && item.GetType() != typeof(string))
-                                {
+//                                if (item != null && item.GetType().IsClass && item.GetType() != typeof(string))
+//                                {
                                     SubscribeToPropertyChanges(item);
-                                }
+//                                }
                             }
                         }
                     }

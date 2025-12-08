@@ -241,14 +241,35 @@ namespace S100Framework.WPF.Models
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
+            // **NEW: Define properties to exclude**
+            var excludedNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "PropertyChanged",  // INotifyPropertyChanged event
+                "ErrorsChanged",    // INotifyDataErrorInfo event  
+                "HasErrors",        // INotifyDataErrorInfo property
+                // Add more names as needed
+            };
+
             foreach (var prop in properties.OrderBy(p => p.Name))
             {
                 // Skip indexed properties
                 if (prop.GetIndexParameters().Length > 0)
                     continue;
 
-                try
-                {
+                // **NEW: Filter by Browsable attribute**
+                var browsableAttr = prop.GetCustomAttribute<BrowsableAttribute>();
+                if (browsableAttr != null && !browsableAttr.Browsable)
+                    continue;
+
+                // **NEW: Skip properties marked with JsonIgnore (common pattern)**
+                if (prop.GetCustomAttribute<System.Text.Json.Serialization.JsonIgnoreAttribute>() != null)
+                    continue;
+
+                // **NEW: Skip properties in the excluded names list**
+                if (excludedNames.Contains(prop.Name))
+                    continue;
+
+                try {
                     object? value = prop.CanRead ? prop.GetValue(obj) : null;
                     
                     // Check if it's a collection
