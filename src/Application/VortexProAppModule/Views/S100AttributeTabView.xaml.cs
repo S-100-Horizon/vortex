@@ -66,7 +66,6 @@ namespace VortexProAppModule.Views
 
         private void S100AttributeEditor_Loaded(object sender, System.Windows.RoutedEventArgs e) {
             var viewModel = (S100AttributeTabViewModel)this.DataContext;
-            var control = (S100AttributeEditorControl)sender;
         }
     }
 }

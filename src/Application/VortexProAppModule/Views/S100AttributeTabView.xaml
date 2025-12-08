@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:s100="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF"
+             xmlns:pg="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF.PropertyGrid"
              xmlns:local="clr-namespace:VortexProAppModule.Views"
              xmlns:extensions="clr-namespace:ArcGIS.Desktop.Extensions;assembly=ArcGIS.Desktop.Extensions" 
              xmlns:vortexproappmodule="clr-namespace:VortexProAppModule" d:DataContext="{d:DesignInstance Type=vortexproappmodule:S100AttributeTabViewModel}"
@@ -75,12 +76,17 @@
             </Button>
         </Grid>
 
-        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor" Grid.Row="1" Host="{Binding Host, Mode=OneTime}"
+        <pg:PropertyGrid x:Name="S100AttributeEditoe" Grid.Row="1" 
+                         Visibility="{Binding IsVisible, Mode=OneWay}"
+                         SelectedObject="{Binding SelectedProperty, Mode=OneWay}"
+                         Loaded="S100AttributeEditor_Loaded"/>
+
+        <!--<s100:S100AttributeEditorControl x:Name="S100AttributeEditor" Grid.Row="1" Host="{Binding Host, Mode=OneTime}"
                                          Visibility="{Binding IsVisible, Mode=OneWay}"
                                          IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                          SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
                                          SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" 
-                                         Loaded="S100AttributeEditor_Loaded"/>
+                                         Loaded="S100AttributeEditor_Loaded"/>-->
 
 
         <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
