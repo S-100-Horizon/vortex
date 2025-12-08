@@ -501,7 +501,11 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+                            var verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+
+                            instance.verticalDatum = verticalDatum;
+
+
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
@@ -529,7 +533,11 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            VerticalDatums.Instance.Add(current.SHAPE!.Clone(), instance.verticalDatum!.Value);
+                            if (verticalDatum.HasValue) {
+                                VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.Value);
+                            } else {
+                                Logger.Current.DataError(current.OBJECTID.Value, current.TableName!, current.LNAM!, $"M_VDAT_VerticalDatumOfData has no VERDAT");
+                            }
 
                             // if (current.VERDAT.HasValue) {
                             //var verdat = Convert.ToInt32(current.VERDAT);
