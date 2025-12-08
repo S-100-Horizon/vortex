@@ -228,44 +228,6 @@ namespace S100Framework.WPF
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void MenuItem_RemoveFromCollection_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("=== MenuItem Click Event Fired ===");
-            
-            if (sender is MenuItem menuItem)
-            {
-                System.Diagnostics.Debug.WriteLine($"MenuItem DataContext type: {menuItem.DataContext?.GetType().Name ?? "null"}");
-                System.Diagnostics.Debug.WriteLine($"MenuItem Tag: {menuItem.Tag?.GetType().Name ?? "null"}");
-                
-                // Get the context menu
-                if (menuItem.Parent is ContextMenu contextMenu)
-                {
-                    System.Diagnostics.Debug.WriteLine($"ContextMenu PlacementTarget type: {contextMenu.PlacementTarget?.GetType().Name ?? "null"}");
-                    
-                    if (contextMenu.PlacementTarget is TreeViewItem treeViewItem)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"TreeViewItem DataContext type: {treeViewItem.DataContext?.GetType().Name ?? "null"}");
-                        System.Diagnostics.Debug.WriteLine($"TreeViewItem Tag type: {treeViewItem.Tag?.GetType().Name ?? "null"}");
-                        
-                        var propertyItem = treeViewItem.DataContext as PropertyItem;
-                        var propertyGrid = treeViewItem.Tag as PropertyGrid;
-                        
-                        if (propertyItem != null && propertyGrid != null)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"Manually invoking RemoveCollectionItemCommand");
-                            if (propertyGrid.RemoveCollectionItemCommand.CanExecute(propertyItem))
-                            {
-                                propertyGrid.RemoveCollectionItemCommand.Execute(propertyItem);
-                            }
-                            else
-                            {
-                                System.Diagnostics.Debug.WriteLine("Command CanExecute returned false!");
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         #endregion
 
