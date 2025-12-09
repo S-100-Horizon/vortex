@@ -40,7 +40,7 @@ namespace S100Framework.Applications.Singletons
             var features = new List<(string ObjectID, Geometry Geometry)>();
 
             foreach (var featureclass in featureclasses) {
-                var tableName = featureclass.GetName().ToLower();
+                var tableName = featureclass.GetDefinition().GetName().ToLower();
                 using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = $"{filter.WhereClause} and fcsubtype in (5,45)" })) {
                     while (cursor.MoveNext()) {
                         using (var row = (Feature)cursor.Current) {
