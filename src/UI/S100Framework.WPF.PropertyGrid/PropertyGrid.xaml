@@ -96,11 +96,12 @@
 
         <!-- Enum Editor -->
         <DataTemplate x:Key="EnumEditorTemplate">
-            <ComboBox ItemsSource="{Binding PropertyType, Converter={StaticResource EnumValuesConverter}}"
+            <ComboBox ItemsSource="{Binding EnumValues}"
                       SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
                       IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
                       Margin="2"
-                      Padding="2"/>
+                      Padding="2"
+                      HorizontalAlignment="Stretch"/>
         </DataTemplate>
 
         <!-- DateTime Editor -->

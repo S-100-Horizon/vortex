@@ -15,6 +15,7 @@ namespace S100Framework.WPF.Models
     {
         private object? _value;
         private bool _isExpanded;
+        private IEnumerable? _enumValues;
 
         public string Name { get; set; }
         public string DisplayName { get; set; }
@@ -51,17 +52,15 @@ namespace S100Framework.WPF.Models
                     OnPropertyChanged(nameof(Value));
                     
                     // Update the actual property on the parent object
-                    if (ParentObject != null && PropertyInfo != null && PropertyInfo.CanWrite && !IsReadOnly)
+                    if (PropertyInfo != null && ParentObject != null && PropertyInfo.CanWrite)
                     {
                         try
                         {
-                            // Convert value to appropriate type if needed
-                            object? convertedValue = ConvertValue(value, PropertyType);
-                            PropertyInfo.SetValue(ParentObject, convertedValue);
+                            PropertyInfo.SetValue(ParentObject, value);
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine($"Error setting property {Name}: {ex.Message}");
+                            System.Diagnostics.Debug.WriteLine($"Error setting property value: {ex.Message}");
                         }
                     }
                 }
@@ -117,6 +116,59 @@ namespace S100Framework.WPF.Models
             catch
             {
                 return value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the available enum values for this property.
+        /// First tries to find a "{PropertyName}List" property on the parent object,
+        /// then falls back to all enum values if the property is an enum type.
+        /// </summary>
+        public IEnumerable? EnumValues
+        {
+            get
+            {
+                if (_enumValues == null && PropertyType != null)
+                {
+                    Type enumType = Nullable.GetUnderlyingType(PropertyType) ?? PropertyType;
+                    
+                    if (enumType.IsEnum)
+                    {
+                        // First, try to find a "{PropertyName}List" property on the parent object
+                        if (ParentObject != null)
+                        {
+                            var listPropertyName = $"{Name}List";
+                            var listProperty = ParentObject.GetType().GetProperty(listPropertyName);
+                            
+                            if (listProperty != null)
+                            {
+                                var listValue = listProperty.GetValue(ParentObject);
+                                if (listValue is IEnumerable enumerable)
+                                {
+                                    _enumValues = enumerable;
+                                    return _enumValues;
+                                }
+                            }
+                        }
+                        
+                        // Fallback: get all enum values
+                        _enumValues = Enum.GetValues(enumType);
+                    }
+                }
+                
+                return _enumValues;
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether this property is an enum type
+        /// </summary>
+        public bool IsEnum
+        {
+            get
+            {
+                Type enumType = Nullable.GetUnderlyingType(PropertyType) ?? PropertyType;
+                return enumType.IsEnum;
             }
         }
 

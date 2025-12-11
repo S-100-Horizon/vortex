@@ -47,7 +47,7 @@ namespace PropertyGridApplication
                 {
                     if (!string.IsNullOrEmpty(e.PropertyName))
                     {
-                        LogMessage($"Property changed: {e.PropertyName}");
+                        LogMessage($"Property changed: {e.PropertyName} new value: {s}");
                     }
                 };
             }
@@ -86,10 +86,11 @@ namespace PropertyGridApplication
                         {
                             foreach (var item in enumerable)
                             {
-//                                if (item != null && item.GetType().IsClass && item.GetType() != typeof(string))
-//                                {
-                                    SubscribeToPropertyChanges(item);
-//                                }
+                                // if (item != null && item.GetType().IsClass && item.GetType() != typeof(string))
+                                if (item != null && item.GetType().IsClass )
+                                {
+                                SubscribeToPropertyChanges(item);
+                                }
                             }
                         }
                     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using S100Framework.WPF.Models;
@@ -21,56 +22,51 @@ namespace S100Framework.WPF.Selectors
 
         public override DataTemplate? SelectTemplate(object item, DependencyObject container)
         {
-            if (item is not PropertyItem propertyItem)
+            if (item is not PropertyItem propItem)
                 return base.SelectTemplate(item, container);
 
-            // Read-only properties get a special template
-            if (propertyItem.IsReadOnly && propertyItem.IsSimpleType)
+            // Check if read-only first
+            if (propItem.IsReadOnly)
                 return ReadOnlyEditorTemplate;
 
-            // Collections
-            if (propertyItem.IsCollection)
+            Type propertyType = Nullable.GetUnderlyingType(propItem.PropertyType) ?? propItem.PropertyType;
+
+            // Check for enum types (before collection check)
+            if (propertyType.IsEnum)
+            {
+                return EnumEditorTemplate;
+            }
+
+            // Check for collection
+            if (typeof(IList).IsAssignableFrom(propItem.PropertyType) && propItem.PropertyType != typeof(string))
+            {
                 return CollectionEditorTemplate;
+            }
 
-            // Complex types
-            if (propertyItem.IsComplexType)
+            // Check for complex types
+            if (propItem.IsComplexType)
+            {
                 return ComplexTypeEditorTemplate;
+            }
 
-            // Simple types
-            Type propertyType = Nullable.GetUnderlyingType(propertyItem.PropertyType) ?? propertyItem.PropertyType;
+            // Primitive types
+            if (propertyType == typeof(string))
+                return StringEditorTemplate;
 
             if (propertyType == typeof(bool))
                 return BoolEditorTemplate;
 
-            if (propertyType.IsEnum)
-                return EnumEditorTemplate;
-
-            if (propertyType == typeof(DateTime))
-                return DateTimeEditorTemplate;
-
-            if (IsNumericType(propertyType))
+            if (propertyType == typeof(int) || propertyType == typeof(long) ||
+                propertyType == typeof(short) || propertyType == typeof(byte) ||
+                propertyType == typeof(double) || propertyType == typeof(float) ||
+                propertyType == typeof(decimal))
                 return NumberEditorTemplate;
 
-            if (propertyType == typeof(string))
-                return StringEditorTemplate;
+            if (propertyType == typeof(DateTime) || propertyType == typeof(DateTimeOffset))
+                return DateTimeEditorTemplate;
 
             // Default to string editor
             return StringEditorTemplate;
-        }
-
-        private bool IsNumericType(Type type)
-        {
-            return type == typeof(int) ||
-                   type == typeof(long) ||
-                   type == typeof(short) ||
-                   type == typeof(byte) ||
-                   type == typeof(uint) ||
-                   type == typeof(ulong) ||
-                   type == typeof(ushort) ||
-                   type == typeof(sbyte) ||
-                   type == typeof(float) ||
-                   type == typeof(double) ||
-                   type == typeof(decimal);
         }
     }
 }
