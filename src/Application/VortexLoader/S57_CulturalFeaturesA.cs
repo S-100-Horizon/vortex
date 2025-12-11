@@ -185,7 +185,7 @@ namespace S100Framework.Applications
                             var horclr = current.HORCLR ?? default;
                             var horacc = current.HORACC ?? default;
 
-                            if (current.CATBRG!.Contains(",")) {
+                            if ((current.CATBRG != default && current.CATBRG!.Contains(",")) {
                                 Logger.Current.DataError(current.OBJECTID ?? -1, current.TableName, current.LNAM, "Bridge with multiple categories not supported. To be implemented.");
                                 continue;
                             }
