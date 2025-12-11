@@ -141,6 +141,21 @@ namespace S100Framework.Applications
         internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
             var areaRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
 
+            //var nullS57Objects = areaRelated
+            //        .Where(obj => obj.S57Object == null)
+            //        .ToList();
+
+            //if (nullS57Objects.Count > 0) {
+            //    ;
+            //}
+
+            //if (areaRelated.Count == nullS57Objects.Count || nullS57Objects.Count > 0) {
+            //    return;
+            //}
+            //else {
+            //    ;
+            //}
+
             var tableName = _target.GetName("point");
             using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
@@ -366,7 +381,9 @@ namespace S100Framework.Applications
 
                 }
                 else {
-                    throw new NotSupportedException("Relation without related object or related object Type information.");
+                    Logger.Current.DataError(-1, relatedObject.PLTS_Frel.TableName! ,"", $"Broken FREL relationship {relatedObject.PLTS_Frel.SRC_FC}::{relatedObject.PLTS_Frel.SRC_LNAM} -> {relatedObject.PLTS_Frel.DEST_FC}::{relatedObject.PLTS_Frel.DEST_LNAM}");
+                    continue;
+                    //throw new NotSupportedException("Relation without related object or related object Type information.");
                 }
             }
 
@@ -694,7 +711,8 @@ namespace S100Framework.Applications
             //}
 
             foreach (var plts in totalRelated) {
-                if (!ConversionAnalytics.Instance.IsConverted(plts.S57Object!.GlobalId)) {
+                if (!ConversionAnalytics.Instance.IsConverted(Guid.Parse(plts.PLTS_Frel.DEST_UID))) {
+                    Logger.Current.DataError(-1, plts.PLTS_Frel.TableName!, "" , $"Broken FREL relationship {plts.PLTS_Frel.SRC_FC}::{plts.PLTS_Frel.SRC_LNAM} -> {plts.PLTS_Frel.DEST_FC}::{plts.PLTS_Frel.DEST_LNAM}")
                     // TODO: handle missing related - TOMOREDO: REFACTURE!!!
                     ;
                 }
