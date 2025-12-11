@@ -34,13 +34,14 @@ namespace S100Framework.Applications.Singletons
 
     class FeatureGrouper
     {
-        internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses, QueryFilter filter) {
+        internal List<BridgeElement> GroupAndDissolveToBridgeElements(SQLSyntax syntax, List<FeatureClass> featureclasses, QueryFilter filter) {
             var groups = new List<List<string>>();
 
             var features = new List<(string ObjectID, Geometry Geometry)>();
 
             foreach (var featureclass in featureclasses) {
-                var tableName = featureclass.GetDefinition().GetName().ToLower();
+                var tuple = syntax.ParseTableName(featureclass.GetName());
+                var tableName = tuple.Item3.ToLowerInvariant();
                 using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = $"{filter.WhereClause} and fcsubtype in (5,45)" })) {
                     while (cursor.MoveNext()) {
                         using (var row = (Feature)cursor.Current) {
@@ -211,7 +212,10 @@ namespace S100Framework.Applications.Singletons
 
             var featureGrouper = new FeatureGrouper();
             //_groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, ImporterNIS.QueryFilter);
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA }, ImporterNIS.QueryFilter);
+
+            var sqlSyntax = _source.GetSQLSyntax();
+
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(sqlSyntax, new() { culturalFeaturesA }, ImporterNIS.QueryFilter);
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase destination) {
