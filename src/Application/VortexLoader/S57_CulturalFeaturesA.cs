@@ -160,7 +160,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
-
+                        
                     case 5: { // BRIDGE_Bridge  // SPANS
                               //var instance = new Bridge();
 
@@ -184,6 +184,14 @@ namespace S100Framework.Applications
                             //List<natureOfConstruction> natureOfConstructionValues = new();
                             var horclr = current.HORCLR ?? default;
                             var horacc = current.HORACC ?? default;
+
+                            if (current.CATBRG!.Contains(",")) {
+                                Logger.Current.DataError(current.OBJECTID ?? -1, current.TableName, current.LNAM, "Bridge with multiple categories not supported. To be implemented.");
+                                continue;
+                            }
+
+
+
 
                             if (current.CATBRG != default && current.CATBRG == "1") {
                                 openingBridge = false;
