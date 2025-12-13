@@ -49,13 +49,13 @@ namespace S100Framework.Applications.Singletons
                 "curve",
                 "point",
                 "surface",
-                "pointset"
+                "pointset",
             };
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
                 int tableErrorCount = 0;
-                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -90,15 +90,16 @@ namespace S100Framework.Applications.Singletons
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {
-                "curve",
-                "point",
-                "surface",
-                "pointset"
+                //"curve",
+                //"point",
+                //"surface",
+                //"pointset",
+                "featuretype"
             };
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -159,16 +160,17 @@ namespace S100Framework.Applications.Singletons
             Int32 errorCount = 0;
 
             var tableNames = new List<string>() {
-                "curve",
-                "point",
-                "surface",
-                "pointset"
+                //"curve",
+                //"point",
+                //"surface",
+                //"pointset",
+                "featuretype"
             };
             int recordCount = 0;
 
             foreach (var tableName in tableNames) {
                 var tableErrorCount = 0;
-                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(tableName));
+                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(tableName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 

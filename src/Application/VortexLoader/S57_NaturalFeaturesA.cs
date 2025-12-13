@@ -15,6 +15,10 @@ namespace S100Framework.Applications
             using var naturalFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(naturalFeaturesA);
 
+            using var attributes = target.OpenDataset<Table>(target.GetName("featuretype"));
+
+            using var attributeBuffer = attributes.CreateRowBuffer();
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var bufferSurface = featureClass.CreateRowBuffer();
@@ -39,7 +43,12 @@ namespace S100Framework.Applications
                     throw new Exception("Ups. Not supported");
                 }
 
+                attributeBuffer["ps"] = ps101;
+                attributeBuffer["edition"] = ImporterNIS.s101version;
 
+                using var attribute = attributes.CreateRow(attributeBuffer);
+
+                bufferSurface["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -81,11 +90,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
 
                             SetShape(bufferSurface, current.SHAPE);
@@ -142,11 +153,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -197,11 +210,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.Shape);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -244,11 +259,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -302,11 +319,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -370,11 +389,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -397,6 +418,8 @@ namespace S100Framework.Applications
                         break;
 
                 }
+                
+                attribute.Store();
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
 

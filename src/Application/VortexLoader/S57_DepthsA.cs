@@ -14,6 +14,10 @@ namespace S100Framework.Applications
             using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
             var subtypes = depthsA.GetSubtypes();
 
+            using var attributes = target.OpenDataset<Table>(target.GetName("featuretype"));
+
+            using var attributeBuffer = attributes.CreateRowBuffer();
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -39,8 +43,12 @@ namespace S100Framework.Applications
                     throw new Exception("Ups. Not supported");
                 }
 
+                attributeBuffer["ps"] = ps101;
+                attributeBuffer["edition"] = ImporterNIS.s101version;
 
+                using var attribute = attributes.CreateRow(attributeBuffer);
 
+                buffer["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
 
@@ -66,11 +74,13 @@ namespace S100Framework.Applications
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["edition"] = ImporterNIS.s101version;                            
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -84,7 +94,7 @@ namespace S100Framework.Applications
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));                            
                         }
                         break;
 
@@ -143,11 +153,13 @@ namespace S100Framework.Applications
                             }
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
+                            attribute["code"] = instance.GetType().Name;
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -178,11 +190,13 @@ namespace S100Framework.Applications
 
                             // TODO: InteroperabilityIdentifier
 
+                            attribute["code"] = instance.GetType().Name;
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            attribute["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
@@ -206,6 +220,8 @@ namespace S100Framework.Applications
                         break;
 
                 }
+                
+                attribute.Store();
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }

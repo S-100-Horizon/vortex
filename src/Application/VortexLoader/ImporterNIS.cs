@@ -62,7 +62,7 @@ namespace S100Framework.Applications
 
         public static QueryFilter QueryFilter { get; internal set; } = new();
 
-        public static IDictionary<int, int> VerticalDatumConverter = new Dictionary<int,int>();
+        public static IDictionary<int, int> VerticalDatumConverter = new Dictionary<int, int>();
 
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
@@ -211,6 +211,8 @@ namespace S100Framework.Applications
 
                 relatedEquipment = new RelatedEquipment(source, destination);
 
+                skinOfEarthOnly = true;
+
                 if (skinOfEarthOnly) {
                     Logger.Current.Information($"Converting skin of earth only Filter: {QueryFilter.WhereClause}");
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
@@ -223,7 +225,7 @@ namespace S100Framework.Applications
                     Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
                     QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40)";
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
-                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1)";
+                    QueryFilter.WhereClause = $"{whereClause}";
                     Store(() => S57_ProductCoverage(source, destination, QueryFilter, s128));
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 

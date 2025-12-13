@@ -18,6 +18,10 @@ namespace S100Framework.Applications
 
             var allM_CSCL = Geometries.Features<MetaDataA>(metadataAFeatureClass, new() { WhereClause = $"{filter.WhereClause} AND fcsubtype = 20" });
 
+            using var attributes = target.OpenDataset<Table>(target.GetName("featuretype"));
+
+            using var attributeBuffer = attributes.CreateRowBuffer();
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             //featureClass.DeleteRows(new QueryFilter {
@@ -56,11 +60,18 @@ namespace S100Framework.Applications
                     Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM", "Optimumdisplayscale must be set");
                 }
 
+                attributeBuffer["ps"] = ps101;
+                attributeBuffer["edition"] = ImporterNIS.s101version;
+
+                using var attribute = attributes.CreateRow(attributeBuffer);
+
+                buffer["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
+
                 {
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl);
+                    attribute["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl);
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
@@ -69,6 +80,7 @@ namespace S100Framework.Applications
 
                     // TODO: Create relations
                 }
+                attribute.Store();
             }
 
             while (cursor.MoveNext()) {
@@ -159,6 +171,9 @@ namespace S100Framework.Applications
                     polygonsCompScale = productCoverage.PLTS_COMP_SCALE!.Value;
                     polygons.Add((ArcGIS.Core.Geometry.Polygon)productCoverage.SHAPE!);
 
+                    attributeBuffer["ps"] = ps101;
+                    attributeBuffer["edition"] = ImporterNIS.s101version;
+
                     switch (catcov) {
                         case 1: {
                                 //buffer["ps"] = ps128;
@@ -188,11 +203,17 @@ namespace S100Framework.Applications
                             else {
                                 Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage", "Calculated", "Optimumdisplayscale must be set");
                             } {
+                                using var attribute = attributes.CreateRow(attributeBuffer);
+
+                                buffer["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
+
+                                attribute["code"] = dataCoverage.GetType().Name;
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
-                                buffer["informationbindings"] = "[]";
+                                attribute["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                attribute["informationbindings"] = "[]";
 
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE!.Value);
@@ -202,10 +223,17 @@ namespace S100Framework.Applications
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                                attribute.Store();
                             }
 
                             // VERTICAL DATUM OF DATA
                             {
+                                using var attribute = attributes.CreateRow(attributeBuffer);
+
+                                buffer["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
+
+                                attribute["code"] = dataCoverage.GetType().Name;
+
                                 var vdat = new VerticalDatumOfData {
                                     verticalDatum = default,
                                 };
@@ -215,8 +243,8 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
-                                buffer["informationbindings"] = "[]";
+                                attribute["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                attribute["informationbindings"] = "[]";
 
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
@@ -233,19 +261,25 @@ namespace S100Framework.Applications
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                                 VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum!.Value);
-
+                                attribute.Store();
                             }
                             break;
                     }
                 }
 
                 if (s128) {
+                    using var attribute = attributes.CreateRow(attributeBuffer);
+
+                    buffer["Ref_FOID"] = Convert.ToInt32(attribute["FOID"]);
+
+                    attribute["code"] = instance.GetType().Name;
+
                     //Store S-128 polygons
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                    buffer["informationbindings"] = "[]";
+                    attribute["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    attribute["informationbindings"] = "[]";
 
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
                     ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
@@ -253,6 +287,7 @@ namespace S100Framework.Applications
                     var name = featureN.Crc32();
                     // TODO: Create relations
                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                    attribute.Store();
                 }
 
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
