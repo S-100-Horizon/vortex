@@ -44,8 +44,12 @@ namespace TestS100Framework
 
             private readonly ITestOutputHelper _output;
 
+            private readonly string _iho;
+
             public UnitTestCodeBuilder(ITestOutputHelper output) {
                 this._output = output;
+
+                this._iho = Environment.GetEnvironmentVariable("GITHUB-IHO")!;
             }
 
             [Fact]
@@ -95,7 +99,7 @@ namespace TestS100Framework
 
                 Build_S125_FIHO();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-125_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-125_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_ViewModel.cs"));                
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-125_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_ViewModel.cs"));
 
                 //Build_S127();
                 //File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
@@ -255,7 +259,10 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\0.0.4\FC\S125FC.xml"));
+
+                var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC_SE_FIX.xml");
+
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -272,7 +279,9 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\1.0.0_FIHO\S125FC_FIXED.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC_SE_FIX.xml");
+
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -335,7 +344,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S131() {
-            //var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
+                //var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
                 var s100 = XDocument.Load(this.Path(@"S-131 Marine Harbour Infrastructure\2.0.0\131_2.0.0.20251025.xml"));
 
