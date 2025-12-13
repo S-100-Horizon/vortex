@@ -235,7 +235,7 @@ namespace S100Framework.Applications
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(-1);
+                                    instance.waterLevelEffect = default;    // EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(-1);
                                 else {
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(current.WATLEV);
                                 }
