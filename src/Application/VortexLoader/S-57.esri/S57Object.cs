@@ -10,5 +10,7 @@ namespace S100Framework.Applications.S57.esri
         public string? TableName { get; set; }
         public int? PLTS_COMP_SCALE { get; set; }
         public int? FcSubtype { get; set; }
+
+        public int? SCAMIN_STEP { get; set; } = default;
     }
 }

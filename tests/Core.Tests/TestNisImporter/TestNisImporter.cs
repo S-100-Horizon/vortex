@@ -251,7 +251,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t\tif (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))");
                 csSubtypes.AppendLine($"\t\t\tthrow new NotSupportedException($\"Unknown subtype for {{current.TableName}}, {{current.FCSUBTYPE.Value}}\");");
 
-                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
+                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
                 csSubtypes.AppendLine($"\t\t\t}}");
 
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
