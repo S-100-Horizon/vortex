@@ -16,17 +16,21 @@ namespace TestNIPWG
     {
         private readonly ITestOutputHelper _output;
 
+        private string _iho;
+
         public UnitTest125(ITestOutputHelper output) {
             this._output = output;
+            this._iho = Environment.GetEnvironmentVariable("GITHUB-IHO")!;
 
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
-        public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(@".\..\..\..\..\..\..\artifacts\Product Specifications", ps));
+        public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(_iho, ps));
 
         [Fact]
-        public void ExportS125() {
-            var productSpecification = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\1.0.0_FIHO\S125FC_FIXED.xml"));
+        public void ExportS125() {            
+
+            var productSpecification = XDocument.Load(this.Path(@"S-125-Product-Specification-Development\FC\S125FC.xml"));
 
             var builder = Build(productSpecification);
 
@@ -37,7 +41,7 @@ namespace TestNIPWG
 
         [Fact]
         public void ExportS201() {
-            var productSpecification = XDocument.Load(this.Path(@"S-201 Aids to Navigation Information\2.0.0\6. S-201 Feature Catalogue - Annex C2.xml"));
+            var productSpecification = XDocument.Load(this.Path(@"S-201 Aids to Navigation Information\FC\6. S-201 Feature Catalogue - Annex C2.xml"));
 
             var builder = Build(productSpecification);
 
@@ -151,7 +155,9 @@ namespace TestNIPWG
             foreach (var e in scopes)
                 xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
-            foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+            var elements = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager);
+            elements = elements.OrderBy(e =>e.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!);
+            foreach (var attributeBinding in elements) {
                 var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
                 var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
                 var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);

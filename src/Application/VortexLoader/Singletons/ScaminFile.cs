@@ -100,17 +100,16 @@ namespace S100Framework.Applications.Singletons
             get => _polygons;
         }
 
-        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
-            //ArcGIS.Core.Data.Feature feature
-            //if (!feature.IsNull("SCAMIN_STEP")) {
-            //    var scamin = Convert.ToInt32(feature["SCAMIN:STEP"]);
-            //    if (scamin > 10)
-            //        return scamin;
+        internal int? GetMinimumScale(S100Framework.Applications.S57.esri.S57Object feature, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
+            if (feature.SCAMIN_STEP.HasValue) {
+                var scamin = feature.SCAMIN_STEP.Value;
+                if (scamin > 10)
+                    return scamin;
 
-            //    //TODO: SCAMIN_step ?
-            //}
+                //TODO: SCAMIN_step ?
+            }
 
-            //var geometry = feature.GetShape();
+            var geometry = feature.Shape!;
             var touched = GetTouchedPolygonNames(geometry);
             if (touched.Count != 1) {
                 throw new ArgumentException("Cannot determine scamin");
