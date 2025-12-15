@@ -72,7 +72,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -151,7 +151,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public PLTS_SpatialAttributeL (Feature feature) {
+//		public PLTS_SpatialAttributeL(Feature feature) {
 //			base.TableName = "PLTS_SpatialAttributeL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -209,6 +209,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -368,7 +369,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -567,7 +568,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TidesAndVariationsA (Feature feature) {
+//		public TidesAndVariationsA(Feature feature) {
 //			base.TableName = "TidesAndVariationsA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -722,6 +723,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -881,7 +883,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -978,7 +980,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TidesAndVariationsL (Feature feature) {
+//		public TidesAndVariationsL(Feature feature) {
 //			base.TableName = "TidesAndVariationsL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -1082,6 +1084,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -1241,7 +1244,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -1458,7 +1461,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TidesAndVariationsP (Feature feature) {
+//		public TidesAndVariationsP(Feature feature) {
 //			base.TableName = "TidesAndVariationsP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -1613,6 +1616,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -1781,7 +1785,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -1878,7 +1882,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public SeabedL (Feature feature) {
+//		public SeabedL(Feature feature) {
 //			base.TableName = "SeabedL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -1982,6 +1986,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -2141,7 +2146,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -2262,7 +2267,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public SeabedP (Feature feature) {
+//		public SeabedP(Feature feature) {
 //			base.TableName = "SeabedP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -2369,6 +2374,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -2537,7 +2543,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -2640,7 +2646,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public SeabedA (Feature feature) {
+//		public SeabedA(Feature feature) {
 //			base.TableName = "SeabedA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -2747,6 +2753,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -2906,7 +2913,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -3111,7 +3118,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public DangersL (Feature feature) {
+//		public DangersL(Feature feature) {
 //			base.TableName = "DangersL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -3269,6 +3276,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -3428,7 +3436,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -3663,7 +3671,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public DangersP (Feature feature) {
+//		public DangersP(Feature feature) {
 //			base.TableName = "DangersP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -3827,6 +3835,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -3995,7 +4004,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -4212,7 +4221,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public DangersA (Feature feature) {
+//		public DangersA(Feature feature) {
 //			base.TableName = "DangersA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -4376,6 +4385,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -4535,7 +4545,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -4632,7 +4642,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public DepthsL (Feature feature) {
+//		public DepthsL(Feature feature) {
 //			base.TableName = "DepthsL";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -4736,6 +4746,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -4895,7 +4906,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5034,7 +5045,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public OffshoreInstallationsL (Feature feature) {
+//		public OffshoreInstallationsL(Feature feature) {
 //			base.TableName = "OffshoreInstallationsL";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -5159,6 +5170,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -5318,7 +5330,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5493,7 +5505,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public OffshoreInstallationsA (Feature feature) {
+//		public OffshoreInstallationsA(Feature feature) {
 //			base.TableName = "OffshoreInstallationsA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -5636,6 +5648,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -5795,7 +5808,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -5874,7 +5887,7 @@
 //		/// </summary>
 //		[Description("NIS_LAST_MOD")]
 //		internal DateTime? NIS_LAST_MOD = default;
-//		public MetaDataP (Feature feature) {
+//		public MetaDataP(Feature feature) {
 //			base.TableName = "MetaDataP";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -5963,6 +5976,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -6128,7 +6142,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -6303,7 +6317,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TracksAndRoutesA (Feature feature) {
+//		public TracksAndRoutesA(Feature feature) {
 //			base.TableName = "TracksAndRoutesA";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -6446,6 +6460,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -6605,7 +6620,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -6774,7 +6789,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TracksAndRoutesL (Feature feature) {
+//		public TracksAndRoutesL(Feature feature) {
 //			base.TableName = "TracksAndRoutesL";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -6914,6 +6929,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -7073,7 +7089,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -7206,7 +7222,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public TracksAndRoutesP (Feature feature) {
+//		public TracksAndRoutesP(Feature feature) {
 //			base.TableName = "TracksAndRoutesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -7319,6 +7335,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -7487,7 +7504,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -7878,7 +7895,7 @@
 //		/// </summary>
 //		[Description("Validation status")]
 //		internal int? VALIDATIONSTATUS = default;
-//		public AidsToNavigationP (Feature feature) {
+//		public AidsToNavigationP(Feature feature) {
 //			base.TableName = "AidsToNavigationP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -8117,6 +8134,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -8290,7 +8308,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -8411,7 +8429,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public IceFeaturesA (Feature feature) {
+//		public IceFeaturesA(Feature feature) {
 //			base.TableName = "IceFeaturesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -8527,6 +8545,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -8686,7 +8705,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -8789,7 +8808,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public MilitaryFeaturesA (Feature feature) {
+//		public MilitaryFeaturesA(Feature feature) {
 //			base.TableName = "MilitaryFeaturesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -8896,6 +8915,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -9055,7 +9075,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -9176,7 +9196,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public MilitaryFeaturesP (Feature feature) {
+//		public MilitaryFeaturesP(Feature feature) {
 //			base.TableName = "MilitaryFeaturesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -9283,6 +9303,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -9451,7 +9472,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -9608,7 +9629,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public UserDefinedFeaturesA (Feature feature) {
+//		public UserDefinedFeaturesA(Feature feature) {
 //			base.TableName = "UserDefinedFeaturesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -9742,6 +9763,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -9901,7 +9923,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -10076,7 +10098,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public UserDefinedFeaturesP (Feature feature) {
+//		public UserDefinedFeaturesP(Feature feature) {
 //			base.TableName = "UserDefinedFeaturesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -10210,6 +10232,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -10378,7 +10401,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -10535,7 +10558,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public UserDefinedFeaturesL (Feature feature) {
+//		public UserDefinedFeaturesL(Feature feature) {
 //			base.TableName = "UserDefinedFeaturesL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -10669,6 +10692,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -10828,7 +10852,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -10931,7 +10955,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public DepthsA (Feature feature) {
+//		public DepthsA(Feature feature) {
 //			base.TableName = "DepthsA";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -11038,6 +11062,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -11197,7 +11222,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -11324,7 +11349,7 @@
 //		/// </summary>
 //		[Description("Horizontal Datum")]
 //		internal int? P_HORDAT = default;
-//		public SoundingsP (Feature feature) {
+//		public SoundingsP(Feature feature) {
 //			base.TableName = "SoundingsP";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -11437,6 +11462,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -11602,7 +11628,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -11945,7 +11971,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public PortsAndServicesP (Feature feature) {
+//		public PortsAndServicesP(Feature feature) {
 //			base.TableName = "PortsAndServicesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -12163,6 +12189,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -12331,7 +12358,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -12566,7 +12593,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public PortsAndServicesL (Feature feature) {
+//		public PortsAndServicesL(Feature feature) {
 //			base.TableName = "PortsAndServicesL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -12739,6 +12766,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -12898,7 +12926,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -13205,7 +13233,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public PortsAndServicesA (Feature feature) {
+//		public PortsAndServicesA(Feature feature) {
 //			base.TableName = "PortsAndServicesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -13414,6 +13442,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -13573,7 +13602,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -13868,7 +13897,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CulturalFeaturesA (Feature feature) {
+//		public CulturalFeaturesA(Feature feature) {
 //			base.TableName = "CulturalFeaturesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -14071,6 +14100,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -14230,7 +14260,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -14513,7 +14543,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CulturalFeaturesL (Feature feature) {
+//		public CulturalFeaturesL(Feature feature) {
 //			base.TableName = "CulturalFeaturesL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -14710,6 +14740,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -14869,7 +14900,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -15176,7 +15207,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CulturalFeaturesP (Feature feature) {
+//		public CulturalFeaturesP(Feature feature) {
 //			base.TableName = "CulturalFeaturesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -15376,6 +15407,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -15544,7 +15576,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -15731,7 +15763,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public NaturalFeaturesP (Feature feature) {
+//		public NaturalFeaturesP(Feature feature) {
 //			base.TableName = "NaturalFeaturesP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -15871,6 +15903,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -16039,7 +16072,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -16190,7 +16223,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public NaturalFeaturesL (Feature feature) {
+//		public NaturalFeaturesL(Feature feature) {
 //			base.TableName = "NaturalFeaturesL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -16321,6 +16354,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -16480,7 +16514,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -16649,7 +16683,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public NaturalFeaturesA (Feature feature) {
+//		public NaturalFeaturesA(Feature feature) {
 //			base.TableName = "NaturalFeaturesA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -16789,6 +16823,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -16948,7 +16983,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -17135,7 +17170,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CoastlineL (Feature feature) {
+//		public CoastlineL(Feature feature) {
 //			base.TableName = "CoastlineL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -17284,6 +17319,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -17443,7 +17479,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -17636,7 +17672,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CoastlineP (Feature feature) {
+//		public CoastlineP(Feature feature) {
 //			base.TableName = "CoastlineP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -17779,6 +17815,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -17947,7 +17984,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -18122,7 +18159,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public CoastlineA (Feature feature) {
+//		public CoastlineA(Feature feature) {
 //			base.TableName = "CoastlineA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -18265,6 +18302,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -18424,7 +18462,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -18581,7 +18619,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public RegulatedAreasAndLimitsL (Feature feature) {
+//		public RegulatedAreasAndLimitsL(Feature feature) {
 //			base.TableName = "RegulatedAreasAndLimitsL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -18715,6 +18753,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -18874,7 +18913,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -19067,7 +19106,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public RegulatedAreasAndLimitsP (Feature feature) {
+//		public RegulatedAreasAndLimitsP(Feature feature) {
 //			base.TableName = "RegulatedAreasAndLimitsP";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -19210,6 +19249,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -19378,7 +19418,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -19565,7 +19605,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public RegulatedAreasAndLimitsA (Feature feature) {
+//		public RegulatedAreasAndLimitsA(Feature feature) {
 //			base.TableName = "RegulatedAreasAndLimitsA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -19714,6 +19754,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -19873,7 +19914,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -20090,7 +20131,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public MetaDataA (Feature feature) {
+//		public MetaDataA(Feature feature) {
 //			base.TableName = "MetaDataA";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -20254,6 +20295,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -20413,7 +20455,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -20540,7 +20582,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public MetaDataL (Feature feature) {
+//		public MetaDataL(Feature feature) {
 //			base.TableName = "MetaDataL";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -20659,6 +20701,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -20818,7 +20861,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -21017,7 +21060,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public OffshoreInstallationsP (Feature feature) {
+//		public OffshoreInstallationsP(Feature feature) {
 //			base.TableName = "OffshoreInstallationsP";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -21163,6 +21206,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -21259,7 +21303,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -21314,7 +21358,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public ClosingLinesL (Feature feature) {
+//		public ClosingLinesL(Feature feature) {
 //			base.TableName = "ClosingLinesL";
 //			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 //				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -21360,6 +21404,7 @@
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -21465,7 +21510,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// Is Conflate
@@ -21490,7 +21535,7 @@
 //		/// </summary>
 //		[Description("NIS_LAST_MOD")]
 //		internal DateTime? NIS_LAST_MOD = default;
-//		public ProductCoverage (Feature feature) {
+//		public ProductCoverage(Feature feature) {
 //			base.TableName = "ProductCoverage";
 //			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -21762,7 +21807,7 @@
 //		/// </summary>
 //		[Description("NIS_LAST_MOD")]
 //		internal DateTime? NIS_LAST_MOD = default;
-//		public ProductDefinitions (Row row) {
+//		public ProductDefinitions(Row row) {
 //			base.TableName = "ProductDefinitions";
 //			if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(row["OBJECTID"]);
@@ -21932,7 +21977,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// NIS product type
@@ -22077,7 +22122,7 @@
 //		/// </summary>
 //		[Description("NIS editor comments")]
 //		internal string? NIS_EDITOR_COMMENT = default;
-//		public PLTS_Collections (Row row) {
+//		public PLTS_Collections(Row row) {
 //			base.TableName = "PLTS_Collections";
 //			if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(row["OBJECTID"]);
@@ -22165,6 +22210,7 @@
 //			}
 //			if (DBNull.Value != row["SCAMIN_STEP"] && row["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(row["SCAMIN_STEP"]);
+//				base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
 //			}
 //			if (DBNull.Value != row["NIS_VERIFIED"] && row["NIS_VERIFIED"] is not null) {
 //				NIS_VERIFIED = Convert.ToInt32(row["NIS_VERIFIED"]);
@@ -22276,7 +22322,7 @@
 //		/// PLTS compilation scale
 //		/// </summary>
 //		[Description("PLTS compilation scale")]
-//		internal new int? PLTS_COMP_SCALE = default;
+//		internal int? PLTS_COMP_SCALE = default;
 
 //		/// <summary>
 //		/// Is Conflate
@@ -22313,7 +22359,7 @@
 //		/// </summary>
 //		[Description("NIS_LAST_MOD")]
 //		internal DateTime? NIS_LAST_MOD = default;
-//		public PLTS_Frel (Row row) {
+//		public PLTS_Frel(Row row) {
 //			base.TableName = "PLTS_Frel";
 //			if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(row["OBJECTID"]);
@@ -22425,7 +22471,7 @@
 //		/// </summary>
 //		[Description("PRIM")]
 //		internal int? PRIM = default;
-//		public PLTS_Master_Slaves (Row row) {
+//		public PLTS_Master_Slaves(Row row) {
 //			base.TableName = "PLTS_Master_Slaves";
 //			if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
 //				OBJECTID = Convert.ToInt32(row["OBJECTID"]);
