@@ -43,6 +43,8 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
+                if (feature.GetShape() is null) continue;
+
                 var current = new DepthsL(feature);
 
                 var spatialQualityHits = SpatialAssociations.Instance.GetSpatialAttributeL(feature.GetShape());
