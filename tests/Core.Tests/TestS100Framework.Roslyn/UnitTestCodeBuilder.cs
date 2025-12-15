@@ -45,11 +45,13 @@ namespace TestS100Framework
             private readonly ITestOutputHelper _output;
 
             private readonly string _iho;
+            private readonly string _iala;
 
             public UnitTestCodeBuilder(ITestOutputHelper output) {
                 this._output = output;
 
                 this._iho = Environment.GetEnvironmentVariable("GITHUB-IHO")!;
+                this._iala = Environment.GetEnvironmentVariable("GITHUB-IALA")!;
             }
 
             [Fact]
@@ -260,7 +262,7 @@ namespace TestS100Framework
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
 
-                var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC_SE_FIX.xml");
+                var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml");
 
                 var s100 = XDocument.Load(ps);
 
@@ -360,7 +362,9 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S201() {
-                var s100 = XDocument.Load(this.Path(@"S-201 Aids to Navigation Information\2.0.0\6. S-201 Feature Catalogue - Annex C2.xml"));
+                var ps = System.IO.Path.Combine(this._iala, @"S-201 Aids to Navigation Information\FC\201_Feature_Catalogue_2.0.0.xml");
+
+                var s100 = XDocument.Load(ps);
 
                 Assert.True(VerifyProductSpecification(s100));
 

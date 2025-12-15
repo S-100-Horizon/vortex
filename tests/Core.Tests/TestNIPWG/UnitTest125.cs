@@ -17,20 +17,23 @@ namespace TestNIPWG
         private readonly ITestOutputHelper _output;
 
         private string _iho;
+        private string _iala;
 
         public UnitTest125(ITestOutputHelper output) {
             this._output = output;
             this._iho = Environment.GetEnvironmentVariable("GITHUB-IHO")!;
+            this._iala = Environment.GetEnvironmentVariable("GITHUB-IALA")!;
 
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
-        public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(_iho, ps));
+        public string PathIHO(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(_iho, ps));
+        public string PathIALA(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(_iala, ps));
 
         [Fact]
         public void ExportS125() {            
 
-            var productSpecification = XDocument.Load(this.Path(@"S-125-Product-Specification-Development\FC\S125FC.xml"));
+            var productSpecification = XDocument.Load(this.PathIHO(@"S-125-Product-Specification-Development\FC\S125FC.xml"));
 
             var builder = Build(productSpecification);
 
@@ -41,7 +44,7 @@ namespace TestNIPWG
 
         [Fact]
         public void ExportS201() {
-            var productSpecification = XDocument.Load(this.Path(@"S-201 Aids to Navigation Information\FC\6. S-201 Feature Catalogue - Annex C2.xml"));
+            var productSpecification = XDocument.Load(this.PathIALA(@"S-201 Aids to Navigation Information\FC\201_Feature_Catalogue_2.0.0.xml"));
 
             var builder = Build(productSpecification);
 
