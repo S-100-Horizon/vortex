@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 
@@ -587,8 +588,13 @@ namespace S100Framework.Applications.Singletons
                         _srcObjectToSlaves[uid] = new List<PltsSlave>() { new PltsSlave(plts_frel) };
                     }
                     else {
-                        var pltsSlave = new PltsSlave(plts_frel);
-                        _srcObjectToSlaves[uid].Add(pltsSlave);
+                        // Same relation multiple times are ignored.
+                        if (!_srcObjectToSlaves[uid].Any(o =>
+                            o.PLTS_Frel.SRC_UID!.ToLower() == plts_frel.SRC_UID!.ToLower() && o.PLTS_Frel.DEST_UID!.ToLower() == plts_frel.DEST_UID!.ToLower() && o.PLTS_Frel.DEST_SUB!.ToLower() == plts_frel.DEST_SUB!.ToLower() && o.PLTS_Frel.SRC_SUB!.ToLower() == plts_frel.SRC_SUB!.ToLower()
+                        )) {
+                            var pltsSlave = new PltsSlave(plts_frel);
+                            _srcObjectToSlaves[uid].Add(pltsSlave);
+                        }
                     }
                 }
                 else if (relationshipIndicator == "Rep") {
