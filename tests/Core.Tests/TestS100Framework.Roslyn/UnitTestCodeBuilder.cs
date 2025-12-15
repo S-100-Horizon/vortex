@@ -68,9 +68,10 @@ namespace TestS100Framework
 
                 Build_S124();
 
+                //Build_S125();
                 Build_S125_FIHO();
 
-                //Build_S127();
+                Build_S127();
 
                 Build_S128();
 
@@ -103,9 +104,9 @@ namespace TestS100Framework
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-125_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-125_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_ViewModel.cs"));
 
-                //Build_S127();
-                //File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
-                //File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
+                Build_S127();
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
 
                 Build_S128();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_FC.cs"));
@@ -150,7 +151,8 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(this.Path(@"S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml");
+                var s100 = XDocument.Load(ps);
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -206,8 +208,8 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S122() {
-
-                var s100 = XDocument.Load(this.Path(@"S-122 Marine Protected Areas\1.2.1\01_Feature Catalogue\S-122_FC_1.2.1.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-122-Product-Specification-Development\FC\122_FC_2.0.0.20251207.xml");
+                var s100 = XDocument.Load(ps);
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -225,7 +227,8 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(this.Path(@"S-123 Marine Radio Services\1.2.1\S-123_FC_20250807.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-123-Product-Specification-Development\FC\S-123_FC_Ed.2.0.0_20251210.xml");
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -243,7 +246,8 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(this.Path(@"S-124 Navigational Warnings\2.0.0\S-124 FC_(2.0.0)_0710.xml"));
+                var ps = this.Path(@"S-124 Navigational Warnings\FC\124_FC_2.0.0.xml");
+                var s100 = XDocument.Load(ps);
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -261,9 +265,7 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-
                 var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml");
-
                 var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
@@ -282,7 +284,6 @@ namespace TestS100Framework
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
                 var ps = System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC_SE_FIX.xml");
-
                 var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
@@ -316,7 +317,8 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(this.Path(@"S-127 Marine Traffic Management\2.0.0\S-127FC_2.0.0.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-127-Product-Specification-Development\FC\127_FC_2.0.0.20251207.xml");
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -332,7 +334,8 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(this.Path(@"S-128 Catalogue of Nautical Products\2.0.0\128_FC.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-128-Product-Specification-Development\FC\128_FC.xml");
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -348,7 +351,8 @@ namespace TestS100Framework
             public void Build_S131() {
                 //var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
-                var s100 = XDocument.Load(this.Path(@"S-131 Marine Harbour Infrastructure\2.0.0\131_2.0.0.20251025.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-131-Product-Specification-Development\FC\131_FC_2.0.0.20251112.xml");
+                var s100 = XDocument.Load(ps);
 
                 //Assert.True(VerifyProductSpecification(s100));
 
@@ -362,8 +366,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S201() {
-                var ps = System.IO.Path.Combine(this._iala, @"S-201 Aids to Navigation Information\FC\201_Feature_Catalogue_2.0.0.xml");
-
+                var ps = this.Path(@"S-201 Aids to Navigation Information\FC\201_Feature_Catalogue_2.0.0.xml");
                 var s100 = XDocument.Load(ps);
 
                 Assert.True(VerifyProductSpecification(s100));
@@ -378,7 +381,10 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S501() {
-                var s100 = XDocument.Load(this.Path(@"S-501 Additional Military Layers\0.9.3\S-501_FC.xml"));
+                var ps = System.IO.Path.Combine(this._iho, @"S-501\Feature-Catalogue\S-501_FC.xml");
+                var s100 = XDocument.Load(ps);
+
+                //var s100 = XDocument.Load(this.Path(@"S-501 Additional Military Layers\0.9.3\S-501_FC.xml"));
                 //var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_9_2025-02-14.xml");
 
                 Assert.True(VerifyProductSpecification(s100));

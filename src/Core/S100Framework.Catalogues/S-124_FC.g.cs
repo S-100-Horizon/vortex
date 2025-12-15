@@ -17,7 +17,7 @@ namespace S100Framework.DomainModel.S124 {
 		public static string Scope => "Global";
 		public static string ProductId => "S-124";
 		public static Version Version => new Version("2.0.0");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2024-10-30", "yyyy-MM-dd");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-07-10", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["affectedChartPublications","chartAffected","fixedDateRange","generalArea","information","locality","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","featureReference","featureName","horizontalPositionUncertainty","spatialAccuracy"];
 		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];

@@ -74,12 +74,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			"ConnectivitySubscriptionArea" => new ConnectivitySubscriptionAreaViewModel { Name = name },
 			"GMDSSArea" => new GMDSSAreaViewModel { Name = name },
 			"IndeterminateZone" => new IndeterminateZoneViewModel { Name = name },
-			"MetArea" => new MetAreaViewModel { Name = name },
-			"NavArea" => new NavAreaViewModel { Name = name },
-			"NavtexServiceArea" => new NavtexServiceAreaViewModel { Name = name },
+			"METAREA" => new METAREAViewModel { Name = name },
+			"NAVAREA" => new NAVAREAViewModel { Name = name },
+			"NAVTEXServiceArea" => new NAVTEXServiceAreaViewModel { Name = name },
 			"RadioServiceArea" => new RadioServiceAreaViewModel { Name = name },
 			"RadioStation" => new RadioStationViewModel { Name = name },
-			"SARRegion" => new SARRegionViewModel { Name = name },
+			"SearchAndRescueRegion" => new SearchAndRescueRegionViewModel { Name = name },
 			"WeatherForecastAndWarningArea" => new WeatherForecastAndWarningAreaViewModel { Name = name },
 			"RadioServiceAreaAggregate" => new RadioServiceAreaAggregateViewModel { Name = name },
 			"DataCoverage" => new DataCoverageViewModel { Name = name },
@@ -118,7 +118,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			("ServiceProvisionArea", "serviceProvider") => ["RadioStation"],
 			("fuzzyZoneAggregation", "theCollection") => ["FuzzyAreaAggregate"],
 			("coreAggregation", "theCollection") => ["RadioServiceAreaAggregate"],
-			("ServiceProvisionArea", "serviceArea") => ["ConnectivitySubscriptionArea","GMDSSArea","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
+			("ServiceProvisionArea", "serviceArea") => ["ConnectivitySubscriptionArea","GMDSSArea","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
 			("fuzzyZoneAggregation", "theComponent") => ["IndeterminateZone"],
 			("coreAggregation", "theComponent") => ["RadioServiceArea"],
 			_ => throw new InvalidOperationException(),
@@ -424,11 +424,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class coverageIndicationViewModel : ComplexViewModel<coverageIndication> {
-		private int? _minimumReceivedPower  = default;
+		private double? _minimumReceivedPower  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<coverageIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public int? minimumReceivedPower {
+		public double? minimumReceivedPower {
 			get {
 				return _minimumReceivedPower;
 			}
@@ -450,11 +450,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		private int? _minimumSignalToInterferenceNoiseRatio  = default;
+		private double? _minimumSignalToInterferenceNoiseRatio  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<coverageIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public int? minimumSignalToInterferenceNoiseRatio {
+		public double? minimumSignalToInterferenceNoiseRatio {
 			get {
 				return _minimumSignalToInterferenceNoiseRatio;
 			}
@@ -2375,7 +2375,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Additional information";
+		public override string? ToString() => $"Additional Information";
 	}
 
 
@@ -2415,7 +2415,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Authority contact";
+		public override string? ToString() => $"Authority Contact";
 	}
 
 
@@ -2435,7 +2435,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Authority hours";
+		public override string? ToString() => $"Authority Hours";
 	}
 
 
@@ -2535,7 +2535,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Exceptional workday";
+		public override string? ToString() => $"Exceptional Workday";
 	}
 
 
@@ -2592,7 +2592,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Location hours";
+		public override string? ToString() => $"Location Hours";
 	}
 
 
@@ -2655,7 +2655,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	/// <summary>
-	/// Related organisation
+	/// Related Organisation
 	/// </summary>
 	[CategoryOrder("relatedOrganisation",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -2669,7 +2669,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Related organisation";
+		public override string? ToString() => $"Related Organisation";
 	}
 
 
@@ -2689,7 +2689,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Service contact";
+		public override string? ToString() => $"Service Contact";
 	}
 
 
@@ -2829,7 +2829,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		public override string? ToString() => $"Service provision area";
+		public override string? ToString() => $"Service Provision Area";
 	}
 
 
@@ -8344,10 +8344,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	/// <summary>
 	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of marine meteorological information.
 	/// </summary>
-	[CategoryOrder("MetArea",0)]
+	[CategoryOrder("METAREA",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class MetAreaViewModel : FeatureViewModel<MetArea> {
+	public partial class METAREAViewModel : FeatureViewModel<METAREA> {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -8419,8 +8419,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String _idMETAREA  = string.Empty;
 
-		[Category("MetArea")]
-		[Editor(typeof(Editors.HorizonEditor<MetArea>), typeof(Editors.HorizonEditor))]
+		[Category("METAREA")]
+		[Editor(typeof(Editors.HorizonEditor<METAREA>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String idMETAREA {
 			get {
@@ -8431,7 +8431,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("MetArea")]
+		[Category("METAREA")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
@@ -8764,19 +8764,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -8862,7 +8862,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+		public ObservableCollection<METAREAViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -8870,7 +8870,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		#endregion
 
 
-		public MetAreaViewModel Load(MetArea instance) {
+		public METAREAViewModel Load(METAREA instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8903,7 +8903,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		public override string Serialize() {
-			var instance = new MetArea {
+			var instance = new METAREA {
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				fixedDateRange = this.fixedDateRange?.Model,
@@ -8918,7 +8918,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public MetArea Model => new () {
+		public METAREA Model => new () {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -8930,24 +8930,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			onlineResource = this.onlineResource.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => MetArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. MetArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => METAREA._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. METAREA._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => MetArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => METAREA._featureBindingDefinitions;
 
-		public MetAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+		public METAREAViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public MetAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+		public METAREAViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"METAREA";
 
-		public MetAreaViewModel() : base() {
+		public METAREAViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -8984,12 +8984,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	/// <summary>
-	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of navigational warnings.
+	/// The short title for a geographical sea area (may include inland seas, lakes and waterways navigable by sea-going ships) established for the purpose of coordinating the broadcast of navigational warnings. The term NAVAREA followed by a roman numeral may be used to identify a particular sea area. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States.
 	/// </summary>
-	[CategoryOrder("NavArea",0)]
+	[CategoryOrder("NAVAREA",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NavAreaViewModel : FeatureViewModel<NavArea> {
+	public partial class NAVAREAViewModel : FeatureViewModel<NAVAREA> {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -9061,8 +9061,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String _idNAVAREA  = string.Empty;
 
-		[Category("NavArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVAREA")]
+		[Editor(typeof(Editors.HorizonEditor<NAVAREA>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String idNAVAREA {
 			get {
@@ -9073,7 +9073,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("NavArea")]
+		[Category("NAVAREA")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
@@ -9406,19 +9406,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -9504,7 +9504,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+		public ObservableCollection<NAVAREAViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -9512,7 +9512,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		#endregion
 
 
-		public NavAreaViewModel Load(NavArea instance) {
+		public NAVAREAViewModel Load(NAVAREA instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9545,7 +9545,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		public override string Serialize() {
-			var instance = new NavArea {
+			var instance = new NAVAREA {
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				fixedDateRange = this.fixedDateRange?.Model,
@@ -9560,7 +9560,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public NavArea Model => new () {
+		public NAVAREA Model => new () {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -9572,24 +9572,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			onlineResource = this.onlineResource.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => NavArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => NAVAREA._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NAVAREA._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => NavArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => NAVAREA._featureBindingDefinitions;
 
-		public NavAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+		public NAVAREAViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+		public NAVAREAViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"NAVAREA";
 
-		public NavAreaViewModel() : base() {
+		public NAVAREAViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -9628,10 +9628,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	/// <summary>
 	/// A unique and precisely defined sea area, wholly contained within the NAVTEX coverage area, for which maritime safety information is provided from a particular NAVTEX transmitter.
 	/// </summary>
-	[CategoryOrder("NavtexServiceArea",0)]
+	[CategoryOrder("NAVTEXServiceArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class NavtexServiceAreaViewModel : FeatureViewModel<NavtexServiceArea> {
+	public partial class NAVTEXServiceAreaViewModel : FeatureViewModel<NAVTEXServiceArea> {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -9703,8 +9703,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private typeOfNAVTEXService _typeOfNAVTEXService  = default;
 
-		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavtexServiceArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVTEXServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<NAVTEXServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public typeOfNAVTEXService typeOfNAVTEXService {
 			get {
@@ -9720,8 +9720,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String _idNAVAREA  = string.Empty;
 
-		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavtexServiceArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVTEXServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<NAVTEXServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String idNAVAREA {
 			get {
@@ -9734,8 +9734,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String _transmitterIdentificationCharacter  = string.Empty;
 
-		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavtexServiceArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVTEXServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<NAVTEXServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String transmitterIdentificationCharacter {
 			get {
@@ -9748,8 +9748,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String? _nationality  = default;
 
-		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavtexServiceArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVTEXServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<NAVTEXServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nationality {
 			get {
@@ -9762,8 +9762,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private status? _status  = default;
 
-		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.HorizonEditor<NavtexServiceArea>), typeof(Editors.HorizonEditor))]
+		[Category("NAVTEXServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<NAVTEXServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public status? status {
 			get {
@@ -10106,19 +10106,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -10204,7 +10204,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+		public ObservableCollection<NAVTEXServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -10212,7 +10212,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		#endregion
 
 
-		public NavtexServiceAreaViewModel Load(NavtexServiceArea instance) {
+		public NAVTEXServiceAreaViewModel Load(NAVTEXServiceArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10244,7 +10244,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		public override string Serialize() {
-			var instance = new NavtexServiceArea {
+			var instance = new NAVTEXServiceArea {
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				fixedDateRange = this.fixedDateRange?.Model,
@@ -10262,7 +10262,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public NavtexServiceArea Model => new () {
+		public NAVTEXServiceArea Model => new () {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -10277,24 +10277,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			status = this._status,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => NavtexServiceArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavtexServiceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => NAVTEXServiceArea._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NAVTEXServiceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => NavtexServiceArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => NAVTEXServiceArea._featureBindingDefinitions;
 
-		public NavtexServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+		public NAVTEXServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavtexServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+		public NAVTEXServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"NAVTEX Service Area";
 
-		public NavtexServiceAreaViewModel() : base() {
+		public NAVTEXServiceAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -11839,7 +11839,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					association = "ServiceProvisionArea",
 					role = "serviceArea",
 					roleType = roleType.association,
-					featureTypes = ["ConnectivitySubscriptionArea","GMDSSArea","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
+					featureTypes = ["ConnectivitySubscriptionArea","GMDSSArea","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
 				},
 			];
 			public override string Serialize() {
@@ -12005,10 +12005,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	/// <summary>
 	/// A defined geographical area where a specific country or organization is designated to coordinate and provide search and rescue services.
 	/// </summary>
-	[CategoryOrder("SARRegion",0)]
+	[CategoryOrder("SearchAndRescueRegion",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class SARRegionViewModel : FeatureViewModel<SARRegion> {
+	public partial class SearchAndRescueRegionViewModel : FeatureViewModel<SearchAndRescueRegion> {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -12080,8 +12080,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private String? _nationality  = default;
 
-		[Category("SARRegion")]
-		[Editor(typeof(Editors.HorizonEditor<SARRegion>), typeof(Editors.HorizonEditor))]
+		[Category("SearchAndRescueRegion")]
+		[Editor(typeof(Editors.HorizonEditor<SearchAndRescueRegion>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nationality {
 			get {
@@ -12356,16 +12356,16 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
+		public ObservableCollection<SearchAndRescueRegionViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
+		public ObservableCollection<SearchAndRescueRegionViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.TMASViewModel> TMAS { get; set; } = new();
+		public ObservableCollection<SearchAndRescueRegionViewModel.TMASViewModel> TMAS { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+		public ObservableCollection<SearchAndRescueRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
@@ -12376,7 +12376,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBinding[] featureBindings => [];
 
 
-		public SARRegionViewModel Load(SARRegion instance) {
+		public SearchAndRescueRegionViewModel Load(SearchAndRescueRegion instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -12404,7 +12404,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		public override string Serialize() {
-			var instance = new SARRegion {
+			var instance = new SearchAndRescueRegion {
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				fixedDateRange = this.fixedDateRange?.Model,
@@ -12418,7 +12418,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public SARRegion Model => new () {
+		public SearchAndRescueRegion Model => new () {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			fixedDateRange = this._fixedDateRange?.Model,
@@ -12429,24 +12429,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			nationality = this._nationality,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => SARRegion._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SARRegion._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => SearchAndRescueRegion._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SearchAndRescueRegion._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => SARRegion._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => SearchAndRescueRegion._featureBindingDefinitions;
 
-		public SARRegionViewModel ParseInformationBindings(informationBinding[] bindings) {
+		public SearchAndRescueRegionViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public SARRegionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+		public SearchAndRescueRegionViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"Search and Rescue Region";
 
-		public SARRegionViewModel() : base() {
+		public SearchAndRescueRegionViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -13962,38 +13962,38 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static MetAreaViewModel LoadInformationBinding(this MetAreaViewModel instance, informationBinding[] bindings) {
+		public static METAREAViewModel LoadInformationBinding(this METAREAViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
-					instance.ServiceCoordinations.Add(new MetAreaViewModel.ServiceCoordinationViewModel {
+					instance.ServiceCoordinations.Add(new METAREAViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
 						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
-					instance.ServiceContacts.Add(new MetAreaViewModel.ServiceContactViewModel {
+					instance.ServiceContacts.Add(new METAREAViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
 						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
-					instance.LocationHours.Add(new MetAreaViewModel.LocationHoursViewModel {
+					instance.LocationHours.Add(new METAREAViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
 						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
-					instance.BroadcastServices.Add(new MetAreaViewModel.BroadcastServiceViewModel {
+					instance.BroadcastServices.Add(new METAREAViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
 						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
-					instance.TransmissionServices.Add(new MetAreaViewModel.TransmissionServiceViewModel {
+					instance.TransmissionServices.Add(new METAREAViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
 						informationType = transmissionService.informationType,
 						role = transmissionService.role,
@@ -14003,38 +14003,38 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavAreaViewModel LoadInformationBinding(this NavAreaViewModel instance, informationBinding[] bindings) {
+		public static NAVAREAViewModel LoadInformationBinding(this NAVAREAViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
-					instance.ServiceCoordinations.Add(new NavAreaViewModel.ServiceCoordinationViewModel {
+					instance.ServiceCoordinations.Add(new NAVAREAViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
 						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
-					instance.ServiceContacts.Add(new NavAreaViewModel.ServiceContactViewModel {
+					instance.ServiceContacts.Add(new NAVAREAViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
 						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
-					instance.LocationHours.Add(new NavAreaViewModel.LocationHoursViewModel {
+					instance.LocationHours.Add(new NAVAREAViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
 						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
-					instance.BroadcastServices.Add(new NavAreaViewModel.BroadcastServiceViewModel {
+					instance.BroadcastServices.Add(new NAVAREAViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
 						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
-					instance.TransmissionServices.Add(new NavAreaViewModel.TransmissionServiceViewModel {
+					instance.TransmissionServices.Add(new NAVAREAViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
 						informationType = transmissionService.informationType,
 						role = transmissionService.role,
@@ -14044,38 +14044,38 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavtexServiceAreaViewModel LoadInformationBinding(this NavtexServiceAreaViewModel instance, informationBinding[] bindings) {
+		public static NAVTEXServiceAreaViewModel LoadInformationBinding(this NAVTEXServiceAreaViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
-					instance.ServiceCoordinations.Add(new NavtexServiceAreaViewModel.ServiceCoordinationViewModel {
+					instance.ServiceCoordinations.Add(new NAVTEXServiceAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
 						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
-					instance.ServiceContacts.Add(new NavtexServiceAreaViewModel.ServiceContactViewModel {
+					instance.ServiceContacts.Add(new NAVTEXServiceAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
 						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
-					instance.LocationHours.Add(new NavtexServiceAreaViewModel.LocationHoursViewModel {
+					instance.LocationHours.Add(new NAVTEXServiceAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
 						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
-					instance.BroadcastServices.Add(new NavtexServiceAreaViewModel.BroadcastServiceViewModel {
+					instance.BroadcastServices.Add(new NAVTEXServiceAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
 						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
-					instance.TransmissionServices.Add(new NavtexServiceAreaViewModel.TransmissionServiceViewModel {
+					instance.TransmissionServices.Add(new NAVTEXServiceAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
 						informationType = transmissionService.informationType,
 						role = transmissionService.role,
@@ -14181,31 +14181,31 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static SARRegionViewModel LoadInformationBinding(this SARRegionViewModel instance, informationBinding[] bindings) {
+		public static SearchAndRescueRegionViewModel LoadInformationBinding(this SearchAndRescueRegionViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
-					instance.ServiceCoordinations.Add(new SARRegionViewModel.ServiceCoordinationViewModel {
+					instance.ServiceCoordinations.Add(new SearchAndRescueRegionViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
 						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
-					instance.RadioServiceControls.Add(new SARRegionViewModel.RadioServiceControlViewModel {
+					instance.RadioServiceControls.Add(new SearchAndRescueRegionViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
 						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
 				if(informationBinding is informationBinding<TMAS> tMAS) {
-					instance.TMAS.Add(new SARRegionViewModel.TMASViewModel {
+					instance.TMAS.Add(new SearchAndRescueRegionViewModel.TMASViewModel {
 						informationId = tMAS.referenceId,
 						informationType = tMAS.informationType,
 						role = tMAS.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
-					instance.ServiceContacts.Add(new SARRegionViewModel.ServiceContactViewModel {
+					instance.ServiceContacts.Add(new SearchAndRescueRegionViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
 						informationType = serviceContact.informationType,
 						role = serviceContact.role,
@@ -14316,10 +14316,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static MetAreaViewModel LoadFeatureBinding(this MetAreaViewModel instance, featureBinding[] bindings) {
+		public static METAREAViewModel LoadFeatureBinding(this METAREAViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
-					instance.ServiceProvisionAreas.Add(new MetAreaViewModel.ServiceProvisionAreaViewModel {
+					instance.ServiceProvisionAreas.Add(new METAREAViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
 						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
@@ -14329,10 +14329,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavAreaViewModel LoadFeatureBinding(this NavAreaViewModel instance, featureBinding[] bindings) {
+		public static NAVAREAViewModel LoadFeatureBinding(this NAVAREAViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
-					instance.ServiceProvisionAreas.Add(new NavAreaViewModel.ServiceProvisionAreaViewModel {
+					instance.ServiceProvisionAreas.Add(new NAVAREAViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
 						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
@@ -14342,10 +14342,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavtexServiceAreaViewModel LoadFeatureBinding(this NavtexServiceAreaViewModel instance, featureBinding[] bindings) {
+		public static NAVTEXServiceAreaViewModel LoadFeatureBinding(this NAVTEXServiceAreaViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
-					instance.ServiceProvisionAreas.Add(new NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel {
+					instance.ServiceProvisionAreas.Add(new NAVTEXServiceAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
 						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
@@ -14388,7 +14388,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static SARRegionViewModel LoadFeatureBinding(this SARRegionViewModel instance, featureBinding[] bindings) {
+		public static SearchAndRescueRegionViewModel LoadFeatureBinding(this SearchAndRescueRegionViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 			}
 			return instance;

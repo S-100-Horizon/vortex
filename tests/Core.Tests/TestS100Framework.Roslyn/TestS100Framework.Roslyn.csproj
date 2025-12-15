@@ -54,15 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\samples\DKAAL\S100_ROOT\S-131\DATASET_FILES\DK00\131DK00_DKAAL.GML" Link="Samples\S131\131DK00_DKAAL.GML">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\artifacts\Product Specifications\S-201 Aids to Navigation Information\1.1.0\201CAtestgml_Inline.gml" Link="Samples\S201\201CAtestgml_Inline.gml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\src\Application\VortexRoslyn\VortexRoslyn.csproj" />
   </ItemGroup>
 
