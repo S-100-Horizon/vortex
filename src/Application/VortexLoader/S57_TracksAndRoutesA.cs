@@ -656,8 +656,88 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 70: { // TWRTPT_TwoWayRoutePart
-                            throw new NotImplementedException($"No TWRTPT_TwoWayRoutePart in DK or GL. {tableName}");
+                            var instance = new TwoWayRoutePart();
+
+                            if (current.CATTRK.HasValue) {
+                                if (current.CATTRK.Value == 1) {
+                                    instance.basedOnFixedMarks = true;
+                                }
+                                else if (current.CATTRK.Value == 2) {
+                                    instance.basedOnFixedMarks = false;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, $"Cannot convert value {current.CATTRK.Value} to basedOnFixedMarks boolean. Only values 1 and 2 are supported.");
+                                }
+                            }
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            }
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
+                                instance.orientationValue = current.ORIENT.Value;
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<TwoWayRoutePart, qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.TECSOU != null) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<TwoWayRoutePart,techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                            if (current.TRAFIC.HasValue) {
+                                instance.trafficFlow = EnumHelper.GetEnumValue<TwoWayRoutePart, trafficFlow>(current.TRAFIC.Value);
+                            }
+
+                            if (current.SOUACC.HasValue) {
+                                instance.verticalUncertainty = new() {
+                                    uncertaintyFixed = current.SOUACC.Value
+                                };
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
                         }
+                        break;
                     default:
                         // code block
                         throw new Exception("Unhandled subtype");
