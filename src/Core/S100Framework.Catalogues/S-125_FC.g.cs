@@ -1089,12 +1089,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.ComponentModel.Description("incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
 		[EnumMember(Value = "catenary anchor leg mooring (CALM)")] 
 		[XmlEnum("1")] 
-		CatenaryAnchorLegMooringCalm = 1,
+		CatenaryAnchorLegMooringCalm1 = 1,
 
 		[System.ComponentModel.Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
 		[EnumMember(Value = "catenary anchor leg mooring (CALM)")] 
 		[XmlEnum("2")] 
-		CatenaryAnchorLegMooringCalm = 2,
+		CatenaryAnchorLegMooringCalm2 = 2,
 	}
 
 	/// <summary>
