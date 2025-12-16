@@ -16,16 +16,16 @@ namespace S100Framework.DomainModel.S123 {
 		public static string Name => "Marine Radio Services";
 		public static string Scope => "Global";
 		public static string ProductId => "S-123";
-		public static Version Version => new Version("1.2.1");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-08-07", "yyyy-MM-dd");
+		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-10", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["areaA3ServiceDescription","broadcastContent","contactAddress","coverageIndication","featureName","fixedDateRange","frequencyPair","frequencyRange","graphic","horizontalPositionUncertainty","information","onlineResource","periodicDateRange","radioChannelDetails","radiocommunicationIdentifier","rxNCode","scheduleByDayOfWeek","sectorLimit","sectorLimitOne","sectorLimitTwo","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","timesOfTransmission","verticalUncertainty","vesselMeasurementsSpecification"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AssociatedRxN","AuthorityContact","AuthorityHours","AvailableQoS","BroadcastService","BroadcastTransmission","ConnectivityService","ExceptionalWorkday","InclusionType","LocationHours","PermissionType","RadioServiceControl","relatedOrganisation","ServiceContact","ServiceCoordination","SpatialAssociation","TMAS","TransmissionService"];
 		public static string[] FeatureAssociationTypes => ["coreAggregation","fuzzyZoneAggregation","ServiceProvisionArea"];
 		public static string[] InformationTypes => ["Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
-		public static string[] FeatureTypes => ["ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","RadioStation","SARRegion","WeatherForecastAndWarningArea","RadioServiceAreaAggregate","DataCoverage","QualityOfNonBathymetricData"];
+		public static string[] FeatureTypes => ["ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","RadioStation","SearchAndRescueRegion","WeatherForecastAndWarningArea","RadioServiceAreaAggregate","DataCoverage","QualityOfNonBathymetricData"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["FeatureType","FuzzyAreaAggregate","RadioServiceAreaAggregate"],
-			Primitives.surface => ["ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","SARRegion","WeatherForecastAndWarningArea","DataCoverage","QualityOfNonBathymetricData"],
+			Primitives.surface => ["ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","SearchAndRescueRegion","WeatherForecastAndWarningArea","DataCoverage","QualityOfNonBathymetricData"],
 			Primitives.point => ["ConnectivitySubscriptionArea","RadioStation"],
 			_ => throw new InvalidOperationException(),
 		};
@@ -34,12 +34,12 @@ namespace S100Framework.DomainModel.S123 {
 			"ConnectivitySubscriptionArea" => [Primitives.surface,Primitives.point],
 			"GMDSSArea" => [Primitives.surface],
 			"IndeterminateZone" => [Primitives.surface],
-			"MetArea" => [Primitives.surface],
-			"NavArea" => [Primitives.surface],
-			"NavtexServiceArea" => [Primitives.surface],
+			"METAREA" => [Primitives.surface],
+			"NAVAREA" => [Primitives.surface],
+			"NAVTEXServiceArea" => [Primitives.surface],
 			"RadioServiceArea" => [Primitives.surface],
 			"RadioStation" => [Primitives.point],
-			"SARRegion" => [Primitives.surface],
+			"SearchAndRescueRegion" => [Primitives.surface],
 			"WeatherForecastAndWarningArea" => [Primitives.surface],
 			"FuzzyAreaAggregate" => [Primitives.noGeometry],
 			"RadioServiceAreaAggregate" => [Primitives.noGeometry],
@@ -532,7 +532,7 @@ namespace S100Framework.DomainModel.S123 {
 		[XmlEnum("2")] 
 		AreaA2 = 2,
 
-		[System.ComponentModel.Description("Beyond Area 1 and Area 2, but within coverage of geostationary maritime communication satellites (in practice this means Inmarsat). This covers the area between roughly 70 deg N and 70 deg S.")]
+		[System.ComponentModel.Description("An area, excluding sea areas A1 and A2, within the coverage of a recognized mobile satellite service supported by the ship earth station carried on board, in which continuous alerting is available.")]
 		[EnumMember(Value = "Area A3")] 
 		[XmlEnum("3")] 
 		AreaA3 = 3,
@@ -714,7 +714,7 @@ namespace S100Framework.DomainModel.S123 {
 		[XmlEnum("2")] 
 		SatelliteCommunicationLeo = 2,
 
-		[System.ComponentModel.Description("Communication using cellular network. Cellular netwotk or mobile network enables wireless communication between mobile devices. The final stage of connectivity is achieved by segmenting the comprehensive service area into several compact zones, each called a cell. A stationary transceiver, known as a cell site or base station, provides service in each cell. The cell site links to the primary network infrastructure, employing either a wireless or wired connection.")]
+		[System.ComponentModel.Description("Communication using cellular network. Cellular network or mobile network enables wireless communication between mobile devices. The final stage of connectivity is achieved by segmenting the comprehensive service area into several compact zones, each called a cell. A stationary transceiver, known as a cell site or base station, provides service in each cell. The cell site links to the primary network infrastructure, employing either a wireless or wired connection.")]
 		[EnumMember(Value = "Cellular Communication")] 
 		[XmlEnum("3")] 
 		CellularCommunication = 3,
@@ -1116,13 +1116,13 @@ namespace S100Framework.DomainModel.S123 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum typeOfBroadcastContent : int {
-		[System.ComponentModel.Description("Messages containing urgent information relevant to safe navigation broadcast to ships in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974.")]
-		[EnumMember(Value = "Navigational warnings")] 
+		[System.ComponentModel.Description("A message containing urgent information relevant to safe navigation broadcast to ships in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.")]
+		[EnumMember(Value = "Navigational Warning")] 
 		[XmlEnum("1")] 
-		NavigationalWarnings = 1,
+		NavigationalWarning = 1,
 
 		[System.ComponentModel.Description("Marine meteorological warning and forecast information in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974")]
-		[EnumMember(Value = "Meteorological warnings and forecasts")] 
+		[EnumMember(Value = "Meteorological Warnings and Forecasts")] 
 		[XmlEnum("2")] 
 		MeteorologicalWarningsAndForecasts = 2,
 
@@ -1132,27 +1132,27 @@ namespace S100Framework.DomainModel.S123 {
 		SarInformation = 3,
 
 		[System.ComponentModel.Description("Security-related requirements in accordance to International Ship and Port Facility Security (ISPS) Code, or warnings related to acts of piracy and armed robbery against ships")]
-		[EnumMember(Value = "Marine security or piracy warnings")] 
+		[EnumMember(Value = "Marine Security or Piracy Warnings")] 
 		[XmlEnum("4")] 
 		MarineSecurityOrPiracyWarnings = 4,
 
-		[System.ComponentModel.Description("Warnings realted to tsunamis and other natural phenomena, such as abnormal changes to sea level")]
-		[EnumMember(Value = "Tsunamis or natural phenomena warnings")] 
+		[System.ComponentModel.Description("Warnings related to tsunamis and other natural phenomena, such as abnormal changes to sea level")]
+		[EnumMember(Value = "Tsunamis or Natural Phenomena Warnings")] 
 		[XmlEnum("5")] 
 		TsunamisOrNaturalPhenomenaWarnings = 5,
 
 		[System.ComponentModel.Description("Messages related to pilot and VTS service, such as temporary alterations, movement or suspension to pilot or VTS services")]
-		[EnumMember(Value = "Pilot and VTS service messages")] 
+		[EnumMember(Value = "Pilot and VTS Service Messages")] 
 		[XmlEnum("6")] 
 		PilotAndVtsServiceMessages = 6,
 
 		[System.ComponentModel.Description("Information concerning military events, such as military exercises, missile firings.")]
-		[EnumMember(Value = "Military information")] 
+		[EnumMember(Value = "Military Information")] 
 		[XmlEnum("7")] 
 		MilitaryInformation = 7,
 
 		[System.ComponentModel.Description("Broadcast for special services or other application specific messages")]
-		[EnumMember(Value = "Special service or application specific messages")] 
+		[EnumMember(Value = "Special Service or Application Specific Messages")] 
 		[XmlEnum("8")] 
 		SpecialServiceOrApplicationSpecificMessages = 8,
 
@@ -1190,18 +1190,18 @@ namespace S100Framework.DomainModel.S123 {
 	}
 
 	/// <summary>
-	/// Type of service of the NAVTEX, an international one or a national one. (IMO MSC.1/Circ.1403/Rev.2 NAVTEX Manual)
+	/// Type of service of the NAVTEX, an international one or a national one.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum typeOfNAVTEXService : int {
-		[System.ComponentModel.Description("The coordinated broadcast and automatic reception on 518 kHz of maritime safety information by means of narrow-band direct-printing telegraphy using the English language. (IMO MSC.1/Circ.1403/Rev.2 NAVTEX Manual)")]
+		[System.ComponentModel.Description("The coordinated broadcast and automatic reception on 518 kHz of maritime safety information by means of narrow-band direct-printing telegraphy using the English language.")]
 		[EnumMember(Value = "International NAVTEX")] 
 		[XmlEnum("1")] 
 		InternationalNavtex = 1,
 
-		[System.ComponentModel.Description("The broadcast and automatic reception of maritime safety information by means of narrow-band direct-printing telegraphy using frequencies other than 518 kHz and languages as decided by the Administration concerned. (IMO MSC.1/Circ.1403/Rev.2 NAVTEX Manual)")]
-		[EnumMember(Value = "national NAVTEX")] 
+		[System.ComponentModel.Description("The broadcast and automatic reception of maritime safety information by means of narrow-band direct-printing telegraphy using frequencies other than 518 kHz and languages as decided by the Administration concerned.")]
+		[EnumMember(Value = "National NAVTEX")] 
 		[XmlEnum("2")] 
 		NationalNavtex = 2,
 	}
@@ -1212,42 +1212,42 @@ namespace S100Framework.DomainModel.S123 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum typeOfRadioService : int {
-		[System.ComponentModel.Description("Radio service using digital selective calling (DSC) techniques.")]
-		[EnumMember(Value = "Digital Selective Calling (DSC)")] 
+		[System.ComponentModel.Description("Radio service using Digital Selective Calling (DSC) techniques.")]
+		[EnumMember(Value = "Digital Selective Calling")] 
 		[XmlEnum("1")] 
-		DigitalSelectiveCallingDsc = 1,
+		DigitalSelectiveCalling = 1,
 
-		[System.ComponentModel.Description("Radio service using radio telephony (RT).")]
-		[EnumMember(Value = "Radio Telephony (RT)")] 
+		[System.ComponentModel.Description("Radio service using Radio Telephony (RT).")]
+		[EnumMember(Value = "Radio Telephony")] 
 		[XmlEnum("2")] 
-		RadioTelephonyRt = 2,
+		RadioTelephony = 2,
 
 		[System.ComponentModel.Description("Radio service with the coast station providing a public correspondence service.")]
-		[EnumMember(Value = "Public correspondence service (CP)")] 
+		[EnumMember(Value = "Public Correspondence Service")] 
 		[XmlEnum("3")] 
-		PublicCorrespondenceServiceCp = 3,
+		PublicCorrespondenceService = 3,
 
 		[System.ComponentModel.Description("Radio service using Radio Telegraphy (WT)")]
-		[EnumMember(Value = "Radio Telegraphy (WT)")] 
+		[EnumMember(Value = "Radio Telegraphy")] 
 		[XmlEnum("4")] 
-		RadioTelegraphyWt = 4,
+		RadioTelegraphy = 4,
 
-		[System.ComponentModel.Description("Radio service using Narrow-Band Direct-Printing (NBDP) telegraphy")]
-		[EnumMember(Value = "Radiotelex (NBDP telegraphy)")] 
+		[System.ComponentModel.Description("A communications system consisting of teletypewriters connected to a telephonic network to send and receive Narrow Band Direct Printing.")]
+		[EnumMember(Value = "NBDP Telegraphy (Narrow Band Direct Printing Telegraphy)")] 
 		[XmlEnum("5")] 
-		RadiotelexNbdpTelegraphy = 5,
+		NbdpTelegraphyNarrowBandDirectPrintingTelegraphy = 5,
 
 		[System.ComponentModel.Description("Radio service using radio facsimile")]
-		[EnumMember(Value = "Radio facsimile")] 
+		[EnumMember(Value = "Radio Facsimile")] 
 		[XmlEnum("6")] 
 		RadioFacsimile = 6,
 
-		[System.ComponentModel.Description("Radio service using digital modulation in the transmitted signal")]
+		[System.ComponentModel.Description("A method of representing information by combinations of discrete and discontinuous data.")]
 		[EnumMember(Value = "Digital")] 
 		[XmlEnum("7")] 
 		Digital = 7,
 
-		[System.ComponentModel.Description("Radio service using data communication")]
+		[System.ComponentModel.Description("A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.")]
 		[EnumMember(Value = "Data")] 
 		[XmlEnum("8")] 
 		Data = 8,
@@ -1258,29 +1258,29 @@ namespace S100Framework.DomainModel.S123 {
 		Navtex = 9,
 
 		[System.ComponentModel.Description("The broadcast of coordinated maritime safety information and search and rescue related information, to a defined geographical area using a recognized mobile satellite service.")]
-		[EnumMember(Value = "Enhanced Group Call (EGC)")] 
+		[EnumMember(Value = "Enhanced Group Call")] 
 		[XmlEnum("10")] 
-		EnhancedGroupCallEgc = 10,
+		EnhancedGroupCall = 10,
 
-		[System.ComponentModel.Description("Automatic Identification System")]
-		[EnumMember(Value = "AIS")] 
+		[System.ComponentModel.Description("An automatic communication and identification system intended to improve the safety of navigation by assisting the efficient operation of Vessel Traffic Services (VTS), ship reporting, and ship-to-ship and ship-to-shore operations.")]
+		[EnumMember(Value = "Automatic Identification System")] 
 		[XmlEnum("11")] 
-		Ais = 11,
+		AutomaticIdentificationSystem = 11,
 
-		[System.ComponentModel.Description("Application Specific Message")]
-		[EnumMember(Value = "ASM")] 
+		[System.ComponentModel.Description("Broadcast for special services or other application specific messages.")]
+		[EnumMember(Value = "Special Service or Application Specific Messages")] 
 		[XmlEnum("12")] 
-		Asm = 12,
+		SpecialServiceOrApplicationSpecificMessages = 12,
 
 		[System.ComponentModel.Description("Communication using a satellite system")]
-		[EnumMember(Value = "Satellite communication")] 
+		[EnumMember(Value = "Satellite Communication")] 
 		[XmlEnum("13")] 
 		SatelliteCommunication = 13,
 
-		[System.ComponentModel.Description("A digital system referred to as navigational data for broadcasting maritime safety and security related information from shore-to-ship")]
-		[EnumMember(Value = "NAVDAT")] 
+		[System.ComponentModel.Description("A digital system referred to as navigational data for broadcasting maritime safety and security related information from shore-to-ship.")]
+		[EnumMember(Value = "Navigational Data System")] 
 		[XmlEnum("14")] 
-		Navdat = 14,
+		NavigationalDataSystem = 14,
 	}
 
 	/// <summary>
@@ -1834,7 +1834,7 @@ namespace S100Framework.DomainModel.S123 {
 		public class coverageIndication : ComplexType {
 			[XmlElement("minimumReceivedPower")]
 			[Optional]
-			public int? minimumReceivedPower {get;set;} = default;
+			public double? minimumReceivedPower {get;set;} = default;
 
 			[XmlElement("presumedReceiverAntennaHeight")]
 			[Optional]
@@ -1842,7 +1842,7 @@ namespace S100Framework.DomainModel.S123 {
 
 			[XmlElement("minimumSignalToInterferenceNoiseRatio")]
 			[Optional]
-			public int? minimumSignalToInterferenceNoiseRatio {get;set;} = default;
+			public double? minimumSignalToInterferenceNoiseRatio {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,4,5,7,8,14,16,17,24,25,26,27])]
@@ -2892,36 +2892,26 @@ namespace S100Framework.DomainModel.S123 {
 
 	}
 	public enum Role {
-		[System.ComponentModel.Description("The location in which the information item applies")]
-		appliesInLocation,
 		[System.ComponentModel.Description("A pointer to an Authority object")]
 		theAuthority,
 		[System.ComponentModel.Description("The authority for which service hours are given")]
 		theAuthority_srvHrs,
-		[System.ComponentModel.Description("The area where the connectivity service is provided.")]
-		connectivityServiceArea,
 		[System.ComponentModel.Description("The provider of the connectivity service.")]
 		connectivityServiceProvider,
 		[System.ComponentModel.Description("A pointer to an Contact Details object")]
 		theContactDetails,
-		[System.ComponentModel.Description("The coordinated service area.")]
-		coordinatedService,
 		[System.ComponentModel.Description("The authority coordinating the service provision.")]
 		coordinatingAuthority,
 		[System.ComponentModel.Description("The object or class of objects to which the regulation, restriction, recommendation, or nautical information applies")]
 		isApplicableTo,
-		[System.ComponentModel.Description("The location for which service hours are given")]
-		location_srvHrs,
 		[System.ComponentModel.Description("The work hours for a non-standard workday")]
 		partialWorkingDay,
 		[System.ComponentModel.Description("Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit, enter, or use a feature.")]
 		permission,
 		[System.ComponentModel.Description("The area served by a service provider")]
 		serviceArea,
-		[System.ComponentModel.Description("Service hours for an authority ore service provider")]
+		[System.ComponentModel.Description("Service hours for an authority or service provider")]
 		theServiceHours,
-		[System.ComponentModel.Description("Pointer to service or facility")]
-		servicePlace,
 		[System.ComponentModel.Description("Pointer to a feature from where a provider supplies a service")]
 		serviceProvider,
 		[System.ComponentModel.Description("The applicable regulation, restriction, recommendation or nautical information")]
@@ -2934,16 +2924,12 @@ namespace S100Framework.DomainModel.S123 {
 		theComponent,
 		[System.ComponentModel.Description("A pointer to the centre controlling or operating the service.")]
 		theControlCentre,
-		[System.ComponentModel.Description("A pointer to the controlled or operated service.")]
-		theControlledService,
 		[System.ComponentModel.Description("A pointer to an object that provides more information about the referencing feature or information type.")]
 		theInformation,
 		[System.ComponentModel.Description("The organisation to which information relates")]
 		theOrganisation,
 		[System.ComponentModel.Description("The connectivity QoS information for the area.")]
 		theQoS,
-		[System.ComponentModel.Description("The area where the connectivity QoS information applies.")]
-		theQoSArea,
 		[System.ComponentModel.Description("A pointer to an information type providing spatial quality information.")]
 		theQualityInformation,
 		[System.ComponentModel.Description("The regulation, restriction, recommendation, or nautical information")]
@@ -2954,8 +2940,6 @@ namespace S100Framework.DomainModel.S123 {
 		theTransmissionDetails,
 		[System.ComponentModel.Description("The details of the Telemedical Assistance Service.")]
 		theTMAS,
-		[System.ComponentModel.Description("The location to which the permission statement applies")]
-		vslLocation,
 	}
 
 	namespace InformationAssociations {
@@ -3234,7 +3218,7 @@ namespace S100Framework.DomainModel.S123 {
 		}
 
 		/// <summary>
-		/// Related organisation
+		/// Related Organisation
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -4762,7 +4746,7 @@ namespace S100Framework.DomainModel.S123 {
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
-					upper =  1,
+					upper =  default,
 					association = nameof(AdditionalInformation),
 					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
@@ -5143,7 +5127,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MetArea : FeatureType {
+		public partial class METAREA : FeatureType {
 			[XmlElement("idMETAREA")]
 			[Mandatory]
 			public String idMETAREA {get;set;} = string.Empty;
@@ -5163,12 +5147,12 @@ namespace S100Framework.DomainModel.S123 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(MetArea);
+			public override string Code => nameof(METAREA);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..MetArea._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..METAREA._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5221,10 +5205,10 @@ namespace S100Framework.DomainModel.S123 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..MetArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..METAREA._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..FeatureType._primitives, ..MetArea._primitives];
+			public override Primitives[] primitives => [..FeatureType._primitives, ..METAREA._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.surface
 			];
@@ -5252,7 +5236,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MetArea, bool>> _conditionalUnknown = new Dictionary<string,Func<MetArea, bool>> {
+			private IReadOnlyDictionary<string, Func<METAREA, bool>> _conditionalUnknown = new Dictionary<string,Func<METAREA, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -5261,11 +5245,11 @@ namespace S100Framework.DomainModel.S123 {
 		}
 
 		/// <summary>
-		/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of navigational warnings.
+		/// The short title for a geographical sea area (may include inland seas, lakes and waterways navigable by sea-going ships) established for the purpose of coordinating the broadcast of navigational warnings. The term NAVAREA followed by a roman numeral may be used to identify a particular sea area. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavArea : FeatureType {
+		public partial class NAVAREA : FeatureType {
 			[XmlElement("idNAVAREA")]
 			[Mandatory]
 			public String idNAVAREA {get;set;} = string.Empty;
@@ -5285,12 +5269,12 @@ namespace S100Framework.DomainModel.S123 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(NavArea);
+			public override string Code => nameof(NAVAREA);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NavArea._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NAVAREA._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5343,10 +5327,10 @@ namespace S100Framework.DomainModel.S123 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NavArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NAVAREA._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..FeatureType._primitives, ..NavArea._primitives];
+			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVAREA._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.surface
 			];
@@ -5374,7 +5358,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<NavArea, bool>> _conditionalUnknown = new Dictionary<string,Func<NavArea, bool>> {
+			private IReadOnlyDictionary<string, Func<NAVAREA, bool>> _conditionalUnknown = new Dictionary<string,Func<NAVAREA, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -5387,7 +5371,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavtexServiceArea : FeatureType {
+		public partial class NAVTEXServiceArea : FeatureType {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			[Mandatory]
@@ -5429,12 +5413,12 @@ namespace S100Framework.DomainModel.S123 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(NavtexServiceArea);
+			public override string Code => nameof(NAVTEXServiceArea);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NavtexServiceArea._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NAVTEXServiceArea._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5487,10 +5471,10 @@ namespace S100Framework.DomainModel.S123 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NavtexServiceArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NAVTEXServiceArea._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..FeatureType._primitives, ..NavtexServiceArea._primitives];
+			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVTEXServiceArea._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.surface
 			];
@@ -5518,7 +5502,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<NavtexServiceArea, bool>> _conditionalUnknown = new Dictionary<string,Func<NavtexServiceArea, bool>> {
+			private IReadOnlyDictionary<string, Func<NAVTEXServiceArea, bool>> _conditionalUnknown = new Dictionary<string,Func<NAVTEXServiceArea, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -5842,7 +5826,7 @@ namespace S100Framework.DomainModel.S123 {
 					upper =  default,
 					association = nameof(ServiceProvisionArea),
 					role = Enum.GetName<Role>(Role.serviceArea)!,
-					featureTypes = [nameof(ConnectivitySubscriptionArea),nameof(GMDSSArea),nameof(MetArea),nameof(NavArea),nameof(NavtexServiceArea),nameof(RadioServiceArea),nameof(WeatherForecastAndWarningArea)],
+					featureTypes = [nameof(ConnectivitySubscriptionArea),nameof(GMDSSArea),nameof(METAREA),nameof(NAVAREA),nameof(NAVTEXServiceArea),nameof(RadioServiceArea),nameof(WeatherForecastAndWarningArea)],
 				},
 			];
 			#endregion
@@ -5871,7 +5855,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SARRegion : FeatureType {
+		public partial class SearchAndRescueRegion : FeatureType {
 			[XmlElement("nationality")]
 			[Optional]
 			public String? nationality {get;set;} = default;
@@ -5887,12 +5871,12 @@ namespace S100Framework.DomainModel.S123 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(SARRegion);
+			public override string Code => nameof(SearchAndRescueRegion);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..SARRegion._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..SearchAndRescueRegion._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
@@ -5936,10 +5920,10 @@ namespace S100Framework.DomainModel.S123 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..SARRegion._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..SearchAndRescueRegion._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..FeatureType._primitives, ..SARRegion._primitives];
+			public override Primitives[] primitives => [..FeatureType._primitives, ..SearchAndRescueRegion._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.surface
 			];
@@ -5959,7 +5943,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SARRegion, bool>> _conditionalUnknown = new Dictionary<string,Func<SARRegion, bool>> {
+			private IReadOnlyDictionary<string, Func<SearchAndRescueRegion, bool>> _conditionalUnknown = new Dictionary<string,Func<SearchAndRescueRegion, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -6413,8 +6397,8 @@ namespace S100Framework.DomainModel.S123 {
 		}
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S123/1.2")]
-	[XmlRoot(Namespace = "http://www.iho.int/S123/1.2")]
+	[XmlType(Namespace = "http://www.iho.int/S123/2.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S123/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]
@@ -6422,10 +6406,10 @@ namespace S100Framework.DomainModel.S123 {
 
 		[JsonIgnore]
 		[XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-		public override string SchemaLocation { get; set; } = "http://www.iho.int/S123/1.2 123_1.2.1.xsd";
+		public override string SchemaLocation { get; set; } = "http://www.iho.int/S123/2.0 123_2.0.0.xsd";
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S123/1.2", TypeName = "members")]
+	[XmlType(Namespace = "http://www.iho.int/S123/2.0", TypeName = "members")]
 	public class Members
 	{
 		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1, ElementName = "Applicability")]
@@ -6446,12 +6430,12 @@ namespace S100Framework.DomainModel.S123 {
 		[XmlElement("FeatureTypes.ConnectivitySubscriptionArea", typeof(FeatureTypes.ConnectivitySubscriptionArea), Order = 1, ElementName = "ConnectivitySubscriptionArea")]
 		[XmlElement("FeatureTypes.GMDSSArea", typeof(FeatureTypes.GMDSSArea), Order = 1, ElementName = "GMDSSArea")]
 		[XmlElement("FeatureTypes.IndeterminateZone", typeof(FeatureTypes.IndeterminateZone), Order = 1, ElementName = "IndeterminateZone")]
-		[XmlElement("FeatureTypes.MetArea", typeof(FeatureTypes.MetArea), Order = 1, ElementName = "MetArea")]
-		[XmlElement("FeatureTypes.NavArea", typeof(FeatureTypes.NavArea), Order = 1, ElementName = "NavArea")]
-		[XmlElement("FeatureTypes.NavtexServiceArea", typeof(FeatureTypes.NavtexServiceArea), Order = 1, ElementName = "NavtexServiceArea")]
+		[XmlElement("FeatureTypes.METAREA", typeof(FeatureTypes.METAREA), Order = 1, ElementName = "METAREA")]
+		[XmlElement("FeatureTypes.NAVAREA", typeof(FeatureTypes.NAVAREA), Order = 1, ElementName = "NAVAREA")]
+		[XmlElement("FeatureTypes.NAVTEXServiceArea", typeof(FeatureTypes.NAVTEXServiceArea), Order = 1, ElementName = "NAVTEXServiceArea")]
 		[XmlElement("FeatureTypes.RadioServiceArea", typeof(FeatureTypes.RadioServiceArea), Order = 1, ElementName = "RadioServiceArea")]
 		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
-		[XmlElement("FeatureTypes.SARRegion", typeof(FeatureTypes.SARRegion), Order = 1, ElementName = "SARRegion")]
+		[XmlElement("FeatureTypes.SearchAndRescueRegion", typeof(FeatureTypes.SearchAndRescueRegion), Order = 1, ElementName = "SearchAndRescueRegion")]
 		[XmlElement("FeatureTypes.WeatherForecastAndWarningArea", typeof(FeatureTypes.WeatherForecastAndWarningArea), Order = 1, ElementName = "WeatherForecastAndWarningArea")]
 		[XmlElement("FeatureTypes.RadioServiceAreaAggregate", typeof(FeatureTypes.RadioServiceAreaAggregate), Order = 1, ElementName = "RadioServiceAreaAggregate")]
 		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]

@@ -73,7 +73,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -210,6 +210,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -370,7 +371,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -724,6 +725,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -884,7 +886,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -1085,6 +1087,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -1245,7 +1248,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -1617,6 +1620,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -1786,7 +1790,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -1987,6 +1991,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -2147,7 +2152,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -2375,6 +2380,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -2544,7 +2550,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -2754,6 +2760,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -2914,7 +2921,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -3277,6 +3284,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -3437,7 +3445,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -3836,6 +3844,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -4005,7 +4014,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -4223,7 +4232,7 @@ namespace S100Framework.Applications.S57.esri
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
         public DangersA(Feature feature) {
-            base.TableName = feature.GetTable().GetName();
+            base.TableName = "DangersA";
             if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
                 SHAPE = (Geometry?)(feature["SHAPE"]);
                 base.Shape = this.SHAPE;
@@ -4386,6 +4395,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -4546,7 +4556,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -4747,6 +4757,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -4907,7 +4918,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -5171,6 +5182,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -5331,7 +5343,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -5649,6 +5661,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -5809,7 +5822,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -5977,6 +5990,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -6143,7 +6157,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -6461,6 +6475,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -6621,7 +6636,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -6930,6 +6945,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -7090,7 +7106,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -7336,6 +7352,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -7505,7 +7522,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -8135,6 +8152,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -8309,7 +8327,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -8546,6 +8564,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -8706,7 +8725,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -8916,6 +8935,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -9076,7 +9096,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -9304,6 +9324,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -9473,7 +9494,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -9764,6 +9785,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -9924,7 +9946,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -10233,6 +10255,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -10402,7 +10425,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -10693,6 +10716,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -10853,7 +10877,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -11063,6 +11087,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -11223,7 +11248,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -11463,6 +11488,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -11629,7 +11655,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -12190,6 +12216,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -12359,7 +12386,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -12767,6 +12794,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -12927,7 +12955,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -13443,6 +13471,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -13603,7 +13632,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -14101,6 +14130,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -14261,7 +14291,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -14741,6 +14771,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -14901,7 +14932,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -15408,6 +15439,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -15577,7 +15609,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -15904,6 +15936,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -16073,7 +16106,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -16355,6 +16388,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -16515,7 +16549,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -16824,6 +16858,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -16984,7 +17019,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -17320,6 +17355,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -17480,7 +17516,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -17816,6 +17852,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -17985,7 +18022,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -18303,6 +18340,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -18463,7 +18501,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -18754,6 +18792,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -18914,7 +18953,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -19250,6 +19289,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -19419,7 +19459,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -19755,6 +19795,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -19915,7 +19956,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -20296,6 +20337,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -20456,7 +20498,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -20702,6 +20744,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -20862,7 +20905,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -21207,6 +21250,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["P_QUAPOS"] && feature["P_QUAPOS"] is not null) {
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
@@ -21304,7 +21348,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -21405,6 +21449,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != feature["NIS_VERIFIED"] && feature["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(feature["NIS_VERIFIED"]);
@@ -21511,7 +21556,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// Is Conflate
@@ -21980,7 +22025,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// NIS product type
@@ -22213,6 +22258,7 @@ namespace S100Framework.Applications.S57.esri
             }
             if (DBNull.Value != row["SCAMIN_STEP"] && row["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(row["SCAMIN_STEP"]);
+                base.SCAMIN_STEP = this.SCAMIN_STEP.Value;
             }
             if (DBNull.Value != row["NIS_VERIFIED"] && row["NIS_VERIFIED"] is not null) {
                 NIS_VERIFIED = Convert.ToInt32(row["NIS_VERIFIED"]);
@@ -22325,7 +22371,7 @@ namespace S100Framework.Applications.S57.esri
         /// PLTS compilation scale
         /// </summary>
         [Description("PLTS compilation scale")]
-        internal new int? PLTS_COMP_SCALE = default;
+        internal int? PLTS_COMP_SCALE = default;
 
         /// <summary>
         /// Is Conflate
