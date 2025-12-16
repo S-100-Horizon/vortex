@@ -108,12 +108,12 @@ namespace S100Framework.DomainModel.S124 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum nameUsage : int {
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
+		[Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
 		[EnumMember(Value = "Default Name Display")] 
 		[XmlEnum("1")] 
 		DefaultNameDisplay = 1,
 
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
+		[Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
 		[EnumMember(Value = "Alternate Name Display")] 
 		[XmlEnum("2")] 
 		AlternateNameDisplay = 2,
@@ -125,62 +125,62 @@ namespace S100Framework.DomainModel.S124 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum warningType : int {
-		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a local area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.(Adopted from S-53, 2.2.23)  Local warning means a navigational warning which covers inshore waters, often within the limits of jurisdiction of a harbour or port authority. (Adopted from S-53, 2.2.10)")]
+		[Description("Message containing urgent information relevant to safe navigation broadcast to ships in a local area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.(Adopted from S-53, 2.2.23)  Local warning means a navigational warning which covers inshore waters, often within the limits of jurisdiction of a harbour or port authority. (Adopted from S-53, 2.2.10)")]
 		[EnumMember(Value = "Local Navigational Warning")] 
 		[XmlEnum("1")] 
 		LocalNavigationalWarning = 1,
 
-		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a coastal  area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Coastal warning means a navigational warning promulgated as part of a numbered series by a National Coordinator.")]
+		[Description("Message containing urgent information relevant to safe navigation broadcast to ships in a coastal  area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Coastal warning means a navigational warning promulgated as part of a numbered series by a National Coordinator.")]
 		[EnumMember(Value = "Coastal Navigational Warning")] 
 		[XmlEnum("2")] 
 		CoastalNavigationalWarning = 2,
 
-		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a sub-area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Sub-area warning means a navigational warning or in-force bulletin promulgated as part of a numbered series by a Sub-area Coordinator.")]
+		[Description("Message containing urgent information relevant to safe navigation broadcast to ships in a sub-area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  Sub-area warning means a navigational warning or in-force bulletin promulgated as part of a numbered series by a Sub-area Coordinator.")]
 		[EnumMember(Value = "Sub-Area Navigational Warning")] 
 		[XmlEnum("3")] 
 		SubAreaNavigationalWarning = 3,
 
-		[System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a NAVAREA, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  NAVAREA warning means a navigational warning promulgated as part of a numbered series by a NAVAREA Coordinator.")]
+		[Description("Message containing urgent information relevant to safe navigation broadcast to ships in a NAVAREA, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.  NAVAREA warning means a navigational warning promulgated as part of a numbered series by a NAVAREA Coordinator.")]
 		[EnumMember(Value = "NAVAREA Navigational Warning")] 
 		[XmlEnum("4")] 
 		NavareaNavigationalWarning = 4,
 
-		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the NAVAREA.")]
+		[Description("A message that indicates that there are no navigational warnings to be disseminated in the NAVAREA.")]
 		[EnumMember(Value = "NAVAREA No Warning")] 
 		[XmlEnum("5")] 
 		NavareaNoWarning = 5,
 
-		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the sub-area.")]
+		[Description("A message that indicates that there are no navigational warnings to be disseminated in the sub-area.")]
 		[EnumMember(Value = "Sub-Area No Warning")] 
 		[XmlEnum("6")] 
 		SubAreaNoWarning = 6,
 
-		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the coastal area.")]
+		[Description("A message that indicates that there are no navigational warnings to be disseminated in the coastal area.")]
 		[EnumMember(Value = "Coastal No Warning")] 
 		[XmlEnum("7")] 
 		CoastalNoWarning = 7,
 
-		[System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the local area.")]
+		[Description("A message that indicates that there are no navigational warnings to be disseminated in the local area.")]
 		[EnumMember(Value = "Local No Warning")] 
 		[XmlEnum("8")] 
 		LocalNoWarning = 8,
 
-		[System.ComponentModel.Description("A list of serial numbers of NAVAREA warnings which are in- force.")]
+		[Description("A list of serial numbers of NAVAREA warnings which are in- force.")]
 		[EnumMember(Value = "NAVAREA In-Force Bulletin")] 
 		[XmlEnum("9")] 
 		NavareaInForceBulletin = 9,
 
-		[System.ComponentModel.Description("A list of serial numbers of sub-area warnings which are in-force.")]
+		[Description("A list of serial numbers of sub-area warnings which are in-force.")]
 		[EnumMember(Value = "Sub-Area In-Force Bulletin")] 
 		[XmlEnum("10")] 
 		SubAreaInForceBulletin = 10,
 
-		[System.ComponentModel.Description("A list of serial numbers of coastal warnings which are in- force.")]
+		[Description("A list of serial numbers of coastal warnings which are in- force.")]
 		[EnumMember(Value = "Coastal In-Force Bulletin")] 
 		[XmlEnum("11")] 
 		CoastalInForceBulletin = 11,
 
-		[System.ComponentModel.Description("A list of serial numbers of local warnings which are in- force.")]
+		[Description("A list of serial numbers of local warnings which are in- force.")]
 		[EnumMember(Value = "Local In-Force Bulletin")] 
 		[XmlEnum("12")] 
 		LocalInForceBulletin = 12,
@@ -192,17 +192,17 @@ namespace S100Framework.DomainModel.S124 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum referenceCategory : int {
-		[System.ComponentModel.Description("Cancellation of warning which is no longer valid.")]
+		[Description("Cancellation of warning which is no longer valid.")]
 		[EnumMember(Value = "Warning Cancellation")] 
 		[XmlEnum("1")] 
 		WarningCancellation = 1,
 
-		[System.ComponentModel.Description("Reference to relevant warning.")]
+		[Description("Reference to relevant warning.")]
 		[EnumMember(Value = "Warning Reference")] 
 		[XmlEnum("2")] 
 		WarningReference = 2,
 
-		[System.ComponentModel.Description("Reference to warnings or notices that are considered in-force.")]
+		[Description("Reference to warnings or notices that are considered in-force.")]
 		[EnumMember(Value = "In-Force")] 
 		[XmlEnum("3")] 
 		InForce = 3,
@@ -217,27 +217,27 @@ namespace S100Framework.DomainModel.S124 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum restriction : int {
-		[System.ComponentModel.Description("[1] An area shown on charts within which navigation and/or anchoring is prohibited. [2] In aviation terminology, a specified area within the land areas of a state or territorial waters adjacent thereto over which the flight of aircraft is prohibi­ted.")]
+		[Description("[1] An area shown on charts within which navigation and/or anchoring is prohibited. [2] In aviation terminology, a specified area within the land areas of a state or territorial waters adjacent thereto over which the flight of aircraft is prohibi­ted.")]
 		[EnumMember(Value = "Entry Prohibited")] 
 		[XmlEnum("7")] 
 		EntryProhibited = 7,
 
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.")]
+		[Description("A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.")]
 		[EnumMember(Value = "Entry Restricted")] 
 		[XmlEnum("8")] 
 		EntryRestricted = 8,
 
-		[System.ComponentModel.Description("An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.")]
+		[Description("An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.")]
 		[EnumMember(Value = "Area To Be Avoided")] 
 		[XmlEnum("14")] 
 		AreaToBeAvoided = 14,
 
-		[System.ComponentModel.Description("An area in which a vessel is prohibited from stopping.")]
+		[Description("An area in which a vessel is prohibited from stopping.")]
 		[EnumMember(Value = "Stopping Prohibited")] 
 		[XmlEnum("25")] 
 		StoppingProhibited = 25,
 
-		[System.ComponentModel.Description("An area within which speed is restricted.")]
+		[Description("An area within which speed is restricted.")]
 		[EnumMember(Value = "Speed Restricted")] 
 		[XmlEnum("27")] 
 		SpeedRestricted = 27,
@@ -249,57 +249,57 @@ namespace S100Framework.DomainModel.S124 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum qualityOfHorizontalMeasurement : int {
-		[System.ComponentModel.Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
+		[Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
 		[EnumMember(Value = "Surveyed")] 
 		[XmlEnum("1")] 
 		Surveyed = 1,
 
-		[System.ComponentModel.Description("Survey data is does not exist or is very poor.")]
+		[Description("Survey data is does not exist or is very poor.")]
 		[EnumMember(Value = "Unsurveyed")] 
 		[XmlEnum("2")] 
 		Unsurveyed = 2,
 
-		[System.ComponentModel.Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
+		[Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
 		[EnumMember(Value = "Inadequately Surveyed")] 
 		[XmlEnum("3")] 
 		InadequatelySurveyed = 3,
 
-		[System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.")]
+		[Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.")]
 		[EnumMember(Value = "Approximate")] 
 		[XmlEnum("4")] 
 		Approximate = 4,
 
-		[System.ComponentModel.Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
+		[Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
 		[EnumMember(Value = "Position Doubtful")] 
 		[XmlEnum("5")] 
 		PositionDoubtful = 5,
 
-		[System.ComponentModel.Description("A feature's position has been obtained from questionable or unreliable data.")]
+		[Description("A feature's position has been obtained from questionable or unreliable data.")]
 		[EnumMember(Value = "Unreliable")] 
 		[XmlEnum("6")] 
 		Unreliable = 6,
 
-		[System.ComponentModel.Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
+		[Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
 		[EnumMember(Value = "Reported (Not Surveyed)")] 
 		[XmlEnum("7")] 
 		ReportedNotSurveyed = 7,
 
-		[System.ComponentModel.Description("An object whose position has been reported and its position has not been confirmed.")]
+		[Description("An object whose position has been reported and its position has not been confirmed.")]
 		[EnumMember(Value = "Reported (Not Confirmed)")] 
 		[XmlEnum("8")] 
 		ReportedNotConfirmed = 8,
 
-		[System.ComponentModel.Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
+		[Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
 		[EnumMember(Value = "Estimated")] 
 		[XmlEnum("9")] 
 		Estimated = 9,
 
-		[System.ComponentModel.Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
+		[Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
 		[EnumMember(Value = "Precisely Known")] 
 		[XmlEnum("10")] 
 		PreciselyKnown = 10,
 
-		[System.ComponentModel.Description("A position that is computed from data.")]
+		[Description("A position that is computed from data.")]
 		[EnumMember(Value = "Calculated")] 
 		[XmlEnum("11")] 
 		Calculated = 11,
@@ -2487,21 +2487,21 @@ namespace S100Framework.DomainModel.S124 {
 
 	}
 	public enum Role {
-		[System.ComponentModel.Description("The header of a navigational warning.")]
+		[Description("The header of a navigational warning.")]
 		header,
-		[System.ComponentModel.Description("The body of a navigational warning.")]
+		[Description("The body of a navigational warning.")]
 		theWarningPart,
-		[System.ComponentModel.Description("The references relevant to the navigational warning")]
+		[Description("The references relevant to the navigational warning")]
 		theReferences,
-		[System.ComponentModel.Description("The navigational warning that has references")]
+		[Description("The navigational warning that has references")]
 		theWarning,
-		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
+		[Description("A pointer to a specific feature(s).")]
 		thePositionProvider,
-		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
+		[Description("A pointer to a specific cartographically positioned location for text.")]
 		theCartographicText,
-		[System.ComponentModel.Description("marked by an area to show impacts")]
+		[Description("marked by an area to show impacts")]
 		impacts,
-		[System.ComponentModel.Description("marking an affected area")]
+		[Description("marking an affected area")]
 		affects,
 	}
 

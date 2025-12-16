@@ -303,12 +303,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.
 	/// </summary>
+	[Description("A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
 	[CategoryOrder("directionalCharacter",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class directionalCharacterViewModel : ComplexViewModel<directionalCharacter> {
 		private Boolean? _moireEffect  = default;
 
+		[Description("A short range (up to 2km) type of directional light. Sodium lighting gives a yellow background to a screen on which a vertical black line will be seen by an observer on the centre line.")]
 		[Editor(typeof(Editors.HorizonEditor<directionalCharacter>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? moireEffect {
@@ -322,6 +324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel? orientation {
@@ -364,12 +367,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
+	[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? language {
@@ -383,6 +388,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _name  = default;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? name {
@@ -396,6 +402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private nameUsage? _nameUsage  = default;
 
+		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public nameUsage? nameUsage {
@@ -441,12 +448,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The uniform assessment of detected features.
 	/// </summary>
+	[Description("The uniform assessment of detected features.")]
 	[CategoryOrder("featuresDetected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featuresDetectedViewModel : ComplexViewModel<featuresDetected> {
 		private Boolean? _leastDepthOfDetectedFeaturesMeasured  = default;
 
+		[Description("Expression stating if the least depth of detected features in an area was measured.")]
 		[Editor(typeof(Editors.HorizonEditor<featuresDetected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean? leastDepthOfDetectedFeaturesMeasured {
@@ -460,6 +469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _significantFeaturesDetected  = default;
 
+		[Description("A statement expressing if significant features have or have not been detected in the course of a survey.")]
 		[Editor(typeof(Editors.HorizonEditor<featuresDetected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean? significantFeaturesDetected {
@@ -473,6 +483,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _sizeOfFeaturesDetected  = default;
 
+		[Description("The size of detected bathymetric features in an area.")]
 		[Editor(typeof(Editors.HorizonEditor<featuresDetected>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? sizeOfFeaturesDetected {
@@ -515,12 +526,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
+	[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -535,6 +548,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -575,12 +589,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
+	[Description("A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.")]
 	[CategoryOrder("frequencyPair",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
 		private int? _frequencyShoreStationReceives  = default;
 
+		[Description("The shore station receiver frequency.")]
 		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? frequencyShoreStationReceives {
@@ -594,6 +610,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _frequencyShoreStationTransmits  = default;
 
+		[Description("The shore station transmitter frequency.")]
 		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int? frequencyShoreStationTransmits {
@@ -633,12 +650,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The horizontal clearance measured between two points for a fixed span.
 	/// </summary>
+	[Description("The horizontal clearance measured between two points for a fixed span.")]
 	[CategoryOrder("horizontalClearanceFixed",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceFixedViewModel : ComplexViewModel<horizontalClearanceFixed> {
 		private double? _horizontalClearanceValue  = default;
 
+		[Description("The physical horizontal clearance distance between two points on a feature, such as a bridge span, dock, gate, lock or tunnel.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalClearanceFixed>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? horizontalClearanceValue {
@@ -652,6 +671,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalDistanceUncertainty  = default;
 
+		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalClearanceFixed>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalDistanceUncertainty {
@@ -691,12 +711,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The horizontal clearance measured between two points for an opening span.
 	/// </summary>
+	[Description("The horizontal clearance measured between two points for an opening span.")]
 	[CategoryOrder("horizontalClearanceOpen",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceOpenViewModel : ComplexViewModel<horizontalClearanceOpen> {
 		private double? _horizontalClearanceValue  = default;
 
+		[Description("The physical horizontal clearance distance between two points on a feature, such as a bridge span, dock, gate, lock or tunnel.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalClearanceOpen>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? horizontalClearanceValue {
@@ -710,6 +732,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalDistanceUncertainty  = default;
 
+		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalClearanceOpen>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalDistanceUncertainty {
@@ -749,12 +772,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
+	[Description("The best estimate of the accuracy of a position.")]
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double? _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? uncertaintyFixed {
@@ -768,6 +793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -807,12 +833,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
+	[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Description("The location of a fragment of text or other information in a support file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
@@ -826,6 +854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _fileReference  = default;
 
+		[Description("The file name of an externally referenced text file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
@@ -839,6 +868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _headline  = default;
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
@@ -852,6 +882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? language {
@@ -865,6 +896,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _text  = default;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
@@ -913,10 +945,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference.")]
 	[CategoryOrder("lightSector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -925,6 +959,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
+		[Description("A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -936,6 +971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -944,6 +980,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -957,6 +994,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
@@ -968,11 +1006,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Additional textual information about a light sector.")]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
 		private Boolean? _sectorArcExtension  = default;
 
+		[Description("An indication that the default radius of a sector arc is to be extended by 5mm.")]
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? sectorArcExtension {
@@ -1057,12 +1097,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The distance value indicated on a distance mark, or the distance between two measured distance marks.
 	/// </summary>
+	[Description("The distance value indicated on a distance mark, or the distance between two measured distance marks.")]
 	[CategoryOrder("measuredDistanceValue",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class measuredDistanceValueViewModel : ComplexViewModel<measuredDistanceValue> {
 		private distanceUnitOfMeasurement? _distanceUnitOfMeasurement  = default;
 
+		[Description("A specified amount of a quantity, as of length, by comparison with which any other quantity of the same kind is measured or estimated.")]
 		[Editor(typeof(Editors.HorizonEditor<measuredDistanceValue>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public distanceUnitOfMeasurement? distanceUnitOfMeasurement {
@@ -1079,6 +1121,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _referenceLocation  = default;
 
+		[Description("Information relating to the point of origin for a measured distance as indicated on a distance mark.")]
 		[Editor(typeof(Editors.HorizonEditor<measuredDistanceValue>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? referenceLocation {
@@ -1092,6 +1135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _waterwayDistance  = default;
 
+		[Description("The length of the space between two points along a waterway.")]
 		[Editor(typeof(Editors.HorizonEditor<measuredDistanceValue>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? waterwayDistance {
@@ -1134,12 +1178,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group.
 	/// </summary>
+	[Description("The number of features of identical character that exist as a co-located group.")]
 	[CategoryOrder("multiplicityOfFeatures",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class multiplicityOfFeaturesViewModel : ComplexViewModel<multiplicityOfFeatures> {
 		private Boolean? _multiplicityKnown  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group is or is not known.")]
 		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean? multiplicityKnown {
@@ -1153,6 +1199,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _numberOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? numberOfFeatures {
@@ -1192,12 +1239,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
+	[Description("Information about online sources from which a resource or data can be obtained.")]
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String? _headline  = default;
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
@@ -1211,6 +1260,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _linkage  = default;
 
+		[Description("Location (address) for online access using a URL/URI address or similar addressing scheme.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? linkage {
@@ -1224,6 +1274,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nameOfResource  = default;
 
+		[Description("Name of the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nameOfResource {
@@ -1266,12 +1317,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
+	[Description("The angular distance measured from true north to the major axis of the feature.")]
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
@@ -1285,6 +1338,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? orientationValue {
@@ -1324,12 +1378,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
+	[Description("The active period of a recurring event or occurrence.")]
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -1344,6 +1400,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -1384,12 +1441,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
+	[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.")]
 	[CategoryOrder("radarWaveLength",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radarWaveLengthViewModel : ComplexViewModel<radarWaveLength> {
 		private String? _radarBand  = default;
 
+		[Description("The band code character of the electromagnetic spectrum within which radar wave lengths lie.")]
 		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? radarBand {
@@ -1403,6 +1462,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _waveLengthValue  = default;
 
+		[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave.")]
 		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? waveLengthValue {
@@ -1442,12 +1502,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
+	[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 	[CategoryOrder("rhythmOfLight",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rhythmOfLightViewModel : ComplexViewModel<rhythmOfLight> {
 		private lightCharacteristic? _lightCharacteristic  = default;
 
+		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public lightCharacteristic? lightCharacteristic {
@@ -1462,11 +1524,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
@@ -1478,6 +1542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1532,12 +1597,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
+	[Description("The nature and timings of a daily schedule by days of the week.")]
 	[CategoryOrder("scheduleByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class scheduleByDayOfWeekViewModel : ComplexViewModel<scheduleByDayOfWeek> {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
+		[Description("The type of schedule, for instance opening, closure, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
@@ -1552,6 +1619,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
+		[Description("The regular weekly operation times of a service or schedule.")]
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1593,12 +1661,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
+	[Description("Describes the characteristics of a light sector.")]
 	[CategoryOrder("sectorCharacteristics",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ComplexViewModel<sectorCharacteristics> {
 		private lightCharacteristic? _lightCharacteristic  = default;
 
+		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public lightCharacteristic? lightCharacteristic {
@@ -1613,14 +1683,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference.")]
 		[Multiplicity(1)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
@@ -1632,6 +1705,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1696,12 +1770,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
+	[Description("Additional textual information about a light sector.")]
 	[CategoryOrder("sectorInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorInformationViewModel : ComplexViewModel<sectorInformation> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -1715,6 +1791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _text  = default;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? text {
@@ -1754,12 +1831,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel? sectorLimitOne {
@@ -1773,6 +1852,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel? sectorLimitTwo {
@@ -1818,12 +1898,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimitOne",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ComplexViewModel<sectorLimitOne> {
 		private double? _sectorBearing  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? sectorBearing {
@@ -1837,6 +1919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _sectorLineLength  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? sectorLineLength {
@@ -1876,12 +1959,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimitTwo",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ComplexViewModel<sectorLimitTwo> {
 		private double? _sectorBearing  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? sectorBearing {
@@ -1895,6 +1980,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _sectorLineLength  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? sectorLineLength {
@@ -1934,12 +2020,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
+	[Description("Textual information about the shape of a non-standard topmark.")]
 	[CategoryOrder("shapeInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class shapeInformationViewModel : ComplexViewModel<shapeInformation> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<shapeInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -1953,6 +2041,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _text  = default;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<shapeInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? text {
@@ -1992,12 +2081,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.
 	/// </summary>
+	[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 	[CategoryOrder("signalSequence",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ComplexViewModel<signalSequence> {
 		private double? _signalDuration  = default;
 
+		[Description("The time occupied by a single instance of light/sound or eclipse/silence in a signal sequence.")]
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? signalDuration {
@@ -2011,6 +2102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private signalStatus? _signalStatus  = default;
 
+		[Description("The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.")]
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public signalStatus? signalStatus {
@@ -2053,12 +2145,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
+	[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2072,6 +2166,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -2085,6 +2180,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2136,12 +2232,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.
 	/// </summary>
+	[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.")]
 	[CategoryOrder("speed",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class speedViewModel : ComplexViewModel<speed> {
 		private double? _speedMaximum  = default;
 
+		[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction. Speed maximum is the maximum rate of travel that can occur.")]
 		[Editor(typeof(Editors.HorizonEditor<speed>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? speedMaximum {
@@ -2155,6 +2253,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _speedMinimum  = default;
 
+		[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction. Speed minimum is the minimum rate of travel that can occur.")]
 		[Editor(typeof(Editors.HorizonEditor<speed>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? speedMinimum {
@@ -2194,12 +2293,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The general nature of the material of which the land surface or the seabed is composed.
 	/// </summary>
+	[Description("The general nature of the material of which the land surface or the seabed is composed.")]
 	[CategoryOrder("surfaceCharacteristics",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class surfaceCharacteristicsViewModel : ComplexViewModel<surfaceCharacteristics> {
 		private natureOfSurface? _natureOfSurface  = default;
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Editor(typeof(Editors.HorizonEditor<surfaceCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public natureOfSurface? natureOfSurface {
@@ -2214,6 +2315,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 
+		[Description("The nature of various forms of natural surface materials in terms of their size, morphology and consistency.")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -2222,6 +2324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _underlyingLayer  = default;
 
+		[Description("The position of the seabed type within the layers of the seabed.")]
 		[Editor(typeof(Editors.HorizonEditor<surfaceCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? underlyingLayer {
@@ -2274,12 +2377,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
+	[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 	[CategoryOrder("surveyDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class surveyDateRangeViewModel : ComplexViewModel<surveyDateRange> {
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -2294,6 +2399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -2334,12 +2440,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
+	[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class telecommunicationsViewModel : ComplexViewModel<telecommunications> {
 		private String? _contactInstructions  = default;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contactInstructions {
@@ -2353,6 +2461,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _telecommunicationIdentifier  = default;
 
+		[Description("An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String? telecommunicationIdentifier {
@@ -2366,6 +2475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private telecommunicationService? _telecommunicationService  = default;
 
+		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public telecommunicationService? telecommunicationService {
@@ -2411,12 +2521,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.
 	/// </summary>
+	[Description("The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.")]
 	[CategoryOrder("tidalStreamPanelValues",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class tidalStreamPanelValuesViewModel : ComplexViewModel<tidalStreamPanelValues> {
 		private referenceTide? _referenceTide  = default;
 
+		[Description("The reference tide to which the series of tidal stream values apply.")]
 		[Editor(typeof(Editors.HorizonEditor<tidalStreamPanelValues>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public referenceTide? referenceTide {
@@ -2433,6 +2545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private referenceTideType? _referenceTideType  = default;
 
+		[Description("The type of tide range (that is, mean spring tide, mean neap tide or mean tide) for which a set of tidal stream rates and directions apply.")]
 		[Editor(typeof(Editors.HorizonEditor<tidalStreamPanelValues>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public referenceTideType? referenceTideType {
@@ -2449,6 +2562,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _streamDepth  = default;
 
+		[Description("The depth below the sea surface to which the tidal stream data refers relative to the sounding datum.")]
 		[Editor(typeof(Editors.HorizonEditor<tidalStreamPanelValues>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? streamDepth {
@@ -2460,6 +2574,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.")]
 		[Multiplicity(1)]
 		public ObservableCollection<tidalStreamValueViewModel> tidalStreamValue  { get; set; } = new ();
 
@@ -2507,12 +2622,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.
 	/// </summary>
+	[Description("A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.")]
 	[CategoryOrder("tidalStreamValue",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class tidalStreamValueViewModel : ComplexViewModel<tidalStreamValue> {
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel? orientation {
@@ -2526,6 +2643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _speedMaximum  = default;
 
+		[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction. Speed maximum is the maximum rate of travel that can occur.")]
 		[Editor(typeof(Editors.HorizonEditor<tidalStreamValue>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? speedMaximum {
@@ -2539,6 +2657,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _timeRelativeToTide  = default;
 
+		[Description("The time difference relative to the reference tide.")]
 		[Editor(typeof(Editors.HorizonEditor<tidalStreamValue>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? timeRelativeToTide {
@@ -2584,10 +2703,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
+	[Description("The regular weekly operation times of a service or schedule.")]
 	[CategoryOrder("timeIntervalsByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
+		[Description("Any one of seven days in a week.")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2596,6 +2717,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _dayOfWeekIsRange  = default;
 
+		[Description("A statement expressing if the days of the week identified define a range or not.")]
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? dayOfWeekIsRange {
@@ -2607,9 +2729,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The time corresponding to the start of an active period.")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
+		[Description("The time corresponding to the end of an active period.")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2671,10 +2795,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
 	/// </summary>
+	[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 	[CategoryOrder("topmark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class topmarkViewModel : ComplexViewModel<topmark> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -2683,6 +2809,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Editor(typeof(Editors.HorizonEditor<topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public colourPattern? colourPattern {
@@ -2699,6 +2826,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkDaymarkShape? _topmarkDaymarkShape  = default;
 
+		[Description("The shape a topmark or daymark exhibits.")]
 		[Editor(typeof(Editors.HorizonEditor<topmark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public topmarkDaymarkShape? topmarkDaymarkShape {
@@ -2713,6 +2841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33];
 
+		[Description("Textual information about the shape of a non-standard topmark.")]
 		[Optional]
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
@@ -2767,12 +2896,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation and where required its direction.
 	/// </summary>
+	[Description("The value of the deviation from the normal magnetic variation and where required its direction.")]
 	[CategoryOrder("valueOfLocalMagneticAnomaly",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class valueOfLocalMagneticAnomalyViewModel : ComplexViewModel<valueOfLocalMagneticAnomaly> {
 		private double? _magneticAnomalyValue  = default;
 
+		[Description("The value of the deviation from the normal magnetic variation.")]
 		[Editor(typeof(Editors.HorizonEditor<valueOfLocalMagneticAnomaly>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? magneticAnomalyValue {
@@ -2786,6 +2917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private referenceDirection? _referenceDirection  = default;
 
+		[Description("A direction used as a basis for comparison of other directions.")]
 		[Editor(typeof(Editors.HorizonEditor<valueOfLocalMagneticAnomaly>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public referenceDirection? referenceDirection {
@@ -2828,12 +2960,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
+	[Description("The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.")]
 	[CategoryOrder("verticalClearanceClosed",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceClosedViewModel : ComplexViewModel<verticalClearanceClosed> {
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalClearanceClosed>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? verticalClearanceValue {
@@ -2847,6 +2981,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2889,12 +3024,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.
 	/// </summary>
+	[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 	[CategoryOrder("verticalClearanceFixed",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceFixedViewModel : ComplexViewModel<verticalClearanceFixed> {
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalClearanceFixed>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? verticalClearanceValue {
@@ -2908,6 +3045,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2950,12 +3088,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
+	[Description("The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.")]
 	[CategoryOrder("verticalClearanceOpen",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceOpenViewModel : ComplexViewModel<verticalClearanceOpen> {
 		private Boolean? _verticalClearanceUnlimited  = default;
 
+		[Description("A statement that expresses if the vertical clearance for a feature in the open position, such as a bridge span, is unlimited.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalClearanceOpen>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean? verticalClearanceUnlimited {
@@ -2969,6 +3109,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalClearanceOpen>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalClearanceValue {
@@ -2982,6 +3123,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3027,12 +3169,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.
 	/// </summary>
+	[Description("The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.")]
 	[CategoryOrder("verticalClearanceSafe",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceSafeViewModel : ComplexViewModel<verticalClearanceSafe> {
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalClearanceSafe>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? verticalClearanceValue {
@@ -3046,6 +3190,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3088,12 +3233,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 	[CategoryOrder("verticalUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ComplexViewModel<verticalUncertainty> {
 		private double? _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? uncertaintyFixed {
@@ -3107,6 +3254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -3146,12 +3294,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The maximum allowed rate of travel for a vessel in an area in knots.
 	/// </summary>
+	[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 	[CategoryOrder("vesselSpeedLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselSpeedLimitViewModel : ComplexViewModel<vesselSpeedLimit> {
 		private double? _speedLimit  = default;
 
+		[Description("The maximum allowed rate of travel in an area.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselSpeedLimit>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double? speedLimit {
@@ -3165,6 +3315,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private speedUnits? _speedUnits  = default;
 
+		[Description("The units for description of speed.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselSpeedLimit>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public speedUnits? speedUnits {
@@ -3181,6 +3332,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _vesselClass  = default;
 
+		[Description("The classification of a vessel, normally as defined by length or gross tonnage.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselSpeedLimit>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? vesselClass {
@@ -3223,12 +3375,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.
 	/// </summary>
+	[Description("The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.")]
 	[CategoryOrder("zoneOfConfidence",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class zoneOfConfidenceViewModel : ComplexViewModel<zoneOfConfidence> {
 		private categoryOfZoneOfConfidenceInData? _categoryOfZoneOfConfidenceInData  = default;
 
+		[Description("Classification of the zone of confidence in data within an area based on the positional accuracy, survey equipment and coverage.")]
 		[Editor(typeof(Editors.HorizonEditor<zoneOfConfidence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {
@@ -3245,6 +3399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3258,6 +3413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -3271,6 +3427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3326,6 +3483,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
+	[Description("A feature association for the binding between at least one instance of a geo feature and an instance of an information type.")]
 	[CategoryOrder("AdditionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3346,6 +3504,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
 	/// </summary>
+	[Description("The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.")]
 	[CategoryOrder("QualityOfBathymetricDataComposition",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3366,6 +3525,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An association for the binding between a spatial type and its spatial quality information.
 	/// </summary>
+	[Description("An association for the binding between a spatial type and its spatial quality information.")]
 	[CategoryOrder("SpatialAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3386,6 +3546,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between navigational aids and the traffic systems (such as routeing measures) that they define.
 	/// </summary>
+	[Description("A feature association for the binding between navigational aids and the traffic systems (such as routeing measures) that they define.")]
 	[CategoryOrder("AidsToNavigationAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3406,6 +3567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between an Archipelagic Sea Lane and its component features.
 	/// </summary>
+	[Description("A feature association for the binding between an Archipelagic Sea Lane and its component features.")]
 	[CategoryOrder("ASLAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3426,6 +3588,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a bridge and its component features.
 	/// </summary>
+	[Description("A feature association for the binding between a bridge and its component features.")]
 	[CategoryOrder("BridgeAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3446,6 +3609,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a caution area and the traffic systems (such as routeing measures) to which the cautionary information applies.
 	/// </summary>
+	[Description("A feature association for the binding between a caution area and the traffic systems (such as routeing measures) to which the cautionary information applies.")]
 	[CategoryOrder("CautionAreaAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3466,6 +3630,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a Deep Water route and its component features.
 	/// </summary>
+	[Description("A feature association for the binding between a Deep Water route and its component features.")]
 	[CategoryOrder("DeepWaterRouteAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3486,6 +3651,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between related fairways comprising a fairway system.
 	/// </summary>
+	[Description("A feature association for the binding between related fairways comprising a fairway system.")]
 	[CategoryOrder("FairwayAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3506,6 +3672,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a fairway and related features auxiliary to the fairway.
 	/// </summary>
+	[Description("A feature association for the binding between a fairway and related features auxiliary to the fairway.")]
 	[CategoryOrder("FairwayAuxiliary",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3526,6 +3693,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a named group of islands.
 	/// </summary>
+	[Description("A feature association for the binding between a named group of islands.")]
 	[CategoryOrder("IslandAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3546,6 +3714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a mooring trot and its component parts.
 	/// </summary>
+	[Description("A feature association for the binding between a mooring trot and its component parts.")]
 	[CategoryOrder("MooringTrotAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3566,6 +3735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a pilotage district and its component pilot boarding places.
 	/// </summary>
+	[Description("A feature association for the binding between a pilotage district and its component pilot boarding places.")]
 	[CategoryOrder("PilotageDistrictAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3586,6 +3756,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between navigational tracks and the navigational aids that define the tracks.
 	/// </summary>
+	[Description("A feature association for the binding between navigational tracks and the navigational aids that define the tracks.")]
 	[CategoryOrder("RangeSystemAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3606,6 +3777,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a roofed structure over navigable water and its supporting features.
 	/// </summary>
+	[Description("A feature association for the binding between a roofed structure over navigable water and its supporting features.")]
 	[CategoryOrder("RoofedStructureAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3626,6 +3798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a navigation aid equipment feature and the structure that supports it.
 	/// </summary>
+	[Description("A feature association for the binding between a navigation aid equipment feature and the structure that supports it.")]
 	[CategoryOrder("StructureEquipment",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3646,6 +3819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
+	[Description("A feature association for the binding between a geo feature and the cartographically positioned location for text.")]
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3666,6 +3840,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a Traffic Separation Scheme or a Traffic Separation Scheme System and its component features.
 	/// </summary>
+	[Description("A feature association for the binding between a Traffic Separation Scheme or a Traffic Separation Scheme System and its component features.")]
 	[CategoryOrder("TrafficSeparationSchemeAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3686,6 +3861,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between a two-way route and its component features.
 	/// </summary>
+	[Description("A feature association for the binding between a two-way route and its component features.")]
 	[CategoryOrder("TwoWayRouteAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3706,6 +3882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between an Update Information feature and its component Update Information features.
 	/// </summary>
+	[Description("A feature association for the binding between an Update Information feature and its component Update Information features.")]
 	[CategoryOrder("UpdateAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3726,6 +3903,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature association for the binding between an update information metadata feature and updated feature(s) that it identifies.
 	/// </summary>
+	[Description("A feature association for the binding between an update information metadata feature and updated feature(s) that it identifies.")]
 	[CategoryOrder("UpdatedInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3746,12 +3924,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
+	[Description("Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.")]
 	[CategoryOrder("ContactDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
 		private String? _callSign  = default;
 
+		[Description("The designated call-sign of a station (radio station, radar station, pilot, ...).")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3764,12 +3944,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
 		private String? _contactInstructions  = default;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3784,6 +3966,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ContactDetails")]
 		[ExpandableObject]
 		[Optional]
@@ -3796,12 +3979,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 
 		private String? _mMSICode  = default;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3814,10 +3999,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+		[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
@@ -3913,12 +4100,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
+	[Description("The time when a service is available and known exceptions.")]
 	[CategoryOrder("ServiceHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ServiceHours")]
 		[ExpandableObject]
 		[Optional]
@@ -3931,14 +4120,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("ServiceHours")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The nature and timings of a daily schedule by days of the week.")]
 		[Category("ServiceHours")]
 		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ServiceHours")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -4015,20 +4207,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
+	[Description("Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.")]
 	[CategoryOrder("NonStandardWorkingDay",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
+		[Description("The date of an event.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 
+		[Description("A day which is not fixed in the Gregorian calendar.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("NonStandardWorkingDay")]
 		[ExpandableObject]
 		[Optional]
@@ -4041,10 +4237,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -4131,12 +4329,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
+	[Description("Nautical information about a related area or facility.")]
 	[CategoryOrder("NauticalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("NauticalInformation")]
 		[ExpandableObject]
 		[Optional]
@@ -4149,16 +4349,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("NauticalInformation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("NauticalInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("NauticalInformation")]
 		[Editor(typeof(Editors.HorizonEditor<NauticalInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4236,12 +4439,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
+	[Description("The indication of the quality of the locational information for features in a dataset.")]
 	[CategoryOrder("SpatialQuality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
+		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4257,6 +4462,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
+		[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 		[Category("SpatialQuality")]
 		[Optional]
 		public ObservableCollection<spatialAccuracyViewModel> spatialAccuracy  { get; set; } = new ();
@@ -4310,12 +4516,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
+	[Description("An area within which a uniform assessment of the quality of the non-bathymetric data exists.")]
 	[CategoryOrder("QualityOfNonBathymetricData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
+		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4333,6 +4541,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalDistanceUncertainty  = default;
 
+		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4347,6 +4556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Mandatory]
@@ -4361,6 +4571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4375,6 +4586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4389,6 +4601,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
+		[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -4403,6 +4616,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -4415,6 +4629,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -4592,12 +4807,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
+	[Description("A geographical area that describes the coverage and extent of spatial objects.")]
 	[CategoryOrder("DataCoverage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
 		private int? _drawingIndex  = default;
 
+		[Description("A numeric value used to indicate that datasets are intended to form a seamless presentation.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4612,6 +4829,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4626,6 +4844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _maximumDisplayScale  = default;
 
+		[Description("The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be \"grossly overscaled\".")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4640,6 +4859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _minimumDisplayScale  = default;
 
+		[Description("The smallest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4654,6 +4874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _optimumDisplayScale  = default;
 
+		[Description("The largest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4666,6 +4887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DataCoverage")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -4742,12 +4964,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
+	[Description("An area within which the navigational system of marks has been established in relation to a specific direction.")]
 	[CategoryOrder("NavigationalSystemOfMarks",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel<NavigationalSystemOfMarks> {
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4765,6 +4989,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4777,6 +5002,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("NavigationalSystemOfMarks")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -4930,12 +5156,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
+	[Description("An area within which the navigational system of marks has been established in relation to a specific direction.")]
 	[CategoryOrder("LocalDirectionOfBuoyage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LocalDirectionOfBuoyageViewModel : FeatureViewModel<LocalDirectionOfBuoyage> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[Editor(typeof(Editors.HorizonEditor<LocalDirectionOfBuoyage>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4950,6 +5178,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[Editor(typeof(Editors.HorizonEditor<LocalDirectionOfBuoyage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4967,6 +5196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[Editor(typeof(Editors.HorizonEditor<LocalDirectionOfBuoyage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4981,6 +5211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[Editor(typeof(Editors.HorizonEditor<LocalDirectionOfBuoyage>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4993,6 +5224,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5152,12 +5384,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the bathymetric data exists.
 	/// </summary>
+	[Description("An area within which a uniform assessment of the quality of the bathymetric data exists.")]
 	[CategoryOrder("QualityOfBathymetricData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfBathymetricDataViewModel : FeatureViewModel<QualityOfBathymetricData> {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
+		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5175,6 +5409,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private dataAssessment? _dataAssessment  = default;
 
+		[Description("The categorization of the assessment level of bathymetric data for an area.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5192,6 +5427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMaximumValue  = default;
 
+		[Description("The maximum (deepest) value of a depth range.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5206,6 +5442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5220,6 +5457,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private featuresDetectedViewModel? _featuresDetected  = default;
 
+		[Description("The uniform assessment of detected features.")]
 		[Category("QualityOfBathymetricData")]
 		[ExpandableObject]
 		[Mandatory]
@@ -5234,6 +5472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _fullSeafloorCoverageAchieved  = default;
 
+		[Description("Expression stating if full seafloor coverage has been achieved in the area covered by hydrographic surveys.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5248,6 +5487,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("QualityOfBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5262,6 +5502,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
+		[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 		[Category("QualityOfBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -5274,10 +5515,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.")]
 		[Category("QualityOfBathymetricData")]
 		[Multiplicity(1)]
 		public ObservableCollection<zoneOfConfidenceViewModel> zoneOfConfidence  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("QualityOfBathymetricData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5541,12 +5784,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
+	[Description("The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.")]
 	[CategoryOrder("SoundingDatum",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5561,6 +5806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5576,6 +5822,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)19,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)44];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SoundingDatum")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5729,12 +5976,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
+	[Description("Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.")]
 	[CategoryOrder("VerticalDatumOfData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5749,6 +5998,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5764,6 +6014,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("VerticalDatumOfData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5917,12 +6168,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which a uniform assessment of the reliability of source survey information exists.
 	/// </summary>
+	[Description("An area within which a uniform assessment of the reliability of source survey information exists.")]
 	[CategoryOrder("QualityOfSurvey",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfSurveyViewModel : FeatureViewModel<QualityOfSurvey> {
 		private double? _depthRangeMaximumValue  = default;
 
+		[Description("The maximum (deepest) value of a depth range.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5937,6 +6190,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5951,6 +6205,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private featuresDetectedViewModel? _featuresDetected  = default;
 
+		[Description("The uniform assessment of detected features.")]
 		[Category("QualityOfSurvey")]
 		[ExpandableObject]
 		[Optional]
@@ -5965,6 +6220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _fullSeafloorCoverageAchieved  = default;
 
+		[Description("Expression stating if full seafloor coverage has been achieved in the area covered by hydrographic surveys.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5979,6 +6235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5993,6 +6250,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _lineSpacingMaximum  = default;
 
+		[Description("The maximum distance between hydrographic survey lines.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6007,6 +6265,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _lineSpacingMinimum  = default;
 
+		[Description("The minimum distance between hydrographic survey lines.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6021,6 +6280,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _measurementDistanceMaximum  = default;
 
+		[Description("The maximum spacing of the principal measurement lines of a hydrographic survey.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6035,6 +6295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _measurementDistanceMinimum  = default;
 
+		[Description("The minimum spacing of the principal measurement lines of a hydrographic survey.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6049,6 +6310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
+		[Description("The degree of reliability attributed to a position.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6064,6 +6326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("QualityOfSurvey")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -6073,6 +6336,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleValueMaximum  = default;
 
+		[Description("The largest scale for the range of survey scale.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6087,6 +6351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleValueMinimum  = default;
 
+		[Description("The smallest scale for the range of survey scale.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6101,6 +6366,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _surveyAuthority  = default;
 
+		[Description("The authority which was responsible for the survey.")]
 		[Category("QualityOfSurvey")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfSurvey>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -6115,6 +6381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
+		[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 		[Category("QualityOfSurvey")]
 		[ExpandableObject]
 		[Mandatory]
@@ -6127,6 +6394,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Classification of the different survey types.")]
 		[Category("QualityOfSurvey")]
 		[Multiplicity(1)]
 		public ObservableCollection<surveyType> surveyType  { get; set; } = new ();
@@ -6134,6 +6402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public surveyType[] surveyTypeList => [(surveyType)1,(surveyType)2,(surveyType)4,(surveyType)5,(surveyType)6,(surveyType)7,(surveyType)8,(surveyType)9,(surveyType)10,(surveyType)11,(surveyType)12,(surveyType)13];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("QualityOfSurvey")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -6141,6 +6410,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("QualityOfSurvey")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -6366,12 +6636,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The Update Information metadata feature is used to represent a change to the information shown.
 	/// </summary>
+	[Description("The Update Information metadata feature is used to represent a change to the information shown.")]
 	[CategoryOrder("UpdateInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class UpdateInformationViewModel : FeatureViewModel<UpdateInformation> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("UpdateInformation")]
 		[ExpandableObject]
 		[Optional]
@@ -6386,6 +6658,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.HorizonEditor<UpdateInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6400,6 +6673,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _updateNumber  = default;
 
+		[Description("Update number of the ENC being referenced.")]
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.HorizonEditor<UpdateInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -6414,6 +6688,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private updateType? _updateType  = default;
 
+		[Description("An action performed when the contents of a dataset are changed.")]
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.HorizonEditor<UpdateInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -6431,6 +6706,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.HorizonEditor<UpdateInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6445,6 +6721,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("UpdateInformation")]
 		[Editor(typeof(Editors.HorizonEditor<UpdateInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6457,6 +6734,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("UpdateInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -6722,12 +7000,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.
 	/// </summary>
+	[Description("The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.")]
 	[CategoryOrder("MagneticVariation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MagneticVariationViewModel : FeatureViewModel<MagneticVariation> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MagneticVariation")]
 		[Editor(typeof(Editors.HorizonEditor<MagneticVariation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6742,6 +7022,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _referenceYearForMagneticVariation  = default;
 
+		[Description("The reference calendar year for magnetic variation values.")]
 		[Category("MagneticVariation")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -6757,6 +7038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfAnnualChangeInMagneticVariation  = default;
 
+		[Description("The annual change in magnetic variation values.")]
 		[Category("MagneticVariation")]
 		[Editor(typeof(Editors.HorizonEditor<MagneticVariation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -6771,6 +7053,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfMagneticVariation  = default;
 
+		[Description("The angle between the magnetic and geographical meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north.")]
 		[Category("MagneticVariation")]
 		[Editor(typeof(Editors.HorizonEditor<MagneticVariation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -6785,6 +7068,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MagneticVariation")]
 		[Editor(typeof(Editors.HorizonEditor<MagneticVariation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6797,6 +7081,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MagneticVariation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -7035,16 +7320,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.
 	/// </summary>
+	[Description("An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.")]
 	[CategoryOrder("LocalMagneticAnomaly",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LocalMagneticAnomalyViewModel : FeatureViewModel<LocalMagneticAnomaly> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LocalMagneticAnomaly")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LocalMagneticAnomaly")]
 		[Editor(typeof(Editors.HorizonEditor<LocalMagneticAnomaly>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7059,6 +7347,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("LocalMagneticAnomaly")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -7072,12 +7361,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The value of the deviation from the normal magnetic variation and where required its direction.")]
 		[Category("LocalMagneticAnomaly")]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<valueOfLocalMagneticAnomalyViewModel> valueOfLocalMagneticAnomaly  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LocalMagneticAnomaly")]
 		[Editor(typeof(Editors.HorizonEditor<LocalMagneticAnomaly>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7090,6 +7381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LocalMagneticAnomaly")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -7423,12 +7715,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
 	/// </summary>
+	[Description("The line where shore and water meet. Shoreline and coastline are generally used synonymously.")]
 	[CategoryOrder("Coastline",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CoastlineViewModel : FeatureViewModel<Coastline> {
 		private categoryOfCoastline? _categoryOfCoastline  = default;
 
+		[Description("Physical condition of the coastline.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7444,6 +7738,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCoastline[] categoryOfCoastlineList => [(categoryOfCoastline)1,(categoryOfCoastline)2,(categoryOfCoastline)6,(categoryOfCoastline)7,(categoryOfCoastline)8,(categoryOfCoastline)10];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Coastline")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -7453,6 +7748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7465,12 +7761,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Coastline")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7483,6 +7781,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("Coastline")]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
@@ -7492,6 +7791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7506,6 +7806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7521,12 +7822,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Coastline")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Coastline")]
 		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7887,12 +8190,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The solid portion of the Earth's surface, as opposed to sea, water.
 	/// </summary>
+	[Description("The solid portion of the Earth's surface, as opposed to sea, water.")]
 	[CategoryOrder("LandArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandAreaViewModel : FeatureViewModel<LandArea> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("LandArea")]
 		[Editor(typeof(Editors.HorizonEditor<LandArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7908,12 +8213,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LandArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LandArea")]
 		[Editor(typeof(Editors.HorizonEditor<LandArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7928,6 +8235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("LandArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -7943,6 +8251,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LandArea")]
 		[Editor(typeof(Editors.HorizonEditor<LandArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7960,6 +8269,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LandArea")]
 		[Editor(typeof(Editors.HorizonEditor<LandArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7972,6 +8282,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LandArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -8382,16 +8693,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A named group of islands, including archipelagos.
 	/// </summary>
+	[Description("A named group of islands, including archipelagos.")]
 	[CategoryOrder("IslandGroup",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IslandGroupViewModel : FeatureViewModel<IslandGroup> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("IslandGroup")]
 		[Multiplicity(1)]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("IslandGroup")]
 		[Editor(typeof(Editors.HorizonEditor<IslandGroup>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8406,6 +8720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("IslandGroup")]
 		[Editor(typeof(Editors.HorizonEditor<IslandGroup>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8418,6 +8733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("IslandGroup")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -8827,12 +9143,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.
 	/// </summary>
+	[Description("An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.")]
 	[CategoryOrder("LandElevation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandElevationViewModel : FeatureViewModel<LandElevation> {
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("LandElevation")]
 		[Editor(typeof(Editors.HorizonEditor<LandElevation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -8845,12 +9163,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LandElevation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LandElevation")]
 		[Editor(typeof(Editors.HorizonEditor<LandElevation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8865,6 +9185,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LandElevation")]
 		[Editor(typeof(Editors.HorizonEditor<LandElevation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8882,6 +9203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LandElevation")]
 		[Editor(typeof(Editors.HorizonEditor<LandElevation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8894,6 +9216,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LandElevation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -9220,16 +9543,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A relatively large natural stream of water.
 	/// </summary>
+	[Description("A relatively large natural stream of water.")]
 	[CategoryOrder("River",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RiverViewModel : FeatureViewModel<River> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("River")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("River")]
 		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9244,6 +9570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("River")]
 		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9261,6 +9588,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("River")]
 		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9273,6 +9601,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("River")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -9596,16 +9925,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.
 	/// </summary>
+	[Description("Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.")]
 	[CategoryOrder("Rapids",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RapidsViewModel : FeatureViewModel<Rapids> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Rapids")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Rapids")]
 		[Editor(typeof(Editors.HorizonEditor<Rapids>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9620,6 +9952,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Rapids")]
 		[Editor(typeof(Editors.HorizonEditor<Rapids>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9634,6 +9967,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Rapids")]
 		[Editor(typeof(Editors.HorizonEditor<Rapids>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9646,6 +9980,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Rapids")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -9969,16 +10304,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.
 	/// </summary>
+	[Description("A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.")]
 	[CategoryOrder("Waterfall",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WaterfallViewModel : FeatureViewModel<Waterfall> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Waterfall")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Waterfall")]
 		[Editor(typeof(Editors.HorizonEditor<Waterfall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9993,6 +10331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Waterfall")]
 		[Editor(typeof(Editors.HorizonEditor<Waterfall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10007,6 +10346,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Waterfall")]
 		[Editor(typeof(Editors.HorizonEditor<Waterfall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10024,6 +10364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Waterfall")]
 		[Editor(typeof(Editors.HorizonEditor<Waterfall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10036,6 +10377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Waterfall")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -10362,12 +10704,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A large body of water entirely surrounded by land.
 	/// </summary>
+	[Description("A large body of water entirely surrounded by land.")]
 	[CategoryOrder("Lake",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LakeViewModel : FeatureViewModel<Lake> {
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Lake")]
 		[Editor(typeof(Editors.HorizonEditor<Lake>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10380,12 +10724,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Lake")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Lake")]
 		[Editor(typeof(Editors.HorizonEditor<Lake>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10400,6 +10746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Lake")]
 		[Editor(typeof(Editors.HorizonEditor<Lake>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10417,6 +10764,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Lake")]
 		[Editor(typeof(Editors.HorizonEditor<Lake>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10429,6 +10777,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Lake")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -10755,10 +11104,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.
 	/// </summary>
+	[Description("An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.")]
 	[CategoryOrder("LandRegion",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandRegionViewModel : FeatureViewModel<LandRegion> {
+		[Description("General terms for describing landscapes.")]
 		[Category("LandRegion")]
 		[Optional]
 		public ObservableCollection<categoryOfLandRegion> categoryOfLandRegion  { get; set; } = new ();
@@ -10766,12 +11117,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfLandRegion[] categoryOfLandRegionList => [(categoryOfLandRegion)1,(categoryOfLandRegion)2,(categoryOfLandRegion)3,(categoryOfLandRegion)4,(categoryOfLandRegion)5,(categoryOfLandRegion)6,(categoryOfLandRegion)7,(categoryOfLandRegion)8,(categoryOfLandRegion)9,(categoryOfLandRegion)10,(categoryOfLandRegion)11,(categoryOfLandRegion)12,(categoryOfLandRegion)13,(categoryOfLandRegion)14,(categoryOfLandRegion)15,(categoryOfLandRegion)16,(categoryOfLandRegion)17,(categoryOfLandRegion)18,(categoryOfLandRegion)19,(categoryOfLandRegion)20,(categoryOfLandRegion)21];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LandRegion")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LandRegion")]
 		[Editor(typeof(Editors.HorizonEditor<LandRegion>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10784,6 +11137,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("LandRegion")]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
@@ -10793,6 +11147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("LandRegion")]
 		[Editor(typeof(Editors.HorizonEditor<LandRegion>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10810,6 +11165,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LandRegion")]
 		[Editor(typeof(Editors.HorizonEditor<LandRegion>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10822,6 +11178,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LandRegion")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -11165,12 +11522,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Plants collectively or individually, especially those dominating a particular area or habitat.
 	/// </summary>
+	[Description("Plants collectively or individually, especially those dominating a particular area or habitat.")]
 	[CategoryOrder("Vegetation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VegetationViewModel : FeatureViewModel<Vegetation> {
 		private categoryOfVegetation? _categoryOfVegetation  = default;
 
+		[Description("Classification of the plant life of an area or region.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11188,6 +11547,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11200,12 +11560,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Vegetation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11220,6 +11582,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11234,6 +11597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11248,6 +11612,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11265,6 +11630,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Vegetation")]
 		[Editor(typeof(Editors.HorizonEditor<Vegetation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11277,6 +11643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Vegetation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -11612,12 +11979,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of ice over land or water.
 	/// </summary>
+	[Description("An area of ice over land or water.")]
 	[CategoryOrder("IceArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IceAreaViewModel : FeatureViewModel<IceArea> {
 		private categoryOfIce? _categoryOfIce  = default;
 
+		[Description("Classification of ice.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11635,6 +12004,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11647,12 +12017,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("IceArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11667,6 +12039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11679,12 +12052,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("IceArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("IceArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -11698,6 +12073,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("IceArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11707,6 +12083,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11721,6 +12098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11738,6 +12116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("IceArea")]
 		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11750,6 +12129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("IceArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -12108,12 +12488,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An inclined surface.
 	/// </summary>
+	[Description("An inclined surface.")]
 	[CategoryOrder("SlopingGround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SlopingGroundViewModel : FeatureViewModel<SlopingGround> {
 		private categoryOfSlope? _categoryOfSlope  = default;
 
+		[Description("Classification of a stretch of ground forming a natural or artificial incline.")]
 		[Category("SlopingGround")]
 		[Editor(typeof(Editors.HorizonEditor<SlopingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12129,6 +12511,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1,(categoryOfSlope)2,(categoryOfSlope)3,(categoryOfSlope)4,(categoryOfSlope)5,(categoryOfSlope)6,(categoryOfSlope)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SlopingGround")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -12136,12 +12519,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SlopingGround")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SlopingGround")]
 		[Editor(typeof(Editors.HorizonEditor<SlopingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12154,6 +12539,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("SlopingGround")]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
@@ -12163,6 +12549,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SlopingGround")]
 		[Editor(typeof(Editors.HorizonEditor<SlopingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12177,6 +12564,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SlopingGround")]
 		[Editor(typeof(Editors.HorizonEditor<SlopingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12194,6 +12582,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SlopingGround")]
 		[Editor(typeof(Editors.HorizonEditor<SlopingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12206,6 +12595,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SlopingGround")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -12555,12 +12945,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The upper marking of a slope, for example the ridge line or the separation line between two different gradients.
 	/// </summary>
+	[Description("The upper marking of a slope, for example the ridge line or the separation line between two different gradients.")]
 	[CategoryOrder("SlopeTopline",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SlopeToplineViewModel : FeatureViewModel<SlopeTopline> {
 		private categoryOfSlope? _categoryOfSlope  = default;
 
+		[Description("Classification of a stretch of ground forming a natural or artificial incline.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12576,6 +12968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1,(categoryOfSlope)2,(categoryOfSlope)6];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SlopeTopline")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -12585,6 +12978,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12597,12 +12991,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SlopeTopline")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12615,6 +13011,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("SlopeTopline")]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
@@ -12624,6 +13021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12638,6 +13036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12655,6 +13054,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SlopeTopline")]
 		[Editor(typeof(Editors.HorizonEditor<SlopeTopline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12667,6 +13067,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SlopeTopline")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -13019,16 +13420,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A channel through which a tidal current runs.
 	/// </summary>
+	[Description("A channel through which a tidal current runs.")]
 	[CategoryOrder("Tideway",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TidewayViewModel : FeatureViewModel<Tideway> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Tideway")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Tideway")]
 		[Editor(typeof(Editors.HorizonEditor<Tideway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13043,6 +13447,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Tideway")]
 		[Editor(typeof(Editors.HorizonEditor<Tideway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13055,6 +13460,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Tideway")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -13375,12 +13781,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of land or construction over the water containing a concentration of buildings and/or other structures.
 	/// </summary>
+	[Description("An area of land or construction over the water containing a concentration of buildings and/or other structures.")]
 	[CategoryOrder("BuiltUpArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BuiltUpAreaViewModel : FeatureViewModel<BuiltUpArea> {
 		private categoryOfBuiltUpArea? _categoryOfBuiltUpArea  = default;
 
+		[Description("Human settlement classification.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13398,6 +13806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13413,12 +13822,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("BuiltUpArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13433,6 +13844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13447,6 +13859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13461,6 +13874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("BuiltUpArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -13476,6 +13890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13493,6 +13908,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13505,12 +13921,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("BuiltUpArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13525,6 +13943,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("BuiltUpArea")]
 		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13877,12 +14296,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
 	/// </summary>
+	[Description("A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.")]
 	[CategoryOrder("Building",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BuildingViewModel : FeatureViewModel<Building> {
 		private buildingShape? _buildingShape  = default;
 
+		[Description("The specific shape of the building.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13898,6 +14319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buildingShape[] buildingShapeList => [(buildingShape)5,(buildingShape)6,(buildingShape)7,(buildingShape)8,(buildingShape)9];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -13907,6 +14329,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13924,6 +14347,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13941,6 +14365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13953,10 +14378,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("A specific role that describes a feature.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
@@ -13966,6 +14393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13980,6 +14408,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13994,6 +14423,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("Building")]
 		[ExpandableObject]
 		[Optional]
@@ -14006,6 +14436,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -14015,6 +14446,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14029,6 +14461,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Building")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -14042,6 +14475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -14051,6 +14485,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14065,6 +14500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14082,6 +14518,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14094,12 +14531,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Building")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14114,6 +14553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("Building")]
 		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14764,10 +15204,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
 	/// </summary>
+	[Description("A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.")]
 	[CategoryOrder("AirportAirfield",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AirportAirfieldViewModel : FeatureViewModel<AirportAirfield> {
+		[Description("Classification of airport/airfield based on the primary aircraft and user group.")]
 		[Category("AirportAirfield")]
 		[Optional]
 		public ObservableCollection<categoryOfAirportAirfield> categoryOfAirportAirfield  { get; set; } = new ();
@@ -14777,6 +15219,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("AirportAirfield")]
 		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14792,12 +15235,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AirportAirfield")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AirportAirfield")]
 		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14812,6 +15257,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("AirportAirfield")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -14825,6 +15271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("AirportAirfield")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -14834,6 +15281,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AirportAirfield")]
 		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14846,12 +15294,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AirportAirfield")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("AirportAirfield")]
 		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15209,12 +15659,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.
 	/// </summary>
+	[Description("A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.")]
 	[CategoryOrder("Runway",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RunwayViewModel : FeatureViewModel<Runway> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Runway")]
 		[Editor(typeof(Editors.HorizonEditor<Runway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15230,12 +15682,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Runway")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Runway")]
 		[Editor(typeof(Editors.HorizonEditor<Runway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15248,6 +15702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Runway")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -15255,12 +15710,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Runway")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Runway")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -15274,6 +15731,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Runway")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -15283,6 +15741,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Runway")]
 		[Editor(typeof(Editors.HorizonEditor<Runway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15295,6 +15754,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Runway")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -15651,12 +16111,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A site on which helicopters may land and take off.
 	/// </summary>
+	[Description("A site on which helicopters may land and take off.")]
 	[CategoryOrder("Helipad",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HelipadViewModel : FeatureViewModel<Helipad> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Helipad")]
 		[Editor(typeof(Editors.HorizonEditor<Helipad>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15672,12 +16134,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Helipad")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Helipad")]
 		[Editor(typeof(Editors.HorizonEditor<Helipad>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15690,6 +16154,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Helipad")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -15697,12 +16162,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Helipad")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Helipad")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -15716,6 +16183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Helipad")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -15725,6 +16193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Helipad")]
 		[Editor(typeof(Editors.HorizonEditor<Helipad>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15737,6 +16206,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Helipad")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -16174,12 +16644,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
+	[Description("A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
 	[CategoryOrder("Bridge",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BridgeViewModel : FeatureViewModel<Bridge> {
 		private bridgeConstruction? _bridgeConstruction  = default;
 
+		[Description("The bridge’s primary shape and/or construction material.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16195,6 +16667,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public bridgeConstruction[] bridgeConstructionList => [(bridgeConstruction)1,(bridgeConstruction)2,(bridgeConstruction)3,(bridgeConstruction)4,(bridgeConstruction)5];
 
+		[Description("A specific role that describes the purpose of a bridge.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<bridgeFunction> bridgeFunction  { get; set; } = new ();
@@ -16204,6 +16677,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfOpeningBridge? _categoryOfOpeningBridge  = default;
 
+		[Description("Classification of opening structures spanning and providing passage over a gap or barrier, such as a river or roadway.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16219,6 +16693,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfOpeningBridge[] categoryOfOpeningBridgeList => [(categoryOfOpeningBridge)3,(categoryOfOpeningBridge)4,(categoryOfOpeningBridge)5,(categoryOfOpeningBridge)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -16228,6 +16703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16245,6 +16721,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16260,12 +16737,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Bridge")]
 		[ExpandableObject]
 		[Optional]
@@ -16280,6 +16759,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16294,6 +16774,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16306,6 +16787,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -16315,6 +16797,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _openingBridge  = default;
 
+		[Description("A bridge that is closed when set for carrying road traffic and open when set to permit marine traffic to pass through the waterway it crosses. Modern opening (movable) bridges are either bascule, vertical lift or swing.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16329,6 +16812,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16343,6 +16827,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Bridge")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -16356,6 +16841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -16365,6 +16851,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16382,6 +16869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16394,12 +16882,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Bridge")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Bridge")]
 		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17047,12 +17537,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A fixed component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
+	[Description("A fixed component of the deck of a bridge spanning successive bridge piers.")]
 	[CategoryOrder("SpanFixed",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpanFixedViewModel : FeatureViewModel<SpanFixed> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SpanFixed")]
 		[ExpandableObject]
 		[Optional]
@@ -17067,6 +17559,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("SpanFixed")]
 		[ExpandableObject]
 		[Optional]
@@ -17081,6 +17574,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SpanFixed")]
 		[Editor(typeof(Editors.HorizonEditor<SpanFixed>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17095,6 +17589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("SpanFixed")]
 		[ExpandableObject]
 		[Mandatory]
@@ -17109,6 +17604,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SpanFixed")]
 		[Editor(typeof(Editors.HorizonEditor<SpanFixed>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17126,6 +17622,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SpanFixed")]
 		[Editor(typeof(Editors.HorizonEditor<SpanFixed>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17138,12 +17635,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SpanFixed")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SpanFixed")]
 		[Editor(typeof(Editors.HorizonEditor<SpanFixed>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17729,12 +18228,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An opening component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
+	[Description("An opening component of the deck of a bridge spanning successive bridge piers.")]
 	[CategoryOrder("SpanOpening",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpanOpeningViewModel : FeatureViewModel<SpanOpening> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SpanOpening")]
 		[ExpandableObject]
 		[Optional]
@@ -17749,6 +18250,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("SpanOpening")]
 		[ExpandableObject]
 		[Optional]
@@ -17763,6 +18265,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SpanOpening")]
 		[Editor(typeof(Editors.HorizonEditor<SpanOpening>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17777,6 +18280,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceClosedViewModel? _verticalClearanceClosed  = default;
 
+		[Description("The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.")]
 		[Category("SpanOpening")]
 		[ExpandableObject]
 		[Mandatory]
@@ -17791,6 +18295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceOpenViewModel? _verticalClearanceOpen  = default;
 
+		[Description("The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.")]
 		[Category("SpanOpening")]
 		[ExpandableObject]
 		[Mandatory]
@@ -17805,6 +18310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SpanOpening")]
 		[Editor(typeof(Editors.HorizonEditor<SpanOpening>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17822,6 +18328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SpanOpening")]
 		[Editor(typeof(Editors.HorizonEditor<SpanOpening>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17834,12 +18341,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SpanOpening")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SpanOpening")]
 		[Editor(typeof(Editors.HorizonEditor<SpanOpening>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18431,12 +18940,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
 	/// </summary>
+	[Description("A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.")]
 	[CategoryOrder("Conveyor",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ConveyorViewModel : FeatureViewModel<Conveyor> {
 		private categoryOfConveyor? _categoryOfConveyor  = default;
 
+		[Description("Classification of conveyor used for moving goods from one location to another.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18452,6 +18963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfConveyor[] categoryOfConveyorList => [(categoryOfConveyor)1,(categoryOfConveyor)2,(categoryOfConveyor)3,(categoryOfConveyor)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Conveyor")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -18461,6 +18973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18478,6 +18991,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18493,12 +19007,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Conveyor")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Conveyor")]
 		[ExpandableObject]
 		[Optional]
@@ -18513,6 +19029,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18527,6 +19044,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18541,6 +19059,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _liftingCapacity  = default;
 
+		[Description("The specific safe lifting capacity of a feature.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18555,6 +19074,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("Conveyor")]
 		[ExpandableObject]
 		[Optional]
@@ -18567,6 +19087,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Conveyor")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -18576,6 +19097,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18590,6 +19112,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Conveyor")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -18603,6 +19126,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Conveyor")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -18612,6 +19136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("Conveyor")]
 		[ExpandableObject]
 		[Optional]
@@ -18626,6 +19151,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18643,6 +19169,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18657,6 +19184,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18674,6 +19202,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18686,12 +19215,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Conveyor")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Conveyor")]
 		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19263,12 +19794,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
 	/// </summary>
+	[Description("A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.")]
 	[CategoryOrder("CableOverhead",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableOverheadViewModel : FeatureViewModel<CableOverhead> {
 		private categoryOfCable? _categoryOfCable  = default;
 
+		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19286,6 +19819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19303,6 +19837,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CableOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -19317,6 +19852,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _iceFactor  = default;
 
+		[Description("The value of the maximum variation in the vertical clearance of an overhead cable due to an accumulation of ice.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19329,12 +19865,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CableOverhead")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19349,6 +19887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("CableOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -19363,6 +19902,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19377,6 +19917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("CableOverhead")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -19390,6 +19931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableOverhead")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -19399,6 +19941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("CableOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -19413,6 +19956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceSafeViewModel? _verticalClearanceSafe  = default;
 
+		[Description("The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.")]
 		[Category("CableOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -19427,6 +19971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19444,6 +19989,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19461,6 +20007,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CableOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19473,6 +20020,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CableOverhead")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -19929,12 +20477,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.
 	/// </summary>
+	[Description("A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.")]
 	[CategoryOrder("PipelineOverhead",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PipelineOverheadViewModel : FeatureViewModel<PipelineOverhead> {
 		private categoryOfPipelinePipe? _categoryOfPipelinePipe  = default;
 
+		[Description("Classification of a pipe systems use.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19952,6 +20502,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19967,12 +20518,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PipelineOverhead")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PipelineOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -19987,6 +20540,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20001,6 +20555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("PipelineOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -20013,6 +20568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("PipelineOverhead")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -20022,6 +20578,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20036,6 +20593,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("PipelineOverhead")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -20049,6 +20607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PipelineOverhead")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -20058,6 +20617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("PipelineOverhead")]
 		[ExpandableObject]
 		[Optional]
@@ -20072,6 +20632,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20089,6 +20650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20106,6 +20668,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PipelineOverhead")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20118,6 +20681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PipelineOverhead")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -20656,12 +21220,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.
 	/// </summary>
+	[Description("A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.")]
 	[CategoryOrder("PylonBridgeSupport",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PylonBridgeSupportViewModel : FeatureViewModel<PylonBridgeSupport> {
 		private categoryOfPylon? _categoryOfPylon  = default;
 
+		[Description("Classification of the pylon based on the service it is supporting.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -20677,6 +21243,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfPylon[] categoryOfPylonList => [(categoryOfPylon)1,(categoryOfPylon)2,(categoryOfPylon)3,(categoryOfPylon)4,(categoryOfPylon)5,(categoryOfPylon)6];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("PylonBridgeSupport")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -20686,6 +21253,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20703,6 +21271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20718,12 +21287,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PylonBridgeSupport")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PylonBridgeSupport")]
 		[ExpandableObject]
 		[Optional]
@@ -20738,6 +21309,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20752,6 +21324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20766,6 +21339,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("PylonBridgeSupport")]
 		[ExpandableObject]
 		[Optional]
@@ -20778,6 +21352,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("PylonBridgeSupport")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -20787,6 +21362,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20801,6 +21377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("PylonBridgeSupport")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -20814,6 +21391,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PylonBridgeSupport")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -20823,6 +21401,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20837,6 +21416,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20854,6 +21434,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20871,6 +21452,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20883,12 +21465,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PylonBridgeSupport")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("PylonBridgeSupport")]
 		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21613,12 +22197,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A man-made barrier used as an enclosure or boundary or for protection.
 	/// </summary>
+	[Description("A man-made barrier used as an enclosure or boundary or for protection.")]
 	[CategoryOrder("FenceWall",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FenceWallViewModel : FeatureViewModel<FenceWall> {
 		private categoryOfFence? _categoryOfFence  = default;
 
+		[Description("Classification of a physical boundary.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21634,6 +22220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfFence[] categoryOfFenceList => [(categoryOfFence)1,(categoryOfFence)3,(categoryOfFence)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("FenceWall")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -21643,6 +22230,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21660,6 +22248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21677,6 +22266,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21689,12 +22279,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FenceWall")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21709,6 +22301,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21721,6 +22314,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("FenceWall")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -21730,6 +22324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21744,6 +22339,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("FenceWall")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -21757,6 +22353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FenceWall")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -21766,6 +22363,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21780,6 +22378,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21797,6 +22396,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FenceWall")]
 		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21809,6 +22409,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FenceWall")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -22186,12 +22787,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A rail or set of parallel rails on which a train, tram, or rail wagon runs.
 	/// </summary>
+	[Description("A rail or set of parallel rails on which a train, tram, or rail wagon runs.")]
 	[CategoryOrder("Railway",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RailwayViewModel : FeatureViewModel<Railway> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Railway")]
 		[Editor(typeof(Editors.HorizonEditor<Railway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22207,12 +22810,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Railway")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Railway")]
 		[Editor(typeof(Editors.HorizonEditor<Railway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22227,6 +22832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Railway")]
 		[Editor(typeof(Editors.HorizonEditor<Railway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22241,6 +22847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Railway")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -22254,6 +22861,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Railway")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -22263,6 +22871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Railway")]
 		[Editor(typeof(Editors.HorizonEditor<Railway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22275,6 +22884,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Railway")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -22614,12 +23224,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
 	/// </summary>
+	[Description("A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.")]
 	[CategoryOrder("Road",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RoadViewModel : FeatureViewModel<Road> {
 		private categoryOfRoad? _categoryOfRoad  = default;
 
+		[Description("Classification of a road based on size.")]
 		[Category("Road")]
 		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22637,6 +23249,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Road")]
 		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22652,12 +23265,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Road")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Road")]
 		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22670,6 +23285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Road")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -22679,6 +23295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Road")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -22692,6 +23309,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Road")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -22701,6 +23319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Road")]
 		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22713,6 +23332,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Road")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -23062,12 +23682,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.
 	/// </summary>
+	[Description("A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.")]
 	[CategoryOrder("Tunnel",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TunnelViewModel : FeatureViewModel<Tunnel> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Tunnel")]
 		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23083,12 +23705,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Tunnel")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("Tunnel")]
 		[ExpandableObject]
 		[Optional]
@@ -23103,6 +23727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Tunnel")]
 		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23117,6 +23742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Tunnel")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -23130,6 +23756,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Tunnel")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -23139,6 +23766,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("Tunnel")]
 		[ExpandableObject]
 		[Optional]
@@ -23153,6 +23781,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Tunnel")]
 		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23170,6 +23799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Tunnel")]
 		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23182,12 +23812,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Tunnel")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Tunnel")]
 		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23550,10 +24182,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
 	/// </summary>
+	[Description("Any prominent object at a fixed location on land which can be used in determining a location or a direction.")]
 	[CategoryOrder("Landmark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandmarkViewModel : FeatureViewModel<Landmark> {
+		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("Landmark")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
@@ -23561,6 +24195,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -23568,6 +24203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)41];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -23577,6 +24213,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23594,6 +24231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23611,6 +24249,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23623,10 +24262,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
@@ -23636,6 +24277,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23650,6 +24292,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23664,6 +24307,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("Landmark")]
 		[ExpandableObject]
 		[Optional]
@@ -23676,6 +24320,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -23685,6 +24330,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23699,6 +24345,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Landmark")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -23712,6 +24359,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -23721,6 +24369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23735,6 +24384,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -23752,6 +24402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23764,12 +24415,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23784,6 +24437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24532,12 +25186,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
 	/// </summary>
+	[Description("A large storage structure used for storing loose materials, liquids and/or gases.")]
 	[CategoryOrder("SiloTank",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SiloTankViewModel : FeatureViewModel<SiloTank> {
 		private buildingShape? _buildingShape  = default;
 
+		[Description("The specific shape of the building.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24555,6 +25211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfSiloTank? _categoryOfSiloTank  = default;
 
+		[Description("Classification based on the product for which a silo or tank is used.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24570,6 +25227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1,(categoryOfSiloTank)2,(categoryOfSiloTank)3,(categoryOfSiloTank)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -24579,6 +25237,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24596,6 +25255,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24613,6 +25273,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24625,12 +25286,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24645,6 +25308,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24659,6 +25323,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("SiloTank")]
 		[ExpandableObject]
 		[Optional]
@@ -24671,6 +25336,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -24678,6 +25344,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -24687,6 +25354,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24701,6 +25369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("SiloTank")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -24714,6 +25383,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -24723,6 +25393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24737,6 +25408,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24754,6 +25426,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24766,12 +25439,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24786,6 +25461,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25439,10 +26115,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
 	/// </summary>
+	[Description("A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.")]
 	[CategoryOrder("WindTurbine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WindTurbineViewModel : FeatureViewModel<WindTurbine> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("WindTurbine")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -25452,6 +26130,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25469,6 +26148,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25486,6 +26166,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25498,12 +26179,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("WindTurbine")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("WindTurbine")]
 		[ExpandableObject]
 		[Optional]
@@ -25518,6 +26201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25532,6 +26216,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25546,6 +26231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("WindTurbine")]
 		[ExpandableObject]
 		[Optional]
@@ -25558,6 +26244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("WindTurbine")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -25567,6 +26254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25581,6 +26269,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("WindTurbine")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -25594,6 +26283,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("WindTurbine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -25603,6 +26293,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("WindTurbine")]
 		[ExpandableObject]
 		[Optional]
@@ -25617,6 +26308,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25634,6 +26326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25648,6 +26341,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25665,6 +26359,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25682,6 +26377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25694,12 +26390,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("WindTurbine")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25714,6 +26412,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("WindTurbine")]
 		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26288,12 +26987,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A structure that is specifically designed or reinforced to provide for defence from armed attack.
 	/// </summary>
+	[Description("A structure that is specifically designed or reinforced to provide for defence from armed attack.")]
 	[CategoryOrder("FortifiedStructure",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FortifiedStructureViewModel : FeatureViewModel<FortifiedStructure> {
 		private categoryOfFortifiedStructure? _categoryOfFortifiedStructure  = default;
 
+		[Description("Classification of the different types of fortified structure.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26311,6 +27012,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26326,12 +27028,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FortifiedStructure")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26346,6 +27050,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26358,6 +27063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("FortifiedStructure")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -26367,6 +27073,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26381,6 +27088,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("FortifiedStructure")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -26394,6 +27102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FortifiedStructure")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -26403,6 +27112,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26417,6 +27127,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26434,6 +27145,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26446,12 +27158,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FortifiedStructure")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26466,6 +27180,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("FortifiedStructure")]
 		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27084,12 +27799,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area on land for the exploitation or storage of natural resources.
 	/// </summary>
+	[Description("An area on land for the exploitation or storage of natural resources.")]
 	[CategoryOrder("ProductionStorageArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ProductionStorageAreaViewModel : FeatureViewModel<ProductionStorageArea> {
 		private categoryOfProductionArea? _categoryOfProductionArea  = default;
 
+		[Description("Classification of an area set aside for heavy industry.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27107,6 +27824,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27124,6 +27842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27136,12 +27855,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ProductionStorageArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ProductionStorageArea")]
 		[ExpandableObject]
 		[Optional]
@@ -27156,6 +27877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27170,6 +27892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27182,6 +27905,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("ProductionStorageArea")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -27191,6 +27915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27205,6 +27930,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("ProductionStorageArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -27218,6 +27944,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("ProductionStorageArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -27227,6 +27954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27241,6 +27969,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27258,6 +27987,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27270,12 +28000,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ProductionStorageArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("ProductionStorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27657,12 +28389,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An official location at which to register, declare and/or inspect goods and/or people.
 	/// </summary>
+	[Description("An official location at which to register, declare and/or inspect goods and/or people.")]
 	[CategoryOrder("Checkpoint",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CheckpointViewModel : FeatureViewModel<Checkpoint> {
 		private categoryOfCheckpoint? _categoryOfCheckpoint  = default;
 
+		[Description("Classification of a place where vehicles or travellers are stopped for identification or inspection.")]
 		[Category("Checkpoint")]
 		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27678,12 +28412,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Checkpoint")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Checkpoint")]
 		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27696,6 +28432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Checkpoint")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -27705,6 +28442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Checkpoint")]
 		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27717,6 +28455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Checkpoint")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -28050,10 +28789,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.
 	/// </summary>
+	[Description("The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.")]
 	[CategoryOrder("Hulk",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HulkViewModel : FeatureViewModel<Hulk> {
+		[Description("Classification of an old or unseaworthy ship used for a new function.")]
 		[Category("Hulk")]
 		[Optional]
 		public ObservableCollection<categoryOfHulk> categoryOfHulk  { get; set; } = new ();
@@ -28061,6 +28802,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfHulk[] categoryOfHulkList => [(categoryOfHulk)1,(categoryOfHulk)2,(categoryOfHulk)3,(categoryOfHulk)4,(categoryOfHulk)5,(categoryOfHulk)6,(categoryOfHulk)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Hulk")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -28070,6 +28812,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28087,6 +28830,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28102,12 +28846,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Hulk")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Hulk")]
 		[ExpandableObject]
 		[Optional]
@@ -28122,6 +28868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28136,6 +28883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28150,6 +28898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28162,12 +28911,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Hulk")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28182,6 +28933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Hulk")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -28197,6 +28949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28211,6 +28964,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28228,6 +28982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28240,12 +28995,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Hulk")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Hulk")]
 		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28799,12 +29556,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 	/// </summary>
+	[Description("A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.")]
 	[CategoryOrder("Pile",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PileViewModel : FeatureViewModel<Pile> {
 		private categoryOfPile? _categoryOfPile  = default;
 
+		[Description("Classification of pile, driven into the earth as a foundation or support for a structure.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28820,6 +29579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1,(categoryOfPile)3,(categoryOfPile)4,(categoryOfPile)5,(categoryOfPile)6,(categoryOfPile)7,(categoryOfPile)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -28829,6 +29589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28846,6 +29607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28861,12 +29623,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Pile")]
 		[ExpandableObject]
 		[Optional]
@@ -28881,6 +29645,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28895,6 +29660,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28909,6 +29675,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28923,6 +29690,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Pile")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -28936,6 +29704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -28945,6 +29714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28959,6 +29729,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28976,6 +29747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -28988,12 +29760,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29699,12 +30473,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A dyke (or dike) is an artificial embankment to contain or hold back water.
 	/// </summary>
+	[Description("A dyke (or dike) is an artificial embankment to contain or hold back water.")]
 	[CategoryOrder("Dyke",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DykeViewModel : FeatureViewModel<Dyke> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29720,12 +30496,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Dyke")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Dyke")]
 		[ExpandableObject]
 		[Optional]
@@ -29740,6 +30518,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29754,6 +30533,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29766,6 +30546,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Dyke")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -29775,6 +30556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29789,6 +30571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Dyke")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -29804,6 +30587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29818,6 +30602,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29835,6 +30620,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Dyke")]
 		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -29847,6 +30633,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Dyke")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -30201,12 +30988,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
 	/// </summary>
+	[Description("A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.")]
 	[CategoryOrder("ShorelineConstruction",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ShorelineConstructionViewModel : FeatureViewModel<ShorelineConstruction> {
 		private categoryOfShorelineConstruction? _categoryOfShorelineConstruction  = default;
 
+		[Description("Classification of shoreline construction based on use.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30222,6 +31011,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfShorelineConstruction[] categoryOfShorelineConstructionList => [(categoryOfShorelineConstruction)1,(categoryOfShorelineConstruction)2,(categoryOfShorelineConstruction)3,(categoryOfShorelineConstruction)4,(categoryOfShorelineConstruction)5,(categoryOfShorelineConstruction)6,(categoryOfShorelineConstruction)7,(categoryOfShorelineConstruction)8,(categoryOfShorelineConstruction)9,(categoryOfShorelineConstruction)10,(categoryOfShorelineConstruction)11,(categoryOfShorelineConstruction)12,(categoryOfShorelineConstruction)13,(categoryOfShorelineConstruction)14,(categoryOfShorelineConstruction)15,(categoryOfShorelineConstruction)16,(categoryOfShorelineConstruction)17,(categoryOfShorelineConstruction)20,(categoryOfShorelineConstruction)22,(categoryOfShorelineConstruction)23];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("ShorelineConstruction")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -30231,6 +31021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30248,6 +31039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30263,12 +31055,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ShorelineConstruction")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ShorelineConstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -30283,6 +31077,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30297,6 +31092,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("ShorelineConstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -30311,6 +31107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30325,6 +31122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30339,6 +31137,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30351,6 +31150,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("ShorelineConstruction")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -30360,6 +31160,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30374,6 +31175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("ShorelineConstruction")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -30387,6 +31189,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("ShorelineConstruction")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -30396,6 +31199,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30410,6 +31214,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30427,6 +31232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30444,6 +31250,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ShorelineConstruction")]
 		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -30456,6 +31263,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ShorelineConstruction")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -31013,10 +31821,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.
 	/// </summary>
+	[Description("A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.")]
 	[CategoryOrder("StructureOverNavigableWater",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class StructureOverNavigableWaterViewModel : FeatureViewModel<StructureOverNavigableWater> {
+		[Description("Classification of a covered or partially covered area where different use types of vessel can berth.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<categoryOfStructure> categoryOfStructure  { get; set; } = new ();
@@ -31024,6 +31834,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfStructure[] categoryOfStructureList => [(categoryOfStructure)1,(categoryOfStructure)2,(categoryOfStructure)3,(categoryOfStructure)4,(categoryOfStructure)5];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -31033,6 +31844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31050,6 +31862,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31065,12 +31878,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("StructureOverNavigableWater")]
 		[ExpandableObject]
 		[Optional]
@@ -31085,6 +31900,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31099,6 +31915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("StructureOverNavigableWater")]
 		[ExpandableObject]
 		[Mandatory]
@@ -31113,6 +31930,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31127,6 +31945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31141,6 +31960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31153,6 +31973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -31160,12 +31981,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11,(natureOfConstruction)12];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private product? _product  = default;
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31183,6 +32006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31197,6 +32021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("StructureOverNavigableWater")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -31210,6 +32035,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -31219,6 +32045,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("StructureOverNavigableWater")]
 		[ExpandableObject]
 		[Mandatory]
@@ -31233,6 +32060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31250,6 +32078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31264,6 +32093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31281,6 +32111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31293,12 +32124,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("StructureOverNavigableWater")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("StructureOverNavigableWater")]
 		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31974,12 +32807,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A raised way across low or wet ground or water.
 	/// </summary>
+	[Description("A raised way across low or wet ground or water.")]
 	[CategoryOrder("Causeway",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CausewayViewModel : FeatureViewModel<Causeway> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Causeway")]
 		[Editor(typeof(Editors.HorizonEditor<Causeway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -31995,12 +32830,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Causeway")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Causeway")]
 		[Editor(typeof(Editors.HorizonEditor<Causeway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32013,6 +32850,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Causeway")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -32022,6 +32860,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Causeway")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -32035,6 +32874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Causeway")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -32044,6 +32884,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("Causeway")]
 		[Editor(typeof(Editors.HorizonEditor<Causeway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32061,6 +32902,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Causeway")]
 		[Editor(typeof(Editors.HorizonEditor<Causeway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32073,6 +32915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Causeway")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -32422,12 +33265,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).
 	/// </summary>
+	[Description("An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).")]
 	[CategoryOrder("Canal",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CanalViewModel : FeatureViewModel<Canal> {
 		private categoryOfCanal? _categoryOfCanal  = default;
 
+		[Description("Classification of an artificial waterway used for travel, drainage, or irrigation.")]
 		[Category("Canal")]
 		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32445,6 +33290,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Canal")]
 		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32460,12 +33306,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Canal")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Canal")]
 		[ExpandableObject]
 		[Optional]
@@ -32480,6 +33328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("Canal")]
 		[ExpandableObject]
 		[Optional]
@@ -32494,6 +33343,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("Canal")]
 		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32508,6 +33358,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Canal")]
 		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32522,6 +33373,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Canal")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -32535,6 +33387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Canal")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -32544,6 +33397,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Canal")]
 		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32556,6 +33410,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Canal")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -32910,12 +33765,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.
 	/// </summary>
+	[Description("A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.")]
 	[CategoryOrder("DistanceMark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DistanceMarkViewModel : FeatureViewModel<DistanceMark> {
 		private Boolean? _distanceMarkVisible  = default;
 
+		[Description("A statement indicating whether a distance mark is visible or not.")]
 		[Category("DistanceMark")]
 		[Editor(typeof(Editors.HorizonEditor<DistanceMark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -32928,12 +33785,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DistanceMark")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DistanceMark")]
 		[ExpandableObject]
 		[Optional]
@@ -32948,6 +33807,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DistanceMark")]
 		[Editor(typeof(Editors.HorizonEditor<DistanceMark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32962,6 +33822,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private measuredDistanceValueViewModel? _measuredDistanceValue  = default;
 
+		[Description("The distance value indicated on a distance mark, or the distance between two measured distance marks.")]
 		[Category("DistanceMark")]
 		[ExpandableObject]
 		[Mandatory]
@@ -32976,6 +33837,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DistanceMark")]
 		[Editor(typeof(Editors.HorizonEditor<DistanceMark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -32988,6 +33850,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DistanceMark")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -33404,12 +34267,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.
 	/// </summary>
+	[Description("A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.")]
 	[CategoryOrder("Gate",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class GateViewModel : FeatureViewModel<Gate> {
 		private categoryOfGate? _categoryOfGate  = default;
 
+		[Description("Classification of a structure that can be swung, drawn, or lowered to block an entrance or a passageway.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33427,6 +34292,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33444,6 +34310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33456,12 +34323,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Gate")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private horizontalClearanceOpenViewModel? _horizontalClearanceOpen  = default;
 
+		[Description("The horizontal clearance measured between two points for an opening span.")]
 		[Category("Gate")]
 		[ExpandableObject]
 		[Optional]
@@ -33476,6 +34345,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33488,6 +34358,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Gate")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -33495,6 +34366,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Gate")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -33502,6 +34374,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Gate")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -33511,6 +34384,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceOpenViewModel? _verticalClearanceOpen  = default;
 
+		[Description("The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.")]
 		[Category("Gate")]
 		[ExpandableObject]
 		[Optional]
@@ -33525,6 +34399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33542,6 +34417,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("Gate")]
 		[ExpandableObject]
 		[Optional]
@@ -33556,6 +34432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Gate")]
 		[Editor(typeof(Editors.HorizonEditor<Gate>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33568,6 +34445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Gate")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -33948,12 +34826,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.
 	/// </summary>
+	[Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
 	[CategoryOrder("Dam",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DamViewModel : FeatureViewModel<Dam> {
 		private categoryOfDam? _categoryOfDam  = default;
 
+		[Description("Classification of a structure acting as barrier to water flow.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33969,6 +34849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfDam[] categoryOfDamList => [(categoryOfDam)1,(categoryOfDam)2,(categoryOfDam)3];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Dam")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -33978,6 +34859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -33995,6 +34877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34010,12 +34893,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Dam")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Dam")]
 		[ExpandableObject]
 		[Optional]
@@ -34030,6 +34915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34044,6 +34930,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34056,6 +34943,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Dam")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -34065,6 +34953,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34077,6 +34966,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Dam")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -34086,6 +34976,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34100,6 +34991,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34117,6 +35009,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34134,6 +35027,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Dam")]
 		[Editor(typeof(Editors.HorizonEditor<Dam>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34146,6 +35040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Dam")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -34526,12 +35421,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.
 	/// </summary>
+	[Description("A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.")]
 	[CategoryOrder("Crane",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CraneViewModel : FeatureViewModel<Crane> {
 		private categoryOfCrane? _categoryOfCrane  = default;
 
+		[Description("Classification of machines used for hoisting and moving heavy objects.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34547,6 +35444,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCrane[] categoryOfCraneList => [(categoryOfCrane)2,(categoryOfCrane)3,(categoryOfCrane)4,(categoryOfCrane)5,(categoryOfCrane)6];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Crane")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -34556,6 +35454,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34573,6 +35472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34588,12 +35488,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Crane")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34608,6 +35510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34622,6 +35525,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _liftingCapacity  = default;
 
+		[Description("The specific safe lifting capacity of a feature.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34636,6 +35540,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("Crane")]
 		[ExpandableObject]
 		[Optional]
@@ -34650,6 +35555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34664,6 +35570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _radius  = default;
 
+		[Description("The vector extending from the centre to the periphery of a circular or spherical feature.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34676,6 +35583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Crane")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -34685,6 +35593,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalClearanceFixedViewModel? _verticalClearanceFixed  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.")]
 		[Category("Crane")]
 		[ExpandableObject]
 		[Optional]
@@ -34699,6 +35608,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34716,6 +35626,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34730,6 +35641,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34747,6 +35659,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34759,12 +35672,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Crane")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -34779,6 +35694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inTheWater  = default;
 
+		[Description("An indication if the feature is located in or over navigable water.")]
 		[Category("Crane")]
 		[Editor(typeof(Editors.HorizonEditor<Crane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35337,10 +36253,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
+	[Description("A place, generally named or numbered, where a vessel may moor or anchor.")]
 	[CategoryOrder("Berth",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BerthViewModel : FeatureViewModel<Berth> {
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -35348,12 +36266,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Berth")]
 		[Multiplicity(1)]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Berth")]
 		[ExpandableObject]
 		[Optional]
@@ -35368,6 +36288,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceLength  = default;
 
+		[Description("The length of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical length of the feature.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35382,6 +36303,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceWidth  = default;
 
+		[Description("The width of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical width of the feature.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35396,6 +36318,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35410,6 +36333,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35424,6 +36348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _minimumBerthDepth  = default;
 
+		[Description("The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35436,10 +36361,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -35447,6 +36374,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -35456,6 +36384,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("Berth")]
 		[ExpandableObject]
 		[Optional]
@@ -35470,6 +36399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35482,6 +36412,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -35947,10 +36878,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
+	[Description("A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.")]
 	[CategoryOrder("Dolphin",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DolphinViewModel : FeatureViewModel<Dolphin> {
+		[Description("Classification of a post or group of posts, used for mooring or warping a vessel.")]
 		[Category("Dolphin")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfDolphin> categoryOfDolphin  { get; set; } = new ();
@@ -35958,6 +36891,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfDolphin[] categoryOfDolphinList => [(categoryOfDolphin)1,(categoryOfDolphin)2,(categoryOfDolphin)3,(categoryOfDolphin)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -35967,6 +36901,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -35984,6 +36919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36001,6 +36937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36013,12 +36950,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Dolphin")]
 		[ExpandableObject]
 		[Optional]
@@ -36033,6 +36972,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36047,6 +36987,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36059,6 +37000,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -36066,12 +37008,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36086,6 +37030,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Dolphin")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -36099,6 +37044,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -36108,6 +37054,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36122,6 +37069,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36139,6 +37087,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36151,12 +37100,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Dolphin")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Dolphin")]
 		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36811,12 +37762,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
+	[Description("Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.")]
 	[CategoryOrder("Bollard",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BollardViewModel : FeatureViewModel<Bollard> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36832,12 +37785,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Bollard")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Bollard")]
 		[ExpandableObject]
 		[Optional]
@@ -36852,6 +37807,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36864,12 +37820,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Bollard")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Bollard")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -36883,6 +37841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Bollard")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -36892,6 +37851,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -36904,12 +37864,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Bollard")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37354,12 +38316,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
+	[Description("An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.")]
 	[CategoryOrder("DryDock",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DryDockViewModel : FeatureViewModel<DryDock> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37377,6 +38341,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37391,6 +38356,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37403,12 +38369,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DryDock")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DryDock")]
 		[ExpandableObject]
 		[Optional]
@@ -37423,6 +38391,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceLength  = default;
 
+		[Description("The length of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical length of the feature.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37437,6 +38406,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceWidth  = default;
 
+		[Description("The width of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical width of the feature.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37451,6 +38421,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37465,6 +38436,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37479,6 +38451,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37493,6 +38466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37505,6 +38479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("DryDock")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -37512,6 +38487,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("DryDock")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -37521,6 +38497,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("DryDock")]
 		[ExpandableObject]
 		[Optional]
@@ -37535,6 +38512,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37547,6 +38525,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DryDock")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -37923,10 +38902,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
+	[Description("A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.")]
 	[CategoryOrder("FloatingDock",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FloatingDockViewModel : FeatureViewModel<FloatingDock> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("FloatingDock")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -37936,6 +38917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37953,6 +38935,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37970,6 +38953,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -37982,12 +38966,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FloatingDock")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FloatingDock")]
 		[ExpandableObject]
 		[Optional]
@@ -38002,6 +38988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceLength  = default;
 
+		[Description("The length of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical length of the feature.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38016,6 +39003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceWidth  = default;
 
+		[Description("The width of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical width of the feature.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38030,6 +39018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38044,6 +39033,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38058,6 +39048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38072,6 +39063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _liftingCapacity  = default;
 
+		[Description("The specific safe lifting capacity of a feature.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38086,6 +39078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38100,6 +39093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38112,6 +39106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FloatingDock")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -38121,6 +39116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38135,6 +39131,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38152,6 +39149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38164,12 +39162,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FloatingDock")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38725,12 +39725,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.
 	/// </summary>
+	[Description("A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.")]
 	[CategoryOrder("Pontoon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PontoonViewModel : FeatureViewModel<Pontoon> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38746,12 +39748,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Pontoon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Pontoon")]
 		[ExpandableObject]
 		[Optional]
@@ -38766,6 +39770,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38778,12 +39783,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Pontoon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38796,6 +39803,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Pontoon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -38805,6 +39813,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38819,6 +39828,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38836,6 +39846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -38848,12 +39859,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Pontoon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Pontoon")]
 		[Editor(typeof(Editors.HorizonEditor<Pontoon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39466,12 +40479,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
+	[Description("An artificially enclosed area within which ships may moor and which may have gates to regulate water level.")]
 	[CategoryOrder("DockArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DockAreaViewModel : FeatureViewModel<DockArea> {
 		private categoryOfDock? _categoryOfDock  = default;
 
+		[Description("Classification of vessel dock.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39489,6 +40504,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39504,12 +40520,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DockArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DockArea")]
 		[ExpandableObject]
 		[Optional]
@@ -39522,12 +40540,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("DockArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("DockArea")]
 		[ExpandableObject]
 		[Optional]
@@ -39542,6 +40562,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceLength  = default;
 
+		[Description("The length of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical length of the feature.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39556,6 +40577,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalClearanceWidth  = default;
 
+		[Description("The width of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical width of the feature.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39570,6 +40592,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39584,6 +40607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39596,6 +40620,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("DockArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -39605,6 +40630,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -39617,6 +40643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DockArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -39984,16 +41011,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
+	[Description("A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.")]
 	[CategoryOrder("Gridiron",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class GridironViewModel : FeatureViewModel<Gridiron> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Gridiron")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40008,6 +41038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40022,6 +41053,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40034,6 +41066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Gridiron")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -40041,6 +41074,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)11];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Gridiron")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -40050,6 +41084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40064,6 +41099,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40081,6 +41117,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40093,6 +41130,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Gridiron")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -40445,16 +41483,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 	/// </summary>
+	[Description("A wet dock in a waterway, permitting a ship to pass from one level to another.")]
 	[CategoryOrder("LockBasin",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LockBasinViewModel : FeatureViewModel<LockBasin> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LockBasin")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LockBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -40467,12 +41508,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LockBasin")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private horizontalClearanceFixedViewModel? _horizontalClearanceFixed  = default;
 
+		[Description("The horizontal clearance measured between two points for a fixed span.")]
 		[Category("LockBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -40487,6 +41530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("LockBasin")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40501,6 +41545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("LockBasin")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40515,6 +41560,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LockBasin")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40527,6 +41573,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LockBasin")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -40536,6 +41583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LockBasin")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40548,6 +41596,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LockBasin")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -40906,16 +41955,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.
 	/// </summary>
+	[Description("A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.")]
 	[CategoryOrder("MooringTrot",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringTrotViewModel : FeatureViewModel<MooringTrot> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MooringTrot")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("MooringTrot")]
 		[ExpandableObject]
 		[Optional]
@@ -40930,6 +41982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MooringTrot")]
 		[Editor(typeof(Editors.HorizonEditor<MooringTrot>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40944,6 +41997,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MooringTrot")]
 		[Editor(typeof(Editors.HorizonEditor<MooringTrot>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -40956,6 +42010,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MooringTrot")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -41363,12 +42418,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
 	/// </summary>
+	[Description("A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.")]
 	[CategoryOrder("SeaAreaNamedWaterArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeaAreaNamedWaterAreaViewModel : FeatureViewModel<SeaAreaNamedWaterArea> {
 		private categoryOfSeaArea? _categoryOfSeaArea  = default;
 
+		[Description("Classification of an area based on its physical characteristics.")]
 		[Category("SeaAreaNamedWaterArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaAreaNamedWaterArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -41384,12 +42441,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2,(categoryOfSeaArea)3,(categoryOfSeaArea)4,(categoryOfSeaArea)5,(categoryOfSeaArea)6,(categoryOfSeaArea)7,(categoryOfSeaArea)8,(categoryOfSeaArea)9,(categoryOfSeaArea)10,(categoryOfSeaArea)11,(categoryOfSeaArea)12,(categoryOfSeaArea)13,(categoryOfSeaArea)14,(categoryOfSeaArea)15,(categoryOfSeaArea)16,(categoryOfSeaArea)17,(categoryOfSeaArea)18,(categoryOfSeaArea)19,(categoryOfSeaArea)20,(categoryOfSeaArea)21,(categoryOfSeaArea)22,(categoryOfSeaArea)23,(categoryOfSeaArea)24,(categoryOfSeaArea)25,(categoryOfSeaArea)26,(categoryOfSeaArea)27,(categoryOfSeaArea)28,(categoryOfSeaArea)29,(categoryOfSeaArea)30,(categoryOfSeaArea)31,(categoryOfSeaArea)32,(categoryOfSeaArea)33,(categoryOfSeaArea)34,(categoryOfSeaArea)35,(categoryOfSeaArea)36,(categoryOfSeaArea)37,(categoryOfSeaArea)38,(categoryOfSeaArea)39,(categoryOfSeaArea)40,(categoryOfSeaArea)41,(categoryOfSeaArea)42,(categoryOfSeaArea)43,(categoryOfSeaArea)44,(categoryOfSeaArea)45,(categoryOfSeaArea)46,(categoryOfSeaArea)47,(categoryOfSeaArea)48,(categoryOfSeaArea)49,(categoryOfSeaArea)50,(categoryOfSeaArea)51,(categoryOfSeaArea)52,(categoryOfSeaArea)53,(categoryOfSeaArea)54,(categoryOfSeaArea)55,(categoryOfSeaArea)56];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SeaAreaNamedWaterArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SeaAreaNamedWaterArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaAreaNamedWaterArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -41404,6 +42463,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SeaAreaNamedWaterArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaAreaNamedWaterArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -41416,6 +42476,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SeaAreaNamedWaterArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -41739,12 +42800,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.
 	/// </summary>
+	[Description("Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.")]
 	[CategoryOrder("TidalStreamFloodEbb",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TidalStreamFloodEbbViewModel : FeatureViewModel<TidalStreamFloodEbb> {
 		private categoryOfTidalStream? _categoryOfTidalStream  = default;
 
+		[Description("Classification of the alternating horizontal movement of water associated with the rise and fall of the tide caused by tide producing forces.")]
 		[Category("TidalStreamFloodEbb")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamFloodEbb>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -41760,12 +42823,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfTidalStream[] categoryOfTidalStreamList => [(categoryOfTidalStream)1,(categoryOfTidalStream)2,(categoryOfTidalStream)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("TidalStreamFloodEbb")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TidalStreamFloodEbb")]
 		[ExpandableObject]
 		[Optional]
@@ -41780,6 +42845,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TidalStreamFloodEbb")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamFloodEbb>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -41794,6 +42860,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("TidalStreamFloodEbb")]
 		[ExpandableObject]
 		[Mandatory]
@@ -41808,6 +42875,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private speedViewModel? _speed  = default;
 
+		[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.")]
 		[Category("TidalStreamFloodEbb")]
 		[ExpandableObject]
 		[Mandatory]
@@ -41822,6 +42890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TidalStreamFloodEbb")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamFloodEbb>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -41834,6 +42903,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TidalStreamFloodEbb")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -42175,16 +43245,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Any current that is caused by other than tide producing forces.
 	/// </summary>
+	[Description("Any current that is caused by other than tide producing forces.")]
 	[CategoryOrder("CurrentNonGravitational",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CurrentNonGravitationalViewModel : FeatureViewModel<CurrentNonGravitational> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CurrentNonGravitational")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CurrentNonGravitational")]
 		[ExpandableObject]
 		[Optional]
@@ -42199,6 +43272,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CurrentNonGravitational")]
 		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -42213,6 +43287,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("CurrentNonGravitational")]
 		[ExpandableObject]
 		[Mandatory]
@@ -42225,12 +43300,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CurrentNonGravitational")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private speedViewModel? _speed  = default;
 
+		[Description("Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.")]
 		[Category("CurrentNonGravitational")]
 		[ExpandableObject]
 		[Mandatory]
@@ -42245,6 +43322,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CurrentNonGravitational")]
 		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -42262,6 +43340,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CurrentNonGravitational")]
 		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -42274,6 +43353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CurrentNonGravitational")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -42625,12 +43705,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.
 	/// </summary>
+	[Description("The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.")]
 	[CategoryOrder("WaterTurbulence",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WaterTurbulenceViewModel : FeatureViewModel<WaterTurbulence> {
 		private categoryOfWaterTurbulence? _categoryOfWaterTurbulence  = default;
 
+		[Description("Classification of an unstable sea state.")]
 		[Category("WaterTurbulence")]
 		[Editor(typeof(Editors.HorizonEditor<WaterTurbulence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -42646,12 +43728,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfWaterTurbulence[] categoryOfWaterTurbulenceList => [(categoryOfWaterTurbulence)1,(categoryOfWaterTurbulence)2,(categoryOfWaterTurbulence)3,(categoryOfWaterTurbulence)4,(categoryOfWaterTurbulence)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("WaterTurbulence")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("WaterTurbulence")]
 		[Editor(typeof(Editors.HorizonEditor<WaterTurbulence>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -42666,6 +43750,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("WaterTurbulence")]
 		[Editor(typeof(Editors.HorizonEditor<WaterTurbulence>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -42678,6 +43763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("WaterTurbulence")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -43001,16 +44087,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.
 	/// </summary>
+	[Description("Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.")]
 	[CategoryOrder("TidalStreamPanelData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TidalStreamPanelDataViewModel : FeatureViewModel<TidalStreamPanelData> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("TidalStreamPanelData")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TidalStreamPanelData")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamPanelData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43025,6 +44114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _stationName  = default;
 
+		[Description("The name of the reference tide station with reference water level for tidal stream panel observations.")]
 		[Category("TidalStreamPanelData")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamPanelData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -43039,6 +44129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _stationNumber  = default;
 
+		[Description("The identification number of the reference tide station with reference water level for tidal stream panel observations.")]
 		[Category("TidalStreamPanelData")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamPanelData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43051,12 +44142,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.")]
 		[Category("TidalStreamPanelData")]
 		[Multiplicity(1)]
 		public ObservableCollection<tidalStreamPanelValuesViewModel> tidalStreamPanelValues  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TidalStreamPanelData")]
 		[Editor(typeof(Editors.HorizonEditor<TidalStreamPanelData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43069,6 +44162,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TidalStreamPanelData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -43405,16 +44499,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
 	/// </summary>
+	[Description("Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.")]
 	[CategoryOrder("Sounding",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingViewModel : FeatureViewModel<Sounding> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Sounding")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Sounding")]
 		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43427,6 +44524,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Sounding")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -43436,6 +44534,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Sounding")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -43451,6 +44550,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Sounding")]
 		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43466,6 +44566,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)18];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("Sounding")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -43475,6 +44576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Sounding")]
 		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43487,6 +44589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Sounding")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -43833,12 +44936,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of the bottom of a body of water which has been deepened by dredging.
 	/// </summary>
+	[Description("An area of the bottom of a body of water which has been deepened by dredging.")]
 	[CategoryOrder("DredgedArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("DredgedArea")]
 		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -43853,6 +44958,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMaximumValue  = default;
 
+		[Description("The maximum (deepest) value of a depth range.")]
 		[Category("DredgedArea")]
 		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43867,6 +44973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dredgedDate  = default;
 
+		[Description("The date that dredging occurred.")]
 		[Category("DredgedArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -43880,12 +44987,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DredgedArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DredgedArea")]
 		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43900,6 +45009,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("DredgedArea")]
 		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43914,6 +45024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private qualityOfVerticalMeasurement? _qualityOfVerticalMeasurement  = default;
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("DredgedArea")]
 		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -43929,6 +45040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DredgedArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -43936,6 +45048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)23,(restriction)25,(restriction)27,(restriction)39];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("DredgedArea")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -43945,6 +45058,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("DredgedArea")]
 		[ExpandableObject]
 		[Optional]
@@ -43957,10 +45071,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("DredgedArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DredgedArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -44410,12 +45526,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area that has been determined to be clear of navigational dangers to a specified depth.
 	/// </summary>
+	[Description("An area that has been determined to be clear of navigational dangers to a specified depth.")]
 	[CategoryOrder("SweptArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SweptAreaViewModel : FeatureViewModel<SweptArea> {
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("SweptArea")]
 		[Editor(typeof(Editors.HorizonEditor<SweptArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -44430,6 +45548,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SweptArea")]
 		[Editor(typeof(Editors.HorizonEditor<SweptArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -44444,6 +45563,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _sweptDate  = default;
 
+		[Description("The date that the area was swept by a survey.")]
 		[Category("SweptArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -44459,6 +45579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SweptArea")]
 		[Editor(typeof(Editors.HorizonEditor<SweptArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -44471,6 +45592,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SweptArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -44868,12 +45990,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
 	/// </summary>
+	[Description("A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.")]
 	[CategoryOrder("DepthContour",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthContourViewModel : FeatureViewModel<DepthContour> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DepthContour")]
 		[Editor(typeof(Editors.HorizonEditor<DepthContour>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -44888,6 +46012,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfDepthContour  = default;
 
+		[Description("The depth of a sea bottom contour.")]
 		[Category("DepthContour")]
 		[Editor(typeof(Editors.HorizonEditor<DepthContour>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -44902,6 +46027,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DepthContour")]
 		[Editor(typeof(Editors.HorizonEditor<DepthContour>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -44914,6 +46040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DepthContour")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -45146,12 +46273,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A water area whose depth is within a defined range of values.
 	/// </summary>
+	[Description("A water area whose depth is within a defined range of values.")]
 	[CategoryOrder("DepthArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("DepthArea")]
 		[Editor(typeof(Editors.HorizonEditor<DepthArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -45166,6 +46295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMaximumValue  = default;
 
+		[Description("The maximum (deepest) value of a depth range.")]
 		[Category("DepthArea")]
 		[Editor(typeof(Editors.HorizonEditor<DepthArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -45180,6 +46310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DepthArea")]
 		[Editor(typeof(Editors.HorizonEditor<DepthArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45192,6 +46323,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DepthArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -45424,12 +46556,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Upon investigation the bottom was not found at this depth.
 	/// </summary>
+	[Description("Upon investigation the bottom was not found at this depth.")]
 	[CategoryOrder("DepthNoBottomFound",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthNoBottomFoundViewModel : FeatureViewModel<DepthNoBottomFound> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DepthNoBottomFound")]
 		[Editor(typeof(Editors.HorizonEditor<DepthNoBottomFound>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45442,6 +46576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("DepthNoBottomFound")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -45451,6 +46586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DepthNoBottomFound")]
 		[Editor(typeof(Editors.HorizonEditor<DepthNoBottomFound>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45463,6 +46599,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DepthNoBottomFound")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -45702,12 +46839,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area where hydrographic survey data is non-existent.
 	/// </summary>
+	[Description("An area where hydrographic survey data is non-existent.")]
 	[CategoryOrder("UnsurveyedArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class UnsurveyedAreaViewModel : FeatureViewModel<UnsurveyedArea> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("UnsurveyedArea")]
 		[Editor(typeof(Editors.HorizonEditor<UnsurveyedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45720,6 +46859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("UnsurveyedArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -45946,16 +47086,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
 	/// </summary>
+	[Description("A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.")]
 	[CategoryOrder("SeabedArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeabedAreaViewModel : FeatureViewModel<SeabedArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SeabedArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SeabedArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45968,12 +47111,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general nature of the material of which the land surface or the seabed is composed.")]
 		[Category("SeabedArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<surfaceCharacteristicsViewModel> surfaceCharacteristics  { get; set; } = new ();
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("SeabedArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -45991,6 +47136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SeabedArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46003,6 +47149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SeabedArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -46336,12 +47483,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Any macroscopic marine alga.
 	/// </summary>
+	[Description("Any macroscopic marine alga.")]
 	[CategoryOrder("WeedKelp",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WeedKelpViewModel : FeatureViewModel<WeedKelp> {
 		private categoryOfWeedKelp? _categoryOfWeedKelp  = default;
 
+		[Description("Classification of marine vegetation of the algae class.")]
 		[Category("WeedKelp")]
 		[Editor(typeof(Editors.HorizonEditor<WeedKelp>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46357,12 +47506,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfWeedKelp[] categoryOfWeedKelpList => [(categoryOfWeedKelp)1,(categoryOfWeedKelp)2,(categoryOfWeedKelp)4];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("WeedKelp")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("WeedKelp")]
 		[Editor(typeof(Editors.HorizonEditor<WeedKelp>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46377,6 +47528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("WeedKelp")]
 		[Editor(typeof(Editors.HorizonEditor<WeedKelp>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46389,6 +47541,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("WeedKelp")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -46712,16 +47865,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.
 	/// </summary>
+	[Description("Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.")]
 	[CategoryOrder("Seagrass",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeagrassViewModel : FeatureViewModel<Seagrass> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Seagrass")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Seagrass")]
 		[Editor(typeof(Editors.HorizonEditor<Seagrass>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46736,6 +47892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Seagrass")]
 		[Editor(typeof(Editors.HorizonEditor<Seagrass>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -46748,6 +47905,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Seagrass")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -47068,12 +48226,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.
 	/// </summary>
+	[Description("Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.")]
 	[CategoryOrder("Sandwave",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SandwaveViewModel : FeatureViewModel<Sandwave> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Sandwave")]
 		[Editor(typeof(Editors.HorizonEditor<Sandwave>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47088,6 +48248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Sandwave")]
 		[Editor(typeof(Editors.HorizonEditor<Sandwave>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47102,6 +48263,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Sandwave")]
 		[Editor(typeof(Editors.HorizonEditor<Sandwave>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47114,6 +48276,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Sandwave")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -47346,16 +48509,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.
 	/// </summary>
+	[Description("A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.")]
 	[CategoryOrder("Spring",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpringViewModel : FeatureViewModel<Spring> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Spring")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Spring")]
 		[Editor(typeof(Editors.HorizonEditor<Spring>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47370,6 +48536,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Spring")]
 		[Editor(typeof(Editors.HorizonEditor<Spring>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47382,6 +48549,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Spring")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -47702,12 +48870,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
 	/// </summary>
+	[Description("A concreted mass of stony material or coral which dries, is awash or is below the water surface.")]
 	[CategoryOrder("UnderwaterAwashRock",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class UnderwaterAwashRockViewModel : FeatureViewModel<UnderwaterAwashRock> {
 		private expositionOfSounding? _expositionOfSounding  = default;
 
+		[Description("Indicates the relationship of the depth of a feature to the range of depth of the surrounding depth area.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47723,12 +48893,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("UnderwaterAwashRock")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47743,6 +48915,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private natureOfSurface? _natureOfSurface  = default;
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47758,6 +48931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)14];
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("UnderwaterAwashRock")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -47767,6 +48941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("UnderwaterAwashRock")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -47782,6 +48957,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47797,6 +48973,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)18];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("UnderwaterAwashRock")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -47806,6 +48983,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfSounding  = default;
 
+		[Description("The value of the measurement of a sounding relative to the chart datum.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -47820,6 +48998,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -47837,6 +49016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47849,12 +49029,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("UnderwaterAwashRock")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private double? _defaultClearanceDepth  = default;
 
+		[Description("The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -47869,6 +49051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _surroundingDepth  = default;
 
+		[Description("The depth value determined for seabed around an underwater hazard, based on the depth of the surrounding area.")]
 		[Category("UnderwaterAwashRock")]
 		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -48241,12 +49424,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
 	/// </summary>
+	[Description("The ruined remains of a stranded or sunken vessel which has been rendered useless.")]
 	[CategoryOrder("Wreck",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WreckViewModel : FeatureViewModel<Wreck> {
 		private categoryOfWreck? _categoryOfWreck  = default;
 
+		[Description("Classification of a wrecked or ruined ship.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48264,6 +49449,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private expositionOfSounding? _expositionOfSounding  = default;
 
+		[Description("Indicates the relationship of the depth of a feature to the range of depth of the surrounding depth area.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48279,12 +49465,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Wreck")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48299,6 +49487,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48311,6 +49500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Wreck")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -48320,6 +49510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48334,6 +49525,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Wreck")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -48347,6 +49539,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Wreck")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -48354,6 +49547,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)7,(status)13,(status)18];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("Wreck")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -48363,6 +49557,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfSounding  = default;
 
+		[Description("The value of the measurement of a sounding relative to the chart datum.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48377,6 +49572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48394,6 +49590,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -48411,6 +49608,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48423,12 +49621,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Wreck")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48443,6 +49643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _defaultClearanceDepth  = default;
 
+		[Description("The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48457,6 +49658,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _surroundingDepth  = default;
 
+		[Description("The depth value determined for seabed around an underwater hazard, based on the depth of the surrounding area.")]
 		[Category("Wreck")]
 		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -48929,12 +50131,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
 	/// </summary>
+	[Description("In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.")]
 	[CategoryOrder("Obstruction",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ObstructionViewModel : FeatureViewModel<Obstruction> {
 		private categoryOfObstruction? _categoryOfObstruction  = default;
 
+		[Description("Classification of objects that impede movement.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48952,6 +50156,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48969,6 +50174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private expositionOfSounding? _expositionOfSounding  = default;
 
+		[Description("Indicates the relationship of the depth of a feature to the range of depth of the surrounding depth area.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -48984,12 +50190,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49004,6 +50212,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49018,6 +50227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49030,6 +50240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
@@ -49037,6 +50248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -49044,6 +50256,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public product[] productList => [(product)1,(product)2,(product)3,(product)8,(product)23];
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -49053,6 +50266,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("Obstruction")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -49066,6 +50280,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -49073,6 +50288,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)7,(status)8,(status)13,(status)18,(status)28];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -49082,6 +50298,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfSounding  = default;
 
+		[Description("The value of the measurement of a sounding relative to the chart datum.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49096,6 +50313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49110,6 +50328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -49127,6 +50346,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49139,12 +50359,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Obstruction")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private double? _defaultClearanceDepth  = default;
 
+		[Description("The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49159,6 +50381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _surroundingDepth  = default;
 
+		[Description("The depth value determined for seabed around an underwater hazard, based on the depth of the surrounding area.")]
 		[Category("Obstruction")]
 		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -49651,16 +50874,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
 	/// </summary>
+	[Description("Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.")]
 	[CategoryOrder("FoulGround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FoulGroundViewModel : FeatureViewModel<FoulGround> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FoulGround")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FoulGround")]
 		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49673,6 +50899,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("FoulGround")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -49682,6 +50909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("FoulGround")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -49695,6 +50923,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FoulGround")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -49702,6 +50931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)13,(status)18,(status)28];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("FoulGround")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -49711,6 +50941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfSounding  = default;
 
+		[Description("The value of the measurement of a sounding relative to the chart datum.")]
 		[Category("FoulGround")]
 		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49725,6 +50956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("FoulGround")]
 		[ExpandableObject]
 		[Optional]
@@ -49739,6 +50971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FoulGround")]
 		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -49751,6 +50984,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FoulGround")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -50113,12 +51347,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
 	/// </summary>
+	[Description("Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.")]
 	[CategoryOrder("DiscolouredWater",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DiscolouredWaterViewModel : FeatureViewModel<DiscolouredWater> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DiscolouredWater")]
 		[Editor(typeof(Editors.HorizonEditor<DiscolouredWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50133,6 +51369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("DiscolouredWater")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -50148,6 +51385,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DiscolouredWater")]
 		[Editor(typeof(Editors.HorizonEditor<DiscolouredWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50160,6 +51398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DiscolouredWater")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -50392,12 +51631,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
 	/// </summary>
+	[Description("A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.")]
 	[CategoryOrder("FishingFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FishingFacilityViewModel : FeatureViewModel<FishingFacility> {
 		private categoryOfFishingFacility? _categoryOfFishingFacility  = default;
 
+		[Description("Classification of fishing facility provided based on different fishing methods.")]
 		[Category("FishingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50415,6 +51656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("FishingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50430,12 +51672,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FishingFacility")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FishingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50448,12 +51692,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FishingFacility")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("FishingFacility")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -50467,6 +51713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FishingFacility")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -50476,6 +51723,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("FishingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50490,6 +51738,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FishingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -50502,6 +51751,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FishingFacility")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -51016,12 +52266,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.
 	/// </summary>
+	[Description("An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.")]
 	[CategoryOrder("MarineFarmCulture",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MarineFarmCultureViewModel : FeatureViewModel<MarineFarmCulture> {
 		private categoryOfMarineFarmCulture? _categoryOfMarineFarmCulture  = default;
 
+		[Description("Classification of an area of water devoted to the raising, breeding, or production of a specific aquatic animal.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51039,6 +52291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private expositionOfSounding? _expositionOfSounding  = default;
 
+		[Description("Indicates the relationship of the depth of a feature to the range of depth of the surrounding depth area.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51054,12 +52307,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("MarineFarmCulture")]
 		[ExpandableObject]
 		[Optional]
@@ -51074,6 +52329,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51088,6 +52344,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51100,10 +52357,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -51111,6 +52370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -51118,6 +52378,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -51127,6 +52388,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfSounding  = default;
 
+		[Description("The value of the measurement of a sounding relative to the chart datum.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51141,6 +52403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51155,6 +52418,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("MarineFarmCulture")]
 		[ExpandableObject]
 		[Optional]
@@ -51167,12 +52431,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -51190,6 +52456,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MarineFarmCulture")]
 		[Editor(typeof(Editors.HorizonEditor<MarineFarmCulture>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51202,6 +52469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MarineFarmCulture")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -51602,12 +52870,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
 	/// </summary>
+	[Description("A permanent offshore structure, either fixed or floating.")]
 	[CategoryOrder("OffshorePlatform",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OffshorePlatformViewModel : FeatureViewModel<OffshorePlatform> {
 		private categoryOfOffshorePlatform? _categoryOfOffshorePlatform  = default;
 
+		[Description("Classification of an offshore raised structure.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51623,6 +52893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1,(categoryOfOffshorePlatform)2,(categoryOfOffshorePlatform)3,(categoryOfOffshorePlatform)4,(categoryOfOffshorePlatform)5,(categoryOfOffshorePlatform)6,(categoryOfOffshorePlatform)7,(categoryOfOffshorePlatform)8,(categoryOfOffshorePlatform)9,(categoryOfOffshorePlatform)10,(categoryOfOffshorePlatform)11];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -51632,6 +52903,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51649,6 +52921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51664,12 +52937,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("OffshorePlatform")]
 		[ExpandableObject]
 		[Optional]
@@ -51684,6 +52959,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _flareStack  = default;
 
+		[Description("A tall structure used for burning-off waste oil or gas.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51698,6 +52974,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51712,6 +52989,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51724,6 +53002,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -51733,6 +53012,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51747,6 +53027,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("OffshorePlatform")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -51760,6 +53041,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -51769,6 +53051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51783,6 +53066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51800,6 +53084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -51812,12 +53097,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52374,12 +53661,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
 	/// </summary>
+	[Description("An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.")]
 	[CategoryOrder("CableSubmarine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
 		private double? _buriedDepth  = default;
 
+		[Description("The depth below the seabed to which an object is buried.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52394,6 +53683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfCable? _categoryOfCable  = default;
 
+		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52411,6 +53701,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52426,12 +53717,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CableSubmarine")]
 		[ExpandableObject]
 		[Optional]
@@ -52446,6 +53739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52458,6 +53752,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -52467,6 +53762,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52479,6 +53775,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -52905,10 +54202,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area which contains one or more submarine cables.
 	/// </summary>
+	[Description("An area which contains one or more submarine cables.")]
 	[CategoryOrder("CableArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableAreaViewModel : FeatureViewModel<CableArea> {
+		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<categoryOfCable> categoryOfCable  { get; set; } = new ();
@@ -52916,12 +54215,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)7,(categoryOfCable)10];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CableArea")]
 		[ExpandableObject]
 		[Optional]
@@ -52936,6 +54237,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CableArea")]
 		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52948,6 +54250,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -52955,6 +54258,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)16,(restriction)17,(restriction)18,(restriction)20,(restriction)23,(restriction)24,(restriction)25,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -52962,12 +54266,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)7,(status)13];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CableArea")]
 		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -52980,6 +54286,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CableArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -53346,12 +54653,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A connected set of pipes for conveying liquids, slurries, or gases.
 	/// </summary>
+	[Description("A connected set of pipes for conveying liquids, slurries, or gases.")]
 	[CategoryOrder("PipelineSubmarineOnLand",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PipelineSubmarineOnLandViewModel : FeatureViewModel<PipelineSubmarineOnLand> {
 		private double? _buriedDepth  = default;
 
+		[Description("The depth below the seabed to which an object is buried.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53364,6 +54673,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Classification of a pipe systems use.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe  { get; set; } = new ();
@@ -53373,6 +54683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53390,6 +54701,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53404,6 +54716,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMaximumValue  = default;
 
+		[Description("The maximum (deepest) value of a depth range.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53416,12 +54729,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PipelineSubmarineOnLand")]
 		[ExpandableObject]
 		[Optional]
@@ -53436,6 +54751,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53450,6 +54766,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("PipelineSubmarineOnLand")]
 		[ExpandableObject]
 		[Optional]
@@ -53462,6 +54779,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -53471,6 +54789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("PipelineSubmarineOnLand")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -53484,6 +54803,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -53491,6 +54811,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)3,(restriction)4,(restriction)5,(restriction)8,(restriction)9,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)16,(restriction)17,(restriction)18,(restriction)20,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -53500,6 +54821,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53512,12 +54834,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("PipelineSubmarineOnLand")]
 		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53916,10 +55240,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area containing one or more submarine pipelines.
 	/// </summary>
+	[Description("An area containing one or more submarine pipelines.")]
 	[CategoryOrder("SubmarinePipelineArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SubmarinePipelineAreaViewModel : FeatureViewModel<SubmarinePipelineArea> {
+		[Description("Classification of a pipe systems use.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe  { get; set; } = new ();
@@ -53927,12 +55253,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2,(categoryOfPipelinePipe)3,(categoryOfPipelinePipe)4,(categoryOfPipelinePipe)5,(categoryOfPipelinePipe)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SubmarinePipelineArea")]
 		[ExpandableObject]
 		[Optional]
@@ -53947,6 +55275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SubmarinePipelineArea")]
 		[Editor(typeof(Editors.HorizonEditor<SubmarinePipelineArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53959,6 +55288,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -53966,6 +55296,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public product[] productList => [(product)1,(product)2,(product)3,(product)7,(product)8,(product)18,(product)19];
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -53973,6 +55304,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -53980,12 +55312,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)7];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SubmarinePipelineArea")]
 		[Editor(typeof(Editors.HorizonEditor<SubmarinePipelineArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -53998,6 +55332,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SubmarinePipelineArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -54374,12 +55709,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area at sea within which there are production facilities.
 	/// </summary>
+	[Description("An area at sea within which there are production facilities.")]
 	[CategoryOrder("OffshoreProductionArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OffshoreProductionAreaViewModel : FeatureViewModel<OffshoreProductionArea> {
 		private categoryOfOffshoreProductionArea? _categoryOfOffshoreProductionArea  = default;
 
+		[Description("Classification of an area at sea within which there are production facilities.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54397,6 +55734,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54412,12 +55750,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)4,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("OffshoreProductionArea")]
 		[ExpandableObject]
 		[Optional]
@@ -54432,6 +55772,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54446,6 +55787,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54458,6 +55800,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -54467,6 +55810,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54481,6 +55825,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("OffshoreProductionArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -54494,6 +55839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -54501,6 +55847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -54510,6 +55857,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54522,12 +55870,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54545,6 +55895,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private waterLevelEffect? _waterLevelEffect  = default;
 
+		[Description("The effect of the surrounding water on an object.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54562,6 +55913,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("OffshoreProductionArea")]
 		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -54574,6 +55926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("OffshoreProductionArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -54964,12 +56317,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 	/// </summary>
+	[Description("A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.")]
 	[CategoryOrder("NavigationLine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationLineViewModel : FeatureViewModel<NavigationLine> {
 		private categoryOfNavigationLine? _categoryOfNavigationLine  = default;
 
+		[Description("Classification of route guidance given to vessels.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -54987,6 +56342,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("NavigationLine")]
 		[ExpandableObject]
 		[Optional]
@@ -55001,6 +56357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55015,6 +56372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _measuredDistance  = default;
 
+		[Description("A course at sea, whose ends are indicated by ranges ashore, and whose length has been accurately measured for determining the speed of vessels.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55029,6 +56387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("NavigationLine")]
 		[ExpandableObject]
 		[Mandatory]
@@ -55041,10 +56400,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -55054,6 +56415,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55066,6 +56428,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -55414,12 +56777,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
+	[Description("A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.")]
 	[CategoryOrder("RecommendedTrack",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedTrackViewModel : FeatureViewModel<RecommendedTrack> {
 		private Boolean? _basedOnFixedMarks  = default;
 
+		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -55434,6 +56799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55446,12 +56812,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RecommendedTrack")]
 		[ExpandableObject]
 		[Optional]
@@ -55466,6 +56834,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55480,6 +56849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55494,6 +56864,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -55506,10 +56877,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -55517,6 +56890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -55524,6 +56898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)6,(status)8,(status)9,(status)14];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -55533,6 +56908,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -55550,6 +56926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("RecommendedTrack")]
 		[ExpandableObject]
 		[Optional]
@@ -55564,6 +56941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -55576,6 +56954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -56125,16 +57504,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
 	/// </summary>
+	[Description("Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.")]
 	[CategoryOrder("RangeSystem",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RangeSystemViewModel : FeatureViewModel<RangeSystem> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RangeSystem")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RangeSystem")]
 		[ExpandableObject]
 		[Optional]
@@ -56149,6 +57531,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RangeSystem")]
 		[Editor(typeof(Editors.HorizonEditor<RangeSystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56163,6 +57546,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("RangeSystem")]
 		[Editor(typeof(Editors.HorizonEditor<RangeSystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56177,6 +57561,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RangeSystem")]
 		[Editor(typeof(Editors.HorizonEditor<RangeSystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56189,6 +57574,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RangeSystem")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -56688,12 +58074,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.
 	/// </summary>
+	[Description("That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.")]
 	[CategoryOrder("Fairway",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FairwayViewModel : FeatureViewModel<Fairway> {
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56706,12 +58094,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Fairway")]
 		[ExpandableObject]
 		[Optional]
@@ -56726,6 +58116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56740,6 +58131,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56754,6 +58146,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56766,6 +58159,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -56773,6 +58167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)6];
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -56780,6 +58175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -56789,6 +58185,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56806,6 +58203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("Fairway")]
 		[ExpandableObject]
 		[Optional]
@@ -56818,12 +58216,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Fairway")]
 		[Editor(typeof(Editors.HorizonEditor<Fairway>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -56836,6 +58236,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Fairway")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -57382,16 +58783,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.
 	/// </summary>
+	[Description("That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.")]
 	[CategoryOrder("FairwaySystem",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FairwaySystemViewModel : FeatureViewModel<FairwaySystem> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FairwaySystem")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FairwaySystem")]
 		[ExpandableObject]
 		[Optional]
@@ -57406,6 +58810,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FairwaySystem")]
 		[Editor(typeof(Editors.HorizonEditor<FairwaySystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -57420,6 +58825,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("FairwaySystem")]
 		[Editor(typeof(Editors.HorizonEditor<FairwaySystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -57432,12 +58838,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FairwaySystem")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FairwaySystem")]
 		[Editor(typeof(Editors.HorizonEditor<FairwaySystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -57450,6 +58858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FairwaySystem")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -57951,12 +59360,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The recommended route centreline indicates the 'centreline' of a recommended route.
 	/// </summary>
+	[Description("The recommended route centreline indicates the 'centreline' of a recommended route.")]
 	[CategoryOrder("RecommendedRouteCentreline",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedRouteCentrelineViewModel : FeatureViewModel<RecommendedRouteCentreline> {
 		private Boolean? _basedOnFixedMarks  = default;
 
+		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -57971,6 +59382,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -57983,12 +59395,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RecommendedRouteCentreline")]
 		[ExpandableObject]
 		[Optional]
@@ -58003,6 +59417,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58017,6 +59432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58029,10 +59445,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -58040,6 +59458,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -58047,6 +59466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)6,(status)9];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -58056,6 +59476,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58073,6 +59494,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("RecommendedRouteCentreline")]
 		[ExpandableObject]
 		[Optional]
@@ -58087,6 +59509,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RecommendedRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58099,6 +59522,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RecommendedRouteCentreline")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -58645,12 +60069,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).
 	/// </summary>
+	[Description("An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).")]
 	[CategoryOrder("TwoWayRoutePart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TwoWayRoutePartViewModel : FeatureViewModel<TwoWayRoutePart> {
 		private Boolean? _basedOnFixedMarks  = default;
 
+		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58665,6 +60091,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58679,6 +60106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TwoWayRoutePart")]
 		[ExpandableObject]
 		[Optional]
@@ -58693,6 +60121,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58707,6 +60136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -58719,6 +60149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("TwoWayRoutePart")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -58726,6 +60157,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("TwoWayRoutePart")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -58733,6 +60165,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("TwoWayRoutePart")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -58742,6 +60175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -58759,6 +60193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("TwoWayRoutePart")]
 		[ExpandableObject]
 		[Optional]
@@ -58773,6 +60208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TwoWayRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -58785,6 +60221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TwoWayRoutePart")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -59230,16 +60667,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.
 	/// </summary>
+	[Description("A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.")]
 	[CategoryOrder("TwoWayRoute",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TwoWayRouteViewModel : FeatureViewModel<TwoWayRoute> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("TwoWayRoute")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TwoWayRoute")]
 		[ExpandableObject]
 		[Optional]
@@ -59254,6 +60694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TwoWayRoute")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -59268,6 +60709,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("TwoWayRoute")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -59282,6 +60724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TwoWayRoute")]
 		[Editor(typeof(Editors.HorizonEditor<TwoWayRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -59294,6 +60737,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TwoWayRoute")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -59866,12 +61310,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.
 	/// </summary>
+	[Description("A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.")]
 	[CategoryOrder("RecommendedTrafficLanePart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedTrafficLanePartViewModel : FeatureViewModel<RecommendedTrafficLanePart> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RecommendedTrafficLanePart")]
 		[ExpandableObject]
 		[Optional]
@@ -59886,6 +61332,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RecommendedTrafficLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrafficLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -59900,6 +61347,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("RecommendedTrafficLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrafficLanePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -59912,6 +61360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrafficLanePart")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -59921,6 +61370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RecommendedTrafficLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrafficLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -59933,6 +61383,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RecommendedTrafficLanePart")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -60181,12 +61632,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
 	/// </summary>
+	[Description("The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.")]
 	[CategoryOrder("DeepWaterRouteCentreline",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel<DeepWaterRouteCentreline> {
 		private Boolean? _basedOnFixedMarks  = default;
 
+		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -60201,6 +61654,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60213,12 +61667,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DeepWaterRouteCentreline")]
 		[ExpandableObject]
 		[Optional]
@@ -60233,6 +61689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _iMOAdopted  = default;
 
+		[Description("A defined maritime traffic route that has been adopted as an IMO routeing measure.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60247,6 +61704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60261,6 +61719,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -60273,6 +61732,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -60280,6 +61740,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -60287,6 +61748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -60296,6 +61758,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -60313,6 +61776,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("DeepWaterRouteCentreline")]
 		[ExpandableObject]
 		[Optional]
@@ -60327,6 +61791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60339,6 +61804,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DeepWaterRouteCentreline")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -60878,12 +62344,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area of a deep water route within which ships proceed in the same direction.
 	/// </summary>
+	[Description("An area of a deep water route within which ships proceed in the same direction.")]
 	[CategoryOrder("DeepWaterRoutePart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -60896,12 +62364,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DeepWaterRoutePart")]
 		[ExpandableObject]
 		[Optional]
@@ -60916,6 +62386,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _iMOAdopted  = default;
 
+		[Description("A defined maritime traffic route that has been adopted as an IMO routeing measure.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60930,6 +62401,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -60944,6 +62416,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -60956,6 +62429,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -60963,6 +62437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7];
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -60970,6 +62445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -60977,6 +62453,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9,(status)28];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -60986,6 +62463,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -61003,6 +62481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("DeepWaterRoutePart")]
 		[ExpandableObject]
 		[Optional]
@@ -61015,12 +62494,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DeepWaterRoutePart")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -61033,6 +62514,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DeepWaterRoutePart")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -61589,16 +63071,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.
 	/// </summary>
+	[Description("A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.")]
 	[CategoryOrder("DeepWaterRoute",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRouteViewModel : FeatureViewModel<DeepWaterRoute> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DeepWaterRoute")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("DeepWaterRoute")]
 		[ExpandableObject]
 		[Optional]
@@ -61613,6 +63098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _iMOAdopted  = default;
 
+		[Description("A defined maritime traffic route that has been adopted as an IMO routeing measure.")]
 		[Category("DeepWaterRoute")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -61627,6 +63113,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DeepWaterRoute")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -61641,6 +63128,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DeepWaterRoute")]
 		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -61653,6 +63141,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DeepWaterRoute")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -62225,12 +63714,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.
 	/// </summary>
+	[Description("A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.")]
 	[CategoryOrder("InshoreTrafficZone",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InshoreTrafficZoneViewModel : FeatureViewModel<InshoreTrafficZone> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InshoreTrafficZone")]
 		[ExpandableObject]
 		[Optional]
@@ -62245,6 +63736,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("InshoreTrafficZone")]
 		[Editor(typeof(Editors.HorizonEditor<InshoreTrafficZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -62257,6 +63749,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("InshoreTrafficZone")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -62264,6 +63757,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("InshoreTrafficZone")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -62271,12 +63765,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9,(status)16,(status)17];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("InshoreTrafficZone")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("InshoreTrafficZone")]
 		[Editor(typeof(Editors.HorizonEditor<InshoreTrafficZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -62289,6 +63785,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("InshoreTrafficZone")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -62635,16 +64132,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.
 	/// </summary>
+	[Description("A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.")]
 	[CategoryOrder("PrecautionaryArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PrecautionaryAreaViewModel : FeatureViewModel<PrecautionaryArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PrecautionaryArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PrecautionaryArea")]
 		[ExpandableObject]
 		[Optional]
@@ -62659,6 +64159,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _iMOAdopted  = default;
 
+		[Description("A defined maritime traffic route that has been adopted as an IMO routeing measure.")]
 		[Category("PrecautionaryArea")]
 		[Editor(typeof(Editors.HorizonEditor<PrecautionaryArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -62673,6 +64174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PrecautionaryArea")]
 		[Editor(typeof(Editors.HorizonEditor<PrecautionaryArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -62685,6 +64187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("PrecautionaryArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -62692,6 +64195,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PrecautionaryArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -62699,12 +64203,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)9,(status)28];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("PrecautionaryArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PrecautionaryArea")]
 		[Editor(typeof(Editors.HorizonEditor<PrecautionaryArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -62717,6 +64223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PrecautionaryArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -63157,12 +64664,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
 	/// </summary>
+	[Description("An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.")]
 	[CategoryOrder("TrafficSeparationSchemeLanePart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeLanePartViewModel : FeatureViewModel<TrafficSeparationSchemeLanePart> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[ExpandableObject]
 		[Optional]
@@ -63177,6 +64686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63191,6 +64701,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63203,6 +64714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -63210,6 +64722,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -63217,12 +64730,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9,(status)28];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63235,6 +64750,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TrafficSeparationSchemeLanePart")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -63584,12 +65100,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
 	/// </summary>
+	[Description("A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.")]
 	[CategoryOrder("SeparationZoneOrLine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeparationZoneOrLineViewModel : FeatureViewModel<SeparationZoneOrLine> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SeparationZoneOrLine")]
 		[ExpandableObject]
 		[Optional]
@@ -63604,6 +65122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SeparationZoneOrLine")]
 		[Editor(typeof(Editors.HorizonEditor<SeparationZoneOrLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63616,6 +65135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SeparationZoneOrLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -63625,6 +65145,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SeparationZoneOrLine")]
 		[Editor(typeof(Editors.HorizonEditor<SeparationZoneOrLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63637,6 +65158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SeparationZoneOrLine")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -63963,12 +65485,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
 	/// </summary>
+	[Description("The outer limit of a traffic lane part or a traffic separation scheme roundabout.")]
 	[CategoryOrder("TrafficSeparationSchemeBoundary",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeBoundaryViewModel : FeatureViewModel<TrafficSeparationSchemeBoundary> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TrafficSeparationSchemeBoundary")]
 		[ExpandableObject]
 		[Optional]
@@ -63983,6 +65507,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TrafficSeparationSchemeBoundary")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeBoundary>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -63995,6 +65520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeBoundary")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -64004,6 +65530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TrafficSeparationSchemeBoundary")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeBoundary>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -64016,6 +65543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TrafficSeparationSchemeBoundary")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -64342,12 +65870,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A defined area where traffic lanes cross.
 	/// </summary>
+	[Description("A defined area where traffic lanes cross.")]
 	[CategoryOrder("TrafficSeparationSchemeCrossing",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeCrossingViewModel : FeatureViewModel<TrafficSeparationSchemeCrossing> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[ExpandableObject]
 		[Optional]
@@ -64362,6 +65892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -64374,6 +65905,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -64381,6 +65913,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -64388,12 +65921,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -64406,6 +65941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TrafficSeparationSchemeCrossing")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -64752,12 +66288,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
 	/// </summary>
+	[Description("A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.")]
 	[CategoryOrder("TrafficSeparationSchemeRoundabout",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeRoundaboutViewModel : FeatureViewModel<TrafficSeparationSchemeRoundabout> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[ExpandableObject]
 		[Optional]
@@ -64772,6 +66310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -64784,6 +66323,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -64791,6 +66331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -64798,12 +66339,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)6,(status)9];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -64816,6 +66359,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -65162,16 +66706,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.
 	/// </summary>
+	[Description("A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.")]
 	[CategoryOrder("TrafficSeparationScheme",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeViewModel : FeatureViewModel<TrafficSeparationScheme> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("TrafficSeparationScheme")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("TrafficSeparationScheme")]
 		[ExpandableObject]
 		[Optional]
@@ -65186,6 +66733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _iMOAdopted  = default;
 
+		[Description("A defined maritime traffic route that has been adopted as an IMO routeing measure.")]
 		[Category("TrafficSeparationScheme")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationScheme>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65200,6 +66748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TrafficSeparationScheme")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationScheme>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65214,6 +66763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("TrafficSeparationScheme")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationScheme>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65228,6 +66778,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TrafficSeparationScheme")]
 		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationScheme>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65240,6 +66791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TrafficSeparationScheme")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -65823,16 +67375,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft.
 	/// </summary>
+	[Description("Sea lanes designated by an archipelagic State for the passage of ships and aircraft.")]
 	[CategoryOrder("ArchipelagicSeaLaneArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ArchipelagicSeaLaneAreaViewModel : FeatureViewModel<ArchipelagicSeaLaneArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[ExpandableObject]
 		[Optional]
@@ -65847,6 +67402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65861,6 +67417,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65875,6 +67432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -65887,6 +67445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ArchipelagicSeaLaneArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -66297,16 +67856,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.
 	/// </summary>
+	[Description("The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.")]
 	[CategoryOrder("ArchipelagicSeaLaneAxis",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ArchipelagicSeaLaneAxisViewModel : FeatureViewModel<ArchipelagicSeaLaneAxis> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[ExpandableObject]
 		[Optional]
@@ -66321,6 +67883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneAxis>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -66335,6 +67898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneAxis>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -66349,6 +67913,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLaneAxis>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -66361,6 +67926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ArchipelagicSeaLaneAxis")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -66771,16 +68337,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.
 	/// </summary>
+	[Description("Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.")]
 	[CategoryOrder("ArchipelagicSeaLane",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ArchipelagicSeaLaneViewModel : FeatureViewModel<ArchipelagicSeaLane> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ArchipelagicSeaLane")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ArchipelagicSeaLane")]
 		[ExpandableObject]
 		[Optional]
@@ -66795,6 +68364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ArchipelagicSeaLane")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -66809,6 +68379,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ArchipelagicSeaLane")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLane>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -66823,6 +68394,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ArchipelagicSeaLane")]
 		[Editor(typeof(Editors.HorizonEditor<ArchipelagicSeaLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -66835,6 +68407,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ArchipelagicSeaLane")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -67407,20 +68980,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
 	/// </summary>
+	[Description("A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.")]
 	[CategoryOrder("RadioCallingInPoint",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadioCallingInPointViewModel : FeatureViewModel<RadioCallingInPoint> {
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("RadioCallingInPoint")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadioCallingInPoint")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RadioCallingInPoint")]
 		[ExpandableObject]
 		[Optional]
@@ -67435,6 +69012,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -67447,14 +69025,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("RadioCallingInPoint")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RadioCallingInPoint")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioCallingInPoint")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -67464,6 +69045,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private trafficFlow? _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -67481,6 +69063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -67493,6 +69076,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadioCallingInPoint")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -67862,10 +69446,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A route in a body of water where a ferry crosses from one shoreline to another.
 	/// </summary>
+	[Description("A route in a body of water where a ferry crosses from one shoreline to another.")]
 	[CategoryOrder("FerryRoute",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FerryRouteViewModel : FeatureViewModel<FerryRoute> {
+		[Description("Classification of the manoeuvrability of the ferry vessel, not the various types of ferry vessel.")]
 		[Category("FerryRoute")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfFerry> categoryOfFerry  { get; set; } = new ();
@@ -67873,12 +69459,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfFerry[] categoryOfFerryList => [(categoryOfFerry)1,(categoryOfFerry)2,(categoryOfFerry)3,(categoryOfFerry)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FerryRoute")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FerryRoute")]
 		[ExpandableObject]
 		[Optional]
@@ -67893,6 +69481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FerryRoute")]
 		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -67905,10 +69494,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FerryRoute")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FerryRoute")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -67918,6 +69509,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FerryRoute")]
 		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -67930,6 +69522,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FerryRoute")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -68286,16 +69879,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.
 	/// </summary>
+	[Description("Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.")]
 	[CategoryOrder("RadarLine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarLineViewModel : FeatureViewModel<RadarLine> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadarLine")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadarLine")]
 		[Editor(typeof(Editors.HorizonEditor<RadarLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -68310,6 +69906,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("RadarLine")]
 		[Editor(typeof(Editors.HorizonEditor<RadarLine>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -68322,6 +69919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -68331,6 +69929,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadarLine")]
 		[Editor(typeof(Editors.HorizonEditor<RadarLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -68343,6 +69942,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadarLine")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -68676,20 +70276,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
 	/// </summary>
+	[Description("Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.")]
 	[CategoryOrder("RadarRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarRangeViewModel : FeatureViewModel<RadarRange> {
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("RadarRange")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadarRange")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RadarRange")]
 		[ExpandableObject]
 		[Optional]
@@ -68704,6 +70308,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadarRange")]
 		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -68716,6 +70321,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarRange")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -68725,6 +70331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadarRange")]
 		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -68737,6 +70344,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadarRange")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -69083,12 +70691,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
 	/// </summary>
+	[Description("A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.")]
 	[CategoryOrder("RadarStation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarStationViewModel : FeatureViewModel<RadarStation> {
 		private String? _callSign  = default;
 
+		[Description("The designated call-sign of a station (radio station, radar station, pilot, ...).")]
 		[Category("RadarStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69101,6 +70711,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Classification of radar station based on the services offered.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<categoryOfRadarStation> categoryOfRadarStation  { get; set; } = new ();
@@ -69108,16 +70719,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfRadarStation[] categoryOfRadarStationList => [(categoryOfRadarStation)1,(categoryOfRadarStation)2];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("RadarStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69132,6 +70746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadarStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69144,10 +70759,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -69157,6 +70774,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfMaximumRange  = default;
 
+		[Description("The extreme distance at which a feature can be seen or a signal detected.")]
 		[Category("RadarStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69171,6 +70789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadarStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69183,6 +70802,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadarStation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -69552,10 +71172,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
 	/// </summary>
+	[Description("An area in which vessels or seaplanes anchor or may anchor.")]
 	[CategoryOrder("AnchorageArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
+		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
@@ -69563,6 +71185,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1,(categoryOfAnchorage)2,(categoryOfAnchorage)3,(categoryOfAnchorage)5,(categoryOfAnchorage)6,(categoryOfAnchorage)7,(categoryOfAnchorage)9,(categoryOfAnchorage)10,(categoryOfAnchorage)14,(categoryOfAnchorage)15];
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -69570,12 +71193,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AnchorageArea")]
 		[ExpandableObject]
 		[Optional]
@@ -69590,6 +71215,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69602,10 +71228,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -69613,6 +71241,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)23,(restriction)24,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -69620,12 +71249,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)5,(status)6,(status)7,(status)8,(status)9,(status)14];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -69638,6 +71269,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -70024,10 +71656,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area in which vessels may be secured to mooring buoys
 	/// </summary>
+	[Description("An area in which vessels may be secured to mooring buoys")]
 	[CategoryOrder("MooringArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringAreaViewModel : FeatureViewModel<MooringArea> {
+		[Description("Classification of an area in which vessels may be secured to mooring buoys.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<categoryOfMooringArea> categoryOfMooringArea  { get; set; } = new ();
@@ -70035,12 +71669,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfMooringArea[] categoryOfMooringAreaList => [(categoryOfMooringArea)1,(categoryOfMooringArea)2,(categoryOfMooringArea)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("MooringArea")]
 		[ExpandableObject]
 		[Optional]
@@ -70055,6 +71691,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MooringArea")]
 		[Editor(typeof(Editors.HorizonEditor<MooringArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70069,6 +71706,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("MooringArea")]
 		[Editor(typeof(Editors.HorizonEditor<MooringArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70083,6 +71721,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedVesselLength  = default;
 
+		[Description("The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.")]
 		[Category("MooringArea")]
 		[Editor(typeof(Editors.HorizonEditor<MooringArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70095,10 +71734,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -70106,6 +71747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)23,(restriction)24,(restriction)25,(restriction)27,(restriction)39,(restriction)42];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -70115,6 +71757,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MooringArea")]
 		[Editor(typeof(Editors.HorizonEditor<MooringArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70127,10 +71770,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("MooringArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
@@ -70513,10 +72158,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A designated area of water where a vessel, seaplane, etc., may anchor.
 	/// </summary>
+	[Description("A designated area of water where a vessel, seaplane, etc., may anchor.")]
 	[CategoryOrder("AnchorBerth",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AnchorBerthViewModel : FeatureViewModel<AnchorBerth> {
+		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
@@ -70524,6 +72171,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1,(categoryOfAnchorage)2,(categoryOfAnchorage)3,(categoryOfAnchorage)5,(categoryOfAnchorage)6,(categoryOfAnchorage)7,(categoryOfAnchorage)9,(categoryOfAnchorage)10,(categoryOfAnchorage)14];
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -70531,12 +72179,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AnchorBerth")]
 		[ExpandableObject]
 		[Optional]
@@ -70551,6 +72201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AnchorBerth")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorBerth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70563,12 +72214,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private double? _radius  = default;
 
+		[Description("The vector extending from the centre to the periphery of a circular or spherical feature.")]
 		[Category("AnchorBerth")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorBerth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70581,6 +72234,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -70590,6 +72244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AnchorBerth")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorBerth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70602,6 +72257,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -70971,16 +72627,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
+	[Description("A designated portion of water for the landing and take-off of seaplanes.")]
 	[CategoryOrder("SeaplaneLandingArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeaplaneLandingAreaViewModel : FeatureViewModel<SeaplaneLandingArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaplaneLandingArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -70993,10 +72652,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -71004,6 +72665,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -71011,12 +72673,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)14];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaplaneLandingArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71029,6 +72693,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SeaplaneLandingArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -71389,10 +73054,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
 	/// </summary>
+	[Description("A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.")]
 	[CategoryOrder("DumpingGround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
+		[Description("Classification of an area based on the type of waste being disposed of.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<categoryOfDumpingGround> categoryOfDumpingGround  { get; set; } = new ();
@@ -71402,6 +73069,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateDisused  = default;
 
+		[Description("The date that an entity ceases to be used.")]
 		[Category("DumpingGround")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -71415,12 +73083,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71433,6 +73103,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -71440,6 +73111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -71447,12 +73119,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)6,(status)7];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71465,6 +73139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DumpingGround")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -71828,10 +73503,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out.
 	/// </summary>
+	[Description("An area within which naval, military or aerial exercises are carried out.")]
 	[CategoryOrder("MilitaryPracticeArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MilitaryPracticeAreaViewModel : FeatureViewModel<MilitaryPracticeArea> {
+		[Description("Classification of area by military use.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea  { get; set; } = new ();
@@ -71839,12 +73516,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfMilitaryPracticeArea[] categoryOfMilitaryPracticeAreaList => [(categoryOfMilitaryPracticeArea)2,(categoryOfMilitaryPracticeArea)3,(categoryOfMilitaryPracticeArea)4,(categoryOfMilitaryPracticeArea)5,(categoryOfMilitaryPracticeArea)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("MilitaryPracticeArea")]
 		[ExpandableObject]
 		[Optional]
@@ -71859,6 +73538,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71873,6 +73553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71885,10 +73566,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -71896,6 +73579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -71903,12 +73587,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)6,(status)7,(status)16,(status)17];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -71921,6 +73607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MilitaryPracticeArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -72300,12 +73987,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A defined area within which a jurisdiction applies. It may or may not be named.
 	/// </summary>
+	[Description("A defined area within which a jurisdiction applies. It may or may not be named.")]
 	[CategoryOrder("AdministrationArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AdministrationAreaViewModel : FeatureViewModel<AdministrationArea> {
 		private Boolean? _inDispute  = default;
 
+		[Description("A statement that expresses if an area is in a jurisdictional dispute.")]
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72320,6 +74009,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private jurisdiction? _jurisdiction  = default;
 
+		[Description("The jurisdiction applicable to an administrative area.")]
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -72335,12 +74025,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public jurisdiction[] jurisdictionList => [(jurisdiction)1,(jurisdiction)2,(jurisdiction)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AdministrationArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72353,12 +74045,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("AdministrationArea")]
 		[Optional]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72371,12 +74065,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AdministrationArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("AdministrationArea")]
 		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72724,16 +74420,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.
 	/// </summary>
+	[Description("An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.")]
 	[CategoryOrder("CargoTranshipmentArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CargoTranshipmentAreaViewModel : FeatureViewModel<CargoTranshipmentArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CargoTranshipmentArea")]
 		[ExpandableObject]
 		[Optional]
@@ -72748,6 +74447,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CargoTranshipmentArea")]
 		[Editor(typeof(Editors.HorizonEditor<CargoTranshipmentArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72760,10 +74460,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -72771,6 +74473,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)24,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -72778,12 +74481,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)5,(status)6,(status)7,(status)9];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CargoTranshipmentArea")]
 		[Editor(typeof(Editors.HorizonEditor<CargoTranshipmentArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -72796,6 +74501,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CargoTranshipmentArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -73162,12 +74868,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
 	/// </summary>
+	[Description("Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.")]
 	[CategoryOrder("CautionArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CautionAreaViewModel : FeatureViewModel<CautionArea> {
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73185,6 +74893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CautionArea")]
 		[ExpandableObject]
 		[Optional]
@@ -73199,6 +74908,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73211,12 +74921,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CautionArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("CautionArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -73232,6 +74944,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73249,6 +74962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73261,12 +74975,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CautionArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73694,16 +75410,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
 	/// </summary>
+	[Description("An area for which general information regarding navigation, but not directly related to safety of navigation, is available.")]
 	[CategoryOrder("InformationArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InformationAreaViewModel : FeatureViewModel<InformationArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationArea")]
 		[ExpandableObject]
 		[Optional]
@@ -73718,6 +75437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("InformationArea")]
 		[Editor(typeof(Editors.HorizonEditor<InformationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73730,12 +75450,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("InformationArea")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -73751,6 +75473,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("InformationArea")]
 		[Editor(typeof(Editors.HorizonEditor<InformationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -73763,12 +75486,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("InformationArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("InformationArea")]
 		[Editor(typeof(Editors.HorizonEditor<InformationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74119,12 +75844,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
 	/// </summary>
+	[Description("A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.")]
 	[CategoryOrder("ContiguousZone",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContiguousZoneViewModel : FeatureViewModel<ContiguousZone> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("ContiguousZone")]
 		[ExpandableObject]
 		[Optional]
@@ -74139,6 +75866,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _inDispute  = default;
 
+		[Description("A statement that expresses if an area is in a jurisdictional dispute.")]
 		[Category("ContiguousZone")]
 		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74153,6 +75881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ContiguousZone")]
 		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74165,12 +75894,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ContiguousZone")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ContiguousZone")]
 		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74183,6 +75914,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ContiguousZone")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -74431,16 +76163,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
 	/// </summary>
+	[Description("The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.")]
 	[CategoryOrder("ContinentalShelfArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContinentalShelfAreaViewModel : FeatureViewModel<ContinentalShelfArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("ContinentalShelfArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ContinentalShelfArea")]
 		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74453,12 +76188,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ContinentalShelfArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ContinentalShelfArea")]
 		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74471,6 +76208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ContinentalShelfArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -74801,12 +76539,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The area within which national custom regulations are in force.
 	/// </summary>
+	[Description("The area within which national custom regulations are in force.")]
 	[CategoryOrder("CustomZone",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CustomZoneViewModel : FeatureViewModel<CustomZone> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CustomZone")]
 		[Editor(typeof(Editors.HorizonEditor<CustomZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74821,6 +76561,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("CustomZone")]
 		[Editor(typeof(Editors.HorizonEditor<CustomZone>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -74835,6 +76576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CustomZone")]
 		[Editor(typeof(Editors.HorizonEditor<CustomZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -74847,6 +76589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CustomZone")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -75079,12 +76822,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
 	/// </summary>
+	[Description("An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.")]
 	[CategoryOrder("ExclusiveEconomicZone",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ExclusiveEconomicZoneViewModel : FeatureViewModel<ExclusiveEconomicZone> {
 		private Boolean? _inDispute  = default;
 
+		[Description("A statement that expresses if an area is in a jurisdictional dispute.")]
 		[Category("ExclusiveEconomicZone")]
 		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75099,6 +76844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("ExclusiveEconomicZone")]
 		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75111,12 +76857,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("ExclusiveEconomicZone")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("ExclusiveEconomicZone")]
 		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75129,6 +76877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ExclusiveEconomicZone")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -75371,16 +77120,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
 	/// </summary>
+	[Description("The offshore zone in which exclusive fishing rights and management are held by the coastal nation.")]
 	[CategoryOrder("FisheryZone",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FisheryZoneViewModel : FeatureViewModel<FisheryZone> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FisheryZone")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FisheryZone")]
 		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75395,6 +77147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("FisheryZone")]
 		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -75407,6 +77160,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FisheryZone")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -75416,6 +77170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FisheryZone")]
 		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75428,6 +77183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FisheryZone")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -75761,16 +77517,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A water area in which fishing is frequently carried on.
 	/// </summary>
+	[Description("A water area in which fishing is frequently carried on.")]
 	[CategoryOrder("FishingGround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FishingGroundViewModel : FeatureViewModel<FishingGround> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FishingGround")]
 		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75783,10 +77542,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -75794,6 +77555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -75801,12 +77563,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)6,(status)7,(status)8,(status)14,(status)16,(status)17,(status)28];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FishingGround")]
 		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -75819,6 +77583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FishingGround")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -76179,16 +77944,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.
 	/// </summary>
+	[Description("A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.")]
 	[CategoryOrder("FreePortArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FreePortAreaViewModel : FeatureViewModel<FreePortArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FreePortArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FreePortArea")]
 		[Editor(typeof(Editors.HorizonEditor<FreePortArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76201,6 +77969,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FreePortArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -76210,6 +77979,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FreePortArea")]
 		[Editor(typeof(Editors.HorizonEditor<FreePortArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76222,6 +77992,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FreePortArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -76552,16 +78323,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
+	[Description("The area over which a harbour authority has jurisdiction.")]
 	[CategoryOrder("HarbourAreaAdministrative",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HarbourAreaAdministrativeViewModel : FeatureViewModel<HarbourAreaAdministrative> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("HarbourAreaAdministrative")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76574,6 +78348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("HarbourAreaAdministrative")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -76583,6 +78358,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76595,6 +78371,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("HarbourAreaAdministrative")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -76925,16 +78702,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.
 	/// </summary>
+	[Description("A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.")]
 	[CategoryOrder("LogPond",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LogPondViewModel : FeatureViewModel<LogPond> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LogPond")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LogPond")]
 		[Editor(typeof(Editors.HorizonEditor<LogPond>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76947,10 +78727,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LogPond")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LogPond")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -76960,6 +78742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LogPond")]
 		[Editor(typeof(Editors.HorizonEditor<LogPond>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -76972,6 +78755,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LogPond")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -77312,12 +79096,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A floating barrier to stop and contain the spread of oil on a water body surface.
 	/// </summary>
+	[Description("A floating barrier to stop and contain the spread of oil on a water body surface.")]
 	[CategoryOrder("OilBarrier",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OilBarrierViewModel : FeatureViewModel<OilBarrier> {
 		private categoryOfOilBarrier? _categoryOfOilBarrier  = default;
 
+		[Description("Classification of barriers used to prevent the unwanted spread of oil across the sea surface.")]
 		[Category("OilBarrier")]
 		[Editor(typeof(Editors.HorizonEditor<OilBarrier>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77335,6 +79121,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("OilBarrier")]
 		[Editor(typeof(Editors.HorizonEditor<OilBarrier>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77350,12 +79137,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("OilBarrier")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("OilBarrier")]
 		[ExpandableObject]
 		[Optional]
@@ -77370,6 +79159,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("OilBarrier")]
 		[Editor(typeof(Editors.HorizonEditor<OilBarrier>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77384,6 +79174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("OilBarrier")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -77397,6 +79188,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("OilBarrier")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -77406,6 +79198,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("OilBarrier")]
 		[Editor(typeof(Editors.HorizonEditor<OilBarrier>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77418,6 +79211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("OilBarrier")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -77763,12 +79557,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
 	/// </summary>
+	[Description("Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.")]
 	[CategoryOrder("StraightTerritorialSeaBaseline",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class StraightTerritorialSeaBaselineViewModel : FeatureViewModel<StraightTerritorialSeaBaseline> {
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("StraightTerritorialSeaBaseline")]
 		[Editor(typeof(Editors.HorizonEditor<StraightTerritorialSeaBaseline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77783,6 +79579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("StraightTerritorialSeaBaseline")]
 		[Editor(typeof(Editors.HorizonEditor<StraightTerritorialSeaBaseline>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -77797,6 +79594,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("StraightTerritorialSeaBaseline")]
 		[Editor(typeof(Editors.HorizonEditor<StraightTerritorialSeaBaseline>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -77809,6 +79607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("StraightTerritorialSeaBaseline")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -78041,12 +79840,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
 	/// </summary>
+	[Description("A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.")]
 	[CategoryOrder("TerritorialSeaArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TerritorialSeaAreaViewModel : FeatureViewModel<TerritorialSeaArea> {
 		private Boolean? _inDispute  = default;
 
+		[Description("A statement that expresses if an area is in a jurisdictional dispute.")]
 		[Category("TerritorialSeaArea")]
 		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78061,6 +79862,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("TerritorialSeaArea")]
 		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78073,10 +79875,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("TerritorialSeaArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TerritorialSeaArea")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -78084,12 +79888,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)2,(restriction)4,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)12,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)27];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("TerritorialSeaArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TerritorialSeaArea")]
 		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78102,6 +79908,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("TerritorialSeaArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -78364,16 +80171,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A lane where submarines may navigate under water or at the surface.
 	/// </summary>
+	[Description("A lane where submarines may navigate under water or at the surface.")]
 	[CategoryOrder("SubmarineTransitLane",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SubmarineTransitLaneViewModel : FeatureViewModel<SubmarineTransitLane> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SubmarineTransitLane")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SubmarineTransitLane")]
 		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78388,6 +80198,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("SubmarineTransitLane")]
 		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78400,6 +80211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SubmarineTransitLane")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -78407,12 +80219,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("SubmarineTransitLane")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SubmarineTransitLane")]
 		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78425,6 +80239,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SubmarineTransitLane")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -78768,20 +80583,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
+	[Description("An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.")]
 	[CategoryOrder("PilotageDistrict",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PilotageDistrictViewModel : FeatureViewModel<PilotageDistrict> {
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("PilotageDistrict")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PilotageDistrict")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PilotageDistrict")]
 		[Editor(typeof(Editors.HorizonEditor<PilotageDistrict>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78796,6 +80615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PilotageDistrict")]
 		[Editor(typeof(Editors.HorizonEditor<PilotageDistrict>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -78808,6 +80628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PilotageDistrict")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -79219,16 +81040,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.
 	/// </summary>
+	[Description("Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.")]
 	[CategoryOrder("CollisionRegulationsLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CollisionRegulationsLimitViewModel : FeatureViewModel<CollisionRegulationsLimit> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CollisionRegulationsLimit")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CollisionRegulationsLimit")]
 		[ExpandableObject]
 		[Optional]
@@ -79243,6 +81067,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CollisionRegulationsLimit")]
 		[Editor(typeof(Editors.HorizonEditor<CollisionRegulationsLimit>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79255,12 +81080,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CollisionRegulationsLimit")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private String? _regulationCitation  = default;
 
+		[Description("The regulation citation for a feature.")]
 		[Category("CollisionRegulationsLimit")]
 		[Editor(typeof(Editors.HorizonEditor<CollisionRegulationsLimit>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79275,6 +81102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CollisionRegulationsLimit")]
 		[Editor(typeof(Editors.HorizonEditor<CollisionRegulationsLimit>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79287,6 +81115,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CollisionRegulationsLimit")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -79626,16 +81455,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.
 	/// </summary>
+	[Description("The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.")]
 	[CategoryOrder("MarinePollutionRegulationsArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MarinePollutionRegulationsAreaViewModel : FeatureViewModel<MarinePollutionRegulationsArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MarinePollutionRegulationsArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MarinePollutionRegulationsArea")]
 		[Editor(typeof(Editors.HorizonEditor<MarinePollutionRegulationsArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79650,6 +81482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _regulationCitation  = default;
 
+		[Description("The regulation citation for a feature.")]
 		[Category("MarinePollutionRegulationsArea")]
 		[Editor(typeof(Editors.HorizonEditor<MarinePollutionRegulationsArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79664,6 +81497,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MarinePollutionRegulationsArea")]
 		[Editor(typeof(Editors.HorizonEditor<MarinePollutionRegulationsArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -79676,6 +81510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MarinePollutionRegulationsArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -79999,10 +81834,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
+	[Description("A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.")]
 	[CategoryOrder("RestrictedArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
+		[Description("The official legal status of each kind of restricted area defines the kind of restriction(s), for example the restriction for a 'game reserve' may be 'entering prohibited'.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
@@ -80010,12 +81847,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)18,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)21,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)24,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RestrictedArea")]
 		[ExpandableObject]
 		[Optional]
@@ -80030,6 +81869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RestrictedArea")]
 		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80042,10 +81882,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("RestrictedArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -80053,6 +81895,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39,(restriction)42];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -80060,12 +81903,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9,(status)18,(status)28];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RestrictedArea")]
 		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80078,6 +81923,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RestrictedArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -80616,10 +82462,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
+	[Description("An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.")]
 	[CategoryOrder("LightAllAround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightAllAroundViewModel : FeatureViewModel<LightAllAround> {
+		[Description("Classification of different light types.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
@@ -80627,6 +82475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAllAround")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -80636,6 +82485,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
+		[Description("The outward display of the light.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80651,12 +82501,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightAllAround")]
 		[ExpandableObject]
 		[Optional]
@@ -80671,6 +82523,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _flareBearing  = default;
 
+		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80685,6 +82538,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80699,6 +82553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80713,6 +82568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private lightVisibility? _lightVisibility  = default;
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80730,6 +82586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _majorLight  = default;
 
+		[Description("A statement expressing if a light is considered to be a major light in terms of ECDIS display in a particular area.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80744,6 +82601,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80761,6 +82619,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("LightAllAround")]
 		[ExpandableObject]
 		[Optional]
@@ -80773,12 +82632,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightAllAround")]
 		[ExpandableObject]
 		[Mandatory]
@@ -80793,6 +82654,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80808,6 +82670,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)5,(signalGeneration)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -80817,6 +82680,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80831,6 +82695,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80848,6 +82713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80862,6 +82728,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -80874,6 +82741,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -81452,10 +83320,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
+	[Description("A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.")]
 	[CategoryOrder("LightSectored",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
+		[Description("Classification of different light types.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
@@ -81465,6 +83335,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
+		[Description("The outward display of the light.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81480,12 +83351,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightSectored")]
 		[ExpandableObject]
 		[Optional]
@@ -81500,6 +83373,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81514,6 +83388,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81528,6 +83403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81545,6 +83421,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("LightSectored")]
 		[ExpandableObject]
 		[Optional]
@@ -81557,16 +83434,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Describes the characteristics of a light sector.")]
 		[Category("LightSectored")]
 		[Multiplicity(1)]
 		public ObservableCollection<sectorCharacteristicsViewModel> sectorCharacteristics  { get; set; } = new ();
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81582,6 +83462,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)5,(signalGeneration)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -81591,6 +83472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81608,6 +83490,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -81620,6 +83503,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -82177,10 +84061,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
+	[Description("A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.")]
 	[CategoryOrder("LightFogDetector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightFogDetectorViewModel : FeatureViewModel<LightFogDetector> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFogDetector")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -82188,12 +84074,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightFogDetector")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightFogDetector")]
 		[ExpandableObject]
 		[Optional]
@@ -82208,6 +84096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _flareBearing  = default;
 
+		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82222,6 +84111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82236,6 +84126,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82248,12 +84139,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightFogDetector")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightFogDetector")]
 		[ExpandableObject]
 		[Optional]
@@ -82268,6 +84161,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82283,6 +84177,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)5,(signalGeneration)6];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFogDetector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -82292,6 +84187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82309,6 +84205,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82323,6 +84220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82335,6 +84233,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightFogDetector")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -82793,10 +84692,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
+	[Description("An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.")]
 	[CategoryOrder("LightAirObstruction",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightAirObstructionViewModel : FeatureViewModel<LightAirObstruction> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -82806,6 +84707,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
+		[Description("The outward display of the light.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82821,12 +84723,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -82841,6 +84745,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _flareBearing  = default;
 
+		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82855,6 +84760,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82869,6 +84775,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82881,6 +84788,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
@@ -82890,6 +84798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -82902,12 +84811,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private rhythmOfLightViewModel? _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -82920,6 +84831,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -82929,6 +84841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82943,6 +84856,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82960,6 +84874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -82972,6 +84887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -83446,12 +85362,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
+	[Description("A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.")]
 	[CategoryOrder("LateralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBuoyViewModel : FeatureViewModel<LateralBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -83469,6 +85387,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
+		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -83484,6 +85403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LateralBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -83493,6 +85413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83508,12 +85429,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LateralBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LateralBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -83528,6 +85451,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83542,6 +85466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83557,6 +85482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("LateralBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -83564,12 +85490,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LateralBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83582,6 +85510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LateralBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -83591,6 +85520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("LateralBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -83605,6 +85535,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83619,6 +85550,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -83631,12 +85563,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LateralBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84281,12 +86215,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
+	[Description("A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.")]
 	[CategoryOrder("CardinalBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBuoyViewModel : FeatureViewModel<CardinalBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -84304,6 +86240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
+		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -84319,6 +86256,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("CardinalBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -84328,6 +86266,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84343,12 +86282,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CardinalBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CardinalBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -84363,6 +86304,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84377,6 +86319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84392,6 +86335,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("CardinalBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -84399,12 +86343,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CardinalBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84417,6 +86363,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CardinalBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -84426,6 +86373,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("CardinalBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -84440,6 +86388,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84454,6 +86403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -84466,12 +86416,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CardinalBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85116,12 +87068,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
+	[Description("An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.")]
 	[CategoryOrder("IsolatedDangerBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBuoyViewModel : FeatureViewModel<IsolatedDangerBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -85137,6 +87091,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("IsolatedDangerBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -85146,6 +87101,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85161,12 +87117,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("IsolatedDangerBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("IsolatedDangerBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -85181,6 +87139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85195,6 +87154,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85210,6 +87170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("IsolatedDangerBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -85217,12 +87178,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("IsolatedDangerBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85235,6 +87198,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("IsolatedDangerBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -85244,6 +87208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("IsolatedDangerBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -85258,6 +87223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85272,6 +87238,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85284,12 +87251,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("IsolatedDangerBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("IsolatedDangerBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85931,12 +87900,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
+	[Description("A safe water buoy is used to indicate that there is navigable water around the mark.")]
 	[CategoryOrder("SafeWaterBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBuoyViewModel : FeatureViewModel<SafeWaterBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -85952,6 +87923,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SafeWaterBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -85961,6 +87933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -85976,12 +87949,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SafeWaterBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SafeWaterBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -85996,6 +87971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86010,6 +87986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86025,6 +88002,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("SafeWaterBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -86032,12 +88010,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SafeWaterBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86050,6 +88030,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SafeWaterBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -86059,6 +88040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("SafeWaterBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -86073,6 +88055,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86087,6 +88070,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86099,12 +88083,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SafeWaterBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SafeWaterBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86746,12 +88732,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
+	[Description("A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.")]
 	[CategoryOrder("SpecialPurposeGeneralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -86767,6 +88755,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -86774,6 +88763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -86783,6 +88773,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86798,12 +88789,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -86818,6 +88811,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86832,6 +88826,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86847,6 +88842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -86854,12 +88850,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86872,6 +88870,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -86881,6 +88880,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -86895,6 +88895,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86909,6 +88910,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -86921,12 +88923,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87578,12 +89582,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.
 	/// </summary>
+	[Description("An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.")]
 	[CategoryOrder("EmergencyWreckMarkingBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EmergencyWreckMarkingBuoyViewModel : FeatureViewModel<EmergencyWreckMarkingBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -87599,6 +89605,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -87608,6 +89615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87623,12 +89631,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -87643,6 +89653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87657,6 +89668,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87672,6 +89684,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -87681,6 +89694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87695,6 +89709,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -87709,6 +89724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87723,6 +89739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -87735,12 +89752,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("EmergencyWreckMarkingBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<EmergencyWreckMarkingBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88281,12 +90300,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An installation buoy is a buoy used for loading tankers with gas or oil.
 	/// </summary>
+	[Description("An installation buoy is a buoy used for loading tankers with gas or oil.")]
 	[CategoryOrder("InstallationBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -88304,6 +90325,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfInstallationBuoy? _categoryOfInstallationBuoy  = default;
 
+		[Description("Classification of fixed installation buoy.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88319,6 +90341,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("InstallationBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -88328,6 +90351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88343,12 +90367,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InstallationBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -88363,6 +90389,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88375,6 +90402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -88382,10 +90410,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)7,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -88395,6 +90425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88407,6 +90438,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -88416,6 +90448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88433,6 +90466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88445,12 +90479,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("InstallationBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88934,12 +90970,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
+	[Description("A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.")]
 	[CategoryOrder("MooringBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
 		private buoyShape? _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -88955,6 +90993,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -88964,6 +91003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -88979,12 +91019,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("MooringBuoy")]
 		[ExpandableObject]
 		[Optional]
@@ -88999,6 +91041,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89013,6 +91056,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89027,6 +91071,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _maximumPermittedVesselLength  = default;
 
+		[Description("The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89039,6 +91084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -89046,10 +91092,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -89059,6 +91107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89073,6 +91122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _visitorsMooring  = default;
 
+		[Description("A mooring set aside for the use of visiting vessels.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89087,6 +91137,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89099,12 +91150,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("MooringBuoy")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89743,12 +91796,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
+	[Description("A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.")]
 	[CategoryOrder("LateralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBeaconViewModel : FeatureViewModel<LateralBeacon> {
 		private beaconShape? _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -89766,6 +91821,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
+		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -89781,6 +91837,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LateralBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -89790,6 +91847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89807,6 +91865,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89824,6 +91883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89836,12 +91896,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LateralBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LateralBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -89856,6 +91918,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89870,6 +91933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89884,6 +91948,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89899,6 +91964,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("LateralBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -89906,12 +91972,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LateralBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89926,6 +91994,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("LateralBeacon")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -89939,6 +92008,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LateralBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -89948,6 +92018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("LateralBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -89962,6 +92033,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89976,6 +92048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -89993,6 +92066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90005,12 +92079,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LateralBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90751,12 +92827,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
+	[Description("A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.")]
 	[CategoryOrder("CardinalBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
 		private beaconShape? _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -90774,6 +92852,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
+		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -90789,6 +92868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("CardinalBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -90798,6 +92878,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90815,6 +92896,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90832,6 +92914,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90844,12 +92927,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CardinalBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CardinalBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -90864,6 +92949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90878,6 +92964,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90892,6 +92979,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90907,6 +92995,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("CardinalBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -90914,12 +93003,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CardinalBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90934,6 +93025,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("CardinalBeacon")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -90947,6 +93039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CardinalBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -90956,6 +93049,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("CardinalBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -90970,6 +93064,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -90984,6 +93079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91001,6 +93097,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91013,12 +93110,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CardinalBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91759,12 +93858,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
+	[Description("An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.")]
 	[CategoryOrder("IsolatedDangerBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBeaconViewModel : FeatureViewModel<IsolatedDangerBeacon> {
 		private beaconShape? _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -91780,6 +93881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("IsolatedDangerBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -91789,6 +93891,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91806,6 +93909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91823,6 +93927,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91835,12 +93940,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("IsolatedDangerBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("IsolatedDangerBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -91855,6 +93962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91869,6 +93977,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91883,6 +93992,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91898,6 +94008,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("IsolatedDangerBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -91905,12 +94016,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("IsolatedDangerBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91925,6 +94038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("IsolatedDangerBeacon")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -91938,6 +94052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("IsolatedDangerBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -91947,6 +94062,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("IsolatedDangerBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -91961,6 +94077,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91975,6 +94092,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -91992,6 +94110,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92004,12 +94123,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("IsolatedDangerBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("IsolatedDangerBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92747,12 +94868,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
+	[Description("A safe water beacon is used to indicate that there is navigable water around the mark.")]
 	[CategoryOrder("SafeWaterBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
 		private beaconShape? _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -92768,6 +94891,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SafeWaterBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -92777,6 +94901,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92794,6 +94919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92811,6 +94937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92823,12 +94950,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SafeWaterBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SafeWaterBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -92843,6 +94972,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92857,6 +94987,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92871,6 +95002,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92886,6 +95018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("SafeWaterBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -92893,12 +95026,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SafeWaterBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92913,6 +95048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("SafeWaterBeacon")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -92926,6 +95062,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SafeWaterBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -92935,6 +95072,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("SafeWaterBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -92949,6 +95087,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92963,6 +95102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92980,6 +95120,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -92992,12 +95133,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SafeWaterBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SafeWaterBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93735,12 +95878,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
+	[Description("A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.")]
 	[CategoryOrder("SpecialPurposeGeneralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel<SpecialPurposeGeneralBeacon> {
 		private beaconShape? _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -93756,6 +95901,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -93763,6 +95909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -93772,6 +95919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93789,6 +95937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93806,6 +95955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93818,12 +95968,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -93838,6 +95990,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93852,6 +96005,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93866,6 +96020,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93881,6 +96036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 
+		[Description("The building's primary construction material.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -93888,12 +96044,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93908,6 +96066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -93921,6 +96080,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -93930,6 +96090,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -93944,6 +96105,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93958,6 +96120,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93975,6 +96138,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -93987,12 +96151,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94740,10 +96906,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
 	/// </summary>
+	[Description("The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.")]
 	[CategoryOrder("Daymark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DaymarkViewModel : FeatureViewModel<Daymark> {
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -94751,6 +96919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Daymark")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -94760,6 +96929,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94777,6 +96947,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94789,12 +96960,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Daymark")]
 		[ExpandableObject]
 		[Optional]
@@ -94809,6 +96982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94823,6 +96997,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94835,6 +97010,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -94842,12 +97018,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)4,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94860,6 +97038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -94869,6 +97048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkDaymarkShape? _topmarkDaymarkShape  = default;
 
+		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -94886,6 +97066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94898,12 +97079,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the shape of a non-standard topmark.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -94916,12 +97099,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95669,10 +97854,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 	/// </summary>
+	[Description("A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.")]
 	[CategoryOrder("LightFloat",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightFloatViewModel : FeatureViewModel<LightFloat> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFloat")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -95682,6 +97869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95697,12 +97885,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightFloat")]
 		[ExpandableObject]
 		[Optional]
@@ -95717,6 +97907,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95731,6 +97922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95745,6 +97937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95757,6 +97950,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -95764,12 +97958,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)11];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95782,6 +97978,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -95791,6 +97988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private topmarkViewModel? _topmark  = default;
 
+		[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification.")]
 		[Category("LightFloat")]
 		[ExpandableObject]
 		[Optional]
@@ -95805,6 +98003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95819,6 +98018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95836,6 +98036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -95848,12 +98049,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96498,10 +98701,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 	/// </summary>
+	[Description("A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.")]
 	[CategoryOrder("LightVessel",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightVessel")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -96511,6 +98716,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96526,12 +98732,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("LightVessel")]
 		[ExpandableObject]
 		[Optional]
@@ -96546,6 +98754,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96560,6 +98769,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96574,6 +98784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96586,6 +98797,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -96593,12 +98805,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96611,6 +98825,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -96620,6 +98835,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96634,6 +98850,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96651,6 +98868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -96663,12 +98881,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97307,10 +99527,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
+	[Description("A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.")]
 	[CategoryOrder("Retroreflector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RetroreflectorViewModel : FeatureViewModel<Retroreflector> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -97320,6 +99542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private colourPattern? _colourPattern  = default;
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97337,6 +99560,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("Retroreflector")]
 		[ExpandableObject]
 		[Optional]
@@ -97351,6 +99575,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97365,6 +99590,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97377,10 +99603,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -97390,6 +99618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97402,6 +99631,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -97754,12 +99984,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
+	[Description("A device capable of, or intended for, reflecting radar signals.")]
 	[CategoryOrder("RadarReflector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarReflectorViewModel : FeatureViewModel<RadarReflector> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RadarReflector")]
 		[ExpandableObject]
 		[Optional]
@@ -97774,6 +100006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97788,6 +100021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97800,10 +100034,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RadarReflector")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarReflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -97813,6 +100049,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -97825,6 +100062,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadarReflector")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -98164,12 +100402,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
 	/// </summary>
+	[Description("A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.")]
 	[CategoryOrder("FogSignal",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FogSignalViewModel : FeatureViewModel<FogSignal> {
 		private categoryOfFogSignal? _categoryOfFogSignal  = default;
 
+		[Description("Classification of the various means of generating the fog signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -98185,12 +100425,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfFogSignal[] categoryOfFogSignalList => [(categoryOfFogSignal)1,(categoryOfFogSignal)2,(categoryOfFogSignal)3,(categoryOfFogSignal)4,(categoryOfFogSignal)5,(categoryOfFogSignal)6,(categoryOfFogSignal)7,(categoryOfFogSignal)8,(categoryOfFogSignal)9,(categoryOfFogSignal)10];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FogSignal")]
 		[ExpandableObject]
 		[Optional]
@@ -98205,6 +100447,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98217,12 +100460,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private int? _signalFrequency  = default;
 
+		[Description("The frequency of a signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98237,6 +100482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98254,6 +100500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _signalGroup  = default;
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98268,6 +100515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98280,10 +100528,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -98293,6 +100543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfMaximumRange  = default;
 
+		[Description("The extreme distance at which a feature can be seen or a signal detected.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98307,6 +100558,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98319,6 +100571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -98774,12 +101027,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
+	[Description("An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.")]
 	[CategoryOrder("PhysicalAISAidToNavigation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel<PhysicalAISAidToNavigation> {
 		private double? _estimatedRangeOfTransmission  = default;
 
+		[Description("The estimated range of a non-optical electromagnetic transmission.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98792,12 +101047,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -98812,6 +101069,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98826,6 +101084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _mMSICode  = default;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98838,12 +101097,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98861,6 +101122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -98873,6 +101135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -99299,12 +101562,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
 	/// </summary>
+	[Description("An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.")]
 	[CategoryOrder("VirtualAISAidToNavigation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel<VirtualAISAidToNavigation> {
 		private double? _estimatedRangeOfTransmission  = default;
 
+		[Description("The estimated range of a non-optical electromagnetic transmission.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99317,12 +101582,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("VirtualAISAidToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -99337,6 +101604,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99351,6 +101619,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _mMSICode  = default;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99363,12 +101632,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99386,6 +101657,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private virtualAISAidToNavigationType? _virtualAISAidToNavigationType  = default;
 
+		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -99403,6 +101675,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99415,6 +101688,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -99763,12 +102037,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
+	[Description("A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.")]
 	[CategoryOrder("RadioStation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadioStationViewModel : FeatureViewModel<RadioStation> {
 		private String? _callSign  = default;
 
+		[Description("The designated call-sign of a station (radio station, radar station, pilot, ...).")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99781,6 +102057,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Classification of radio services offered by a radio station.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<categoryOfRadioStation> categoryOfRadioStation  { get; set; } = new ();
@@ -99788,12 +102065,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
 		private double? _estimatedRangeOfTransmission  = default;
 
+		[Description("The estimated range of a non-optical electromagnetic transmission.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99806,12 +102085,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RadioStation")]
 		[ExpandableObject]
 		[Optional]
@@ -99826,6 +102107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private frequencyPairViewModel? _frequencyPair  = default;
 
+		[Description("A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.")]
 		[Category("RadioStation")]
 		[ExpandableObject]
 		[Optional]
@@ -99840,6 +102122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99852,10 +102135,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -99865,6 +102150,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -99877,6 +102163,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -100255,12 +102542,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
 	/// </summary>
+	[Description("A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.")]
 	[CategoryOrder("RadarTransponderBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarTransponderBeaconViewModel : FeatureViewModel<RadarTransponderBeacon> {
 		private categoryOfRadarTransponderBeacon? _categoryOfRadarTransponderBeacon  = default;
 
+		[Description("Classification of radar transponder beacon based on functionality.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -100276,12 +102565,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfRadarTransponderBeacon[] categoryOfRadarTransponderBeaconList => [(categoryOfRadarTransponderBeacon)1,(categoryOfRadarTransponderBeacon)2,(categoryOfRadarTransponderBeacon)3];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -100296,6 +102587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100308,16 +102600,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.")]
 		[Category("RadarTransponderBeacon")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<radarWaveLengthViewModel> radarWaveLength  { get; set; } = new ();
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -100332,6 +102627,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _signalGroup  = default;
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100344,10 +102640,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -100357,6 +102655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private double? _valueOfMaximumRange  = default;
 
+		[Description("The extreme distance at which a feature can be seen or a signal detected.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100371,6 +102670,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100383,6 +102683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -100926,12 +103227,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
+	[Description("A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.")]
 	[CategoryOrder("PilotBoardingPlace",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PilotBoardingPlaceViewModel : FeatureViewModel<PilotBoardingPlace> {
 		private categoryOfPilotBoardingPlace? _categoryOfPilotBoardingPlace  = default;
 
+		[Description("Classification of pilot boarding method.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100949,6 +103252,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private categoryOfPreference? _categoryOfPreference  = default;
 
+		[Description("The selection of a first choice compared to other options.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -100964,20 +103268,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfPreference[] categoryOfPreferenceList => [(categoryOfPreference)1,(categoryOfPreference)2];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("The place or general direction to which a vessel is going or directed.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<String> destination  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("PilotBoardingPlace")]
 		[ExpandableObject]
 		[Optional]
@@ -100992,6 +103300,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101004,10 +103313,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<pilotMovement> pilotMovement  { get; set; } = new ();
@@ -101015,6 +103326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public pilotMovement[] pilotMovementList => [(pilotMovement)1,(pilotMovement)2,(pilotMovement)3];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -101024,6 +103336,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101036,6 +103349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PilotBoardingPlace")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -101499,16 +103813,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
+	[Description("The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.")]
 	[CategoryOrder("VesselTrafficServiceArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel<VesselTrafficServiceArea> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("VesselTrafficServiceArea")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("VesselTrafficServiceArea")]
 		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101523,6 +103840,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("VesselTrafficServiceArea")]
 		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101535,6 +103853,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("VesselTrafficServiceArea")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -101855,20 +104174,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
 	/// </summary>
+	[Description("A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.")]
 	[CategoryOrder("CoastGuardStation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CoastGuardStationViewModel : FeatureViewModel<CoastGuardStation> {
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("CoastGuardStation")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CoastGuardStation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("CoastGuardStation")]
 		[ExpandableObject]
 		[Optional]
@@ -101883,6 +104206,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("CoastGuardStation")]
 		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101897,6 +104221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _isMRCC  = default;
 
+		[Description("A statement that expresses if a Coast Guard station performs the function of a Maritime Rescue and Coordination Centre.")]
 		[Category("CoastGuardStation")]
 		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101909,10 +104234,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("CoastGuardStation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CoastGuardStation")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -101922,6 +104249,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("CoastGuardStation")]
 		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -101934,6 +104262,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CoastGuardStation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -102293,10 +104622,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
 	/// </summary>
+	[Description("A warning signal station is a place on shore from which warning signals are made to ships at sea.")]
 	[CategoryOrder("SignalStationWarning",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SignalStationWarningViewModel : FeatureViewModel<SignalStationWarning> {
+		[Description("Classification of station based on the warning service provided.")]
 		[Category("SignalStationWarning")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationWarning> categoryOfSignalStationWarning  { get; set; } = new ();
@@ -102304,16 +104635,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1,(categoryOfSignalStationWarning)2,(categoryOfSignalStationWarning)3,(categoryOfSignalStationWarning)4,(categoryOfSignalStationWarning)5,(categoryOfSignalStationWarning)6,(categoryOfSignalStationWarning)7,(categoryOfSignalStationWarning)8,(categoryOfSignalStationWarning)9,(categoryOfSignalStationWarning)10,(categoryOfSignalStationWarning)11,(categoryOfSignalStationWarning)12,(categoryOfSignalStationWarning)13,(categoryOfSignalStationWarning)14,(categoryOfSignalStationWarning)15];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("SignalStationWarning")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SignalStationWarning")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SignalStationWarning")]
 		[ExpandableObject]
 		[Optional]
@@ -102328,6 +104662,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SignalStationWarning")]
 		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -102340,10 +104675,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SignalStationWarning")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SignalStationWarning")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -102353,6 +104690,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SignalStationWarning")]
 		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -102365,6 +104703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SignalStationWarning")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -102812,10 +105151,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
 	/// </summary>
+	[Description("A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.")]
 	[CategoryOrder("SignalStationTraffic",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SignalStationTrafficViewModel : FeatureViewModel<SignalStationTraffic> {
+		[Description("Classification of station based on the traffic service provided.")]
 		[Category("SignalStationTraffic")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic  { get; set; } = new ();
@@ -102823,16 +105164,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1,(categoryOfSignalStationTraffic)2,(categoryOfSignalStationTraffic)3,(categoryOfSignalStationTraffic)4,(categoryOfSignalStationTraffic)5,(categoryOfSignalStationTraffic)6,(categoryOfSignalStationTraffic)7,(categoryOfSignalStationTraffic)8,(categoryOfSignalStationTraffic)9,(categoryOfSignalStationTraffic)10];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("SignalStationTraffic")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SignalStationTraffic")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("SignalStationTraffic")]
 		[ExpandableObject]
 		[Optional]
@@ -102847,6 +105191,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SignalStationTraffic")]
 		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -102859,10 +105204,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SignalStationTraffic")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SignalStationTraffic")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -102872,6 +105219,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SignalStationTraffic")]
 		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -102884,6 +105232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SignalStationTraffic")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -103331,10 +105680,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A place where equipment for saving life at sea is maintained.
 	/// </summary>
+	[Description("A place where equipment for saving life at sea is maintained.")]
 	[CategoryOrder("RescueStation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RescueStationViewModel : FeatureViewModel<RescueStation> {
+		[Description("Classification of aid station based on life saving equipment.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<categoryOfRescueStation> categoryOfRescueStation  { get; set; } = new ();
@@ -103342,16 +105693,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfRescueStation[] categoryOfRescueStationList => [(categoryOfRescueStation)1,(categoryOfRescueStation)2,(categoryOfRescueStation)4,(categoryOfRescueStation)5,(categoryOfRescueStation)6,(categoryOfRescueStation)7,(categoryOfRescueStation)8];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("RescueStation")]
 		[ExpandableObject]
 		[Optional]
@@ -103366,6 +105720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("RescueStation")]
 		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103378,10 +105733,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -103391,6 +105748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("RescueStation")]
 		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103403,6 +105761,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("RescueStation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -103769,10 +106128,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
+	[Description("A harbour installation with a service or commercial operation of public interest.")]
 	[CategoryOrder("HarbourFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
+		[Description("Classification of harbour use.")]
 		[Category("HarbourFacility")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
@@ -103780,12 +106141,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1,(categoryOfHarbourFacility)3,(categoryOfHarbourFacility)4,(categoryOfHarbourFacility)5,(categoryOfHarbourFacility)6,(categoryOfHarbourFacility)7,(categoryOfHarbourFacility)8,(categoryOfHarbourFacility)9,(categoryOfHarbourFacility)10,(categoryOfHarbourFacility)11,(categoryOfHarbourFacility)12,(categoryOfHarbourFacility)13,(categoryOfHarbourFacility)14,(categoryOfHarbourFacility)15];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103801,12 +106164,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("HarbourFacility")]
 		[ExpandableObject]
 		[Optional]
@@ -103821,6 +106186,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103833,6 +106199,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -103840,12 +106207,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)6,(natureOfConstruction)7];
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 		private product? _product  = default;
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103863,6 +106232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Category("HarbourFacility")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
@@ -103876,6 +106246,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
@@ -103883,6 +106254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)23,(restriction)24,(restriction)27];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -103890,12 +106262,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)12,(status)13,(status)14,(status)16,(status)17];
 
+		[Description("The maximum allowed rate of travel for a vessel in an area in knots.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -103908,12 +106282,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("HarbourFacility")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104330,10 +106706,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A place at which a service generally of interest to small craft or pleasure boats is available.
 	/// </summary>
+	[Description("A place at which a service generally of interest to small craft or pleasure boats is available.")]
 	[CategoryOrder("SmallCraftFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SmallCraftFacilityViewModel : FeatureViewModel<SmallCraftFacility> {
+		[Description("Classification of services and facilities for the small craft user.")]
 		[Category("SmallCraftFacility")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility  { get; set; } = new ();
@@ -104341,12 +106719,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSmallCraftFacility[] categoryOfSmallCraftFacilityList => [(categoryOfSmallCraftFacility)1,(categoryOfSmallCraftFacility)2,(categoryOfSmallCraftFacility)3,(categoryOfSmallCraftFacility)4,(categoryOfSmallCraftFacility)5,(categoryOfSmallCraftFacility)6,(categoryOfSmallCraftFacility)7,(categoryOfSmallCraftFacility)8,(categoryOfSmallCraftFacility)9,(categoryOfSmallCraftFacility)10,(categoryOfSmallCraftFacility)11,(categoryOfSmallCraftFacility)12,(categoryOfSmallCraftFacility)13,(categoryOfSmallCraftFacility)14,(categoryOfSmallCraftFacility)15,(categoryOfSmallCraftFacility)16,(categoryOfSmallCraftFacility)17,(categoryOfSmallCraftFacility)18,(categoryOfSmallCraftFacility)19,(categoryOfSmallCraftFacility)20,(categoryOfSmallCraftFacility)21,(categoryOfSmallCraftFacility)22,(categoryOfSmallCraftFacility)23,(categoryOfSmallCraftFacility)24,(categoryOfSmallCraftFacility)25,(categoryOfSmallCraftFacility)26,(categoryOfSmallCraftFacility)27,(categoryOfSmallCraftFacility)28,(categoryOfSmallCraftFacility)30,(categoryOfSmallCraftFacility)31,(categoryOfSmallCraftFacility)32,(categoryOfSmallCraftFacility)33];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("SmallCraftFacility")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("SmallCraftFacility")]
 		[Editor(typeof(Editors.HorizonEditor<SmallCraftFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104359,10 +106739,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("SmallCraftFacility")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SmallCraftFacility")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -104372,6 +106754,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("SmallCraftFacility")]
 		[Editor(typeof(Editors.HorizonEditor<SmallCraftFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104384,12 +106767,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SmallCraftFacility")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("The file name of an externally referenced picture file.")]
 		[Category("SmallCraftFacility")]
 		[Editor(typeof(Editors.HorizonEditor<SmallCraftFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104751,12 +107136,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
+	[Description("The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.")]
 	[CategoryOrder("TextPlacement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
 		private int? _textOffsetBearing  = default;
 
+		[Description("The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -104771,6 +107158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _textOffsetDistance  = default;
 
+		[Description("The distance that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -104785,6 +107173,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private Boolean? _textRotation  = default;
 
+		[Description("A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104797,6 +107186,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+		[Description("The attribute from which a text string is derived.")]
 		[Category("TextPlacement")]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
@@ -104806,6 +107196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -104973,14 +107364,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	/// <summary>
 	/// A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.
 	/// </summary>
+	[Description("A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.")]
 	[CategoryOrder("Chart1Feature",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class Chart1FeatureViewModel : FeatureViewModel<Chart1Feature> {
+		[Description("Text describing one or more graphic elements that must be rendered in an end-user system.")]
 		[Category("Chart1Feature")]
 		[Optional]
 		public ObservableCollection<String> drawingInstruction  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("Chart1Feature")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();

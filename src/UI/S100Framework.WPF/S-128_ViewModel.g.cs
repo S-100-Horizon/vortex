@@ -84,12 +84,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
+	[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		private String? _administrativeDivision  = default;
 
+		[Description("A generic term for an administrative region within a country at a level below that of the sovereign state.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? administrativeDivision {
@@ -103,6 +105,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _cityName  = default;
 
+		[Description("The name of a town or city.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? cityName {
@@ -116,6 +119,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _countryName  = default;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
@@ -127,11 +131,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.")]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 
 		private String? _postalCode  = default;
 
+		[Description("Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? postalCode {
@@ -190,12 +196,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// User specified paper size width x, height y
 	/// </summary>
+	[Description("User specified paper size width x, height y")]
 	[CategoryOrder("customPaperSize",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class customPaperSizeViewModel : ComplexViewModel<customPaperSize> {
 		private double _paperWidth  = default;
 
+		[Description("The length in cm of the shorter side of a paper.")]
 		[Editor(typeof(Editors.HorizonEditor<customPaperSize>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double paperWidth {
@@ -209,6 +217,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private double _paperLength  = default;
 
+		[Description("The length in cm of the longer side of a paper.")]
 		[Editor(typeof(Editors.HorizonEditor<customPaperSize>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double paperLength {
@@ -248,12 +257,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Locale of an option that is selected automatically unless an alternative is specified.
 	/// </summary>
+	[Description("Locale of an option that is selected automatically unless an alternative is specified.")]
 	[CategoryOrder("defaultLocale",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class defaultLocaleViewModel : ComplexViewModel<defaultLocale> {
 		private String _characterEncoding  = string.Empty;
 
+		[Description("Designation of the character set to be used to encode the textual value of the locale.")]
 		[Editor(typeof(Editors.HorizonEditor<defaultLocale>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String characterEncoding {
@@ -267,6 +278,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _countryName  = string.Empty;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<defaultLocale>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String countryName {
@@ -280,6 +292,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<defaultLocale>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -322,12 +335,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
+	[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -341,6 +356,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -354,6 +370,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private nameUsage? _nameUsage  = default;
 
+		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public nameUsage? nameUsage {
@@ -399,12 +416,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
+	[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Description("The location of a fragment of text or other information in a support file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
@@ -418,6 +437,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _fileReference  = default;
 
+		[Description("The file name of an externally referenced text file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
@@ -431,6 +451,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _headline  = default;
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
@@ -444,6 +465,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -455,6 +477,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("A non-formatted digital text string.")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -505,12 +528,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The cycle of issuing a product or service.
 	/// </summary>
+	[Description("The cycle of issuing a product or service.")]
 	[CategoryOrder("issuanceCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class issuanceCycleViewModel : ComplexViewModel<issuanceCycle> {
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -524,6 +549,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private timeIntervalOfCycleViewModel? _timeIntervalOfCycle  = default;
 
+		[Description("The temporal interval of the cycle over which data is produced.")]
 		[ExpandableObject]
 		[Optional]
 		public timeIntervalOfCycleViewModel? timeIntervalOfCycle {
@@ -569,12 +595,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
+	[Description("Information about online sources from which a resource or data can be obtained.")]
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String? _applicationProfile  = default;
 
+		[Description("Name of an application profile that can be used with the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? applicationProfile {
@@ -588,6 +616,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _linkage  = string.Empty;
 
+		[Description("Location (address) for online access using a URL/URI address or similar addressing scheme.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String linkage {
@@ -601,6 +630,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _nameOfResource  = default;
 
+		[Description("Name of the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nameOfResource {
@@ -614,6 +644,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _onlineDescription  = default;
 
+		[Description("Description of online resources.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? onlineDescription {
@@ -627,6 +658,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _protocol  = default;
 
+		[Description("Connection protocol to be used. Example: ftp, http get KVP, http POST, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocol {
@@ -640,6 +672,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _protocolRequest  = default;
 
+		[Description("Request used to access the resource. Structure and content depend on the protocol and standard used by the online resource, such as Web Feature Service standard.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocolRequest {
@@ -691,12 +724,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
+	[Description("The active period of a recurring event or occurrence.")]
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -711,6 +746,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _dateStart  = string.Empty;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -751,12 +787,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A decision or establishment of a price.
 	/// </summary>
+	[Description("A decision or establishment of a price.")]
 	[CategoryOrder("pricing",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class pricingViewModel : ComplexViewModel<pricing> {
 		private String? _contractPeriod  = default;
 
+		[Description("Definition of a period when a contract is valid.")]
 		[Editor(typeof(Editors.HorizonEditor<pricing>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contractPeriod {
@@ -770,6 +808,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _currency  = string.Empty;
 
+		[Description("Something (such as coins, treasury notes, and banknotes) that is in circulation as a medium of exchange.")]
 		[Editor(typeof(Editors.HorizonEditor<pricing>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String currency {
@@ -783,6 +822,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private double _price  = default;
 
+		[Description("The amount of money expected, required, or given in payment for something.")]
 		[Editor(typeof(Editors.HorizonEditor<pricing>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double price {
@@ -825,12 +865,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information on the printing of nautical paper charts.
 	/// </summary>
+	[Description("Information on the printing of nautical paper charts.")]
 	[CategoryOrder("printInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class printInformationViewModel : ComplexViewModel<printInformation> {
 		private String? _printAgency  = default;
 
+		[Description("Name of the publishing institution of the paper chart for navigation.")]
 		[Editor(typeof(Editors.HorizonEditor<printInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? printAgency {
@@ -844,6 +886,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _printNation  = default;
 
+		[Description("The authority who printed a nautical paper chart.")]
 		[Editor(typeof(Editors.HorizonEditor<printInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? printNation {
@@ -857,6 +900,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _reprintEdition  = default;
 
+		[Description("Reprinted version of nautical paper chart.")]
 		[Editor(typeof(Editors.HorizonEditor<printInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? reprintEdition {
@@ -870,6 +914,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _reprintNation  = default;
 
+		[Description("The authority who reprinted a nautical paper chart.")]
 		[Editor(typeof(Editors.HorizonEditor<printInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? reprintNation {
@@ -883,6 +928,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private printSizeViewModel _printSize  = default;
 
+		[Description("Size of nautical paper charts.")]
 		[ExpandableObject]
 		[Mandatory]
 		public printSizeViewModel printSize {
@@ -934,12 +980,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Size of nautical paper charts.
 	/// </summary>
+	[Description("Size of nautical paper charts.")]
 	[CategoryOrder("printSize",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class printSizeViewModel : ComplexViewModel<printSize> {
 		private iSO216? _iSO216  = default;
 
+		[Description("ISO 216 is a paper-size standard established by the International Organization for Standardization (ISO).")]
 		[Editor(typeof(Editors.HorizonEditor<printSize>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public iSO216? iSO216 {
@@ -956,6 +1004,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
+		[Description("User specified paper size width x, height y")]
 		[ExpandableObject]
 		[Optional]
 		public customPaperSizeViewModel? customPaperSize {
@@ -998,12 +1047,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The name of the product specification to which a nautical product adheres.
 	/// </summary>
+	[Description("The name of the product specification to which a nautical product adheres.")]
 	[CategoryOrder("productSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class productSpecificationViewModel : ComplexViewModel<productSpecification> {
 		private DateOnly _editionDate  = default;
 
+		[Description("Date of publishing for example of a publication, chart, or product.")]
 		[Editor(typeof(Editors.HorizonEditor<productSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly editionDate {
@@ -1017,6 +1068,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _iSSN  = default;
 
+		[Description("International Standard Serial Number.")]
 		[Editor(typeof(Editors.HorizonEditor<productSpecification>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? iSSN {
@@ -1030,6 +1082,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<productSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -1043,6 +1096,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _version  = string.Empty;
 
+		[Description("Identification of a specific form or variation of an entity.")]
 		[Editor(typeof(Editors.HorizonEditor<productSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String version {
@@ -1088,12 +1142,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information on additional files used in addition to nautical products.
 	/// </summary>
+	[Description("Information on additional files used in addition to nautical products.")]
 	[CategoryOrder("supportFile",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class supportFileViewModel : ComplexViewModel<supportFile> {
 		private String? _comment  = default;
 
+		[Description("Comment regarding an entity obvious from context.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? comment {
@@ -1107,6 +1163,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private digitalSignatureReference _digitalSignatureReference  = default;
 
+		[Description("Specifies the algorithm used to compute digital signature value.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public digitalSignatureReference digitalSignatureReference {
@@ -1123,6 +1180,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private digitalSignatureValue? _digitalSignatureValue  = default;
 
+		[Description("Value derived from the digital signature.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public digitalSignatureValue? digitalSignatureValue {
@@ -1139,6 +1197,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _editionNumber  = default;
 
+		[Description("Edition of the ENC being referenced.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? editionNumber {
@@ -1152,6 +1211,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _fileLocator  = string.Empty;
 
+		[Description("The location of a fragment of text or other information in a support file.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String fileLocator {
@@ -1165,6 +1225,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _fileName  = string.Empty;
 
+		[Description("The name of a file within a system.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String fileName {
@@ -1178,6 +1239,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly? _issueDate  = default;
 
+		[Description("Date up to which the data was made available by the Data Producer.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? issueDate {
@@ -1191,6 +1253,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _otherDataTypeDescription  = default;
 
+		[Description("Description of a support file format other than those listed.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? otherDataTypeDescription {
@@ -1204,6 +1267,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private supportFileFormat _supportFileFormat  = default;
 
+		[Description("The format used for the support file.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public supportFileFormat supportFileFormat {
@@ -1220,6 +1284,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private supportFilePurpose _supportFilePurpose  = default;
 
+		[Description("The reason for inclusion of the support file.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public supportFilePurpose supportFilePurpose {
@@ -1236,6 +1301,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private defaultLocaleViewModel _defaultLocale  = default;
 
+		[Description("Locale of an option that is selected automatically unless an alternative is specified.")]
 		[ExpandableObject]
 		[Mandatory]
 		public defaultLocaleViewModel defaultLocale {
@@ -1249,6 +1315,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private supportFileSpecificationViewModel _supportFileSpecification  = default;
 
+		[Description("The name of the product specification to which a support file adheres.")]
 		[ExpandableObject]
 		[Mandatory]
 		public supportFileSpecificationViewModel supportFileSpecification {
@@ -1324,12 +1391,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The name of the product specification to which a support file adheres.
 	/// </summary>
+	[Description("The name of the product specification to which a support file adheres.")]
 	[CategoryOrder("supportFileSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class supportFileSpecificationViewModel : ComplexViewModel<supportFileSpecification> {
 		private DateOnly _editionDate  = default;
 
+		[Description("Date of publishing for example of a publication, chart, or product.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFileSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly editionDate {
@@ -1343,6 +1412,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFileSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -1356,6 +1426,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _version  = string.Empty;
 
+		[Description("Identification of a specific form or variation of an entity.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFileSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String version {
@@ -1398,12 +1469,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The name of the (product) specification to which a nautical service adheres.
 	/// </summary>
+	[Description("The name of the (product) specification to which a nautical service adheres.")]
 	[CategoryOrder("serviceSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class serviceSpecificationViewModel : ComplexViewModel<serviceSpecification> {
 		private DateOnly _editionDate  = default;
 
+		[Description("Date of publishing for example of a publication, chart, or product.")]
 		[Editor(typeof(Editors.HorizonEditor<serviceSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly editionDate {
@@ -1417,6 +1490,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<serviceSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -1430,6 +1504,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _version  = string.Empty;
 
+		[Description("Identification of a specific form or variation of an entity.")]
 		[Editor(typeof(Editors.HorizonEditor<serviceSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String version {
@@ -1472,12 +1547,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
 	/// </summary>
+	[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 	[CategoryOrder("sourceIndication",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sourceIndicationViewModel : ComplexViewModel<sourceIndication> {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
@@ -1494,6 +1571,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _countryName  = default;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
@@ -1507,6 +1585,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? reportedDate {
@@ -1520,6 +1599,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
@@ -1533,6 +1613,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private sourceType? _sourceType  = default;
 
+		[Description("Type of the source.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public sourceType? sourceType {
@@ -1547,6 +1628,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1600,12 +1682,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
+	[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class telecommunicationsViewModel : ComplexViewModel<telecommunications> {
 		private String _contactInstructions  = string.Empty;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String contactInstructions {
@@ -1619,6 +1703,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _telecommunicationIdentifier  = string.Empty;
 
+		[Description("An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
@@ -1630,6 +1715,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1677,12 +1763,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The temporal interval over which the product is updated or renewed.
 	/// </summary>
+	[Description("The temporal interval over which the product is updated or renewed.")]
 	[CategoryOrder("timeIntervalOfProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfProductViewModel : ComplexViewModel<timeIntervalOfProduct> {
 		private DateOnly? _expirationDate  = default;
 
+		[Description("Expiration date of a product or service")]
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalOfProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? expirationDate {
@@ -1696,6 +1784,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly _issueDate  = default;
 
+		[Description("Date up to which the data was made available by the Data Producer.")]
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalOfProduct>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly issueDate {
@@ -1709,6 +1798,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private issuanceCycleViewModel? _issuanceCycle  = default;
 
+		[Description("The cycle of issuing a product or service.")]
 		[ExpandableObject]
 		[Optional]
 		public issuanceCycleViewModel? issuanceCycle {
@@ -1754,10 +1844,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The temporal interval of the cycle over which data is produced.
 	/// </summary>
+	[Description("The temporal interval of the cycle over which data is produced.")]
 	[CategoryOrder("timeIntervalOfCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ComplexViewModel<timeIntervalOfCycle> {
+		[Description("The unit of a value indicating a time Time Interval.")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -1766,6 +1858,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int _valueOfTime  = default;
 
+		[Description("The length or duration of a time interval, referred to a specified time interval unit.")]
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalOfCycle>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int valueOfTime {
@@ -1815,12 +1908,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A reference to a of specific Notice to Mariners.
 	/// </summary>
+	[Description("A reference to a of specific Notice to Mariners.")]
 	[CategoryOrder("referenceToNM",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class referenceToNMViewModel : ComplexViewModel<referenceToNM> {
 		private DateOnly _publicationDate  = default;
 
+		[Description("The official publication date of a notice, product or service.")]
 		[Editor(typeof(Editors.HorizonEditor<referenceToNM>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly publicationDate {
@@ -1834,6 +1929,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private weekOfYearViewModel? _weekOfYear  = default;
 
+		[Description("The indication of a specific week within a specific year.")]
 		[ExpandableObject]
 		[Optional]
 		public weekOfYearViewModel? weekOfYear {
@@ -1876,12 +1972,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The indication of a specific week within a specific year.
 	/// </summary>
+	[Description("The indication of a specific week within a specific year.")]
 	[CategoryOrder("weekOfYear",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class weekOfYearViewModel : ComplexViewModel<weekOfYear> {
 		private int _weekNumber  = default;
 
+		[Description("A consecutive number that specifies a week within a year.")]
 		[Editor(typeof(Editors.HorizonEditor<weekOfYear>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int weekNumber {
@@ -1895,6 +1993,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int _yearNumber  = default;
 
+		[Description("A number indicating a year.")]
 		[Editor(typeof(Editors.HorizonEditor<weekOfYear>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int yearNumber {
@@ -1935,6 +2034,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A carriage requirement required by SOLAS or other regulation.
 	/// </summary>
+	[Description("A carriage requirement required by SOLAS or other regulation.")]
 	[CategoryOrder("CarriageRequirement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1955,6 +2055,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Details related to distribution.
 	/// </summary>
+	[Description("Details related to distribution.")]
 	[CategoryOrder("DistributionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1975,6 +2076,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Contact information of distributor.
 	/// </summary>
+	[Description("Contact information of distributor.")]
 	[CategoryOrder("DistributorContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1995,6 +2097,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// An association of price information to a catalogue element.
 	/// </summary>
+	[Description("An association of price information to a catalogue element.")]
 	[CategoryOrder("PriceOfElement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2015,6 +2118,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// The price of a nautical product.
 	/// </summary>
+	[Description("The price of a nautical product.")]
 	[CategoryOrder("PriceOfNauticalProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2035,6 +2139,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Contact information of producer.
 	/// </summary>
+	[Description("Contact information of producer.")]
 	[CategoryOrder("ProducerContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2055,6 +2160,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Contact information of a producing organization.
 	/// </summary>
+	[Description("Contact information of a producing organization.")]
 	[CategoryOrder("ProductionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2075,6 +2181,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A package or distinct set of products.
 	/// </summary>
+	[Description("A package or distinct set of products.")]
 	[CategoryOrder("ProductPackage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2095,12 +2202,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Mapping between traditional products and S-100 Products.
 	/// </summary>
+	[Description("Mapping between traditional products and S-100 Products.")]
 	[CategoryOrder("ProductMapping",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ProductMappingViewModel : FeatureAssociationViewModel {
 		private categoryOfProductMapping _categoryOfProductMapping  = default;
 
+		[Description("A classification of the internal relationships between products and services.")]
 		[Category("ProductMapping")]
 		[Editor(typeof(Editors.HorizonEditor<ProductMapping>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2131,8 +2240,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 	/// <summary>
 	/// A supplementary or secondary part of the product, which may appear multiple times, offering control or display functionalities depending on its configuration.
-			
 	/// </summary>
+	[Description("A supplementary or secondary part of the product, which may appear multiple times, offering control or display functionalities depending on its configuration.")]
 	[CategoryOrder("Correlated",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2153,12 +2262,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A header identifying a section within a catalogue.
 	/// </summary>
+	[Description("A header identifying a section within a catalogue.")]
 	[CategoryOrder("CatalogueSectionHeader",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CatalogueSectionHeaderViewModel : InformationViewModel<CatalogueSectionHeader> {
 		private int _catalogueSectionNumber  = default;
 
+		[Description("A number identifying a section within a catalogue.")]
 		[Category("CatalogueSectionHeader")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueSectionHeader>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2173,6 +2284,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _catalogueSectionTitle  = default;
 
+		[Description("The catalogue section title.")]
 		[Category("CatalogueSectionHeader")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueSectionHeader>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2187,6 +2299,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private informationViewModel? _information  = default;
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CatalogueSectionHeader")]
 		[ExpandableObject]
 		[Optional]
@@ -2465,12 +2578,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
+	[Description("Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.")]
 	[CategoryOrder("ContactDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
 		private String _contactInstructions  = string.Empty;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2483,22 +2598,27 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+		[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
@@ -2739,12 +2859,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// An indication of the type or justification of a carriage requirement.
 	/// </summary>
+	[Description("An indication of the type or justification of a carriage requirement.")]
 	[CategoryOrder("IndicationOfCarriageRequirement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IndicationOfCarriageRequirementViewModel : InformationViewModel<IndicationOfCarriageRequirement> {
 		private String? _domesticCarriageRequirements  = default;
 
+		[Description("A carriage requirement that is specific to a country or region and is based on domestic legislation or regulation.")]
 		[Category("IndicationOfCarriageRequirement")]
 		[Editor(typeof(Editors.HorizonEditor<IndicationOfCarriageRequirement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2759,6 +2881,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _internationalCarriageRequirements  = default;
 
+		[Description("International Carriage requirements are carriage requirements based on the SOLAS-convention or similar international regulation.")]
 		[Category("IndicationOfCarriageRequirement")]
 		[Editor(typeof(Editors.HorizonEditor<IndicationOfCarriageRequirement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2771,6 +2894,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("IndicationOfCarriageRequirement")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
@@ -2827,22 +2951,27 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Pricing information of nautical products.
 	/// </summary>
+	[Description("Pricing information of nautical products.")]
 	[CategoryOrder("PriceInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PriceInformationViewModel : InformationViewModel<PriceInformation> {
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("PriceInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("PriceInformation")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+		[Description("A decision or establishment of a price.")]
 		[Category("PriceInformation")]
 		[Optional]
 		public ObservableCollection<pricingViewModel> pricing  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("PriceInformation")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
@@ -2999,12 +3128,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information about the authority responsible for production.
 	/// </summary>
+	[Description("Information about the authority responsible for production.")]
 	[CategoryOrder("ProducerInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ProducerInformationViewModel : InformationViewModel<ProducerInformation> {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
+		[Description("Identifies the agency which produced the data.")]
 		[Category("ProducerInformation")]
 		[Editor(typeof(Editors.HorizonEditor<ProducerInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3019,6 +3150,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _agencyName  = default;
 
+		[Description("The name of an agency, entity or organization.")]
 		[Category("ProducerInformation")]
 		[Editor(typeof(Editors.HorizonEditor<ProducerInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3220,12 +3352,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Information related to a distributor.
 	/// </summary>
+	[Description("Information related to a distributor.")]
 	[CategoryOrder("DistributorInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DistributorInformationViewModel : InformationViewModel<DistributorInformation> {
 		private String _distributorName  = string.Empty;
 
+		[Description("Name of the distributor.")]
 		[Category("DistributorInformation")]
 		[Editor(typeof(Editors.HorizonEditor<DistributorInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3424,12 +3558,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// Electronic navigation product.
 	/// </summary>
+	[Description("Electronic navigation product.")]
 	[CategoryOrder("ElectronicProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ElectronicProductViewModel : FeatureViewModel<ElectronicProduct> {
 		private String? _agencyResponsibleForProduction  = default;
 
+		[Description("Identifies the agency which produced the data.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3442,6 +3578,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Classification of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
@@ -3451,6 +3588,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _catalogueElementIdentifier  = default;
 
+		[Description("Identifier of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3465,6 +3603,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _classification  = default;
 
+		[Description("Indicates a classification.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3477,6 +3616,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("A maritime service as identified by the International Maritime Organization (IMO).")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
@@ -3486,6 +3626,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private Boolean _notForNavigation  = false;
 
+		[Description("Indicates the dataset is not intended to be used for navigation.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3498,16 +3639,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -3522,6 +3666,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -3534,12 +3679,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Information on additional files used in addition to nautical products.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
+		[Description("The temporal interval over which the product is updated or renewed.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -3552,16 +3699,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Approximate grid resolution for nautical products.")]
 		[Category("NavigationalProduct")]
 		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 
+		[Description("In ECDIS, the scale at which the data was compiled.")]
 		[Category("NavigationalProduct")]
 		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 
 		private distributionStatus? _distributionStatus  = default;
 
+		[Description("Supply status of nautical products.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3579,6 +3729,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _editionNumber  = default;
 
+		[Description("Edition of the ENC being referenced.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3593,6 +3744,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _maximumDisplayScale  = default;
 
+		[Description("The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be “grossly overscaled”.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3607,6 +3759,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _minimumDisplayScale  = default;
 
+		[Description("The smallest intended viewing scale for the data.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3619,6 +3772,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("The navigational purpose of the dataset.")]
 		[Category("NavigationalProduct")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
@@ -3628,6 +3782,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _optimumDisplayScale  = default;
 
+		[Description("The largest intended viewing scale for the data.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3642,6 +3797,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _originalProductNumber  = default;
 
+		[Description("The original identification of a product that has been re-branded or distributed under multiple identification schemes.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3656,6 +3812,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _producerNation  = default;
 
+		[Description("The authority who produced a nautical product.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3670,6 +3827,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _productNumber  = default;
 
+		[Description("Product number of a product or service.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3684,6 +3842,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private specificUsage? _specificUsage  = default;
 
+		[Description("The use for which the dataset is intended.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3701,6 +3860,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly? _updateDate  = default;
 
+		[Description("A date referring to the day a product or service was updated.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3715,6 +3875,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _updateNumber  = default;
 
+		[Description("Update number of the ENC being referenced.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3729,6 +3890,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
+		[Description("Horizontal reference as an EPSG code representing a valid entry in the EPSG Geodetic Parameter Dataset, as maintained by the Geodesy Subcommittee of the IOGP Geomatics Committee, and provided online at epsg.org.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3743,6 +3905,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3760,6 +3923,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private Boolean? _compressionFlag  = default;
 
+		[Description("Indicates if the resource is compressed.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3774,6 +3938,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _datasetName  = default;
 
+		[Description("The name or identification of a dataset.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3788,6 +3953,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly _issueDate  = default;
 
+		[Description("Date up to which the data was made available by the Data Producer.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3802,6 +3968,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private S100Framework.DomainModel.S100.Time? _issueTime  = default;
 
+		[Description("Time of day at which the data was made available by the Data Producer.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3816,6 +3983,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private typeOfProductFormat _typeOfProductFormat  = default;
 
+		[Description("The type of product format.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3833,6 +4001,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private productSpecificationViewModel? _productSpecification  = default;
 
+		[Description("The name of the product specification to which a nautical product adheres.")]
 		[Category("ElectronicProduct")]
 		[ExpandableObject]
 		[Optional]
@@ -4062,12 +4231,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A product printed on paper.
 	/// </summary>
+	[Description("A product printed on paper.")]
 	[CategoryOrder("PhysicalProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PhysicalProductViewModel : FeatureViewModel<PhysicalProduct> {
 		private String? _agencyResponsibleForProduction  = default;
 
+		[Description("Identifies the agency which produced the data.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4080,6 +4251,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Classification of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
@@ -4089,6 +4261,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _catalogueElementIdentifier  = default;
 
+		[Description("Identifier of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4103,6 +4276,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _classification  = default;
 
+		[Description("Indicates a classification.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4115,6 +4289,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("A maritime service as identified by the International Maritime Organization (IMO).")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
@@ -4124,6 +4299,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private Boolean _notForNavigation  = false;
 
+		[Description("Indicates the dataset is not intended to be used for navigation.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4136,16 +4312,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4160,6 +4339,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4172,12 +4352,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Information on additional files used in addition to nautical products.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
+		[Description("The temporal interval over which the product is updated or renewed.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4190,16 +4372,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Approximate grid resolution for nautical products.")]
 		[Category("NavigationalProduct")]
 		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 
+		[Description("In ECDIS, the scale at which the data was compiled.")]
 		[Category("NavigationalProduct")]
 		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 
 		private distributionStatus? _distributionStatus  = default;
 
+		[Description("Supply status of nautical products.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4217,6 +4402,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _editionNumber  = default;
 
+		[Description("Edition of the ENC being referenced.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4231,6 +4417,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _maximumDisplayScale  = default;
 
+		[Description("The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be “grossly overscaled”.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4245,6 +4432,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _minimumDisplayScale  = default;
 
+		[Description("The smallest intended viewing scale for the data.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4257,6 +4445,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("The navigational purpose of the dataset.")]
 		[Category("NavigationalProduct")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
@@ -4266,6 +4455,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _optimumDisplayScale  = default;
 
+		[Description("The largest intended viewing scale for the data.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4280,6 +4470,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _originalProductNumber  = default;
 
+		[Description("The original identification of a product that has been re-branded or distributed under multiple identification schemes.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4294,6 +4485,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _producerNation  = default;
 
+		[Description("The authority who produced a nautical product.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4308,6 +4500,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _productNumber  = default;
 
+		[Description("Product number of a product or service.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4322,6 +4515,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private specificUsage? _specificUsage  = default;
 
+		[Description("The use for which the dataset is intended.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4339,6 +4533,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly? _updateDate  = default;
 
+		[Description("A date referring to the day a product or service was updated.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4353,6 +4548,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private int? _updateNumber  = default;
 
+		[Description("Update number of the ENC being referenced.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4367,6 +4563,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
+		[Description("Horizontal reference as an EPSG code representing a valid entry in the EPSG Geodetic Parameter Dataset, as maintained by the Geodesy Subcommittee of the IOGP Geomatics Committee, and provided online at epsg.org.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4381,6 +4578,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4398,6 +4596,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private DateOnly _editionDate  = default;
 
+		[Description("Date of publishing for example of a publication, chart, or product.")]
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalProduct>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4412,6 +4611,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _iSBN  = default;
 
+		[Description("International Standard Book Number.")]
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4426,6 +4626,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _publicationNumber  = default;
 
+		[Description("Publication number of a nautical product.")]
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4440,6 +4641,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _typeOfPhysicalProduct  = default;
 
+		[Description("The type of a physical (navigational) product, usually printed on paper.")]
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4454,6 +4656,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private printInformationViewModel? _printInformation  = default;
 
+		[Description("Information on the printing of nautical paper charts.")]
 		[Category("PhysicalProduct")]
 		[ExpandableObject]
 		[Optional]
@@ -4468,6 +4671,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private referenceToNMViewModel? _referenceToNM  = default;
 
+		[Description("A reference to a of specific Notice to Mariners.")]
 		[Category("PhysicalProduct")]
 		[ExpandableObject]
 		[Optional]
@@ -4700,12 +4904,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	/// <summary>
 	/// A service that makes use of S-100 based product specifications to support data transfer.
 	/// </summary>
+	[Description("A service that makes use of S-100 based product specifications to support data transfer.")]
 	[CategoryOrder("S100Service",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class S100ServiceViewModel : FeatureViewModel<S100Service> {
 		private String? _agencyResponsibleForProduction  = default;
 
+		[Description("Identifies the agency which produced the data.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4718,6 +4924,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Classification of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
@@ -4727,6 +4934,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _catalogueElementIdentifier  = default;
 
+		[Description("Identifier of a catalogue element.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4741,6 +4949,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _classification  = default;
 
+		[Description("Indicates a classification.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4753,6 +4962,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("A maritime service as identified by the International Maritime Organization (IMO).")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
@@ -4762,6 +4972,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private Boolean _notForNavigation  = false;
 
+		[Description("Indicates the dataset is not intended to be used for navigation.")]
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4774,16 +4985,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4798,6 +5012,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4810,12 +5025,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+		[Description("Information on additional files used in addition to nautical products.")]
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
+		[Description("The temporal interval over which the product is updated or renewed.")]
 		[Category("CatalogueElement")]
 		[ExpandableObject]
 		[Optional]
@@ -4830,6 +5047,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private Boolean? _compressionFlag  = default;
 
+		[Description("Indicates if the resource is compressed.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4844,6 +5062,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String? _serviceName  = default;
 
+		[Description("The name of a service.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4858,6 +5077,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private serviceStatus? _serviceStatus  = default;
 
+		[Description("Types of status of services.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4875,6 +5095,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private typeOfProductFormat _typeOfProductFormat  = default;
 
+		[Description("The type of product format.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4892,6 +5113,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private serviceSpecificationViewModel? _serviceSpecification  = default;
 
+		[Description("The name of the (product) specification to which a nautical service adheres.")]
 		[Category("S100Service")]
 		[ExpandableObject]
 		[Optional]
@@ -4906,6 +5128,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private productSpecificationViewModel? _productSpecification  = default;
 
+		[Description("The name of the product specification to which a nautical product adheres.")]
 		[Category("S100Service")]
 		[ExpandableObject]
 		[Optional]

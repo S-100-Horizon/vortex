@@ -170,12 +170,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
+	[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		private String? _deliveryPoint  = default;
 
+		[Description("Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? deliveryPoint {
@@ -189,6 +191,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _cityName  = default;
 
+		[Description("The name of a town or city.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? cityName {
@@ -202,6 +205,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _administrativeDivision  = default;
 
+		[Description("A generic term for an administrative region within a country at a level below that of the sovereign state.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? administrativeDivision {
@@ -215,6 +219,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _countryName  = default;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
@@ -228,6 +233,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _postalCode  = default;
 
+		[Description("Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? postalCode {
@@ -276,12 +282,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.
 	/// </summary>
+	[Description("A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
 	[CategoryOrder("directionalCharacter",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class directionalCharacterViewModel : ComplexViewModel<directionalCharacter> {
 		private Boolean? _moireEffect  = default;
 
+		[Description("A short range (up to 2km) type of directional light. Sodium lighting gives a yellow background to a screen on which a vertical black line will be seen by an observer on the centre line.")]
 		[Editor(typeof(Editors.HorizonEditor<directionalCharacter>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? moireEffect {
@@ -295,6 +303,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private orientationViewModel _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {
@@ -337,12 +346,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
+	[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private Boolean? _displayName  = default;
 
+		[Description("A statement expressing if a feature name is to be displayed in certain system display settings or not.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? displayName {
@@ -356,6 +367,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -369,6 +381,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -411,12 +424,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
+	[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -431,6 +446,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -471,10 +487,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference.")]
 	[CategoryOrder("lightSector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -483,6 +501,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
+		[Description("A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -494,6 +513,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -502,6 +522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -515,6 +536,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
@@ -526,11 +548,13 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Additional textual information about a light sector.")]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
 		private Boolean? _sectorArcExtension  = default;
 
+		[Description("Distance in screen millimetres (mm) by which a sector arc is extended beyond the default.")]
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? sectorArcExtension {
@@ -615,12 +639,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The number of features of identical character that exist as a colocated group.
 	/// </summary>
+	[Description("The number of features of identical character that exist as a colocated group.")]
 	[CategoryOrder("multiplicityOfFeatures",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class multiplicityOfFeaturesViewModel : ComplexViewModel<multiplicityOfFeatures> {
 		private Boolean _multiplicityKnown  = false;
 
+		[Description("The number of features of identical character that exist as a co-located group is or is not known.")]
 		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean multiplicityKnown {
@@ -634,6 +660,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _numberOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a co-located group.")]
 		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? numberOfFeatures {
@@ -673,12 +700,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
+	[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
@@ -692,6 +721,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double orientationValue {
@@ -731,12 +761,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
+	[Description("The active period of a recurring event or occurrence.")]
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -751,6 +783,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _dateStart  = string.Empty;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -791,12 +824,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
+	[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.")]
 	[CategoryOrder("radarWaveLength",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radarWaveLengthViewModel : ComplexViewModel<radarWaveLength> {
 		private String _radarBand  = string.Empty;
 
+		[Description("The band code character of the electromagnetic spectrum within which radar wave lengths lie.")]
 		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String radarBand {
@@ -810,6 +845,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double _waveLengthValue  = default;
 
+		[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave.")]
 		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double waveLengthValue {
@@ -849,12 +885,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
+	[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 	[CategoryOrder("rhythmOfLight",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rhythmOfLightViewModel : ComplexViewModel<rhythmOfLight> {
 		private lightCharacteristic _lightCharacteristic  = default;
 
+		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
@@ -869,11 +907,13 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
@@ -885,6 +925,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light and eclipse for all light characteristics.")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -939,12 +980,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
+	[Description("Describes the characteristics of a light sector.")]
 	[CategoryOrder("sectorCharacteristics",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ComplexViewModel<sectorCharacteristics> {
 		private lightCharacteristic _lightCharacteristic  = default;
 
+		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
@@ -959,14 +1002,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference.")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
@@ -978,6 +1024,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The sequence of times occupied by intervals of light and eclipse for all light characteristics.")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1042,12 +1089,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
+	[Description("Additional textual information about a light sector.")]
 	[CategoryOrder("sectorInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorInformationViewModel : ComplexViewModel<sectorInformation> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -1061,6 +1110,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
@@ -1100,12 +1150,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1119,6 +1171,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1164,12 +1217,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimitOne",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ComplexViewModel<sectorLimitOne> {
 		private double _sectorBearing  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double sectorBearing {
@@ -1183,6 +1238,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _sectorLineLength  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? sectorLineLength {
@@ -1222,12 +1278,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
+	[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 	[CategoryOrder("sectorLimitTwo",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ComplexViewModel<sectorLimitTwo> {
 		private double _sectorBearing  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double sectorBearing {
@@ -1241,6 +1299,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _sectorLineLength  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? sectorLineLength {
@@ -1280,12 +1339,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
+	[Description("Textual information about the shape of a non-standard topmark.")]
 	[CategoryOrder("shapeInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class shapeInformationViewModel : ComplexViewModel<shapeInformation> {
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<shapeInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -1299,6 +1360,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<shapeInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
@@ -1338,12 +1400,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The sequence of times occupied by intervals of light and eclipse for all light characteristics.
 	/// </summary>
+	[Description("The sequence of times occupied by intervals of light and eclipse for all light characteristics.")]
 	[CategoryOrder("signalSequence",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ComplexViewModel<signalSequence> {
 		private double _signalDuration  = default;
 
+		[Description("The time occupied by a single instance of light/sound or eclipse/silence in a signal sequence.")]
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double signalDuration {
@@ -1357,6 +1421,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalStatus _signalStatus  = default;
 
+		[Description("The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.")]
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public signalStatus signalStatus {
@@ -1399,12 +1464,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
+	[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1418,6 +1485,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1431,6 +1499,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1482,12 +1551,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The dimensions of a cable to give its length and diameter.
 	/// </summary>
+	[Description("The dimensions of a cable to give its length and diameter.")]
 	[CategoryOrder("CableDimensions",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableDimensionsViewModel : ComplexViewModel<CableDimensions> {
 		private double _cableLength  = default;
 
+		[Description("Total length of a cable.")]
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double cableLength {
@@ -1501,6 +1572,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private heightLengthUnits _heightLengthUnits  = default;
 
+		[Description("Units of measure of waterway distances. (IHO Registry)")]
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public heightLengthUnits heightLengthUnits {
@@ -1517,6 +1589,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double _diameter  = default;
 
+		[Description("-")]
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double diameter {
@@ -1559,12 +1632,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("ChangeDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ChangeDetailsViewModel : ComplexViewModel<ChangeDetails> {
 		private atonCommissioning? _atonCommissioning  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public atonCommissioning? atonCommissioning {
@@ -1581,6 +1656,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private atonRemoval? _atonRemoval  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public atonRemoval? atonRemoval {
@@ -1597,6 +1673,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private atonReplacement? _atonReplacement  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public atonReplacement? atonReplacement {
@@ -1613,6 +1690,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedAtonChange? _fixedAtonChange  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public fixedAtonChange? fixedAtonChange {
@@ -1629,6 +1707,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private floatingAtonChange? _floatingAtonChange  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public floatingAtonChange? floatingAtonChange {
@@ -1645,6 +1724,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private audibleSignalAtonChange? _audibleSignalAtonChange  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public audibleSignalAtonChange? audibleSignalAtonChange {
@@ -1661,6 +1741,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private lightedAtonChange? _lightedAtonChange  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public lightedAtonChange? lightedAtonChange {
@@ -1677,6 +1758,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private electronicAtonChange? _electronicAtonChange  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public electronicAtonChange? electronicAtonChange {
@@ -1737,12 +1819,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("ObscuredSector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ObscuredSectorViewModel : ComplexViewModel<ObscuredSector> {
 		private sectorLimitViewModel _sectorLimit  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitViewModel sectorLimit {
@@ -1756,6 +1840,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sectorInformationViewModel? _sectorInformation  = default;
 
+		[Description("Additional textual information about a light sector.")]
 		[ExpandableObject]
 		[Optional]
 		public sectorInformationViewModel? sectorInformation {
@@ -1801,12 +1886,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The dimensions of a sinker/anchor to give its three dimensional shape measurements.
 	/// </summary>
+	[Description("The dimensions of a sinker/anchor to give its three dimensional shape measurements.")]
 	[CategoryOrder("sinkerDimensions",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sinkerDimensionsViewModel : ComplexViewModel<sinkerDimensions> {
 		private heightLengthUnits _heightLengthUnits  = default;
 
+		[Description("Units of measure of waterway distances. (IHO Registry)")]
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public heightLengthUnits heightLengthUnits {
@@ -1823,6 +1910,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalLength {
@@ -1836,6 +1924,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalWidth {
@@ -1849,6 +1938,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
@@ -1894,12 +1984,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A description of the method used to obtain a position.(proposed by CCG)
 	/// </summary>
+	[Description("A description of the method used to obtain a position.(proposed by CCG)")]
 	[CategoryOrder("positioningMethod",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class positioningMethodViewModel : ComplexViewModel<positioningMethod> {
 		private positioningEquipment _positioningEquipment  = default;
 
+		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<positioningMethod>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public positioningEquipment positioningEquipment {
@@ -1916,6 +2008,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _NMEAString  = string.Empty;
 
+		[Description("NMEA string captured from the positioning device.(proposed by CCG)")]
 		[Editor(typeof(Editors.HorizonEditor<positioningMethod>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String NMEAString {
@@ -1955,12 +2048,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
+	[Description("The best estimate of the accuracy of a position.")]
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
@@ -1974,6 +2069,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -2013,12 +2109,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
+	[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Description("The location of a fragment of text or other information in a support file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
@@ -2032,6 +2130,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _fileReference  = default;
 
+		[Description("The file name of an externally referenced text file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
@@ -2045,6 +2144,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _headline  = default;
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
@@ -2058,6 +2158,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -2071,6 +2172,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _text  = default;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
@@ -2119,12 +2221,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Encodes the file name of a single external text file that contains the text in a defined language, which provides additional textual information that cannot be provided using other allowable attributes for the feature.
 	/// </summary>
+	[Description("Encodes the file name of a single external text file that contains the text in a defined language, which provides additional textual information that cannot be provided using other allowable attributes for the feature.")]
 	[CategoryOrder("textualDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class textualDescriptionViewModel : ComplexViewModel<textualDescription> {
 		private String _fileReference  = string.Empty;
 
+		[Description("The file name of an externally referenced text file.")]
 		[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String fileReference {
@@ -2138,6 +2242,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -2177,12 +2282,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 	[CategoryOrder("verticalUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ComplexViewModel<verticalUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
@@ -2196,6 +2303,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -2236,6 +2344,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("Atonstatus",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2256,6 +2365,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("AtonFixingMethodAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2276,6 +2386,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("AtonPositioningInformationAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2296,6 +2407,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("BuoyTopmark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2316,6 +2428,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("StructureEquipment",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2336,6 +2449,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("PhysicalAIS",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2356,6 +2470,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("SyntheticAIS",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2376,6 +2491,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("VirtualAIS",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2396,6 +2512,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("BuoyCounterWeight",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2416,6 +2533,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("BridleConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2436,6 +2554,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("ShackleConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2456,6 +2575,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("ShackleConnectionFromCable",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2476,6 +2596,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("SwivelCableConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2496,6 +2617,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("BridleCableConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2516,6 +2638,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("ShackleToBridleConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2536,6 +2659,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("ShackleToSwivelConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2556,6 +2680,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("ShackleToAnchorConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2576,6 +2701,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("SwivelConnection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2596,6 +2722,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("AtonAggregations",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2616,6 +2743,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("AtonAssociations",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2636,6 +2764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("RangeSystem",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2656,6 +2785,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// 
 	/// </summary>
+	[Description("")]
 	[CategoryOrder("DangerousFeatureAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2676,12 +2806,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Method used for fixing the position of an aid to navigation.
 	/// </summary>
+	[Description("Method used for fixing the position of an aid to navigation.")]
 	[CategoryOrder("AtoNFixingMethod",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtoNFixingMethodViewModel : InformationViewModel<AtoNFixingMethod> {
 		private String? _referencePoint  = default;
 
+		[Description("-")]
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.HorizonEditor<AtoNFixingMethod>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2696,6 +2828,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private horizontalDatum? _horizontalDatum  = default;
 
+		[Description("Horizontal reference surface or the reference coordinate system used for geodetic control in the calculation of coordinates of points on the earth.")]
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.HorizonEditor<AtoNFixingMethod>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2713,6 +2846,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.HorizonEditor<AtoNFixingMethod>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2727,6 +2861,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _positioningProcedure  = string.Empty;
 
+		[Description("-")]
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.HorizonEditor<AtoNFixingMethod>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2784,12 +2919,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("AtonStatusInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonStatusInformationViewModel : InformationViewModel<AtonStatusInformation> {
 		private ChangeDetailsViewModel _ChangeDetails  = default;
 
+		[Description("-")]
 		[Category("AtonStatusInformation")]
 		[ExpandableObject]
 		[Mandatory]
@@ -2804,6 +2941,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private ChangeTypes? _ChangeTypes  = default;
 
+		[Description("-")]
 		[Category("AtonStatusInformation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonStatusInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2861,12 +2999,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Information about how a position was obtained. (proposed by CCG)
 	/// </summary>
+	[Description("Information about how a position was obtained. (proposed by CCG)")]
 	[CategoryOrder("PositioningInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PositioningInformationViewModel : InformationViewModel<PositioningInformation> {
 		private String _positioningDevice  = string.Empty;
 
+		[Description("-")]
 		[Category("PositioningInformation")]
 		[Editor(typeof(Editors.HorizonEditor<PositioningInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2881,6 +3021,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private positioningMethodViewModel? _positioningMethod  = default;
 
+		[Description("A description of the method used to obtain a position.(proposed by CCG)")]
 		[Category("PositioningInformation")]
 		[ExpandableObject]
 		[Optional]
@@ -2935,12 +3076,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
+	[Description("The indication of the quality of the locational information for features in a dataset.")]
 	[CategoryOrder("SpatialQuality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
+		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -2958,6 +3101,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
+		[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 		[Category("SpatialQuality")]
 		[ExpandableObject]
 		[Optional]
@@ -3012,12 +3156,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A prominent object at a fixed location on land which can be used in determining a location or a direction.
 	/// </summary>
+	[Description("A prominent object at a fixed location on land which can be used in determining a location or a direction.")]
 	[CategoryOrder("Landmark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandmarkViewModel : FeatureViewModel<Landmark> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3030,16 +3176,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3054,6 +3203,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3068,6 +3218,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3082,6 +3233,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3096,6 +3248,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3110,6 +3263,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3124,6 +3278,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3138,6 +3293,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3152,6 +3308,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -3166,6 +3323,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -3178,12 +3336,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3198,6 +3358,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3215,6 +3376,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3232,6 +3394,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -3244,6 +3407,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("Landmark")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
@@ -3251,6 +3415,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -3258,6 +3423,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -3265,6 +3431,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
+		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
@@ -3272,6 +3439,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
 
+		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -3281,6 +3449,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3293,6 +3462,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -3302,6 +3472,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3319,6 +3490,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3336,6 +3508,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3350,6 +3523,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3364,6 +3538,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _mannedStructure  = default;
 
+		[Description("An expression of the feature being permanently manned or not.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3378,6 +3553,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3392,6 +3568,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3619,12 +3796,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
+	[Description("A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.")]
 	[CategoryOrder("LateralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBeaconViewModel : FeatureViewModel<LateralBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3637,16 +3816,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3661,6 +3843,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3675,6 +3858,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3689,6 +3873,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3703,6 +3888,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3717,6 +3903,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3731,6 +3918,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3745,6 +3933,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3759,6 +3948,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -3773,6 +3963,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -3785,12 +3976,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3805,6 +3998,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3822,6 +4016,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3839,6 +4034,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -3853,6 +4049,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private beaconShape _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3868,6 +4065,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -3875,6 +4073,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -3884,6 +4083,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3898,6 +4098,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3912,6 +4113,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3927,6 +4129,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -3936,6 +4139,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3948,6 +4152,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -3957,6 +4162,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3971,6 +4177,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3988,6 +4195,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4002,6 +4210,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfLateralMark _categoryOfLateralMark  = default;
 
+		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4215,12 +4424,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
+	[Description("A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.")]
 	[CategoryOrder("LateralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LateralBuoyViewModel : FeatureViewModel<LateralBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4233,16 +4444,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4257,6 +4471,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4271,6 +4486,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4285,6 +4501,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4299,6 +4516,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4313,6 +4531,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4327,6 +4546,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4341,6 +4561,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4355,6 +4576,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -4369,6 +4591,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -4381,12 +4604,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4401,6 +4626,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4418,6 +4644,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4435,6 +4662,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -4449,6 +4677,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4464,6 +4693,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -4471,6 +4701,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -4480,6 +4711,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4495,6 +4727,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -4504,6 +4737,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4516,6 +4750,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -4525,6 +4760,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4539,6 +4775,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4553,6 +4790,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4567,6 +4805,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfLateralMark _categoryOfLateralMark  = default;
 
+		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4774,12 +5013,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 	/// </summary>
+	[Description("A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.")]
 	[CategoryOrder("NavigationLine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationLineViewModel : FeatureViewModel<NavigationLine> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4792,16 +5033,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4816,6 +5060,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4830,6 +5075,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4844,6 +5090,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4858,6 +5105,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4872,6 +5120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4886,6 +5135,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4900,6 +5150,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4914,6 +5165,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -4928,6 +5180,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -4940,12 +5193,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private categoryOfNavigationLine _categoryOfNavigationLine  = default;
 
+		[Description("Classification of route guidance given to vessels.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -4961,6 +5216,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -4970,6 +5226,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private orientationViewModel _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[Category("NavigationLine")]
 		[ExpandableObject]
 		[Mandatory]
@@ -5203,12 +5460,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
+	[Description("A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.")]
 	[CategoryOrder("RecommendedTrack",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendedTrackViewModel : FeatureViewModel<RecommendedTrack> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5221,16 +5480,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5245,6 +5507,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5259,6 +5522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5273,6 +5537,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5287,6 +5552,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5301,6 +5567,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5315,6 +5582,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5329,6 +5597,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5343,6 +5612,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -5357,6 +5627,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -5369,12 +5640,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private Boolean _basedOnFixedMarks  = false;
 
+		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5389,6 +5662,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _depthRangeMinimumValue  = default;
 
+		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5403,6 +5677,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _maximalPermittedDraught  = default;
 
+		[Description("The maximal permitted draught of a vessel or convoy according to the particular article/clause of the applicable law/regulation.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5415,6 +5690,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -5424,6 +5700,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5441,6 +5718,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private orientationViewModel _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[Category("RecommendedTrack")]
 		[ExpandableObject]
 		[Mandatory]
@@ -5455,6 +5733,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("RecommendedTrack")]
 		[ExpandableObject]
 		[Optional]
@@ -5467,6 +5746,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
@@ -5474,6 +5754,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)5,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9,(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
 
+		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
@@ -5483,6 +5764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private trafficFlow _trafficFlow  = default;
 
+		[Description("Direction of vessels passing a reference point.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -5757,12 +6039,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
+	[Description("A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.")]
 	[CategoryOrder("LightSectored",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5775,16 +6059,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5799,6 +6086,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5813,6 +6101,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5827,6 +6116,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5841,6 +6131,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5855,6 +6146,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5869,6 +6161,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5883,6 +6176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5897,6 +6191,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -5911,6 +6206,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -5923,16 +6219,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5945,6 +6244,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -5954,6 +6254,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5971,6 +6272,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5985,6 +6287,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _effectiveIntensity  = default;
 
+		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5999,6 +6302,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _peakIntensity  = default;
 
+		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6011,6 +6315,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightSectored")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -6018,6 +6323,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 
+		[Description("Classification of different light types.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
@@ -6027,6 +6333,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
+		[Description("The outward display of the light.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6044,6 +6351,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6061,6 +6369,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6076,10 +6385,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 
+		[Description("-")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<ObscuredSectorViewModel> ObscuredSector  { get; set; } = new ();
 
+		[Description("Describes the characteristics of a light sector.")]
 		[Category("LightSectored")]
 		[Multiplicity(1)]
 		public ObservableCollection<sectorCharacteristicsViewModel> sectorCharacteristics  { get; set; } = new ();
@@ -6284,12 +6595,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
+	[Description("An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.")]
 	[CategoryOrder("LightAllAround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightAllAroundViewModel : FeatureViewModel<LightAllAround> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6302,16 +6615,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6326,6 +6642,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6340,6 +6657,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6354,6 +6672,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6368,6 +6687,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6382,6 +6702,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6396,6 +6717,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6410,6 +6732,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6424,6 +6747,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -6438,6 +6762,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -6450,16 +6775,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6472,6 +6800,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -6481,6 +6810,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6498,6 +6828,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6512,6 +6843,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _effectiveIntensity  = default;
 
+		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6526,6 +6858,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _peakIntensity  = default;
 
+		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6538,6 +6871,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAllAround")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -6545,6 +6879,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
 
+		[Description("Classification of different light types.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
@@ -6554,6 +6889,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
+		[Description("The outward display of the light.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6571,6 +6907,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private lightVisibility? _lightVisibility  = default;
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6588,6 +6925,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _majorLight  = default;
 
+		[Description("A statement expressing if a light is considered to be a major light in terms of ECDIS display in a particular area.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6602,6 +6940,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6619,6 +6958,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6636,6 +6976,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6650,6 +6991,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a colocated group.")]
 		[Category("LightAllAround")]
 		[ExpandableObject]
 		[Optional]
@@ -6664,6 +7006,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightAllAround")]
 		[ExpandableObject]
 		[Mandatory]
@@ -6678,6 +7021,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _flareBearing  = default;
 
+		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6894,12 +7238,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
+	[Description("An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.")]
 	[CategoryOrder("LightAirObstruction",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightAirObstructionViewModel : FeatureViewModel<LightAirObstruction> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6912,16 +7258,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6936,6 +7285,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6950,6 +7300,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6964,6 +7315,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6978,6 +7330,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6992,6 +7345,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7006,6 +7360,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7020,6 +7375,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7034,6 +7390,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -7048,6 +7405,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -7060,16 +7418,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7082,6 +7443,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -7091,6 +7453,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7108,6 +7471,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7122,6 +7486,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _effectiveIntensity  = default;
 
+		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7136,6 +7501,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _peakIntensity  = default;
 
+		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7148,6 +7514,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The outward display of the light.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
@@ -7155,6 +7522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 
+		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
@@ -7164,6 +7532,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7178,6 +7547,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
+		[Description("The number of features of identical character that exist as a colocated group.")]
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
 		[Optional]
@@ -7192,6 +7562,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightAirObstruction")]
 		[ExpandableObject]
 		[Mandatory]
@@ -7206,6 +7577,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _flareBearing  = default;
 
+		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAirObstruction")]
 		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7407,12 +7779,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
+	[Description("A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.")]
 	[CategoryOrder("LightFogDetector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightFogDetectorViewModel : FeatureViewModel<LightFogDetector> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7425,16 +7799,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7449,6 +7826,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7463,6 +7841,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7477,6 +7856,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7491,6 +7871,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7505,6 +7886,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7519,6 +7901,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7533,6 +7916,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7547,6 +7931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -7561,6 +7946,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -7573,16 +7959,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7595,6 +7984,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -7604,6 +7994,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7621,6 +8012,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7635,6 +8027,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _effectiveIntensity  = default;
 
+		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7649,6 +8042,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _peakIntensity  = default;
 
+		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7663,6 +8057,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7680,6 +8075,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
+		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.")]
 		[Category("LightFogDetector")]
 		[ExpandableObject]
 		[Mandatory]
@@ -7852,12 +8248,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
+	[Description("A device capable of, or intended for, reflecting radar signals.")]
 	[CategoryOrder("RadarReflector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarReflectorViewModel : FeatureViewModel<RadarReflector> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7870,16 +8268,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7894,6 +8295,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7908,6 +8310,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7922,6 +8325,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7936,6 +8340,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7950,6 +8355,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7964,6 +8370,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7978,6 +8385,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7992,6 +8400,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8006,6 +8415,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8018,16 +8428,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8040,6 +8453,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarReflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -8049,6 +8463,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8066,6 +8481,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8223,12 +8639,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
 	/// </summary>
+	[Description("A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.")]
 	[CategoryOrder("FogSignal",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FogSignalViewModel : FeatureViewModel<FogSignal> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8241,16 +8659,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8265,6 +8686,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8279,6 +8701,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8293,6 +8716,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8307,6 +8731,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8321,6 +8746,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8335,6 +8761,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8349,6 +8776,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8363,6 +8791,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8377,6 +8806,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8389,16 +8819,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private categoryOfFogSignal _categoryOfFogSignal  = default;
 
+		[Description("Classification of the various means of generating the fog signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -8416,6 +8849,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int? _signalFrequency  = default;
 
+		[Description("The frequency of a signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8430,6 +8864,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalGeneration? _signalGeneration  = default;
 
+		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8447,6 +8882,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _signalGroup  = default;
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8461,6 +8897,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _signalOutput  = default;
 
+		[Description("Strength of signal output.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8475,6 +8912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _signalPeriod  = default;
 
+		[Description("The time occupied by an entire cycle of intervals of light and eclipse.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8487,6 +8925,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -8496,6 +8935,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _valueOfMaximumRange  = default;
 
+		[Description("The extreme distance at which an feature can be seen or a signal detected.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8510,6 +8950,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalSequenceViewModel? _signalSequence  = default;
 
+		[Description("The sequence of times occupied by intervals of light and eclipse for all light characteristics.")]
 		[Category("FogSignal")]
 		[ExpandableObject]
 		[Optional]
@@ -8685,12 +9126,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A sensor used to observe the environment.
 	/// </summary>
+	[Description("A sensor used to observe the environment.")]
 	[CategoryOrder("EnvironmentObservationEquipment",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EnvironmentObservationEquipmentViewModel : FeatureViewModel<EnvironmentObservationEquipment> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8703,16 +9146,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8727,6 +9173,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8741,6 +9188,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8755,6 +9203,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8769,6 +9218,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8783,6 +9233,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8797,6 +9248,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8811,6 +9263,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8825,6 +9278,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8839,6 +9293,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -8851,16 +9306,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("EnvironmentObservationEquipment")]
 		[Editor(typeof(Editors.HorizonEditor<EnvironmentObservationEquipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8873,6 +9331,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("EnvironmentObservationEquipment")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -8880,6 +9339,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
+		[Description("Type of sensor used to observe the environment. For example Anemometer, fog monitor, etc.")]
 		[Category("EnvironmentObservationEquipment")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> typeOfEnvironmentalObservationEquipment  { get; set; } = new ();
@@ -9033,12 +9493,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
+	[Description("A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.")]
 	[CategoryOrder("RadioStation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadioStationViewModel : FeatureViewModel<RadioStation> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9051,16 +9513,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9075,6 +9540,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9089,6 +9555,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9103,6 +9570,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9117,6 +9585,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9131,6 +9600,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9145,6 +9615,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9159,6 +9630,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9173,6 +9645,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -9187,6 +9660,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -9199,16 +9673,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private categoryOfRadioStation _categoryOfRadioStation  = default;
 
+		[Description("Classification of radio services offered by a radio station.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -9226,6 +9703,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _estimatedRangeOfTransmission  = default;
 
+		[Description("The estimated range of a non-optical electromagnetic transmission.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9240,6 +9718,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private status? _status  = default;
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9638,12 +10117,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// (1) The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (2) An unlighted navigational mark.
 	/// </summary>
+	[Description("(1) The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (2) An unlighted navigational mark.")]
 	[CategoryOrder("Daymark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DaymarkViewModel : FeatureViewModel<Daymark> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9656,16 +10137,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9680,6 +10164,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9694,6 +10179,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9708,6 +10194,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9722,6 +10209,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9736,6 +10224,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9750,6 +10239,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9764,6 +10254,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9778,6 +10269,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -9792,6 +10284,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -9804,16 +10297,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private categoryOfSpecialPurposeMark? _categoryOfSpecialPurposeMark  = default;
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9829,6 +10325,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Daymark")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -9836,6 +10333,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -9845,6 +10343,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9859,6 +10358,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9871,6 +10371,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -9880,6 +10381,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9892,6 +10394,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -9901,6 +10404,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
+		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -9918,6 +10422,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9935,6 +10440,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9949,6 +10455,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private shapeInformationViewModel? _shapeInformation  = default;
 
+		[Description("Textual information about the shape of a non-standard topmark.")]
 		[Category("Daymark")]
 		[ExpandableObject]
 		[Optional]
@@ -9963,6 +10470,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean _isSlatted  = false;
 
+		[Description("-")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -10171,12 +10679,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
+	[Description("A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light.")]
 	[CategoryOrder("Retroreflector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RetroreflectorViewModel : FeatureViewModel<Retroreflector> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10189,16 +10699,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10213,6 +10726,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10227,6 +10741,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10241,6 +10756,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10255,6 +10771,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10269,6 +10786,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10283,6 +10801,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10297,6 +10816,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10311,6 +10831,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -10325,6 +10846,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -10337,14 +10859,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -10352,6 +10877,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -10361,6 +10887,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10376,6 +10903,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -10385,6 +10913,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10402,6 +10931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10416,6 +10946,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10596,12 +11127,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
 	/// </summary>
+	[Description("A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.")]
 	[CategoryOrder("RadarTransponderBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarTransponderBeaconViewModel : FeatureViewModel<RadarTransponderBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10614,16 +11147,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10638,6 +11174,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10652,6 +11189,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10666,6 +11204,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10680,6 +11219,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10694,6 +11234,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10708,6 +11249,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10722,6 +11264,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10736,6 +11279,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -10750,6 +11294,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -10762,16 +11307,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon  = default;
 
+		[Description("Classification of radar transponder beacon based on functionality.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -10789,6 +11337,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private radarWaveLengthViewModel? _radarWaveLength  = default;
 
+		[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -10803,6 +11352,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _signalGroup  = default;
 
+		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10815,6 +11365,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -10824,6 +11375,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _valueOfNominalRange  = default;
 
+		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10838,6 +11390,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _manufactorer  = default;
 
+		[Description("-")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10852,6 +11405,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -10866,6 +11420,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
+		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -10880,6 +11435,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private signalSequenceViewModel? _signalSequence  = default;
 
+		[Description("The sequence of times occupied by intervals of light and eclipse for all light characteristics.")]
 		[Category("RadarTransponderBeacon")]
 		[ExpandableObject]
 		[Optional]
@@ -11064,12 +11620,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
 	/// </summary>
+	[Description("An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.")]
 	[CategoryOrder("VirtualAISAidToNavigation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel<VirtualAISAidToNavigation> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11082,16 +11640,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11106,6 +11667,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11120,6 +11682,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11134,6 +11697,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11148,6 +11712,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11162,6 +11727,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11176,6 +11742,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11190,6 +11757,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11204,6 +11772,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -11218,6 +11787,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -11230,12 +11800,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String? _AtoNNumber  = default;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11250,6 +11822,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _mMSICode  = string.Empty;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11262,6 +11835,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11271,6 +11845,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
+		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11507,12 +12082,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
+	[Description("An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.")]
 	[CategoryOrder("PhysicalAISAidToNavigation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel<PhysicalAISAidToNavigation> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11525,16 +12102,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11549,6 +12129,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11563,6 +12144,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11577,6 +12159,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11591,6 +12174,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11605,6 +12189,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11619,6 +12204,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11633,6 +12219,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11647,6 +12234,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -11661,6 +12249,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -11673,12 +12262,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String? _AtoNNumber  = default;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11693,6 +12284,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _mMSICode  = string.Empty;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11705,6 +12297,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11714,6 +12307,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private CategoryOfPhysicalAISAidToNavigation _CategoryOfPhysicalAISAidToNavigation  = default;
 
+		[Description("A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -11950,12 +12544,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("SyntheticAISAidToNavigation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SyntheticAISAidToNavigationViewModel : FeatureViewModel<SyntheticAISAidToNavigation> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11968,16 +12564,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11992,6 +12591,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12006,6 +12606,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12020,6 +12621,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12034,6 +12636,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12048,6 +12651,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12062,6 +12666,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12076,6 +12681,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12090,6 +12696,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12104,6 +12711,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12116,12 +12724,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String? _AtoNNumber  = default;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12136,6 +12746,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _mMSICode  = string.Empty;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAton")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12148,6 +12759,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -12157,6 +12769,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private CategoryOfSyntheticAISAidtoNavigation _CategoryOfSyntheticAISAidtoNavigation  = default;
 
+		[Description("-")]
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12174,6 +12787,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
+		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12413,12 +13027,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("PowerSource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PowerSourceViewModel : FeatureViewModel<PowerSource> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12431,16 +13047,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12455,6 +13074,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12469,6 +13089,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12483,6 +13104,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12497,6 +13119,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12511,6 +13134,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12525,6 +13149,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12539,6 +13164,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12553,6 +13179,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12567,6 +13194,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12579,16 +13207,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("Classification or name of system used to remotely monitor a feature.")]
 		[Category("Equipment")]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		private CategoryOfPowerSource _CategoryOfPowerSource  = default;
 
+		[Description("-")]
 		[Category("PowerSource")]
 		[Editor(typeof(Editors.HorizonEditor<PowerSource>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12604,6 +13235,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public CategoryOfPowerSource[] CategoryOfPowerSourceList => [(CategoryOfPowerSource)1,(CategoryOfPowerSource)2,(CategoryOfPowerSource)3,(CategoryOfPowerSource)4];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("PowerSource")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -12750,12 +13382,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
+	[Description("An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.")]
 	[CategoryOrder("IsolatedDangerBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBeaconViewModel : FeatureViewModel<IsolatedDangerBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12768,16 +13402,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12792,6 +13429,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12806,6 +13444,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12820,6 +13459,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12834,6 +13474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12848,6 +13489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12862,6 +13504,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12876,6 +13519,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12890,6 +13534,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12904,6 +13549,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -12916,12 +13562,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12936,6 +13584,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12953,6 +13602,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12970,6 +13620,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -12984,6 +13635,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private beaconShape _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -12999,6 +13651,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -13006,6 +13659,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -13015,6 +13669,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13029,6 +13684,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13043,6 +13699,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13058,6 +13715,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -13067,6 +13725,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13079,6 +13738,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -13088,6 +13748,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13102,6 +13763,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13119,6 +13781,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13327,12 +13990,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
+	[Description("A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.")]
 	[CategoryOrder("CardinalBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13345,16 +14010,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13369,6 +14037,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13383,6 +14052,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13397,6 +14067,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13411,6 +14082,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13425,6 +14097,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13439,6 +14112,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13453,6 +14127,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13467,6 +14142,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -13481,6 +14157,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -13493,12 +14170,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13513,6 +14192,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13530,6 +14210,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13547,6 +14228,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -13561,6 +14243,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private beaconShape _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13576,6 +14259,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -13583,6 +14267,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -13592,6 +14277,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13606,6 +14292,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13620,6 +14307,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13635,6 +14323,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -13644,6 +14333,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13656,6 +14346,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -13665,6 +14356,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13679,6 +14371,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13696,6 +14389,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13710,6 +14404,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfCardinalMark _categoryOfCardinalMark  = default;
 
+		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13923,12 +14618,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
+	[Description("An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.")]
 	[CategoryOrder("IsolatedDangerBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IsolatedDangerBuoyViewModel : FeatureViewModel<IsolatedDangerBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13941,16 +14638,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13965,6 +14665,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13979,6 +14680,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13993,6 +14695,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14007,6 +14710,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14021,6 +14725,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14035,6 +14740,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14049,6 +14755,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14063,6 +14770,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -14077,6 +14785,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -14089,12 +14798,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -14109,6 +14820,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14126,6 +14838,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14143,6 +14856,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -14157,6 +14871,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -14172,6 +14887,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -14179,6 +14895,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -14188,6 +14905,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14203,6 +14921,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -14212,6 +14931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14224,6 +14944,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -14233,6 +14954,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14247,6 +14969,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14261,6 +14984,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14463,12 +15187,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
+	[Description("A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.")]
 	[CategoryOrder("CardinalBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBuoyViewModel : FeatureViewModel<CardinalBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14481,16 +15207,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14505,6 +15234,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14519,6 +15249,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14533,6 +15264,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14547,6 +15279,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14561,6 +15294,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14575,6 +15309,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14589,6 +15324,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14603,6 +15339,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -14617,6 +15354,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -14629,12 +15367,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -14649,6 +15389,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14666,6 +15407,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14683,6 +15425,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -14697,6 +15440,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -14712,6 +15456,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -14719,6 +15464,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -14728,6 +15474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14743,6 +15490,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -14752,6 +15500,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14764,6 +15513,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -14773,6 +15523,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14787,6 +15538,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14801,6 +15553,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14815,6 +15568,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfCardinalMark _categoryOfCardinalMark  = default;
 
+		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15022,12 +15776,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4)
 	/// </summary>
+	[Description("A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4)")]
 	[CategoryOrder("InstallationBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15040,16 +15796,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15064,6 +15823,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15078,6 +15838,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15092,6 +15853,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15106,6 +15868,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15120,6 +15883,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15134,6 +15898,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15148,6 +15913,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15162,6 +15928,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -15176,6 +15943,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -15188,12 +15956,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15208,6 +15978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15225,6 +15996,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15242,6 +16014,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -15256,6 +16029,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15271,6 +16045,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -15278,6 +16053,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -15287,6 +16063,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15302,6 +16079,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -15311,6 +16089,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15323,6 +16102,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -15332,6 +16112,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15346,6 +16127,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15360,6 +16142,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15374,6 +16157,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfInstallationBuoy _categoryOfInstallationBuoy  = default;
 
+		[Description("	Classification of fixed installation buoy.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15581,12 +16365,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The equipment or structure used to secure a vessel. (IHO Registry)
 	/// </summary>
+	[Description("The equipment or structure used to secure a vessel. (IHO Registry)")]
 	[CategoryOrder("MooringBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15599,16 +16385,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15623,6 +16412,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15637,6 +16427,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15651,6 +16442,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15665,6 +16457,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15679,6 +16472,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15693,6 +16487,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15707,6 +16502,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15721,6 +16517,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -15735,6 +16532,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -15747,12 +16545,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15767,6 +16567,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15784,6 +16585,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15801,6 +16603,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -15815,6 +16618,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -15830,6 +16634,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -15837,6 +16642,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -15846,6 +16652,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15861,6 +16668,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -15870,6 +16678,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15882,6 +16691,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -15891,6 +16701,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15905,6 +16716,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15919,6 +16731,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16121,12 +16934,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary (24-72 hours) first response. (IHO Registry)
 	/// </summary>
+	[Description("An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary (24-72 hours) first response. (IHO Registry)")]
 	[CategoryOrder("EmergencyWreckMarkingBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EmergencyWreckMarkingBuoyViewModel : FeatureViewModel<EmergencyWreckMarkingBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16139,16 +16954,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16163,6 +16981,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16177,6 +16996,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16191,6 +17011,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16205,6 +17026,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16219,6 +17041,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16233,6 +17056,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16247,6 +17071,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16261,6 +17086,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -16275,6 +17101,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -16287,12 +17114,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -16307,6 +17136,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16324,6 +17154,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16341,6 +17172,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -16355,6 +17187,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -16370,6 +17203,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -16377,6 +17211,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -16386,6 +17221,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16401,6 +17237,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -16410,6 +17247,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16422,6 +17260,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -16431,6 +17270,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16445,6 +17285,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16459,6 +17300,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16661,12 +17503,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A distinctive structure on or off a coast exhibiting a major light designed to serve as an aid to navigation.
 	/// </summary>
+	[Description("A distinctive structure on or off a coast exhibiting a major light designed to serve as an aid to navigation.")]
 	[CategoryOrder("Lighthouse",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LighthouseViewModel : FeatureViewModel<Lighthouse> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16679,16 +17523,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16703,6 +17550,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16717,6 +17565,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16731,6 +17580,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16745,6 +17595,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16759,6 +17610,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16773,6 +17625,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16787,6 +17640,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16801,6 +17655,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -16815,6 +17670,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -16827,12 +17683,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -16847,6 +17705,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16864,6 +17723,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16881,6 +17741,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -16893,6 +17754,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("Landmark")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
@@ -16900,6 +17762,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -16907,6 +17770,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -16914,6 +17778,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
+		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
@@ -16921,6 +17786,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
 
+		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -16930,6 +17796,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16942,6 +17809,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -16951,6 +17819,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16968,6 +17837,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -16985,6 +17855,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16999,6 +17870,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17013,6 +17885,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _mannedStructure  = default;
 
+		[Description("An expression of the feature being permanently manned or not.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17027,6 +17900,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17041,6 +17915,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17269,12 +18144,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 	/// </summary>
+	[Description("A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.")]
 	[CategoryOrder("LightFloat",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightFloatViewModel : FeatureViewModel<LightFloat> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17287,16 +18164,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17311,6 +18191,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17325,6 +18206,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17339,6 +18221,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17353,6 +18236,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17367,6 +18251,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17381,6 +18266,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17395,6 +18281,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17409,6 +18296,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -17423,6 +18311,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -17435,12 +18324,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17455,6 +18346,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17472,6 +18364,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17489,6 +18382,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -17501,6 +18395,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFloat")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -17508,6 +18403,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -17517,6 +18413,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17531,6 +18428,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17545,6 +18443,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _mannedStructure  = default;
 
+		[Description("An expression of the feature being permanently manned or not.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17557,6 +18456,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -17566,6 +18466,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17578,6 +18479,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -17587,6 +18489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17601,6 +18504,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17618,6 +18522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17632,6 +18537,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalAccuracy  = default;
 
+		[Description("-")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17839,12 +18745,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 	/// </summary>
+	[Description("A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.")]
 	[CategoryOrder("LightVessel",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17857,16 +18765,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17881,6 +18792,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17895,6 +18807,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17909,6 +18822,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17923,6 +18837,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17937,6 +18852,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17951,6 +18867,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17965,6 +18882,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17979,6 +18897,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -17993,6 +18912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -18005,12 +18925,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -18025,6 +18947,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18042,6 +18965,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18059,6 +18983,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -18071,6 +18996,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightVessel")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -18078,6 +19004,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -18087,6 +19014,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalLength  = default;
 
+		[Description("A measurement of the longer of two linear axis.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18101,6 +19029,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalWidth  = default;
 
+		[Description("A measurement of the shorter of two linear axis.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18115,6 +19044,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _mannedStructure  = default;
 
+		[Description("An expression of the feature being permanently manned or not.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18127,6 +19057,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -18136,6 +19067,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18148,6 +19080,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -18157,6 +19090,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18171,6 +19105,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18188,6 +19123,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18202,6 +19138,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalAccuracy  = default;
 
+		[Description("-")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18409,12 +19346,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
 	/// </summary>
+	[Description("A permanent offshore structure, either fixed or floating.")]
 	[CategoryOrder("OffshorePlatform",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OffshorePlatformViewModel : FeatureViewModel<OffshorePlatform> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18427,16 +19366,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18451,6 +19393,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18465,6 +19408,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18479,6 +19423,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18493,6 +19438,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18507,6 +19453,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18521,6 +19468,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18535,6 +19483,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18549,6 +19498,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -18563,6 +19513,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -18575,12 +19526,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -18595,6 +19548,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18612,6 +19566,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18629,6 +19584,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -18641,6 +19597,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Classification of an offshore raised structure.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<categoryOfOffshorePlatform> categoryOfOffshorePlatform  { get; set; } = new ();
@@ -18648,6 +19605,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1,(categoryOfOffshorePlatform)2,(categoryOfOffshorePlatform)3,(categoryOfOffshorePlatform)4,(categoryOfOffshorePlatform)5,(categoryOfOffshorePlatform)6,(categoryOfOffshorePlatform)7,(categoryOfOffshorePlatform)8,(categoryOfOffshorePlatform)9,(categoryOfOffshorePlatform)10,(categoryOfOffshorePlatform)11];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -18655,6 +19613,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -18664,6 +19623,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18678,6 +19638,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _mannedStructure  = default;
 
+		[Description("An expression of the feature being permanently manned or not.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18690,6 +19651,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -18697,6 +19659,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -18706,6 +19669,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18718,6 +19682,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -18727,6 +19692,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18744,6 +19710,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18758,6 +19725,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18775,6 +19743,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -18999,12 +19968,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
 	/// </summary>
+	[Description("A large storage structure used for storing loose materials, liquids and/or gases.")]
 	[CategoryOrder("SiloTank",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SiloTankViewModel : FeatureViewModel<SiloTank> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19017,16 +19988,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19041,6 +20015,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19055,6 +20030,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19069,6 +20045,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19083,6 +20060,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19097,6 +20075,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19111,6 +20090,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19125,6 +20105,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19139,6 +20120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -19153,6 +20135,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -19165,12 +20148,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -19185,6 +20170,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19202,6 +20188,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19219,6 +20206,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -19233,6 +20221,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buildingShape? _buildingShape  = default;
 
+		[Description("The specific shape of the building.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19250,6 +20239,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfSiloTank? _categoryOfSiloTank  = default;
 
+		[Description("Classification based on the product for which a silo or tank is used.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19265,6 +20255,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1,(categoryOfSiloTank)2,(categoryOfSiloTank)3,(categoryOfSiloTank)4];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -19272,6 +20263,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -19281,6 +20273,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19295,6 +20288,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19307,6 +20301,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The building's primary construction material.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -19316,6 +20311,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19328,6 +20324,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -19337,6 +20334,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19354,6 +20352,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19368,6 +20367,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19385,6 +20385,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19595,12 +20596,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or sea floor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 	/// </summary>
+	[Description("A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or sea floor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.")]
 	[CategoryOrder("Pile",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PileViewModel : FeatureViewModel<Pile> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19613,16 +20616,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19637,6 +20643,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19651,6 +20658,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19665,6 +20673,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19679,6 +20688,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19693,6 +20703,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19707,6 +20718,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19721,6 +20733,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19735,6 +20748,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -19749,6 +20763,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -19761,12 +20776,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -19781,6 +20798,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19798,6 +20816,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19815,6 +20834,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -19829,6 +20849,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfPile? _categoryOfPile  = default;
 
+		[Description("Classification of pile, driven into the earth as a foundation or support for a structure.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19844,6 +20865,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1,(categoryOfPile)3,(categoryOfPile)4,(categoryOfPile)5,(categoryOfPile)6,(categoryOfPile)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -19851,6 +20873,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -19860,6 +20883,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19874,6 +20898,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalDatum? _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19891,6 +20916,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19905,6 +20931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -19922,6 +20949,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20103,12 +21131,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
 	/// </summary>
+	[Description("A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.")]
 	[CategoryOrder("Building",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BuildingViewModel : FeatureViewModel<Building> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20121,16 +21151,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20145,6 +21178,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20159,6 +21193,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20173,6 +21208,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20187,6 +21223,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20201,6 +21238,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20215,6 +21253,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20229,6 +21268,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20243,6 +21283,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20257,6 +21298,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20269,12 +21311,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -20289,6 +21333,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20306,6 +21351,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20323,6 +21369,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -20467,12 +21514,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// (1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
+	[Description("(1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
 	[CategoryOrder("Bridge",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BridgeViewModel : FeatureViewModel<Bridge> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20485,16 +21534,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20509,6 +21561,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20523,6 +21576,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20537,6 +21591,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20551,6 +21606,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20565,6 +21621,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20579,6 +21636,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20593,6 +21651,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20607,6 +21666,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20621,6 +21681,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20633,12 +21694,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -20653,6 +21716,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20670,6 +21734,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20687,6 +21752,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -20831,12 +21897,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A heavy weight (of concrete, cast-iron, etc..) that rests on the sea bed and to which a mooring line can be attached. (IALA Dictionary, 8-5-025)
 	/// </summary>
+	[Description("A heavy weight (of concrete, cast-iron, etc..) that rests on the sea bed and to which a mooring line can be attached. (IALA Dictionary, 8-5-025)")]
 	[CategoryOrder("SinkerAnchor",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SinkerAnchorViewModel : FeatureViewModel<SinkerAnchor> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20849,16 +21917,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20873,6 +21944,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20887,6 +21959,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20901,6 +21974,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20915,6 +21989,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20929,6 +22004,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20943,6 +22019,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20957,6 +22034,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -20971,6 +22049,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20985,6 +22064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -20997,12 +22077,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private natureOfConstruction? _natureOfConstruction  = default;
 
+		[Description("The building's primary construction material.")]
 		[Category("SinkerAnchor")]
 		[Editor(typeof(Editors.HorizonEditor<SinkerAnchor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21020,6 +22102,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private sinkerDimensionsViewModel? _sinkerDimensions  = default;
 
+		[Description("The dimensions of a sinker/anchor to give its three dimensional shape measurements.")]
 		[Category("SinkerAnchor")]
 		[ExpandableObject]
 		[Optional]
@@ -21034,6 +22117,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double _weight  = default;
 
+		[Description("-")]
 		[Category("SinkerAnchor")]
 		[Editor(typeof(Editors.HorizonEditor<SinkerAnchor>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -21048,6 +22132,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _sinkerType  = default;
 
+		[Description("-")]
 		[Category("SinkerAnchor")]
 		[Editor(typeof(Editors.HorizonEditor<SinkerAnchor>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21277,12 +22362,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A shackle at the lower end of a mooring chain, for attachment to an anchor or sinker. (IALA Dictionary, 8-5-150)
 	/// </summary>
+	[Description("A shackle at the lower end of a mooring chain, for attachment to an anchor or sinker. (IALA Dictionary, 8-5-150)")]
 	[CategoryOrder("MooringShackle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringShackleViewModel : FeatureViewModel<MooringShackle> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21295,16 +22382,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21319,6 +22409,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21333,6 +22424,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21347,6 +22439,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21361,6 +22454,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21375,6 +22469,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21389,6 +22484,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21403,6 +22499,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21417,6 +22514,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -21431,6 +22529,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -21443,12 +22542,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private natureOfConstruction? _natureOfConstruction  = default;
 
+		[Description("The building's primary construction material.")]
 		[Category("MooringShackle")]
 		[Editor(typeof(Editors.HorizonEditor<MooringShackle>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21466,6 +22567,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private ShackleType? _ShackleType  = default;
 
+		[Description("Types of shackle.")]
 		[Category("MooringShackle")]
 		[Editor(typeof(Editors.HorizonEditor<MooringShackle>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -21483,6 +22585,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _weight  = default;
 
+		[Description("-")]
 		[Category("MooringShackle")]
 		[Editor(typeof(Editors.HorizonEditor<MooringShackle>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22030,12 +23133,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the sea floor.
 	/// </summary>
+	[Description("An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the sea floor.")]
 	[CategoryOrder("CableSubmarine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22048,16 +23153,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22072,6 +23180,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22086,6 +23195,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22100,6 +23210,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22114,6 +23225,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22128,6 +23240,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22142,6 +23255,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22156,6 +23270,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22170,6 +23285,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -22184,6 +23300,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -22196,12 +23313,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private CableDimensionsViewModel? _CableDimensions  = default;
 
+		[Description("The dimensions of a cable to give its length and diameter.")]
 		[Category("CableSubmarine")]
 		[ExpandableObject]
 		[Optional]
@@ -22216,6 +23335,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private categoryOfCable _categoryOfCable  = default;
 
+		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -22231,6 +23351,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)3,(categoryOfCable)4,(categoryOfCable)5,(categoryOfCable)6,(categoryOfCable)7,(categoryOfCable)8];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -22621,12 +23742,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A chain link that provides for rotary motion between the lengths of chain that it connects. (IALA Dictionary, 8-5-165)
 	/// </summary>
+	[Description("A chain link that provides for rotary motion between the lengths of chain that it connects. (IALA Dictionary, 8-5-165)")]
 	[CategoryOrder("Swivel",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SwivelViewModel : FeatureViewModel<Swivel> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22639,16 +23762,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22663,6 +23789,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22677,6 +23804,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22691,6 +23819,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22705,6 +23834,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22719,6 +23849,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22733,6 +23864,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22747,6 +23879,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22761,6 +23894,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -22775,6 +23909,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -22787,12 +23922,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private natureOfConstruction? _natureOfConstruction  = default;
 
+		[Description("The building's primary construction material.")]
 		[Category("Swivel")]
 		[Editor(typeof(Editors.HorizonEditor<Swivel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22810,6 +23947,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _weight  = default;
 
+		[Description("-")]
 		[Category("Swivel")]
 		[Editor(typeof(Editors.HorizonEditor<Swivel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -22824,6 +23962,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _swivelType  = default;
 
+		[Description("-")]
 		[Category("Swivel")]
 		[Editor(typeof(Editors.HorizonEditor<Swivel>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23209,12 +24348,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Two lengths of chain connected by a central ring and used for lifting wide loads. (IALA Dictionary,8-3-195)
 	/// </summary>
+	[Description("Two lengths of chain connected by a central ring and used for lifting wide loads. (IALA Dictionary,8-3-195)")]
 	[CategoryOrder("Bridle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BridleViewModel : FeatureViewModel<Bridle> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23227,16 +24368,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23251,6 +24395,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23265,6 +24410,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23279,6 +24425,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23293,6 +24440,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23307,6 +24455,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23321,6 +24470,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23335,6 +24485,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23349,6 +24500,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -23363,6 +24515,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -23375,12 +24528,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String? _bridleLinkType  = default;
 
+		[Description("-")]
 		[Category("Bridle")]
 		[Editor(typeof(Editors.HorizonEditor<Bridle>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23395,6 +24550,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _legsDetails  = default;
 
+		[Description("-")]
 		[Category("Bridle")]
 		[Editor(typeof(Editors.HorizonEditor<Bridle>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23858,12 +25014,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("CounterWeight",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CounterWeightViewModel : FeatureViewModel<CounterWeight> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23876,16 +25034,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23900,6 +25061,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23914,6 +25076,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23928,6 +25091,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23942,6 +25106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23956,6 +25121,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23970,6 +25136,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23984,6 +25151,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -23998,6 +25166,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24012,6 +25181,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24024,12 +25194,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private natureOfConstruction? _natureOfConstruction  = default;
 
+		[Description("The building's primary construction material.")]
 		[Category("CounterWeight")]
 		[Editor(typeof(Editors.HorizonEditor<CounterWeight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24047,6 +25219,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double _weight  = default;
 
+		[Description("-")]
 		[Category("CounterWeight")]
 		[Editor(typeof(Editors.HorizonEditor<CounterWeight>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -24061,6 +25234,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _counterWeightType  = default;
 
+		[Description("-")]
 		[Category("CounterWeight")]
 		[Editor(typeof(Editors.HorizonEditor<CounterWeight>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24284,12 +25458,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification. (IHO Dictionary, S-32, 5th Edition, 5548)
 	/// </summary>
+	[Description("A characteristic shape secured at the top of a buoy or beacon to aid in its identification. (IHO Dictionary, S-32, 5th Edition, 5548)")]
 	[CategoryOrder("Topmark",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TopmarkViewModel : FeatureViewModel<Topmark> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24302,16 +25478,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24326,6 +25505,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24340,6 +25520,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24354,6 +25535,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24368,6 +25550,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24382,6 +25565,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24396,6 +25580,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24410,6 +25595,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24424,6 +25610,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24438,6 +25625,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24450,10 +25638,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -24461,6 +25651,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -24468,6 +25659,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -24477,6 +25669,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
+		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Topmark")]
 		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -24494,6 +25687,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Topmark")]
 		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24744,12 +25938,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
+	[Description("A safe water beacon is used to indicate that there is navigable water around the mark.")]
 	[CategoryOrder("SafeWaterBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24762,16 +25958,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24786,6 +25985,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24800,6 +26000,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24814,6 +26015,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24828,6 +26030,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24842,6 +26045,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24856,6 +26060,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24870,6 +26075,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24884,6 +26090,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24898,6 +26105,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -24910,12 +26118,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -24930,6 +26140,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24947,6 +26158,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -24964,6 +26176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -24978,6 +26191,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private beaconShape _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -24993,6 +26207,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -25000,6 +26215,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -25009,6 +26225,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25023,6 +26240,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25037,6 +26255,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25052,6 +26271,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -25061,6 +26281,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25073,6 +26294,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -25082,6 +26304,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25096,6 +26319,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25113,6 +26337,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25321,12 +26546,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
+	[Description("A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.")]
 	[CategoryOrder("SpecialPurposeGeneralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel<SpecialPurposeGeneralBeacon> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25339,16 +26566,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25363,6 +26593,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25377,6 +26608,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25391,6 +26623,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25405,6 +26638,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25419,6 +26653,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25433,6 +26668,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25447,6 +26683,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25461,6 +26698,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -25475,6 +26713,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -25487,12 +26726,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -25507,6 +26748,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25524,6 +26766,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25541,6 +26784,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -25555,6 +26799,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private beaconShape _beaconShape  = default;
 
+		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -25570,6 +26815,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -25577,6 +26823,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -25586,6 +26833,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25600,6 +26848,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the object, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25614,6 +26863,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25629,6 +26879,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -25638,6 +26889,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25650,6 +26902,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -25659,6 +26912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25673,6 +26927,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private visualProminence? _visualProminence  = default;
 
+		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25690,6 +26945,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25702,6 +26958,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -25914,12 +27171,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
+	[Description("A safe water buoy is used to indicate that there is navigable water around the mark.")]
 	[CategoryOrder("SafeWaterBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBuoyViewModel : FeatureViewModel<SafeWaterBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25932,16 +27191,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25956,6 +27218,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25970,6 +27233,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25984,6 +27248,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -25998,6 +27263,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26012,6 +27278,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26026,6 +27293,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26040,6 +27308,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26054,6 +27323,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -26068,6 +27338,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -26080,12 +27351,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -26100,6 +27373,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26117,6 +27391,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26134,6 +27409,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -26148,6 +27424,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -26163,6 +27440,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -26170,6 +27448,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -26179,6 +27458,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26194,6 +27474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -26203,6 +27484,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26215,6 +27497,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -26224,6 +27507,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26238,6 +27522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26252,6 +27537,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26454,12 +27740,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
+	[Description("A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.")]
 	[CategoryOrder("SpecialPurposeGeneralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
 		private String? _iDCode  = default;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26472,16 +27760,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26496,6 +27787,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26510,6 +27802,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26524,6 +27817,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _pictorialRepresentation  = default;
 
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26538,6 +27832,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionFrequency  = default;
 
+		[Description("A statement of how frequently an item is inspected.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26552,6 +27847,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _inspectionRequirements  = default;
 
+		[Description("A statement of what requirements are in place for how inspection of an item is carried out.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26566,6 +27862,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _aToNMaintenanceRecord  = default;
 
+		[Description("A reference following the Uniform Resource Identifier (URI) principles to a record of maintenance.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26580,6 +27877,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private DateOnly? _installationDate  = default;
 
+		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26594,6 +27892,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -26608,6 +27907,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("AidsToNavigation")]
 		[ExpandableObject]
 		[Optional]
@@ -26620,12 +27920,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("-")]
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		private String _AtoNNumber  = string.Empty;
 
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -26640,6 +27942,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
+		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26657,6 +27960,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26674,6 +27978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private contactAddressViewModel? _contactAddress  = default;
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("StructureObject")]
 		[ExpandableObject]
 		[Optional]
@@ -26688,6 +27993,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private buoyShape _buoyShape  = default;
 
+		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -26703,6 +28009,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 
+		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
@@ -26710,6 +28017,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
+		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
@@ -26719,6 +28027,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26734,6 +28043,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 
+		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
@@ -26743,6 +28053,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private Boolean? _radarConspicuous  = default;
 
+		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26755,6 +28066,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -26764,6 +28076,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _typeOfBuoy  = default;
 
+		[Description("Type equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26778,6 +28091,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26792,6 +28106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _verticalAccuracy  = default;
 
+		[Description("-")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -26804,6 +28119,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
+		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
@@ -27010,10 +28326,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// -
 	/// </summary>
+	[Description("-")]
 	[CategoryOrder("DangerousFeature",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DangerousFeatureViewModel : FeatureViewModel<DangerousFeature> {
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("DangerousFeature")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -27161,12 +28479,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
 	/// </summary>
+	[Description("Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.")]
 	[CategoryOrder("AtonAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonAggregationViewModel : FeatureViewModel<AtonAggregation> {
 		private CategoryOfAggregation _CategoryOfAggregation  = default;
 
+		[Description("named aggregations between two or more aids to navigation and/or navigationally relevant features")]
 		[Category("AtonAggregation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonAggregation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27318,12 +28638,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
 	/// </summary>
+	[Description("Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57")]
 	[CategoryOrder("AtonAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AtonAssociationViewModel : FeatureViewModel<AtonAssociation> {
 		private CategoryOfAssociation _CategoryOfAssociation  = default;
 
+		[Description("named associations between two or more aids to navigation and/or navigationally relevant features")]
 		[Category("AtonAssociation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonAssociation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27556,12 +28878,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
+	[Description("An area within which a uniform assessment of the quality of the non-bathymetric data exists.")]
 	[CategoryOrder("QualityOfNonBathymetricData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
 		private categoryOfTemporalVariation _categoryOfTemporalVariation  = default;
 
+		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27579,6 +28903,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27593,6 +28918,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private double? _horizontalDistanceUncertainty  = default;
 
+		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27607,6 +28933,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Mandatory]
@@ -27621,6 +28948,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private informationViewModel? _information  = default;
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -27635,6 +28963,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _informationInNationalLanguage  = default;
 
+		[Description("Textual information in national language characters.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -27649,6 +28978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private textualDescriptionViewModel? _textualDescription  = default;
 
+		[Description("Encodes the file name of a single external text file that contains the text in a defined language, which provides additional textual information that cannot be provided using other allowable attributes for the feature.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -27663,6 +28993,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -27755,12 +29086,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
+	[Description("A geographical area that describes the coverage and extent of spatial objects.")]
 	[CategoryOrder("DataCoverage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
 		private int _maximumDisplayScale  = default;
 
+		[Description("The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be “grossly overscaled”.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27775,6 +29108,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private int _minimumDisplayScale  = default;
 
+		[Description("The smallest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27837,12 +29171,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
+	[Description("An area within which the navigational system of marks has been established in relation to a specific direction.")]
 	[CategoryOrder("LocalDirectionOfBuoyage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LocalDirectionOfBuoyageViewModel : FeatureViewModel<LocalDirectionOfBuoyage> {
 		private orientationViewModel _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[Category("LocalDirectionOfBuoyage")]
 		[ExpandableObject]
 		[Mandatory]
@@ -27905,12 +29241,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
+	[Description("An area within which the navigational system of marks has been established in relation to a specific direction.")]
 	[CategoryOrder("NavigationalSystemOfMarks",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel<NavigationalSystemOfMarks> {
 		private marksNavigationalSystemOf _marksNavigationalSystemOf  = default;
 
+		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -27973,12 +29311,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
+	[Description("The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.")]
 	[CategoryOrder("SoundingDatum",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
 		private verticalDatum _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -28041,12 +29381,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
+	[Description("Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.")]
 	[CategoryOrder("VerticalDatumOfData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
 		private verticalDatum _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
