@@ -7,8 +7,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <NoWarn>CA1416</NoWarn>
     <RootNamespace>VortexProAppModule</RootNamespace>
-    <AssemblyVersion>1.0.710.0</AssemblyVersion>
-    <FileVersion>1.0.711.0</FileVersion>
+    <AssemblyVersion>1.0.730.0</AssemblyVersion>
+    <FileVersion>1.0.730.0</FileVersion>
     <Platforms>x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -61,7 +61,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj" />
     <ProjectReference Include="..\..\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
-    <ProjectReference Include="..\..\UI\S100Framework.WPF.PropertyGrid\S100Framework.WPF.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
   </ItemGroup>
   <ItemGroup>

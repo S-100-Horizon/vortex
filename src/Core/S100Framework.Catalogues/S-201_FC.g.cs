@@ -17,7 +17,7 @@ namespace S100Framework.DomainModel.S201 {
 		public static string Scope => "Aton";
 		public static string ProductId => "S-201";
 		public static Version Version => new Version("2.0.0");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-04-28", "yyyy-MM-dd");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-05-19", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["contactAddress","directionalCharacter","featureName","fixedDateRange","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","spatialAccuracy","CableDimensions","ChangeDetails","ObscuredSector","sinkerDimensions","positioningMethod","horizontalPositionUncertainty","information","textualDescription","verticalUncertainty"];
 		public static string[] InformationAssociationTypes => ["Atonstatus","AtonFixingMethodAssociation","AtonPositioningInformationAssociation"];
 		public static string[] FeatureAssociationTypes => ["BuoyTopmark","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS","BuoyCounterWeight","BridleConnection","ShackleConnection","ShackleConnectionFromCable","SwivelCableConnection","BridleCableConnection","ShackleToBridleConnection","ShackleToSwivelConnection","ShackleToAnchorConnection","SwivelConnection","AtonAggregations","AtonAssociations","RangeSystem","DangerousFeatureAssociation"];
@@ -222,57 +222,57 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum qualityOfHorizontalMeasurement : int {
-		[System.ComponentModel.Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
+		[Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
 		[EnumMember(Value = "Surveyed")] 
 		[XmlEnum("1")] 
 		Surveyed = 1,
 
-		[System.ComponentModel.Description("Survey data is does not exist or is very poor.")]
+		[Description("Survey data is does not exist or is very poor.")]
 		[EnumMember(Value = "Unsurveyed")] 
 		[XmlEnum("2")] 
 		Unsurveyed = 2,
 
-		[System.ComponentModel.Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
+		[Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
 		[EnumMember(Value = "Inadequately Surveyed")] 
 		[XmlEnum("3")] 
 		InadequatelySurveyed = 3,
 
-		[System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to an object whose position does not remain fixed.")]
+		[Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to an object whose position does not remain fixed.")]
 		[EnumMember(Value = "Approximate")] 
 		[XmlEnum("4")] 
 		Approximate = 4,
 
-		[System.ComponentModel.Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
+		[Description("Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.")]
 		[EnumMember(Value = "Position Doubtful")] 
 		[XmlEnum("5")] 
 		PositionDoubtful = 5,
 
-		[System.ComponentModel.Description("A feature's position has been obtained from questionable or unreliable data.")]
+		[Description("A feature's position has been obtained from questionable or unreliable data.")]
 		[EnumMember(Value = "Unreliable")] 
 		[XmlEnum("6")] 
 		Unreliable = 6,
 
-		[System.ComponentModel.Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
+		[Description("An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.")]
 		[EnumMember(Value = "Reported (Not Surveyed)")] 
 		[XmlEnum("7")] 
 		ReportedNotSurveyed = 7,
 
-		[System.ComponentModel.Description("An object whose position has been reported and its position has not been confirmed.")]
+		[Description("An object whose position has been reported and its position has not been confirmed.")]
 		[EnumMember(Value = "Reported (Not Confirmed)")] 
 		[XmlEnum("8")] 
 		ReportedNotConfirmed = 8,
 
-		[System.ComponentModel.Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
+		[Description("The most probable position of an object determined from incomplete data or data of questionable accuracy.")]
 		[EnumMember(Value = "Estimated")] 
 		[XmlEnum("9")] 
 		Estimated = 9,
 
-		[System.ComponentModel.Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
+		[Description("A position that is of a known value, such as the position of an anchor berth or other defined object.")]
 		[EnumMember(Value = "Precisely Known")] 
 		[XmlEnum("10")] 
 		PreciselyKnown = 10,
 
-		[System.ComponentModel.Description("A position that is computed from data.")]
+		[Description("A position that is computed from data.")]
 		[EnumMember(Value = "Calculated")] 
 		[XmlEnum("11")] 
 		Calculated = 11,
@@ -287,22 +287,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum ChangeTypes : int {
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Advanced notice of changes")] 
 		[XmlEnum("1")] 
 		AdvancedNoticeOfChanges = 1,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Discrepancy")] 
 		[XmlEnum("2")] 
 		Discrepancy = 2,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Proposed changes")] 
 		[XmlEnum("3")] 
 		ProposedChanges = 3,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Temporary changes")] 
 		[XmlEnum("4")] 
 		TemporaryChanges = 4,
@@ -317,32 +317,32 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum heightLengthUnits : int {
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Metres")] 
 		[XmlEnum("1")] 
 		Metres = 1,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Feet")] 
 		[XmlEnum("2")] 
 		Feet = 2,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Kilometres")] 
 		[XmlEnum("3")] 
 		Kilometres = 3,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Hectometres")] 
 		[XmlEnum("4")] 
 		Hectometres = 4,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Statute Miles")] 
 		[XmlEnum("5")] 
 		StatuteMiles = 5,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "Nautical Miles")] 
 		[XmlEnum("6")] 
 		NauticalMiles = 6,
@@ -357,652 +357,652 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum horizontalDatum : int {
-		[System.ComponentModel.Description("A standard for use in cartography, geodesy, and satellite navigation including GPS. This standard includes the definition of the coordinate system's fundamental and derived constants, the ellipsoidal (normal) Earth Gravitational Model (EGM), a description of the associated World Magnetic Model (WMM), and a current list of local datum transformations. The WGS 72 is based on selected satellite, surface gravity and astrogeodetic data available through 1972.")]
+		[Description("A standard for use in cartography, geodesy, and satellite navigation including GPS. This standard includes the definition of the coordinate system's fundamental and derived constants, the ellipsoidal (normal) Earth Gravitational Model (EGM), a description of the associated World Magnetic Model (WMM), and a current list of local datum transformations. The WGS 72 is based on selected satellite, surface gravity and astrogeodetic data available through 1972.")]
 		[EnumMember(Value = "WGS 72")] 
 		[XmlEnum("1")] 
 		Wgs72 = 1,
 
-		[System.ComponentModel.Description("A standard for use in cartography, geodesy, and satellite navigation including GPS. This standard includes the definition of the coordinate system's fundamental and derived constants, the ellipsoidal (normal) Earth Gravitational Model (EGM), a description of the associated World Magnetic Model (WMM), and a current list of local datum transformations. WGS 84 is the reference coordinate system used by the Global Positioning System.")]
+		[Description("A standard for use in cartography, geodesy, and satellite navigation including GPS. This standard includes the definition of the coordinate system's fundamental and derived constants, the ellipsoidal (normal) Earth Gravitational Model (EGM), a description of the associated World Magnetic Model (WMM), and a current list of local datum transformations. WGS 84 is the reference coordinate system used by the Global Positioning System.")]
 		[EnumMember(Value = "WGS 84")] 
 		[XmlEnum("2")] 
 		Wgs84 = 2,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1950 suitable for use in Europe - west: Andorra; Cyprus; Denmark - onshore and offshore; Faroe Islands - onshore; France - offshore; Germany - offshore North Sea; Gibraltar; Greece - offshore; Israel - offshore; Italy including San Marino and Vatican City State; Ireland offshore; Malta; Netherlands - offshore; North Sea; Norway including Svalbard - onshore and offshore; Portugal - mainland - offshore; Spain - onshore; Turkey - onshore and offshore; United Kingdom UKCS offshore east of 6W including Channel Islands (Guernsey and Jersey). Egypt - Western Desert; Iraq - onshore; Jordan. European Datum 1950 references the International 1924 ellipsoid and the Greenwich prime meridian. European Datum 1950 origin is Fundamental point: Potsdam (Helmert Tower). Latitude: 5222'51.4456\"N, longitude: 1303'58.9283\"E (of Greenwich). European Datum 1950 is a geodetic datum for Topographic mapping, geodetic survey.")]
+		[Description("A geodetic datum first defined in 1950 suitable for use in Europe - west: Andorra; Cyprus; Denmark - onshore and offshore; Faroe Islands - onshore; France - offshore; Germany - offshore North Sea; Gibraltar; Greece - offshore; Israel - offshore; Italy including San Marino and Vatican City State; Ireland offshore; Malta; Netherlands - offshore; North Sea; Norway including Svalbard - onshore and offshore; Portugal - mainland - offshore; Spain - onshore; Turkey - onshore and offshore; United Kingdom UKCS offshore east of 6W including Channel Islands (Guernsey and Jersey). Egypt - Western Desert; Iraq - onshore; Jordan. European Datum 1950 references the International 1924 ellipsoid and the Greenwich prime meridian. European Datum 1950 origin is Fundamental point: Potsdam (Helmert Tower). Latitude: 5222'51.4456\"N, longitude: 1303'58.9283\"E (of Greenwich). European Datum 1950 is a geodetic datum for Topographic mapping, geodetic survey.")]
 		[EnumMember(Value = "European 1950")] 
 		[XmlEnum("3")] 
 		European1950 = 3,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1990 suitable for use in Germany - Thuringen. Potsdam Datum/83 references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Potsdam Datum/83 origin is Fundamental point: Rauenberg. Latitude: 5227'12.021\"N, longitude: 1322'04.928\"E (of Greenwich). This station was destroyed in 1910 and the station at Potsdam substituted as the fundamental point. Potsdam Datum/83 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from BKG via EuroGeographics. http://crs.bkg.bund.de PD/83 is the realisation of DHDN in Thuringen. It is the resultant of applying a transformation derived at 13 points on the border between East and West Germany to Pulkovo 1942/83 points in Thuringen.")]
+		[Description("A geodetic datum first defined in 1990 suitable for use in Germany - Thuringen. Potsdam Datum/83 references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Potsdam Datum/83 origin is Fundamental point: Rauenberg. Latitude: 5227'12.021\"N, longitude: 1322'04.928\"E (of Greenwich). This station was destroyed in 1910 and the station at Potsdam substituted as the fundamental point. Potsdam Datum/83 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from BKG via EuroGeographics. http://crs.bkg.bund.de PD/83 is the realisation of DHDN in Thuringen. It is the resultant of applying a transformation derived at 13 points on the border between East and West Germany to Pulkovo 1942/83 points in Thuringen.")]
 		[EnumMember(Value = "Potsdam Datum")] 
 		[XmlEnum("4")] 
 		PotsdamDatum = 4,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1958 suitable for use in Eritrea; Ethiopia; South Sudan; Sudan. Adindan references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Adindan origin is Fundamental point: Station 15; Adindan. Latitude: 2210'07.110\"N, longitude: 3129'21.608\"E (of Greenwich). Adindan is a geodetic datum for Topographic mapping. It was defined by information from US Coast and Geodetic Survey via Geophysical Reasearch vol 67 #11, October 1962. The 12th parallel traverse of 1966-70 (Point 58 datum, code 6620) is connected to the Blue Nile 1958 network in western Sudan. This has given rise to misconceptions that the Blue Nile network is used in west Africa.")]
+		[Description("A geodetic datum first defined in 1958 suitable for use in Eritrea; Ethiopia; South Sudan; Sudan. Adindan references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Adindan origin is Fundamental point: Station 15; Adindan. Latitude: 2210'07.110\"N, longitude: 3129'21.608\"E (of Greenwich). Adindan is a geodetic datum for Topographic mapping. It was defined by information from US Coast and Geodetic Survey via Geophysical Reasearch vol 67 #11, October 1962. The 12th parallel traverse of 1966-70 (Point 58 datum, code 6620) is connected to the Blue Nile 1958 network in western Sudan. This has given rise to misconceptions that the Blue Nile network is used in west Africa.")]
 		[EnumMember(Value = "Adindan")] 
 		[XmlEnum("5")] 
 		Adindan = 5,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in and suitable for use in Somalia - onshore. Afgooye references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Afgooye is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in and suitable for use in Somalia - onshore. Afgooye references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Afgooye is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Afgooye")] 
 		[XmlEnum("6")] 
 		Afgooye = 6,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1970 and suitable for use in Bahrain, Kuwait and Saudi Arabia - onshore. Ain el Abd 1970 references the International 1924 ellipsoid and the Greenwich prime meridian. Ain el Abd 1970 origin is Fundamental point: Ain El Abd. Latitude: 2814'06.171\"N, longitude: 4816'20.906\"E (of Greenwich). Ain el Abd 1970 is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1970 and suitable for use in Bahrain, Kuwait and Saudi Arabia - onshore. Ain el Abd 1970 references the International 1924 ellipsoid and the Greenwich prime meridian. Ain el Abd 1970 origin is Fundamental point: Ain El Abd. Latitude: 2814'06.171\"N, longitude: 4816'20.906\"E (of Greenwich). Ain el Abd 1970 is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Ain el Abd 1970")] 
 		[XmlEnum("7")] 
 		AinElAbd1970 = 7,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1965 suitable for use in Cocos (Keeling) Islands - onshore. Cocos Islands 1965 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Cocos Islands 1965 origin is Fundamental point: Anna 1. Cocos Islands 1965 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1965 suitable for use in Cocos (Keeling) Islands - onshore. Cocos Islands 1965 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Cocos Islands 1965 origin is Fundamental point: Anna 1. Cocos Islands 1965 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Anna 1 Astro 1965")] 
 		[XmlEnum("8")] 
 		Anna1Astro1965 = 8,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1943 suitable for use in Antigua island - onshore. Antigua 1943 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Antigua 1943 origin is Fundamental point: station A14. Antigua 1943 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain.")]
+		[Description("A geodetic datum first defined in 1943 suitable for use in Antigua island - onshore. Antigua 1943 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Antigua 1943 origin is Fundamental point: station A14. Antigua 1943 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain.")]
 		[EnumMember(Value = "Antigua Island Astro 1943")] 
 		[XmlEnum("9")] 
 		AntiguaIslandAstro1943 = 9,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1950 suitable for use in Botswana; Malawi; Zambia; Zimbabwe. Arc 1950 references the Clarke 1880 (Arc) ellipsoid and the Greenwich prime meridian. Arc 1950 origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Arc 1950 is a geodetic datum for Topographic mapping, geodetic survey.")]
+		[Description("A geodetic datum first defined in 1950 suitable for use in Botswana; Malawi; Zambia; Zimbabwe. Arc 1950 references the Clarke 1880 (Arc) ellipsoid and the Greenwich prime meridian. Arc 1950 origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Arc 1950 is a geodetic datum for Topographic mapping, geodetic survey.")]
 		[EnumMember(Value = "Arc 1950")] 
 		[XmlEnum("10")] 
 		Arc1950 = 10,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1960 suitable for use in Kenya; Tanzania; Uganda. Arc 1960 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Arc 1960 origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Arc 1960 is a geodetic datum for Topographic mapping, geodetic survey.")]
+		[Description("A geodetic datum first defined in 1960 suitable for use in Kenya; Tanzania; Uganda. Arc 1960 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Arc 1960 origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Arc 1960 is a geodetic datum for Topographic mapping, geodetic survey.")]
 		[EnumMember(Value = "Arc 1960")] 
 		[XmlEnum("11")] 
 		Arc1960 = 11,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1958 suitable for use in St Helena, Ascension and Tristan da Cunha - Ascension Island - onshore. Ascension Island 1958 references the International 1924 ellipsoid and the Greenwich prime meridian. Ascension Island 1958 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1958 suitable for use in St Helena, Ascension and Tristan da Cunha - Ascension Island - onshore. Ascension Island 1958 references the International 1924 ellipsoid and the Greenwich prime meridian. Ascension Island 1958 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Ascension Island 1958")] 
 		[XmlEnum("12")] 
 		AscensionIsland1958 = 12,
 
-		[System.ComponentModel.Description("Astro beacon 'E' 1945")]
+		[Description("Astro beacon 'E' 1945")]
 		[EnumMember(Value = "Astro Beacon 'E' 1945")] 
 		[XmlEnum("13")] 
 		AstroBeaconE1945 = 13,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1971 suitable for use in St Helena, Ascension and Tristan da Cunha - St Helena Island - onshore. Astro DOS 71 references the International 1924 ellipsoid and the Greenwich prime meridian. Astro DOS 71 origin is Fundamental point: DOS 71/4, Ladder Hill Fort, latitude: 1555'30\"S, longitude: 543'25\"W (of Greenwich). Astro DOS 71 is a geodetic datum for Geodetic control, military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000) and St. Helena Government, Environment and Natural Resources Directorate (ENRD).")]
+		[Description("A geodetic datum first defined in 1971 suitable for use in St Helena, Ascension and Tristan da Cunha - St Helena Island - onshore. Astro DOS 71 references the International 1924 ellipsoid and the Greenwich prime meridian. Astro DOS 71 origin is Fundamental point: DOS 71/4, Ladder Hill Fort, latitude: 1555'30\"S, longitude: 543'25\"W (of Greenwich). Astro DOS 71 is a geodetic datum for Geodetic control, military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000) and St. Helena Government, Environment and Natural Resources Directorate (ENRD).")]
 		[EnumMember(Value = "Astro DOS 71/4")] 
 		[XmlEnum("14")] 
 		AstroDos714 = 14,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1961 suitable for use in United States (USA) - Hawaii - Tern Island and Sorel Atoll. Tern Island 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Tern Island 1961 origin is Fundamental point: station FRIG on tern island, station B4 on Sorol Atoll. Tern Island 1961 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (original 1987 first edition and 3rd edition, Amendment 1, 3 January 2000). Two independent astronomic determinations considered to be consistent through adoption of common transformation to WGS 84 (see tfm code 15795).")]
+		[Description("A geodetic datum first defined in 1961 suitable for use in United States (USA) - Hawaii - Tern Island and Sorel Atoll. Tern Island 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Tern Island 1961 origin is Fundamental point: station FRIG on tern island, station B4 on Sorol Atoll. Tern Island 1961 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (original 1987 first edition and 3rd edition, Amendment 1, 3 January 2000). Two independent astronomic determinations considered to be consistent through adoption of common transformation to WGS 84 (see tfm code 15795).")]
 		[EnumMember(Value = "Astro Tern Island (FRIG) 1961")] 
 		[XmlEnum("15")] 
 		AstroTernIslandFrig1961 = 15,
 
-		[System.ComponentModel.Description("Astronomical station 1952.")]
+		[Description("Astronomical station 1952.")]
 		[EnumMember(Value = "Astronomical Station 1952")] 
 		[XmlEnum("16")] 
 		AstronomicalStation1952 = 16,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1966 suitable for use in Australia - onshore and offshore. Papua New Guinea - onshore. Australian Geodetic Datum 1966 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Australian Geodetic Datum 1966 origin is Fundamental point: Johnson Memorial Cairn. Latitude: 2556'54.5515\"S, longitude: 13312'30.0771\"E (of Greenwich). Australian Geodetic Datum 1966 is a geodetic datum for Topographic mapping. It was defined by information from Australian Map Grid Technical Manual. National Mapping Council of Australia Technical Publication 7; 1972.")]
+		[Description("A geodetic datum first defined in 1966 suitable for use in Australia - onshore and offshore. Papua New Guinea - onshore. Australian Geodetic Datum 1966 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Australian Geodetic Datum 1966 origin is Fundamental point: Johnson Memorial Cairn. Latitude: 2556'54.5515\"S, longitude: 13312'30.0771\"E (of Greenwich). Australian Geodetic Datum 1966 is a geodetic datum for Topographic mapping. It was defined by information from Australian Map Grid Technical Manual. National Mapping Council of Australia Technical Publication 7; 1972.")]
 		[EnumMember(Value = "Australian Geodetic 1966")] 
 		[XmlEnum("17")] 
 		AustralianGeodetic1966 = 17,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1984 suitable for use in Australia - Queensland, South Australia, Western Australia, federal areas offshore west of 129E. Australian Geodetic Datum 1984 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Australian Geodetic Datum 1984 origin is Fundamental point: Johnson Memorial Cairn. Latitude: 2556'54.5515\"S, longitude: 13312'30.0771\"E (of Greenwich). Australian Geodetic Datum 1984 is a geodetic datum for Topographic mapping. It was defined by information from \"GDA technical manual v2_2\", Intergovernmental Committee on Surveying and Mapping. www.anzlic.org.au/icsm/gdtm/ Uses all data from 1966 adjustment with additional observations, improved software and a geoid model.")]
+		[Description("A geodetic datum first defined in 1984 suitable for use in Australia - Queensland, South Australia, Western Australia, federal areas offshore west of 129E. Australian Geodetic Datum 1984 references the Australian National Spheroid ellipsoid and the Greenwich prime meridian. Australian Geodetic Datum 1984 origin is Fundamental point: Johnson Memorial Cairn. Latitude: 2556'54.5515\"S, longitude: 13312'30.0771\"E (of Greenwich). Australian Geodetic Datum 1984 is a geodetic datum for Topographic mapping. It was defined by information from \"GDA technical manual v2_2\", Intergovernmental Committee on Surveying and Mapping. www.anzlic.org.au/icsm/gdtm/ Uses all data from 1966 adjustment with additional observations, improved software and a geoid model.")]
 		[EnumMember(Value = "Australian Geodetic 1984")] 
 		[XmlEnum("18")] 
 		AustralianGeodetic1984 = 18,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Djibouti - onshore and offshore. Ayabelle Lighthouse references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Ayabelle Lighthouse origin is Fundamental point: Ayabelle Lighthouse. Ayabelle Lighthouse is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum suitable for use in Djibouti - onshore and offshore. Ayabelle Lighthouse references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Ayabelle Lighthouse origin is Fundamental point: Ayabelle Lighthouse. Ayabelle Lighthouse is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Ayabelle Lighthouse")] 
 		[XmlEnum("19")] 
 		AyabelleLighthouse = 19,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1960 suitable for use in Vanuatu - southern islands - Aneityum, Efate, Erromango and Tanna. Bellevue references the International 1924 ellipsoid and the Greenwich prime meridian. Bellevue is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Datum covers all the major islands of Vanuatu in two different adjustment blocks, but practical usage is as given in the area of use.")]
+		[Description("A geodetic datum first defined in 1960 suitable for use in Vanuatu - southern islands - Aneityum, Efate, Erromango and Tanna. Bellevue references the International 1924 ellipsoid and the Greenwich prime meridian. Bellevue is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Datum covers all the major islands of Vanuatu in two different adjustment blocks, but practical usage is as given in the area of use.")]
 		[EnumMember(Value = "Bellevue (IGN)")] 
 		[XmlEnum("20")] 
 		BellevueIgn = 20,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1957 suitable for use in Bermuda - onshore. Bermuda 1957 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Bermuda 1957 origin is Fundamental point: Fort George base. Latitude 3222'44.36\"N, longitude 6440'58.11\"W (of Greenwich). Bermuda 1957 is a geodetic datum for Topographic mapping. It was defined by information from Various oil industry sources.")]
+		[Description("A geodetic datum first defined in 1957 suitable for use in Bermuda - onshore. Bermuda 1957 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Bermuda 1957 origin is Fundamental point: Fort George base. Latitude 3222'44.36\"N, longitude 6440'58.11\"W (of Greenwich). Bermuda 1957 is a geodetic datum for Topographic mapping. It was defined by information from Various oil industry sources.")]
 		[EnumMember(Value = "Bermuda 1957")] 
 		[XmlEnum("21")] 
 		Bermuda1957 = 21,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in and is suitable for use in Guinea-Bissau - onshore. Bissau references the International 1924 ellipsoid and the Greenwich prime meridian. Bissau origin is Bissau is a geodetic datum for Topographic mapping. It was defined by information from NIMA TR8350.2 ftp://164.214.2.65/pub/gig/tr8350.2/changes.pdf.")]
+		[Description("A geodetic datum first defined in and is suitable for use in Guinea-Bissau - onshore. Bissau references the International 1924 ellipsoid and the Greenwich prime meridian. Bissau origin is Bissau is a geodetic datum for Topographic mapping. It was defined by information from NIMA TR8350.2 ftp://164.214.2.65/pub/gig/tr8350.2/changes.pdf.")]
 		[EnumMember(Value = "Bissau")] 
 		[XmlEnum("22")] 
 		Bissau = 22,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1975 suitable for use in Colombia - mainland and offshore Caribbean. Bogota 1975 references the International 1924 ellipsoid and the Greenwich prime meridian. Bogota 1975 origin is Fundamental point: Bogota observatory. Latitude: 435'56.570\"N, longitude: 7404'51.300\"W (of Greenwich). Bogota 1975 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico Agustin Codazzi (IGAC) special publication no. 1, 4th edition (1975) \"Geodesia: Resultados Definitvos de Parte de las Redes Geodesicas Establecidas en el Pais\". Replaces 1951 adjustment. Replaced by MAGNA-SIRGAS (datum code 6685).")]
+		[Description("A geodetic datum first defined in 1975 suitable for use in Colombia - mainland and offshore Caribbean. Bogota 1975 references the International 1924 ellipsoid and the Greenwich prime meridian. Bogota 1975 origin is Fundamental point: Bogota observatory. Latitude: 435'56.570\"N, longitude: 7404'51.300\"W (of Greenwich). Bogota 1975 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico Agustin Codazzi (IGAC) special publication no. 1, 4th edition (1975) \"Geodesia: Resultados Definitvos de Parte de las Redes Geodesicas Establecidas en el Pais\". Replaces 1951 adjustment. Replaced by MAGNA-SIRGAS (datum code 6685).")]
 		[EnumMember(Value = "Bogota Observatory")] 
 		[XmlEnum("23")] 
 		BogotaObservatory = 23,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Indonesia - Banga and Belitung Islands. Bukit Rimpah references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Bukit Rimpah origin is 200'40.16\"S, 10551'39.76\"E (of Greenwich). Bukit Rimpah is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum suitable for use in Indonesia - Banga and Belitung Islands. Bukit Rimpah references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Bukit Rimpah origin is 200'40.16\"S, 10551'39.76\"E (of Greenwich). Bukit Rimpah is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Bukit Rimpah")] 
 		[XmlEnum("24")] 
 		BukitRimpah = 24,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Antarctica - McMurdo Sound, Camp McMurdo area. Camp Area Astro references the International 1924 ellipsoid and the Greenwich prime meridian. Camp Area Astro is a geodetic datum for Geodetic and topographic survey. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum suitable for use in Antarctica - McMurdo Sound, Camp McMurdo area. Camp Area Astro references the International 1924 ellipsoid and the Greenwich prime meridian. Camp Area Astro is a geodetic datum for Geodetic and topographic survey. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Camp Area Astro")] 
 		[XmlEnum("25")] 
 		CampAreaAstro = 25,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Argentina - mainland onshore and Atlantic offshore Tierra del Fuego. Campo Inchauspe references the International 1924 ellipsoid and the Greenwich prime meridian. Campo Inchauspe origin is Fundamental point: Campo Inchauspe. Latitude: 3558'16.56\"S, longitude: 6210'12.03\"W (of Greenwich). Campo Inchauspe is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/")]
+		[Description("A geodetic datum suitable for use in Argentina - mainland onshore and Atlantic offshore Tierra del Fuego. Campo Inchauspe references the International 1924 ellipsoid and the Greenwich prime meridian. Campo Inchauspe origin is Fundamental point: Campo Inchauspe. Latitude: 3558'16.56\"S, longitude: 6210'12.03\"W (of Greenwich). Campo Inchauspe is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/")]
 		[EnumMember(Value = "Campo Inchauspe 1969")] 
 		[XmlEnum("26")] 
 		CampoInchauspe1969 = 26,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1966 suitable for use in Kiribati - Phoenix Islands: Kanton, Orona, McKean Atoll, Birnie Atoll, Phoenix Seamounts. Phoenix Islands 1966 references the International 1924 ellipsoid and the Greenwich prime meridian. Phoenix Islands 1966 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1966 suitable for use in Kiribati - Phoenix Islands: Kanton, Orona, McKean Atoll, Birnie Atoll, Phoenix Seamounts. Phoenix Islands 1966 references the International 1924 ellipsoid and the Greenwich prime meridian. Phoenix Islands 1966 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Canton Astro 1966")] 
 		[XmlEnum("27")] 
 		CantonAstro1966 = 27,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Botswana; Lesotho; South Africa - mainland; Swaziland. Cape references the Clarke 1880 (Arc) ellipsoid and the Greenwich prime meridian. Cape origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Cape is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Private Communication, Directorate of Surveys and Land Information, Cape Town.")]
+		[Description("A geodetic datum suitable for use in Botswana; Lesotho; South Africa - mainland; Swaziland. Cape references the Clarke 1880 (Arc) ellipsoid and the Greenwich prime meridian. Cape origin is Fundamental point: Buffelsfontein. Latitude: 3359'32.000\"S, longitude: 2530'44.622\"E (of Greenwich). Cape is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Private Communication, Directorate of Surveys and Land Information, Cape Town.")]
 		[EnumMember(Value = "Cape Datum")] 
 		[XmlEnum("28")] 
 		CapeDatum = 28,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1963 suitable for use in North America - onshore - Bahamas and USA - Florida (east). Cape Canaveral references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Cape Canaveral origin is Fundamental point: Central 1950. Latitude: 28 29'32.36555\"N, longitude 80 34'38.77362\"W (of Greenwich). Cape Canaveral is a geodetic datum for US space and military operations. It was defined by information from US NGS and DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1963 suitable for use in North America - onshore - Bahamas and USA - Florida (east). Cape Canaveral references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Cape Canaveral origin is Fundamental point: Central 1950. Latitude: 28 29'32.36555\"N, longitude 80 34'38.77362\"W (of Greenwich). Cape Canaveral is a geodetic datum for US space and military operations. It was defined by information from US NGS and DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Cape Canaveral")] 
 		[XmlEnum("29")] 
 		CapeCanaveral = 29,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1925 suitable for use in Tunisia - onshore and offshore. Carthage references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Carthage origin is Fundamental point: Carthage. Latitude: 40.9464506g = 3651'06.50\"N, longitude: 8.8724368g E of Paris = 1019'20.72\"E (of Greenwich). Carthage is a geodetic datum for Topographic mapping. Fundamental point astronomic coordinates determined in 1878.")]
+		[Description("A geodetic datum first defined in 1925 suitable for use in Tunisia - onshore and offshore. Carthage references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Carthage origin is Fundamental point: Carthage. Latitude: 40.9464506g = 3651'06.50\"N, longitude: 8.8724368g E of Paris = 1019'20.72\"E (of Greenwich). Carthage is a geodetic datum for Topographic mapping. Fundamental point astronomic coordinates determined in 1878.")]
 		[EnumMember(Value = "Carthage")] 
 		[XmlEnum("30")] 
 		Carthage = 30,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1971 suitable for use in New Zealand - Chatham Islands group - onshore. Chatham Islands Datum 1971 references the International 1924 ellipsoid and the Greenwich prime meridian. Chatham Islands Datum 1971 is a geodetic datum for Geodetic survey, topographic mapping, engineering survey. It was defined by information from Office of Surveyor General (OSG) Technical Report 14, June 2001. Replaced by Chatham Islands Datum 1979 (code 6673).")]
+		[Description("A geodetic datum first defined in 1971 suitable for use in New Zealand - Chatham Islands group - onshore. Chatham Islands Datum 1971 references the International 1924 ellipsoid and the Greenwich prime meridian. Chatham Islands Datum 1971 is a geodetic datum for Geodetic survey, topographic mapping, engineering survey. It was defined by information from Office of Surveyor General (OSG) Technical Report 14, June 2001. Replaced by Chatham Islands Datum 1979 (code 6673).")]
 		[EnumMember(Value = "Chatam Island Astro 1971")] 
 		[XmlEnum("31")] 
 		ChatamIslandAstro1971 = 31,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Brazil - south of 18S and west of 54W, plus Distrito Federal. Paraguay - north. Chua references the International 1924 ellipsoid and the Greenwich prime meridian. Chua origin is Fundamental point: Chua. Latitude: 1945'41.160\"S, longitude: 4806'07.560\"W (of Greenwich). Chua is a geodetic datum for Geodetic survey. It was defined by information from NIMA http://earth-info.nima.mil/. The Chua origin and associated network is in Brazil with a connecting traverse through northern Paraguay. It was used in Brazil only as input into the Corrego Allegre adjustment and for government work in Distrito Federal.")]
+		[Description("A geodetic datum suitable for use in Brazil - south of 18S and west of 54W, plus Distrito Federal. Paraguay - north. Chua references the International 1924 ellipsoid and the Greenwich prime meridian. Chua origin is Fundamental point: Chua. Latitude: 1945'41.160\"S, longitude: 4806'07.560\"W (of Greenwich). Chua is a geodetic datum for Geodetic survey. It was defined by information from NIMA http://earth-info.nima.mil/. The Chua origin and associated network is in Brazil with a connecting traverse through northern Paraguay. It was used in Brazil only as input into the Corrego Allegre adjustment and for government work in Distrito Federal.")]
 		[EnumMember(Value = "Chua Astro")] 
 		[XmlEnum("32")] 
 		ChuaAstro = 32,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1972 suitable for use in Brazil - onshore - west of 54W and south of 18S; also south of 15S between 54W and 42W; also east of 42W. Corrego Alegre 1970-72 references the International 1924 ellipsoid and the Greenwich prime meridian. Corrego Alegre 1970-72 origin is Fundamental point: Corrego Alegre. Latitude: 1950'14.91\"S, longitude: 4857'41.98\"W (of Greenwich). Corrego Alegre 1970-72 is a geodetic datum for Topographic mapping, geodetic survey. Superseded by SAD69. It was defined by information from IBGE. Replaces 1961 adjustment (datum code 1074). NIMA gives coordinates of origin as latitude: 1950'15.14\"S, longitude: 4857'42.75\"W; these may refer to 1961 adjustment.")]
+		[Description("A geodetic datum first defined in 1972 suitable for use in Brazil - onshore - west of 54W and south of 18S; also south of 15S between 54W and 42W; also east of 42W. Corrego Alegre 1970-72 references the International 1924 ellipsoid and the Greenwich prime meridian. Corrego Alegre 1970-72 origin is Fundamental point: Corrego Alegre. Latitude: 1950'14.91\"S, longitude: 4857'41.98\"W (of Greenwich). Corrego Alegre 1970-72 is a geodetic datum for Topographic mapping, geodetic survey. Superseded by SAD69. It was defined by information from IBGE. Replaces 1961 adjustment (datum code 1074). NIMA gives coordinates of origin as latitude: 1950'15.14\"S, longitude: 4857'42.75\"W; these may refer to 1961 adjustment.")]
 		[EnumMember(Value = "Corrego Alegre")] 
 		[XmlEnum("33")] 
 		CorregoAlegre = 33,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1981 suitable for use in Guinea - onshore. Dabola 1981 references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Dabola 1981 is a geodetic datum for Topographic mapping. It was defined by information from IGN Paris.")]
+		[Description("A geodetic datum first defined in 1981 suitable for use in Guinea - onshore. Dabola 1981 references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Dabola 1981 is a geodetic datum for Topographic mapping. It was defined by information from IGN Paris.")]
 		[EnumMember(Value = "Dabola")] 
 		[XmlEnum("34")] 
 		Dabola = 34,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Indonesia - onshore Java and Bali. Batavia (Jakarta) references the Bessel 1841 ellipsoid and the Jakarta prime meridian. Batavia (Jakarta) origin is Fundamental point: Longitude at Batavia astronomical station. Latitude: 607'39.522\"S, longitude: 000'00.0\"E (of Jakarta). Latitude and azimuth at Genuk. Batavia (Jakarta) is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum suitable for use in Indonesia - onshore Java and Bali. Batavia (Jakarta) references the Bessel 1841 ellipsoid and the Jakarta prime meridian. Batavia (Jakarta) origin is Fundamental point: Longitude at Batavia astronomical station. Latitude: 607'39.522\"S, longitude: 000'00.0\"E (of Jakarta). Latitude and azimuth at Genuk. Batavia (Jakarta) is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Djakarta (Batavia)")] 
 		[XmlEnum("35")] 
 		DjakartaBatavia = 35,
 
-		[System.ComponentModel.Description("DOS 1968.")]
+		[Description("DOS 1968.")]
 		[EnumMember(Value = "DOS 1968")] 
 		[XmlEnum("36")] 
 		Dos1968 = 36,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1967 suitable for use in Chile - Easter Island onshore. Easter Island 1967 references the International 1924 ellipsoid and the Greenwich prime meridian. Easter Island 1967 is a geodetic datum for Military and topographic mapping, +/- 25 meters in each component. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1967 suitable for use in Chile - Easter Island onshore. Easter Island 1967 references the International 1924 ellipsoid and the Greenwich prime meridian. Easter Island 1967 is a geodetic datum for Military and topographic mapping, +/- 25 meters in each component. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Easter Island 1967")] 
 		[XmlEnum("37")] 
 		EasterIsland1967 = 37,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1979 suitable for use in Europe - west. European Datum 1979 references the International 1924 ellipsoid and the Greenwich prime meridian. European Datum 1979 origin is Fundamental point: Potsdam (Helmert Tower). Latitude: 5222'51.4456\"N, longitude: 1303'58.9283\"E (of Greenwich). European Datum 1979 is a geodetic datum for Scientific network. Replaced by 1987 adjustment.")]
+		[Description("A geodetic datum first defined in 1979 suitable for use in Europe - west. European Datum 1979 references the International 1924 ellipsoid and the Greenwich prime meridian. European Datum 1979 origin is Fundamental point: Potsdam (Helmert Tower). Latitude: 5222'51.4456\"N, longitude: 1303'58.9283\"E (of Greenwich). European Datum 1979 is a geodetic datum for Scientific network. Replaced by 1987 adjustment.")]
 		[EnumMember(Value = "European 1979")] 
 		[XmlEnum("38")] 
 		European1979 = 38,
 
-		[System.ComponentModel.Description("Fort Thomas 1955 datum.")]
+		[Description("Fort Thomas 1955 datum.")]
 		[EnumMember(Value = "Fort Thomas 1955")] 
 		[XmlEnum("39")] 
 		FortThomas1955 = 39,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1970 suitable for use in Maldives - onshore. Gan 1970 references the International 1924 ellipsoid and the Greenwich prime meridian. Gan 1970 is a geodetic datum for Topographic mapping. It was defined by information from Various industry sources. In some references incorrectly named \"Gandajika 1970\".")]
+		[Description("A geodetic datum first defined in 1970 suitable for use in Maldives - onshore. Gan 1970 references the International 1924 ellipsoid and the Greenwich prime meridian. Gan 1970 is a geodetic datum for Topographic mapping. It was defined by information from Various industry sources. In some references incorrectly named \"Gandajika 1970\".")]
 		[EnumMember(Value = "Gan 1970")] 
 		[XmlEnum("40")] 
 		Gan1970 = 40,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1949 suitable for use in New Zealand - North Island, South Island, Stewart Island - onshore and nearshore. New Zealand Geodetic Datum 1949 references the International 1924 ellipsoid and the Greenwich prime meridian. New Zealand Geodetic Datum 1949 origin is Fundamental point: Papatahi. Latitude: 4119' 8.900\"S, longitude: 17502'51.000\"E (of Greenwich). New Zealand Geodetic Datum 1949 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Land Information New Zealand. http://www.linz.govt.nz/rcs/linz/pub/web/root/core/SurveySystem/GeodeticInfo/GeodeticDatums/nzgd2000factsheet/index.jsp. Replaced by New Zealand Geodetic Datum 2000 (code 6167) from March 2000.")]
+		[Description("A geodetic datum first defined in 1949 suitable for use in New Zealand - North Island, South Island, Stewart Island - onshore and nearshore. New Zealand Geodetic Datum 1949 references the International 1924 ellipsoid and the Greenwich prime meridian. New Zealand Geodetic Datum 1949 origin is Fundamental point: Papatahi. Latitude: 4119' 8.900\"S, longitude: 17502'51.000\"E (of Greenwich). New Zealand Geodetic Datum 1949 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Land Information New Zealand. http://www.linz.govt.nz/rcs/linz/pub/web/root/core/SurveySystem/GeodeticInfo/GeodeticDatums/nzgd2000factsheet/index.jsp. Replaced by New Zealand Geodetic Datum 2000 (code 6167) from March 2000.")]
 		[EnumMember(Value = "Geodetic Datum 1949")] 
 		[XmlEnum("41")] 
 		GeodeticDatum1949 = 41,
 
-		[System.ComponentModel.Description("Graciosa Base SW 1948 datum.")]
+		[Description("Graciosa Base SW 1948 datum.")]
 		[EnumMember(Value = "Graciosa Base SW 1948")] 
 		[XmlEnum("42")] 
 		GraciosaBaseSw1948 = 42,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1963 suitable for use in Guam - onshore. Guam 1963 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Guam 1963 origin is Fundamental point: Tagcha. Latitude: 1322'38.49\"N, longitude: 14445'51.56\"E (of Greenwich). Guam 1963 is a geodetic datum for Topographic mapping. It was defined by information from US National Geospatial Intelligence Agency (NGA). http://earth-info.nga.mil/ Replaced by NAD83(HARN)")]
+		[Description("A geodetic datum first defined in 1963 suitable for use in Guam - onshore. Guam 1963 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Guam 1963 origin is Fundamental point: Tagcha. Latitude: 1322'38.49\"N, longitude: 14445'51.56\"E (of Greenwich). Guam 1963 is a geodetic datum for Topographic mapping. It was defined by information from US National Geospatial Intelligence Agency (NGA). http://earth-info.nga.mil/ Replaced by NAD83(HARN)")]
 		[EnumMember(Value = "Guam 1963")] 
 		[XmlEnum("43")] 
 		Guam1963 = 43,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Indonesia - Kalimantan - onshore east coastal area including Mahakam delta coastal and offshore shelf areas. Gunung Segara references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Gunung Segara origin is Station P5 (Gunung Segara). Latitude 032'12.83\"S, longitude 11708'48.47\"E (of Greenwich). Gunung Segara is a geodetic datum for Topographic mapping. It was defined by information from TotalFinaElf.")]
+		[Description("A geodetic datum suitable for use in Indonesia - Kalimantan - onshore east coastal area including Mahakam delta coastal and offshore shelf areas. Gunung Segara references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Gunung Segara origin is Station P5 (Gunung Segara). Latitude 032'12.83\"S, longitude 11708'48.47\"E (of Greenwich). Gunung Segara is a geodetic datum for Topographic mapping. It was defined by information from TotalFinaElf.")]
 		[EnumMember(Value = "Gunung Segara")] 
 		[XmlEnum("44")] 
 		GunungSegara = 44,
 
-		[System.ComponentModel.Description("GUX 1 Astro datum.")]
+		[Description("GUX 1 Astro datum.")]
 		[EnumMember(Value = "GUX 1 Astro")] 
 		[XmlEnum("45")] 
 		Gux1Astro = 45,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Afghanistan. Herat North references the International 1924 ellipsoid and the Greenwich prime meridian. Herat North origin is Fundamental point: Herat North. Latitude: 3423'09.08\"N, longitude: 6410'58.94\"E (of Greenwich). Herat North is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
+		[Description("A geodetic datum suitable for use in Afghanistan. Herat North references the International 1924 ellipsoid and the Greenwich prime meridian. Herat North origin is Fundamental point: Herat North. Latitude: 3423'09.08\"N, longitude: 6410'58.94\"E (of Greenwich). Herat North is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
 		[EnumMember(Value = "Herat North")] 
 		[XmlEnum("46")] 
 		HeratNorth = 46,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1955 suitable for use in Iceland - onshore. Hjorsey 1955 references the International 1924 ellipsoid and the Greenwich prime meridian. Hjorsey 1955 origin is Fundamental point: Latitude: 6431'29.26\"N, longitude: 2222'05.84\"W (of Greenwich). Hjorsey 1955 is a geodetic datum for 1/50,000 scale topographic mapping. It was defined by information from Landmaelingar Islands (National Survey of Iceland).")]
+		[Description("A geodetic datum first defined in 1955 suitable for use in Iceland - onshore. Hjorsey 1955 references the International 1924 ellipsoid and the Greenwich prime meridian. Hjorsey 1955 origin is Fundamental point: Latitude: 6431'29.26\"N, longitude: 2222'05.84\"W (of Greenwich). Hjorsey 1955 is a geodetic datum for 1/50,000 scale topographic mapping. It was defined by information from Landmaelingar Islands (National Survey of Iceland).")]
 		[EnumMember(Value = "Hjorsey 1955")] 
 		[XmlEnum("47")] 
 		Hjorsey1955 = 47,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1963 suitable for use in China - Hong Kong - onshore and offshore. Hong Kong 1963 references the Clarke 1858 ellipsoid and the Greenwich prime meridian. Hong Kong 1963 origin is Fundamental point: Trig \"Zero\", 38.4 feet south along the transit circle of the Kowloon Observatory. Latitude 2218'12.82\"N, longitude 11410'18.75\"E (of Greenwich). Hong Kong 1963 is a geodetic datum for Topographic mapping and hydrographic charting. It was defined by information from Survey and Mapping Office, Lands Department. http://www.info.gov.hk/landsd/. Replaced by Hong Kong 1963(67) for military purposes only in 1967. Replaced by Hong Kong 1980.")]
+		[Description("A geodetic datum first defined in 1963 suitable for use in China - Hong Kong - onshore and offshore. Hong Kong 1963 references the Clarke 1858 ellipsoid and the Greenwich prime meridian. Hong Kong 1963 origin is Fundamental point: Trig \"Zero\", 38.4 feet south along the transit circle of the Kowloon Observatory. Latitude 2218'12.82\"N, longitude 11410'18.75\"E (of Greenwich). Hong Kong 1963 is a geodetic datum for Topographic mapping and hydrographic charting. It was defined by information from Survey and Mapping Office, Lands Department. http://www.info.gov.hk/landsd/. Replaced by Hong Kong 1963(67) for military purposes only in 1967. Replaced by Hong Kong 1980.")]
 		[EnumMember(Value = "Hong Kong 1963")] 
 		[XmlEnum("48")] 
 		HongKong1963 = 48,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1950 suitable for use in Taiwan, Republic of China - onshore - Taiwan Island, Penghu (Pescadores) Islands. Hu Tzu Shan 1950 references the International 1924 ellipsoid and the Greenwich prime meridian. Hu Tzu Shan 1950 origin is Fundamental point: Hu Tzu Shan. Latitude: 2358'32.34\"N, longitude: 12058'25.975\"E (of Greenwich). Hu Tzu Shan 1950 is a geodetic datum for Topographic mapping. It was defined by information from NIMA US NGA, http://earth-info.nga.mil/GandG/index.html")]
+		[Description("A geodetic datum first defined in 1950 suitable for use in Taiwan, Republic of China - onshore - Taiwan Island, Penghu (Pescadores) Islands. Hu Tzu Shan 1950 references the International 1924 ellipsoid and the Greenwich prime meridian. Hu Tzu Shan 1950 origin is Fundamental point: Hu Tzu Shan. Latitude: 2358'32.34\"N, longitude: 12058'25.975\"E (of Greenwich). Hu Tzu Shan 1950 is a geodetic datum for Topographic mapping. It was defined by information from NIMA US NGA, http://earth-info.nga.mil/GandG/index.html")]
 		[EnumMember(Value = "Hu-Tzu-Shan")] 
 		[XmlEnum("49")] 
 		HuTzuShan = 49,
 
-		[System.ComponentModel.Description("Indian datum.")]
+		[Description("Indian datum.")]
 		[EnumMember(Value = "Indian")] 
 		[XmlEnum("50")] 
 		Indian = 50,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1954 suitable for use in Myanmar (Burma) - onshore; Thailand - onshore. Indian 1954 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1954 origin is Extension of Kalianpur 1937 over Myanmar and Thailand. Indian 1954 is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1954 suitable for use in Myanmar (Burma) - onshore; Thailand - onshore. Indian 1954 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1954 origin is Extension of Kalianpur 1937 over Myanmar and Thailand. Indian 1954 is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Indian 1954")] 
 		[XmlEnum("51")] 
 		Indian1954 = 51,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1975 suitable for use in Thailand - onshore plus offshore Gulf of Thailand. Indian 1975 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1975 origin is Fundamental point: Khau Sakaerang. Indian 1975 is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1975 suitable for use in Thailand - onshore plus offshore Gulf of Thailand. Indian 1975 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1975 origin is Fundamental point: Khau Sakaerang. Indian 1975 is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Indian 1975")] 
 		[XmlEnum("52")] 
 		Indian1975 = 52,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1975 suitable for use in Ireland - onshore. United Kingdom (UK) - Northern Ireland (Ulster) - onshore. Ireland 1965 references the Airy Modified 1849 ellipsoid and the Greenwich prime meridian. Ireland 1965 origin is Adjusted to best mean fit 9 stations of the OSNI 1952 primary adjustment in Northern Ireland plus the 1965 values of 3 stations in the Republic of Ireland. Ireland 1965 is a geodetic datum for Geodetic survey, topographic mapping and engineering survey. It was defined by information from \"The Irish Grid - A Description of the Co-ordinate Reference System\" published by Ordnance Survey of Ireland, Dublin and Ordnance Survey of Northern Ireland, Belfast. Differences from the 1965 adjustment (datum code 6299) are: average difference in Eastings 0.092m; average difference in Northings 0.108m; maximum vector difference 0.548m.")]
+		[Description("A geodetic datum first defined in 1975 suitable for use in Ireland - onshore. United Kingdom (UK) - Northern Ireland (Ulster) - onshore. Ireland 1965 references the Airy Modified 1849 ellipsoid and the Greenwich prime meridian. Ireland 1965 origin is Adjusted to best mean fit 9 stations of the OSNI 1952 primary adjustment in Northern Ireland plus the 1965 values of 3 stations in the Republic of Ireland. Ireland 1965 is a geodetic datum for Geodetic survey, topographic mapping and engineering survey. It was defined by information from \"The Irish Grid - A Description of the Co-ordinate Reference System\" published by Ordnance Survey of Ireland, Dublin and Ordnance Survey of Northern Ireland, Belfast. Differences from the 1965 adjustment (datum code 6299) are: average difference in Eastings 0.092m; average difference in Northings 0.108m; maximum vector difference 0.548m.")]
 		[EnumMember(Value = "Ireland 1965")] 
 		[XmlEnum("53")] 
 		Ireland1965 = 53,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1968 suitable for use in South Georgia and the South Sandwich Islands - South Georgia onshore. ISTS 061 Astro 1968 references the International 1924 ellipsoid and the Greenwich prime meridian. ISTS 061 Astro 1968 origin is Fundamental point: ISTS 061. ISTS 061 Astro 1968 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1968 suitable for use in South Georgia and the South Sandwich Islands - South Georgia onshore. ISTS 061 Astro 1968 references the International 1924 ellipsoid and the Greenwich prime meridian. ISTS 061 Astro 1968 origin is Fundamental point: ISTS 061. ISTS 061 Astro 1968 is a geodetic datum for Military and topographic mapping It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "ISTS 061 Astro 1968")] 
 		[XmlEnum("54")] 
 		Ists061Astro1968 = 54,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1969 suitable for use in British Indian Ocean Territory - Chagos Archipelago - Diego Garcia. ISTS 073 Astro 1969 references the International 1924 ellipsoid and the Greenwich prime meridian. ISTS 073 Astro 1969 origin is Fundamental point: ISTS 073. ISTS 073 Astro 1969 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1969 suitable for use in British Indian Ocean Territory - Chagos Archipelago - Diego Garcia. ISTS 073 Astro 1969 references the International 1924 ellipsoid and the Greenwich prime meridian. ISTS 073 Astro 1969 origin is Fundamental point: ISTS 073. ISTS 073 Astro 1969 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "ISTS 073 Astro 1969")] 
 		[XmlEnum("55")] 
 		Ists073Astro1969 = 55,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1961 suitable for use in United States Minor Outlying Islands - Johnston Island. Johnston Island 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Johnston Island 1961 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1961 suitable for use in United States Minor Outlying Islands - Johnston Island. Johnston Island 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Johnston Island 1961 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Johnston Island 1961")] 
 		[XmlEnum("56")] 
 		JohnstonIsland1961 = 56,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1930 suitable for use in Sri Lanka - onshore. Kandawala references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Kandawala origin is Fundamental point: Kandawala. Latitude: 714'06.838\"N, longitude: 7952'36.670\"E. Kandawala is a geodetic datum for Topographic mapping. It was defined by information from Abeyratne, Featherstone and Tantrigoda in Survey Review vol. 42 no. 317 (July 2010).")]
+		[Description("A geodetic datum first defined in 1930 suitable for use in Sri Lanka - onshore. Kandawala references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Kandawala origin is Fundamental point: Kandawala. Latitude: 714'06.838\"N, longitude: 7952'36.670\"E. Kandawala is a geodetic datum for Topographic mapping. It was defined by information from Abeyratne, Featherstone and Tantrigoda in Survey Review vol. 42 no. 317 (July 2010).")]
 		[EnumMember(Value = "Kandawala")] 
 		[XmlEnum("57")] 
 		Kandawala = 57,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1949 suitable for use in French Southern Territories - Kerguelen onshore. References the International 1924 ellipsoid and the Greenwich prime meridian. Origin is K0 1949. Is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from IGN Paris.")]
+		[Description("A geodetic datum first defined in 1949 suitable for use in French Southern Territories - Kerguelen onshore. References the International 1924 ellipsoid and the Greenwich prime meridian. Origin is K0 1949. Is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from IGN Paris.")]
 		[EnumMember(Value = "Kerguelen Island 1949")] 
 		[XmlEnum("58")] 
 		KerguelenIsland1949 = 58,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1968 suitable for use in Malaysia - West Malaysia onshore and offshore east coast; Singapore - onshore and offshore. Kertau 1968 references the Everest 1830 Modified ellipsoid and the Greenwich prime meridian. Kertau 1968 origin is Fundamental point: Kertau. Latitude: 327'50.710\"N, longitude: 10237'24.550\"E (of Greenwich). Kertau 1968 is a geodetic datum for Geodetic survey, cadastre. It was defined by information from Defence Geographic Centre. Replaces MRT48 and earlier adjustments. Adopts metric conversion of 39.370113 inches per metre. Not used for 1969 metrication of RSO grid - see Kertau (RSO) (code 6751).")]
+		[Description("A geodetic datum first defined in 1968 suitable for use in Malaysia - West Malaysia onshore and offshore east coast; Singapore - onshore and offshore. Kertau 1968 references the Everest 1830 Modified ellipsoid and the Greenwich prime meridian. Kertau 1968 origin is Fundamental point: Kertau. Latitude: 327'50.710\"N, longitude: 10237'24.550\"E (of Greenwich). Kertau 1968 is a geodetic datum for Geodetic survey, cadastre. It was defined by information from Defence Geographic Centre. Replaces MRT48 and earlier adjustments. Adopts metric conversion of 39.370113 inches per metre. Not used for 1969 metrication of RSO grid - see Kertau (RSO) (code 6751).")]
 		[EnumMember(Value = "Kertau 1968")] 
 		[XmlEnum("59")] 
 		Kertau1968 = 59,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1951 suitable for use in Federated States of Micronesia - Kosrae (Kusaie). Kusaie 1951 references the International 1924 ellipsoid and the Greenwich prime meridian. Kusaie 1951 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1951 suitable for use in Federated States of Micronesia - Kosrae (Kusaie). Kusaie 1951 references the International 1924 ellipsoid and the Greenwich prime meridian. Kusaie 1951 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Kusaie Astro 1951")] 
 		[XmlEnum("60")] 
 		KusaieAstro1951 = 60,
 
-		[System.ComponentModel.Description("L. C. 5 Astro 1961 datum.")]
+		[Description("L. C. 5 Astro 1961 datum.")]
 		[EnumMember(Value = "L. C. 5 Astro 1961")] 
 		[XmlEnum("61")] 
 		LC5Astro1961 = 61,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Ghana - onshore and offshore. Leigon references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Leigon origin is Fundamental point: GCS Station 121, Leigon. Latitude: 538'52.27\"N, longitude: 011'46.08\"W (of Greenwich). Leigon is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey International. Replaced Accra datum (code 6168) from 1978. Coordinates at Leigon fundamental point defined as Accra datum values for that point.")]
+		[Description("A geodetic datum suitable for use in Ghana - onshore and offshore. Leigon references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Leigon origin is Fundamental point: GCS Station 121, Leigon. Latitude: 538'52.27\"N, longitude: 011'46.08\"W (of Greenwich). Leigon is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey International. Replaced Accra datum (code 6168) from 1978. Coordinates at Leigon fundamental point defined as Accra datum values for that point.")]
 		[EnumMember(Value = "Leigon")] 
 		[XmlEnum("62")] 
 		Leigon = 62,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1964 suitable for use in Liberia - onshore. Liberia 1964 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Liberia 1964 origin is Fundamental point: Robertsfield. Latitude: 613'53.02\"N, longitude: 1021'35.44\"W (of Greenwich). Liberia 1964 is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
+		[Description("A geodetic datum first defined in 1964 suitable for use in Liberia - onshore. Liberia 1964 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Liberia 1964 origin is Fundamental point: Robertsfield. Latitude: 613'53.02\"N, longitude: 1021'35.44\"W (of Greenwich). Liberia 1964 is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
 		[EnumMember(Value = "Liberia 1964")] 
 		[XmlEnum("63")] 
 		Liberia1964 = 63,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1911 suitable for use in Philippines - onshore. Luzon references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Luzon origin is Fundamental point: Balacan. Latitude: 1333'41.000\"N, longitude: 12152'03.000\"E (of Greenwich). Luzon is a geodetic datum for Topographic mapping. It was defined by information from Coast and Geodetic Survey Replaced by Philippine Reference system of 1992 (datum code 6683).")]
+		[Description("A geodetic datum first defined in 1911 suitable for use in Philippines - onshore. Luzon references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Luzon origin is Fundamental point: Balacan. Latitude: 1333'41.000\"N, longitude: 12152'03.000\"E (of Greenwich). Luzon is a geodetic datum for Topographic mapping. It was defined by information from Coast and Geodetic Survey Replaced by Philippine Reference system of 1992 (datum code 6683).")]
 		[EnumMember(Value = "Luzon")] 
 		[XmlEnum("64")] 
 		Luzon = 64,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1971 suitable for use in Seychelles - Mahe Island. Mahe 1971 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Mahe 1971 origin is Fundamental point: Station SITE. Latitude: 440'14.644\"S, longitude: 5528'44.488\"E (of Greenwich). Mahe 1971 is a geodetic datum for US military survey. It was defined by information from Clifford Mugnier's September 2007 PE&RS \"Grids and Datums\" article on Seychelles (www.asprs.org/resources/grids/). South East Island 1943 (datum code 1138) used for topographic mapping, cadastral and hydrographic survey.")]
+		[Description("A geodetic datum first defined in 1971 suitable for use in Seychelles - Mahe Island. Mahe 1971 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Mahe 1971 origin is Fundamental point: Station SITE. Latitude: 440'14.644\"S, longitude: 5528'44.488\"E (of Greenwich). Mahe 1971 is a geodetic datum for US military survey. It was defined by information from Clifford Mugnier's September 2007 PE&RS \"Grids and Datums\" article on Seychelles (www.asprs.org/resources/grids/). South East Island 1943 (datum code 1138) used for topographic mapping, cadastral and hydrographic survey.")]
 		[EnumMember(Value = "Mahe 1971")] 
 		[XmlEnum("65")] 
 		Mahe1971 = 65,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Eritrea - onshore and offshore. Massawa references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Massawa is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum suitable for use in Eritrea - onshore and offshore. Massawa references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Massawa is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Massawa")] 
 		[XmlEnum("66")] 
 		Massawa = 66,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1922 suitable for use in Morocco - onshore. Merchich references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Merchich origin is Fundamental point: Merchich. Latitude: 3326'59.672\"N, longitude: 733'27.295\"W (of Greenwich). Merchich is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1922 suitable for use in Morocco - onshore. Merchich references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Merchich origin is Fundamental point: Merchich. Latitude: 3326'59.672\"N, longitude: 733'27.295\"W (of Greenwich). Merchich is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Merchich")] 
 		[XmlEnum("67")] 
 		Merchich = 67,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1961 suitable for use in United States Minor Outlying Islands - Midway Islands - Sand Island and Eastern Island. Midway 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Midway 1961 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1961 suitable for use in United States Minor Outlying Islands - Midway Islands - Sand Island and Eastern Island. Midway 1961 references the International 1924 ellipsoid and the Greenwich prime meridian. Midway 1961 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Midway Astro 1961")] 
 		[XmlEnum("68")] 
 		MidwayAstro1961 = 68,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Nigeria - onshore and offshore. Minna references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Minna origin is Fundamental point: Minna base station L40. Latitude: 938'08.87\"N, longitude: 630'58.76\"E (of Greenwich). Minna is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
+		[Description("A geodetic datum suitable for use in Nigeria - onshore and offshore. Minna references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Minna origin is Fundamental point: Minna base station L40. Latitude: 938'08.87\"N, longitude: 630'58.76\"E (of Greenwich). Minna is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/.")]
 		[EnumMember(Value = "Minna")] 
 		[XmlEnum("69")] 
 		Minna = 69,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1958 suitable for use in Montserrat - onshore. Montserrat 1958 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Montserrat 1958 origin is Fundamental point: station M36. Montserrat 1958 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain.")]
+		[Description("A geodetic datum first defined in 1958 suitable for use in Montserrat - onshore. Montserrat 1958 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Montserrat 1958 origin is Fundamental point: station M36. Montserrat 1958 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain.")]
 		[EnumMember(Value = "Montserrat Island Astro 1958")] 
 		[XmlEnum("70")] 
 		MontserratIslandAstro1958 = 70,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Gabon - onshore and offshore. M'poraloko references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. M'poraloko is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum suitable for use in Gabon - onshore and offshore. M'poraloko references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. M'poraloko is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "M'poraloko")] 
 		[XmlEnum("71")] 
 		MPoraloko = 71,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1934 suitable for use in Iraq - onshore; Iran - onshore northern Gulf coast and west bordering southeast Iraq. Nahrwan 1934 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nahrwan 1934 origin is Fundamental point: Nahrwan south base. Latitude: 3319'10.87\"N, longitude: 4443'25.54\"E (of Greenwich). Nahrwan 1934 is a geodetic datum for Oil exploration and production. It was defined by information from Various industry sources. This adjustment later discovered to have a significant orientation error. In Iran replaced by FD58. In Iraq, replaced by Karbala 1979.")]
+		[Description("A geodetic datum first defined in 1934 suitable for use in Iraq - onshore; Iran - onshore northern Gulf coast and west bordering southeast Iraq. Nahrwan 1934 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nahrwan 1934 origin is Fundamental point: Nahrwan south base. Latitude: 3319'10.87\"N, longitude: 4443'25.54\"E (of Greenwich). Nahrwan 1934 is a geodetic datum for Oil exploration and production. It was defined by information from Various industry sources. This adjustment later discovered to have a significant orientation error. In Iran replaced by FD58. In Iraq, replaced by Karbala 1979.")]
 		[EnumMember(Value = "Nahrwan")] 
 		[XmlEnum("72")] 
 		Nahrwan = 72,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1972 suitable for use in Trinidad and Tobago - Tobago - onshore. Naparima 1972 references the International 1924 ellipsoid and the Greenwich prime meridian. Naparima 1972 origin is Fundamental point: Naparima. Latitude: 1016'44.860\"N, longitude: 6127'34.620\"W (of Greenwich). Naparima 1972 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey International. Naparima 1972 is an extension of the Naparima 1955 network of Trinidad to include Tobago.")]
+		[Description("A geodetic datum first defined in 1972 suitable for use in Trinidad and Tobago - Tobago - onshore. Naparima 1972 references the International 1924 ellipsoid and the Greenwich prime meridian. Naparima 1972 origin is Fundamental point: Naparima. Latitude: 1016'44.860\"N, longitude: 6127'34.620\"W (of Greenwich). Naparima 1972 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey International. Naparima 1972 is an extension of the Naparima 1955 network of Trinidad to include Tobago.")]
 		[EnumMember(Value = "Naparima, BWI")] 
 		[XmlEnum("73")] 
 		NaparimaBwi = 73,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1927 suitable for use in North and central America; Antigua and Barbuda; Bahamas; Belize; British Virgin Islandss. Usage shall be onshore only except that onshore and offshore shall apply to Canada east coast (New Brunswick; Newfoundland and Labrador; Prince Edward Island; Quebec). Cuba. Mexico (Gulf of Mexico and Caribbean coasts only). USA Alaska. USA Gulf of Mexico (Alabama; Florida; Louisiana; Mississippi; Texas). USA East Coast. Bahamas onshore plus offshore over internal continental shelf only. North American Datum 1927 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. North American Datum 1927 origin is Fundamental point: Meade's Ranch. Latitude: 3913'26.686\"N, longitude: 9832'30.506\"W (of Greenwich). North American Datum 1927 is a geodetic datum for Topographic mapping. In United States (USA) and Canada, replaced by North American Datum 1983 (NAD83) (code 6269) ; in Mexico, replaced by Mexican Datum of 1993 (code 1042).")]
+		[Description("A geodetic datum first defined in 1927 suitable for use in North and central America; Antigua and Barbuda; Bahamas; Belize; British Virgin Islandss. Usage shall be onshore only except that onshore and offshore shall apply to Canada east coast (New Brunswick; Newfoundland and Labrador; Prince Edward Island; Quebec). Cuba. Mexico (Gulf of Mexico and Caribbean coasts only). USA Alaska. USA Gulf of Mexico (Alabama; Florida; Louisiana; Mississippi; Texas). USA East Coast. Bahamas onshore plus offshore over internal continental shelf only. North American Datum 1927 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. North American Datum 1927 origin is Fundamental point: Meade's Ranch. Latitude: 3913'26.686\"N, longitude: 9832'30.506\"W (of Greenwich). North American Datum 1927 is a geodetic datum for Topographic mapping. In United States (USA) and Canada, replaced by North American Datum 1983 (NAD83) (code 6269) ; in Mexico, replaced by Mexican Datum of 1993 (code 1042).")]
 		[EnumMember(Value = "North American 1927")] 
 		[XmlEnum("74")] 
 		NorthAmerican1927 = 74,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1986 suitable for use in North America - onshore and offshore: Canada; Puerto Rico; United States (USA); US Virgin Islands; British Virgin Islands. North American Datum 1983 references the GRS 1980 ellipsoid and the Greenwich prime meridian. North American Datum 1983 origin is Origin at geocentre. North American Datum 1983 is a geodetic datum for Topographic mapping. Although the 1986 adjustment included connections to Greenland and Mexico, it has not been adopted there. In Canada and US, replaced NAD27.")]
+		[Description("A geodetic datum first defined in 1986 suitable for use in North America - onshore and offshore: Canada; Puerto Rico; United States (USA); US Virgin Islands; British Virgin Islands. North American Datum 1983 references the GRS 1980 ellipsoid and the Greenwich prime meridian. North American Datum 1983 origin is Origin at geocentre. North American Datum 1983 is a geodetic datum for Topographic mapping. Although the 1986 adjustment included connections to Greenland and Mexico, it has not been adopted there. In Canada and US, replaced NAD27.")]
 		[EnumMember(Value = "North American 1983")] 
 		[XmlEnum("75")] 
 		NorthAmerican1983 = 75,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1939 suitable for use in Portugal - western Azores onshore - Flores, Corvo. Azores Occidental Islands 1939 references the International 1924 ellipsoid and the Greenwich prime meridian. Azores Occidental Islands 1939 origin is Fundamental point: Observatario Meteorologico Flores. Azores Occidental Islands 1939 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon via EuroGeographics; http://crs.bkg.bund.de/crs-eu/.")]
+		[Description("A geodetic datum first defined in 1939 suitable for use in Portugal - western Azores onshore - Flores, Corvo. Azores Occidental Islands 1939 references the International 1924 ellipsoid and the Greenwich prime meridian. Azores Occidental Islands 1939 origin is Fundamental point: Observatario Meteorologico Flores. Azores Occidental Islands 1939 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon via EuroGeographics; http://crs.bkg.bund.de/crs-eu/.")]
 		[EnumMember(Value = "Observatorio Meteorologico 1939")] 
 		[XmlEnum("76")] 
 		ObservatorioMeteorologico1939 = 76,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1907 suitable for use in Egypt - onshore and offshore. Egypt 1907 references the Helmert 1906 ellipsoid and the Greenwich prime meridian. Egypt 1907 origin is Fundamental point: Station F1 (Venus). Latitude: 3001'42.86\"N, longitude: 3116'33.60\"E (of Greenwich). Egypt 1907 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey.")]
+		[Description("A geodetic datum first defined in 1907 suitable for use in Egypt - onshore and offshore. Egypt 1907 references the Helmert 1906 ellipsoid and the Greenwich prime meridian. Egypt 1907 origin is Fundamental point: Station F1 (Venus). Latitude: 3001'42.86\"N, longitude: 3116'33.60\"E (of Greenwich). Egypt 1907 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey.")]
 		[EnumMember(Value = "Old Egyptian 1907")] 
 		[XmlEnum("77")] 
 		OldEgyptian1907 = 77,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in United States (USA) - Hawaii - main islands onshore. Old Hawaiian references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Old Hawaiian origin is Fundamental point: Oahu West Base Astro. Latitude: 2118'13.89\"N, longitude 15750'55.79\"W (of Greenwich). Old Hawaiian is a geodetic datum for Topographic mapping. It was defined by information from http://www.ngs.noaa.gov/ (NADCON readme file). Hawaiian Islands were never on NAD27 but rather on Old Hawaiian Datum. NADCON conversion program provides transformation from Old Hawaiian Datum to NAD83 (original 1986 realization) but making the transformation appear to user as if from NAD27.")]
+		[Description("A geodetic datum suitable for use in United States (USA) - Hawaii - main islands onshore. Old Hawaiian references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Old Hawaiian origin is Fundamental point: Oahu West Base Astro. Latitude: 2118'13.89\"N, longitude 15750'55.79\"W (of Greenwich). Old Hawaiian is a geodetic datum for Topographic mapping. It was defined by information from http://www.ngs.noaa.gov/ (NADCON readme file). Hawaiian Islands were never on NAD27 but rather on Old Hawaiian Datum. NADCON conversion program provides transformation from Old Hawaiian Datum to NAD83 (original 1986 realization) but making the transformation appear to user as if from NAD27.")]
 		[EnumMember(Value = "Old Hawaiian")] 
 		[XmlEnum("78")] 
 		OldHawaiian = 78,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 2013 suitable for use in Oman - onshore and offshore. Oman National Geodetic Datum 2014 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Oman National Geodetic Datum 2014 origin is 20 stations of the Oman primary network tied to ITRF2008 at epoch 2013.15. Oman National Geodetic Datum 2014 is a geodetic datum for Geodetic Survey. It was defined by information from National Survey Authority, Sultanate of Oman. Replaces WGS 84 (G874).")]
+		[Description("A geodetic datum first defined in 2013 suitable for use in Oman - onshore and offshore. Oman National Geodetic Datum 2014 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Oman National Geodetic Datum 2014 origin is 20 stations of the Oman primary network tied to ITRF2008 at epoch 2013.15. Oman National Geodetic Datum 2014 is a geodetic datum for Geodetic Survey. It was defined by information from National Survey Authority, Sultanate of Oman. Replaces WGS 84 (G874).")]
 		[EnumMember(Value = "Oman")] 
 		[XmlEnum("79")] 
 		Oman = 79,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1936 suitable for use in United Kingdom (UK) - offshore to boundary of UKCS within 4946'N to 6101'N and 733'W to 333'E; onshore Great Britain (England, Wales and Scotland). Isle of Man onshore. OSGB 1936 references the Airy 1830 ellipsoid and the Greenwich prime meridian. OSGB 1936 origin is Prior to 2002, fundamental point: Herstmonceux, Latitude: 5051'55.271\"N, longitude: 020'45.882\"E (of Greenwich). From April 2002 the datum is defined through the application of the OSTN transformation from ETRS89. OSGB 1936 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain. The average accuracy of OSTN compared to the old triangulation network (down to 3rd order) is 0.1m. With the introduction of OSTN15, the area for OSGB 1936 has effectively been extended from Britain to cover the adjacent UK Continental Shelf.")]
+		[Description("A geodetic datum first defined in 1936 suitable for use in United Kingdom (UK) - offshore to boundary of UKCS within 4946'N to 6101'N and 733'W to 333'E; onshore Great Britain (England, Wales and Scotland). Isle of Man onshore. OSGB 1936 references the Airy 1830 ellipsoid and the Greenwich prime meridian. OSGB 1936 origin is Prior to 2002, fundamental point: Herstmonceux, Latitude: 5051'55.271\"N, longitude: 020'45.882\"E (of Greenwich). From April 2002 the datum is defined through the application of the OSTN transformation from ETRS89. OSGB 1936 is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain. The average accuracy of OSTN compared to the old triangulation network (down to 3rd order) is 0.1m. With the introduction of OSTN15, the area for OSGB 1936 has effectively been extended from Britain to cover the adjacent UK Continental Shelf.")]
 		[EnumMember(Value = "Ordnance Survey of Great Britain 1936")] 
 		[XmlEnum("80")] 
 		OrdnanceSurveyOfGreatBritain1936 = 80,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Spain - Canary Islands onshore. Pico de las Nieves 1984 references the International 1924 ellipsoid and the Greenwich prime meridian. Pico de las Nieves 1984 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Replaces Pico de las Nieves 1968 (PN68). Replaced by REGCAN95.")]
+		[Description("A geodetic datum suitable for use in Spain - Canary Islands onshore. Pico de las Nieves 1984 references the International 1924 ellipsoid and the Greenwich prime meridian. Pico de las Nieves 1984 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Replaces Pico de las Nieves 1968 (PN68). Replaced by REGCAN95.")]
 		[EnumMember(Value = "Pico de las Nieves")] 
 		[XmlEnum("81")] 
 		PicoDeLasNieves = 81,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1967 suitable for use in Pitcairn - Pitcairn Island. Pitcairn 1967 references the International 1924 ellipsoid and the Greenwich prime meridian. Pitcairn 1967 origin is Fundamental point: Pitcairn Astro. Latitude: 2504'06.87\"S, longitude: 13006'47.83\"W (of Greenwich). Pitcairn 1967 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Replaced by Pitcairn 2006.")]
+		[Description("A geodetic datum first defined in 1967 suitable for use in Pitcairn - Pitcairn Island. Pitcairn 1967 references the International 1924 ellipsoid and the Greenwich prime meridian. Pitcairn 1967 origin is Fundamental point: Pitcairn Astro. Latitude: 2504'06.87\"S, longitude: 13006'47.83\"W (of Greenwich). Pitcairn 1967 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Replaced by Pitcairn 2006.")]
 		[EnumMember(Value = "Pitcairn Astro 1967")] 
 		[XmlEnum("82")] 
 		PitcairnAstro1967 = 82,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1969 suitable for use in Senegal - central, Mali - southwest, Burkina Faso - central, Niger - southwest, Nigeria - north, Chad - central. All in proximity to the parallel of latitude of 12N. Point 58 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Point 58 origin is Fundamental point: Point 58. Latitude: 1252'44.045\"N, longitude: 358'37.040\"E (of Greenwich). Point 58 is a geodetic datum for Geodetic survey. It was defined by information from IGN Paris. Used as the basis for computation of the 12th Parallel traverse conducted 1966-70 from Senegal to Chad and connecting to the Blue Nile 1958 (Adindan) triangulation in Sudan.")]
+		[Description("A geodetic datum first defined in 1969 suitable for use in Senegal - central, Mali - southwest, Burkina Faso - central, Niger - southwest, Nigeria - north, Chad - central. All in proximity to the parallel of latitude of 12N. Point 58 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Point 58 origin is Fundamental point: Point 58. Latitude: 1252'44.045\"N, longitude: 358'37.040\"E (of Greenwich). Point 58 is a geodetic datum for Geodetic survey. It was defined by information from IGN Paris. Used as the basis for computation of the 12th Parallel traverse conducted 1966-70 from Senegal to Chad and connecting to the Blue Nile 1958 (Adindan) triangulation in Sudan.")]
 		[EnumMember(Value = "Point 58")] 
 		[XmlEnum("83")] 
 		Point58 = 83,
 
-		[System.ComponentModel.Description("Pointe Noire 1948 datum.")]
+		[Description("Pointe Noire 1948 datum.")]
 		[EnumMember(Value = "Pointe Noire 1948")] 
 		[XmlEnum("84")] 
 		PointeNoire1948 = 84,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1936 suitable for use in Portugal - Madeira, Porto Santo and Desertas islands - onshore. Porto Santo 1936 references the International 1924 ellipsoid and the Greenwich prime meridian. Porto Santo 1936 origin is SE Base on Porto Santo island. Porto Santo 1936 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon http://www.igeo.pt Replaced by 1995 adjustment (datum code 6663). For Selvagens see Selvagem Grande (code 6616).")]
+		[Description("A geodetic datum first defined in 1936 suitable for use in Portugal - Madeira, Porto Santo and Desertas islands - onshore. Porto Santo 1936 references the International 1924 ellipsoid and the Greenwich prime meridian. Porto Santo 1936 origin is SE Base on Porto Santo island. Porto Santo 1936 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon http://www.igeo.pt Replaced by 1995 adjustment (datum code 6663). For Selvagens see Selvagem Grande (code 6616).")]
 		[EnumMember(Value = "Porto Santo 1936")] 
 		[XmlEnum("85")] 
 		PortoSanto1936 = 85,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1956 suitable for use in Aruba - onshore; Bolivia; Bonaire - onshore; Brazil - offshore - Amazon Cone shelf; Chile - onshore north of 4330'S; Curacao - onshore; Ecuador - mainland onshore; Guyana - onshore; Peru - onshore; Venezuela - onshore. Provisional South American Datum 1956 references the International 1924 ellipsoid and the Greenwich prime meridian. Provisional South American Datum 1956 origin is Fundamental point: La Canoa. Latitude: 834'17.170\"N, longitude: 6351'34.880\"W (of Greenwich). Provisional South American Datum 1956 is a geodetic datum for Topographic mapping. Same origin as La Canoa datum.")]
+		[Description("A geodetic datum first defined in 1956 suitable for use in Aruba - onshore; Bolivia; Bonaire - onshore; Brazil - offshore - Amazon Cone shelf; Chile - onshore north of 4330'S; Curacao - onshore; Ecuador - mainland onshore; Guyana - onshore; Peru - onshore; Venezuela - onshore. Provisional South American Datum 1956 references the International 1924 ellipsoid and the Greenwich prime meridian. Provisional South American Datum 1956 origin is Fundamental point: La Canoa. Latitude: 834'17.170\"N, longitude: 6351'34.880\"W (of Greenwich). Provisional South American Datum 1956 is a geodetic datum for Topographic mapping. Same origin as La Canoa datum.")]
 		[EnumMember(Value = "Provisional South American 1956")] 
 		[XmlEnum("86")] 
 		ProvisionalSouthAmerican1956 = 86,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1963 suitable for use in Argentina and Chile - Tierra del Fuego, onshore. Hito XVIII 1963 references the International 1924 ellipsoid and the Greenwich prime meridian. Hito XVIII 1963 origin is Chile-Argentina boundary survey. Hito XVIII 1963 is a geodetic datum for Geodetic survey. It was defined by information from Various oil company records. Used in Tierra del Fuego.")]
+		[Description("A geodetic datum first defined in 1963 suitable for use in Argentina and Chile - Tierra del Fuego, onshore. Hito XVIII 1963 references the International 1924 ellipsoid and the Greenwich prime meridian. Hito XVIII 1963 origin is Chile-Argentina boundary survey. Hito XVIII 1963 is a geodetic datum for Geodetic survey. It was defined by information from Various oil company records. Used in Tierra del Fuego.")]
 		[EnumMember(Value = "Provisional South Chilean 1963")] 
 		[XmlEnum("87")] 
 		ProvisionalSouthChilean1963 = 87,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1901 suitable for use in Puerto Rico, US Virgin Islands and British Virgin Islands - onshore. Puerto Rico references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Puerto Rico origin is Fundamental point: Cardona Island Lighthouse. Latitude:1757'31.40\"N, longitude: 6638'07.53\"W (of Greenwich). Puerto Rico is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain and http://www.ngs.noaa.gov/ (NADCON readme file). NADCON conversion program provides transformation from Puerto Rico Datum to NAD83 (original 1986 realization) but making the transformation appear to user as if from NAD27.")]
+		[Description("A geodetic datum first defined in 1901 suitable for use in Puerto Rico, US Virgin Islands and British Virgin Islands - onshore. Puerto Rico references the Clarke 1866 ellipsoid and the Greenwich prime meridian. Puerto Rico origin is Fundamental point: Cardona Island Lighthouse. Latitude:1757'31.40\"N, longitude: 6638'07.53\"W (of Greenwich). Puerto Rico is a geodetic datum for Topographic mapping. It was defined by information from Ordnance Survey of Great Britain and http://www.ngs.noaa.gov/ (NADCON readme file). NADCON conversion program provides transformation from Puerto Rico Datum to NAD83 (original 1986 realization) but making the transformation appear to user as if from NAD27.")]
 		[EnumMember(Value = "Puerto Rico")] 
 		[XmlEnum("88")] 
 		PuertoRico = 88,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1995 suitable for use in Qatar - onshore. Qatar National Datum 1995 references the International 1924 ellipsoid and the Greenwich prime meridian. Qatar National Datum 1995 origin is defined by transformation from WGS 84 - see coordinate operation code 1840. Qatar National Datum 1995 is a geodetic datum for Topographic mapping. It was defined by information from Qatar Centre for Geographic Information.")]
+		[Description("A geodetic datum first defined in 1995 suitable for use in Qatar - onshore. Qatar National Datum 1995 references the International 1924 ellipsoid and the Greenwich prime meridian. Qatar National Datum 1995 origin is defined by transformation from WGS 84 - see coordinate operation code 1840. Qatar National Datum 1995 is a geodetic datum for Topographic mapping. It was defined by information from Qatar Centre for Geographic Information.")]
 		[EnumMember(Value = "Qatar National")] 
 		[XmlEnum("89")] 
 		QatarNational = 89,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1927 suitable for use in Greenland - west coast onshore. Qornoq 1927 references the International 1924 ellipsoid and the Greenwich prime meridian. Qornoq 1927 origin is Fundamental point: Station 7008. Latitude: 6431'06.27\"N, longitude: 5112'24.86\"W (of Greenwich). Qornoq 1927 is a geodetic datum for Topographic mapping. It was defined by information from Kort & Matrikelstyrelsen, Copenhagen. Origin coordinates from NIMA http://earth-info.nima.mil/.")]
+		[Description("A geodetic datum first defined in 1927 suitable for use in Greenland - west coast onshore. Qornoq 1927 references the International 1924 ellipsoid and the Greenwich prime meridian. Qornoq 1927 origin is Fundamental point: Station 7008. Latitude: 6431'06.27\"N, longitude: 5112'24.86\"W (of Greenwich). Qornoq 1927 is a geodetic datum for Topographic mapping. It was defined by information from Kort & Matrikelstyrelsen, Copenhagen. Origin coordinates from NIMA http://earth-info.nima.mil/.")]
 		[EnumMember(Value = "Qornoq")] 
 		[XmlEnum("90")] 
 		Qornoq = 90,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1947 suitable for use in Reunion - onshore. Reunion 1947 references the International 1924 ellipsoid and the Greenwich prime meridian. Reunion 1947 origin is Fundamental point: Piton des Neiges (Borne). Latitude: 2105'13.119\"S, longitude: 5529'09.193\"E (of Greenwich). Reunion 1947 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from IGN Paris. Replaced by RGR92 (datum code 6627).")]
+		[Description("A geodetic datum first defined in 1947 suitable for use in Reunion - onshore. Reunion 1947 references the International 1924 ellipsoid and the Greenwich prime meridian. Reunion 1947 origin is Fundamental point: Piton des Neiges (Borne). Latitude: 2105'13.119\"S, longitude: 5529'09.193\"E (of Greenwich). Reunion 1947 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from IGN Paris. Replaced by RGR92 (datum code 6627).")]
 		[EnumMember(Value = "Reunion")] 
 		[XmlEnum("91")] 
 		Reunion = 91,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in and is suitable for use in Italy - onshore and offshore; San Marino, Vatican City State. Monte Mario (Rome) references the International 1924 ellipsoid and the Rome prime meridian. Monte Mario (Rome) origin is Fundamental point: Monte Mario. Latitude: 4155'25.51\"N, longitude: 000' 00.00\"E (of Rome). Monte Mario (Rome) is a geodetic datum for Topographic mapping. Replaced Genova datum, Bessel 1841 ellipsoid, from 1940.")]
+		[Description("A geodetic datum first defined in and is suitable for use in Italy - onshore and offshore; San Marino, Vatican City State. Monte Mario (Rome) references the International 1924 ellipsoid and the Rome prime meridian. Monte Mario (Rome) origin is Fundamental point: Monte Mario. Latitude: 4155'25.51\"N, longitude: 000' 00.00\"E (of Rome). Monte Mario (Rome) is a geodetic datum for Topographic mapping. Replaced Genova datum, Bessel 1841 ellipsoid, from 1940.")]
 		[EnumMember(Value = "Rome 1940")] 
 		[XmlEnum("92")] 
 		Rome1940 = 92,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1965 suitable for use in Vanuatu - northern islands - Aese, Ambrym, Aoba, Epi, Espiritu Santo, Maewo, Malo, Malkula, Paama, Pentecost, Shepherd and Tutuba. Santo 1965 references the International 1924 ellipsoid and the Greenwich prime meridian. Santo 1965 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Datum covers all the major islands of Vanuatu in two different adjustment blocks, but practical usage is as given in the area of use.")]
+		[Description("A geodetic datum first defined in 1965 suitable for use in Vanuatu - northern islands - Aese, Ambrym, Aoba, Epi, Espiritu Santo, Maewo, Malo, Malkula, Paama, Pentecost, Shepherd and Tutuba. Santo 1965 references the International 1924 ellipsoid and the Greenwich prime meridian. Santo 1965 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000). Datum covers all the major islands of Vanuatu in two different adjustment blocks, but practical usage is as given in the area of use.")]
 		[EnumMember(Value = "Santo (DOS) 1965")] 
 		[XmlEnum("93")] 
 		SantoDos1965 = 93,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1995 suitable for use in Portugal - eastern Azores onshore - Sao Miguel, Santa Maria, Formigas. Azores Oriental Islands 1995 references the International 1924 ellipsoid and the Greenwich prime meridian. Azores Oriental Islands 1995 origin is Fundamental point: Forte de So Bras. Origin and orientation constrained to those of the 1940 adjustment. Azores Oriental Islands 1995 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon; http://www.igeo.pt/ Classical and GPS observations. Replaces 1940 adjustment (datum code 6184).")]
+		[Description("A geodetic datum first defined in 1995 suitable for use in Portugal - eastern Azores onshore - Sao Miguel, Santa Maria, Formigas. Azores Oriental Islands 1995 references the International 1924 ellipsoid and the Greenwich prime meridian. Azores Oriental Islands 1995 origin is Fundamental point: Forte de So Bras. Origin and orientation constrained to those of the 1940 adjustment. Azores Oriental Islands 1995 is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon; http://www.igeo.pt/ Classical and GPS observations. Replaces 1940 adjustment (datum code 6184).")]
 		[EnumMember(Value = "Sao Braz")] 
 		[XmlEnum("94")] 
 		SaoBraz = 94,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1943 suitable for use in Falkland Islands (Malvinas) - onshore. Sapper Hill 1943 references the International 1924 ellipsoid and the Greenwich prime meridian. Sapper Hill 1943 is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1943 suitable for use in Falkland Islands (Malvinas) - onshore. Sapper Hill 1943 references the International 1924 ellipsoid and the Greenwich prime meridian. Sapper Hill 1943 is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Sapper Hill 1943")] 
 		[XmlEnum("95")] 
 		SapperHill1943 = 95,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Namibia - onshore and offshore. Schwarzeck references the Bessel Namibia (GLM) ellipsoid and the Greenwich prime meridian. Schwarzeck origin is Fundamental point: Schwarzeck. Latitude: 2245'35.820\"S, longitude: 1840'34.549\"E (of Greenwich). Fixed during German South West Africa-British Bechuanaland boundary survey of 1898-1903. Schwarzeck is a geodetic datum for Topographic mapping. It was defined by information from Private Communication, Directorate of Surveys and Land Information, Cape Town.")]
+		[Description("A geodetic datum suitable for use in Namibia - onshore and offshore. Schwarzeck references the Bessel Namibia (GLM) ellipsoid and the Greenwich prime meridian. Schwarzeck origin is Fundamental point: Schwarzeck. Latitude: 2245'35.820\"S, longitude: 1840'34.549\"E (of Greenwich). Fixed during German South West Africa-British Bechuanaland boundary survey of 1898-1903. Schwarzeck is a geodetic datum for Topographic mapping. It was defined by information from Private Communication, Directorate of Surveys and Land Information, Cape Town.")]
 		[EnumMember(Value = "Schwarzeck")] 
 		[XmlEnum("96")] 
 		Schwarzeck = 96,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Portugal - Selvagens islands (Madeira province) - onshore. Selvagem Grande references the International 1924 ellipsoid and the Greenwich prime meridian. Selvagem Grande is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon http://www.igeo.pt.")]
+		[Description("A geodetic datum suitable for use in Portugal - Selvagens islands (Madeira province) - onshore. Selvagem Grande references the International 1924 ellipsoid and the Greenwich prime meridian. Selvagem Grande is a geodetic datum for Topographic mapping. It was defined by information from Instituto Geografico e Cadastral Lisbon http://www.igeo.pt.")]
 		[EnumMember(Value = "Selvagem Grande 1938")] 
 		[XmlEnum("97")] 
 		SelvagemGrande1938 = 97,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1969 suitable for use in Brazil - onshore and offshore. In rest of South America - onshore north of approximately 45S and Tierra del Fuego. South American Datum 1969 references the GRS 1967 Modified ellipsoid and the Greenwich prime meridian. South American Datum 1969 origin is Fundamental point: Chua. Geodetic latitude: 1945'41.6527\"S; geodetic longitude: 4806'04.0639\"W (of Greenwich). (Astronomic coordinates: Latitude 1945'41.34\"S +/- 0.05\", longitude 4806'07.80\"W +/- 0.08\"). South American Datum 1969 is a geodetic datum for Topographic mapping. It was defined by information from DMA 1974. SAD69 uses GRS 1967 ellipsoid but with 1/f to exactly 2 decimal places. In Brazil only, replaced by SAD69(96) (datum code 1075).")]
+		[Description("A geodetic datum first defined in 1969 suitable for use in Brazil - onshore and offshore. In rest of South America - onshore north of approximately 45S and Tierra del Fuego. South American Datum 1969 references the GRS 1967 Modified ellipsoid and the Greenwich prime meridian. South American Datum 1969 origin is Fundamental point: Chua. Geodetic latitude: 1945'41.6527\"S; geodetic longitude: 4806'04.0639\"W (of Greenwich). (Astronomic coordinates: Latitude 1945'41.34\"S +/- 0.05\", longitude 4806'07.80\"W +/- 0.08\"). South American Datum 1969 is a geodetic datum for Topographic mapping. It was defined by information from DMA 1974. SAD69 uses GRS 1967 ellipsoid but with 1/f to exactly 2 decimal places. In Brazil only, replaced by SAD69(96) (datum code 1075).")]
 		[EnumMember(Value = "South American 1969")] 
 		[XmlEnum("98")] 
 		SouthAmerican1969 = 98,
 
-		[System.ComponentModel.Description("South Asia datum.")]
+		[Description("South Asia datum.")]
 		[EnumMember(Value = "South Asia")] 
 		[XmlEnum("99")] 
 		SouthAsia = 99,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1925 suitable for use in Madagascar - onshore and nearshore. Tananarive 1925 references the International 1924 ellipsoid and the Greenwich prime meridian. Tananarive 1925 origin is Fundamental point: Tananarive observatory. Latitude: 1855'02.10\"S, longitude: 4733'06.75\"E (of Greenwich). Tananarive 1925 is a geodetic datum for Topographic mapping. It was defined by information from IGN Paris.")]
+		[Description("A geodetic datum first defined in 1925 suitable for use in Madagascar - onshore and nearshore. Tananarive 1925 references the International 1924 ellipsoid and the Greenwich prime meridian. Tananarive 1925 origin is Fundamental point: Tananarive observatory. Latitude: 1855'02.10\"S, longitude: 4733'06.75\"E (of Greenwich). Tananarive 1925 is a geodetic datum for Topographic mapping. It was defined by information from IGN Paris.")]
 		[EnumMember(Value = "Tananarive Observatory 1925")] 
 		[XmlEnum("100")] 
 		TananariveObservatory1925 = 100,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1948 suitable for use in Brunei - onshore and offshore; Malaysia - East Malaysia (Sabah; Sarawak) - onshore and offshore. Timbalai 1948 references the Everest 1830 (1967 Definition) ellipsoid and the Greenwich prime meridian. Timbalai 1948 origin is Fundamental point: Station P85 at Timbalai. Latitude: 517' 3.548\"N, longitude: 11510'56.409\"E (of Greenwich). Timbalai 1948 is a geodetic datum for Topographic mapping. It was defined by information from Defence Geographic Centre. In 1968, the original adjustment was densified in Sarawak and extended to Sabah.")]
+		[Description("A geodetic datum first defined in 1948 suitable for use in Brunei - onshore and offshore; Malaysia - East Malaysia (Sabah; Sarawak) - onshore and offshore. Timbalai 1948 references the Everest 1830 (1967 Definition) ellipsoid and the Greenwich prime meridian. Timbalai 1948 origin is Fundamental point: Station P85 at Timbalai. Latitude: 517' 3.548\"N, longitude: 11510'56.409\"E (of Greenwich). Timbalai 1948 is a geodetic datum for Topographic mapping. It was defined by information from Defence Geographic Centre. In 1968, the original adjustment was densified in Sarawak and extended to Sabah.")]
 		[EnumMember(Value = "Timbalai 1948")] 
 		[XmlEnum("101")] 
 		Timbalai1948 = 101,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1918 suitable for use in Japan - onshore; North Korea - onshore; South Korea - onshore. Tokyo references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Tokyo origin is Fundamental point: Nikon-Keido-Genten. Latitude: 3539'17.5148\"N, longitude: 13944'40.5020\"E (of Greenwich). Longitude derived in 1918. Tokyo is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Geographic Survey Institute; Japan; Bulletin 40 (March 1994). Also http://vldb.gsi.go.jp/sokuchi/datum/tokyodatum.html. In Japan, replaces Tokyo 1892 (code 1048) and replaced by Japanese Geodetic Datum 2000 (code 6611). In Korea used only for geodetic applications before being replaced by Korean 1985 (code 6162).")]
+		[Description("A geodetic datum first defined in 1918 suitable for use in Japan - onshore; North Korea - onshore; South Korea - onshore. Tokyo references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Tokyo origin is Fundamental point: Nikon-Keido-Genten. Latitude: 3539'17.5148\"N, longitude: 13944'40.5020\"E (of Greenwich). Longitude derived in 1918. Tokyo is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Geographic Survey Institute; Japan; Bulletin 40 (March 1994). Also http://vldb.gsi.go.jp/sokuchi/datum/tokyodatum.html. In Japan, replaces Tokyo 1892 (code 1048) and replaced by Japanese Geodetic Datum 2000 (code 6611). In Korea used only for geodetic applications before being replaced by Korean 1985 (code 6162).")]
 		[EnumMember(Value = "Tokyo")] 
 		[XmlEnum("102")] 
 		Tokyo = 102,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1968 suitable for use in St Helena, Ascension and Tristan da Cunha - Tristan da Cunha island group including Tristan, Inaccessible, Nightingale, Middle and Stoltenhoff Islands. Tristan 1968 references the International 1924 ellipsoid and the Greenwich prime meridian. Tristan 1968 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1968 suitable for use in St Helena, Ascension and Tristan da Cunha - Tristan da Cunha island group including Tristan, Inaccessible, Nightingale, Middle and Stoltenhoff Islands. Tristan 1968 references the International 1924 ellipsoid and the Greenwich prime meridian. Tristan 1968 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Tristan Astro 1968")] 
 		[XmlEnum("103")] 
 		TristanAstro1968 = 103,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1912 suitable for use in Fiji - Viti Levu island. Viti Levu 1912 references the Clarke 1880 (international foot) ellipsoid and the Greenwich prime meridian. Viti Levu 1912 Latitude origin was obtained astronomically at station Monavatu = 1753'28.285\"S, longitude origin was obtained astronomically at station Suva = 17825'35.835\"E. Viti Levu 1912 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Clifford J. Mugnier in Photogrammetric Engineering and Remote Sensing, October 2000, www.asprs.org. For topographic mapping, replaced by Fiji 1956. For other purposes, replaced by Fiji 1986.")]
+		[Description("A geodetic datum first defined in 1912 suitable for use in Fiji - Viti Levu island. Viti Levu 1912 references the Clarke 1880 (international foot) ellipsoid and the Greenwich prime meridian. Viti Levu 1912 Latitude origin was obtained astronomically at station Monavatu = 1753'28.285\"S, longitude origin was obtained astronomically at station Suva = 17825'35.835\"E. Viti Levu 1912 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Clifford J. Mugnier in Photogrammetric Engineering and Remote Sensing, October 2000, www.asprs.org. For topographic mapping, replaced by Fiji 1956. For other purposes, replaced by Fiji 1986.")]
 		[EnumMember(Value = "Viti Levu 1916")] 
 		[XmlEnum("104")] 
 		VitiLevu1916 = 104,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1960 suitable for use in Marshall Islands - onshore. Wake atoll onshore. Marshall Islands 1960 references the Hough 1960 ellipsoid and the Greenwich prime meridian. Marshall Islands 1960 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1960 suitable for use in Marshall Islands - onshore. Wake atoll onshore. Marshall Islands 1960 references the Hough 1960 ellipsoid and the Greenwich prime meridian. Marshall Islands 1960 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Wake-Eniwetok 1960")] 
 		[XmlEnum("105")] 
 		WakeEniwetok1960 = 105,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1952 suitable for use in Wake atoll - onshore. Wake Island 1952 references the International 1924 ellipsoid and the Greenwich prime meridian. Wake Island 1952 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum first defined in 1952 suitable for use in Wake atoll - onshore. Wake Island 1952 references the International 1924 ellipsoid and the Greenwich prime meridian. Wake Island 1952 is a geodetic datum for Military and topographic mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Wake Island Astro 1952")] 
 		[XmlEnum("106")] 
 		WakeIslandAstro1952 = 106,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Uruguay - onshore. Yacare references the International 1924 ellipsoid and the Greenwich prime meridian. Yacare origin is Fundamental point: Yacare. Latitude: 3035'53.68\"S, longitude: 5725'01.30\"W (of Greenwich). Yacare is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/")]
+		[Description("A geodetic datum suitable for use in Uruguay - onshore. Yacare references the International 1924 ellipsoid and the Greenwich prime meridian. Yacare origin is Fundamental point: Yacare. Latitude: 3035'53.68\"S, longitude: 5725'01.30\"W (of Greenwich). Yacare is a geodetic datum for Topographic mapping. It was defined by information from NIMA http://earth-info.nima.mil/")]
 		[EnumMember(Value = "Yacare")] 
 		[XmlEnum("107")] 
 		Yacare = 107,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Suriname - onshore and offshore. Zanderij references the International 1924 ellipsoid and the Greenwich prime meridian. Zanderij is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum suitable for use in Suriname - onshore and offshore. Zanderij references the International 1924 ellipsoid and the Greenwich prime meridian. Zanderij is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Zanderij")] 
 		[XmlEnum("108")] 
 		Zanderij = 108,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1962 suitable for use in American Samoa - Tutuila, Aunu'u, Ofu, Olesega and Ta'u islands. American Samoa 1962 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. American Samoa 1962 origin is Fundamental point: Betty 13 eccentric. Latitude: 1420'08.34\"S, longitude: 17042'52.25\"W (of Greenwich). American Samoa 1962 is a geodetic datum for Topographic mapping. It was defined by information from NIMA TR8350.2 revision of January 2000. Oil industry sources for origin description details.")]
+		[Description("A geodetic datum first defined in 1962 suitable for use in American Samoa - Tutuila, Aunu'u, Ofu, Olesega and Ta'u islands. American Samoa 1962 references the Clarke 1866 ellipsoid and the Greenwich prime meridian. American Samoa 1962 origin is Fundamental point: Betty 13 eccentric. Latitude: 1420'08.34\"S, longitude: 17042'52.25\"W (of Greenwich). American Samoa 1962 is a geodetic datum for Topographic mapping. It was defined by information from NIMA TR8350.2 revision of January 2000. Oil industry sources for origin description details.")]
 		[EnumMember(Value = "American Samoa 1962")] 
 		[XmlEnum("109")] 
 		AmericanSamoa1962 = 109,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Antarctica - South Shetland Islands - Deception Island. Deception Island references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Deception Island is a geodetic datum for Military and scientific mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
+		[Description("A geodetic datum suitable for use in Antarctica - South Shetland Islands - Deception Island. Deception Island references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Deception Island is a geodetic datum for Military and scientific mapping. It was defined by information from DMA / NIMA / NGA TR8350.2 (3rd edition, Amendment 1, 3 January 2000).")]
 		[EnumMember(Value = "Deception Island")] 
 		[XmlEnum("110")] 
 		DeceptionIsland = 110,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Cambodia - onshore; Vietnam - onshore and offshore Cuu Long basin. Indian 1960 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1960 origin is DMA extension over IndoChina of the Indian 1954 network adjusted to better fit local geoid. Indian 1960 is a geodetic datum for Topographic mapping. Also known as Indian (DMA Reduced).")]
+		[Description("A geodetic datum suitable for use in Cambodia - onshore; Vietnam - onshore and offshore Cuu Long basin. Indian 1960 references the Everest 1830 (1937 Adjustment) ellipsoid and the Greenwich prime meridian. Indian 1960 origin is DMA extension over IndoChina of the Indian 1954 network adjusted to better fit local geoid. Indian 1960 is a geodetic datum for Topographic mapping. Also known as Indian (DMA Reduced).")]
 		[EnumMember(Value = "Indian 1960")] 
 		[XmlEnum("111")] 
 		Indian1960 = 111,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1974 suitable for use in Indonesia - onshore. Indonesian Datum 1974 references the Indonesian National Spheroid ellipsoid and the Greenwich prime meridian. Indonesian Datum 1974 origin is Fundamental point: Padang. Latitude: 056'38.414\"S, longitude: 10022' 8.804\"E (of Greenwich). Ellipsoidal height 3.190m, gravity-related height 14.0m above mean sea level. Indonesian Datum 1974 is a geodetic datum for Topographic mapping. It was defined by information from Bakosurtanal 1979 paper by Jacob Rais. Replaced by DGN95.")]
+		[Description("A geodetic datum first defined in 1974 suitable for use in Indonesia - onshore. Indonesian Datum 1974 references the Indonesian National Spheroid ellipsoid and the Greenwich prime meridian. Indonesian Datum 1974 origin is Fundamental point: Padang. Latitude: 056'38.414\"S, longitude: 10022' 8.804\"E (of Greenwich). Ellipsoidal height 3.190m, gravity-related height 14.0m above mean sea level. Indonesian Datum 1974 is a geodetic datum for Topographic mapping. It was defined by information from Bakosurtanal 1979 paper by Jacob Rais. Replaced by DGN95.")]
 		[EnumMember(Value = "Indonesian 1974")] 
 		[XmlEnum("112")] 
 		Indonesian1974 = 112,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1959 suitable for use in Algeria - onshore and offshore. Nord Sahara 1959 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nord Sahara 1959 origin is Coordinates of primary network readjusted on ED50 datum and then transformed conformally to Clarke 1880 (RGS) ellipsoid. Nord Sahara 1959 is a geodetic datum for Topographic mapping. It was defined by information from \"Le System Geodesique Nord-Sahara\"; IGN Paris Adjustment includes Morocco and Tunisia but use only in Algeria. Within Algeria the adjustment is north of 32N but use has been extended southwards in many disconnected projects, some based on independent astro stations rather than the geodetic network.")]
+		[Description("A geodetic datum first defined in 1959 suitable for use in Algeria - onshore and offshore. Nord Sahara 1959 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nord Sahara 1959 origin is Coordinates of primary network readjusted on ED50 datum and then transformed conformally to Clarke 1880 (RGS) ellipsoid. Nord Sahara 1959 is a geodetic datum for Topographic mapping. It was defined by information from \"Le System Geodesique Nord-Sahara\"; IGN Paris Adjustment includes Morocco and Tunisia but use only in Algeria. Within Algeria the adjustment is north of 32N but use has been extended southwards in many disconnected projects, some based on independent astro stations rather than the geodetic network.")]
 		[EnumMember(Value = "North Sahara 1959")] 
 		[XmlEnum("113")] 
 		NorthSahara1959 = 113,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1942 suitable for use in Armenia; Azerbaijan; Belarus; Estonia - onshore; Georgia - onshore; Kazakhstan; Kyrgyzstan; Latvia - onshore; Lithuania - onshore; Moldova; Russian Federation - onshore; Tajikistan; Turkmenistan; Ukraine - onshore; Uzbekistan. Pulkovo 1942 references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Pulkovo 1942 origin is Fundamental point: Pulkovo observatory. Latitude: 5946'18.550\"N, longitude: 3019'42.090\"E (of Greenwich). Pulkovo 1942 is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1942 suitable for use in Armenia; Azerbaijan; Belarus; Estonia - onshore; Georgia - onshore; Kazakhstan; Kyrgyzstan; Latvia - onshore; Lithuania - onshore; Moldova; Russian Federation - onshore; Tajikistan; Turkmenistan; Ukraine - onshore; Uzbekistan. Pulkovo 1942 references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Pulkovo 1942 origin is Fundamental point: Pulkovo observatory. Latitude: 5946'18.550\"N, longitude: 3019'42.090\"E (of Greenwich). Pulkovo 1942 is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Pulkovo 1942")] 
 		[XmlEnum("114")] 
 		Pulkovo1942 = 114,
 
-		[System.ComponentModel.Description("A geodetic datum suitable for use in Czech Republic; Slovakia. System Jednotne Trigonometricke Site Katastralni references the Bessel 1841 ellipsoid and the Greenwich prime meridian. System Jednotne Trigonometricke Site Katastralni origin is Modification of Austrian MGI datum, code 6312. System Jednotne Trigonometricke Site Katastralni is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Research Institute for Geodesy Topography and Cartography (VUGTK); Prague. S-JTSK = System of the Unified Trigonometrical Cadastral Network.")]
+		[Description("A geodetic datum suitable for use in Czech Republic; Slovakia. System Jednotne Trigonometricke Site Katastralni references the Bessel 1841 ellipsoid and the Greenwich prime meridian. System Jednotne Trigonometricke Site Katastralni origin is Modification of Austrian MGI datum, code 6312. System Jednotne Trigonometricke Site Katastralni is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from Research Institute for Geodesy Topography and Cartography (VUGTK); Prague. S-JTSK = System of the Unified Trigonometrical Cadastral Network.")]
 		[EnumMember(Value = "S-JTSK")] 
 		[XmlEnum("116")] 
 		SJtsk = 116,
 
-		[System.ComponentModel.Description("Voirol 1950 datum.")]
+		[Description("Voirol 1950 datum.")]
 		[EnumMember(Value = "Voirol 1950")] 
 		[XmlEnum("117")] 
 		Voirol1950 = 117,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1977 suitable for use in Canada - New Brunswick; Nova Scotia; Prince Edward Island. Average Terrestrial System 1977 references the Average Terrestrial System 1977 ellipsoid and the Greenwich prime meridian. Average Terrestrial System 1977 is a geodetic datum for Topographic mapping. It was defined by information from New Brunswick Geographic Information Corporation land and water information standards manual. In use from 1979.")]
+		[Description("A geodetic datum first defined in 1977 suitable for use in Canada - New Brunswick; Nova Scotia; Prince Edward Island. Average Terrestrial System 1977 references the Average Terrestrial System 1977 ellipsoid and the Greenwich prime meridian. Average Terrestrial System 1977 is a geodetic datum for Topographic mapping. It was defined by information from New Brunswick Geographic Information Corporation land and water information standards manual. In use from 1979.")]
 		[EnumMember(Value = "Average Terrestrial System 1977")] 
 		[XmlEnum("118")] 
 		AverageTerrestrialSystem1977 = 118,
 
-		[System.ComponentModel.Description("Compensation Geodesique du Quebec 1977.")]
+		[Description("Compensation Geodesique du Quebec 1977.")]
 		[EnumMember(Value = "Compensation Geodesique du Quebec 1977")] 
 		[XmlEnum("119")] 
 		CompensationGeodesiqueDuQuebec1977 = 119,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1966 suitable for use in Finland - onshore. Kartastokoordinaattijarjestelma (1966) references the International 1924 ellipsoid and the Greenwich prime meridian. Kartastokoordinaattijarjestelma (1966) origin is Adjustment with fundamental point SF31 based on ED50 transformed to best fit the older VVJ adjustment. Kartastokoordinaattijarjestelma (1966) is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from National Land Survey of Finland; http://www.maanmittauslaitos.fi. Adopted in 1970.")]
+		[Description("A geodetic datum first defined in 1966 suitable for use in Finland - onshore. Kartastokoordinaattijarjestelma (1966) references the International 1924 ellipsoid and the Greenwich prime meridian. Kartastokoordinaattijarjestelma (1966) origin is Adjustment with fundamental point SF31 based on ED50 transformed to best fit the older VVJ adjustment. Kartastokoordinaattijarjestelma (1966) is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from National Land Survey of Finland; http://www.maanmittauslaitos.fi. Adopted in 1970.")]
 		[EnumMember(Value = "Finnish (KKJ)")] 
 		[XmlEnum("120")] 
 		FinnishKkj = 120,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1952 suitable for use in United Kingdom (UK) - Northern Ireland (Ulster) - onshore. OSNI 1952 references the Airy 1830 ellipsoid and the Greenwich prime meridian. OSNI 1952 origin is Position fixed to the coordinates from the 19th century Principle Triangulation of station Divis. Scale and orientation controlled by position of Principle Triangulation stations Knocklayd and Trostan. OSNI 1952 is a geodetic datum for Geodetic survey and topographic mapping. It was defined by information from Ordnance Survey of Northern Ireland. Replaced by Geodetic Datum of 1965 alias 1975 Mapping Adjustment or TM75 (datum code 6300).")]
+		[Description("A geodetic datum first defined in 1952 suitable for use in United Kingdom (UK) - Northern Ireland (Ulster) - onshore. OSNI 1952 references the Airy 1830 ellipsoid and the Greenwich prime meridian. OSNI 1952 origin is Position fixed to the coordinates from the 19th century Principle Triangulation of station Divis. Scale and orientation controlled by position of Principle Triangulation stations Knocklayd and Trostan. OSNI 1952 is a geodetic datum for Geodetic survey and topographic mapping. It was defined by information from Ordnance Survey of Northern Ireland. Replaced by Geodetic Datum of 1965 alias 1975 Mapping Adjustment or TM75 (datum code 6300).")]
 		[EnumMember(Value = "Ordnance Survey of Ireland")] 
 		[XmlEnum("121")] 
 		OrdnanceSurveyOfIreland = 121,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1969 suitable for use in Malaysia - West Malaysia; Singapore. Kertau (RSO) references the Everest 1830 (RSO 1969) ellipsoid and the Greenwich prime meridian. Kertau (RSO) is a geodetic datum for Metrication of RSO grid. It was defined by information from Defence Geographic Centre. Adopts metric conversion of 0.914398 metres per yard exactly. This is a truncation of the Sears 1922 ratio.")]
+		[Description("A geodetic datum first defined in 1969 suitable for use in Malaysia - West Malaysia; Singapore. Kertau (RSO) references the Everest 1830 (RSO 1969) ellipsoid and the Greenwich prime meridian. Kertau (RSO) is a geodetic datum for Metrication of RSO grid. It was defined by information from Defence Geographic Centre. Adopts metric conversion of 0.914398 metres per yard exactly. This is a truncation of the Sears 1922 ratio.")]
 		[EnumMember(Value = "Revised Kertau")] 
 		[XmlEnum("122")] 
 		RevisedKertau = 122,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1967 suitable for use in Arabian Gulf; Qatar - offshore; United Arab Emirates (UAE) - Abu Dhabi; Dubai; Sharjah; Ajman; Fujairah; Ras Al Kaimah; Umm Al Qaiwain - onshore and offshore. Nahrwan 1967 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nahrwan 1967 origin is Fundamental point: Nahrwan south base. Latitude: 3319'10.87\"N, longitude: 4443'25.54\"E (of Greenwich). Nahrwan 1967 is a geodetic datum for Topographic mapping. In Iraq, replaces Nahrwan 1934.")]
+		[Description("A geodetic datum first defined in 1967 suitable for use in Arabian Gulf; Qatar - offshore; United Arab Emirates (UAE) - Abu Dhabi; Dubai; Sharjah; Ajman; Fujairah; Ras Al Kaimah; Umm Al Qaiwain - onshore and offshore. Nahrwan 1967 references the Clarke 1880 (RGS) ellipsoid and the Greenwich prime meridian. Nahrwan 1967 origin is Fundamental point: Nahrwan south base. Latitude: 3319'10.87\"N, longitude: 4443'25.54\"E (of Greenwich). Nahrwan 1967 is a geodetic datum for Topographic mapping. In Iraq, replaces Nahrwan 1934.")]
 		[EnumMember(Value = "Revised Nahrwan")] 
 		[XmlEnum("123")] 
 		RevisedNahrwan = 123,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1987 suitable for use in Greece - onshore. Greek Geodetic Reference System 1987 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Greek Geodetic Reference System 1987 origin is Fundamental point: Dionysos. Latitude 3804'33.8\"N, longitude 2355'51.0\"E of Greenwich; geoid height 7.0 m. Greek Geodetic Reference System 1987 is a geodetic datum for Topographic mapping. It was defined by information from L. Portokalakis; Public Petroleum Corporation of Greece. Replaced (old) Greek datum. Oil industry work based on ED50.")]
+		[Description("A geodetic datum first defined in 1987 suitable for use in Greece - onshore. Greek Geodetic Reference System 1987 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Greek Geodetic Reference System 1987 origin is Fundamental point: Dionysos. Latitude 3804'33.8\"N, longitude 2355'51.0\"E of Greenwich; geoid height 7.0 m. Greek Geodetic Reference System 1987 is a geodetic datum for Topographic mapping. It was defined by information from L. Portokalakis; Public Petroleum Corporation of Greece. Replaced (old) Greek datum. Oil industry work based on ED50.")]
 		[EnumMember(Value = "GGRS 76 (Greece)")] 
 		[XmlEnum("124")] 
 		Ggrs76Greece = 124,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1895 suitable for use in France - onshore - mainland and Corsica. Nouvelle Triangulation Francaise references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Nouvelle Triangulation Francaise origin is Fundamental point: Pantheon. Latitude: 4850'46.522\"N, longitude: 220'48.667\"E (of Greenwich). Nouvelle Triangulation Francaise is a geodetic datum for Topographic mapping.")]
+		[Description("A geodetic datum first defined in 1895 suitable for use in France - onshore - mainland and Corsica. Nouvelle Triangulation Francaise references the Clarke 1880 (IGN) ellipsoid and the Greenwich prime meridian. Nouvelle Triangulation Francaise origin is Fundamental point: Pantheon. Latitude: 4850'46.522\"N, longitude: 220'48.667\"E (of Greenwich). Nouvelle Triangulation Francaise is a geodetic datum for Topographic mapping.")]
 		[EnumMember(Value = "Nouvelle Triangulation de France")] 
 		[XmlEnum("125")] 
 		NouvelleTriangulationDeFrance = 125,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1982 suitable for use in Sweden - onshore and offshore. Rikets koordinatsystem 1990 references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Rikets koordinatsystem 1990 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from National Land Survey of Sweden Replaces RT38 adjustment (datum code 6308).")]
+		[Description("A geodetic datum first defined in 1982 suitable for use in Sweden - onshore and offshore. Rikets koordinatsystem 1990 references the Bessel 1841 ellipsoid and the Greenwich prime meridian. Rikets koordinatsystem 1990 is a geodetic datum for Geodetic survey, cadastre, topographic mapping, engineering survey. It was defined by information from National Land Survey of Sweden Replaces RT38 adjustment (datum code 6308).")]
 		[EnumMember(Value = "RT 90 (Sweden)")] 
 		[XmlEnum("126")] 
 		Rt90Sweden = 126,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1994 suitable for use in Australia including Lord Howe Island, Macquarie Islands, Ashmore and Cartier Islands, Christmas Island, Cocos (Keeling) Islands, Norfolk Island. All onshore and offshore. Geocentric Datum of Australia 1994 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Geocentric Datum of Australia 1994 origin is ITRF92 at epoch 1994.0. Geocentric Datum of Australia 1994 is a geodetic datum for Topographic mapping, geodetic survey. It was defined by information from Australian Surveying and Land Information Group Internet WWW page. http://www.auslig.gov.au/geodesy/datums/gda.htm#specs Coincident with WGS84 to within 1 metre.")]
+		[Description("A geodetic datum first defined in 1994 suitable for use in Australia including Lord Howe Island, Macquarie Islands, Ashmore and Cartier Islands, Christmas Island, Cocos (Keeling) Islands, Norfolk Island. All onshore and offshore. Geocentric Datum of Australia 1994 references the GRS 1980 ellipsoid and the Greenwich prime meridian. Geocentric Datum of Australia 1994 origin is ITRF92 at epoch 1994.0. Geocentric Datum of Australia 1994 is a geodetic datum for Topographic mapping, geodetic survey. It was defined by information from Australian Surveying and Land Information Group Internet WWW page. http://www.auslig.gov.au/geodesy/datums/gda.htm#specs Coincident with WGS84 to within 1 metre.")]
 		[EnumMember(Value = "Geocentric Datum of Australia")] 
 		[XmlEnum("127")] 
 		GeocentricDatumOfAustralia = 127,
 
-		[System.ComponentModel.Description("A geodetic datum first defined in 1954 suitable for use in China - onshore. Beijing 1954 references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Beijing 1954 origin is Pulkovo, transferred through Russian triangulation. Beijing 1954 is a geodetic datum for Topographic mapping. It was defined by information from Chinese Science Bulletin, 2009, 54:2714-2721 Scale determined through three baselines in northeast China. Discontinuities at boundaries of adjustment blocks. From 1982 replaced by Xian 1980 and New Beijing.")]
+		[Description("A geodetic datum first defined in 1954 suitable for use in China - onshore. Beijing 1954 references the Krassowsky 1940 ellipsoid and the Greenwich prime meridian. Beijing 1954 origin is Pulkovo, transferred through Russian triangulation. Beijing 1954 is a geodetic datum for Topographic mapping. It was defined by information from Chinese Science Bulletin, 2009, 54:2714-2721 Scale determined through three baselines in northeast China. Discontinuities at boundaries of adjustment blocks. From 1982 replaced by Xian 1980 and New Beijing.")]
 		[EnumMember(Value = "BJZ54 (A954 Beijing Coordinates)")] 
 		[XmlEnum("128")] 
 		Bjz54A954BeijingCoordinates = 128,
 
-		[System.ComponentModel.Description("Modified BJZ54 datum.")]
+		[Description("Modified BJZ54 datum.")]
 		[EnumMember(Value = "Modified BJZ54")] 
 		[XmlEnum("129")] 
 		ModifiedBjz54 = 129,
 
-		[System.ComponentModel.Description("GDZ80 datum.")]
+		[Description("GDZ80 datum.")]
 		[EnumMember(Value = "GDZ80")] 
 		[XmlEnum("130")] 
 		Gdz80 = 130,
 
-		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
+		[Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
 		[EnumMember(Value = "Local Datum")] 
 		[XmlEnum("131")] 
 		LocalDatum = 131,
@@ -1014,12 +1014,12 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum signalStatus : int {
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of light or sound.")]
+		[Description("The indication of an element of a signal sequence being a period of light or sound.")]
 		[EnumMember(Value = "Lit/Sound")] 
 		[XmlEnum("1")] 
 		LitSound = 1,
 
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
+		[Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
 		[EnumMember(Value = "Eclipsed/Silent")] 
 		[XmlEnum("2")] 
 		EclipsedSilent = 2,
@@ -1031,37 +1031,37 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCable : int {
-		[System.ComponentModel.Description("A cable that transmits or distributes electrical power.")]
+		[Description("A cable that transmits or distributes electrical power.")]
 		[EnumMember(Value = "Power Line")] 
 		[XmlEnum("1")] 
 		PowerLine = 1,
 
-		[System.ComponentModel.Description("Multiple un-insulated cables usually supported by steel lattice towers. Such features are generally more prominent than normal power lines.")]
+		[Description("Multiple un-insulated cables usually supported by steel lattice towers. Such features are generally more prominent than normal power lines.")]
 		[EnumMember(Value = "Transmission Line")] 
 		[XmlEnum("3")] 
 		TransmissionLine = 3,
 
-		[System.ComponentModel.Description("A cable that transmits telephone signals.")]
+		[Description("A cable that transmits telephone signals.")]
 		[EnumMember(Value = "Telephone")] 
 		[XmlEnum("4")] 
 		Telephone = 4,
 
-		[System.ComponentModel.Description("An apparatus, system or process for communication at a distance by electric transmission over wire.")]
+		[Description("An apparatus, system or process for communication at a distance by electric transmission over wire.")]
 		[EnumMember(Value = "Telegraph")] 
 		[XmlEnum("5")] 
 		Telegraph = 5,
 
-		[System.ComponentModel.Description("A chain or very strong fibre or wire rope used to anchor or moor vessels or buoys.")]
+		[Description("A chain or very strong fibre or wire rope used to anchor or moor vessels or buoys.")]
 		[EnumMember(Value = "Mooring Cable")] 
 		[XmlEnum("6")] 
 		MooringCable = 6,
 
-		[System.ComponentModel.Description("A vessel for transporting passengers, vehicles, and/or goods across a stretch of water, especially as a regular service.")]
+		[Description("A vessel for transporting passengers, vehicles, and/or goods across a stretch of water, especially as a regular service.")]
 		[EnumMember(Value = "Ferry")] 
 		[XmlEnum("7")] 
 		Ferry = 7,
 
-		[System.ComponentModel.Description("A cable made of glass or plastic fiber designed to guide light along its length, fibre optic cables are widely used in fiber-optic communication, which permits transmission over longer distances and at higher data rates than other forms of communication.")]
+		[Description("A cable made of glass or plastic fiber designed to guide light along its length, fibre optic cables are widely used in fiber-optic communication, which permits transmission over longer distances and at higher data rates than other forms of communication.")]
 		[EnumMember(Value = "Fibre Optic Cable")] 
 		[XmlEnum("8")] 
 		FibreOpticCable = 8,
@@ -1073,12 +1073,12 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfInstallationBuoy : int {
-		[System.ComponentModel.Description("incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
+		[Description("incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
 		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
 		[XmlEnum("1")] 
 		CatenaryAnchorLegMooring = 1,
 
-		[System.ComponentModel.Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
+		[Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
 		[EnumMember(Value = "Single Buoy Mooring")] 
 		[XmlEnum("2")] 
 		SingleBuoyMooring = 2,
@@ -1093,32 +1093,32 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum ShackleType : int {
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "forelock shackles")] 
 		[XmlEnum("1")] 
 		ForelockShackles = 1,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "clenching shackles")] 
 		[XmlEnum("2")] 
 		ClenchingShackles = 2,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "bolt shackles")] 
 		[XmlEnum("3")] 
 		BoltShackles = 3,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "screw pin shackles")] 
 		[XmlEnum("4")] 
 		ScrewPinShackles = 4,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "kenter shackle")] 
 		[XmlEnum("5")] 
 		KenterShackle = 5,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "quick release link")] 
 		[XmlEnum("6")] 
 		QuickReleaseLink = 6,
@@ -1130,32 +1130,32 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfPile : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole embedded in the seabed to serve as a marker or support.")]
+		[Description("An elongated wood or metal pole embedded in the seabed to serve as a marker or support.")]
 		[EnumMember(Value = "Stake")] 
 		[XmlEnum("1")] 
 		Stake = 1,
 
-		[System.ComponentModel.Description("A vertical piece of timber, metal or concrete forced into the earth or sea bed.")]
+		[Description("A vertical piece of timber, metal or concrete forced into the earth or sea bed.")]
 		[EnumMember(Value = "Post")] 
 		[XmlEnum("3")] 
 		Post = 3,
 
-		[System.ComponentModel.Description("A single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or sea bed.")]
+		[Description("A single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or sea bed.")]
 		[EnumMember(Value = "Tripodal")] 
 		[XmlEnum("4")] 
 		Tripodal = 4,
 
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, and usually connected or bolted together.")]
+		[Description("A number of piles, usually in a straight line, and usually connected or bolted together.")]
 		[EnumMember(Value = "Piling")] 
 		[XmlEnum("5")] 
 		Piling = 5,
 
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, but not connected by structural members.")]
+		[Description("A number of piles, usually in a straight line, but not connected by structural members.")]
 		[EnumMember(Value = "Area of Piles")] 
 		[XmlEnum("6")] 
 		AreaOfPiles = 6,
 
-		[System.ComponentModel.Description("A vertical hollow cylinder of metal, wood, or other material forced into the earth or seabed.")]
+		[Description("A vertical hollow cylinder of metal, wood, or other material forced into the earth or seabed.")]
 		[EnumMember(Value = "Pipe")] 
 		[XmlEnum("7")] 
 		Pipe = 7,
@@ -1167,22 +1167,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfSiloTank : int {
-		[System.ComponentModel.Description("A large storage structure used for storing loose materials.")]
+		[Description("A large storage structure used for storing loose materials.")]
 		[EnumMember(Value = "Silo in General")] 
 		[XmlEnum("1")] 
 		SiloInGeneral = 1,
 
-		[System.ComponentModel.Description("A fixed structure for storing liquids.")]
+		[Description("A fixed structure for storing liquids.")]
 		[EnumMember(Value = "Tank in General")] 
 		[XmlEnum("2")] 
 		TankInGeneral = 2,
 
-		[System.ComponentModel.Description("A storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
+		[Description("A storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
 		[EnumMember(Value = "Grain Elevator")] 
 		[XmlEnum("3")] 
 		GrainElevator = 3,
 
-		[System.ComponentModel.Description("A tower supporting an elevated storage tank of water.")]
+		[Description("A tower supporting an elevated storage tank of water.")]
 		[EnumMember(Value = "Water Tower")] 
 		[XmlEnum("4")] 
 		WaterTower = 4,
@@ -1194,27 +1194,27 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum buildingShape : int {
-		[System.ComponentModel.Description("A building having many storeys.")]
+		[Description("A building having many storeys.")]
 		[EnumMember(Value = "High-Rise Building")] 
 		[XmlEnum("5")] 
 		HighRiseBuilding = 5,
 
-		[System.ComponentModel.Description("A polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
+		[Description("A polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
 		[EnumMember(Value = "Pyramid")] 
 		[XmlEnum("6")] 
 		Pyramid = 6,
 
-		[System.ComponentModel.Description("Shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
+		[Description("Shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
 		[EnumMember(Value = "Cylindrical")] 
 		[XmlEnum("7")] 
 		Cylindrical = 7,
 
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
+		[Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
 		[EnumMember(Value = "Spherical")] 
 		[XmlEnum("8")] 
 		Spherical = 8,
 
-		[System.ComponentModel.Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
+		[Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
 		[EnumMember(Value = "Cubic")] 
 		[XmlEnum("9")] 
 		Cubic = 9,
@@ -1226,127 +1226,127 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum product : int {
-		[System.ComponentModel.Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
+		[Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
 		[EnumMember(Value = "Oil")] 
 		[XmlEnum("1")] 
 		Oil = 1,
 
-		[System.ComponentModel.Description("A substance with particles that can move freely, usually a fuel substance in the context of storage tanks.")]
+		[Description("A substance with particles that can move freely, usually a fuel substance in the context of storage tanks.")]
 		[EnumMember(Value = "Gas")] 
 		[XmlEnum("2")] 
 		Gas = 2,
 
-		[System.ComponentModel.Description("A colourless, odourless, tasteless liquid that is a compound of hydrogen and oxygen.")]
+		[Description("A colourless, odourless, tasteless liquid that is a compound of hydrogen and oxygen.")]
 		[EnumMember(Value = "Water")] 
 		[XmlEnum("3")] 
 		Water = 3,
 
-		[System.ComponentModel.Description("A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.")]
+		[Description("A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.")]
 		[EnumMember(Value = "Stone")] 
 		[XmlEnum("4")] 
 		Stone = 4,
 
-		[System.ComponentModel.Description("A hard black mineral that is burned as fuel.")]
+		[Description("A hard black mineral that is burned as fuel.")]
 		[EnumMember(Value = "Coal")] 
 		[XmlEnum("5")] 
 		Coal = 5,
 
-		[System.ComponentModel.Description("A solid rock or mineral from which metal is obtained.")]
+		[Description("A solid rock or mineral from which metal is obtained.")]
 		[EnumMember(Value = "Ore")] 
 		[XmlEnum("6")] 
 		Ore = 6,
 
-		[System.ComponentModel.Description("Any substance obtained by or used in a chemical process.")]
+		[Description("Any substance obtained by or used in a chemical process.")]
 		[EnumMember(Value = "Chemicals")] 
 		[XmlEnum("7")] 
 		Chemicals = 7,
 
-		[System.ComponentModel.Description("Water that is suitable for human consumption.")]
+		[Description("Water that is suitable for human consumption.")]
 		[EnumMember(Value = "Drinking Water")] 
 		[XmlEnum("8")] 
 		DrinkingWater = 8,
 
-		[System.ComponentModel.Description("A white fluid secreted by female mammals as food for their young.")]
+		[Description("A white fluid secreted by female mammals as food for their young.")]
 		[EnumMember(Value = "Milk")] 
 		[XmlEnum("9")] 
 		Milk = 9,
 
-		[System.ComponentModel.Description("A mineral from which aluminum is obtained.")]
+		[Description("A mineral from which aluminum is obtained.")]
 		[EnumMember(Value = "Bauxite")] 
 		[XmlEnum("10")] 
 		Bauxite = 10,
 
-		[System.ComponentModel.Description("A solid substance obtained after gas and tar have been extracted from coal, used as a fuel.")]
+		[Description("A solid substance obtained after gas and tar have been extracted from coal, used as a fuel.")]
 		[EnumMember(Value = "Coke")] 
 		[XmlEnum("11")] 
 		Coke = 11,
 
-		[System.ComponentModel.Description("An oblong lump of cast iron metal.")]
+		[Description("An oblong lump of cast iron metal.")]
 		[EnumMember(Value = "Iron Ingots")] 
 		[XmlEnum("12")] 
 		IronIngots = 12,
 
-		[System.ComponentModel.Description("Sodium chloride obtained from mines or by the evaporation of sea water.")]
+		[Description("Sodium chloride obtained from mines or by the evaporation of sea water.")]
 		[EnumMember(Value = "Salt")] 
 		[XmlEnum("13")] 
 		Salt = 13,
 
-		[System.ComponentModel.Description("Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.")]
+		[Description("Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.")]
 		[EnumMember(Value = "Sand")] 
 		[XmlEnum("14")] 
 		Sand = 14,
 
-		[System.ComponentModel.Description("Wood prepared for use in building or carpentry.")]
+		[Description("Wood prepared for use in building or carpentry.")]
 		[EnumMember(Value = "Timber")] 
 		[XmlEnum("15")] 
 		Timber = 15,
 
-		[System.ComponentModel.Description("Powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.")]
+		[Description("Powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.")]
 		[EnumMember(Value = "Sawdust/Wood Chips")] 
 		[XmlEnum("16")] 
 		SawdustWoodChips = 16,
 
-		[System.ComponentModel.Description("Discarded metal suitable for being reprocessed.")]
+		[Description("Discarded metal suitable for being reprocessed.")]
 		[EnumMember(Value = "Scrap Metal")] 
 		[XmlEnum("17")] 
 		ScrapMetal = 17,
 
-		[System.ComponentModel.Description("Natural gas that has been liquefied for ease of transport by cooling the gas to -162 Celsius.")]
+		[Description("Natural gas that has been liquefied for ease of transport by cooling the gas to -162 Celsius.")]
 		[EnumMember(Value = "Liquefied Natural Gas")] 
 		[XmlEnum("18")] 
 		LiquefiedNaturalGas = 18,
 
-		[System.ComponentModel.Description("A compressed gas consisting of flammable light hydrocarbons and derived from petroleum.")]
+		[Description("A compressed gas consisting of flammable light hydrocarbons and derived from petroleum.")]
 		[EnumMember(Value = "Liquefied Petroleum Gas")] 
 		[XmlEnum("19")] 
 		LiquefiedPetroleumGas = 19,
 
-		[System.ComponentModel.Description("The fermented juice of grapes.")]
+		[Description("The fermented juice of grapes.")]
 		[EnumMember(Value = "Wine")] 
 		[XmlEnum("20")] 
 		Wine = 20,
 
-		[System.ComponentModel.Description("A substance made of powdered lime and clay, mixed with water.")]
+		[Description("A substance made of powdered lime and clay, mixed with water.")]
 		[EnumMember(Value = "Cement")] 
 		[XmlEnum("21")] 
 		Cement = 21,
 
-		[System.ComponentModel.Description("A small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.")]
+		[Description("A small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.")]
 		[EnumMember(Value = "Grain")] 
 		[XmlEnum("22")] 
 		Grain = 22,
 
-		[System.ComponentModel.Description("Electric charge or current.")]
+		[Description("Electric charge or current.")]
 		[EnumMember(Value = "Electricity")] 
 		[XmlEnum("23")] 
 		Electricity = 23,
 
-		[System.ComponentModel.Description("The solid form of water.")]
+		[Description("The solid form of water.")]
 		[EnumMember(Value = "Ice")] 
 		[XmlEnum("24")] 
 		Ice = 24,
 
-		[System.ComponentModel.Description("(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.")]
+		[Description("(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.")]
 		[EnumMember(Value = "Clay")] 
 		[XmlEnum("25")] 
 		Clay = 25,
@@ -1358,57 +1358,57 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfOffshorePlatform : int {
-		[System.ComponentModel.Description("A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
+		[Description("A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
 		[EnumMember(Value = "Oil Rig")] 
 		[XmlEnum("1")] 
 		OilRig = 1,
 
-		[System.ComponentModel.Description("A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
+		[Description("A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
 		[EnumMember(Value = "Production Platform")] 
 		[XmlEnum("2")] 
 		ProductionPlatform = 2,
 
-		[System.ComponentModel.Description("A platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
+		[Description("A platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
 		[EnumMember(Value = "Observation/Research Platform")] 
 		[XmlEnum("3")] 
 		ObservationResearchPlatform = 3,
 
-		[System.ComponentModel.Description("A metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the sea bed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
+		[Description("A metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the sea bed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
 		[EnumMember(Value = "Articulated Loading Platform")] 
 		[XmlEnum("4")] 
 		ArticulatedLoadingPlatform = 4,
 
-		[System.ComponentModel.Description("A rigid frame or tube with a buoyancy device at its upper end , secured at its lower end to a universal joint on a large steel or concrete base resting on the sea bed, and at its upper end to a mooring buoy by a chain or wire.")]
+		[Description("A rigid frame or tube with a buoyancy device at its upper end , secured at its lower end to a universal joint on a large steel or concrete base resting on the sea bed, and at its upper end to a mooring buoy by a chain or wire.")]
 		[EnumMember(Value = "Single Anchor Leg Mooring")] 
 		[XmlEnum("5")] 
 		SingleAnchorLegMooring = 5,
 
-		[System.ComponentModel.Description("A platform secured to the sea bed and surmounted by a turntable to which ships moor.")]
+		[Description("A platform secured to the sea bed and surmounted by a turntable to which ships moor.")]
 		[EnumMember(Value = "Mooring Tower")] 
 		[XmlEnum("6")] 
 		MooringTower = 6,
 
-		[System.ComponentModel.Description("A man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
+		[Description("A man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
 		[EnumMember(Value = "Artificial Island")] 
 		[XmlEnum("7")] 
 		ArtificialIsland = 7,
 
-		[System.ComponentModel.Description("An offshore oil/gas facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
+		[Description("An offshore oil/gas facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
 		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
 		[XmlEnum("8")] 
 		FloatingProductionStorageAndOffLoadingVessel = 8,
 
-		[System.ComponentModel.Description("A platform used primarily for eating, sleeping and recreation purposes.")]
+		[Description("A platform used primarily for eating, sleeping and recreation purposes.")]
 		[EnumMember(Value = "Accommodation Platform")] 
 		[XmlEnum("9")] 
 		AccommodationPlatform = 9,
 
-		[System.ComponentModel.Description("A floating structure with control room, power and storage facilities, attached to the sea bed by a flexible pipeline and cables.")]
+		[Description("A floating structure with control room, power and storage facilities, attached to the sea bed by a flexible pipeline and cables.")]
 		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
 		[XmlEnum("10")] 
 		NavigationCommunicationAndControlBuoy = 10,
 
-		[System.ComponentModel.Description("A floating structure, anchored to the seabed, for storing oil.")]
+		[Description("A floating structure, anchored to the seabed, for storing oil.")]
 		[EnumMember(Value = "Floating Oil Tank")] 
 		[XmlEnum("11")] 
 		FloatingOilTank = 11,
@@ -1423,22 +1423,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCardinalMark : int {
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.")]
+		[Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.")]
 		[EnumMember(Value = "North Cardinal Mark")] 
 		[XmlEnum("1")] 
 		NorthCardinalMark = 1,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.")]
+		[Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.")]
 		[EnumMember(Value = "East Cardinal Mark")] 
 		[XmlEnum("2")] 
 		EastCardinalMark = 2,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest; it should be passed to the south side of the mark.")]
+		[Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest; it should be passed to the south side of the mark.")]
 		[EnumMember(Value = "South Cardinal Mark")] 
 		[XmlEnum("3")] 
 		SouthCardinalMark = 3,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
+		[Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
 		[EnumMember(Value = "West Cardinal Mark")] 
 		[XmlEnum("4")] 
 		WestCardinalMark = 4,
@@ -1450,142 +1450,142 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum lightCharacteristic : int {
-		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
+		[Description("A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
 		[EnumMember(Value = "Fixed")] 
 		[XmlEnum("1")] 
 		Fixed = 1,
 
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
+		[Description("A rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
 		[EnumMember(Value = "Flashing")] 
 		[XmlEnum("2")] 
 		Flashing = 2,
 
-		[System.ComponentModel.Description("A single-flashing light in which a single flash of not less than two seconds duration is regularly repeated.")]
+		[Description("A single-flashing light in which a single flash of not less than two seconds duration is regularly repeated.")]
 		[EnumMember(Value = "Long-Flashing")] 
 		[XmlEnum("3")] 
 		LongFlashing = 3,
 
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 50 flashes per minutes but less than 80 flashes per minutes. It may be: - Continuous quick-flashing: A quick-flashing light in which a flash is regularly repeated. - Group quick-flashing: A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[Description("A rhythmic light in which flashes are repeated at a rate of not less than 50 flashes per minutes but less than 80 flashes per minutes. It may be: - Continuous quick-flashing: A quick-flashing light in which a flash is regularly repeated. - Group quick-flashing: A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Quick-Flashing")] 
 		[XmlEnum("4")] 
 		QuickFlashing = 4,
 
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute. It may be:- Continuous very quick-flashing: A very quick-flashing light in which a flash is regularly repeated.- Group very quick-flashing: A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[Description("A rhythmic light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute. It may be:- Continuous very quick-flashing: A very quick-flashing light in which a flash is regularly repeated.- Group very quick-flashing: A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Very Quick-Flashing")] 
 		[XmlEnum("5")] 
 		VeryQuickFlashing = 5,
 
-		[System.ComponentModel.Description("A rhythmic light in which flashes are regularly repeated at a rate of not less than 160 flashes per minute.")]
+		[Description("A rhythmic light in which flashes are regularly repeated at a rate of not less than 160 flashes per minute.")]
 		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
 		[XmlEnum("6")] 
 		ContinuousUltraQuickFlashing = 6,
 
-		[System.ComponentModel.Description("A light with all durations of light and darkness equal.")]
+		[Description("A light with all durations of light and darkness equal.")]
 		[EnumMember(Value = "Isophased")] 
 		[XmlEnum("7")] 
 		Isophased = 7,
 
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration. It may be:  - Single-occulting: An occulting light in which an eclipse is regularly repeated.  - Group-occulting: An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.  - Composite group-occulting: An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
+		[Description("A rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration. It may be:  - Single-occulting: An occulting light in which an eclipse is regularly repeated.  - Group-occulting: An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.  - Composite group-occulting: An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
 		[EnumMember(Value = "Occulting")] 
 		[XmlEnum("8")] 
 		Occulting = 8,
 
-		[System.ComponentModel.Description("A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
+		[Description("A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
 		[EnumMember(Value = "Morse")] 
 		[XmlEnum("12")] 
 		Morse = 12,
 
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
+		[Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
 		[EnumMember(Value = "Fixed and Flash")] 
 		[XmlEnum("13")] 
 		FixedAndFlash = 13,
 
-		[System.ComponentModel.Description("A rhythmic light in which a flashing light is combined with a long-flashing light of higher luminous intensity.")]
+		[Description("A rhythmic light in which a flashing light is combined with a long-flashing light of higher luminous intensity.")]
 		[EnumMember(Value = "Flash and Long-Flash")] 
 		[XmlEnum("14")] 
 		FlashAndLongFlash = 14,
 
-		[System.ComponentModel.Description("A rhythmic light in which an occulting light is combined with a flashing light of higher luminous intensity.")]
+		[Description("A rhythmic light in which an occulting light is combined with a flashing light of higher luminous intensity.")]
 		[EnumMember(Value = "Occulting and Flash")] 
 		[XmlEnum("15")] 
 		OccultingAndFlash = 15,
 
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a long-flashing light of higher luminous intensity.")]
+		[Description("A rhythmic light in which a fixed light is combined with a long-flashing light of higher luminous intensity.")]
 		[EnumMember(Value = "Fixed and Long-Flash")] 
 		[XmlEnum("16")] 
 		FixedAndLongFlash = 16,
 
-		[System.ComponentModel.Description("An alternating light in which the total duration of light in each period is clearly longer than the total duration of darkness and in which the intervals of darkness (occultations) are all of equal duration.")]
+		[Description("An alternating light in which the total duration of light in each period is clearly longer than the total duration of darkness and in which the intervals of darkness (occultations) are all of equal duration.")]
 		[EnumMember(Value = "Occulting Alternating")] 
 		[XmlEnum("17")] 
 		OccultingAlternating = 17,
 
-		[System.ComponentModel.Description("An alternating single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
+		[Description("An alternating single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
 		[EnumMember(Value = "Long-Flash Alternating")] 
 		[XmlEnum("18")] 
 		LongFlashAlternating = 18,
 
-		[System.ComponentModel.Description("An alternating rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
+		[Description("An alternating rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
 		[EnumMember(Value = "Flash Alternating")] 
 		[XmlEnum("19")] 
 		FlashAlternating = 19,
 
-		[System.ComponentModel.Description("Occulting light in which the occultations are combined in groups, each group including the same number of occultations, and in which the groups are repeated at regular intervals.")]
+		[Description("Occulting light in which the occultations are combined in groups, each group including the same number of occultations, and in which the groups are repeated at regular intervals.")]
 		[EnumMember(Value = "Group Alternating")] 
 		[XmlEnum("20")] 
 		GroupAlternating = 20,
 
-		[System.ComponentModel.Description("A rhythmic light in which a group of quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[Description("A rhythmic light in which a group of quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
 		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("25")] 
 		QuickFlashPlusLongFlash = 25,
 
-		[System.ComponentModel.Description("A rhythmic light in which a group of very quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[Description("A rhythmic light in which a group of very quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
 		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("26")] 
 		VeryQuickFlashPlusLongFlash = 26,
 
-		[System.ComponentModel.Description("A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[Description("A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
 		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("27")] 
 		UltraQuickFlashPlusLongFlash = 27,
 
-		[System.ComponentModel.Description("A signal light that shows, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
+		[Description("A signal light that shows, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
 		[EnumMember(Value = "Alternating")] 
 		[XmlEnum("28")] 
 		Alternating = 28,
 
-		[System.ComponentModel.Description("")]
+		[Description("")]
 		[EnumMember(Value = "Fixed and Alternating Flashing")] 
 		[XmlEnum("29")] 
 		FixedAndAlternatingFlashing = 29,
 
-		[System.ComponentModel.Description("An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.")]
+		[Description("An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Group-occulting light")] 
 		[XmlEnum("30")] 
 		GroupOccultingLight = 30,
 
-		[System.ComponentModel.Description("An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
+		[Description("An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
 		[EnumMember(Value = "Composite group-occulting light")] 
 		[XmlEnum("31")] 
 		CompositeGroupOccultingLight = 31,
 
-		[System.ComponentModel.Description("A flashing light in which a group of flashes, specified in number, is regularly repeated.")]
+		[Description("A flashing light in which a group of flashes, specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Group flashing light")] 
 		[XmlEnum("32")] 
 		GroupFlashingLight = 32,
 
-		[System.ComponentModel.Description("A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.")]
+		[Description("A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.")]
 		[EnumMember(Value = "Composite group-flashing light")] 
 		[XmlEnum("33")] 
 		CompositeGroupFlashingLight = 33,
 
-		[System.ComponentModel.Description(" A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[Description(" A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Group quick light")] 
 		[XmlEnum("34")] 
 		GroupQuickLight = 34,
 
-		[System.ComponentModel.Description("A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[Description("A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
 		[EnumMember(Value = "Group very quick light")] 
 		[XmlEnum("35")] 
 		GroupVeryQuickLight = 35,
@@ -1600,22 +1600,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum CategoryOfPowerSource : int {
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "battery")] 
 		[XmlEnum("1")] 
 		Battery = 1,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "generator")] 
 		[XmlEnum("2")] 
 		Generator = 2,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "solar panel")] 
 		[XmlEnum("3")] 
 		SolarPanel = 3,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "electrical service")] 
 		[XmlEnum("4")] 
 		ElectricalService = 4,
@@ -1630,12 +1630,12 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum CategoryOfSyntheticAISAidtoNavigation : int {
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "predicted")] 
 		[XmlEnum("1")] 
 		Predicted = 1,
 
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		[EnumMember(Value = "monitored")] 
 		[XmlEnum("2")] 
 		Monitored = 2,
@@ -1650,17 +1650,17 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum CategoryOfPhysicalAISAidToNavigation : int {
-		[System.ComponentModel.Description("Simple transmission of static, pre-programmed information.")]
+		[Description("Simple transmission of static, pre-programmed information.")]
 		[EnumMember(Value = "Physical AIS Type 1")] 
 		[XmlEnum("1")] 
 		PhysicalAisType1 = 1,
 
-		[System.ComponentModel.Description("Transmission of dynamic, real-time updated information via connected sensors.")]
+		[Description("Transmission of dynamic, real-time updated information via connected sensors.")]
 		[EnumMember(Value = "Physical AIS Type 2")] 
 		[XmlEnum("2")] 
 		PhysicalAisType2 = 2,
 
-		[System.ComponentModel.Description("Full two-way communication: transmission + remote control / configuration.")]
+		[Description("Full two-way communication: transmission + remote control / configuration.")]
 		[EnumMember(Value = "Physical AIS Type 3")] 
 		[XmlEnum("3")] 
 		PhysicalAisType3 = 3,
@@ -1672,62 +1672,62 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum virtualAISAidToNavigationType : int {
-		[System.ComponentModel.Description("Indicates that it should be passed to the north side of the aid.")]
+		[Description("Indicates that it should be passed to the north side of the aid.")]
 		[EnumMember(Value = "North Cardinal")] 
 		[XmlEnum("1")] 
 		NorthCardinal = 1,
 
-		[System.ComponentModel.Description("Indicates that it should be passed to the east side of the aid.")]
+		[Description("Indicates that it should be passed to the east side of the aid.")]
 		[EnumMember(Value = "East Cardinal")] 
 		[XmlEnum("2")] 
 		EastCardinal = 2,
 
-		[System.ComponentModel.Description("Indicates that it should be passed to the south side of the aid.")]
+		[Description("Indicates that it should be passed to the south side of the aid.")]
 		[EnumMember(Value = "South Cardinal")] 
 		[XmlEnum("3")] 
 		SouthCardinal = 3,
 
-		[System.ComponentModel.Description("Indicates that it should be passed to the west side of the aid.")]
+		[Description("Indicates that it should be passed to the west side of the aid.")]
 		[EnumMember(Value = "West Cardinal")] 
 		[XmlEnum("4")] 
 		WestCardinal = 4,
 
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
+		[Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
 		[EnumMember(Value = "Port Lateral")] 
 		[XmlEnum("5")] 
 		PortLateral = 5,
 
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
+		[Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
 		[EnumMember(Value = "Starboard Lateral")] 
 		[XmlEnum("6")] 
 		StarboardLateral = 6,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
+		[Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
 		[EnumMember(Value = "Preferred Channel to Port")] 
 		[XmlEnum("7")] 
 		PreferredChannelToPort = 7,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
+		[Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
 		[EnumMember(Value = "Preferred Channel to Starboard")] 
 		[XmlEnum("8")] 
 		PreferredChannelToStarboard = 8,
 
-		[System.ComponentModel.Description("A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.")]
+		[Description("A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.")]
 		[EnumMember(Value = "Isolated Danger")] 
 		[XmlEnum("9")] 
 		IsolatedDanger = 9,
 
-		[System.ComponentModel.Description("Indicates that there is navigable water around the mark.")]
+		[Description("Indicates that there is navigable water around the mark.")]
 		[EnumMember(Value = "Safe Water")] 
 		[XmlEnum("10")] 
 		SafeWater = 10,
 
-		[System.ComponentModel.Description("A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners")]
+		[Description("A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners")]
 		[EnumMember(Value = "Special Purpose")] 
 		[XmlEnum("11")] 
 		SpecialPurpose = 11,
 
-		[System.ComponentModel.Description("A mark used to indicate the existence of a recently identified new danger, such as a wreck.")]
+		[Description("A mark used to indicate the existence of a recently identified new danger, such as a wreck.")]
 		[EnumMember(Value = "New Danger Marking")] 
 		[XmlEnum("12")] 
 		NewDangerMarking = 12,
@@ -1739,17 +1739,17 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfRadarTransponderBeacon : int {
-		[System.ComponentModel.Description("A radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.")]
+		[Description("A radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.")]
 		[EnumMember(Value = "Ramark, Radar Beacon Transmitting Continuously")] 
 		[XmlEnum("1")] 
 		RamarkRadarBeaconTransmittingContinuously = 1,
 
-		[System.ComponentModel.Description("A radar beacon which returns a coded signal which provides identification of the beacon, as well as range and bearing. The range and bearing are indicated by the location of the first character received on the radar screen. The name 'racon' is derived from the words radar beacon.")]
+		[Description("A radar beacon which returns a coded signal which provides identification of the beacon, as well as range and bearing. The range and bearing are indicated by the location of the first character received on the radar screen. The name 'racon' is derived from the words radar beacon.")]
 		[EnumMember(Value = "Racon, Radar Transponder Beacon")] 
 		[XmlEnum("2")] 
 		RaconRadarTransponderBeacon = 2,
 
-		[System.ComponentModel.Description("A radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.")]
+		[Description("A radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.")]
 		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
 		[XmlEnum("3")] 
 		LeadingRaconRadarTransponderBeacon = 3,
@@ -1761,172 +1761,172 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum topmarkDaymarkShape : int {
-		[System.ComponentModel.Description("Is where the vertex points up. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks, lateral.")]
+		[Description("Is where the vertex points up. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA topmarks, lateral.")]
 		[EnumMember(Value = "Cone (Point Up)")] 
 		[XmlEnum("1")] 
 		ConePointUp = 1,
 
-		[System.ComponentModel.Description("Is where the vertex points down. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks, lateral.")]
+		[Description("Is where the vertex points down. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA topmarks, lateral.")]
 		[EnumMember(Value = "Cone (Point Down)")] 
 		[XmlEnum("2")] 
 		ConePointDown = 2,
 
-		[System.ComponentModel.Description("A curved surface all points of which are equidistant from a fixed point within, called the centre.")]
+		[Description("A curved surface all points of which are equidistant from a fixed point within, called the centre.")]
 		[EnumMember(Value = "Sphere")] 
 		[XmlEnum("3")] 
 		Sphere = 3,
 
-		[System.ComponentModel.Description("Two spheres, one above the other. Two black spheres are commonly used as an International Association of Lighthouse Authorities - IALA topmark (isolated danger).")]
+		[Description("Two spheres, one above the other. Two black spheres are commonly used as an International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA topmark (isolated danger).")]
 		[EnumMember(Value = "2 Spheres")] 
 		[XmlEnum("4")] 
 		twoSpheres = 4,
 
-		[System.ComponentModel.Description("A solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, it's ends being parallel circles). Cylinders are commonly used as International Association of Lighthouse Authorities - IALA topmarks lateral.")]
+		[Description("A solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, it's ends being parallel circles). Cylinders are commonly used as International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA topmarks lateral.")]
 		[EnumMember(Value = "Cylinder")] 
 		[XmlEnum("5")] 
 		Cylinder = 5,
 
-		[System.ComponentModel.Description("Usually of rectangular shape, made from timber or metal and used to provide a contrast with the natural background of a daymark. The actual daymark is often painted on to this board.")]
+		[Description("Usually of rectangular shape, made from timber or metal and used to provide a contrast with the natural background of a daymark. The actual daymark is often painted on to this board.")]
 		[EnumMember(Value = "Board")] 
 		[XmlEnum("6")] 
 		Board = 6,
 
-		[System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X. An x-shape as an International Association of Lighthouse Authorities - IALA topmark should be 3 dimensional in shape. It is made of at least three crossed bars.")]
+		[Description("Having a shape or a cross-section like the capital letter X. An x-shape as an International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA topmark should be 3 dimensional in shape. It is made of at least three crossed bars.")]
 		[EnumMember(Value = "X-Shaped")] 
 		[XmlEnum("7")] 
 		XShaped = 7,
 
-		[System.ComponentModel.Description("A cross with one vertical member and one horizontal member; that is, similar in shape to the character '+'.")]
+		[Description("A cross with one vertical member and one horizontal member; that is, similar in shape to the character '+'.")]
 		[EnumMember(Value = "Upright Cross")] 
 		[XmlEnum("8")] 
 		UprightCross = 8,
 
-		[System.ComponentModel.Description("A cube standing on one of its vertexes. A cube is a solid contained by six equal squares, a regular hexahedron.")]
+		[Description("A cube standing on one of its vertexes. A cube is a solid contained by six equal squares, a regular hexahedron.")]
 		[EnumMember(Value = "Cube (Point Up)")] 
 		[XmlEnum("9")] 
 		CubePointUp = 9,
 
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices together in the centre.")]
+		[Description("2 cones, one above the other, with their vertices together in the centre.")]
 		[EnumMember(Value = "2 Cones (Point to Point)")] 
 		[XmlEnum("10")] 
 		twoConesPointToPoint = 10,
 
-		[System.ComponentModel.Description("2 cones, one above the other, with their bases together in the centre and their vertices pointing up and down.")]
+		[Description("2 cones, one above the other, with their bases together in the centre and their vertices pointing up and down.")]
 		[EnumMember(Value = "2 Cones (Base to Base)")] 
 		[XmlEnum("11")] 
 		twoConesBaseToBase = 11,
 
-		[System.ComponentModel.Description("A plane figure having four equal sides and equal opposite angles (two acute and two obtuse); an oblique equilateral parallelogram.")]
+		[Description("A plane figure having four equal sides and equal opposite angles (two acute and two obtuse); an oblique equilateral parallelogram.")]
 		[EnumMember(Value = "Rhombus")] 
 		[XmlEnum("12")] 
 		Rhombus = 12,
 
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing up.")]
+		[Description("2 cones, one above the other, with their vertices pointing up.")]
 		[EnumMember(Value = "2 Cones (Points Upward)")] 
 		[XmlEnum("13")] 
 		twoConesPointsUpward = 13,
 
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing down.")]
+		[Description("2 cones, one above the other, with their vertices pointing down.")]
 		[EnumMember(Value = "2 Cones (Points Downward)")] 
 		[XmlEnum("14")] 
 		twoConesPointsDownward = 14,
 
-		[System.ComponentModel.Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point up is where the thicker (untied) end of the besom is at the bottom.")]
+		[Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point up is where the thicker (untied) end of the besom is at the bottom.")]
 		[EnumMember(Value = "Besom (Point Up)")] 
 		[XmlEnum("15")] 
 		BesomPointUp = 15,
 
-		[System.ComponentModel.Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point down is where the thinner (tied) end of the besom is at the bottom.")]
+		[Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point down is where the thinner (tied) end of the besom is at the bottom.")]
 		[EnumMember(Value = "Besom (Point Down)")] 
 		[XmlEnum("16")] 
 		BesomPointDown = 16,
 
-		[System.ComponentModel.Description("A flag mounted on a short pole.")]
+		[Description("A flag mounted on a short pole.")]
 		[EnumMember(Value = "Flag")] 
 		[XmlEnum("17")] 
 		Flag = 17,
 
-		[System.ComponentModel.Description("A sphere located above a rhombus.")]
+		[Description("A sphere located above a rhombus.")]
 		[EnumMember(Value = "Sphere Over a Rhombus")] 
 		[XmlEnum("18")] 
 		SphereOverARhombus = 18,
 
-		[System.ComponentModel.Description("A plane figure with four right angles and four equal straight sides.")]
+		[Description("A plane figure with four right angles and four equal straight sides.")]
 		[EnumMember(Value = "Square")] 
 		[XmlEnum("19")] 
 		Square = 19,
 
-		[System.ComponentModel.Description("Where the two longer opposite sides are standing horizontally. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
+		[Description("Where the two longer opposite sides are standing horizontally. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
 		[EnumMember(Value = "Rectangle (Horizontal)")] 
 		[XmlEnum("20")] 
 		RectangleHorizontal = 20,
 
-		[System.ComponentModel.Description("Where the two longer opposite sides are standing vertically. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
+		[Description("Where the two longer opposite sides are standing vertically. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
 		[EnumMember(Value = "Rectangle (Vertical)")] 
 		[XmlEnum("21")] 
 		RectangleVertical = 21,
 
-		[System.ComponentModel.Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its longer parallel side.")]
+		[Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its longer parallel side.")]
 		[EnumMember(Value = "Trapezium (Up)")] 
 		[XmlEnum("22")] 
 		TrapeziumUp = 22,
 
-		[System.ComponentModel.Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its shorter parallel side.")]
+		[Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its shorter parallel side.")]
 		[EnumMember(Value = "Trapezium (Down)")] 
 		[XmlEnum("23")] 
 		TrapeziumDown = 23,
 
-		[System.ComponentModel.Description("A figure having three angles and three sides, and which has a vertex at the top.")]
+		[Description("A figure having three angles and three sides, and which has a vertex at the top.")]
 		[EnumMember(Value = "Triangle (Point Up)")] 
 		[XmlEnum("24")] 
 		TrianglePointUp = 24,
 
-		[System.ComponentModel.Description("A figure having three angles and three sides, and which has a side at the top.")]
+		[Description("A figure having three angles and three sides, and which has a side at the top.")]
 		[EnumMember(Value = "Triangle (Point Down)")] 
 		[XmlEnum("25")] 
 		TrianglePointDown = 25,
 
-		[System.ComponentModel.Description("A perfectly round plane figure whose circumference is everywhere equidistant from its centre.")]
+		[Description("A perfectly round plane figure whose circumference is everywhere equidistant from its centre.")]
 		[EnumMember(Value = "Circle")] 
 		[XmlEnum("26")] 
 		Circle = 26,
 
-		[System.ComponentModel.Description("Two upright crosses, generally vertically disposed one above the other.")]
+		[Description("Two upright crosses, generally vertically disposed one above the other.")]
 		[EnumMember(Value = "Two Upright Crosses (One Over the Other)")] 
 		[XmlEnum("27")] 
 		TwoUprightCrossesOneOverTheOther = 27,
 
-		[System.ComponentModel.Description("Having a shape like the capital letter T.")]
+		[Description("Having a shape like the capital letter T.")]
 		[EnumMember(Value = "T-Shape")] 
 		[XmlEnum("28")] 
 		TShape = 28,
 
-		[System.ComponentModel.Description("A triangle, vertex uppermost, located above a circle.")]
+		[Description("A triangle, vertex uppermost, located above a circle.")]
 		[EnumMember(Value = "Triangle Pointing Up Over a Circle")] 
 		[XmlEnum("29")] 
 		TrianglePointingUpOverACircle = 29,
 
-		[System.ComponentModel.Description("An upright cross located above a circle.")]
+		[Description("An upright cross located above a circle.")]
 		[EnumMember(Value = "Upright Cross Over a Circle")] 
 		[XmlEnum("30")] 
 		UprightCrossOverACircle = 30,
 
-		[System.ComponentModel.Description("A rhombus located above a circle.")]
+		[Description("A rhombus located above a circle.")]
 		[EnumMember(Value = "Rhombus Over a Circle")] 
 		[XmlEnum("31")] 
 		RhombusOverACircle = 31,
 
-		[System.ComponentModel.Description("A circle located over a triangle, vertex uppermost.")]
+		[Description("A circle located over a triangle, vertex uppermost.")]
 		[EnumMember(Value = "Circle Over a Triangle Pointing Up")] 
 		[XmlEnum("32")] 
 		CircleOverATrianglePointingUp = 32,
 
-		[System.ComponentModel.Description("An uncommon and/or non-standardized shape as textually described using an associated attribute.")]
+		[Description("An uncommon and/or non-standardized shape as textually described using an associated attribute.")]
 		[EnumMember(Value = "Other Shape (See Shape Information)")] 
 		[XmlEnum("33")] 
 		OtherShapeSeeShapeInformation = 33,
 
-		[System.ComponentModel.Description("Having the form of or consisting of a tube.")]
+		[Description("Having the form of or consisting of a tube.")]
 		[EnumMember(Value = "Tubular")] 
 		[XmlEnum("34")] 
 		Tubular = 34,
@@ -1941,320 +1941,335 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfSpecialPurposeMark : int {
-		[System.ComponentModel.Description("A mark used to indicate a firing danger area, usually at sea.")]
+		[Description("A mark used to indicate a firing danger area, usually at sea.")]
 		[EnumMember(Value = "Firing Danger Mark")] 
 		[XmlEnum("1")] 
 		FiringDangerMark = 1,
 
-		[System.ComponentModel.Description("Any object toward which something is directed. The distinctive marking or instrumentation of a ground point to aid its identification on a photograph.")]
+		[Description("Any object toward which something is directed. The distinctive marking or instrumentation of a ground point to aid its identification on a photograph.")]
 		[EnumMember(Value = "Target Mark")] 
 		[XmlEnum("2")] 
 		TargetMark = 2,
 
-		[System.ComponentModel.Description("A mark marking the position of a ship which is used as a target during some military exercise.")]
+		[Description("A mark marking the position of a ship which is used as a target during some military exercise.")]
 		[EnumMember(Value = "Marker Ship Mark")] 
 		[XmlEnum("3")] 
 		MarkerShipMark = 3,
 
-		[System.ComponentModel.Description("A mark used to indicate a degaussing range.")]
+		[Description("A mark used to indicate a degaussing range.")]
 		[EnumMember(Value = "Degaussing Range Mark")] 
 		[XmlEnum("4")] 
 		DegaussingRangeMark = 4,
 
-		[System.ComponentModel.Description("A mark of relevance to barges.")]
+		[Description("A mark of relevance to barges.")]
 		[EnumMember(Value = "Barge Mark")] 
 		[XmlEnum("5")] 
 		BargeMark = 5,
 
-		[System.ComponentModel.Description("A mark used to indicate the position of submarine cables or the point at which they run on to the land.")]
+		[Description("A mark used to indicate the position of submarine cables or the point at which they run on to the land.")]
 		[EnumMember(Value = "Cable Mark")] 
 		[XmlEnum("6")] 
 		CableMark = 6,
 
-		[System.ComponentModel.Description("A mark used to indicate the limit of a spoil ground.")]
+		[Description("A mark used to indicate the limit of a spoil ground.")]
 		[EnumMember(Value = "Spoil Ground Mark")] 
 		[XmlEnum("7")] 
 		SpoilGroundMark = 7,
 
-		[System.ComponentModel.Description("A mark used to indicate the position of an outfall or the point at which it leaves the land.")]
+		[Description("A mark used to indicate the position of an outfall or the point at which it leaves the land.")]
 		[EnumMember(Value = "Outfall Mark")] 
 		[XmlEnum("8")] 
 		OutfallMark = 8,
 
-		[System.ComponentModel.Description("Ocean Data Acquisition System.")]
+		[Description("Ocean Data Acquisition System.")]
 		[EnumMember(Value = "ODAS")] 
 		[XmlEnum("9")] 
 		Odas = 9,
 
-		[System.ComponentModel.Description("A mark used to record data for scientific purposes.")]
+		[Description("A mark used to record data for scientific purposes.")]
 		[EnumMember(Value = "Recording Mark")] 
 		[XmlEnum("10")] 
 		RecordingMark = 10,
 
-		[System.ComponentModel.Description("A mark used to indicate a seaplane anchorage.")]
+		[Description("A mark used to indicate a seaplane anchorage.")]
 		[EnumMember(Value = "Seaplane Anchorage Mark")] 
 		[XmlEnum("11")] 
 		SeaplaneAnchorageMark = 11,
 
-		[System.ComponentModel.Description("A mark used to indicate a recreation zone.")]
+		[Description("A mark used to indicate a recreation zone.")]
 		[EnumMember(Value = "Recreation Zone Mark")] 
 		[XmlEnum("12")] 
 		RecreationZoneMark = 12,
 
-		[System.ComponentModel.Description("A privately maintained mark.")]
+		[Description("A privately maintained mark.")]
 		[EnumMember(Value = "Private Mark")] 
 		[XmlEnum("13")] 
 		PrivateMark = 13,
 
-		[System.ComponentModel.Description("A mark indicating a mooring or moorings.")]
+		[Description("A mark indicating a mooring or moorings.")]
 		[EnumMember(Value = "Mooring Mark")] 
 		[XmlEnum("14")] 
 		MooringMark = 14,
 
-		[System.ComponentModel.Description("A large buoy designed to take the place of a lightship where construction of an offshore light station is not feasible.")]
+		[Description("A large buoy designed to take the place of a lightship where construction of an offshore light station is not feasible.")]
 		[EnumMember(Value = "LANBY")] 
 		[XmlEnum("15")] 
 		Lanby = 15,
 
-		[System.ComponentModel.Description("Aids to navigation or other indicators so located as to indicate the path to be followed. Leading marks identify a leading line when they are in transit.")]
+		[Description("Aids to navigation or other indicators so located as to indicate the path to be followed. Leading marks identify a leading line when they are in transit.")]
 		[EnumMember(Value = "Leading Mark")] 
 		[XmlEnum("16")] 
 		LeadingMark = 16,
 
-		[System.ComponentModel.Description("A mark forming part of a transit indicating one end of a measured distance.")]
+		[Description("A mark forming part of a transit indicating one end of a measured distance.")]
 		[EnumMember(Value = "Measured Distance Mark")] 
 		[XmlEnum("17")] 
 		MeasuredDistanceMark = 17,
 
-		[System.ComponentModel.Description("A notice board or sign indicating information to the mariner.")]
+		[Description("A notice board or sign indicating information to the mariner.")]
 		[EnumMember(Value = "Notice Mark")] 
 		[XmlEnum("18")] 
 		NoticeMark = 18,
 
-		[System.ComponentModel.Description("A mark indicating a Traffic Separation Scheme.")]
+		[Description("A mark indicating a Traffic Separation Scheme.")]
 		[EnumMember(Value = "TSS Mark")] 
 		[XmlEnum("19")] 
 		TssMark = 19,
 
-		[System.ComponentModel.Description("A mark indicating an anchoring prohibited area.")]
+		[Description("A mark indicating an anchoring prohibited area.")]
 		[EnumMember(Value = "Anchoring Prohibited Mark")] 
 		[XmlEnum("20")] 
 		AnchoringProhibitedMark = 20,
 
-		[System.ComponentModel.Description("A mark indicating that berthing is prohibited.")]
+		[Description("A mark indicating that berthing is prohibited.")]
 		[EnumMember(Value = "Berthing Prohibited Mark")] 
 		[XmlEnum("21")] 
 		BerthingProhibitedMark = 21,
 
-		[System.ComponentModel.Description("A mark indicating that overtaking is prohibited.")]
+		[Description("A mark indicating that overtaking is prohibited.")]
 		[EnumMember(Value = "Overtaking Prohibited Mark")] 
 		[XmlEnum("22")] 
 		OvertakingProhibitedMark = 22,
 
-		[System.ComponentModel.Description("A mark indicating a one-way route.")]
+		[Description("A mark indicating a one-way route.")]
 		[EnumMember(Value = "Two-Way Traffic Prohibited Mark")] 
 		[XmlEnum("23")] 
 		TwoWayTrafficProhibitedMark = 23,
 
-		[System.ComponentModel.Description("A mark indicating that vessels must not generate excessive wake.")]
+		[Description("A mark indicating that vessels must not generate excessive wake.")]
 		[EnumMember(Value = "Reduced Wake Mark")] 
 		[XmlEnum("24")] 
 		ReducedWakeMark = 24,
 
-		[System.ComponentModel.Description("A mark indicating that a speed limit applies.")]
+		[Description("A mark indicating that a speed limit applies.")]
 		[EnumMember(Value = "Speed Limit Mark")] 
 		[XmlEnum("25")] 
 		SpeedLimitMark = 25,
 
-		[System.ComponentModel.Description("A mark indicating the place where the bow of a ship must stop when traffic lights show red.")]
+		[Description("A mark indicating the place where the bow of a ship must stop when traffic lights show red.")]
 		[EnumMember(Value = "Stop Mark")] 
 		[XmlEnum("26")] 
 		StopMark = 26,
 
-		[System.ComponentModel.Description("A mark indicating that special caution must be exercised in the vicinity of the mark.")]
+		[Description("A mark indicating that special caution must be exercised in the vicinity of the mark.")]
 		[EnumMember(Value = "General Warning Mark")] 
 		[XmlEnum("27")] 
 		GeneralWarningMark = 27,
 
-		[System.ComponentModel.Description("A mark indicating that a ship should sound its siren or horn.")]
+		[Description("A mark indicating that a ship should sound its siren or horn.")]
 		[EnumMember(Value = "Sound Ship's Siren Mark")] 
 		[XmlEnum("28")] 
 		SoundShipSSirenMark = 28,
 
-		[System.ComponentModel.Description("A mark indicating the minimum vertical space available for passage.")]
+		[Description("A mark indicating the minimum vertical space available for passage.")]
 		[EnumMember(Value = "Restricted Vertical Clearance Mark")] 
 		[XmlEnum("29")] 
 		RestrictedVerticalClearanceMark = 29,
 
-		[System.ComponentModel.Description("A mark indicating the maximum draught of vessel permitted.")]
+		[Description("A mark indicating the maximum draught of vessel permitted.")]
 		[EnumMember(Value = "Maximum Vessel's Draught Mark")] 
 		[XmlEnum("30")] 
 		MaximumVesselSDraughtMark = 30,
 
-		[System.ComponentModel.Description("A mark indicating the minimum horizontal space available for passage.")]
+		[Description("A mark indicating the minimum horizontal space available for passage.")]
 		[EnumMember(Value = "Restricted Horizontal Clearance Mark")] 
 		[XmlEnum("31")] 
 		RestrictedHorizontalClearanceMark = 31,
 
-		[System.ComponentModel.Description("A mark warning of strong currents.")]
+		[Description("A mark warning of strong currents.")]
 		[EnumMember(Value = "Strong Current Warning Mark")] 
 		[XmlEnum("32")] 
 		StrongCurrentWarningMark = 32,
 
-		[System.ComponentModel.Description("A mark indicating that berthing is allowed.")]
+		[Description("A mark indicating that berthing is allowed.")]
 		[EnumMember(Value = "Berthing Permitted Mark")] 
 		[XmlEnum("33")] 
 		BerthingPermittedMark = 33,
 
-		[System.ComponentModel.Description("A mark indicating an overhead power cable.")]
+		[Description("A mark indicating an overhead power cable.")]
 		[EnumMember(Value = "Overhead Power Cable Mark")] 
 		[XmlEnum("34")] 
 		OverheadPowerCableMark = 34,
 
-		[System.ComponentModel.Description("A mark indicating the gradient of the slope of a dredge channel edge.")]
+		[Description("A mark indicating the gradient of the slope of a dredge channel edge.")]
 		[EnumMember(Value = "Channel Edge Gradient Mark")] 
 		[XmlEnum("35")] 
 		ChannelEdgeGradientMark = 35,
 
-		[System.ComponentModel.Description("A mark indicating the presence of a telephone.")]
+		[Description("A mark indicating the presence of a telephone.")]
 		[EnumMember(Value = "Telephone Mark")] 
 		[XmlEnum("36")] 
 		TelephoneMark = 36,
 
-		[System.ComponentModel.Description("A mark indicating that a ferry route crosses the ship route; often used with a 'sound ship's siren' mark.")]
+		[Description("A mark indicating that a ferry route crosses the ship route; often used with a 'sound ship's siren' mark.")]
 		[EnumMember(Value = "Ferry Crossing Mark")] 
 		[XmlEnum("37")] 
 		FerryCrossingMark = 37,
 
-		[System.ComponentModel.Description("A mark used to indicate the position of submarine pipelines or the point at which they run on to the land.")]
+		[Description("A mark used to indicate the position of submarine pipelines or the point at which they run on to the land.")]
 		[EnumMember(Value = "Pipeline Mark")] 
 		[XmlEnum("39")] 
 		PipelineMark = 39,
 
-		[System.ComponentModel.Description("A mark indicating an anchorage area.")]
+		[Description("A mark indicating an anchorage area.")]
 		[EnumMember(Value = "Anchorage Mark")] 
 		[XmlEnum("40")] 
 		AnchorageMark = 40,
 
-		[System.ComponentModel.Description("A mark used to indicate a clearing line.")]
+		[Description("A mark used to indicate a clearing line.")]
 		[EnumMember(Value = "Clearing Mark")] 
 		[XmlEnum("41")] 
 		ClearingMark = 41,
 
-		[System.ComponentModel.Description("A mark indicating the location at which a restriction or requirement exists.")]
+		[Description("A mark indicating the location at which a restriction or requirement exists.")]
 		[EnumMember(Value = "Control Mark")] 
 		[XmlEnum("42")] 
 		ControlMark = 42,
 
-		[System.ComponentModel.Description("A mark indicating that diving may take place in the vicinity.")]
+		[Description("A mark indicating that diving may take place in the vicinity.")]
 		[EnumMember(Value = "Diving Mark")] 
 		[XmlEnum("43")] 
 		DivingMark = 43,
 
-		[System.ComponentModel.Description("A mark providing or indicating a place of safety.")]
+		[Description("A mark providing or indicating a place of safety.")]
 		[EnumMember(Value = "Refuge Beacon")] 
 		[XmlEnum("44")] 
 		RefugeBeacon = 44,
 
-		[System.ComponentModel.Description("A mark indicating a foul ground.")]
+		[Description("A mark indicating a foul ground.")]
 		[EnumMember(Value = "Foul Ground Mark")] 
 		[XmlEnum("45")] 
 		FoulGroundMark = 45,
 
-		[System.ComponentModel.Description("A mark installed for use by yachtsmen.")]
+		[Description("A mark installed for use by yachtsmen.")]
 		[EnumMember(Value = "Yachting Mark")] 
 		[XmlEnum("46")] 
 		YachtingMark = 46,
 
-		[System.ComponentModel.Description("A mark indicating an area where helicopters may land.")]
+		[Description("A mark indicating an area where helicopters may land.")]
 		[EnumMember(Value = "Heliport Mark")] 
 		[XmlEnum("47")] 
 		HeliportMark = 47,
 
-		[System.ComponentModel.Description("A mark indicating a location at which a GNSS position has been accurately determined.")]
+		[Description("A mark indicating a location at which a GNSS position has been accurately determined.")]
 		[EnumMember(Value = "GNSS Mark")] 
 		[XmlEnum("48")] 
 		GnssMark = 48,
 
-		[System.ComponentModel.Description("A mark indicating an area where sea-planes land.")]
+		[Description("A mark indicating an area where sea-planes land.")]
 		[EnumMember(Value = "Seaplane Landing Mark")] 
 		[XmlEnum("49")] 
 		SeaplaneLandingMark = 49,
 
-		[System.ComponentModel.Description("A mark indicating that entry is prohibited.")]
+		[Description("A mark indicating that entry is prohibited.")]
 		[EnumMember(Value = "Entry Prohibited Mark")] 
 		[XmlEnum("50")] 
 		EntryProhibitedMark = 50,
 
-		[System.ComponentModel.Description("A mark indicating that work (generally construction) is in progress.")]
+		[Description("A mark indicating that work (generally construction) is in progress.")]
 		[EnumMember(Value = "Work in Progress Mark")] 
 		[XmlEnum("51")] 
 		WorkInProgressMark = 51,
 
-		[System.ComponentModel.Description("A mark whose detailed characteristics are unknown.")]
+		[Description("A mark whose detailed characteristics are unknown.")]
 		[EnumMember(Value = "Mark With Unknown Purpose")] 
 		[XmlEnum("52")] 
 		MarkWithUnknownPurpose = 52,
 
-		[System.ComponentModel.Description("A mark indicating a borehole that produces or is capable of producing oil or natural gas.")]
+		[Description("A mark indicating a borehole that produces or is capable of producing oil or natural gas.")]
 		[EnumMember(Value = "Wellhead Mark")] 
 		[XmlEnum("53")] 
 		WellheadMark = 53,
 
-		[System.ComponentModel.Description("A mark indicating the point at which a channel divides separately into two channels.")]
+		[Description("A mark indicating the point at which a channel divides separately into two channels.")]
 		[EnumMember(Value = "Channel Separation Mark")] 
 		[XmlEnum("54")] 
 		ChannelSeparationMark = 54,
 
-		[System.ComponentModel.Description("A mark indicating the existence of a fish, mussel, oyster or pearl farm/culture.")]
+		[Description("A mark indicating the existence of a fish, mussel, oyster or pearl farm/culture.")]
 		[EnumMember(Value = "Marine Farm Mark")] 
 		[XmlEnum("55")] 
 		MarineFarmMark = 55,
 
-		[System.ComponentModel.Description("A mark indicating the existence or the extent of an artificial reef.")]
+		[Description("A mark indicating the existence or the extent of an artificial reef.")]
 		[EnumMember(Value = "Artificial Reef Mark")] 
 		[XmlEnum("56")] 
 		ArtificialReefMark = 56,
 
-		[System.ComponentModel.Description("A mark, used year round, that may be submerged when ice passes through the area.")]
+		[Description("A mark, used year round, that may be submerged when ice passes through the area.")]
 		[EnumMember(Value = "Ice Mark")] 
 		[XmlEnum("57")] 
 		IceMark = 57,
 
-		[System.ComponentModel.Description("A mark used to define the boundary of a nature reserve.")]
+		[Description("A mark used to define the boundary of a nature reserve.")]
 		[EnumMember(Value = "Nature Reserve Mark")] 
 		[XmlEnum("58")] 
 		NatureReserveMark = 58,
 
-		[System.ComponentModel.Description("A fish aggregating (or aggregation) device (FAD) is a man-made object used to attract ocean going pelagic fish such as marlin, tuna and mahi-mahi (dolphin fish). They usually consist of buoys or floats tethered to the ocean floor with concrete blocks.")]
+		[Description("A fish aggregating (or aggregation) device (FAD) is a man-made object used to attract ocean going pelagic fish such as marlin, tuna and mahi-mahi (dolphin fish). They usually consist of buoys or floats tethered to the ocean floor with concrete blocks.")]
 		[EnumMember(Value = "Fish Aggregating Device")] 
 		[XmlEnum("59")] 
 		FishAggregatingDevice = 59,
 
-		[System.ComponentModel.Description("A mark used to indicate the existence of a wreck.")]
+		[Description("A mark used to indicate the existence of a wreck.")]
 		[EnumMember(Value = "Wreck Mark")] 
 		[XmlEnum("60")] 
 		WreckMark = 60,
 
-		[System.ComponentModel.Description("A mark used to indicate the existence of a customs checkpoint.")]
+		[Description("A mark used to indicate the existence of a customs checkpoint.")]
 		[EnumMember(Value = "Customs Mark")] 
 		[XmlEnum("61")] 
 		CustomsMark = 61,
 
-		[System.ComponentModel.Description("A mark used to indicate the existence of a causeway.")]
+		[Description("A mark used to indicate the existence of a causeway.")]
 		[EnumMember(Value = "Causeway Mark")] 
 		[XmlEnum("62")] 
 		CausewayMark = 62,
 
-		[System.ComponentModel.Description("A surface following buoy used to measure wave activity.")]
+		[Description("A surface following buoy used to measure wave activity.")]
 		[EnumMember(Value = "Wave Recorder")] 
 		[XmlEnum("63")] 
 		WaveRecorder = 63,
 
-		[System.ComponentModel.Description("A mark indicating a jetski prohibited area.")]
+		[Description("A mark indicating a jetski prohibited area.")]
 		[EnumMember(Value = "Jetski Prohibited")] 
 		[XmlEnum("64")] 
 		JetskiProhibited = 64,
+
+		[Description("-")]
+		[EnumMember(Value = "Facility Protection Mark")] 
+		[XmlEnum("65")] 
+		FacilityProtectionMark = 65,
+
+		[Description("-")]
+		[EnumMember(Value = "Oil Pipeline Protection Mark")] 
+		[XmlEnum("66")] 
+		OilPipelineProtectionMark = 66,
+
+		[Description("-")]
+		[EnumMember(Value = "Marine Cable Protection Mark")] 
+		[XmlEnum("67")] 
+		MarineCableProtectionMark = 67,
 	}
 
 	/// <summary>
@@ -2266,82 +2281,82 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfRadioStation : int {
-		[System.ComponentModel.Description("A radio station which need not necessarily be manned, the emissions of which, radiated around the horizon, enable its bearing to be determined by means of the radio direction finder of a ship.")]
+		[Description("A radio station which need not necessarily be manned, the emissions of which, radiated around the horizon, enable its bearing to be determined by means of the radio direction finder of a ship.")]
 		[EnumMember(Value = "Circular (Non-Directional) Marine or Aero-Marine Radiobeacon")] 
 		[XmlEnum("1")] 
 		CircularNonDirectionalMarineOrAeroMarineRadiobeacon = 1,
 
-		[System.ComponentModel.Description("A special type of radiobeacon station the emissions of which are intended to provide a definite track for guidance.")]
+		[Description("A special type of radiobeacon station the emissions of which are intended to provide a definite track for guidance.")]
 		[EnumMember(Value = "Directional Radiobeacon")] 
 		[XmlEnum("2")] 
 		DirectionalRadiobeacon = 2,
 
-		[System.ComponentModel.Description("A special type of radiobeacon station emitting a beam of waves to which a uniform turning movement is given, the bearing of the station being determined by means of an ordinary listening receiver and a stop watch. Also referred to as a rotating loop radiobeacon.")]
+		[Description("A special type of radiobeacon station emitting a beam of waves to which a uniform turning movement is given, the bearing of the station being determined by means of an ordinary listening receiver and a stop watch. Also referred to as a rotating loop radiobeacon.")]
 		[EnumMember(Value = "Rotating Pattern Radiobeacon")] 
 		[XmlEnum("3")] 
 		RotatingPatternRadiobeacon = 3,
 
-		[System.ComponentModel.Description("A type of long range position fixing beacon.")]
+		[Description("A type of long range position fixing beacon.")]
 		[EnumMember(Value = "Consol Beacon")] 
 		[XmlEnum("4")] 
 		ConsolBeacon = 4,
 
-		[System.ComponentModel.Description("A radio station intended to determine only the direction of other stations by means of transmission from the latter.")]
+		[Description("A radio station intended to determine only the direction of other stations by means of transmission from the latter.")]
 		[EnumMember(Value = "Radio Direction-Finding Station")] 
 		[XmlEnum("5")] 
 		RadioDirectionFindingStation = 5,
 
-		[System.ComponentModel.Description("A radio station which is prepared to provide QTG service; that is to say, to transmit upon request from a ship a radio signal, the bearing of which can be taken by that ship.")]
+		[Description("A radio station which is prepared to provide QTG service; that is to say, to transmit upon request from a ship a radio signal, the bearing of which can be taken by that ship.")]
 		[EnumMember(Value = "Coast Radio Station Providing QTG Service")] 
 		[XmlEnum("6")] 
 		CoastRadioStationProvidingQtgService = 6,
 
-		[System.ComponentModel.Description("A radio beacon designed for aeronautical use.")]
+		[Description("A radio beacon designed for aeronautical use.")]
 		[EnumMember(Value = "Aeronautical Radiobeacon")] 
 		[XmlEnum("7")] 
 		AeronauticalRadiobeacon = 7,
 
-		[System.ComponentModel.Description("The Decca Navigator System is a high accuracy, short to medium range radio navigational aid intended for coastal and landfall navigation.")]
+		[Description("The Decca Navigator System is a high accuracy, short to medium range radio navigational aid intended for coastal and landfall navigation.")]
 		[EnumMember(Value = "Decca")] 
 		[XmlEnum("8")] 
 		Decca = 8,
 
-		[System.ComponentModel.Description("A low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
+		[Description("A low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
 		[EnumMember(Value = "Loran C")] 
 		[XmlEnum("9")] 
 		LoranC = 9,
 
-		[System.ComponentModel.Description("A radiobeacon transmitting DGPS correction signals.")]
+		[Description("A radiobeacon transmitting DGPS correction signals.")]
 		[EnumMember(Value = "Differential GNSS")] 
 		[XmlEnum("10")] 
 		DifferentialGnss = 10,
 
-		[System.ComponentModel.Description("An electronic position fixing system used mainly by aircraft.")]
+		[Description("An electronic position fixing system used mainly by aircraft.")]
 		[EnumMember(Value = "Toran")] 
 		[XmlEnum("11")] 
 		Toran = 11,
 
-		[System.ComponentModel.Description("A long-range radio navigational aid which operates within the VLF frequency band. The system comprises eight land based stations.")]
+		[Description("A long-range radio navigational aid which operates within the VLF frequency band. The system comprises eight land based stations.")]
 		[EnumMember(Value = "Omega")] 
 		[XmlEnum("12")] 
 		Omega = 12,
 
-		[System.ComponentModel.Description("A ranging position fixing system operating at 420-450 MHz over a range of up to 400 Km.")]
+		[Description("A ranging position fixing system operating at 420-450 MHz over a range of up to 400 Km.")]
 		[EnumMember(Value = "Syledis")] 
 		[XmlEnum("13")] 
 		Syledis = 13,
 
-		[System.ComponentModel.Description("Chaika is a low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
+		[Description("Chaika is a low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
 		[EnumMember(Value = "Chaika")] 
 		[XmlEnum("14")] 
 		Chaika = 14,
 
-		[System.ComponentModel.Description("The equipment needed at one station to carry on two way voice communication by radio waves only.")]
+		[Description("The equipment needed at one station to carry on two way voice communication by radio waves only.")]
 		[EnumMember(Value = "Radio Telephone Station")] 
 		[XmlEnum("19")] 
 		RadioTelephoneStation = 19,
 
-		[System.ComponentModel.Description("An onshore AIS unit that monitors traffic in the waterways.")]
+		[Description("An onshore AIS unit that monitors traffic in the waterways.")]
 		[EnumMember(Value = "AIS Base Station")] 
 		[XmlEnum("20")] 
 		AisBaseStation = 20,
@@ -2356,52 +2371,52 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfFogSignal : int {
-		[System.ComponentModel.Description("A signal produced by the firing of explosive charges.")]
+		[Description("A signal produced by the firing of explosive charges.")]
 		[EnumMember(Value = "Explosive")] 
 		[XmlEnum("1")] 
 		Explosive = 1,
 
-		[System.ComponentModel.Description("A diaphone uses compressed air and generally emits a powerful low-pitched sound, which often concludes with a brief sound of suddenly lowered pitch, termed the 'grunt'.")]
+		[Description("A diaphone uses compressed air and generally emits a powerful low-pitched sound, which often concludes with a brief sound of suddenly lowered pitch, termed the 'grunt'.")]
 		[EnumMember(Value = "Diaphone")] 
 		[XmlEnum("2")] 
 		Diaphone = 2,
 
-		[System.ComponentModel.Description("A type of fog signal apparatus which produces sound by virtue of the passage of air through slots or holes in a revolving disk.")]
+		[Description("A type of fog signal apparatus which produces sound by virtue of the passage of air through slots or holes in a revolving disk.")]
 		[EnumMember(Value = "Siren")] 
 		[XmlEnum("3")] 
 		Siren = 3,
 
-		[System.ComponentModel.Description("A horn having a diaphragm oscillated by electricity.")]
+		[Description("A horn having a diaphragm oscillated by electricity.")]
 		[EnumMember(Value = "Nautophone")] 
 		[XmlEnum("4")] 
 		Nautophone = 4,
 
-		[System.ComponentModel.Description("[1]  A reed uses compressed air and emits a weak, high pitched sound.  [2]  Any of various water or marsh plants with a firm stem. (Concise Oxford English Dictionary)")]
+		[Description("[1]  A reed uses compressed air and emits a weak, high pitched sound.  [2]  Any of various water or marsh plants with a firm stem. (Concise Oxford English Dictionary)")]
 		[EnumMember(Value = "Reed")] 
 		[XmlEnum("5")] 
 		Reed = 5,
 
-		[System.ComponentModel.Description("A diaphragm horn which operates under the influence of compressed air or steam.")]
+		[Description("A diaphragm horn which operates under the influence of compressed air or steam.")]
 		[EnumMember(Value = "Tyfon")] 
 		[XmlEnum("6")] 
 		Tyfon = 6,
 
-		[System.ComponentModel.Description("A ringing sound with a short range.")]
+		[Description("A ringing sound with a short range.")]
 		[EnumMember(Value = "Bell")] 
 		[XmlEnum("7")] 
 		Bell = 7,
 
-		[System.ComponentModel.Description("A distinctive sound made by a jet of air passing through an orifice. The apparatus may be operated automatically, by hand or by air being forced up a tube by waves acting on a buoy.")]
+		[Description("A distinctive sound made by a jet of air passing through an orifice. The apparatus may be operated automatically, by hand or by air being forced up a tube by waves acting on a buoy.")]
 		[EnumMember(Value = "Whistle")] 
 		[XmlEnum("8")] 
 		Whistle = 8,
 
-		[System.ComponentModel.Description("A sound produced by vibration of a disc when struck.")]
+		[Description("A sound produced by vibration of a disc when struck.")]
 		[EnumMember(Value = "Gong")] 
 		[XmlEnum("9")] 
 		Gong = 9,
 
-		[System.ComponentModel.Description("A horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.")]
+		[Description("A horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.")]
 		[EnumMember(Value = "Horn")] 
 		[XmlEnum("10")] 
 		Horn = 10,
@@ -2413,47 +2428,47 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum lightVisibility : int {
-		[System.ComponentModel.Description("Non-marine lights with a higher power than marine lights and visible from well off shore (often 'Aero' lights).")]
+		[Description("Non-marine lights with a higher power than marine lights and visible from well off shore (often 'Aero' lights).")]
 		[EnumMember(Value = "High Intensity")] 
 		[XmlEnum("1")] 
 		HighIntensity = 1,
 
-		[System.ComponentModel.Description("Non-marine lights with lower power than marine lights.")]
+		[Description("Non-marine lights with lower power than marine lights.")]
 		[EnumMember(Value = "Low Intensity")] 
 		[XmlEnum("2")] 
 		LowIntensity = 2,
 
-		[System.ComponentModel.Description("A decrease in the apparent intensity of a light which may occur in the case of partial obstructions.")]
+		[Description("A decrease in the apparent intensity of a light which may occur in the case of partial obstructions.")]
 		[EnumMember(Value = "Faint")] 
 		[XmlEnum("3")] 
 		Faint = 3,
 
-		[System.ComponentModel.Description("A light in a sector is intensified (that is, has longer range than other sectors).")]
+		[Description("A light in a sector is intensified (that is, has longer range than other sectors).")]
 		[EnumMember(Value = "Intensified")] 
 		[XmlEnum("4")] 
 		Intensified = 4,
 
-		[System.ComponentModel.Description("A light in a sector is unintensified (that is, has shorter range than other sectors).")]
+		[Description("A light in a sector is unintensified (that is, has shorter range than other sectors).")]
 		[EnumMember(Value = "Unintensified")] 
 		[XmlEnum("5")] 
 		Unintensified = 5,
 
-		[System.ComponentModel.Description("A light sector is deliberately reduced in intensity, for example to reduce its effect on a built-up area.")]
+		[Description("A light sector is deliberately reduced in intensity, for example to reduce its effect on a built-up area.")]
 		[EnumMember(Value = "Visibility Deliberately Restricted")] 
 		[XmlEnum("6")] 
 		VisibilityDeliberatelyRestricted = 6,
 
-		[System.ComponentModel.Description("Said of the arc of a light sector designated by its limiting bearings in which the light is not visible from seaward.")]
+		[Description("Said of the arc of a light sector designated by its limiting bearings in which the light is not visible from seaward.")]
 		[EnumMember(Value = "Obscured")] 
 		[XmlEnum("7")] 
 		Obscured = 7,
 
-		[System.ComponentModel.Description("This value specifies that parts of the sector are obscured.")]
+		[Description("This value specifies that parts of the sector are obscured.")]
 		[EnumMember(Value = "Partially Obscured")] 
 		[XmlEnum("8")] 
 		PartiallyObscured = 8,
 
-		[System.ComponentModel.Description("Lights that must in line to be visible.")]
+		[Description("Lights that must in line to be visible.")]
 		[EnumMember(Value = "Visible in Line of Range")] 
 		[XmlEnum("9")] 
 		VisibleInLineOfRange = 9,
@@ -2465,32 +2480,32 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum signalGeneration : int {
-		[System.ComponentModel.Description("Signal generation is initiated by a self regulating mechanism such as a timer or light sensor.")]
+		[Description("Signal generation is initiated by a self regulating mechanism such as a timer or light sensor.")]
 		[EnumMember(Value = "Automatically")] 
 		[XmlEnum("1")] 
 		Automatically = 1,
 
-		[System.ComponentModel.Description("The signal is generated by the motion of the sea surface such as a bell in a buoy.")]
+		[Description("The signal is generated by the motion of the sea surface such as a bell in a buoy.")]
 		[EnumMember(Value = "By Wave Action")] 
 		[XmlEnum("2")] 
 		ByWaveAction = 2,
 
-		[System.ComponentModel.Description("The signal is generated by a manually operated mechanism such as a hand cranked siren.")]
+		[Description("The signal is generated by a manually operated mechanism such as a hand cranked siren.")]
 		[EnumMember(Value = "By Hand")] 
 		[XmlEnum("3")] 
 		ByHand = 3,
 
-		[System.ComponentModel.Description("The signal is generated by the motion of air such as a wind driven whistle.")]
+		[Description("The signal is generated by the motion of air such as a wind driven whistle.")]
 		[EnumMember(Value = "By Wind")] 
 		[XmlEnum("4")] 
 		ByWind = 4,
 
-		[System.ComponentModel.Description("Activated by radio signal.")]
+		[Description("Activated by radio signal.")]
 		[EnumMember(Value = "Radio Activated")] 
 		[XmlEnum("5")] 
 		RadioActivated = 5,
 
-		[System.ComponentModel.Description("Activated by making a call to a manned station.")]
+		[Description("Activated by making a call to a manned station.")]
 		[EnumMember(Value = "Call Activated")] 
 		[XmlEnum("6")] 
 		CallActivated = 6,
@@ -2502,22 +2517,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum exhibitionConditionOfLight : int {
-		[System.ComponentModel.Description("A light shown throughout the 24 hours without change of character.")]
+		[Description("A light shown throughout the 24 hours without change of character.")]
 		[EnumMember(Value = "Light Shown Without Change of Character")] 
 		[XmlEnum("1")] 
 		LightShownWithoutChangeOfCharacter = 1,
 
-		[System.ComponentModel.Description("A light which is only exhibited by day.")]
+		[Description("A light which is only exhibited by day.")]
 		[EnumMember(Value = "Daytime Light")] 
 		[XmlEnum("2")] 
 		DaytimeLight = 2,
 
-		[System.ComponentModel.Description("A light which is exhibited in fog or conditions of reduced visibility.")]
+		[Description("A light which is exhibited in fog or conditions of reduced visibility.")]
 		[EnumMember(Value = "Fog Light")] 
 		[XmlEnum("3")] 
 		FogLight = 3,
 
-		[System.ComponentModel.Description("A light which is only exhibited at night.")]
+		[Description("A light which is only exhibited at night.")]
 		[EnumMember(Value = "Night Light")] 
 		[XmlEnum("4")] 
 		NightLight = 4,
@@ -2532,82 +2547,82 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfLight : int {
-		[System.ComponentModel.Description("A light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
+		[Description("A light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
 		[EnumMember(Value = "Directional Function")] 
 		[XmlEnum("1")] 
 		DirectionalFunction = 1,
 
-		[System.ComponentModel.Description("A light associated with other lights so as to form a leading line to be followed.")]
+		[Description("A light associated with other lights so as to form a leading line to be followed.")]
 		[EnumMember(Value = "Leading Light")] 
 		[XmlEnum("4")] 
 		LeadingLight = 4,
 
-		[System.ComponentModel.Description("An aero light is established for aeronautical navigation and may be of higher power than marine lights and visible from well offshore.")]
+		[Description("An aero light is established for aeronautical navigation and may be of higher power than marine lights and visible from well offshore.")]
 		[EnumMember(Value = "Aero Light")] 
 		[XmlEnum("5")] 
 		AeroLight = 5,
 
-		[System.ComponentModel.Description("A light marking an obstacle which constitutes a danger to air navigation.")]
+		[Description("A light marking an obstacle which constitutes a danger to air navigation.")]
 		[EnumMember(Value = "Air Obstruction Light")] 
 		[XmlEnum("6")] 
 		AirObstructionLight = 6,
 
-		[System.ComponentModel.Description("A broad beam light used to illuminate a structure or area.")]
+		[Description("A broad beam light used to illuminate a structure or area.")]
 		[EnumMember(Value = "Flood Light")] 
 		[XmlEnum("8")] 
 		FloodLight = 8,
 
-		[System.ComponentModel.Description("A light whose source has a linear form generally horizontal, which can reach a length of several metres.")]
+		[Description("A light whose source has a linear form generally horizontal, which can reach a length of several metres.")]
 		[EnumMember(Value = "Strip Light")] 
 		[XmlEnum("9")] 
 		StripLight = 9,
 
-		[System.ComponentModel.Description("A light placed on or near the support of a main light and having a special use in navigation.")]
+		[Description("A light placed on or near the support of a main light and having a special use in navigation.")]
 		[EnumMember(Value = "Subsidiary Light")] 
 		[XmlEnum("10")] 
 		SubsidiaryLight = 10,
 
-		[System.ComponentModel.Description("A powerful light focused so as to illuminate a small area.")]
+		[Description("A powerful light focused so as to illuminate a small area.")]
 		[EnumMember(Value = "Spotlight")] 
 		[XmlEnum("11")] 
 		Spotlight = 11,
 
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
+		[Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
 		[EnumMember(Value = "Front")] 
 		[XmlEnum("12")] 
 		Front = 12,
 
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
+		[Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
 		[EnumMember(Value = "Rear")] 
 		[XmlEnum("13")] 
 		Rear = 13,
 
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
+		[Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
 		[EnumMember(Value = "Lower")] 
 		[XmlEnum("14")] 
 		Lower = 14,
 
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
+		[Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
 		[EnumMember(Value = "Upper")] 
 		[XmlEnum("15")] 
 		Upper = 15,
 
-		[System.ComponentModel.Description("A light available as a backup to a main light which will be illuminated should the main light fail.")]
+		[Description("A light available as a backup to a main light which will be illuminated should the main light fail.")]
 		[EnumMember(Value = "Emergency")] 
 		[XmlEnum("17")] 
 		Emergency = 17,
 
-		[System.ComponentModel.Description("A light which enables its approximate bearing to be obtained without the use of a compass.")]
+		[Description("A light which enables its approximate bearing to be obtained without the use of a compass.")]
 		[EnumMember(Value = "Bearing Light")] 
 		[XmlEnum("18")] 
 		BearingLight = 18,
 
-		[System.ComponentModel.Description("A group of lights of identical character and almost identical position, that are disposed horizontally.")]
+		[Description("A group of lights of identical character and almost identical position, that are disposed horizontally.")]
 		[EnumMember(Value = "Horizontally Disposed")] 
 		[XmlEnum("19")] 
 		HorizontallyDisposed = 19,
 
-		[System.ComponentModel.Description("A group of lights of identical character and almost identical position, that are disposed vertically.")]
+		[Description("A group of lights of identical character and almost identical position, that are disposed vertically.")]
 		[EnumMember(Value = "Vertically Disposed")] 
 		[XmlEnum("20")] 
 		VerticallyDisposed = 20,
@@ -2619,22 +2634,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum trafficFlow : int {
-		[System.ComponentModel.Description("Traffic flow in a general direction toward a port or similar destination.")]
+		[Description("Traffic flow in a general direction toward a port or similar destination.")]
 		[EnumMember(Value = "Inbound")] 
 		[XmlEnum("1")] 
 		Inbound = 1,
 
-		[System.ComponentModel.Description("Traffic flow in a general direction away from a port or similar point of origin.")]
+		[Description("Traffic flow in a general direction away from a port or similar point of origin.")]
 		[EnumMember(Value = "Outbound")] 
 		[XmlEnum("2")] 
 		Outbound = 2,
 
-		[System.ComponentModel.Description("Traffic flow in one general direction only.")]
+		[Description("Traffic flow in one general direction only.")]
 		[EnumMember(Value = "One-Way")] 
 		[XmlEnum("3")] 
 		OneWay = 3,
 
-		[System.ComponentModel.Description("Traffic flow in two generally opposite directions.")]
+		[Description("Traffic flow in two generally opposite directions.")]
 		[EnumMember(Value = "Two-Way")] 
 		[XmlEnum("4")] 
 		TwoWay = 4,
@@ -2646,87 +2661,87 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum techniqueOfVerticalMeasurement : int {
-		[System.ComponentModel.Description("The depth was determined by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
+		[Description("The depth was determined by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
 		[EnumMember(Value = "Found by Echo Sounder")] 
 		[XmlEnum("1")] 
 		FoundByEchoSounder = 1,
 
-		[System.ComponentModel.Description("The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.")]
+		[Description("The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.")]
 		[EnumMember(Value = "Found by Side Scan Sonar")] 
 		[XmlEnum("2")] 
 		FoundBySideScanSonar = 2,
 
-		[System.ComponentModel.Description("The depth was determined by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
+		[Description("The depth was determined by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
 		[EnumMember(Value = "Found by Multi Beam")] 
 		[XmlEnum("3")] 
 		FoundByMultiBeam = 3,
 
-		[System.ComponentModel.Description("The depth was determined by a person skilled in the practice of diving.")]
+		[Description("The depth was determined by a person skilled in the practice of diving.")]
 		[EnumMember(Value = "Found by Diver")] 
 		[XmlEnum("4")] 
 		FoundByDiver = 4,
 
-		[System.ComponentModel.Description("The depth was determined by using a line, graduated with attached marks and fastened to a sounding lead.")]
+		[Description("The depth was determined by using a line, graduated with attached marks and fastened to a sounding lead.")]
 		[EnumMember(Value = "Found by Lead Line")] 
 		[XmlEnum("5")] 
 		FoundByLeadLine = 5,
 
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a buoyed wire at the desired depth by two launches, or a least depth was identified using the same technique.")]
+		[Description("The given area was determined to be free from navigational dangers to a certain depth by towing a buoyed wire at the desired depth by two launches, or a least depth was identified using the same technique.")]
 		[EnumMember(Value = "Swept by Wire-Drag")] 
 		[XmlEnum("6")] 
 		SweptByWireDrag = 6,
 
-		[System.ComponentModel.Description("The depth was determined by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
+		[Description("The depth was determined by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
 		[EnumMember(Value = "Found by Laser")] 
 		[XmlEnum("7")] 
 		FoundByLaser = 7,
 
-		[System.ComponentModel.Description("The given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
+		[Description("The given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
 		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
 		[XmlEnum("8")] 
 		SweptByVerticalAcousticSystem = 8,
 
-		[System.ComponentModel.Description("The depth was determined by using an instrument that compares electromagnetic signals.")]
+		[Description("The depth was determined by using an instrument that compares electromagnetic signals.")]
 		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
 		[XmlEnum("9")] 
 		FoundByElectromagneticSensor = 9,
 
-		[System.ComponentModel.Description("The science or art of obtaining reliable measurements from photographs.")]
+		[Description("The science or art of obtaining reliable measurements from photographs.")]
 		[EnumMember(Value = "Photogrammetry")] 
 		[XmlEnum("10")] 
 		Photogrammetry = 10,
 
-		[System.ComponentModel.Description("The depth was determined by using instruments placed aboard an artificial satellite.")]
+		[Description("The depth was determined by using instruments placed aboard an artificial satellite.")]
 		[EnumMember(Value = "Satellite Imagery")] 
 		[XmlEnum("11")] 
 		SatelliteImagery = 11,
 
-		[System.ComponentModel.Description("The depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
+		[Description("The depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
 		[EnumMember(Value = "Found by Levelling")] 
 		[XmlEnum("12")] 
 		FoundByLevelling = 12,
 
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a side scan sonar.")]
+		[Description("The given area was determined to be free from navigational dangers to a certain depth by towing a side scan sonar.")]
 		[EnumMember(Value = "Swept by Side Scan Sonar")] 
 		[XmlEnum("13")] 
 		SweptBySideScanSonar = 13,
 
-		[System.ComponentModel.Description("The sounding was determined from a bottom model constructed using a computer.")]
+		[Description("The sounding was determined from a bottom model constructed using a computer.")]
 		[EnumMember(Value = "Computer Generated")] 
 		[XmlEnum("14")] 
 		ComputerGenerated = 14,
 
-		[System.ComponentModel.Description("The depth was measured by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
+		[Description("The depth was measured by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
 		[EnumMember(Value = "Found by LIDAR")] 
 		[XmlEnum("15")] 
 		FoundByLidar = 15,
 
-		[System.ComponentModel.Description("A radar with a synthetic aperture antenna which is composed of a large number of elementary transducing elements. The signals are electronically combined into a resulting signal equivalent to that of a single antenna of a given aperture in a given direction.")]
+		[Description("A radar with a synthetic aperture antenna which is composed of a large number of elementary transducing elements. The signals are electronically combined into a resulting signal equivalent to that of a single antenna of a given aperture in a given direction.")]
 		[EnumMember(Value = "Synthetic Aperture Radar")] 
 		[XmlEnum("16")] 
 		SyntheticApertureRadar = 16,
 
-		[System.ComponentModel.Description("Term used to describe the imagery derived from subdividing the electromagnetic spectrum into very narrow bandwidths. These narrow bandwidths may be combined with or subtracted from each other in various ways to form images useful in precise terrain or target analysis.")]
+		[Description("Term used to describe the imagery derived from subdividing the electromagnetic spectrum into very narrow bandwidths. These narrow bandwidths may be combined with or subtracted from each other in various ways to form images useful in precise terrain or target analysis.")]
 		[EnumMember(Value = "Hyperspectral Imagery")] 
 		[XmlEnum("17")] 
 		HyperspectralImagery = 17,
@@ -2738,57 +2753,57 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum qualityOfVerticalMeasurement : int {
-		[System.ComponentModel.Description("The depth from the chart datum to the seabed (or to the top of a drying feature) is known.")]
+		[Description("The depth from the chart datum to the seabed (or to the top of a drying feature) is known.")]
 		[EnumMember(Value = "Depth Known")] 
 		[XmlEnum("1")] 
 		DepthKnown = 1,
 
-		[System.ComponentModel.Description("The depth from chart datum to the seabed, or the shoalest depth of the feature is unknown.")]
+		[Description("The depth from chart datum to the seabed, or the shoalest depth of the feature is unknown.")]
 		[EnumMember(Value = "Depth or Least Depth Unknown")] 
 		[XmlEnum("2")] 
 		DepthOrLeastDepthUnknown = 2,
 
-		[System.ComponentModel.Description("A depth that may be less than indicated.")]
+		[Description("A depth that may be less than indicated.")]
 		[EnumMember(Value = "Doubtful Sounding")] 
 		[XmlEnum("3")] 
 		DoubtfulSounding = 3,
 
-		[System.ComponentModel.Description("A depth that is considered to be an unreliable value.")]
+		[Description("A depth that is considered to be an unreliable value.")]
 		[EnumMember(Value = "Unreliable Sounding")] 
 		[XmlEnum("4")] 
 		UnreliableSounding = 4,
 
-		[System.ComponentModel.Description("Upon investigation the bottom was not found at this depth.")]
+		[Description("Upon investigation the bottom was not found at this depth.")]
 		[EnumMember(Value = "No Bottom Found at Value Shown")] 
 		[XmlEnum("5")] 
 		NoBottomFoundAtValueShown = 5,
 
-		[System.ComponentModel.Description("The shoalest depth over a feature is of known value.")]
+		[Description("The shoalest depth over a feature is of known value.")]
 		[EnumMember(Value = "Least Depth Known")] 
 		[XmlEnum("6")] 
 		LeastDepthKnown = 6,
 
-		[System.ComponentModel.Description("The least depth over a feature is unknown, but there is considered to be safe clearance at this depth.")]
+		[Description("The least depth over a feature is unknown, but there is considered to be safe clearance at this depth.")]
 		[EnumMember(Value = "Least Depth Unknown, Safe Clearance at Value Shown")] 
 		[XmlEnum("7")] 
 		LeastDepthUnknownSafeClearanceAtValueShown = 7,
 
-		[System.ComponentModel.Description("Depth value obtained from a report, but not fully surveyed.")]
+		[Description("Depth value obtained from a report, but not fully surveyed.")]
 		[EnumMember(Value = "Value Reported (Not Surveyed)")] 
 		[XmlEnum("8")] 
 		ValueReportedNotSurveyed = 8,
 
-		[System.ComponentModel.Description("Depth value obtained from a report, which it has not been possible to confirm.")]
+		[Description("Depth value obtained from a report, which it has not been possible to confirm.")]
 		[EnumMember(Value = "Value Reported (Not Confirmed)")] 
 		[XmlEnum("9")] 
 		ValueReportedNotConfirmed = 9,
 
-		[System.ComponentModel.Description("The depth at which a channel is kept by human influence, usually by dredging.")]
+		[Description("The depth at which a channel is kept by human influence, usually by dredging.")]
 		[EnumMember(Value = "Maintained Depth")] 
 		[XmlEnum("10")] 
 		MaintainedDepth = 10,
 
-		[System.ComponentModel.Description("Depths may be altered by human influence, but will not be routinely maintained.")]
+		[Description("Depths may be altered by human influence, but will not be routinely maintained.")]
 		[EnumMember(Value = "Not Regularly Maintained")] 
 		[XmlEnum("11")] 
 		NotRegularlyMaintained = 11,
@@ -2800,17 +2815,17 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfNavigationLine : int {
-		[System.ComponentModel.Description("A straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.")]
+		[Description("A straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.")]
 		[EnumMember(Value = "Clearing Line")] 
 		[XmlEnum("1")] 
 		ClearingLine = 1,
 
-		[System.ComponentModel.Description("A line passing through one or more fixed marks.")]
+		[Description("A line passing through one or more fixed marks.")]
 		[EnumMember(Value = "Transit Line")] 
 		[XmlEnum("2")] 
 		TransitLine = 2,
 
-		[System.ComponentModel.Description("A line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.")]
+		[Description("A line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.")]
 		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
 		[XmlEnum("3")] 
 		LeadingLineBearingARecommendedTrack = 3,
@@ -2825,140 +2840,25 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfLateralMark : int {
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
+		[Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
 		[EnumMember(Value = "Port-Hand Lateral Mark")] 
 		[XmlEnum("1")] 
 		PortHandLateralMark = 1,
 
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
+		[Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
 		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
 		[XmlEnum("2")] 
 		StarboardHandLateralMark = 2,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
+		[Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
 		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
 		[XmlEnum("3")] 
 		PreferredChannelToStarboardLateralMark = 3,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
+		[Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
 		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
 		[XmlEnum("4")] 
 		PreferredChannelToPortLateralMark = 4,
-
-		[System.ComponentModel.Description("Indicates the right-hand side of the inland waterway.")]
-		[EnumMember(Value = "Right-Hand Side of the Waterway")] 
-		[XmlEnum("5")] 
-		RightHandSideOfTheWaterway = 5,
-
-		[System.ComponentModel.Description("Indicates the left-hand side of the inland waterway.")]
-		[EnumMember(Value = "Left-Hand Side of the Waterway")] 
-		[XmlEnum("6")] 
-		LeftHandSideOfTheWaterway = 6,
-
-		[System.ComponentModel.Description("Indicates the right-hand side of a channel of an inland waterway.")]
-		[EnumMember(Value = "Right-Hand Side of the Channel")] 
-		[XmlEnum("7")] 
-		RightHandSideOfTheChannel = 7,
-
-		[System.ComponentModel.Description("Indicates the left-hand side of a channel of an inland waterway.")]
-		[EnumMember(Value = "Left-Hand Side of the Channel")] 
-		[XmlEnum("8")] 
-		LeftHandSideOfTheChannel = 8,
-
-		[System.ComponentModel.Description("Indicates a bifurcation of the inland waterway.")]
-		[EnumMember(Value = "Bifurcation of the Waterway")] 
-		[XmlEnum("9")] 
-		BifurcationOfTheWaterway = 9,
-
-		[System.ComponentModel.Description("Indicates a bifurcation of a channel of an inland waterway.")]
-		[EnumMember(Value = "Bifurcation of the Channel")] 
-		[XmlEnum("10")] 
-		BifurcationOfTheChannel = 10,
-
-		[System.ComponentModel.Description("Indicates that the channel is near the right bank.")]
-		[EnumMember(Value = "Channel Near the Right Bank")] 
-		[XmlEnum("11")] 
-		ChannelNearTheRightBank = 11,
-
-		[System.ComponentModel.Description("Indicates that the channel is near the left bank.")]
-		[EnumMember(Value = "Channel Near the Left Bank")] 
-		[XmlEnum("12")] 
-		ChannelNearTheLeftBank = 12,
-
-		[System.ComponentModel.Description("Indicates that the channel crosses from the left to the right bank.")]
-		[EnumMember(Value = "Channel Cross-Over to the Right Bank")] 
-		[XmlEnum("13")] 
-		ChannelCrossOverToTheRightBank = 13,
-
-		[System.ComponentModel.Description("Indicates that the channel crosses from the right to the left bank.")]
-		[EnumMember(Value = "Channel Cross-Over to the Left Bank")] 
-		[XmlEnum("14")] 
-		ChannelCrossOverToTheLeftBank = 14,
-
-		[System.ComponentModel.Description("Indicates a danger point or obstacles at the right-hand side.")]
-		[EnumMember(Value = "Danger Point or Obstacles at the Right-Hand Side")] 
-		[XmlEnum("15")] 
-		DangerPointOrObstaclesAtTheRightHandSide = 15,
-
-		[System.ComponentModel.Description("Indicates a danger point or obstacles at the left-hand side.")]
-		[EnumMember(Value = "Danger Point or Obstacles at the Left-Hand Side")] 
-		[XmlEnum("16")] 
-		DangerPointOrObstaclesAtTheLeftHandSide = 16,
-
-		[System.ComponentModel.Description("Indicates a turn off at the right-hand side.")]
-		[EnumMember(Value = "Turn Off at the Right-Hand Side")] 
-		[XmlEnum("17")] 
-		TurnOffAtTheRightHandSide = 17,
-
-		[System.ComponentModel.Description("Indicates a turn off at the left-hand side.")]
-		[EnumMember(Value = "Turn Off at the Left-Hand Side")] 
-		[XmlEnum("18")] 
-		TurnOffAtTheLeftHandSide = 18,
-
-		[System.ComponentModel.Description("Indicates a junction at the right-hand side.")]
-		[EnumMember(Value = "Junction at the Right-Hand Side")] 
-		[XmlEnum("19")] 
-		JunctionAtTheRightHandSide = 19,
-
-		[System.ComponentModel.Description("Indicates a junction at the left-hand side.")]
-		[EnumMember(Value = "Junction at the Left-Hand Side")] 
-		[XmlEnum("20")] 
-		JunctionAtTheLeftHandSide = 20,
-
-		[System.ComponentModel.Description("Indicates a harbour entry at the right-hand side.")]
-		[EnumMember(Value = "Harbour Entry at the Right-Hand Side")] 
-		[XmlEnum("21")] 
-		HarbourEntryAtTheRightHandSide = 21,
-
-		[System.ComponentModel.Description("Indicates a harbour entry at the left-hand side.")]
-		[EnumMember(Value = "Harbour Entry at the Left-Hand Side")] 
-		[XmlEnum("22")] 
-		HarbourEntryAtTheLeftHandSide = 22,
-
-		[System.ComponentModel.Description("Indicates a bridge pier in an inland waterway.")]
-		[EnumMember(Value = "Bridge Pier Mark")] 
-		[XmlEnum("23")] 
-		BridgePierMark = 23,
-
-		[System.ComponentModel.Description("Indicates the right bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
-		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Right Bank")] 
-		[XmlEnum("24")] 
-		EntryFromALakeToANarrowerWaterwayRightBank = 24,
-
-		[System.ComponentModel.Description("Indicates the left bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
-		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Left Bank")] 
-		[XmlEnum("25")] 
-		EntryFromALakeToANarrowerWaterwayLeftBank = 25,
-
-		[System.ComponentModel.Description("Change bank.")]
-		[EnumMember(Value = "Change Bank")] 
-		[XmlEnum("26")] 
-		ChangeBank = 26,
-
-		[System.ComponentModel.Description("Continue along bank.")]
-		[EnumMember(Value = "Continue Along Bank")] 
-		[XmlEnum("27")] 
-		ContinueAlongBank = 27,
 	}
 
 	/// <summary>
@@ -2967,225 +2867,245 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum verticalDatum : int {
-		[System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.")]
+		[Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.")]
 		[EnumMember(Value = "Mean Low Water Springs")] 
 		[XmlEnum("1")] 
 		MeanLowWaterSprings = 1,
 
-		[System.ComponentModel.Description("The average height of lower low water springs at a place.")]
+		[Description("The average height of lower low water springs at a place.")]
 		[EnumMember(Value = "Mean Lower Low Water Springs")] 
 		[XmlEnum("2")] 
 		MeanLowerLowWaterSprings = 2,
 
-		[System.ComponentModel.Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
+		[Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
 		[EnumMember(Value = "Mean Sea Level")] 
 		[XmlEnum("3")] 
 		MeanSeaLevel = 3,
 
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest tide observed at a place, or some what lower.")]
+		[Description("An arbitrary level conforming to the lowest tide observed at a place, or some what lower.")]
 		[EnumMember(Value = "Lowest Low Water")] 
 		[XmlEnum("4")] 
 		LowestLowWater = 4,
 
-		[System.ComponentModel.Description("The average height of all low waters at a place over a 19-year period.")]
+		[Description("The average height of all low waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Low Water")] 
 		[XmlEnum("5")] 
 		MeanLowWater = 5,
 
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
+		[Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
 		[EnumMember(Value = "Lowest Low Water Springs")] 
 		[XmlEnum("6")] 
 		LowestLowWaterSprings = 6,
 
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
+		[Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
 		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
 		[XmlEnum("7")] 
 		ApproximateMeanLowWaterSprings = 7,
 
-		[System.ComponentModel.Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
+		[Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
 		[EnumMember(Value = "Indian Spring Low Water")] 
 		[XmlEnum("8")] 
 		IndianSpringLowWater = 8,
 
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
+		[Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
 		[EnumMember(Value = "Low Water Springs")] 
 		[XmlEnum("9")] 
 		LowWaterSprings = 9,
 
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
+		[Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
 		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
 		[XmlEnum("10")] 
 		ApproximateLowestAstronomicalTide = 10,
 
-		[System.ComponentModel.Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
+		[Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
 		[EnumMember(Value = "Nearly Lowest Low Water")] 
 		[XmlEnum("11")] 
 		NearlyLowestLowWater = 11,
 
-		[System.ComponentModel.Description("The average height of the lower low waters at a place over a 19-year period.")]
+		[Description("The average height of the lower low waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Lower Low Water")] 
 		[XmlEnum("12")] 
 		MeanLowerLowWater = 12,
 
-		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation. Also called low tide.")]
+		[Description("The lowest level reached at a place by the water surface in one oscillation. Also called low tide.")]
 		[EnumMember(Value = "Low Water")] 
 		[XmlEnum("13")] 
 		LowWater = 13,
 
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
+		[Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
 		[EnumMember(Value = "Approximate Mean Low Water")] 
 		[XmlEnum("14")] 
 		ApproximateMeanLowWater = 14,
 
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
+		[Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
 		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
 		[XmlEnum("15")] 
 		ApproximateMeanLowerLowWater = 15,
 
-		[System.ComponentModel.Description("The average height of all high waters at a place over a 19-year period.")]
+		[Description("The average height of all high waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean High Water")] 
 		[XmlEnum("16")] 
 		MeanHighWater = 16,
 
-		[System.ComponentModel.Description("The average height of the high waters of spring tides. Also called spring high water.")]
+		[Description("The average height of the high waters of spring tides. Also called spring high water.")]
 		[EnumMember(Value = "Mean High Water Springs")] 
 		[XmlEnum("17")] 
 		MeanHighWaterSprings = 17,
 
-		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
+		[Description("The highest level reached at a place by the water surface in one oscillation.")]
 		[EnumMember(Value = "High Water")] 
 		[XmlEnum("18")] 
 		HighWater = 18,
 
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
+		[Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
 		[EnumMember(Value = "Approximate Mean Sea Level")] 
 		[XmlEnum("19")] 
 		ApproximateMeanSeaLevel = 19,
 
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
+		[Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
 		[EnumMember(Value = "High Water Springs")] 
 		[XmlEnum("20")] 
 		HighWaterSprings = 20,
 
-		[System.ComponentModel.Description("The average height of higher high waters at a place over a 19-year period.")]
+		[Description("The average height of higher high waters at a place over a 19-year period.")]
 		[EnumMember(Value = "Mean Higher High Water")] 
 		[XmlEnum("21")] 
 		MeanHigherHighWater = 21,
 
-		[System.ComponentModel.Description("The level of low water springs near the time of an equinox.")]
+		[Description("The level of low water springs near the time of an equinox.")]
 		[EnumMember(Value = "Equinoctial Spring Low Water")] 
 		[XmlEnum("22")] 
 		EquinoctialSpringLowWater = 22,
 
-		[System.ComponentModel.Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
+		[Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
 		[EnumMember(Value = "Lowest Astronomical Tide")] 
 		[XmlEnum("23")] 
 		LowestAstronomicalTide = 23,
 
-		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
+		[Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
 		[EnumMember(Value = "Local Datum")] 
 		[XmlEnum("24")] 
 		LocalDatum = 24,
 
-		[System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.")]
+		[Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.")]
 		[EnumMember(Value = "International Great Lakes Datum 1985")] 
 		[XmlEnum("25")] 
 		InternationalGreatLakesDatum1985 = 25,
 
-		[System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
+		[Description("The average of all hourly water levels over the available period of record.")]
 		[EnumMember(Value = "Mean Water Level")] 
 		[XmlEnum("26")] 
 		MeanWaterLevel = 26,
 
-		[System.ComponentModel.Description("The average of the lowest low waters, one from each of 19 years of observations.")]
+		[Description("The average of the lowest low waters, one from each of 19 years of observations.")]
 		[EnumMember(Value = "Lower Low Water Large Tide")] 
 		[XmlEnum("27")] 
 		LowerLowWaterLargeTide = 27,
 
-		[System.ComponentModel.Description("The average of the highest high waters, one from each of 19 years of observations.")]
+		[Description("The average of the highest high waters, one from each of 19 years of observations.")]
 		[EnumMember(Value = "Higher High Water Large Tide")] 
 		[XmlEnum("28")] 
 		HigherHighWaterLargeTide = 28,
 
-		[System.ComponentModel.Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
+		[Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
 		[EnumMember(Value = "Nearly Highest High Water")] 
 		[XmlEnum("29")] 
 		NearlyHighestHighWater = 29,
 
-		[System.ComponentModel.Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
+		[Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
 		[EnumMember(Value = "Highest Astronomical Tide")] 
 		[XmlEnum("30")] 
 		HighestAstronomicalTide = 30,
 
-		[System.ComponentModel.Description("Low water reference level of the local area.")]
+		[Description("Low water reference level of the local area.")]
 		[EnumMember(Value = "Local Low Water Reference Level")] 
 		[XmlEnum("31")] 
 		LocalLowWaterReferenceLevel = 31,
 
-		[System.ComponentModel.Description("High water reference level of the local area.")]
+		[Description("High water reference level of the local area.")]
 		[EnumMember(Value = "Local High Water Reference Level")] 
 		[XmlEnum("32")] 
 		LocalHighWaterReferenceLevel = 32,
 
-		[System.ComponentModel.Description("Mean water reference level of the local area.")]
+		[Description("Mean water reference level of the local area.")]
 		[EnumMember(Value = "Local Mean Water Reference Level")] 
 		[XmlEnum("33")] 
 		LocalMeanWaterReferenceLevel = 33,
 
-		[System.ComponentModel.Description("A low water level which is the result of a defined low water discharge - called \"equivalent discharge\".")]
+		[Description("A low water level which is the result of a defined low water discharge - called \"equivalent discharge\".")]
 		[EnumMember(Value = "Equivalent Height of Water (German GlW)")] 
 		[XmlEnum("34")] 
 		EquivalentHeightOfWaterGermanGlw = 34,
 
-		[System.ComponentModel.Description("Upper limit of water levels where navigation is allowed.")]
+		[Description("Upper limit of water levels where navigation is allowed.")]
 		[EnumMember(Value = "Highest Shipping Height of Water (German HSW)")] 
 		[XmlEnum("35")] 
 		HighestShippingHeightOfWaterGermanHsw = 35,
 
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.")]
+		[Description("The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.")]
 		[EnumMember(Value = "Reference Low Water Level According to Danube Commission")] 
 		[XmlEnum("36")] 
 		ReferenceLowWaterLevelAccordingToDanubeCommission = 36,
 
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.")]
+		[Description("The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.")]
 		[EnumMember(Value = "Highest Shipping Height of Water According to Danube Commission")] 
 		[XmlEnum("37")] 
 		HighestShippingHeightOfWaterAccordingToDanubeCommission = 37,
 
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.")]
+		[Description("The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.")]
 		[EnumMember(Value = "Dutch River Low Water Reference Level (OLR)")] 
 		[XmlEnum("38")] 
 		DutchRiverLowWaterReferenceLevelOlr = 38,
 
-		[System.ComponentModel.Description("Conditional low water level with established probability.")]
+		[Description("Conditional low water level with established probability.")]
 		[EnumMember(Value = "Russian Project Water Level")] 
 		[XmlEnum("39")] 
 		RussianProjectWaterLevel = 39,
 
-		[System.ComponentModel.Description("Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.")]
+		[Description("Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.")]
 		[EnumMember(Value = "Russian Normal Backwater Level")] 
 		[XmlEnum("40")] 
 		RussianNormalBackwaterLevel = 40,
 
-		[System.ComponentModel.Description("The Ohio River datum.")]
+		[Description("The Ohio River datum.")]
 		[EnumMember(Value = "Ohio River Datum")] 
 		[XmlEnum("41")] 
 		OhioRiverDatum = 41,
 
-		[System.ComponentModel.Description("Dutch High Water Reference Level.")]
+		[Description("Dutch High Water Reference Level.")]
 		[EnumMember(Value = "Dutch High Water Reference Level")] 
 		[XmlEnum("43")] 
 		DutchHighWaterReferenceLevel = 43,
 
-		[System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
+		[Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
 		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
 		[XmlEnum("44")] 
 		BalticSeaChartDatum2000 = 44,
 
-		[System.ComponentModel.Description("Dutch Estuary Low Water Reference Level (OLW)")]
+		[Description("Dutch Estuary Low Water Reference Level (OLW)")]
 		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
 		[XmlEnum("45")] 
 		DutchEstuaryLowWaterReferenceLevelOlw = 45,
+
+		[Description("-")]
+		[EnumMember(Value = "International Great Lakes Datum 2020")] 
+		[XmlEnum("46")] 
+		InternationalGreatLakesDatum2020 = 46,
+
+		[Description("-")]
+		[EnumMember(Value = "Sea Floor")] 
+		[XmlEnum("47")] 
+		SeaFloor = 47,
+
+		[Description("-")]
+		[EnumMember(Value = "Sea Surface")] 
+		[XmlEnum("48")] 
+		SeaSurface = 48,
+
+		[Description("-")]
+		[EnumMember(Value = "Hydrographic Zero")] 
+		[XmlEnum("49")] 
+		HydrographicZero = 49,
 	}
 
 	/// <summary>
@@ -3194,237 +3114,237 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum function : int {
-		[System.ComponentModel.Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
+		[Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
 		[EnumMember(Value = "Harbour-Masters Office")] 
 		[XmlEnum("2")] 
 		HarbourMastersOffice = 2,
 
-		[System.ComponentModel.Description("Serves as a government office where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
+		[Description("Serves as a government office where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
 		[EnumMember(Value = "Customs Office")] 
 		[XmlEnum("3")] 
 		CustomsOffice = 3,
 
-		[System.ComponentModel.Description("The office which is charged with the administration of health laws and sanitary inspections.")]
+		[Description("The office which is charged with the administration of health laws and sanitary inspections.")]
 		[EnumMember(Value = "Health Office")] 
 		[XmlEnum("4")] 
 		HealthOffice = 4,
 
-		[System.ComponentModel.Description("An institution or establishment providing medical or surgical treatment for the ill or wounded.")]
+		[Description("An institution or establishment providing medical or surgical treatment for the ill or wounded.")]
 		[EnumMember(Value = "Hospital")] 
 		[XmlEnum("5")] 
 		Hospital = 5,
 
-		[System.ComponentModel.Description("The public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
+		[Description("The public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
 		[EnumMember(Value = "Post Office")] 
 		[XmlEnum("6")] 
 		PostOffice = 6,
 
-		[System.ComponentModel.Description("An establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
+		[Description("An establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
 		[EnumMember(Value = "Hotel")] 
 		[XmlEnum("7")] 
 		Hotel = 7,
 
-		[System.ComponentModel.Description("A building with platforms where trains arrive, load, discharge and depart.")]
+		[Description("A building with platforms where trains arrive, load, discharge and depart.")]
 		[EnumMember(Value = "Railway Station")] 
 		[XmlEnum("8")] 
 		RailwayStation = 8,
 
-		[System.ComponentModel.Description("The headquarters of a local police force and that is where those under arrest are first charged.")]
+		[Description("The headquarters of a local police force and that is where those under arrest are first charged.")]
 		[EnumMember(Value = "Police Station")] 
 		[XmlEnum("9")] 
 		PoliceStation = 9,
 
-		[System.ComponentModel.Description("The headquarters of a local water-police force.")]
+		[Description("The headquarters of a local water-police force.")]
 		[EnumMember(Value = "Water-Police Station")] 
 		[XmlEnum("10")] 
 		WaterPoliceStation = 10,
 
-		[System.ComponentModel.Description("The office or headquarters of pilots; the place where the services of a pilot may be obtained.")]
+		[Description("The office or headquarters of pilots; the place where the services of a pilot may be obtained.")]
 		[EnumMember(Value = "Pilot Office")] 
 		[XmlEnum("11")] 
 		PilotOffice = 11,
 
-		[System.ComponentModel.Description("A distinctive structure or place on shore from which personnel keep watch upon events at sea or along the coast.")]
+		[Description("A distinctive structure or place on shore from which personnel keep watch upon events at sea or along the coast.")]
 		[EnumMember(Value = "Pilot Lookout")] 
 		[XmlEnum("12")] 
 		PilotLookout = 12,
 
-		[System.ComponentModel.Description("An office for custody, deposit, loan, exchange or issue of money.")]
+		[Description("An office for custody, deposit, loan, exchange or issue of money.")]
 		[EnumMember(Value = "Bank Office")] 
 		[XmlEnum("13")] 
 		BankOffice = 13,
 
-		[System.ComponentModel.Description("The quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
+		[Description("The quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
 		[EnumMember(Value = "Headquarters for District Control")] 
 		[XmlEnum("14")] 
 		HeadquartersForDistrictControl = 14,
 
-		[System.ComponentModel.Description("A building or part of a building for storage of wares or goods.")]
+		[Description("A building or part of a building for storage of wares or goods.")]
 		[EnumMember(Value = "Transit Shed/Warehouse")] 
 		[XmlEnum("15")] 
 		TransitShedWarehouse = 15,
 
-		[System.ComponentModel.Description("A building or buildings with equipment for manufacturing; a workshop.")]
+		[Description("A building or buildings with equipment for manufacturing; a workshop.")]
 		[EnumMember(Value = "Factory")] 
 		[XmlEnum("16")] 
 		Factory = 16,
 
-		[System.ComponentModel.Description("A stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
+		[Description("A stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
 		[EnumMember(Value = "Power Station")] 
 		[XmlEnum("17")] 
 		PowerStation = 17,
 
-		[System.ComponentModel.Description("A building for the management of affairs.")]
+		[Description("A building for the management of affairs.")]
 		[EnumMember(Value = "Administrative")] 
 		[XmlEnum("18")] 
 		Administrative = 18,
 
-		[System.ComponentModel.Description("A building concerned with education (for example school, college, university, etc).")]
+		[Description("A building concerned with education (for example school, college, university, etc).")]
 		[EnumMember(Value = "Educational Facility")] 
 		[XmlEnum("19")] 
 		EducationalFacility = 19,
 
-		[System.ComponentModel.Description("A building for public Christian worship.")]
+		[Description("A building for public Christian worship.")]
 		[EnumMember(Value = "Church")] 
 		[XmlEnum("20")] 
 		Church = 20,
 
-		[System.ComponentModel.Description("A place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
+		[Description("A place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
 		[EnumMember(Value = "Chapel")] 
 		[XmlEnum("21")] 
 		Chapel = 21,
 
-		[System.ComponentModel.Description("A building for public Jewish worship.")]
+		[Description("A building for public Jewish worship.")]
 		[EnumMember(Value = "Temple")] 
 		[XmlEnum("22")] 
 		Temple = 22,
 
-		[System.ComponentModel.Description("A Hindu or Buddhist temple or sacred building.")]
+		[Description("A Hindu or Buddhist temple or sacred building.")]
 		[EnumMember(Value = "Pagoda")] 
 		[XmlEnum("23")] 
 		Pagoda = 23,
 
-		[System.ComponentModel.Description("A building for public Shinto worship.")]
+		[Description("A building for public Shinto worship.")]
 		[EnumMember(Value = "Shinto Shrine")] 
 		[XmlEnum("24")] 
 		ShintoShrine = 24,
 
-		[System.ComponentModel.Description("A building for public Buddhist worship.")]
+		[Description("A building for public Buddhist worship.")]
 		[EnumMember(Value = "Buddhist Temple")] 
 		[XmlEnum("25")] 
 		BuddhistTemple = 25,
 
-		[System.ComponentModel.Description("A Muslim place of worship.")]
+		[Description("A Muslim place of worship.")]
 		[EnumMember(Value = "Mosque")] 
 		[XmlEnum("26")] 
 		Mosque = 26,
 
-		[System.ComponentModel.Description("A shrine marking the burial place of a Muslim holy man.")]
+		[Description("A shrine marking the burial place of a Muslim holy man.")]
 		[EnumMember(Value = "Marabout")] 
 		[XmlEnum("27")] 
 		Marabout = 27,
 
-		[System.ComponentModel.Description("Keeping a watch upon events at sea or along the coast.")]
+		[Description("Keeping a watch upon events at sea or along the coast.")]
 		[EnumMember(Value = "Lookout")] 
 		[XmlEnum("28")] 
 		Lookout = 28,
 
-		[System.ComponentModel.Description("Transmitting and/or receiving electronic communication signals.")]
+		[Description("Transmitting and/or receiving electronic communication signals.")]
 		[EnumMember(Value = "Communication")] 
 		[XmlEnum("29")] 
 		Communication = 29,
 
-		[System.ComponentModel.Description("A system for reproducing on a screen visual images transmitted (usually with sound) by radio signals.")]
+		[Description("A system for reproducing on a screen visual images transmitted (usually with sound) by radio signals.")]
 		[EnumMember(Value = "Television")] 
 		[XmlEnum("30")] 
 		Television = 30,
 
-		[System.ComponentModel.Description("Transmitting and/or receiving radio-frequency electromagnetic waves as a means of communication.")]
+		[Description("Transmitting and/or receiving radio-frequency electromagnetic waves as a means of communication.")]
 		[EnumMember(Value = "Radio")] 
 		[XmlEnum("31")] 
 		Radio = 31,
 
-		[System.ComponentModel.Description("A method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
+		[Description("A method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
 		[EnumMember(Value = "Radar")] 
 		[XmlEnum("32")] 
 		Radar = 32,
 
-		[System.ComponentModel.Description("A structure serving as a support for one or more lights.")]
+		[Description("A structure serving as a support for one or more lights.")]
 		[EnumMember(Value = "Light Support")] 
 		[XmlEnum("33")] 
 		LightSupport = 33,
 
-		[System.ComponentModel.Description("Broadcasting and receiving signals using microwaves.")]
+		[Description("Broadcasting and receiving signals using microwaves.")]
 		[EnumMember(Value = "Microwave")] 
 		[XmlEnum("34")] 
 		Microwave = 34,
 
-		[System.ComponentModel.Description("Generation of chilled liquid and/or gas for cooling purposes.")]
+		[Description("Generation of chilled liquid and/or gas for cooling purposes.")]
 		[EnumMember(Value = "Cooling")] 
 		[XmlEnum("35")] 
 		Cooling = 35,
 
-		[System.ComponentModel.Description("A place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
+		[Description("A place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
 		[EnumMember(Value = "Observation")] 
 		[XmlEnum("36")] 
 		Observation = 36,
 
-		[System.ComponentModel.Description("A visual time signal in the form of a ball.")]
+		[Description("A visual time signal in the form of a ball.")]
 		[EnumMember(Value = "Timeball")] 
 		[XmlEnum("37")] 
 		Timeball = 37,
 
-		[System.ComponentModel.Description("Instrument for measuring time and recording hours.")]
+		[Description("Instrument for measuring time and recording hours.")]
 		[EnumMember(Value = "Clock")] 
 		[XmlEnum("38")] 
 		Clock = 38,
 
-		[System.ComponentModel.Description("Used to control the flow of traffic within a specified range of an installation.")]
+		[Description("Used to control the flow of traffic within a specified range of an installation.")]
 		[EnumMember(Value = "Control")] 
 		[XmlEnum("39")] 
 		Control = 39,
 
-		[System.ComponentModel.Description("Equipment or structure to secure an airship.")]
+		[Description("Equipment or structure to secure an airship.")]
 		[EnumMember(Value = "Airship Mooring")] 
 		[XmlEnum("40")] 
 		AirshipMooring = 40,
 
-		[System.ComponentModel.Description("An arena for holding and viewing events.")]
+		[Description("An arena for holding and viewing events.")]
 		[EnumMember(Value = "Stadium")] 
 		[XmlEnum("41")] 
 		Stadium = 41,
 
-		[System.ComponentModel.Description("A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.")]
+		[Description("A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.")]
 		[EnumMember(Value = "Bus Station")] 
 		[XmlEnum("42")] 
 		BusStation = 42,
 
-		[System.ComponentModel.Description("A building within a terminal for the loading and unloading of passengers.")]
+		[Description("A building within a terminal for the loading and unloading of passengers.")]
 		[EnumMember(Value = "Passenger Terminal Building")] 
 		[XmlEnum("43")] 
 		PassengerTerminalBuilding = 43,
 
-		[System.ComponentModel.Description("A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.")]
+		[Description("A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.")]
 		[EnumMember(Value = "Sea Rescue Control")] 
 		[XmlEnum("44")] 
 		SeaRescueControl = 44,
 
-		[System.ComponentModel.Description("A building designed and equipped for making observations of astronomical, meteorological, or other natural phenomena.")]
+		[Description("A building designed and equipped for making observations of astronomical, meteorological, or other natural phenomena.")]
 		[EnumMember(Value = "Observatory")] 
 		[XmlEnum("45")] 
 		Observatory = 45,
 
-		[System.ComponentModel.Description("A building or structure used to crush ore.")]
+		[Description("A building or structure used to crush ore.")]
 		[EnumMember(Value = "Ore Crusher")] 
 		[XmlEnum("46")] 
 		OreCrusher = 46,
 
-		[System.ComponentModel.Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
+		[Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
 		[EnumMember(Value = "Boathouse")] 
 		[XmlEnum("47")] 
 		Boathouse = 47,
 
-		[System.ComponentModel.Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
+		[Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
 		[EnumMember(Value = "Pumping Station")] 
 		[XmlEnum("48")] 
 		PumpingStation = 48,
@@ -3436,137 +3356,137 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfLandmark : int {
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
+		[Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
 		[EnumMember(Value = "Cairn")] 
 		[XmlEnum("1")] 
 		Cairn = 1,
 
-		[System.ComponentModel.Description("A site and associated structures devoted to the burial of the dead.")]
+		[Description("A site and associated structures devoted to the burial of the dead.")]
 		[EnumMember(Value = "Cemetery")] 
 		[XmlEnum("2")] 
 		Cemetery = 2,
 
-		[System.ComponentModel.Description("A vertical structure containing a passage or flue for discharging smoke and gases of combustion.")]
+		[Description("A vertical structure containing a passage or flue for discharging smoke and gases of combustion.")]
 		[EnumMember(Value = "Chimney")] 
 		[XmlEnum("3")] 
 		Chimney = 3,
 
-		[System.ComponentModel.Description("A parabolic aerial for the receipt and transmission of high frequency radio signals.")]
+		[Description("A parabolic aerial for the receipt and transmission of high frequency radio signals.")]
 		[EnumMember(Value = "Dish Aerial")] 
 		[XmlEnum("4")] 
 		DishAerial = 4,
 
-		[System.ComponentModel.Description("A staff or pole on which flags are raised.")]
+		[Description("A staff or pole on which flags are raised.")]
 		[EnumMember(Value = "Flagstaff")] 
 		[XmlEnum("5")] 
 		Flagstaff = 5,
 
-		[System.ComponentModel.Description("A tall structure used for burning-off waste oil or gas.")]
+		[Description("A tall structure used for burning-off waste oil or gas.")]
 		[EnumMember(Value = "Flare Stack")] 
 		[XmlEnum("6")] 
 		FlareStack = 6,
 
-		[System.ComponentModel.Description("A relatively tall structure usually held vertical by guy lines.")]
+		[Description("A relatively tall structure usually held vertical by guy lines.")]
 		[EnumMember(Value = "Mast")] 
 		[XmlEnum("7")] 
 		Mast = 7,
 
-		[System.ComponentModel.Description("A tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
+		[Description("A tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
 		[EnumMember(Value = "Windsock")] 
 		[XmlEnum("8")] 
 		Windsock = 8,
 
-		[System.ComponentModel.Description("A structure erected and/or maintained as a memorial to a person and/or event.")]
+		[Description("A structure erected and/or maintained as a memorial to a person and/or event.")]
 		[EnumMember(Value = "Monument")] 
 		[XmlEnum("9")] 
 		Monument = 9,
 
-		[System.ComponentModel.Description("A cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
+		[Description("A cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
 		[EnumMember(Value = "Column/Pillar")] 
 		[XmlEnum("10")] 
 		ColumnPillar = 10,
 
-		[System.ComponentModel.Description("A slab of metal, usually ornamented, erected as a memorial to a person or event.")]
+		[Description("A slab of metal, usually ornamented, erected as a memorial to a person or event.")]
 		[EnumMember(Value = "Memorial Plaque")] 
 		[XmlEnum("11")] 
 		MemorialPlaque = 11,
 
-		[System.ComponentModel.Description("A tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
+		[Description("A tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
 		[EnumMember(Value = "Obelisk")] 
 		[XmlEnum("12")] 
 		Obelisk = 12,
 
-		[System.ComponentModel.Description("A representation of a living being, sculptured, moulded, or cast in a variety of materials (for example: marble, metal, or plaster).")]
+		[Description("A representation of a living being, sculptured, moulded, or cast in a variety of materials (for example: marble, metal, or plaster).")]
 		[EnumMember(Value = "Statue")] 
 		[XmlEnum("13")] 
 		Statue = 13,
 
-		[System.ComponentModel.Description("A monument, or other structure in form of a cross.")]
+		[Description("A monument, or other structure in form of a cross.")]
 		[EnumMember(Value = "Cross")] 
 		[XmlEnum("14")] 
 		Cross = 14,
 
-		[System.ComponentModel.Description("A landmark comprising a hemispherical or spheroidal shaped structure.")]
+		[Description("A landmark comprising a hemispherical or spheroidal shaped structure.")]
 		[EnumMember(Value = "Dome")] 
 		[XmlEnum("15")] 
 		Dome = 15,
 
-		[System.ComponentModel.Description("A device used for directing a radar beam through a search pattern.")]
+		[Description("A device used for directing a radar beam through a search pattern.")]
 		[EnumMember(Value = "Radar Scanner")] 
 		[XmlEnum("16")] 
 		RadarScanner = 16,
 
-		[System.ComponentModel.Description("A relatively tall, narrow structure that may either stand alone or may form part of another structure.")]
+		[Description("A relatively tall, narrow structure that may either stand alone or may form part of another structure.")]
 		[EnumMember(Value = "Tower")] 
 		[XmlEnum("17")] 
 		Tower = 17,
 
-		[System.ComponentModel.Description("A system of vanes attached to a tower and driven by wind (excluding wind turbines).")]
+		[Description("A system of vanes attached to a tower and driven by wind (excluding wind turbines).")]
 		[EnumMember(Value = "Windmill")] 
 		[XmlEnum("18")] 
 		Windmill = 18,
 
-		[System.ComponentModel.Description("A modern structure for the use of wind power.")]
+		[Description("A modern structure for the use of wind power.")]
 		[EnumMember(Value = "Windmotor")] 
 		[XmlEnum("19")] 
 		Windmotor = 19,
 
-		[System.ComponentModel.Description("A tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
+		[Description("A tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
 		[EnumMember(Value = "Spire/Minaret")] 
 		[XmlEnum("20")] 
 		SpireMinaret = 20,
 
-		[System.ComponentModel.Description("An isolated rocky formation or a single large stone.")]
+		[Description("An isolated rocky formation or a single large stone.")]
 		[EnumMember(Value = "Large Rock or Boulder on Land")] 
 		[XmlEnum("21")] 
 		LargeRockOrBoulderOnLand = 21,
 
-		[System.ComponentModel.Description("A recoverable point on the earth, whose geographic position has been determined by angular methods with geodetic instruments. A triangulation point is a selected point, which has been marked with a station mark, or it is a conspicuous natural or artificial feature.")]
+		[Description("A recoverable point on the earth, whose geographic position has been determined by angular methods with geodetic instruments. A triangulation point is a selected point, which has been marked with a station mark, or it is a conspicuous natural or artificial feature.")]
 		[EnumMember(Value = "Triangulation Mark")] 
 		[XmlEnum("22")] 
 		TriangulationMark = 22,
 
-		[System.ComponentModel.Description("A marker identifying the location of a surveyed boundary line.")]
+		[Description("A marker identifying the location of a surveyed boundary line.")]
 		[EnumMember(Value = "Boundary Mark")] 
 		[XmlEnum("23")] 
 		BoundaryMark = 23,
 
-		[System.ComponentModel.Description("Wheels with passenger cars mounted external to the rim and independently rotated by electric motors.")]
+		[Description("Wheels with passenger cars mounted external to the rim and independently rotated by electric motors.")]
 		[EnumMember(Value = "Observation Wheel")] 
 		[XmlEnum("24")] 
 		ObservationWheel = 24,
 
-		[System.ComponentModel.Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
+		[Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
 		[EnumMember(Value = "Torii")] 
 		[XmlEnum("25")] 
 		Torii = 25,
 
-		[System.ComponentModel.Description("(1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
+		[Description("(1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
 		[EnumMember(Value = "Bridge")] 
 		[XmlEnum("26")] 
 		Bridge = 26,
 
-		[System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
+		[Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
 		[EnumMember(Value = "Dam")] 
 		[XmlEnum("27")] 
 		Dam = 27,
@@ -3576,47 +3496,47 @@ namespace S100Framework.DomainModel.S201 {
 	/// The principal shape and/or design of a buoy.
 	/// </summary>
 	/// <remarks>
-	/// The principal shapes are those recommended in the International Association of Lighthouse Authorities - IALA System.
+	/// The principal shapes are those recommended in the International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA System.
 	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum buoyShape : int {
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
+		[Description("The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
 		[EnumMember(Value = "Conical")] 
 		[XmlEnum("1")] 
 		Conical = 1,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
+		[Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
 		[EnumMember(Value = "Can")] 
 		[XmlEnum("2")] 
 		Can = 2,
 
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
+		[Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
 		[EnumMember(Value = "Spherical")] 
 		[XmlEnum("3")] 
 		Spherical = 3,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
+		[Description("The upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
 		[EnumMember(Value = "Pillar")] 
 		[XmlEnum("4")] 
 		Pillar = 4,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
+		[Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
 		[EnumMember(Value = "Spar")] 
 		[XmlEnum("5")] 
 		Spar = 5,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
+		[Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
 		[EnumMember(Value = "Barrel")] 
 		[XmlEnum("6")] 
 		Barrel = 6,
 
-		[System.ComponentModel.Description("A very large buoy designed to carry a signal light of high luminous intensity at a high elevation.")]
+		[Description("A very large buoy designed to carry a signal light of high luminous intensity at a high elevation.")]
 		[EnumMember(Value = "Superbuoy")] 
 		[XmlEnum("7")] 
 		Superbuoy = 7,
 
-		[System.ComponentModel.Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
+		[Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
 		[EnumMember(Value = "Ice Buoy")] 
 		[XmlEnum("8")] 
 		IceBuoy = 8,
@@ -3628,17 +3548,17 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum visualProminence : int {
-		[System.ComponentModel.Description("Term applied to a feature either natural or artificial which is distinctly and notably visible from seaward.")]
+		[Description("Term applied to a feature either natural or artificial which is distinctly and notably visible from seaward.")]
 		[EnumMember(Value = "Visually Conspicuous")] 
 		[XmlEnum("1")] 
 		VisuallyConspicuous = 1,
 
-		[System.ComponentModel.Description("An object that may be visible from seaward, but cannot be used as a fixing mark and is not conspicuous.")]
+		[Description("An object that may be visible from seaward, but cannot be used as a fixing mark and is not conspicuous.")]
 		[EnumMember(Value = "Not Visually Conspicuous")] 
 		[XmlEnum("2")] 
 		NotVisuallyConspicuous = 2,
 
-		[System.ComponentModel.Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
+		[Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
 		[EnumMember(Value = "Prominent")] 
 		[XmlEnum("3")] 
 		Prominent = 3,
@@ -3650,207 +3570,212 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum status : int {
-		[System.ComponentModel.Description("Intended to last or function indefinitely.")]
+		[Description("Intended to last or function indefinitely.")]
 		[EnumMember(Value = "Permanent")] 
 		[XmlEnum("1")] 
 		Permanent = 1,
 
-		[System.ComponentModel.Description("Acting on special occasions; happening irregularly.")]
+		[Description("Acting on special occasions; happening irregularly.")]
 		[EnumMember(Value = "Occasional")] 
 		[XmlEnum("2")] 
 		Occasional = 2,
 
-		[System.ComponentModel.Description("Presented as worthy of confidence, acceptance, use, etc.")]
+		[Description("Presented as worthy of confidence, acceptance, use, etc.")]
 		[EnumMember(Value = "Recommended")] 
 		[XmlEnum("3")] 
 		Recommended = 3,
 
-		[System.ComponentModel.Description("Use has ceased, but the facility still exists intact; disused.")]
+		[Description("Use has ceased, but the facility still exists intact; disused.")]
 		[EnumMember(Value = "Not in Use")] 
 		[XmlEnum("4")] 
 		NotInUse = 4,
 
-		[System.ComponentModel.Description("Recurring at intervals.")]
+		[Description("Recurring at intervals.")]
 		[EnumMember(Value = "Periodic/Intermittent")] 
 		[XmlEnum("5")] 
 		PeriodicIntermittent = 5,
 
-		[System.ComponentModel.Description("Set apart for some specific use.")]
+		[Description("Set apart for some specific use.")]
 		[EnumMember(Value = "Reserved")] 
 		[XmlEnum("6")] 
 		Reserved = 6,
 
-		[System.ComponentModel.Description("Meant to last only for a time.")]
+		[Description("Meant to last only for a time.")]
 		[EnumMember(Value = "Temporary")] 
 		[XmlEnum("7")] 
 		Temporary = 7,
 
-		[System.ComponentModel.Description("Administered by an individual or corporation, rather than a State or a public body.")]
+		[Description("Administered by an individual or corporation, rather than a State or a public body.")]
 		[EnumMember(Value = "Private")] 
 		[XmlEnum("8")] 
 		Private = 8,
 
-		[System.ComponentModel.Description("Compulsory; enforced.")]
+		[Description("Compulsory; enforced.")]
 		[EnumMember(Value = "Mandatory")] 
 		[XmlEnum("9")] 
 		Mandatory = 9,
 
-		[System.ComponentModel.Description("No longer lit.")]
+		[Description("No longer lit.")]
 		[EnumMember(Value = "Extinguished")] 
 		[XmlEnum("11")] 
 		Extinguished = 11,
 
-		[System.ComponentModel.Description("Lit by floodlights, strip lights, etc.")]
+		[Description("Lit by floodlights, strip lights, etc.")]
 		[EnumMember(Value = "Illuminated")] 
 		[XmlEnum("12")] 
 		Illuminated = 12,
 
-		[System.ComponentModel.Description("Famous in history; of historical interest.")]
+		[Description("Famous in history; of historical interest.")]
 		[EnumMember(Value = "Historic")] 
 		[XmlEnum("13")] 
 		Historic = 13,
 
-		[System.ComponentModel.Description("Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.")]
+		[Description("Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.")]
 		[EnumMember(Value = "Public")] 
 		[XmlEnum("14")] 
 		Public = 14,
 
-		[System.ComponentModel.Description("Occur at a time, coincide in point of time, be contemporary or simultaneous.")]
+		[Description("Occur at a time, coincide in point of time, be contemporary or simultaneous.")]
 		[EnumMember(Value = "Synchronized")] 
 		[XmlEnum("15")] 
 		Synchronized = 15,
 
-		[System.ComponentModel.Description("Looked at or observed over a period of time especially so as to be aware of any movement or change.")]
+		[Description("Looked at or observed over a period of time especially so as to be aware of any movement or change.")]
 		[EnumMember(Value = "Watched")] 
 		[XmlEnum("16")] 
 		Watched = 16,
 
-		[System.ComponentModel.Description("Usually automatic in operation, without any permanently-stationed personnel to superintend it.")]
+		[Description("Usually automatic in operation, without any permanently-stationed personnel to superintend it.")]
 		[EnumMember(Value = "Unwatched")] 
 		[XmlEnum("17")] 
 		Unwatched = 17,
 
-		[System.ComponentModel.Description("A feature that has been reported but has not been definitely determined to exist.")]
+		[Description("A feature that has been reported but has not been definitely determined to exist.")]
 		[EnumMember(Value = "Existence Doubtful")] 
 		[XmlEnum("18")] 
 		ExistenceDoubtful = 18,
 
-		[System.ComponentModel.Description("When you ask for it.")]
+		[Description("When you ask for it.")]
 		[EnumMember(Value = "On Request")] 
 		[XmlEnum("19")] 
 		OnRequest = 19,
 
-		[System.ComponentModel.Description("To become lower in level.")]
+		[Description("To become lower in level.")]
 		[EnumMember(Value = "Drop Away")] 
 		[XmlEnum("20")] 
 		DropAway = 20,
 
-		[System.ComponentModel.Description("To become higher in level.")]
+		[Description("To become higher in level.")]
 		[EnumMember(Value = "Rising")] 
 		[XmlEnum("21")] 
 		Rising = 21,
 
-		[System.ComponentModel.Description("Becoming larger in magnitude.")]
+		[Description("Becoming larger in magnitude.")]
 		[EnumMember(Value = "Increasing")] 
 		[XmlEnum("22")] 
 		Increasing = 22,
 
-		[System.ComponentModel.Description("Becoming smaller in magnitude.")]
+		[Description("Becoming smaller in magnitude.")]
 		[EnumMember(Value = "Decreasing")] 
 		[XmlEnum("23")] 
 		Decreasing = 23,
 
-		[System.ComponentModel.Description("Not easily broken or destroyed.")]
+		[Description("Not easily broken or destroyed.")]
 		[EnumMember(Value = "Strong")] 
 		[XmlEnum("24")] 
 		Strong = 24,
 
-		[System.ComponentModel.Description("In a satisfactory condition to use.")]
+		[Description("In a satisfactory condition to use.")]
 		[EnumMember(Value = "Good")] 
 		[XmlEnum("25")] 
 		Good = 25,
 
-		[System.ComponentModel.Description("Fairly but not very.")]
+		[Description("Fairly but not very.")]
 		[EnumMember(Value = "Moderately")] 
 		[XmlEnum("26")] 
 		Moderately = 26,
 
-		[System.ComponentModel.Description("Not as good as it could be or should.")]
+		[Description("Not as good as it could be or should.")]
 		[EnumMember(Value = "Poor")] 
 		[XmlEnum("27")] 
 		Poor = 27,
 
-		[System.ComponentModel.Description("Marked by buoys.")]
+		[Description("Marked by buoys.")]
 		[EnumMember(Value = "Buoyed")] 
 		[XmlEnum("28")] 
 		Buoyed = 28,
 
-		[System.ComponentModel.Description("Entire observation platform is operating in accordance with, or exceeding, manufacturer specifications.")]
+		[Description("Entire observation platform is operating in accordance with, or exceeding, manufacturer specifications.")]
 		[EnumMember(Value = "Fully Operational")] 
 		[XmlEnum("29")] 
 		FullyOperational = 29,
 
-		[System.ComponentModel.Description("At least one instrument that is part of an observation platform is not operating to manufacturer specification.")]
+		[Description("At least one instrument that is part of an observation platform is not operating to manufacturer specification.")]
 		[EnumMember(Value = "Partially Operational")] 
 		[XmlEnum("30")] 
 		PartiallyOperational = 30,
 
-		[System.ComponentModel.Description("Floating platform at the mercy of environmental elements, whether intentional or not.")]
+		[Description("Floating platform at the mercy of environmental elements, whether intentional or not.")]
 		[EnumMember(Value = "Drifting")] 
 		[XmlEnum("31")] 
 		Drifting = 31,
 
-		[System.ComponentModel.Description("Fractured or in pieces.")]
+		[Description("Fractured or in pieces.")]
 		[EnumMember(Value = "Broken")] 
 		[XmlEnum("32")] 
 		Broken = 32,
 
-		[System.ComponentModel.Description("Observation platform is intentionally not reporting an environmental observation.")]
+		[Description("Observation platform is intentionally not reporting an environmental observation.")]
 		[EnumMember(Value = "Offline")] 
 		[XmlEnum("33")] 
 		Offline = 33,
 
-		[System.ComponentModel.Description("Observation station, suite of instruments, or an individual instrument, for a particular location, has been removed and is no longer at the particular location.")]
+		[Description("Observation station, suite of instruments, or an individual instrument, for a particular location, has been removed and is no longer at the particular location.")]
 		[EnumMember(Value = "Discontinued")] 
 		[XmlEnum("34")] 
 		Discontinued = 34,
 
-		[System.ComponentModel.Description("Observations made by a human observer.")]
+		[Description("Observations made by a human observer.")]
 		[EnumMember(Value = "Manual Observation")] 
 		[XmlEnum("35")] 
 		ManualObservation = 35,
 
-		[System.ComponentModel.Description("Status of an observation platform, suite of instruments, or individual instrument is not known or unspecified.")]
+		[Description("Status of an observation platform, suite of instruments, or individual instrument is not known or unspecified.")]
 		[EnumMember(Value = "Unknown Status")] 
 		[XmlEnum("36")] 
 		UnknownStatus = 36,
 
-		[System.ComponentModel.Description("Made certain as to truth, accuracy, validity, availability, etc.")]
+		[Description("Made certain as to truth, accuracy, validity, availability, etc.")]
 		[EnumMember(Value = "Confirmed")] 
 		[XmlEnum("37")] 
 		Confirmed = 37,
 
-		[System.ComponentModel.Description("Item selected for an action.")]
+		[Description("Item selected for an action.")]
 		[EnumMember(Value = "Candidate")] 
 		[XmlEnum("38")] 
 		Candidate = 38,
 
-		[System.ComponentModel.Description("Item that is in the process of being modified.")]
+		[Description("Item that is in the process of being modified.")]
 		[EnumMember(Value = "Under Modification")] 
 		[XmlEnum("39")] 
 		UnderModification = 39,
 
-		[System.ComponentModel.Description("Item in the process of being removed or deleted.")]
+		[Description("")]
+		[EnumMember(Value = "Experimental")] 
+		[XmlEnum("40")] 
+		Experimental = 40,
+
+		[Description("Item in the process of being removed or deleted.")]
 		[EnumMember(Value = "Under Removal / Deletion")] 
 		[XmlEnum("41")] 
 		UnderRemovalDeletion = 41,
 
-		[System.ComponentModel.Description("Item that has been removed or deleted.")]
+		[Description("Item that has been removed or deleted.")]
 		[EnumMember(Value = "Removed / Deleted")] 
 		[XmlEnum("42")] 
 		RemovedDeleted = 42,
 
-		[System.ComponentModel.Description("Item selected for modification.")]
+		[Description("Item selected for modification.")]
 		[EnumMember(Value = "Candidate for Modification")] 
 		[XmlEnum("43")] 
 		CandidateForModification = 43,
@@ -3862,72 +3787,72 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum natureOfConstruction : int {
-		[System.ComponentModel.Description("Constructed of stones or bricks, usually quarried, shaped, and mortared.")]
+		[Description("Constructed of stones or bricks, usually quarried, shaped, and mortared.")]
 		[EnumMember(Value = "Masonry")] 
 		[XmlEnum("1")] 
 		Masonry = 1,
 
-		[System.ComponentModel.Description("Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
+		[Description("Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
 		[EnumMember(Value = "Concreted")] 
 		[XmlEnum("2")] 
 		Concreted = 2,
 
-		[System.ComponentModel.Description("Constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
+		[Description("Constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
 		[EnumMember(Value = "Loose Boulders")] 
 		[XmlEnum("3")] 
 		LooseBoulders = 3,
 
-		[System.ComponentModel.Description("Constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
+		[Description("Constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
 		[EnumMember(Value = "Hard Surfaced")] 
 		[XmlEnum("4")] 
 		HardSurfaced = 4,
 
-		[System.ComponentModel.Description("Constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
+		[Description("Constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
 		[EnumMember(Value = "Unsurfaced")] 
 		[XmlEnum("5")] 
 		Unsurfaced = 5,
 
-		[System.ComponentModel.Description("Constructed from wood.")]
+		[Description("Constructed from wood.")]
 		[EnumMember(Value = "Wooden")] 
 		[XmlEnum("6")] 
 		Wooden = 6,
 
-		[System.ComponentModel.Description("Constructed from metal.")]
+		[Description("Constructed from metal.")]
 		[EnumMember(Value = "Metal")] 
 		[XmlEnum("7")] 
 		Metal = 7,
 
-		[System.ComponentModel.Description("Constructed from a plastic material strengthened with fibres of glass.")]
+		[Description("Constructed from a plastic material strengthened with fibres of glass.")]
 		[EnumMember(Value = "Glass Reinforced Plastic")] 
 		[XmlEnum("8")] 
 		GlassReinforcedPlastic = 8,
 
-		[System.ComponentModel.Description("The application of paint to some other construction or natural feature.")]
+		[Description("The application of paint to some other construction or natural feature.")]
 		[EnumMember(Value = "Painted")] 
 		[XmlEnum("9")] 
 		Painted = 9,
 
-		[System.ComponentModel.Description("Constructed from a lattice framework of, often diagonal, intersecting struts.")]
+		[Description("Constructed from a lattice framework of, often diagonal, intersecting struts.")]
 		[EnumMember(Value = "Framework")] 
 		[XmlEnum("10")] 
 		Framework = 10,
 
-		[System.ComponentModel.Description("A structure of crossed wooden or metal strips usually arranged to form a diagonal pattern of open spaces between the strips.")]
+		[Description("A structure of crossed wooden or metal strips usually arranged to form a diagonal pattern of open spaces between the strips.")]
 		[EnumMember(Value = "Latticed")] 
 		[XmlEnum("11")] 
 		Latticed = 11,
 
-		[System.ComponentModel.Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
+		[Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
 		[EnumMember(Value = "Glass")] 
 		[XmlEnum("12")] 
 		Glass = 12,
 
-		[System.ComponentModel.Description("Constructed from fiberglass.")]
+		[Description("Constructed from fiberglass.")]
 		[EnumMember(Value = "Fiberglass")] 
 		[XmlEnum("13")] 
 		Fiberglass = 13,
 
-		[System.ComponentModel.Description("Constructed from plastic.")]
+		[Description("Constructed from plastic.")]
 		[EnumMember(Value = "Plastic")] 
 		[XmlEnum("14")] 
 		Plastic = 14,
@@ -3939,47 +3864,47 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum marksNavigationalSystemOf : int {
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.")]
+		[Description("Navigational aids conform to the International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA A system.")]
 		[EnumMember(Value = "IALA A")] 
 		[XmlEnum("1")] 
 		IalaA = 1,
 
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA B system.")]
+		[Description("Navigational aids conform to the International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA B system.")]
 		[EnumMember(Value = "IALA B")] 
 		[XmlEnum("2")] 
 		IalaB = 2,
 
-		[System.ComponentModel.Description("Navigational aids do not conform to any defined system.")]
+		[Description("Navigational aids do not conform to any defined system.")]
 		[EnumMember(Value = "No System")] 
 		[XmlEnum("9")] 
 		NoSystem = 9,
 
-		[System.ComponentModel.Description("Navigational aids conform to a defined system other than International Association of Lighthouse Authorities - IALA.")]
+		[Description("Navigational aids conform to a defined system other than International Association of Marine Aids to Navigation and Lighthouse Authorities - IALA.")]
 		[EnumMember(Value = "Other System")] 
 		[XmlEnum("10")] 
 		OtherSystem = 10,
 
-		[System.ComponentModel.Description("CEVNI (European Code for Navigation on Inland Waterways) is the European code for rivers, canals land lakes in most of Europe.")]
+		[Description("CEVNI (European Code for Navigation on Inland Waterways) is the European code for rivers, canals land lakes in most of Europe.")]
 		[EnumMember(Value = "CEVNI")] 
 		[XmlEnum("11")] 
 		Cevni = 11,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Russian inland waterway regulations.")]
+		[Description("Navigational aids conform to the Russian inland waterway regulations.")]
 		[EnumMember(Value = "Russian Inland Waterway Regulations")] 
 		[XmlEnum("12")] 
 		RussianInlandWaterwayRegulations = 12,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Brazilian national inland waterway regulations for two sides.")]
+		[Description("Navigational aids conform to the Brazilian national inland waterway regulations for two sides.")]
 		[EnumMember(Value = "Brazilian National Inland Waterway Regulations - Two Sides")] 
 		[XmlEnum("13")] 
 		BrazilianNationalInlandWaterwayRegulationsTwoSides = 13,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Brazilian national inland waterway regulations - side independent.")]
+		[Description("Navigational aids conform to the Brazilian national inland waterway regulations - side independent.")]
 		[EnumMember(Value = "Brazilian National Inland Waterway Regulations - Side Independent")] 
 		[XmlEnum("14")] 
 		BrazilianNationalInlandWaterwayRegulationsSideIndependent = 14,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Brazilian complementary aids on the Paraguay-Parana waterway.")]
+		[Description("Navigational aids conform to the Brazilian complementary aids on the Paraguay-Parana waterway.")]
 		[EnumMember(Value = "Paraguay-Parana Waterway - Brazilian Complementary Aids")] 
 		[XmlEnum("15")] 
 		ParaguayParanaWaterwayBrazilianComplementaryAids = 15,
@@ -3991,47 +3916,47 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum colourPattern : int {
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented horizontally.")]
+		[Description("Straight bands or stripes of differing colours oriented horizontally.")]
 		[EnumMember(Value = "Horizontal Stripes")] 
 		[XmlEnum("1")] 
 		HorizontalStripes = 1,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented vertically.")]
+		[Description("Straight bands or stripes of differing colours oriented vertically.")]
 		[EnumMember(Value = "Vertical Stripes")] 
 		[XmlEnum("2")] 
 		VerticalStripes = 2,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented diagonally (that is, not horizontally or vertically).")]
+		[Description("Straight bands or stripes of differing colours oriented diagonally (that is, not horizontally or vertically).")]
 		[EnumMember(Value = "Diagonal Stripes")] 
 		[XmlEnum("3")] 
 		DiagonalStripes = 3,
 
-		[System.ComponentModel.Description("Often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
+		[Description("Often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
 		[EnumMember(Value = "Squared")] 
 		[XmlEnum("4")] 
 		Squared = 4,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented in an unknown direction.")]
+		[Description("Straight bands or stripes of differing colours oriented in an unknown direction.")]
 		[EnumMember(Value = "Stripes (Direction Unknown)")] 
 		[XmlEnum("5")] 
 		StripesDirectionUnknown = 5,
 
-		[System.ComponentModel.Description("A band or stripe of colour which is displayed around the outer edge of the object, which may also form a border to an inner pattern or plain colour.")]
+		[Description("A band or stripe of colour which is displayed around the outer edge of the object, which may also form a border to an inner pattern or plain colour.")]
 		[EnumMember(Value = "Border Stripe")] 
 		[XmlEnum("6")] 
 		BorderStripe = 6,
 
-		[System.ComponentModel.Description("One solid colour of uniform coverage.")]
+		[Description("One solid colour of uniform coverage.")]
 		[EnumMember(Value = "Single Colour")] 
 		[XmlEnum("7")] 
 		SingleColour = 7,
 
-		[System.ComponentModel.Description("A four-sided shape that is made up of two pairs of parallel lines and that has four right angles, on a different coloured background.")]
+		[Description("A four-sided shape that is made up of two pairs of parallel lines and that has four right angles, on a different coloured background.")]
 		[EnumMember(Value = "Rectangle")] 
 		[XmlEnum("8")] 
 		Rectangle = 8,
 
-		[System.ComponentModel.Description("A shape that is made up of three lines and three angles, on a different coloured background.")]
+		[Description("A shape that is made up of three lines and three angles, on a different coloured background.")]
 		[EnumMember(Value = "Triangle")] 
 		[XmlEnum("9")] 
 		Triangle = 9,
@@ -4043,102 +3968,102 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum colour : int {
-		[System.ComponentModel.Description("The achromatic object colour of greatest lightness characteristically perceived to belong to objects that reflect diffusely nearly all incident energy throughout the visible spectrum.")]
+		[Description("The achromatic object colour of greatest lightness characteristically perceived to belong to objects that reflect diffusely nearly all incident energy throughout the visible spectrum.")]
 		[EnumMember(Value = "White")] 
 		[XmlEnum("1")] 
 		White = 1,
 
-		[System.ComponentModel.Description("The achromatic color of least lightness characteristically perceived to belong to objects that neither reflect nor transmit light.")]
+		[Description("The achromatic color of least lightness characteristically perceived to belong to objects that neither reflect nor transmit light.")]
 		[EnumMember(Value = "Black")] 
 		[XmlEnum("2")] 
 		Black = 2,
 
-		[System.ComponentModel.Description("A color whose hue resembles that of blood or of the ruby or is that of the long-wave extreme of the visible spectrum.")]
+		[Description("A color whose hue resembles that of blood or of the ruby or is that of the long-wave extreme of the visible spectrum.")]
 		[EnumMember(Value = "Red")] 
 		[XmlEnum("3")] 
 		Red = 3,
 
-		[System.ComponentModel.Description("Of the color green.")]
+		[Description("Of the color green.")]
 		[EnumMember(Value = "Green")] 
 		[XmlEnum("4")] 
 		Green = 4,
 
-		[System.ComponentModel.Description("A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.")]
+		[Description("A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.")]
 		[EnumMember(Value = "Blue")] 
 		[XmlEnum("5")] 
 		Blue = 5,
 
-		[System.ComponentModel.Description("A color whose hue resembles that of ripe lemons or sunflowers or is that of the portion of the spectrum lying between green and orange.")]
+		[Description("A color whose hue resembles that of ripe lemons or sunflowers or is that of the portion of the spectrum lying between green and orange.")]
 		[EnumMember(Value = "Yellow")] 
 		[XmlEnum("6")] 
 		Yellow = 6,
 
-		[System.ComponentModel.Description("Of the color grey.")]
+		[Description("Of the color grey.")]
 		[EnumMember(Value = "Grey")] 
 		[XmlEnum("7")] 
 		Grey = 7,
 
-		[System.ComponentModel.Description("Any of a group of colors between red and yellow in hue, of medium to low lightness, and of moderate to low saturation.")]
+		[Description("Any of a group of colors between red and yellow in hue, of medium to low lightness, and of moderate to low saturation.")]
 		[EnumMember(Value = "Brown")] 
 		[XmlEnum("8")] 
 		Brown = 8,
 
-		[System.ComponentModel.Description("A variable color averaging a dark orange yellow.")]
+		[Description("A variable color averaging a dark orange yellow.")]
 		[EnumMember(Value = "Amber")] 
 		[XmlEnum("9")] 
 		Amber = 9,
 
-		[System.ComponentModel.Description("Any of a group of colors of reddish-blue hue, low lightness, and medium saturation.")]
+		[Description("Any of a group of colors of reddish-blue hue, low lightness, and medium saturation.")]
 		[EnumMember(Value = "Violet")] 
 		[XmlEnum("10")] 
 		Violet = 10,
 
-		[System.ComponentModel.Description("Any of a group of colors that are between red and yellow in hue.")]
+		[Description("Any of a group of colors that are between red and yellow in hue.")]
 		[EnumMember(Value = "Orange")] 
 		[XmlEnum("11")] 
 		Orange = 11,
 
-		[System.ComponentModel.Description("A deep purplish red.")]
+		[Description("A deep purplish red.")]
 		[EnumMember(Value = "Magenta")] 
 		[XmlEnum("12")] 
 		Magenta = 12,
 
-		[System.ComponentModel.Description("Any of a group of colors bluish red to red in hue, of medium to high lightness, and of low to moderate saturation.")]
+		[Description("Any of a group of colors bluish red to red in hue, of medium to high lightness, and of low to moderate saturation.")]
 		[EnumMember(Value = "Pink")] 
 		[XmlEnum("13")] 
 		Pink = 13,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Green A")] 
 		[XmlEnum("14")] 
 		GreenA = 14,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Green B")] 
 		[XmlEnum("15")] 
 		GreenB = 15,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "White Temporary")] 
 		[XmlEnum("16")] 
 		WhiteTemporary = 16,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Red Temporary")] 
 		[XmlEnum("17")] 
 		RedTemporary = 17,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Yellow Temporary")] 
 		[XmlEnum("18")] 
 		YellowTemporary = 18,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Green Preferred")] 
 		[XmlEnum("19")] 
 		GreenPreferred = 19,
 
-		[System.ComponentModel.Description("")]
+		[Description("-")]
 		[EnumMember(Value = "Green Temporary")] 
 		[XmlEnum("20")] 
 		GreenTemporary = 20,
@@ -4150,37 +4075,37 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum beaconShape : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.")]
+		[Description("An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.")]
 		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
 		[XmlEnum("1")] 
 		StakePolePerchPost = 1,
 
-		[System.ComponentModel.Description("A tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
+		[Description("A tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
 		[EnumMember(Value = "Withy")] 
 		[XmlEnum("2")] 
 		Withy = 2,
 
-		[System.ComponentModel.Description("A solid structure of the order of 10 metres in height used as a navigational aid.")]
+		[Description("A solid structure of the order of 10 metres in height used as a navigational aid.")]
 		[EnumMember(Value = "Beacon Tower")] 
 		[XmlEnum("3")] 
 		BeaconTower = 3,
 
-		[System.ComponentModel.Description("A structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
+		[Description("A structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
 		[EnumMember(Value = "Lattice Beacon")] 
 		[XmlEnum("4")] 
 		LatticeBeacon = 4,
 
-		[System.ComponentModel.Description("A long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
+		[Description("A long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
 		[EnumMember(Value = "Pile Beacon")] 
 		[XmlEnum("5")] 
 		PileBeacon = 5,
 
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
+		[Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
 		[EnumMember(Value = "Cairn")] 
 		[XmlEnum("6")] 
 		Cairn = 6,
 
-		[System.ComponentModel.Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
+		[Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
 		[EnumMember(Value = "Buoyant Beacon")] 
 		[XmlEnum("7")] 
 		BuoyantBeacon = 7,
@@ -4192,17 +4117,17 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum aidAvailabilityCategory : int {
-		[System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of vital navigational significance.")]
+		[Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of vital navigational significance.")]
 		[EnumMember(Value = "Category 1")] 
 		[XmlEnum("1")] 
 		Category1 = 1,
 
-		[System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of important navigational significance.")]
+		[Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of important navigational significance.")]
 		[EnumMember(Value = "Category 2")] 
 		[XmlEnum("2")] 
 		Category2 = 2,
 
-		[System.ComponentModel.Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of necessary navigational significance.")]
+		[Description("An AtoN or system of AtoN that is considered by the Competent Authority to be of necessary navigational significance.")]
 		[EnumMember(Value = "Category 3")] 
 		[XmlEnum("3")] 
 		Category3 = 3,
@@ -4217,27 +4142,27 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum condition : int {
-		[System.ComponentModel.Description("Being built but not yet capable of function.")]
+		[Description("Being built but not yet capable of function.")]
 		[EnumMember(Value = "Under Construction")] 
 		[XmlEnum("1")] 
 		UnderConstruction = 1,
 
-		[System.ComponentModel.Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
+		[Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
 		[EnumMember(Value = "Ruined")] 
 		[XmlEnum("2")] 
 		Ruined = 2,
 
-		[System.ComponentModel.Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
+		[Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
 		[EnumMember(Value = "Under Reclamation")] 
 		[XmlEnum("3")] 
 		UnderReclamation = 3,
 
-		[System.ComponentModel.Description("A windmill or wind turbine from which the vanes or turbine blades are missing.")]
+		[Description("A windmill or wind turbine from which the vanes or turbine blades are missing.")]
 		[EnumMember(Value = "Wingless")] 
 		[XmlEnum("4")] 
 		Wingless = 4,
 
-		[System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
+		[Description("Detailed planning has been completed but construction has not been initiated.")]
 		[EnumMember(Value = "Planned Construction")] 
 		[XmlEnum("5")] 
 		PlannedConstruction = 5,
@@ -4249,32 +4174,32 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfTemporalVariation : int {
-		[System.ComponentModel.Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
+		[Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
 		[EnumMember(Value = "Extreme Event")] 
 		[XmlEnum("1")] 
 		ExtremeEvent = 1,
 
-		[System.ComponentModel.Description("Continuous or frequent change (for example river siltation, sand waves, seasonal storms, icebergs, etc) that is likely to result in new significant shoaling.")]
+		[Description("Continuous or frequent change (for example river siltation, sand waves, seasonal storms, icebergs, etc) that is likely to result in new significant shoaling.")]
 		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
 		[XmlEnum("2")] 
 		LikelyToChangeAndSignificantShoalingExpected = 2,
 
-		[System.ComponentModel.Description("Continuous or frequent change (for example sand wave shift, seasonal storms, icebergs, etc) that is not likely to result in new significant shoaling.")]
+		[Description("Continuous or frequent change (for example sand wave shift, seasonal storms, icebergs, etc) that is not likely to result in new significant shoaling.")]
 		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
 		[XmlEnum("3")] 
 		LikelyToChangeButSignificantShoalingNotExpected = 3,
 
-		[System.ComponentModel.Description("Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).")]
+		[Description("Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).")]
 		[EnumMember(Value = "Likely to Change")] 
 		[XmlEnum("4")] 
 		LikelyToChange = 4,
 
-		[System.ComponentModel.Description("Significant change to the seafloor is not expected.")]
+		[Description("Significant change to the seafloor is not expected.")]
 		[EnumMember(Value = "Unlikely to Change")] 
 		[XmlEnum("5")] 
 		UnlikelyToChange = 5,
 
-		[System.ComponentModel.Description("Not having been assessed.")]
+		[Description("Not having been assessed.")]
 		[EnumMember(Value = "Unassessed")] 
 		[XmlEnum("6")] 
 		Unassessed = 6,
@@ -4286,67 +4211,67 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum atonCommissioning : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy establishment")] 
 		[XmlEnum("1")] 
 		BuoyEstablishment = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light establishment")] 
 		[XmlEnum("2")] 
 		LightEstablishment = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon establishment")] 
 		[XmlEnum("3")] 
 		BeaconEstablishment = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal establishment")] 
 		[XmlEnum("4")] 
 		AudibleSignalEstablishment = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal establishment")] 
 		[XmlEnum("5")] 
 		FogSignalEstablishment = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "AIS transmitter establishment")] 
 		[XmlEnum("6")] 
 		AisTransmitterEstablishment = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS establishment")] 
 		[XmlEnum("7")] 
 		VAisEstablishment = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON establishment")] 
 		[XmlEnum("8")] 
 		RaconEstablishment = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS station establishment")] 
 		[XmlEnum("9")] 
 		DgpsStationEstablishment = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN station establishment")] 
 		[XmlEnum("10")] 
 		EloranStationEstablishment = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGLONASS station establishment")] 
 		[XmlEnum("11")] 
 		DglonassStationEstablishment = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka station establishment")] 
 		[XmlEnum("12")] 
 		EChaykaStationEstablishment = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS establishment")] 
 		[XmlEnum("13")] 
 		EgnosEstablishment = 13,
@@ -4358,132 +4283,132 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum atonRemoval : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy removal")] 
 		[XmlEnum("1")] 
 		BuoyRemoval = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy temporary removal")] 
 		[XmlEnum("2")] 
 		BuoyTemporaryRemoval = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light removal")] 
 		[XmlEnum("3")] 
 		LightRemoval = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light temporary removal")] 
 		[XmlEnum("4")] 
 		LightTemporaryRemoval = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon removal")] 
 		[XmlEnum("5")] 
 		BeaconRemoval = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon temporary removal")] 
 		[XmlEnum("6")] 
 		BeaconTemporaryRemoval = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal removal")] 
 		[XmlEnum("7")] 
 		FogSignalRemoval = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal temporary removal")] 
 		[XmlEnum("8")] 
 		FogSignalTemporaryRemoval = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal removal")] 
 		[XmlEnum("9")] 
 		AudibleSignalRemoval = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal temporary removal")] 
 		[XmlEnum("10")] 
 		AudibleSignalTemporaryRemoval = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS removal")] 
 		[XmlEnum("11")] 
 		VAisRemoval = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS temporary removal")] 
 		[XmlEnum("12")] 
 		VAisTemporaryRemoval = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON signal removal")] 
 		[XmlEnum("13")] 
 		RaconSignalRemoval = 13,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON temporary removal")] 
 		[XmlEnum("14")] 
 		RaconTemporaryRemoval = 14,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS removal")] 
 		[XmlEnum("15")] 
 		DgpsRemoval = 15,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS temporary removal")] 
 		[XmlEnum("16")] 
 		DgpsTemporaryRemoval = 16,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS removal")] 
 		[XmlEnum("17")] 
 		EgnosRemoval = 17,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS temporary removal")] 
 		[XmlEnum("18")] 
 		EgnosTemporaryRemoval = 18,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "LORAN C station removal")] 
 		[XmlEnum("19")] 
 		LoranCStationRemoval = 19,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "LORAN C station temporary removal")] 
 		[XmlEnum("20")] 
 		LoranCStationTemporaryRemoval = 20,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN removal")] 
 		[XmlEnum("21")] 
 		EloranRemoval = 21,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN temporary removal")] 
 		[XmlEnum("22")] 
 		EloranTemporaryRemoval = 22,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Chayka station removal")] 
 		[XmlEnum("23")] 
 		ChaykaStationRemoval = 23,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Chayka station temporary removal")] 
 		[XmlEnum("24")] 
 		ChaykaStationTemporaryRemoval = 24,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka station removal")] 
 		[XmlEnum("25")] 
 		EChaykaStationRemoval = 25,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka station temporary removal")] 
 		[XmlEnum("26")] 
 		EChaykaStationTemporaryRemoval = 26,
@@ -4495,82 +4420,82 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum atonReplacement : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy change")] 
 		[XmlEnum("1")] 
 		BuoyChange = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy temporary change")] 
 		[XmlEnum("2")] 
 		BuoyTemporaryChange = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light change")] 
 		[XmlEnum("3")] 
 		LightChange = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light temporary change")] 
 		[XmlEnum("4")] 
 		LightTemporaryChange = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Sector light change")] 
 		[XmlEnum("5")] 
 		SectorLightChange = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Sector light temporary change")] 
 		[XmlEnum("6")] 
 		SectorLightTemporaryChange = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon change")] 
 		[XmlEnum("7")] 
 		BeaconChange = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon temporary change")] 
 		[XmlEnum("8")] 
 		BeaconTemporaryChange = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal change")] 
 		[XmlEnum("9")] 
 		FogSignalChange = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal temporary change")] 
 		[XmlEnum("10")] 
 		FogSignalTemporaryChange = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal change")] 
 		[XmlEnum("11")] 
 		AudibleSignalChange = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal temporary change")] 
 		[XmlEnum("12")] 
 		AudibleSignalTemporaryChange = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS change")] 
 		[XmlEnum("13")] 
 		VAisChange = 13,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS temporary change")] 
 		[XmlEnum("14")] 
 		VAisTemporaryChange = 14,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON signal change")] 
 		[XmlEnum("15")] 
 		RaconSignalChange = 15,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON temporary change")] 
 		[XmlEnum("16")] 
 		RaconTemporaryChange = 16,
@@ -4582,57 +4507,57 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum fixedAtonChange : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon missing")] 
 		[XmlEnum("1")] 
 		BeaconMissing = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon damaged")] 
 		[XmlEnum("2")] 
 		BeaconDamaged = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light beacon Unlit")] 
 		[XmlEnum("3")] 
 		LightBeaconUnlit = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light beacon Unreliable")] 
 		[XmlEnum("4")] 
 		LightBeaconUnreliable = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light beacon Not synchronized")] 
 		[XmlEnum("5")] 
 		LightBeaconNotSynchronized = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light beacon damaged")] 
 		[XmlEnum("6")] 
 		LightBeaconDamaged = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon topmark missing")] 
 		[XmlEnum("7")] 
 		BeaconTopmarkMissing = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon topmark damaged")] 
 		[XmlEnum("8")] 
 		BeaconTopmarkDamaged = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon daymark unreliable")] 
 		[XmlEnum("9")] 
 		BeaconDaymarkUnreliable = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Floodlit beacon Unlit")] 
 		[XmlEnum("10")] 
 		FloodlitBeaconUnlit = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Beacon restored to normal")] 
 		[XmlEnum("11")] 
 		BeaconRestoredToNormal = 11,
@@ -4644,132 +4569,132 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum floatingAtonChange : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy adrift")] 
 		[XmlEnum("1")] 
 		BuoyAdrift = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy damaged")] 
 		[XmlEnum("2")] 
 		BuoyDamaged = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy daymark unreliable")] 
 		[XmlEnum("3")] 
 		BuoyDaymarkUnreliable = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy destroyed")] 
 		[XmlEnum("4")] 
 		BuoyDestroyed = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy missing")] 
 		[XmlEnum("5")] 
 		BuoyMissing = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy move")] 
 		[XmlEnum("6")] 
 		BuoyMove = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy off position")] 
 		[XmlEnum("7")] 
 		BuoyOffPosition = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy re-establishment")] 
 		[XmlEnum("8")] 
 		BuoyReEstablishment = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy restored to normal")] 
 		[XmlEnum("9")] 
 		BuoyRestoredToNormal = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy topmark damaged")] 
 		[XmlEnum("10")] 
 		BuoyTopmarkDamaged = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy topmark missing")] 
 		[XmlEnum("11")] 
 		BuoyTopmarkMissing = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy will be withdrawn")] 
 		[XmlEnum("12")] 
 		BuoyWillBeWithdrawn = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Buoy withdrawn")] 
 		[XmlEnum("13")] 
 		BuoyWithdrawn = 13,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Decommissioned for winter")] 
 		[XmlEnum("14")] 
 		DecommissionedForWinter = 14,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Lifted for Winter")] 
 		[XmlEnum("15")] 
 		LiftedForWinter = 15,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light buoy Light damaged")] 
 		[XmlEnum("16")] 
 		LightBuoyLightDamaged = 16,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light buoy Light not synchronized")] 
 		[XmlEnum("17")] 
 		LightBuoyLightNotSynchronized = 17,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light buoy Light unlit")] 
 		[XmlEnum("18")] 
 		LightBuoyLightUnlit = 18,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light buoy Light unreliable")] 
 		[XmlEnum("19")] 
 		LightBuoyLightUnreliable = 19,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Marine Aids to Navigation unreliable")] 
 		[XmlEnum("20")] 
 		MarineAidsToNavigationUnreliable = 20,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Recommissioned for navigation season")] 
 		[XmlEnum("21")] 
 		RecommissionedForNavigationSeason = 21,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Replaced by Winter Spar")] 
 		[XmlEnum("22")] 
 		ReplacedByWinterSpar = 22,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Seasonal decommissioning complete")] 
 		[XmlEnum("23")] 
 		SeasonalDecommissioningComplete = 23,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Seasonal decommissioning in progress")] 
 		[XmlEnum("24")] 
 		SeasonalDecommissioningInProgress = 24,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Seasonal recommissioning complete")] 
 		[XmlEnum("25")] 
 		SeasonalRecommissioningComplete = 25,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Seasonal recommissioning in progress")] 
 		[XmlEnum("26")] 
 		SeasonalRecommissioningInProgress = 26,
@@ -4781,22 +4706,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum audibleSignalAtonChange : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal out of service")] 
 		[XmlEnum("1")] 
 		AudibleSignalOutOfService = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal out of service")] 
 		[XmlEnum("2")] 
 		FogSignalOutOfService = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Audible signal operating properly")] 
 		[XmlEnum("3")] 
 		AudibleSignalOperatingProperly = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Fog signal operating properly")] 
 		[XmlEnum("4")] 
 		FogSignalOperatingProperly = 4,
@@ -4808,122 +4733,122 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum lightedAtonChange : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light unlit")] 
 		[XmlEnum("1")] 
 		LightUnlit = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light unreliable")] 
 		[XmlEnum("2")] 
 		LightUnreliable = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light re-establishment")] 
 		[XmlEnum("3")] 
 		LightReEstablishment = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light range reduced")] 
 		[XmlEnum("4")] 
 		LightRangeReduced = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light without rhythm")] 
 		[XmlEnum("5")] 
 		LightWithoutRhythm = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light out of synchronization")] 
 		[XmlEnum("6")] 
 		LightOutOfSynchronization = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light daymark unreliable")] 
 		[XmlEnum("7")] 
 		LightDaymarkUnreliable = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Light operating properly")] 
 		[XmlEnum("8")] 
 		LightOperatingProperly = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Sector light Sector obscured")] 
 		[XmlEnum("9")] 
 		SectorLightSectorObscured = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range light Unlit")] 
 		[XmlEnum("10")] 
 		FrontLeadingRangeLightUnlit = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range light Unlit")] 
 		[XmlEnum("11")] 
 		RearLeadingRangeLightUnlit = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range light Unreliable")] 
 		[XmlEnum("12")] 
 		FrontLeadingRangeLightUnreliable = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range light Unreliable")] 
 		[XmlEnum("13")] 
 		RearLeadingRangeLightUnreliable = 13,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range light Light range reduced")] 
 		[XmlEnum("14")] 
 		FrontLeadingRangeLightLightRangeReduced = 14,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range light Light range reduced")] 
 		[XmlEnum("15")] 
 		RearLeadingRangeLightLightRangeReduced = 15,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range light without rhythm")] 
 		[XmlEnum("16")] 
 		FrontLeadingRangeLightWithoutRhythm = 16,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range light without rhythm")] 
 		[XmlEnum("17")] 
 		RearLeadingRangeLightWithoutRhythm = 17,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Leading/range lights out of synchronization")] 
 		[XmlEnum("18")] 
 		LeadingRangeLightsOutOfSynchronization = 18,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range beacon Unreliable")] 
 		[XmlEnum("19")] 
 		FrontLeadingRangeBeaconUnreliable = 19,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range beacon Unreliable")] 
 		[XmlEnum("20")] 
 		RearLeadingRangeBeaconUnreliable = 20,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range light is operating properly")] 
 		[XmlEnum("21")] 
 		FrontLeadingRangeLightIsOperatingProperly = 21,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range light is operating properly")] 
 		[XmlEnum("22")] 
 		RearLeadingRangeLightIsOperatingProperly = 22,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Front leading/range beacon restored to normal")] 
 		[XmlEnum("23")] 
 		FrontLeadingRangeBeaconRestoredToNormal = 23,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Rear leading/range beacon restored to normal")] 
 		[XmlEnum("24")] 
 		RearLeadingRangeBeaconRestoredToNormal = 24,
@@ -4935,152 +4860,152 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum electronicAtonChange : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "AIS transmitter out of service")] 
 		[XmlEnum("1")] 
 		AisTransmitterOutOfService = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "AIS transmitter unreliable")] 
 		[XmlEnum("2")] 
 		AisTransmitterUnreliable = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "AIS transmitter operating properly")] 
 		[XmlEnum("3")] 
 		AisTransmitterOperatingProperly = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS out of service")] 
 		[XmlEnum("4")] 
 		VAisOutOfService = 4,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS unreliable")] 
 		[XmlEnum("5")] 
 		VAisUnreliable = 5,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "V-AIS operating properly")] 
 		[XmlEnum("6")] 
 		VAisOperatingProperly = 6,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON out of service")] 
 		[XmlEnum("7")] 
 		RaconOutOfService = 7,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON unreliable")] 
 		[XmlEnum("8")] 
 		RaconUnreliable = 8,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "RACON operating properly")] 
 		[XmlEnum("9")] 
 		RaconOperatingProperly = 9,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS out of service")] 
 		[XmlEnum("10")] 
 		DgpsOutOfService = 10,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS operating properly")] 
 		[XmlEnum("11")] 
 		DgpsOperatingProperly = 11,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS unreliable")] 
 		[XmlEnum("12")] 
 		DgpsUnreliable = 12,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "LORAN C operating properly")] 
 		[XmlEnum("13")] 
 		LoranCOperatingProperly = 13,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "LORAN C unreliable")] 
 		[XmlEnum("14")] 
 		LoranCUnreliable = 14,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "LORAN C out of service")] 
 		[XmlEnum("15")] 
 		LoranCOutOfService = 15,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN operating properly")] 
 		[XmlEnum("16")] 
 		EloranOperatingProperly = 16,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN unreliable")] 
 		[XmlEnum("17")] 
 		EloranUnreliable = 17,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "eLORAN out of service")] 
 		[XmlEnum("18")] 
 		EloranOutOfService = 18,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGLOANSS operating properly")] 
 		[XmlEnum("19")] 
 		DgloanssOperatingProperly = 19,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGLOANSS unreliable")] 
 		[XmlEnum("20")] 
 		DgloanssUnreliable = 20,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGLOANSS out of service")] 
 		[XmlEnum("21")] 
 		DgloanssOutOfService = 21,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Chayka operating properly")] 
 		[XmlEnum("22")] 
 		ChaykaOperatingProperly = 22,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Chayka unreliable")] 
 		[XmlEnum("23")] 
 		ChaykaUnreliable = 23,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "Chayka out of service")] 
 		[XmlEnum("24")] 
 		ChaykaOutOfService = 24,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka operating properly")] 
 		[XmlEnum("25")] 
 		EChaykaOperatingProperly = 25,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka unreliable")] 
 		[XmlEnum("26")] 
 		EChaykaUnreliable = 26,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "e-Chayka out of service")] 
 		[XmlEnum("27")] 
 		EChaykaOutOfService = 27,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS operating properly")] 
 		[XmlEnum("28")] 
 		EgnosOperatingProperly = 28,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS unreliable")] 
 		[XmlEnum("29")] 
 		EgnosUnreliable = 29,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "EGNOS out of service")] 
 		[XmlEnum("30")] 
 		EgnosOutOfService = 30,
@@ -5092,22 +5017,22 @@ namespace S100Framework.DomainModel.S201 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum positioningEquipment : int {
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "DGPS Receiver")] 
 		[XmlEnum("1")] 
 		DgpsReceiver = 1,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "GLONASS Receiver")] 
 		[XmlEnum("2")] 
 		GlonassReceiver = 2,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "GPS Receiver")] 
 		[XmlEnum("3")] 
 		GpsReceiver = 3,
 
-		[System.ComponentModel.Description(".")]
+		[Description(".")]
 		[EnumMember(Value = "GPS/WAAS Receiver")] 
 		[XmlEnum("4")] 
 		GpsWaasReceiver = 4,
@@ -6249,9 +6174,9 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
-			[XmlElement("sectorExtension")]
+			[XmlElement("sectorArcExtension")]
 			[Optional]
-			public Boolean? sectorExtension {get;set;} = default;
+			public Boolean? sectorArcExtension {get;set;} = default;
 
 			#region ShouldSerialize
 			public bool ShouldSerializecolour() { return colour.Any(); }
@@ -6266,7 +6191,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
 
-			public bool ShouldSerializesectorExtension() { return sectorExtension.HasValue; }
+			public bool ShouldSerializesectorArcExtension() { return sectorArcExtension.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6317,10 +6242,6 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(0, 10)]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
-			[XmlElement("candela")]
-			[Optional]
-			public double? candela {get;set;} = default;
-
 			#region ShouldSerialize
 			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
@@ -6329,8 +6250,6 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
-
-			public bool ShouldSerializecandela() { return candela.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6352,91 +6271,85 @@ namespace S100Framework.DomainModel.S201 {
 
 	}
 	public enum Role {
-		[System.ComponentModel.Description("-")]
-		Atonpart,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		Statuspart,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		buoyPart,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		topmarkPart,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		parent,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		child,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		physicalAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		physicalAISbroadcasts,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		syntheticAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		syntheticAISbroadcasts,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		virtualAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		virtualAISbroadcasts,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		buoyattached,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		counterWeightholds,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		buoyhangs,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		bridleholds,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToCableconnectedTo,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToCableconnected,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		swivelattached,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		bridleattached,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		cableholds,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToBridleconnected,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToBridleconnectedTo,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToBuoyconnected,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToBuoyconnectedTo,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToSwivelconnected,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToSwivelconnectedTo,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToAnchorconnectedTo,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		shackleToAnchorconnected,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		bridlehangs,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		swivelholds,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		peerAtonAggregation,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		atonAggregationBy,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		peerAtonAssociation,
-		[System.ComponentModel.Description("TBD")]
+		[Description("TBD")]
 		atonAssociationBy,
-		[System.ComponentModel.Description("The role given to the navigable part of the navigation line.")]
+		[Description("The role given to the navigable part of the navigation line.")]
 		navigableTrack,
-		[System.ComponentModel.Description("The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.")]
+		[Description("The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.")]
 		navigationLine,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		fixingMethod,
-		[System.ComponentModel.Description("-")]
-		fixedBy,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		positioningMethod,
-		[System.ComponentModel.Description("-")]
-		positionedBy,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		danger,
-		[System.ComponentModel.Description("-")]
+		[Description("-")]
 		markingAton,
 	}
 
@@ -7798,11 +7711,6 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericLight : Equipment {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
-			[Multiplicity(1)]
-			public List<colour> colour {get;set;} = [];
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
@@ -7813,7 +7721,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -7831,8 +7739,6 @@ namespace S100Framework.DomainModel.S201 {
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			public bool ShouldSerializestatus() { return status.Any(); }
@@ -7847,10 +7753,6 @@ namespace S100Framework.DomainModel.S201 {
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
 			[JsonIgnore]
 			[XmlElement("status")]
 			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
@@ -7929,7 +7831,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -8068,13 +7970,13 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+		/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[EnumerationValue([1,2,3,4])]
 			[Mandatory]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
@@ -8136,13 +8038,13 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+		/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[EnumerationValue([1,2,3,4])]
 			[Mandatory]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
@@ -8318,7 +8220,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -8447,6 +8349,11 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : GenericLight {
 			[XmlIgnore]
+			[EnumerationValue([1,3,4,5,6,9,10,11,14,15,16,17,18,19,20])]
+			[Multiplicity(1)]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
@@ -8459,7 +8366,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
-			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
@@ -8476,11 +8383,13 @@ namespace S100Framework.DomainModel.S201 {
 
 
 			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
 			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.Any(); }
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
@@ -8491,6 +8400,10 @@ namespace S100Framework.DomainModel.S201 {
 
 			#region SerializableEnumeration
 			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
 			[XmlElement("categoryOfLight")]
 			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
 
@@ -8500,7 +8413,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			[JsonIgnore]
 			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>[] marksNavigationalSystemOfElement { get { return [.. marksNavigationalSystemOf]; } set { } }
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("signalGeneration")]
@@ -8560,6 +8473,11 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : GenericLight {
 			[XmlIgnore]
+			[EnumerationValue([1,3,4,5,6,9,10,11,14,15,16,17,18,19,20])]
+			[Multiplicity(1)]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
 			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
@@ -8567,7 +8485,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
-			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
+			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
@@ -8608,9 +8526,11 @@ namespace S100Framework.DomainModel.S201 {
 
 
 			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
-			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
 
@@ -8629,12 +8549,16 @@ namespace S100Framework.DomainModel.S201 {
 
 			#region SerializableEnumeration
 			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
 			[XmlElement("categoryOfLight")]
 			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("exhibitionConditionOfLight")]
-			public SerializableEnumeration<exhibitionConditionOfLight>[] exhibitionConditionOfLightElement { get { return [.. exhibitionConditionOfLight]; } set { } }
+			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("lightVisibility")]
@@ -8704,20 +8628,12 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
+			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
-
-			[XmlElement("valueOfGeographicRange")]
-			[Optional]
-			public double? valueOfGeographicRange {get;set;} = default;
-
-			[XmlElement("valueOfLuminousRange")]
-			[Optional]
-			public double? valueOfLuminousRange {get;set;} = default;
 
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
@@ -8739,13 +8655,9 @@ namespace S100Framework.DomainModel.S201 {
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
 
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
-
-			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
-
-			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -8757,7 +8669,7 @@ namespace S100Framework.DomainModel.S201 {
 			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("exhibitionConditionOfLight")]
-			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
+			public SerializableEnumeration<exhibitionConditionOfLight>[] exhibitionConditionOfLightElement { get { return [.. exhibitionConditionOfLight]; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("lightVisibility")]
@@ -8900,7 +8812,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -9259,7 +9171,7 @@ namespace S100Framework.DomainModel.S201 {
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
-					upper =  default,
+					upper =  1,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcastBy)!,
 					featureTypes = [nameof(VirtualAISAidToNavigation)],
@@ -9293,7 +9205,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Daymark : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67])]
 			[Optional]
 			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
 
@@ -9335,7 +9247,7 @@ namespace S100Framework.DomainModel.S201 {
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -9479,7 +9391,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -9744,7 +9656,7 @@ namespace S100Framework.DomainModel.S201 {
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
-					upper =  1,
+					upper =  default,
 					association = nameof(VirtualAIS),
 					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
 					featureTypes = [nameof(RadioStation)],
@@ -9819,7 +9731,7 @@ namespace S100Framework.DomainModel.S201 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 1,
+					lower = 0,
 					upper =  default,
 					association = nameof(PhysicalAIS),
 					role = Enum.GetName<Role>(Role.physicalAISbroadcasts)!,
@@ -9904,7 +9816,7 @@ namespace S100Framework.DomainModel.S201 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 1,
+					lower = 0,
 					upper =  default,
 					association = nameof(SyntheticAIS),
 					role = Enum.GetName<Role>(Role.syntheticAISbroadcasts)!,
@@ -10010,7 +9922,7 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+		/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -10139,7 +10051,7 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+		/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -10868,7 +10780,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -11043,7 +10955,7 @@ namespace S100Framework.DomainModel.S201 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -11195,7 +11107,7 @@ namespace S100Framework.DomainModel.S201 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -12152,7 +12064,7 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A safe water beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A safe water beacon may be used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+		/// A safe water beacon is used to indicate that there is navigable water around the mark.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -12213,13 +12125,13 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Beacon in general: A beacon whose appearance or purpose is not adequately known.
+		/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
@@ -12281,7 +12193,7 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A safe water buoy is used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+		/// A safe water buoy is used to indicate that there is navigable water around the mark.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -12342,13 +12254,13 @@ namespace S100Framework.DomainModel.S201 {
 		}
 
 		/// <summary>
-		/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Buoy in general: A buoy whose appearance or purpose is not adequately known.
+		/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 

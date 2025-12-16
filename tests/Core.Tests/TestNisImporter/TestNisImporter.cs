@@ -251,7 +251,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t\tif (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))");
                 csSubtypes.AppendLine($"\t\t\tthrow new NotSupportedException($\"Unknown subtype for {{current.TableName}}, {{current.FCSUBTYPE.Value}}\");");
 
-                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
+                csSubtypes.AppendLine($"\t\t\tinstance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);");
                 csSubtypes.AppendLine($"\t\t\t}}");
 
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
@@ -551,7 +551,7 @@ namespace TestNisImporter
             var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
             var source = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(sourcePath))));
 
-            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\S57EsriAuto.cs"));
+            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\S57EsriAuto.cs"));
             StringBuilder csFile = new StringBuilder();
 
             List<Dataset> datasets = new List<Dataset>();
@@ -585,11 +585,11 @@ namespace TestNisImporter
 
                     if (dataset is FeatureClass) {
                         datasetfields = ((FeatureClass)dataset).GetDefinition().GetFields();
-                        ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Feature feature) {{");
+                        ctor.AppendLine($"\t\tpublic {dataset.GetName()}(Feature feature) {{");
                     }
                     else if (dataset is Table) {
                         datasetfields = ((Table)dataset).GetDefinition().GetFields();
-                        ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
+                        ctor.AppendLine($"\t\tpublic {dataset.GetName()}(Row row) {{");
                     }
 
                     ctor.AppendLine($"\t\t\tbase.TableName = \"{datasetName}\";");
@@ -607,7 +607,8 @@ namespace TestNisImporter
                             (FieldType)esriFieldType.esriFieldTypeInteger => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeString => (Type: "internal string?", Conversion: "Convert.ToString", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeSmallInteger => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
-                            (FieldType)esriFieldType.esriFieldTypeDouble => (Type: "internal decimal?", Conversion: "Convert.ToDecimal", Default: "default", Alias: field.AliasName),
+                            //(FieldType)esriFieldType.esriFieldTypeDouble => (Type: "internal decimal?", Conversion: "Convert.ToDecimal", Default: "default", Alias: field.AliasName),
+                            (FieldType)esriFieldType.esriFieldTypeDouble => (Type: "internal double?", Conversion: "Convert.ToDouble", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeSingle => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeDate => (Type: "internal DateTime?", Conversion: "Convert.ToDateTime", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeGUID => (Type: "internal Guid", Conversion: "Guid.Parse", Default: "Guid.Empty", Alias: field.AliasName),
@@ -684,6 +685,9 @@ namespace TestNisImporter
                             }
                             if (field.Name.ToUpper() == "PLTS_COMP_SCALE") {
                                 ctor.AppendLine($"\t\t\t\tbase.PLTS_COMP_SCALE = this.PLTS_COMP_SCALE.Value;");
+                            }
+                            if (field.Name.ToUpper() == "SCAMIN_STEP") {
+                                ctor.AppendLine($"\t\t\t\tbase.SCAMIN_STEP = this.SCAMIN_STEP.Value;");
                             }
                             if (field.Name.ToUpper() == "FCSUBTYPE") {
                                 ctor.AppendLine($"\t\t\t\tbase.FcSubtype = this.FCSUBTYPE.Value;");

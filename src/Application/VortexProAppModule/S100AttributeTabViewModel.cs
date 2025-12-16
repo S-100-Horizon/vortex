@@ -484,10 +484,13 @@ namespace VortexProAppModule
         }
 
         private async void OnFeatureBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
+            var propertyName = e.PropertyName;
+
             await QueuedTask.Run(() => {
                 var updated = false;
 
-                if (sender is FeatureViewModel viewModel) {
+                if (sender is FeatureViewModel viewModel) {                    
+                    //var featureBindings = (Collection<featureBindingViewModel>)viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
                     var featureBindings = viewModel.featureBindings;
 
                     var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);

@@ -83,6 +83,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			"HarbourAreaAdministrative" => new HarbourAreaAdministrativeViewModel { Name = name },
 			"HarbourAreaSection" => new HarbourAreaSectionViewModel { Name = name },
 			"HarbourBasin" => new HarbourBasinViewModel { Name = name },
+			"HarbourFacility" => new HarbourFacilityViewModel { Name = name },
 			"LockBasin" => new LockBasinViewModel { Name = name },
 			"LockBasinPart" => new LockBasinPartViewModel { Name = name },
 			"MooringBuoy" => new MooringBuoyViewModel { Name = name },
@@ -147,12 +148,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A bearing is the direction one object is from another object.
 	/// </summary>
+	[Description("A bearing is the direction one object is from another object.")]
 	[CategoryOrder("bearingInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class bearingInformationViewModel : ComplexViewModel<bearingInformation> {
 		private cardinalDirection? _cardinalDirection  = default;
 
+		[Description("Principal and intermediate compass points.")]
 		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public cardinalDirection? cardinalDirection {
@@ -169,6 +172,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _distance  = default;
 
+		[Description("A numeric measure of the spatial separation between two locations.")]
 		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? distance {
@@ -180,11 +184,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[ExpandableObject]
 		[Optional]
 		public orientationViewModel? orientation {
@@ -243,10 +249,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Description of services related to the goods or items carried by vessels.
 	/// </summary>
+	[Description("Description of services related to the goods or items carried by vessels.")]
 	[CategoryOrder("cargoServicesDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class cargoServicesDescriptionViewModel : ComplexViewModel<cargoServicesDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -285,12 +293,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.
 	/// </summary>
+	[Description("A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.")]
 	[CategoryOrder("constructionInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class constructionInformationViewModel : ComplexViewModel<constructionInformation> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -304,6 +314,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private condition? _condition  = default;
 
+		[Description("The various conditions of buildings and other constructions.")]
 		[Editor(typeof(Editors.HorizonEditor<constructionInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public condition? condition {
@@ -320,6 +331,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _development  = string.Empty;
 
+		[Description("Describes a feature that is in development.")]
 		[Editor(typeof(Editors.HorizonEditor<constructionInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String development {
@@ -333,6 +345,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Editor(typeof(Editors.HorizonEditor<constructionInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? locationByText {
@@ -344,6 +357,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -397,15 +411,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
+	[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
+		[Description("Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.")]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 
 		private String? _cityName  = default;
 
+		[Description("The name of a town or city.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? cityName {
@@ -419,6 +436,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _administrativeDivision  = default;
 
+		[Description("A generic term for an administrative region within a country at a level below that of the sovereign state.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? administrativeDivision {
@@ -432,6 +450,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _countryName  = default;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
@@ -445,6 +464,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _postalCode  = default;
 
+		[Description("Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.")]
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? postalCode {
@@ -503,12 +523,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Textual description of the characteristics and notable matters pertaining to depths in an area.
 	/// </summary>
+	[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 	[CategoryOrder("depthsDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class depthsDescriptionViewModel : ComplexViewModel<depthsDescription> {
 		private categoryOfDepthsDescription _categoryOfDepthsDescription  = default;
 
+		[Description("Classification of significant aspects of depths about which information is provided.")]
 		[Editor(typeof(Editors.HorizonEditor<depthsDescription>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public categoryOfDepthsDescription categoryOfDepthsDescription {
@@ -523,6 +545,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfDepthsDescription[] categoryOfDepthsDescriptionList => [(categoryOfDepthsDescription)1,(categoryOfDepthsDescription)2,(categoryOfDepthsDescription)3];
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -564,10 +587,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Textual description of the layout of port facilities.
 	/// </summary>
+	[Description("Textual description of the layout of port facilities.")]
 	[CategoryOrder("facilitiesLayoutDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class facilitiesLayoutDescriptionViewModel : ComplexViewModel<facilitiesLayoutDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -606,12 +631,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
+	[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -625,6 +652,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -638,6 +666,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private nameUsage? _nameUsage  = default;
 
+		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public nameUsage? nameUsage {
@@ -683,12 +712,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
+	[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -703,6 +734,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -743,67 +775,75 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
+	[Description("A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.")]
 	[CategoryOrder("frequencyPair",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
-		[Optional]
-		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
+		private int? _frequencyShoreStationReceives  = default;
 
+		[Description("The shore station receiver frequency.")]
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
+		public int? frequencyShoreStationReceives {
+			get {
+				return _frequencyShoreStationReceives;
+			}
+			set {
+				SetValue(ref _frequencyShoreStationReceives, value);
+			}
+		}
+
+		private int _frequencyShoreStationTransmits  = default;
+
+		[Description("The shore station transmitter frequency.")]
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
+		[Mandatory]
+		public int frequencyShoreStationTransmits {
+			get {
+				return _frequencyShoreStationTransmits;
+			}
+			set {
+				SetValue(ref _frequencyShoreStationTransmits, value);
+			}
+		}
 
 
 		public frequencyPairViewModel Load(frequencyPair instance) {
-			frequencyShoreStationTransmits.Clear();
-			if (instance.frequencyShoreStationTransmits is not null) {
-				foreach(var e in instance.frequencyShoreStationTransmits)
-					frequencyShoreStationTransmits.Add(e);
-			}
-			frequencyShoreStationReceives.Clear();
-			if (instance.frequencyShoreStationReceives is not null) {
-				foreach(var e in instance.frequencyShoreStationReceives)
-					frequencyShoreStationReceives.Add(e);
-			}
+			frequencyShoreStationReceives = instance.frequencyShoreStationReceives;
+			frequencyShoreStationTransmits = instance.frequencyShoreStationTransmits;
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new frequencyPair {
-				frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
-				frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
+				frequencyShoreStationReceives = this.frequencyShoreStationReceives,
+				frequencyShoreStationTransmits = this.frequencyShoreStationTransmits,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public frequencyPair Model => new () {
-			frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
-			frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
+			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
+			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
 		};
 
 		public override string? ToString() => $"Frequency Pair";
-
-		public frequencyPairViewModel() : base() {
-			frequencyShoreStationTransmits.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(frequencyShoreStationTransmits));
-			};
-			frequencyShoreStationReceives.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(frequencyShoreStationReceives));
-			};
-		}
 	}
 
 
 	/// <summary>
 	/// General information about the port or harbour area.
 	/// </summary>
+	[Description("General information about the port or harbour area.")]
 	[CategoryOrder("generalHarbourInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class generalHarbourInformationViewModel : ComplexViewModel<generalHarbourInformation> {
 		private generalPortDescriptionViewModel? _generalPortDescription  = default;
 
+		[Description("General, introductory information about the port.")]
 		[ExpandableObject]
 		[Optional]
 		public generalPortDescriptionViewModel? generalPortDescription {
@@ -817,6 +857,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription  = default;
 
+		[Description("Textual description of the layout of port facilities.")]
 		[ExpandableObject]
 		[Optional]
 		public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
@@ -830,6 +871,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private limitsDescriptionViewModel? _limitsDescription  = default;
 
+		[Description("Description of the area covered by the information specified.")]
 		[ExpandableObject]
 		[Optional]
 		public limitsDescriptionViewModel? limitsDescription {
@@ -843,6 +885,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private constructionInformationViewModel? _constructionInformation  = default;
 
+		[Description("A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.")]
 		[ExpandableObject]
 		[Optional]
 		public constructionInformationViewModel? constructionInformation {
@@ -856,6 +899,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private cargoServicesDescriptionViewModel? _cargoServicesDescription  = default;
 
+		[Description("Description of services related to the goods or items carried by vessels.")]
 		[ExpandableObject]
 		[Optional]
 		public cargoServicesDescriptionViewModel? cargoServicesDescription {
@@ -867,6 +911,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Links for relevant weather related information.")]
 		[Optional]
 		public ObservableCollection<weatherResourceViewModel> weatherResource  { get; set; } = new ();
 
@@ -935,10 +980,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// General, introductory information about the port.
 	/// </summary>
+	[Description("General, introductory information about the port.")]
 	[CategoryOrder("generalPortDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class generalPortDescriptionViewModel : ComplexViewModel<generalPortDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -977,15 +1024,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
+	[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 	[CategoryOrder("graphic",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
+		[Description("Indicates whether a pictorial representation of the feature is available.")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 
 		private String? _pictureCaption  = default;
 
+		[Description("Short description of the purpose of the image.")]
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictureCaption {
@@ -999,6 +1049,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private DateOnly? _sourceDate  = default;
 
+		[Description("The production date of the source; for example the date of measurement.")]
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
@@ -1012,6 +1063,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _pictureInformation  = default;
 
+		[Description("A set of information to provide credits to picture creator, copyright owner etc.")]
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictureInformation {
@@ -1025,6 +1077,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private bearingInformationViewModel? _bearingInformation  = default;
 
+		[Description("A bearing is the direction one object is from another object.")]
 		[ExpandableObject]
 		[Optional]
 		public bearingInformationViewModel? bearingInformation {
@@ -1086,12 +1139,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
+	[Description("The best estimate of the accuracy of a position.")]
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
@@ -1105,6 +1160,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -1144,12 +1200,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
+	[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Description("The location of a fragment of text or other information in a support file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
@@ -1163,6 +1221,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _fileReference  = default;
 
+		[Description("The file name of an externally referenced text file.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
@@ -1174,11 +1233,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 
 		private String? _language  = default;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
@@ -1192,6 +1253,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _text  = default;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
@@ -1250,10 +1312,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Textual description of selected landmarks that have significance in an area.
 	/// </summary>
+	[Description("Textual description of selected landmarks that have significance in an area.")]
 	[CategoryOrder("landmarkDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class landmarkDescriptionViewModel : ComplexViewModel<landmarkDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1292,10 +1356,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Description of the area covered by the information specified.
 	/// </summary>
+	[Description("Description of the area covered by the information specified.")]
 	[CategoryOrder("limitsDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class limitsDescriptionViewModel : ComplexViewModel<limitsDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1334,10 +1400,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.
 	/// </summary>
+	[Description("A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.")]
 	[CategoryOrder("majorLightDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class majorLightDescriptionViewModel : ComplexViewModel<majorLightDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1376,10 +1444,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Description of the aids to navigation used to mark an area or object.
 	/// </summary>
+	[Description("Description of the aids to navigation used to mark an area or object.")]
 	[CategoryOrder("markedBy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class markedByViewModel : ComplexViewModel<markedBy> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1418,10 +1488,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Description of aids to navigation or prominent marks located away from the shore.
 	/// </summary>
+	[Description("Description of aids to navigation or prominent marks located away from the shore.")]
 	[CategoryOrder("offshoreMarkDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class offshoreMarkDescriptionViewModel : ComplexViewModel<offshoreMarkDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1460,12 +1532,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
+	[Description("Information about online sources from which a resource or data can be obtained.")]
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String _linkage  = string.Empty;
 
+		[Description("Location (address) for online access using a URL/URI address or similar addressing scheme.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String linkage {
@@ -1479,6 +1553,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _protocol  = default;
 
+		[Description("Connection protocol to be used. Example: ftp, http get KVP, http POST, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocol {
@@ -1492,6 +1567,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _applicationProfile  = default;
 
+		[Description("Name of an application profile that can be used with the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? applicationProfile {
@@ -1505,6 +1581,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _nameOfResource  = default;
 
+		[Description("Name of the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nameOfResource {
@@ -1518,6 +1595,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _onlineResourceDescription  = default;
 
+		[Description("Detailed text description of what the online resource is/does.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? onlineResourceDescription {
@@ -1531,6 +1609,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private onlineFunction? _onlineFunction  = default;
 
+		[Description("Code for function performed by the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public onlineFunction? onlineFunction {
@@ -1547,6 +1626,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _protocolRequest  = default;
 
+		[Description("Request used to access the resource. Structure and content depend on the protocol and standard used by the online resource, such as Web Feature Service standard.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocolRequest {
@@ -1601,12 +1681,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
+	[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
@@ -1620,6 +1702,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double _orientationValue  = default;
 
+		[Description("The angular distance measured from true north to the major axis of the feature.")]
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double orientationValue {
@@ -1659,12 +1742,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
+	[Description("The active period of a recurring event or occurrence.")]
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateStart  = string.Empty;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -1679,6 +1764,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _dateEnd  = string.Empty;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -1719,12 +1805,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
+	[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 	[CategoryOrder("rxNCode",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rxNCodeViewModel : ComplexViewModel<rxNCode> {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
+		[Description("The principal subject matter of regulations, restrictions, recommendations or nautical information.")]
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfRxN? categoryOfRxN {
@@ -1741,6 +1829,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private actionOrActivity? _actionOrActivity  = default;
 
+		[Description("The action or activity of a vessel.")]
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public actionOrActivity? actionOrActivity {
@@ -1755,6 +1844,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 
+		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 
@@ -1799,12 +1889,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
+	[Description("The nature and timings of a daily schedule by days of the week.")]
 	[CategoryOrder("scheduleByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class scheduleByDayOfWeekViewModel : ComplexViewModel<scheduleByDayOfWeek> {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
+		[Description("The type of schedule, for instance opening, closure, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
@@ -1819,12 +1911,28 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
+		private String? _text  = default;
+
+		[Description("A non-formatted digital text string.")]
+		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
+		[Optional]
+		public String? text {
+			get {
+				return _text;
+			}
+			set {
+				SetValue(ref _text, value);
+			}
+		}
+
+		[Description("The regular weekly operation times of a service or schedule.")]
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
 		public scheduleByDayOfWeekViewModel Load(scheduleByDayOfWeek instance) {
 			categoryOfSchedule = instance.categoryOfSchedule;
+			text = instance.text;
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
@@ -1836,6 +1944,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string Serialize() {
 			var instance = new scheduleByDayOfWeek {
 				categoryOfSchedule = this.categoryOfSchedule,
+				text = this.text,
 				timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -1844,6 +1953,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public scheduleByDayOfWeek Model => new () {
 			categoryOfSchedule = this._categoryOfSchedule,
+			text = this._text,
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 		};
 
@@ -1860,12 +1970,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
 	/// </summary>
+	[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 	[CategoryOrder("sourceIndication",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sourceIndicationViewModel : ComplexViewModel<sourceIndication> {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
@@ -1882,6 +1994,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _countryName  = default;
 
+		[Description("The name of a nation.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
@@ -1895,6 +2008,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _source  = default;
 
+		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
@@ -1906,21 +2020,26 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private String? _text  = default;
+		private sourceType? _sourceType  = default;
 
+		[Description("Type of the source.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? text {
+		public sourceType? sourceType {
 			get {
-				return _text;
+				return _sourceType;
 			}
 			set {
-				SetValue(ref _text, value);
+				SetValue(ref _sourceType, value);
 			}
 		}
 
+		[Browsable(false)]
+		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
+
 		private String? _reportedDate  = default;
 
+		[Description("The date that the item was observed, done, or investigated.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -1933,6 +2052,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1941,7 +2061,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfAuthority = instance.categoryOfAuthority;
 			countryName = instance.countryName;
 			source = instance.source;
-			text = instance.text;
+			sourceType = instance.sourceType;
 			reportedDate = instance.reportedDate;
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -1956,7 +2076,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				categoryOfAuthority = this.categoryOfAuthority,
 				countryName = this.countryName,
 				source = this.source,
-				text = this.text,
+				sourceType = this.sourceType,
 				reportedDate = this.reportedDate,
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 			};
@@ -1968,7 +2088,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfAuthority = this._categoryOfAuthority,
 			countryName = this._countryName,
 			source = this._source,
-			text = this._text,
+			sourceType = this._sourceType,
 			reportedDate = this._reportedDate,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 		};
@@ -1986,12 +2106,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
+	[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2005,6 +2127,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -2018,6 +2141,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2069,12 +2193,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
+	[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 	[CategoryOrder("surveyDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class surveyDateRangeViewModel : ComplexViewModel<surveyDateRange> {
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -2089,6 +2215,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _dateEnd  = string.Empty;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
@@ -2129,12 +2256,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
+	[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class telecommunicationsViewModel : ComplexViewModel<telecommunications> {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
+		[Description("Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
@@ -2151,6 +2280,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _telecommunicationIdentifier  = string.Empty;
 
+		[Description("An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
@@ -2164,6 +2294,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _telecommunicationCarrier  = default;
 
+		[Description("The name of a provider or type of carrier for a telecommunication service. This service may include land line based, shore based or satellite based radio connections.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? telecommunicationCarrier {
@@ -2177,6 +2308,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _contactInstructions  = default;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contactInstructions {
@@ -2188,6 +2320,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -2241,12 +2374,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
+	[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 	[CategoryOrder("textContent",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class textContentViewModel : ComplexViewModel<textContent> {
 		private categoryOfText? _categoryOfText  = default;
 
+		[Description("Classification of completeness of textual information in relation to the source material from which it is derived.")]
 		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfText? categoryOfText {
@@ -2261,11 +2396,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2277,6 +2414,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
@@ -2334,10 +2472,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
+	[Description("The regular weekly operation times of a service or schedule.")]
 	[CategoryOrder("timeIntervalsByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
+		[Description("Any one of seven days in a week.")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2346,6 +2486,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private Boolean? _dayOfWeekIsRange  = default;
 
+		[Description("A statement expressing if the days of the week identified define a range or not.")]
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? dayOfWeekIsRange {
@@ -2357,9 +2498,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The time corresponding to the start of an active period.")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
+		[Description("The time corresponding to the end of an active period.")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2421,10 +2564,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.
 	/// </summary>
+	[Description("Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.")]
 	[CategoryOrder("usefulMarkDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class usefulMarkDescriptionViewModel : ComplexViewModel<usefulMarkDescription> {
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -2463,12 +2608,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 	[CategoryOrder("verticalUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ComplexViewModel<verticalUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
@@ -2482,6 +2629,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
@@ -2521,12 +2669,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.
 	/// </summary>
+	[Description("Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.")]
 	[CategoryOrder("vesselMeasurementsSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselMeasurementsSpecificationViewModel : ComplexViewModel<vesselMeasurementsSpecification> {
 		private comparisonOperator _comparisonOperator  = default;
 
+		[Description("Numerical comparison.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
@@ -2543,6 +2693,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
+		[Description("Characteristics of vessels.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
@@ -2559,6 +2710,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double _vesselsCharacteristicsValue  = default;
 
+		[Description("The value of a particular characteristic such as a dimension or tonnage of a vessel.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double vesselsCharacteristicsValue {
@@ -2572,6 +2724,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
+		[Description("The unit used for vessel characteristics attribute.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
@@ -2620,12 +2773,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Links for relevant weather related information.
 	/// </summary>
+	[Description("Links for relevant weather related information.")]
 	[CategoryOrder("weatherResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class weatherResourceViewModel : ComplexViewModel<weatherResource> {
 		private onlineResourceViewModel? _onlineResource  = default;
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2639,6 +2794,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private dynamicResource? _dynamicResource  = default;
 
+		[Description("Whether a vessel must use a shore-based or other resource to obtain up-to-date information.")]
 		[Editor(typeof(Editors.HorizonEditor<weatherResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public dynamicResource? dynamicResource {
@@ -2655,6 +2811,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private textContentViewModel? _textContent  = default;
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -2704,6 +2861,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
+	[Description("A feature association for the binding between at least one instance of a geo feature and an instance of an information type.")]
 	[CategoryOrder("AdditionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2724,6 +2882,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Contact information for an authority
 	/// </summary>
+	[Description("Contact information for an authority")]
 	[CategoryOrder("AuthorityContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2744,6 +2903,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Service hours for an authority
 	/// </summary>
+	[Description("Service hours for an authority")]
 	[CategoryOrder("AuthorityHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2764,6 +2924,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
 	/// </summary>
+	[Description("Association between a geographic location and a regulation, restriction, recommendation, or nautical information")]
 	[CategoryOrder("AssociatedRxN",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2784,6 +2945,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Exception to the usual working day
 	/// </summary>
+	[Description("Exception to the usual working day")]
 	[CategoryOrder("ExceptionalWorkday",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2804,6 +2966,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The controlling authority for a service area
 	/// </summary>
+	[Description("The controlling authority for a service area")]
 	[CategoryOrder("ServiceControl",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2824,6 +2987,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Contact details for a service or facility
 	/// </summary>
+	[Description("Contact details for a service or facility")]
 	[CategoryOrder("ServiceContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2844,6 +3008,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Working hours for a service or facility described by a geographic location
 	/// </summary>
+	[Description("Working hours for a service or facility described by a geographic location")]
 	[CategoryOrder("LocationHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2864,6 +3029,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Related organisation
 	/// </summary>
+	[Description("Related organisation")]
 	[CategoryOrder("RelatedOrganisation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2884,12 +3050,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
 	/// </summary>
+	[Description("Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).")]
 	[CategoryOrder("InclusionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InclusionTypeViewModel : InformationAssociationViewModel {
 		private membership _membership  = default;
 
+		[Description("Indicates whether a vessel is included or excluded from the regulation/restriction/recommendation/nautical information.")]
 		[Category("InclusionType")]
 		[Editor(typeof(Editors.HorizonEditor<InclusionType>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2921,12 +3089,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
 	/// </summary>
+	[Description("Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.")]
 	[CategoryOrder("PermissionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PermissionTypeViewModel : InformationAssociationViewModel {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
+		[Description("Expresses constraints or requirements on vessel actions or activities in relation to a geographic feature, facility, or service.")]
 		[Category("PermissionType")]
 		[Editor(typeof(Editors.HorizonEditor<PermissionType>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2958,6 +3128,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An association for the binding between a spatial type and its spatial quality information.
 	/// </summary>
+	[Description("An association for the binding between a spatial type and its spatial quality information.")]
 	[CategoryOrder("SpatialAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2978,6 +3149,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Association between a limit feature and the entrance for the limit.
 	/// </summary>
+	[Description("Association between a limit feature and the entrance for the limit.")]
 	[CategoryOrder("LimitEntrance",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -2998,6 +3170,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The services available within a location.
 	/// </summary>
+	[Description("The services available within a location.")]
 	[CategoryOrder("ServiceAvailability",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3018,6 +3191,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
+	[Description("A feature association for the binding between a geo feature and the cartographically positioned location for text.")]
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3038,6 +3212,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A division of a feature into parts of the same type as the whole.
 	/// </summary>
+	[Description("A division of a feature into parts of the same type as the whole.")]
 	[CategoryOrder("Subsection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3058,6 +3233,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The infrastructure facilities in an area.
 	/// </summary>
+	[Description("The infrastructure facilities in an area.")]
 	[CategoryOrder("Infrastructure",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3078,6 +3254,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Describes the relationship between a primary feature and a feature that plays a supporting role in the use of the primary facility by a vessel.
 	/// </summary>
+	[Description("Describes the relationship between a primary feature and a feature that plays a supporting role in the use of the primary facility by a vessel.")]
 	[CategoryOrder("PrimaryAuxiliaryFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3098,6 +3275,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Demarcation of location(s) within a feature by relation to another feature or features
 	/// </summary>
+	[Description("Demarcation of location(s) within a feature by relation to another feature or features")]
 	[CategoryOrder("Demarcation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3118,6 +3296,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The limit(s) of a jurisdiction claimed by a coastal State.
 	/// </summary>
+	[Description("The limit(s) of a jurisdiction claimed by a coastal State.")]
 	[CategoryOrder("JurisdictionalLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3138,6 +3317,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A division of a feature into parts of type(s) different from the type of the whole.
 	/// </summary>
+	[Description("A division of a feature into parts of type(s) different from the type of the whole.")]
 	[CategoryOrder("LayoutDivision",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -3158,16 +3338,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
 	/// </summary>
+	[Description("Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.")]
 	[CategoryOrder("Applicability",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ApplicabilityViewModel : InformationViewModel<Applicability> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -3180,20 +3363,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private Boolean? _inBallast  = default;
 
+		[Description("Whether the vessel is in ballast.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3206,6 +3393,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -3213,6 +3401,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
+		[Description("Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).")]
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
@@ -3222,6 +3411,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfVessel? _categoryOfVessel  = default;
 
+		[Description("Classification of vessels by function or use.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3239,6 +3429,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
+		[Description("The locality of vessel registration or enrolment relative to the nationality of a port, territorial sea, administrative area, exclusive zone or other location.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3256,6 +3447,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private logicalConnectives? _logicalConnectives  = default;
 
+		[Description("Expresses whether all the constraints described by its co-attributes must be satisfied, or only one such constraint need be satisfied.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3273,6 +3465,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private int? _thicknessOfIceCapability  = default;
 
+		[Description("The thickness of ice that the ship can safely transit.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3287,6 +3480,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _vesselPerformance  = default;
 
+		[Description("A description of the required handling characteristics of a vessel including hull design, main and auxiliary machinery, cargo handling equipment, navigation equipment and manoeuvring behaviour.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3301,6 +3495,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _destination  = default;
 
+		[Description("The place or general direction to which a vessel is going or directed.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3313,10 +3508,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.")]
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<vesselMeasurementsSpecificationViewModel> vesselMeasurementsSpecification  { get; set; } = new ();
@@ -3324,10 +3521,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class InclusionTypeViewModel : informationBindingViewModel<S131.InclusionTypeViewModel>, IInformationBindings {
+		public class InclusionTypeViewModel : ViewModelBase, IInformationBinding {
 			public InclusionTypeViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3506,16 +3737,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
+	[Description("A person or organisation having political or administrative power and control.")]
 	[CategoryOrder("Authority",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AuthorityViewModel : InformationViewModel<Authority> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -3528,20 +3762,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("Authority")]
 		[Editor(typeof(Editors.HorizonEditor<Authority>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -3559,6 +3797,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private textContentViewModel? _textContent  = default;
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("Authority")]
 		[ExpandableObject]
 		[Optional]
@@ -3574,10 +3813,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : informationBindingViewModel<S131.AuthorityContactViewModel>, IInformationBindings {
+		public class AuthorityContactViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3605,10 +3878,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class RelatedOrganisationViewModel : informationBindingViewModel<S131.RelatedOrganisationViewModel>, IInformationBindings {
+		public class RelatedOrganisationViewModel : ViewModelBase, IInformationBinding {
 			public RelatedOrganisationViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3636,10 +3943,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
+		public class AuthorityHoursViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -3778,16 +4119,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Services that are available for a given port.
 	/// </summary>
+	[Description("Services that are available for a given port.")]
 	[CategoryOrder("AvailablePortServices",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AvailablePortServicesViewModel : InformationViewModel<AvailablePortServices> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -3800,18 +4144,22 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
+		[Description("Services for combating fires, provided by different methods.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
@@ -3819,6 +4167,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public firefightingService[] firefightingServiceList => [(firefightingService)1,(firefightingService)2,(firefightingService)3];
 
+		[Description("Services for the prevention or treatment of, or response to injury or illness.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
@@ -3826,6 +4175,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public medicalService[] medicalServiceList => [(medicalService)1,(medicalService)2,(medicalService)3,(medicalService)4,(medicalService)5];
 
+		[Description("Work or maintenance activities whereby vessels or equipment are restored to working order, renovated, or improved in condition.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
@@ -3833,6 +4183,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public repairService[] repairServiceList => [(repairService)1,(repairService)2,(repairService)3,(repairService)4,(repairService)5,(repairService)6,(repairService)7,(repairService)8,(repairService)9,(repairService)10];
 
+		[Description("Services for the adjustment of vessel equipment or for assessments pertaining to cargo, compliance with regulations, safety, or security.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
@@ -3840,6 +4191,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public technicalPortService[] technicalPortServiceList => [(technicalPortService)1,(technicalPortService)2,(technicalPortService)3,(technicalPortService)4];
 
+		[Description("Application of measures to ensure that a vessel is free of disease and disease risks, or issue of completion or exemption certificates for such measures.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
@@ -3847,6 +4199,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public shipSanitationControl[] shipSanitationControlList => [(shipSanitationControl)1,(shipSanitationControl)2,(shipSanitationControl)3];
 
+		[Description("Classification of services for the conveyance of persons and/or goods, according to means of transport, nature of path, or representative installation.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<transportConnection> transportConnection  { get; set; } = new ();
@@ -3854,6 +4207,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public transportConnection[] transportConnectionList =>  CodeList.transportConnections.ToArray();
 
+		[Description("Classification of assistance for mooring or anchoring operations.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
@@ -3861,6 +4215,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public berthingAssistance[] berthingAssistanceList => [(berthingAssistance)1,(berthingAssistance)2,(berthingAssistance)3,(berthingAssistance)4,(berthingAssistance)5,(berthingAssistance)6];
 
+		[Description("Classification of services related to the goods or items carried by vessels.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
@@ -3868,6 +4223,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public cargoService[] cargoServiceList => [(cargoService)1,(cargoService)2,(cargoService)3,(cargoService)4];
 
+		[Description("Protective services, law enforcement, or services for responding to sudden danger.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService  { get; set; } = new ();
@@ -3875,6 +4231,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public securitySafetyEmergencyService[] securitySafetyEmergencyServiceList =>  CodeList.securitySafetyEmergencyServices.ToArray();
 
+		[Description("Service for the reception of residues, polluting substances, refuse, oily wastes, and by-products from ships.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
@@ -3882,6 +4239,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public wasteDisposalService[] wasteDisposalServiceList => [(wasteDisposalService)1,(wasteDisposalService)2,(wasteDisposalService)3,(wasteDisposalService)4,(wasteDisposalService)5,(wasteDisposalService)6,(wasteDisposalService)7,(wasteDisposalService)8,(wasteDisposalService)9,(wasteDisposalService)10,(wasteDisposalService)11,(wasteDisposalService)12,(wasteDisposalService)13,(wasteDisposalService)14,(wasteDisposalService)15,(wasteDisposalService)16,(wasteDisposalService)17,(wasteDisposalService)18,(wasteDisposalService)19,(wasteDisposalService)20,(wasteDisposalService)21,(wasteDisposalService)22,(wasteDisposalService)23,(wasteDisposalService)24];
 
+		[Description("Classification of services for the provision of materials, goods, utilities, or personal services to vessels, passengers, or crew.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
@@ -3891,6 +4249,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _tugInformation  = default;
 
+		[Description("Textual description of the types and capacities of available tugs.")]
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.HorizonEditor<AvailablePortServices>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -3903,6 +4262,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -4112,16 +4472,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
+	[Description("Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.")]
 	[CategoryOrder("ContactDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -4134,20 +4497,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private String? _callName  = default;
 
+		[Description("The designated call name of a station; for example, radio station, radar station, pilot.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4162,6 +4529,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _callSign  = default;
 
+		[Description("The designated call-sign of a station (radio station, radar station, pilot, ...).")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4176,6 +4544,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
+		[Description("Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4191,12 +4560,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 
+		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
 		private String? _contactInstructions  = default;
 
+		[Description("Instructions provided on how to contact a particular person, organisation or service.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4209,12 +4580,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<String> language  { get; set; } = new ();
 
 		private String? _mMSICode  = default;
 
+		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4227,22 +4600,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 
+		[Description("A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Information about online sources from which a resource or data can be obtained.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+		[Description("A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.")]
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
@@ -4250,10 +4628,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : informationBindingViewModel<S131.AuthorityContactViewModel>, IInformationBindings {
+		public class AuthorityContactViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -4456,16 +4868,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The seaward end of a channel, harbour, dock, etc.
 	/// </summary>
+	[Description("The seaward end of a channel, harbour, dock, etc.")]
 	[CategoryOrder("Entrance",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EntranceViewModel : InformationViewModel<Entrance> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -4478,20 +4893,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private String? _entranceDescription  = default;
 
+		[Description("Description of the seaward end of a channel, harbour, dock, etc.")]
 		[Category("Entrance")]
 		[Editor(typeof(Editors.HorizonEditor<Entrance>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4504,12 +4923,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The name of an associated feature.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<String> associatedFeatureName  { get; set; } = new ();
 
 		private String? _localKnowledgeDescription  = default;
 
+		[Description("Description of local knowledge that may be needed, for example to traverse a location.")]
 		[Category("Entrance")]
 		[Editor(typeof(Editors.HorizonEditor<Entrance>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4524,6 +4945,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _approachDescription  = default;
 
+		[Description("Description of the approach to a location.")]
 		[Category("Entrance")]
 		[Editor(typeof(Editors.HorizonEditor<Entrance>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4536,26 +4958,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<markedByViewModel> markedBy  { get; set; } = new ();
 
+		[Description("Textual description of selected landmarks that have significance in an area.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<landmarkDescriptionViewModel> landmarkDescription  { get; set; } = new ();
 
+		[Description("Description of aids to navigation or prominent marks located away from the shore.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<offshoreMarkDescriptionViewModel> offshoreMarkDescription  { get; set; } = new ();
 
+		[Description("A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<majorLightDescriptionViewModel> majorLightDescription  { get; set; } = new ();
 
+		[Description("Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<usefulMarkDescriptionViewModel> usefulMarkDescription  { get; set; } = new ();
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("Entrance")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -4721,16 +5149,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
+	[Description("Nautical information about a related area or facility.")]
 	[CategoryOrder("NauticalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -4743,20 +5174,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -4772,10 +5207,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -4886,16 +5323,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
+	[Description("Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.")]
 	[CategoryOrder("NonStandardWorkingDay",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -4908,26 +5348,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
+		[Description("The date of an event.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 
+		[Description("A day which is not fixed in the Gregorian calendar.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5044,16 +5490,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
+	[Description("Recommendations for a related area or facility.")]
 	[CategoryOrder("Recommendations",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendationsViewModel : InformationViewModel<Recommendations> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -5066,20 +5515,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5095,10 +5548,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -5209,16 +5664,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
+	[Description("Regulations for a related area or facility.")]
 	[CategoryOrder("Regulations",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RegulationsViewModel : InformationViewModel<Regulations> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -5231,20 +5689,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5260,10 +5722,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -5374,16 +5838,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
+	[Description("Restrictions for a related area or facility.")]
 	[CategoryOrder("Restrictions",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictionsViewModel : InformationViewModel<Restrictions> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -5396,20 +5863,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
+		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5425,10 +5896,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -5539,16 +6012,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
+	[Description("The time when a service is available and known exceptions.")]
 	[CategoryOrder("ServiceHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("InformationType")]
 		[ExpandableObject]
 		[Optional]
@@ -5561,22 +6037,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
+		[Description("The nature and timings of a daily schedule by days of the week.")]
 		[Category("ServiceHours")]
 		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("ServiceHours")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5584,10 +6065,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S131.ExceptionalWorkdayViewModel>, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : ViewModelBase, IInformationBinding {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -5615,10 +6130,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
+		public class AuthorityHoursViewModel : ViewModelBase, IInformationBinding {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -5762,12 +6311,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
+	[Description("The indication of the quality of the locational information for features in a dataset.")]
 	[CategoryOrder("SpatialQuality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
+		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5783,6 +6334,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
 
+		[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 		[Category("SpatialQuality")]
 		[Optional]
 		public ObservableCollection<spatialAccuracyViewModel> spatialAccuracy  { get; set; } = new ();
@@ -5836,12 +6388,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A designated area of water where a vessel, sea plane, etc., may anchor.
 	/// </summary>
+	[Description("A designated area of water where a vessel, sea plane, etc., may anchor.")]
 	[CategoryOrder("AnchorBerth",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AnchorBerthViewModel : FeatureViewModel<AnchorBerth> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5856,6 +6410,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5868,16 +6423,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -5890,64 +6448,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -5955,6 +6476,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
+		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
@@ -5962,6 +6484,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1,(categoryOfAnchorage)2,(categoryOfAnchorage)3,(categoryOfAnchorage)5,(categoryOfAnchorage)6,(categoryOfAnchorage)7,(categoryOfAnchorage)9,(categoryOfAnchorage)10,(categoryOfAnchorage)14];
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -5971,6 +6494,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _radius  = default;
 
+		[Description("The vector extending from the centre to the periphery of a circular or spherical feature.")]
 		[Category("AnchorBerth")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorBerth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -5986,10 +6510,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6017,10 +6575,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6062,10 +6654,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.PrimaryAuxiliaryFacilityViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.PrimaryAuxiliaryFacilityViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6134,9 +6770,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -6166,9 +6804,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 				categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -6187,9 +6823,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -6229,6 +6863,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -6255,12 +6892,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
 	/// </summary>
+	[Description("An area in which vessels or seaplanes anchor or may anchor.")]
 	[CategoryOrder("AnchorageArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6275,6 +6914,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6287,16 +6927,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -6309,64 +6952,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -6374,6 +6980,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
+		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
@@ -6383,6 +6990,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6398,6 +7006,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -6407,6 +7016,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6421,6 +7031,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("AnchorageArea")]
 		[ExpandableObject]
 		[Optional]
@@ -6435,6 +7046,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("AnchorageArea")]
 		[ExpandableObject]
 		[Optional]
@@ -6450,10 +7062,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6492,10 +7138,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6564,9 +7254,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -6605,9 +7297,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 				iSPSLevel = this.iSPSLevel,
@@ -6629,9 +7319,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			iSPSLevel = this._iSPSLevel,
@@ -6674,6 +7362,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -6697,12 +7388,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Equipment with material handling or operational capabilities, characterised by wheeled (including tracked) mobility, and which autonomously moves along a preset route based on environmental markers or external guidance signals.
 	/// </summary>
+	[Description("Equipment with material handling or operational capabilities, characterised by wheeled (including tracked) mobility, and which autonomously moves along a preset route based on environmental markers or external guidance signals.")]
 	[CategoryOrder("AutomatedGuidedVehicle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AutomatedGuidedVehicleViewModel : FeatureViewModel<AutomatedGuidedVehicle> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6717,6 +7410,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -6729,16 +7423,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -6751,64 +7448,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -6820,10 +7480,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -6895,9 +7589,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -6916,9 +7612,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -6934,9 +7628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
@@ -6973,6 +7665,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -6987,12 +7682,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
+	[Description("A place, generally named or numbered, where a vessel may moor or anchor.")]
 	[CategoryOrder("Berth",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BerthViewModel : FeatureViewModel<Berth> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7007,6 +7704,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7019,16 +7717,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -7041,64 +7742,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -7108,6 +7772,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _availableBerthingLength  = default;
 
+		[Description("The length of a berth or dock which is available for use.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7122,6 +7787,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _bollardDescription  = default;
 
+		[Description("A textual description of the type of bollard at a berth or mooring facility.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7136,6 +7802,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _safeWorkingLoad  = default;
 
+		[Description("The maximum safe force or load that a piece of equipment, device, or accessory can handle without breaking or failing under normal conditions.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7150,6 +7817,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _minimumBerthDepth  = default;
 
+		[Description("The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7164,6 +7832,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _elevation  = default;
 
+		[Description("The altitude of the ground level of an object, measured from a specified vertical datum.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7178,6 +7847,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private Boolean? _cathodicProtectionSystem  = default;
 
+		[Description("A system used to protect metal structures against corrosion by supplying direct current to the immersed external surface of the structure.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7192,6 +7862,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfBerthLocation? _categoryOfBerthLocation  = default;
 
+		[Description("Classification of a berth according to the method of describing its location or extent.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7209,6 +7880,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _portFacilityNumber  = default;
 
+		[Description("Number assigned to the port facility in the IMO port facility database.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7221,12 +7893,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("An identifier used to locate a specific bollard.")]
 		[Category("Berth")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<String> bollardNumber  { get; set; } = new ();
 
 		private String? _gLNExtension  = default;
 
+		[Description("The GLN extension component is used to identify internal physical locations within a location which is identified with a GLN. Must conform to the rules for GLN extension. (GS1 specification).")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7239,16 +7913,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("An identifier for a specific position along a linear or curvilinear extent of a wharf, quay, or jetty. Numbering may be continued over multiple segments.")]
 		[Category("Berth")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<String> metreMarkNumber  { get; set; } = new ();
 
+		[Description("An identifier for a specific location on a manifold (a pipe or chamber with several openings).")]
 		[Category("Berth")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<String> manifoldNumber  { get; set; } = new ();
 
 		private String? _rampNumber  = default;
 
+		[Description("An identifier for a specific ramp (a sloping structure that can be used as a landing place for small vessels, landing ships, or a ferry boat, or for hauling a cradle carrying a vessel, or for the transfer of rolling cargo).")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7263,6 +7940,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7277,6 +7955,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private methodOfSecuring? _methodOfSecuring  = default;
 
+		[Description("The process, arrangement or scheme of attachment used to secure a vessel to a berth.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7294,6 +7973,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _uNLocationCode  = string.Empty;
 
+		[Description("Used to encode the UN Location Code (http://www.unece.org/cefact/locode/service/location.html) or - in Europe - the Inland Ship Reporting Standard (ISRS) Code.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -7308,6 +7988,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _terminalIdentifier  = default;
 
+		[Description("The unique identifier for a given terminal.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7322,6 +8003,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _shorePowerDescription  = default;
 
+		[Description("A textual description of precautions for shore power usage.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7334,6 +8016,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The electrical frequency provided by the power supply station.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfFrequency> categoryOfFrequency  { get; set; } = new ();
@@ -7341,6 +8024,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfFrequency[] categoryOfFrequencyList => [(categoryOfFrequency)1,(categoryOfFrequency)2];
 
+		[Description("The electrical voltage provided by the power supply station.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
@@ -7348,10 +8032,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfVoltage[] categoryOfVoltageList => [(categoryOfVoltage)1,(categoryOfVoltage)2,(categoryOfVoltage)3,(categoryOfVoltage)4,(categoryOfVoltage)5,(categoryOfVoltage)6,(categoryOfVoltage)7,(categoryOfVoltage)8,(categoryOfVoltage)9,(categoryOfVoltage)10,(categoryOfVoltage)11,(categoryOfVoltage)12,(categoryOfVoltage)13,(categoryOfVoltage)14];
 
+		[Description("The type of plug(s) available at the power supply station.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<String> categoryOfPlug  { get; set; } = new ();
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -7362,10 +8048,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7393,10 +8113,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7438,10 +8192,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : featureBindingViewModel<S131.DemarcationViewModel>, IFeatureBindings {
+		public class DemarcationViewModel : ViewModelBase, IFeatureBinding {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.DemarcationViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.DemarcationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7469,10 +8267,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -7544,9 +8386,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -7615,9 +8459,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				availableBerthingLength = this.availableBerthingLength,
 				bollardDescription = this.bollardDescription,
@@ -7655,9 +8497,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			availableBerthingLength = this._availableBerthingLength,
 			bollardDescription = this._bollardDescription,
@@ -7716,6 +8556,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -7760,12 +8603,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A specific position within a berth where a vessel may be moored or anchored.
 	/// </summary>
+	[Description("A specific position within a berth where a vessel may be moored or anchored.")]
 	[CategoryOrder("BerthPosition",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BerthPositionViewModel : FeatureViewModel<BerthPosition> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7780,6 +8625,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7792,16 +8638,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -7814,64 +8663,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -7881,6 +8693,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _bollardNumber  = default;
 
+		[Description("An identifier used to locate a specific bollard.")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7895,6 +8708,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _gLNExtension  = default;
 
+		[Description("The GLN extension component is used to identify internal physical locations within a location which is identified with a GLN. Must conform to the rules for GLN extension. (GS1 specification).")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7909,6 +8723,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _metreMarkNumber  = default;
 
+		[Description("An identifier for a specific position along a linear or curvilinear extent of a wharf, quay, or jetty. Numbering may be continued over multiple segments.")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7923,6 +8738,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _manifoldNumber  = default;
 
+		[Description("An identifier for a specific location on a manifold (a pipe or chamber with several openings).")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7937,6 +8753,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _rampNumber  = default;
 
+		[Description("An identifier for a specific ramp (a sloping structure that can be used as a landing place for small vessels, landing ships, or a ferry boat, or for hauling a cradle carrying a vessel, or for the transfer of rolling cargo).")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7951,6 +8768,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("BerthPosition")]
 		[Editor(typeof(Editors.HorizonEditor<BerthPosition>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -7969,10 +8787,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : featureBindingViewModel<S131.DemarcationViewModel>, IFeatureBindings {
+		public class DemarcationViewModel : ViewModelBase, IFeatureBinding {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.DemarcationViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.DemarcationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8000,10 +8862,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.PrimaryAuxiliaryFacilityViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.PrimaryAuxiliaryFacilityViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8075,9 +8981,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8102,9 +9010,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				bollardNumber = this.bollardNumber,
 				gLNExtension = this.gLNExtension,
@@ -8126,9 +9032,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			bollardNumber = this._bollardNumber,
 			gLNExtension = this._gLNExtension,
@@ -8171,6 +9075,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -8188,12 +9095,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
+	[Description("Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.")]
 	[CategoryOrder("Bollard",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BollardViewModel : FeatureViewModel<Bollard> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8208,6 +9117,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8220,16 +9130,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -8242,64 +9155,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -8309,6 +9185,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _height  = default;
 
+		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8323,6 +9200,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("Bollard")]
 		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8374,9 +9252,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8397,9 +9277,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				height = this.height,
 				verticalLength = this.verticalLength,
@@ -8417,9 +9295,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			height = this._height,
 			verticalLength = this._verticalLength,
@@ -8458,6 +9334,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -8469,12 +9348,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
+	[Description("An artificially enclosed area within which ships may moor and which may have gates to regulate water level.")]
 	[CategoryOrder("DockArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DockAreaViewModel : FeatureViewModel<DockArea> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8489,6 +9370,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8501,16 +9383,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -8523,64 +9408,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -8590,6 +9438,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("DockArea")]
 		[ExpandableObject]
 		[Optional]
@@ -8604,6 +9453,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8618,6 +9468,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("DockArea")]
 		[ExpandableObject]
 		[Optional]
@@ -8632,6 +9483,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8650,10 +9502,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8681,10 +9567,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8726,10 +9646,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -8798,9 +9762,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8829,9 +9795,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -8851,9 +9815,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -8894,6 +9856,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -8914,12 +9879,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
+	[Description("An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.")]
 	[CategoryOrder("DryDock",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DryDockViewModel : FeatureViewModel<DryDock> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8934,6 +9901,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -8946,16 +9914,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -8968,64 +9939,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -9035,6 +9969,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _sillDepth  = default;
 
+		[Description("The greatest depth over a sill.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9049,6 +9984,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Category("DryDock")]
 		[Editor(typeof(Editors.HorizonEditor<DryDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9064,10 +10000,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9139,9 +10109,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9162,9 +10134,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 				verticalClearanceValue = this.verticalClearanceValue,
@@ -9182,9 +10152,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 			verticalClearanceValue = this._verticalClearanceValue,
@@ -9223,6 +10191,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -9237,12 +10208,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
+	[Description("A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.")]
 	[CategoryOrder("Dolphin",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DolphinViewModel : FeatureViewModel<Dolphin> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9257,6 +10230,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9269,16 +10243,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -9291,64 +10268,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -9356,6 +10296,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
+		[Description("Classification of a post or group of posts, used for mooring or warping a vessel.")]
 		[Category("Dolphin")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfDolphin> categoryOfDolphin  { get; set; } = new ();
@@ -9402,9 +10343,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9428,9 +10371,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfDolphin = this.categoryOfDolphin.ToList(),
 			};
@@ -9447,9 +10388,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfDolphin = this.categoryOfDolphin.ToList(),
 		};
@@ -9487,6 +10426,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -9501,12 +10443,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
 	/// </summary>
+	[Description("A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.")]
 	[CategoryOrder("DumpingGround",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9521,6 +10465,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9533,16 +10478,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -9555,64 +10503,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -9622,6 +10533,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("DumpingGround")]
 		[ExpandableObject]
 		[Optional]
@@ -9636,6 +10548,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9650,6 +10563,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("DumpingGround")]
 		[ExpandableObject]
 		[Optional]
@@ -9664,6 +10578,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9682,10 +10597,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9724,10 +10673,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -9796,9 +10789,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9827,9 +10822,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -9849,9 +10842,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -9892,6 +10883,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -9909,12 +10903,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An imaginary line parallel to a face of a berth or quay which touches the seaward face of the fenders.
 	/// </summary>
+	[Description("An imaginary line parallel to a face of a berth or quay which touches the seaward face of the fenders.")]
 	[CategoryOrder("FenderLine",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FenderLineViewModel : FeatureViewModel<FenderLine> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9929,6 +10925,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -9941,16 +10938,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -9963,64 +10963,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -10030,6 +10993,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private orientationViewModel? _orientation  = default;
 
+		[Description("(1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.")]
 		[Category("FenderLine")]
 		[ExpandableObject]
 		[Optional]
@@ -10048,10 +11012,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10120,9 +11128,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10145,9 +11155,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				orientation = this.orientation?.Model,
 			};
@@ -10164,9 +11172,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			orientation = this._orientation?.Model,
 		};
@@ -10204,6 +11210,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -10218,12 +11227,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
+	[Description("A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.")]
 	[CategoryOrder("FloatingDock",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FloatingDockViewModel : FeatureViewModel<FloatingDock> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10238,6 +11249,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10250,16 +11262,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -10272,64 +11287,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -10339,6 +11317,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _sillDepth  = default;
 
+		[Description("The greatest depth over a sill.")]
 		[Category("FloatingDock")]
 		[Editor(typeof(Editors.HorizonEditor<FloatingDock>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10354,10 +11333,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10429,9 +11442,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10451,9 +11466,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -10470,9 +11483,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -10510,6 +11521,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -10524,12 +11538,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
+	[Description("A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.")]
 	[CategoryOrder("Gridiron",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class GridironViewModel : FeatureViewModel<Gridiron> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10544,6 +11560,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10556,16 +11573,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -10578,64 +11598,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -10645,6 +11628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _sillDepth  = default;
 
+		[Description("The greatest depth over a sill.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10659,6 +11643,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Category("Gridiron")]
 		[Editor(typeof(Editors.HorizonEditor<Gridiron>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10674,10 +11659,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -10749,9 +11768,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10772,9 +11793,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 				verticalClearanceValue = this.verticalClearanceValue,
@@ -10792,9 +11811,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 			verticalClearanceValue = this._verticalClearanceValue,
@@ -10833,6 +11850,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -10847,12 +11867,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
+	[Description("The area over which a harbour authority has jurisdiction.")]
 	[CategoryOrder("HarbourAreaAdministrative",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HarbourAreaAdministrativeViewModel : FeatureViewModel<HarbourAreaAdministrative> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10867,6 +11889,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10879,16 +11902,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -10901,64 +11927,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -10968,6 +11957,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _uNLocationCode  = default;
 
+		[Description("Used to encode the UN Location Code (http://www.unece.org/cefact/locode/service/location.html) or - in Europe - the Inland Ship Reporting Standard (ISRS) Code.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10982,6 +11972,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -10996,6 +11987,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _applicableLoadLineZone  = default;
 
+		[Description("The load line zone in which the port is located. Defined by the International Convention on Load Lines.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11010,6 +12002,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11025,6 +12018,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
+		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaAdministrative")]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
@@ -11034,6 +12028,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private generalHarbourInformationViewModel? _generalHarbourInformation  = default;
 
+		[Description("General information about the port or harbour area.")]
 		[Category("HarbourAreaAdministrative")]
 		[ExpandableObject]
 		[Optional]
@@ -11049,10 +12044,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11080,10 +12109,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11125,10 +12188,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : featureBindingViewModel<S131.JurisdictionalLimitViewModel>, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBinding {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.JurisdictionalLimitViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.JurisdictionalLimitViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11156,10 +12263,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11231,9 +12382,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -11265,9 +12418,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				uNLocationCode = this.uNLocationCode,
 				nationality = this.nationality,
@@ -11289,9 +12440,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			uNLocationCode = this._uNLocationCode,
 			nationality = this._nationality,
@@ -11334,6 +12483,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -11360,12 +12512,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
 	/// </summary>
+	[Description("A distinguishable portion of the area over which a harbour authority has jurisdiction.")]
 	[CategoryOrder("HarbourAreaSection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HarbourAreaSectionViewModel : FeatureViewModel<HarbourAreaSection> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11380,6 +12534,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11392,16 +12547,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -11414,64 +12572,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -11481,6 +12602,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfPortSection? _categoryOfPortSection  = default;
 
+		[Description("Classification of subdivisions of a port or harbour area by usage.")]
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaSection>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11496,6 +12618,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1,(categoryOfPortSection)3,(categoryOfPortSection)8,(categoryOfPortSection)9,(categoryOfPortSection)11,(categoryOfPortSection)12];
 
+		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaSection")]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
@@ -11505,6 +12628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaSection>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11522,6 +12646,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription  = default;
 
+		[Description("Textual description of the layout of port facilities.")]
 		[Category("HarbourAreaSection")]
 		[ExpandableObject]
 		[Optional]
@@ -11537,10 +12662,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11568,10 +12727,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11613,10 +12806,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11652,10 +12889,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class SubsectionViewModel : featureBindingViewModel<S131.SubsectionViewModel>, IFeatureBindings {
+		public class SubsectionViewModel : ViewModelBase, IFeatureBinding {
 			public SubsectionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.SubsectionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.SubsectionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11691,10 +12972,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
+		public class InfrastructureViewModel : ViewModelBase, IFeatureBinding {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.InfrastructureViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.InfrastructureViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -11769,9 +13094,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -11801,9 +13128,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfPortSection = this.categoryOfPortSection,
 				categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
@@ -11823,9 +13148,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfPortSection = this._categoryOfPortSection,
 			categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
@@ -11866,6 +13189,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -11895,12 +13221,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
 	/// </summary>
+	[Description("An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.")]
 	[CategoryOrder("HarbourBasin",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class HarbourBasinViewModel : FeatureViewModel<HarbourBasin> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11915,6 +13243,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -11927,16 +13256,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -11949,64 +13281,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -12016,6 +13311,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("HarbourBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -12030,6 +13326,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("HarbourBasin")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12044,6 +13341,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("HarbourBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -12058,6 +13356,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourBasin")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12076,10 +13375,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -12118,10 +13451,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -12190,9 +13567,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -12221,9 +13600,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -12243,9 +13620,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -12286,6 +13661,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -12301,14 +13679,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 	/// <summary>
-	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
+	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
-	[CategoryOrder("LockBasin",0)]
+	[Description("A harbour installation with a service or commercial operation of public interest.")]
+	[CategoryOrder("HarbourFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class LockBasinViewModel : FeatureViewModel<LockBasin> {
+	public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12323,6 +13703,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12335,16 +13716,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -12357,64 +13741,321 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
+
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
+
+
+
+
+
+		#region InformationBindings
+
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
+			public LocationHoursViewModel() {
+				if (informationBindings.Length == 1)
+					this.role = informationBindings[0].role;
 			}
-			set {
-				SetValue(ref _source, value);
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
 			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "LocationHours",
+					role = "facilityOperatingHours",
+					roleType = roleType.association,
+					informationTypes = ["ServiceHours"],
+				},
+			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		private sourceType? _sourceType  = default;
+		[Category("InformationBindings")]
+		public ObservableCollection<HarbourFacilityViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+		[Browsable(false)]
 
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
+		public override informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
+		#endregion
+
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
+
+
+		public HarbourFacilityViewModel Load(HarbourFacility instance) {
+			locationMRN = instance.locationMRN;
+			globalLocationNumber = instance.globalLocationNumber;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
 			}
-			set {
-				SetValue(ref _sourceType, value);
+			featureName.Clear();
+			if (instance.featureName is not null) {
+				foreach(var e in instance.featureName)
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
+			fixedDateRange = new ();
+			if (instance.fixedDateRange != default) {
+				fixedDateRange.Load(instance.fixedDateRange);
+			}
+			periodicDateRange.Clear();
+			if (instance.periodicDateRange is not null) {
+				foreach(var e in instance.periodicDateRange)
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+			}
+			rxNCode.Clear();
+			if (instance.rxNCode is not null) {
+				foreach(var e in instance.rxNCode)
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
+			}
+			graphic.Clear();
+			if (instance.graphic is not null) {
+				foreach(var e in instance.graphic)
+					graphic.Add(new graphicViewModel().Load(e));
+			}
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
+			textContent.Clear();
+			if (instance.textContent is not null) {
+				foreach(var e in instance.textContent)
+					textContent.Add(new textContentViewModel().Load(e));
+			}
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new HarbourFacility {
+				locationMRN = this.locationMRN,
+				globalLocationNumber = this.globalLocationNumber,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+				featureName = this.featureName.Select(e => e.Model).ToList(),
+				fixedDateRange = this.fixedDateRange?.Model,
+				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
+				graphic = this.graphic.Select(e => e.Model).ToList(),
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
+				textContent = this.textContent.Select(e => e.Model).ToList(),
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
+		public HarbourFacility Model => new () {
+			locationMRN = this._locationMRN,
+			globalLocationNumber = this._globalLocationNumber,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+			featureName = this.featureName.Select(e => e.Model).ToList(),
+			fixedDateRange = this._fixedDateRange?.Model,
+			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
+			graphic = this.graphic.Select(e => e.Model).ToList(),
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
+			textContent = this.textContent.Select(e => e.Model).ToList(),
+		};
 
-		private String? _reportedDate  = default;
+		public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
+		public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+
+		public HarbourFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
+			return this;
+		}
+
+		public HarbourFacilityViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
+			return this;
+		}
+
+		public override string? ToString() => $"Harbour Facility";
+
+		public HarbourFacilityViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
+			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureName));
+			};
+			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(rxNCode));
+			};
+			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
+			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+		}
+	}
+
+
+
+	/// <summary>
+	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
+	/// </summary>
+	[Description("A wet dock in a waterway, permitting a ship to pass from one level to another.")]
+	[CategoryOrder("LockBasin",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class LockBasinViewModel : FeatureViewModel<LockBasin> {
+		private String? _locationMRN  = default;
+
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? reportedDate {
+		public String? locationMRN {
 			get {
-				return _reportedDate;
+				return _locationMRN;
 			}
 			set {
-				SetValue(ref _reportedDate, value);
+				SetValue(ref _locationMRN, value);
 			}
 		}
 
+		private String? _globalLocationNumber  = default;
+
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
+		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
+		[Optional]
+		public String? globalLocationNumber {
+			get {
+				return _globalLocationNumber;
+			}
+			set {
+				SetValue(ref _globalLocationNumber, value);
+			}
+		}
+
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
+		private fixedDateRangeViewModel? _fixedDateRange  = default;
+
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
+		[Category("FeatureType")]
+		[ExpandableObject]
+		[Optional]
+		public fixedDateRangeViewModel? fixedDateRange {
+			get {
+				return _fixedDateRange;
+			}
+			set {
+				SetValue(ref _fixedDateRange, value);
+			}
+		}
+
+		[Description("The active period of a recurring event or occurrence.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
+
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
+
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -12424,6 +14065,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _sillDepth  = default;
 
+		[Description("The greatest depth over a sill.")]
 		[Category("LockBasin")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12439,10 +14081,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -12514,9 +14190,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -12536,9 +14214,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -12555,9 +14231,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -12595,6 +14269,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -12609,12 +14286,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A lock basin is divided into several lock basin parts, if this lock basin has one ground level but several gates.
 	/// </summary>
+	[Description("A lock basin is divided into several lock basin parts, if this lock basin has one ground level but several gates.")]
 	[CategoryOrder("LockBasinPart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LockBasinPartViewModel : FeatureViewModel<LockBasinPart> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12629,6 +14308,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12641,16 +14321,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -12663,64 +14346,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -12730,6 +14376,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _sillDepth  = default;
 
+		[Description("The greatest depth over a sill.")]
 		[Category("LockBasinPart")]
 		[Editor(typeof(Editors.HorizonEditor<LockBasinPart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12745,10 +14392,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -12820,9 +14501,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -12842,9 +14525,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -12861,9 +14542,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -12901,6 +14580,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -12915,12 +14597,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
+	[Description("A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.")]
 	[CategoryOrder("MooringBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12935,6 +14619,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -12947,16 +14632,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -12969,64 +14657,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -13036,6 +14687,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _maximumPermittedDraught  = default;
 
+		[Description("The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13050,6 +14702,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _maximumPermittedVesselLength  = default;
 
+		[Description("The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13064,6 +14717,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _verticalLength  = default;
 
+		[Description("The total vertical length of a feature.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13078,6 +14732,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private Boolean? _visitorsMooring  = default;
 
+		[Description("A mooring set aside for the use of visiting vessels.")]
 		[Category("MooringBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13129,9 +14784,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -13154,9 +14811,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				maximumPermittedDraught = this.maximumPermittedDraught,
 				maximumPermittedVesselLength = this.maximumPermittedVesselLength,
@@ -13176,9 +14831,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			maximumPermittedDraught = this._maximumPermittedDraught,
 			maximumPermittedVesselLength = this._maximumPermittedVesselLength,
@@ -13219,6 +14872,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -13230,12 +14886,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The equipment or structure used to secure a vessel.
 	/// </summary>
+	[Description("The equipment or structure used to secure a vessel.")]
 	[CategoryOrder("MooringWarpingFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MooringWarpingFacilityViewModel : FeatureViewModel<MooringWarpingFacility> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13250,6 +14908,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13262,16 +14921,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -13284,64 +14946,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -13351,6 +14976,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility  = default;
 
+		[Description("A place or structure to which a vessel can be secured.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13368,6 +14994,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _iDCode  = string.Empty;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13382,6 +15009,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _bollardDescription  = default;
 
+		[Description("A textual description of the type of bollard at a berth or mooring facility.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13396,6 +15024,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _safeWorkingLoad  = default;
 
+		[Description("The maximum safe force or load that a piece of equipment, device, or accessory can handle without breaking or failing under normal conditions.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13410,6 +15039,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private Boolean? _heavingLinesFromShore  = default;
 
+		[Description("Ships must take heaving lines thrown from the shore.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13425,10 +15055,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -13456,10 +15120,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -13501,10 +15199,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase, IFeatureBinding {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.PrimaryAuxiliaryFacilityViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.PrimaryAuxiliaryFacilityViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -13573,9 +15315,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -13599,9 +15343,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfMooringWarpingFacility = this.categoryOfMooringWarpingFacility,
 				iDCode = this.iDCode,
@@ -13622,9 +15364,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfMooringWarpingFacility = this._categoryOfMooringWarpingFacility,
 			iDCode = this._iDCode,
@@ -13666,6 +15406,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -13686,12 +15429,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Facilities or infrastructure providing shore power to berthed vessels.
 	/// </summary>
+	[Description("Facilities or infrastructure providing shore power to berthed vessels.")]
 	[CategoryOrder("OnshorePowerFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OnshorePowerFacilityViewModel : FeatureViewModel<OnshorePowerFacility> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13706,6 +15451,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13718,16 +15464,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -13740,64 +15489,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -13807,6 +15519,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfShorePowerFacility? _categoryOfShorePowerFacility  = default;
 
+		[Description("Classification of equipment or installations that are used for providing shoreside electrical power to a vessel at berth.")]
 		[Category("OnshorePowerFacility")]
 		[Editor(typeof(Editors.HorizonEditor<OnshorePowerFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13824,6 +15537,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String _iDCode  = string.Empty;
 
+		[Description("Identification code as specified in predefined system. Also called identification number.")]
 		[Category("OnshorePowerFacility")]
 		[Editor(typeof(Editors.HorizonEditor<OnshorePowerFacility>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -13838,6 +15552,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _shorePowerDescription  = default;
 
+		[Description("A textual description of precautions for shore power usage.")]
 		[Category("OnshorePowerFacility")]
 		[Editor(typeof(Editors.HorizonEditor<OnshorePowerFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13850,6 +15565,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The electrical voltage provided by the power supply station.")]
 		[Category("OnshorePowerFacility")]
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
@@ -13857,6 +15573,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfVoltage[] categoryOfVoltageList => [(categoryOfVoltage)1,(categoryOfVoltage)2,(categoryOfVoltage)3,(categoryOfVoltage)4,(categoryOfVoltage)5,(categoryOfVoltage)6,(categoryOfVoltage)7,(categoryOfVoltage)8,(categoryOfVoltage)9,(categoryOfVoltage)10,(categoryOfVoltage)11,(categoryOfVoltage)12,(categoryOfVoltage)13,(categoryOfVoltage)14];
 
+		[Description("The electrical frequency provided by the power supply station.")]
 		[Category("OnshorePowerFacility")]
 		[Optional]
 		public ObservableCollection<categoryOfFrequency> categoryOfFrequency  { get; set; } = new ();
@@ -13864,12 +15581,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfFrequency[] categoryOfFrequencyList => Enum.GetValues<categoryOfFrequency>();
 
+		[Description("The type of plug(s) available at the power supply station.")]
 		[Category("OnshorePowerFacility")]
 		[Optional]
 		public ObservableCollection<String> categoryOfPlug  { get; set; } = new ();
 
 		private String? _shorePowerServiceProvider  = default;
 
+		[Description("An entity that generates, sells, or is responsible for supplying shore power to vessels.")]
 		[Category("OnshorePowerFacility")]
 		[Editor(typeof(Editors.HorizonEditor<OnshorePowerFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -13885,10 +15604,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -13960,9 +15713,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14000,9 +15755,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfShorePowerFacility = this.categoryOfShorePowerFacility,
 				iDCode = this.iDCode,
@@ -14025,9 +15778,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfShorePowerFacility = this._categoryOfShorePowerFacility,
 			iDCode = this._iDCode,
@@ -14071,6 +15822,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -14094,12 +15848,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
 	/// </summary>
+	[Description("The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.")]
 	[CategoryOrder("OuterLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class OuterLimitViewModel : FeatureViewModel<OuterLimit> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14114,6 +15870,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14126,16 +15883,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -14148,64 +15908,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -14215,6 +15938,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private limitsDescriptionViewModel? _limitsDescription  = default;
 
+		[Description("Description of the area covered by the information specified.")]
 		[Category("OuterLimit")]
 		[ExpandableObject]
 		[Optional]
@@ -14227,22 +15951,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("OuterLimit")]
 		[Optional]
 		public ObservableCollection<markedByViewModel> markedBy  { get; set; } = new ();
 
+		[Description("Textual description of selected landmarks that have significance in an area.")]
 		[Category("OuterLimit")]
 		[Optional]
 		public ObservableCollection<landmarkDescriptionViewModel> landmarkDescription  { get; set; } = new ();
 
+		[Description("Description of aids to navigation or prominent marks located away from the shore.")]
 		[Category("OuterLimit")]
 		[Optional]
 		public ObservableCollection<offshoreMarkDescriptionViewModel> offshoreMarkDescription  { get; set; } = new ();
 
+		[Description("A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.")]
 		[Category("OuterLimit")]
 		[Optional]
 		public ObservableCollection<majorLightDescriptionViewModel> majorLightDescription  { get; set; } = new ();
 
+		[Description("Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.")]
 		[Category("OuterLimit")]
 		[Optional]
 		public ObservableCollection<usefulMarkDescriptionViewModel> usefulMarkDescription  { get; set; } = new ();
@@ -14250,10 +15979,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LimitEntranceViewModel : informationBindingViewModel<S131.LimitEntranceViewModel>, IInformationBindings {
+		public class LimitEntranceViewModel : ViewModelBase, IInformationBinding {
 			public LimitEntranceViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -14292,10 +16055,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : featureBindingViewModel<S131.JurisdictionalLimitViewModel>, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : ViewModelBase, IFeatureBinding {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.JurisdictionalLimitViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.JurisdictionalLimitViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -14364,9 +16171,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14414,9 +16223,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				limitsDescription = this.limitsDescription?.Model,
 				markedBy = this.markedBy.Select(e => e.Model).ToList(),
@@ -14438,9 +16245,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			limitsDescription = this._limitsDescription?.Model,
 			markedBy = this.markedBy.Select(e => e.Model).ToList(),
@@ -14483,6 +16288,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -14515,12 +16323,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
+	[Description("A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.")]
 	[CategoryOrder("PilotBoardingPlace",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PilotBoardingPlaceViewModel : FeatureViewModel<PilotBoardingPlace> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14535,6 +16345,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14547,16 +16358,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -14569,64 +16383,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -14636,6 +16413,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("PilotBoardingPlace")]
 		[ExpandableObject]
 		[Optional]
@@ -14650,6 +16428,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14662,6 +16441,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.")]
 		[Category("PilotBoardingPlace")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<pilotMovement> pilotMovement  { get; set; } = new ();
@@ -14671,6 +16451,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("PilotBoardingPlace")]
 		[ExpandableObject]
 		[Optional]
@@ -14685,6 +16466,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14703,10 +16485,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -14745,10 +16561,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -14817,9 +16677,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14853,9 +16715,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -14876,9 +16736,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -14920,6 +16778,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -14940,12 +16801,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
+	[Description("A designated portion of water for the landing and take-off of seaplanes.")]
 	[CategoryOrder("SeaplaneLandingArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeaplaneLandingAreaViewModel : FeatureViewModel<SeaplaneLandingArea> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14960,6 +16823,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -14972,16 +16836,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -14994,64 +16861,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -15061,6 +16891,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("SeaplaneLandingArea")]
 		[ExpandableObject]
 		[Optional]
@@ -15075,6 +16906,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaplaneLandingArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15089,6 +16921,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("SeaplaneLandingArea")]
 		[ExpandableObject]
 		[Optional]
@@ -15103,6 +16936,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaplaneLandingArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15121,10 +16955,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -15163,10 +17031,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -15235,9 +17147,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -15266,9 +17180,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -15288,9 +17200,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -15331,6 +17241,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -15348,12 +17261,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.
 	/// </summary>
+	[Description("A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.")]
 	[CategoryOrder("ShipLift",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ShipLiftViewModel : FeatureViewModel<ShipLift> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15368,6 +17283,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15380,16 +17296,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -15402,64 +17321,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -15469,6 +17351,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _verticalClearanceValue  = default;
 
+		[Description("The vertical clearance measured from the horizontal plane towards the feature overhead.")]
 		[Category("ShipLift")]
 		[Editor(typeof(Editors.HorizonEditor<ShipLift>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15484,10 +17367,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -15559,9 +17476,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -15581,9 +17500,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				verticalClearanceValue = this.verticalClearanceValue,
 			};
@@ -15600,9 +17517,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
@@ -15640,6 +17555,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -15654,12 +17572,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.
 	/// </summary>
+	[Description("A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.")]
 	[CategoryOrder("StraddleCarrier",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class StraddleCarrierViewModel : FeatureViewModel<StraddleCarrier> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15674,6 +17594,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15686,16 +17607,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -15708,64 +17632,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -15777,10 +17664,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -15852,9 +17773,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -15873,9 +17796,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -15891,9 +17812,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
@@ -15930,6 +17849,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -15944,12 +17866,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
 	/// </summary>
+	[Description("A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.")]
 	[CategoryOrder("Terminal",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TerminalViewModel : FeatureViewModel<Terminal> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15964,6 +17888,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -15976,16 +17901,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -15998,64 +17926,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -16065,6 +17956,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _portFacilityNumber  = default;
 
+		[Description("Number assigned to the port facility in the IMO port facility database.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16079,6 +17971,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfTerminal? _categoryOfTerminal  = default;
 
+		[Description("Classification of terminals according to type of use, purpose, or type of cargo loaded or unloaded.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16094,6 +17987,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfTerminal[] categoryOfTerminalList => [(categoryOfTerminal)1,(categoryOfTerminal)3,(categoryOfTerminal)7,(categoryOfTerminal)8,(categoryOfTerminal)10,(categoryOfTerminal)11];
 
+		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Terminal")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
@@ -16101,6 +17995,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
+		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Terminal")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
@@ -16110,6 +18005,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _terminalIdentifier  = default;
 
+		[Description("The unique identifier for a given terminal.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16124,6 +18020,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _sMDGTerminalCode  = default;
 
+		[Description("A code from the SMDG (Ship Message Design Group) Terminal Code List.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16138,6 +18035,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _uNLocationCode  = default;
 
+		[Description("Used to encode the UN Location Code (http://www.unece.org/cefact/locode/service/location.html) or - in Europe - the Inland Ship Reporting Standard (ISRS) Code.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16153,10 +18051,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
+		public class ServiceAvailabilityViewModel : ViewModelBase, IInformationBinding {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16184,10 +18116,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16229,10 +18195,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16268,10 +18278,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 
-		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
+		public class InfrastructureViewModel : ViewModelBase, IFeatureBinding {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.InfrastructureViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.InfrastructureViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16343,9 +18397,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -16379,9 +18435,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				portFacilityNumber = this.portFacilityNumber,
 				categoryOfTerminal = this.categoryOfTerminal,
@@ -16404,9 +18458,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			portFacilityNumber = this._portFacilityNumber,
 			categoryOfTerminal = this._categoryOfTerminal,
@@ -16450,6 +18502,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -16479,12 +18534,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An area of water or enlargement of a channel used for turning vessels.
 	/// </summary>
+	[Description("An area of water or enlargement of a channel used for turning vessels.")]
 	[CategoryOrder("TurningBasin",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TurningBasinViewModel : FeatureViewModel<TurningBasin> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16499,6 +18556,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16511,16 +18569,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -16533,64 +18594,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -16600,6 +18624,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("TurningBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -16614,6 +18639,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("TurningBasin")]
 		[Editor(typeof(Editors.HorizonEditor<TurningBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16628,6 +18654,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("TurningBasin")]
 		[ExpandableObject]
 		[Optional]
@@ -16642,6 +18669,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private iSPSLevel? _iSPSLevel  = default;
 
+		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("TurningBasin")]
 		[Editor(typeof(Editors.HorizonEditor<TurningBasin>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16660,10 +18688,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16702,10 +18764,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -16774,9 +18880,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -16805,9 +18913,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -16827,9 +18933,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -16870,6 +18974,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -16887,12 +18994,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An area in which uniform general information of the waterway exists.
 	/// </summary>
+	[Description("An area in which uniform general information of the waterway exists.")]
 	[CategoryOrder("WaterwayArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class WaterwayAreaViewModel : FeatureViewModel<WaterwayArea> {
 		private String? _locationMRN  = default;
 
+		[Description("Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16907,6 +19016,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _globalLocationNumber  = default;
 
+		[Description("A globally unique, standardised identifier for parties and locations in business processes or supply chains.")]
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -16919,16 +19029,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("FeatureType")]
 		[ExpandableObject]
 		[Optional]
@@ -16941,64 +19054,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The active period of a recurring event or occurrence.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
+		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+		[Description("Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
-
+		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
@@ -17008,6 +19084,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private categoryOfPortSection _categoryOfPortSection  = default;
 
+		[Description("Classification of subdivisions of a port or harbour area by usage.")]
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17025,6 +19102,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
+		[Description("Textual description of the characteristics and notable matters pertaining to depths in an area.")]
 		[Category("WaterwayArea")]
 		[ExpandableObject]
 		[Optional]
@@ -17039,6 +19117,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private String? _locationByText  = default;
 
+		[Description("A textual rendering of a geographic location.")]
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17053,6 +19132,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private markedByViewModel? _markedBy  = default;
 
+		[Description("Description of the aids to navigation used to mark an area or object.")]
 		[Category("WaterwayArea")]
 		[ExpandableObject]
 		[Optional]
@@ -17068,10 +19148,44 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -17110,10 +19224,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
+		public class LayoutDivisionViewModel : ViewModelBase, IFeatureBinding {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.LayoutDivisionViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.LayoutDivisionViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -17182,9 +19340,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -17213,9 +19373,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfPortSection = this.categoryOfPortSection,
 				depthsDescription = this.depthsDescription?.Model,
@@ -17235,9 +19393,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfPortSection = this._categoryOfPortSection,
 			depthsDescription = this._depthsDescription?.Model,
@@ -17278,6 +19434,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -17295,12 +19454,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
+	[Description("A geographical area that describes the coverage and extent of spatial objects.")]
 	[CategoryOrder("DataCoverage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
 		private int _maximumDisplayScale  = default;
 
+		[Description("The largest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17315,6 +19476,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private int _minimumDisplayScale  = default;
 
+		[Description("The smallest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17329,6 +19491,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private int? _optimumDisplayScale  = default;
 
+		[Description("The largest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17341,6 +19504,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
+		[Category("DataCoverage")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
 
@@ -17352,6 +19520,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
 			optimumDisplayScale = instance.optimumDisplayScale;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
 			return this;
 		}
 
@@ -17360,6 +19533,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				maximumDisplayScale = this.maximumDisplayScale,
 				minimumDisplayScale = this.minimumDisplayScale,
 				optimumDisplayScale = this.optimumDisplayScale,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -17369,6 +19543,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			maximumDisplayScale = this._maximumDisplayScale,
 			minimumDisplayScale = this._minimumDisplayScale,
 			optimumDisplayScale = this._optimumDisplayScale,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
 		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
@@ -17387,6 +19562,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		public override string? ToString() => $"Data Coverage";
+
+		public DataCoverageViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
+		}
 	}
 
 
@@ -17394,12 +19575,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
+	[Description("An area within which a uniform assessment of the quality of the non-bathymetric data exists.")]
 	[CategoryOrder("QualityOfNonBathymetricData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
+		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17417,6 +19600,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _horizontalDistanceUncertainty  = default;
 
+		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17431,6 +19615,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -17445,6 +19630,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private double? _orientationUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a bearing.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17457,8 +19643,29 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
+		[Category("QualityOfNonBathymetricData")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
+		private sourceIndicationViewModel? _sourceIndication  = default;
+
+		[Description("Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.")]
+		[Category("QualityOfNonBathymetricData")]
+		[ExpandableObject]
+		[Optional]
+		public sourceIndicationViewModel? sourceIndication {
+			get {
+				return _sourceIndication;
+			}
+			set {
+				SetValue(ref _sourceIndication, value);
+			}
+		}
+
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
+		[Description("The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -17473,6 +19680,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
+		[Description("The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.")]
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
 		[Optional]
@@ -17485,6 +19693,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -17504,6 +19713,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			orientationUncertainty = instance.orientationUncertainty;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
+			sourceIndication = new ();
+			if (instance.sourceIndication != default) {
+				sourceIndication.Load(instance.sourceIndication);
+			}
 			surveyDateRange = new ();
 			if (instance.surveyDateRange != default) {
 				surveyDateRange.Load(instance.surveyDateRange);
@@ -17526,6 +19744,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
 				horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
 				orientationUncertainty = this.orientationUncertainty,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+				sourceIndication = this.sourceIndication?.Model,
 				surveyDateRange = this.surveyDateRange?.Model,
 				verticalUncertainty = this.verticalUncertainty?.Model,
 				information = this.information.Select(e => e.Model).ToList(),
@@ -17539,6 +19759,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 			orientationUncertainty = this._orientationUncertainty,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+			sourceIndication = this._sourceIndication?.Model,
 			surveyDateRange = this._surveyDateRange?.Model,
 			verticalUncertainty = this._verticalUncertainty?.Model,
 			information = this.information.Select(e => e.Model).ToList(),
@@ -17562,6 +19784,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
 		public QualityOfNonBathymetricDataViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
@@ -17573,12 +19798,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
+	[Description("The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.")]
 	[CategoryOrder("SoundingDatum",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
 		private verticalDatum _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17594,6 +19821,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)19,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)44];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SoundingDatum")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -17658,12 +19886,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
+	[Description("Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.")]
 	[CategoryOrder("VerticalDatumOfData",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
 		private verticalDatum _verticalDatum  = default;
 
+		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17679,6 +19909,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
 
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("VerticalDatumOfData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -17743,12 +19974,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
+	[Description("The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.")]
 	[CategoryOrder("TextPlacement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
 		private int _textOffsetBearing  = default;
 
+		[Description("The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17763,6 +19996,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private int _textOffsetDistance  = default;
 
+		[Description("The distance that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -17777,6 +20011,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private Boolean? _textRotation  = default;
 
+		[Description("A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17789,6 +20024,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Description("The attribute from which a text string is derived.")]
 		[Category("TextPlacement")]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
@@ -17798,6 +20034,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -17816,10 +20053,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : featureBindingViewModel<S131.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S131.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S131.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -18255,6 +20536,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			return instance;
 		}
 
+		public static HarbourFacilityViewModel LoadInformationBinding(this HarbourFacilityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new HarbourFacilityViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
+						role = locationHours.role,
+					});
+				}
+			}
+			return instance;
+		}
+
 		public static LockBasinViewModel LoadInformationBinding(this LockBasinViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
@@ -18661,6 +20955,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 						role = layoutDivision.role,
 					});
 				}
+			}
+			return instance;
+		}
+
+		public static HarbourFacilityViewModel LoadFeatureBinding(this HarbourFacilityViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

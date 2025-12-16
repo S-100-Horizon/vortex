@@ -12,29 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="TestClassBuilder.cs" />
-    <Compile Remove="UnitTestDataset.cs" />
+    <Compile Remove="Artifacts\**" />
+    <EmbeddedResource Remove="Artifacts\**" />
+    <None Remove="Artifacts\**" />
+    <Page Remove="Artifacts\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.2.3\S-101_FC_1.2.3.xml" Link="Artifacts\S-101_FC_1.2.3.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.5.0\S-101_FC_1.5.0.xml" Link="Artifacts\S-101_FC_1.5.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\1.5.0\S-124FC_1.5_20240330.xml" Link="Artifacts\S-124FC_1.5_20240330.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_FC_Ed2.0.0.xml" Link="Artifacts\S-128_FC_Ed2.0.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\1.0.0\131_1_0_0_20230315_FC.xml" Link="Artifacts\131_1_0_0_20230315_FC.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-201 Aids to Navigation Information\1.1.0\8. S-201 Ed 1.1.0_Annex D2_Feature Catalogue.xml" Link="Artifacts\8. S-201 Ed 1.1.0_Annex D2_Feature Catalogue.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Compile Remove="TestClassBuilder.cs" />
+    <Compile Remove="UnitTestDataset.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,19 +47,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Artifacts\" />
     <Folder Include="Samples\S201\" />
     <Folder Include="Samples\S131\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_TDS_sample_Ed 2.0.0.gml" Link="Artifacts\S-128_TDS_sample_Ed 2.0.0.gml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\samples\DKAAL\S100_ROOT\S-131\DATASET_FILES\DK00\131DK00_DKAAL.GML" Link="Samples\S131\131DK00_DKAAL.GML">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\artifacts\Product Specifications\S-201 Aids to Navigation Information\1.1.0\201CAtestgml_Inline.gml" Link="Samples\S201\201CAtestgml_Inline.gml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

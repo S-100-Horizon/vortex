@@ -51,7 +51,7 @@ namespace S100Framework.Applications
             [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
             public bool Verbose { get; set; }
 
-            [Option( "s128", Required = false, HelpText = "Create ElectronicProducts.", Default = false)]
+            [Option("s128", Required = false, HelpText = "Create ElectronicProducts.", Default = false)]
             public bool S128 { get; set; }
 
             [Option('n', "notespath", Required = false, HelpText = "Path to notes files references in TXTDSC.")]
@@ -95,7 +95,7 @@ namespace S100Framework.Applications
                 var target = o.Target!;
 
                 if (!string.IsNullOrEmpty(o.VerticalDatumConverter)) {
-                    var dictionary = o.VerticalDatumConverter.Split(',').Select(e=>e.Split('=')).ToDictionary(e=>int.Parse(e[0]), e=>int.Parse(e[1]));
+                    var dictionary = o.VerticalDatumConverter.Split(',').Select(e => e.Split('=')).ToDictionary(e => int.Parse(e[0]), e => int.Parse(e[1]));
                 }
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
@@ -110,9 +110,9 @@ namespace S100Framework.Applications
                         if (!append) {
                             FastZip fastZip = new();
 
-                            IO.Directory.Delete(target, true);
+                            //IO.Directory.Delete(target, true);
 
-                            fastZip.ExtractZip(IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"s100edX.gdb.zip"), IO.Path.GetFullPath(target), null);
+                            fastZip.ExtractZip(IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "s100edX.gdb.zip"), IO.Path.GetFullPath(target), null);
                         }
                     };
 
@@ -307,7 +307,7 @@ namespace S100Framework.Applications
 
                             for (int i = 0; i < depth.Points.Length; i++) {
                                 var coord = depth.Points[i];
-                                var z = depth.Depths[i];
+                                var z = depth.Depths.Length > 1 ? depth.Depths[i] : depth.Depths[0];
 
                                 var point = MapPointBuilderEx.CreateMapPoint(coord.X, coord.Y, z);
                                 mapPoints.Add(point);
@@ -409,7 +409,8 @@ namespace S100Framework.Applications
 
                                 // If interior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
                                 if (interiorCompositeExist != default) {
-                                    var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist!.Curves.Reverse() : compositeExist!.Curves;
+                                    //TODO: var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist!.Curves.Reverse() : compositeExist!.Curves;
+                                    var curvesInComposite = interiorCompositeExist.Curves;
                                     foreach (var curveName in curvesInComposite) {
                                         var curve = dataset.FindCurve(curveName);
 

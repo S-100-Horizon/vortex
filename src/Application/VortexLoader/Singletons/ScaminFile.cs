@@ -1,4 +1,5 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using System.Xml.Linq;
 
 namespace S100Framework.Applications.Singletons
@@ -99,7 +100,16 @@ namespace S100Framework.Applications.Singletons
             get => _polygons;
         }
 
-        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
+        internal int? GetMinimumScale(S100Framework.Applications.S57.esri.S57Object feature, string subtypeName/*, string relatedStructureName*/, int compilationScale, bool isRelatedToStructure = false) {
+            if (feature.SCAMIN_STEP.HasValue) {
+                var scamin = feature.SCAMIN_STEP.Value;
+                if (scamin > 10)
+                    return scamin;
+
+                //TODO: SCAMIN_step ?
+            }
+
+            var geometry = feature.Shape!;
             var touched = GetTouchedPolygonNames(geometry);
             if (touched.Count != 1) {
                 throw new ArgumentException("Cannot determine scamin");
