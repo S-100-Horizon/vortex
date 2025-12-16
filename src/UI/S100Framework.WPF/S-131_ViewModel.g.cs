@@ -83,6 +83,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			"HarbourAreaAdministrative" => new HarbourAreaAdministrativeViewModel { Name = name },
 			"HarbourAreaSection" => new HarbourAreaSectionViewModel { Name = name },
 			"HarbourBasin" => new HarbourBasinViewModel { Name = name },
+			"HarbourFacility" => new HarbourFacilityViewModel { Name = name },
 			"LockBasin" => new LockBasinViewModel { Name = name },
 			"LockBasinPart" => new LockBasinPartViewModel { Name = name },
 			"MooringBuoy" => new MooringBuoyViewModel { Name = name },
@@ -747,51 +748,54 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
-		[Optional]
-		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
+		private int? _frequencyShoreStationReceives  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
+		public int? frequencyShoreStationReceives {
+			get {
+				return _frequencyShoreStationReceives;
+			}
+			set {
+				SetValue(ref _frequencyShoreStationReceives, value);
+			}
+		}
+
+		private int _frequencyShoreStationTransmits  = default;
+
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
+		[Mandatory]
+		public int frequencyShoreStationTransmits {
+			get {
+				return _frequencyShoreStationTransmits;
+			}
+			set {
+				SetValue(ref _frequencyShoreStationTransmits, value);
+			}
+		}
 
 
 		public frequencyPairViewModel Load(frequencyPair instance) {
-			frequencyShoreStationTransmits.Clear();
-			if (instance.frequencyShoreStationTransmits is not null) {
-				foreach(var e in instance.frequencyShoreStationTransmits)
-					frequencyShoreStationTransmits.Add(e);
-			}
-			frequencyShoreStationReceives.Clear();
-			if (instance.frequencyShoreStationReceives is not null) {
-				foreach(var e in instance.frequencyShoreStationReceives)
-					frequencyShoreStationReceives.Add(e);
-			}
+			frequencyShoreStationReceives = instance.frequencyShoreStationReceives;
+			frequencyShoreStationTransmits = instance.frequencyShoreStationTransmits;
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new frequencyPair {
-				frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
-				frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
+				frequencyShoreStationReceives = this.frequencyShoreStationReceives,
+				frequencyShoreStationTransmits = this.frequencyShoreStationTransmits,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public frequencyPair Model => new () {
-			frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
-			frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
+			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
+			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
 		};
 
 		public override string? ToString() => $"Frequency Pair";
-
-		public frequencyPairViewModel() : base() {
-			frequencyShoreStationTransmits.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(frequencyShoreStationTransmits));
-			};
-			frequencyShoreStationReceives.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(frequencyShoreStationReceives));
-			};
-		}
 	}
 
 
@@ -1819,12 +1823,26 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
+		private String? _text  = default;
+
+		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
+		[Optional]
+		public String? text {
+			get {
+				return _text;
+			}
+			set {
+				SetValue(ref _text, value);
+			}
+		}
+
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
 		public scheduleByDayOfWeekViewModel Load(scheduleByDayOfWeek instance) {
 			categoryOfSchedule = instance.categoryOfSchedule;
+			text = instance.text;
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
@@ -1836,6 +1854,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string Serialize() {
 			var instance = new scheduleByDayOfWeek {
 				categoryOfSchedule = this.categoryOfSchedule,
+				text = this.text,
 				timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -1844,6 +1863,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public scheduleByDayOfWeek Model => new () {
 			categoryOfSchedule = this._categoryOfSchedule,
+			text = this._text,
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 		};
 
@@ -1906,18 +1926,21 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private String? _text  = default;
+		private sourceType? _sourceType  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? text {
+		public sourceType? sourceType {
 			get {
-				return _text;
+				return _sourceType;
 			}
 			set {
-				SetValue(ref _text, value);
+				SetValue(ref _sourceType, value);
 			}
 		}
+
+		[Browsable(false)]
+		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 
 		private String? _reportedDate  = default;
 
@@ -1941,7 +1964,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfAuthority = instance.categoryOfAuthority;
 			countryName = instance.countryName;
 			source = instance.source;
-			text = instance.text;
+			sourceType = instance.sourceType;
 			reportedDate = instance.reportedDate;
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -1956,7 +1979,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				categoryOfAuthority = this.categoryOfAuthority,
 				countryName = this.countryName,
 				source = this.source,
-				text = this.text,
+				sourceType = this.sourceType,
 				reportedDate = this.reportedDate,
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 			};
@@ -1968,7 +1991,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfAuthority = this._categoryOfAuthority,
 			countryName = this._countryName,
 			source = this._source,
-			text = this._text,
+			sourceType = this._sourceType,
 			reportedDate = this._reportedDate,
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 		};
@@ -6140,51 +6163,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -6484,9 +6465,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -6516,9 +6499,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 				categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -6537,9 +6518,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -6578,6 +6557,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -6671,51 +6653,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -6992,9 +6932,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -7033,9 +6975,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 				iSPSLevel = this.iSPSLevel,
@@ -7057,9 +6997,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfAnchorage = this.categoryOfAnchorage.ToList(),
 			iSPSLevel = this._iSPSLevel,
@@ -7101,6 +7039,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -7191,51 +7132,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -7357,9 +7256,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -7378,9 +7279,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -7396,9 +7295,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
@@ -7434,6 +7331,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -7515,51 +7415,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -8162,9 +8020,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8233,9 +8093,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				availableBerthingLength = this.availableBerthingLength,
 				bollardDescription = this.bollardDescription,
@@ -8273,9 +8131,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			availableBerthingLength = this._availableBerthingLength,
 			bollardDescription = this._bollardDescription,
@@ -8333,6 +8189,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -8444,51 +8303,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -8781,9 +8598,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -8808,9 +8627,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				bollardNumber = this.bollardNumber,
 				gLNExtension = this.gLNExtension,
@@ -8832,9 +8649,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			bollardNumber = this._bollardNumber,
 			gLNExtension = this._gLNExtension,
@@ -8876,6 +8691,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -8960,51 +8778,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -9080,9 +8856,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9103,9 +8881,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				height = this.height,
 				verticalLength = this.verticalLength,
@@ -9123,9 +8899,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			height = this._height,
 			verticalLength = this._verticalLength,
@@ -9163,6 +8937,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -9241,51 +9018,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -9616,9 +9351,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -9647,9 +9384,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -9669,9 +9404,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -9711,6 +9444,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -9798,51 +9534,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -9991,9 +9685,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10014,9 +9710,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 				verticalClearanceValue = this.verticalClearanceValue,
@@ -10034,9 +9728,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 			verticalClearanceValue = this._verticalClearanceValue,
@@ -10074,6 +9766,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -10155,51 +9850,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -10254,9 +9907,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10280,9 +9935,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfDolphin = this.categoryOfDolphin.ToList(),
 			};
@@ -10299,9 +9952,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfDolphin = this.categoryOfDolphin.ToList(),
 		};
@@ -10338,6 +9989,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -10419,51 +10073,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -10726,9 +10338,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -10757,9 +10371,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -10779,9 +10391,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -10821,6 +10431,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -10905,51 +10518,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -11094,9 +10665,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -11119,9 +10692,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				orientation = this.orientation?.Model,
 			};
@@ -11138,9 +10709,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			orientation = this._orientation?.Model,
 		};
@@ -11177,6 +10746,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -11258,51 +10830,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -11437,9 +10967,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -11459,9 +10991,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -11478,9 +11008,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -11517,6 +11045,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -11598,51 +11129,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -11791,9 +11280,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -11814,9 +11305,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 				verticalClearanceValue = this.verticalClearanceValue,
@@ -11834,9 +11323,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 			verticalClearanceValue = this._verticalClearanceValue,
@@ -11874,6 +11361,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -11955,51 +11445,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -12429,9 +11877,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -12463,9 +11913,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				uNLocationCode = this.uNLocationCode,
 				nationality = this.nationality,
@@ -12487,9 +11935,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			uNLocationCode = this._uNLocationCode,
 			nationality = this._nationality,
@@ -12531,6 +11977,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -12624,51 +12073,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -13167,9 +12574,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -13199,9 +12608,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfPortSection = this.categoryOfPortSection,
 				categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
@@ -13221,9 +12628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfPortSection = this._categoryOfPortSection,
 			categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
@@ -13263,6 +12668,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -13359,51 +12767,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -13666,9 +13032,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -13697,9 +13065,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -13719,9 +13085,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -13762,6 +13126,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
 			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
 			};
@@ -13770,6 +13137,289 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
+			};
+		}
+	}
+
+
+
+	/// <summary>
+	/// A harbour installation with a service or commercial operation of public interest.
+	/// </summary>
+	[CategoryOrder("HarbourFacility",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
+		private String? _locationMRN  = default;
+
+		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
+		[Optional]
+		public String? locationMRN {
+			get {
+				return _locationMRN;
+			}
+			set {
+				SetValue(ref _locationMRN, value);
+			}
+		}
+
+		private String? _globalLocationNumber  = default;
+
+		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
+		[Optional]
+		public String? globalLocationNumber {
+			get {
+				return _globalLocationNumber;
+			}
+			set {
+				SetValue(ref _globalLocationNumber, value);
+			}
+		}
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
+		private fixedDateRangeViewModel? _fixedDateRange  = default;
+
+		[Category("FeatureType")]
+		[ExpandableObject]
+		[Optional]
+		public fixedDateRangeViewModel? fixedDateRange {
+			get {
+				return _fixedDateRange;
+			}
+			set {
+				SetValue(ref _fixedDateRange, value);
+			}
+		}
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
+
+		[Category("FeatureType")]
+		[Optional]
+		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
+
+
+
+
+
+		#region InformationBindings
+
+		public class LocationHoursViewModel : ViewModelBase, IInformationBinding {
+			public LocationHoursViewModel() {
+				if (informationBindings.Length == 1)
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "LocationHours",
+					role = "facilityOperatingHours",
+					roleType = roleType.association,
+					informationTypes = ["ServiceHours"],
+				},
+			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<HarbourFacilityViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+		[Browsable(false)]
+
+		public override informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
+		#endregion
+
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
+
+
+		public HarbourFacilityViewModel Load(HarbourFacility instance) {
+			locationMRN = instance.locationMRN;
+			globalLocationNumber = instance.globalLocationNumber;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
+			featureName.Clear();
+			if (instance.featureName is not null) {
+				foreach(var e in instance.featureName)
+					featureName.Add(new featureNameViewModel().Load(e));
+			}
+			fixedDateRange = new ();
+			if (instance.fixedDateRange != default) {
+				fixedDateRange.Load(instance.fixedDateRange);
+			}
+			periodicDateRange.Clear();
+			if (instance.periodicDateRange is not null) {
+				foreach(var e in instance.periodicDateRange)
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+			}
+			rxNCode.Clear();
+			if (instance.rxNCode is not null) {
+				foreach(var e in instance.rxNCode)
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
+			}
+			graphic.Clear();
+			if (instance.graphic is not null) {
+				foreach(var e in instance.graphic)
+					graphic.Add(new graphicViewModel().Load(e));
+			}
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
+			textContent.Clear();
+			if (instance.textContent is not null) {
+				foreach(var e in instance.textContent)
+					textContent.Add(new textContentViewModel().Load(e));
+			}
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new HarbourFacility {
+				locationMRN = this.locationMRN,
+				globalLocationNumber = this.globalLocationNumber,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+				featureName = this.featureName.Select(e => e.Model).ToList(),
+				fixedDateRange = this.fixedDateRange?.Model,
+				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
+				graphic = this.graphic.Select(e => e.Model).ToList(),
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
+				textContent = this.textContent.Select(e => e.Model).ToList(),
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public HarbourFacility Model => new () {
+			locationMRN = this._locationMRN,
+			globalLocationNumber = this._globalLocationNumber,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+			featureName = this.featureName.Select(e => e.Model).ToList(),
+			fixedDateRange = this._fixedDateRange?.Model,
+			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
+			graphic = this.graphic.Select(e => e.Model).ToList(),
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
+			textContent = this.textContent.Select(e => e.Model).ToList(),
+		};
+
+		public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+
+		public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+
+		public HarbourFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
+			return this;
+		}
+
+		public HarbourFacilityViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
+			return this;
+		}
+
+		public override string? ToString() => $"Harbour Facility";
+
+		public HarbourFacilityViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
+			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureName));
+			};
+			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(rxNCode));
+			};
+			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
+			};
+			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
 			};
 		}
 	}
@@ -13845,51 +13495,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -14024,9 +13632,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14046,9 +13656,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -14065,9 +13673,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -14104,6 +13710,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -14185,51 +13794,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -14364,9 +13931,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14386,9 +13955,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				sillDepth = this.sillDepth,
 			};
@@ -14405,9 +13972,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			sillDepth = this._sillDepth,
 		};
@@ -14444,6 +14009,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -14525,51 +14093,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -14673,9 +14199,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -14698,9 +14226,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				maximumPermittedDraught = this.maximumPermittedDraught,
 				maximumPermittedVesselLength = this.maximumPermittedVesselLength,
@@ -14720,9 +14246,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			maximumPermittedDraught = this._maximumPermittedDraught,
 			maximumPermittedVesselLength = this._maximumPermittedVesselLength,
@@ -14762,6 +14286,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -14840,51 +14367,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -15229,9 +14714,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -15255,9 +14742,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfMooringWarpingFacility = this.categoryOfMooringWarpingFacility,
 				iDCode = this.iDCode,
@@ -15278,9 +14763,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfMooringWarpingFacility = this._categoryOfMooringWarpingFacility,
 			iDCode = this._iDCode,
@@ -15321,6 +14804,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -15408,51 +14894,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -15650,9 +15094,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -15690,9 +15136,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfShorePowerFacility = this.categoryOfShorePowerFacility,
 				iDCode = this.iDCode,
@@ -15715,9 +15159,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfShorePowerFacility = this._categoryOfShorePowerFacility,
 			iDCode = this._iDCode,
@@ -15760,6 +15202,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -15850,51 +15295,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -16132,9 +15535,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -16182,9 +15587,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				limitsDescription = this.limitsDescription?.Model,
 				markedBy = this.markedBy.Select(e => e.Model).ToList(),
@@ -16206,9 +15609,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			limitsDescription = this._limitsDescription?.Model,
 			markedBy = this.markedBy.Select(e => e.Model).ToList(),
@@ -16250,6 +15651,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -16349,51 +15753,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -16663,9 +16025,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -16699,9 +16063,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -16722,9 +16084,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -16765,6 +16125,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -16852,51 +16215,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -17159,9 +16480,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -17190,9 +16513,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -17212,9 +16533,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -17254,6 +16573,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -17338,51 +16660,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -17517,9 +16797,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -17539,9 +16821,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				verticalClearanceValue = this.verticalClearanceValue,
 			};
@@ -17558,9 +16838,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
@@ -17597,6 +16875,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -17678,51 +16959,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -17844,9 +17083,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -17865,9 +17106,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -17883,9 +17122,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
@@ -17921,6 +17158,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -18002,51 +17242,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -18491,9 +17689,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -18527,9 +17727,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				portFacilityNumber = this.portFacilityNumber,
 				categoryOfTerminal = this.categoryOfTerminal,
@@ -18552,9 +17750,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			portFacilityNumber = this._portFacilityNumber,
 			categoryOfTerminal = this._categoryOfTerminal,
@@ -18597,6 +17793,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -18693,51 +17892,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -19000,9 +18157,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -19031,9 +18190,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				depthsDescription = this.depthsDescription?.Model,
 				locationByText = this.locationByText,
@@ -19053,9 +18210,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			depthsDescription = this._depthsDescription?.Model,
 			locationByText = this._locationByText,
@@ -19095,6 +18250,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -19179,51 +18337,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 
-		private String? _source  = default;
-
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public String? source {
-			get {
-				return _source;
-			}
-			set {
-				SetValue(ref _source, value);
-			}
-		}
-
-		private sourceType? _sourceType  = default;
-
-		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public sourceType? sourceType {
-			get {
-				return _sourceType;
-			}
-			set {
-				SetValue(ref _sourceType, value);
-			}
-		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
-
-		private String? _reportedDate  = default;
-
-		[Category("FeatureType")]
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
-		[Optional]
-		public String? reportedDate {
-			get {
-				return _reportedDate;
-			}
-			set {
-				SetValue(ref _reportedDate, value);
-			}
-		}
+		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("FeatureType")]
 		[Optional]
@@ -19486,9 +18602,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				foreach(var e in instance.graphic)
 					graphic.Add(new graphicViewModel().Load(e));
 			}
-			source = instance.source;
-			sourceType = instance.sourceType;
-			reportedDate = instance.reportedDate;
+			sourceIndication.Clear();
+			if (instance.sourceIndication is not null) {
+				foreach(var e in instance.sourceIndication)
+					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+			}
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
@@ -19517,9 +18635,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 				graphic = this.graphic.Select(e => e.Model).ToList(),
-				source = this.source,
-				sourceType = this.sourceType,
-				reportedDate = this.reportedDate,
+				sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 				textContent = this.textContent.Select(e => e.Model).ToList(),
 				categoryOfPortSection = this.categoryOfPortSection,
 				depthsDescription = this.depthsDescription?.Model,
@@ -19539,9 +18655,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			graphic = this.graphic.Select(e => e.Model).ToList(),
-			source = this._source,
-			sourceType = this._sourceType,
-			reportedDate = this._reportedDate,
+			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 			categoryOfPortSection = this._categoryOfPortSection,
 			depthsDescription = this._depthsDescription?.Model,
@@ -19581,6 +18695,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(sourceIndication));
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -19645,6 +18762,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Category("DataCoverage")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
 
@@ -19656,6 +18777,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
 			optimumDisplayScale = instance.optimumDisplayScale;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
 			return this;
 		}
 
@@ -19664,6 +18790,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				maximumDisplayScale = this.maximumDisplayScale,
 				minimumDisplayScale = this.minimumDisplayScale,
 				optimumDisplayScale = this.optimumDisplayScale,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -19673,6 +18800,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			maximumDisplayScale = this._maximumDisplayScale,
 			minimumDisplayScale = this._minimumDisplayScale,
 			optimumDisplayScale = this._optimumDisplayScale,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
 		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
@@ -19691,6 +18819,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		public override string? ToString() => $"Data Coverage";
+
+		public DataCoverageViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
+		}
 	}
 
 
@@ -19761,6 +18895,24 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+		[Category("QualityOfNonBathymetricData")]
+		[Optional]
+		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
+
+		private sourceIndicationViewModel? _sourceIndication  = default;
+
+		[Category("QualityOfNonBathymetricData")]
+		[ExpandableObject]
+		[Optional]
+		public sourceIndicationViewModel? sourceIndication {
+			get {
+				return _sourceIndication;
+			}
+			set {
+				SetValue(ref _sourceIndication, value);
+			}
+		}
+
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -19808,6 +18960,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			orientationUncertainty = instance.orientationUncertainty;
+			interoperabilityIdentifier.Clear();
+			if (instance.interoperabilityIdentifier is not null) {
+				foreach(var e in instance.interoperabilityIdentifier)
+					interoperabilityIdentifier.Add(e);
+			}
+			sourceIndication = new ();
+			if (instance.sourceIndication != default) {
+				sourceIndication.Load(instance.sourceIndication);
+			}
 			surveyDateRange = new ();
 			if (instance.surveyDateRange != default) {
 				surveyDateRange.Load(instance.surveyDateRange);
@@ -19830,6 +18991,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
 				horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
 				orientationUncertainty = this.orientationUncertainty,
+				interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+				sourceIndication = this.sourceIndication?.Model,
 				surveyDateRange = this.surveyDateRange?.Model,
 				verticalUncertainty = this.verticalUncertainty?.Model,
 				information = this.information.Select(e => e.Model).ToList(),
@@ -19843,6 +19006,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 			orientationUncertainty = this._orientationUncertainty,
+			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
+			sourceIndication = this._sourceIndication?.Model,
 			surveyDateRange = this._surveyDateRange?.Model,
 			verticalUncertainty = this._verticalUncertainty?.Model,
 			information = this.information.Select(e => e.Model).ToList(),
@@ -19866,6 +19031,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
 		public QualityOfNonBathymetricDataViewModel() : base() {
+			interoperabilityIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(interoperabilityIdentifier));
+			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
@@ -20603,6 +19771,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			return instance;
 		}
 
+		public static HarbourFacilityViewModel LoadInformationBinding(this HarbourFacilityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new HarbourFacilityViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
+						role = locationHours.role,
+					});
+				}
+			}
+			return instance;
+		}
+
 		public static LockBasinViewModel LoadInformationBinding(this LockBasinViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
@@ -21009,6 +20190,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 						role = layoutDivision.role,
 					});
 				}
+			}
+			return instance;
+		}
+
+		public static HarbourFacilityViewModel LoadFeatureBinding(this HarbourFacilityViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

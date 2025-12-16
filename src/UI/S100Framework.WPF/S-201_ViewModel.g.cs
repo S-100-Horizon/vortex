@@ -529,16 +529,16 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
-		private Boolean? _sectorExtension  = default;
+		private Boolean? _sectorArcExtension  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public Boolean? sectorExtension {
+		public Boolean? sectorArcExtension {
 			get {
-				return _sectorExtension;
+				return _sectorArcExtension;
 			}
 			set {
-				SetValue(ref _sectorExtension, value);
+				SetValue(ref _sectorArcExtension, value);
 			}
 		}
 
@@ -568,7 +568,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.sectorInformation)
 					sectorInformation.Add(new sectorInformationViewModel().Load(e));
 			}
-			sectorExtension = instance.sectorExtension;
+			sectorArcExtension = instance.sectorArcExtension;
 			return this;
 		}
 
@@ -580,7 +580,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				sectorLimit = this.sectorLimit?.Model,
 				valueOfNominalRange = this.valueOfNominalRange,
 				sectorInformation = this.sectorInformation.Select(e => e.Model).ToList(),
-				sectorExtension = this.sectorExtension,
+				sectorArcExtension = this.sectorArcExtension,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -593,7 +593,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			sectorLimit = this._sectorLimit?.Model,
 			valueOfNominalRange = this._valueOfNominalRange,
 			sectorInformation = this.sectorInformation.Select(e => e.Model).ToList(),
-			sectorExtension = this._sectorExtension,
+			sectorArcExtension = this._sectorArcExtension,
 		};
 
 		public override string? ToString() => $"Light Sector";
@@ -981,19 +981,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
-		private double? _candela  = default;
-
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public double? candela {
-			get {
-				return _candela;
-			}
-			set {
-				SetValue(ref _candela, value);
-			}
-		}
-
 
 		public sectorCharacteristicsViewModel Load(sectorCharacteristics instance) {
 			lightCharacteristic = instance.lightCharacteristic;
@@ -1013,7 +1000,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.signalSequence)
 					signalSequence.Add(new signalSequenceViewModel().Load(e));
 			}
-			candela = instance.candela;
 			return this;
 		}
 
@@ -1024,7 +1010,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				signalGroup = this.signalGroup.ToList(),
 				signalPeriod = this.signalPeriod,
 				signalSequence = this.signalSequence.Select(e => e.Model).ToList(),
-				candela = this.candela,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -1036,7 +1021,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			signalGroup = this.signalGroup.ToList(),
 			signalPeriod = this._signalPeriod,
 			signalSequence = this.signalSequence.Select(e => e.Model).ToList(),
-			candela = this._candela,
 		};
 
 		public override string? ToString() => $"Sector Characteristics";
@@ -3331,7 +3315,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private visualProminence _visualProminence  = default;
 
@@ -3633,7 +3617,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
 	[CategoryOrder("LateralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -4031,7 +4015,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4,(categoryOfLateralMark)5,(categoryOfLateralMark)6,(categoryOfLateralMark)7,(categoryOfLateralMark)8,(categoryOfLateralMark)9,(categoryOfLateralMark)10,(categoryOfLateralMark)11,(categoryOfLateralMark)12,(categoryOfLateralMark)13,(categoryOfLateralMark)14,(categoryOfLateralMark)15,(categoryOfLateralMark)16,(categoryOfLateralMark)17,(categoryOfLateralMark)18,(categoryOfLateralMark)19,(categoryOfLateralMark)20,(categoryOfLateralMark)21,(categoryOfLateralMark)22,(categoryOfLateralMark)23,(categoryOfLateralMark)24,(categoryOfLateralMark)25,(categoryOfLateralMark)26,(categoryOfLateralMark)27];
+		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -4229,7 +4213,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
+	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
 	[CategoryOrder("LateralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -4596,7 +4580,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4,(categoryOfLateralMark)5,(categoryOfLateralMark)6,(categoryOfLateralMark)7,(categoryOfLateralMark)8,(categoryOfLateralMark)9,(categoryOfLateralMark)10,(categoryOfLateralMark)11,(categoryOfLateralMark)12,(categoryOfLateralMark)13,(categoryOfLateralMark)14,(categoryOfLateralMark)15,(categoryOfLateralMark)16,(categoryOfLateralMark)17,(categoryOfLateralMark)18,(categoryOfLateralMark)19,(categoryOfLateralMark)20,(categoryOfLateralMark)21,(categoryOfLateralMark)22,(categoryOfLateralMark)23,(categoryOfLateralMark)24,(categoryOfLateralMark)25,(categoryOfLateralMark)26,(categoryOfLateralMark)27];
+		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -5453,7 +5437,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private orientationViewModel _orientation  = default;
 
@@ -5947,13 +5931,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		[Category("GenericLight")]
-		[Multiplicity(1)]
-		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -5990,7 +5967,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -6035,6 +6012,13 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightSectored")]
+		[Multiplicity(1)]
+		public ObservableCollection<colour> colour  { get; set; } = new ();
+
+		[Browsable(false)]
+		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
+		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -6058,9 +6042,19 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 
+		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
+
 		[Category("LightSectored")]
+		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public ObservableCollection<marksNavigationalSystemOf> marksNavigationalSystemOf  { get; set; } = new ();
+		public marksNavigationalSystemOf? marksNavigationalSystemOf {
+			get {
+				return _marksNavigationalSystemOf;
+			}
+			set {
+				SetValue(ref _marksNavigationalSystemOf, value);
+			}
+		}
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
@@ -6135,11 +6129,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.remoteMonitoringSystem)
 					remoteMonitoringSystem.Add(e);
 			}
-			colour.Clear();
-			if (instance.colour is not null) {
-				foreach(var e in instance.colour)
-					colour.Add(e);
-			}
 			height = instance.height;
 			status.Clear();
 			if (instance.status is not null) {
@@ -6150,17 +6139,18 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			verticalLength = instance.verticalLength;
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
+			colour.Clear();
+			if (instance.colour is not null) {
+				foreach(var e in instance.colour)
+					colour.Add(e);
+			}
 			categoryOfLight.Clear();
 			if (instance.categoryOfLight is not null) {
 				foreach(var e in instance.categoryOfLight)
 					categoryOfLight.Add(e);
 			}
 			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
-			marksNavigationalSystemOf.Clear();
-			if (instance.marksNavigationalSystemOf is not null) {
-				foreach(var e in instance.marksNavigationalSystemOf)
-					marksNavigationalSystemOf.Add(e);
-			}
+			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			signalGeneration = instance.signalGeneration;
 			ObscuredSector.Clear();
 			if (instance.ObscuredSector is not null) {
@@ -6192,16 +6182,16 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 				remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-				colour = this.colour.ToList(),
 				height = this.height,
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
+				colour = this.colour.ToList(),
 				categoryOfLight = this.categoryOfLight.ToList(),
 				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
-				marksNavigationalSystemOf = this.marksNavigationalSystemOf.ToList(),
+				marksNavigationalSystemOf = this.marksNavigationalSystemOf,
 				signalGeneration = this.signalGeneration,
 				ObscuredSector = this.ObscuredSector.Select(e => e.Model).ToList(),
 				sectorCharacteristics = this.sectorCharacteristics.Select(e => e.Model).ToList(),
@@ -6226,16 +6216,16 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 			remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-			colour = this.colour.ToList(),
 			height = this._height,
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
+			colour = this.colour.ToList(),
 			categoryOfLight = this.categoryOfLight.ToList(),
 			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
-			marksNavigationalSystemOf = this.marksNavigationalSystemOf.ToList(),
+			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
 			signalGeneration = this._signalGeneration,
 			ObscuredSector = this.ObscuredSector.Select(e => e.Model).ToList(),
 			sectorCharacteristics = this.sectorCharacteristics.Select(e => e.Model).ToList(),
@@ -6271,17 +6261,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			remoteMonitoringSystem.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(remoteMonitoringSystem));
 			};
-			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(colour));
-			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
 			};
+			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(colour));
+			};
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
-			};
-			marksNavigationalSystemOf.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(marksNavigationalSystemOf));
 			};
 			ObscuredSector.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(ObscuredSector));
@@ -6471,13 +6458,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		[Category("GenericLight")]
-		[Multiplicity(1)]
-		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -6514,7 +6494,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -6559,15 +6539,32 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightAllAround")]
+		[Multiplicity(1)]
+		public ObservableCollection<colour> colour  { get; set; } = new ();
+
+		[Browsable(false)]
+		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
+		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
 
+		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
+
 		[Category("LightAllAround")]
+		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
+		public exhibitionConditionOfLight? exhibitionConditionOfLight {
+			get {
+				return _exhibitionConditionOfLight;
+			}
+			set {
+				SetValue(ref _exhibitionConditionOfLight, value);
+			}
+		}
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
@@ -6738,11 +6735,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.remoteMonitoringSystem)
 					remoteMonitoringSystem.Add(e);
 			}
-			colour.Clear();
-			if (instance.colour is not null) {
-				foreach(var e in instance.colour)
-					colour.Add(e);
-			}
 			height = instance.height;
 			status.Clear();
 			if (instance.status is not null) {
@@ -6753,16 +6745,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			verticalLength = instance.verticalLength;
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
+			colour.Clear();
+			if (instance.colour is not null) {
+				foreach(var e in instance.colour)
+					colour.Add(e);
+			}
 			categoryOfLight.Clear();
 			if (instance.categoryOfLight is not null) {
 				foreach(var e in instance.categoryOfLight)
 					categoryOfLight.Add(e);
 			}
-			exhibitionConditionOfLight.Clear();
-			if (instance.exhibitionConditionOfLight is not null) {
-				foreach(var e in instance.exhibitionConditionOfLight)
-					exhibitionConditionOfLight.Add(e);
-			}
+			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
 			lightVisibility = instance.lightVisibility;
 			majorLight = instance.majorLight;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -6797,15 +6790,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 				remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-				colour = this.colour.ToList(),
 				height = this.height,
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
+				colour = this.colour.ToList(),
 				categoryOfLight = this.categoryOfLight.ToList(),
-				exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
+				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
 				lightVisibility = this.lightVisibility,
 				majorLight = this.majorLight,
 				marksNavigationalSystemOf = this.marksNavigationalSystemOf,
@@ -6835,15 +6828,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 			remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-			colour = this.colour.ToList(),
 			height = this._height,
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
+			colour = this.colour.ToList(),
 			categoryOfLight = this.categoryOfLight.ToList(),
-			exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
+			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
 			lightVisibility = this._lightVisibility,
 			majorLight = this._majorLight,
 			marksNavigationalSystemOf = this._marksNavigationalSystemOf,
@@ -6884,17 +6877,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			remoteMonitoringSystem.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(remoteMonitoringSystem));
 			};
-			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(colour));
-			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
 			};
+			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(colour));
+			};
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
-			};
-			exhibitionConditionOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(exhibitionConditionOfLight));
 			};
 		}
 	}
@@ -7078,13 +7068,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		[Category("GenericLight")]
-		[Multiplicity(1)]
-		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -7121,7 +7104,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -7165,19 +7148,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
-
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
-		public exhibitionConditionOfLight? exhibitionConditionOfLight {
-			get {
-				return _exhibitionConditionOfLight;
-			}
-			set {
-				SetValue(ref _exhibitionConditionOfLight, value);
-			}
-		}
+		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
@@ -7188,34 +7161,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
-
-		private double? _valueOfGeographicRange  = default;
-
-		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public double? valueOfGeographicRange {
-			get {
-				return _valueOfGeographicRange;
-			}
-			set {
-				SetValue(ref _valueOfGeographicRange, value);
-			}
-		}
-
-		private double? _valueOfLuminousRange  = default;
-
-		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
-		[Optional]
-		public double? valueOfLuminousRange {
-			get {
-				return _valueOfLuminousRange;
-			}
-			set {
-				SetValue(ref _valueOfLuminousRange, value);
-			}
-		}
 
 		private double? _valueOfNominalRange  = default;
 
@@ -7318,11 +7263,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.remoteMonitoringSystem)
 					remoteMonitoringSystem.Add(e);
 			}
-			colour.Clear();
-			if (instance.colour is not null) {
-				foreach(var e in instance.colour)
-					colour.Add(e);
-			}
 			height = instance.height;
 			status.Clear();
 			if (instance.status is not null) {
@@ -7333,14 +7273,16 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			verticalLength = instance.verticalLength;
 			effectiveIntensity = instance.effectiveIntensity;
 			peakIntensity = instance.peakIntensity;
-			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
+			exhibitionConditionOfLight.Clear();
+			if (instance.exhibitionConditionOfLight is not null) {
+				foreach(var e in instance.exhibitionConditionOfLight)
+					exhibitionConditionOfLight.Add(e);
+			}
 			lightVisibility.Clear();
 			if (instance.lightVisibility is not null) {
 				foreach(var e in instance.lightVisibility)
 					lightVisibility.Add(e);
 			}
-			valueOfGeographicRange = instance.valueOfGeographicRange;
-			valueOfLuminousRange = instance.valueOfLuminousRange;
 			valueOfNominalRange = instance.valueOfNominalRange;
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
@@ -7371,17 +7313,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 				remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-				colour = this.colour.ToList(),
 				height = this.height,
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
 				verticalLength = this.verticalLength,
 				effectiveIntensity = this.effectiveIntensity,
 				peakIntensity = this.peakIntensity,
-				exhibitionConditionOfLight = this.exhibitionConditionOfLight,
+				exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
 				lightVisibility = this.lightVisibility.ToList(),
-				valueOfGeographicRange = this.valueOfGeographicRange,
-				valueOfLuminousRange = this.valueOfLuminousRange,
 				valueOfNominalRange = this.valueOfNominalRange,
 				multiplicityOfFeatures = this.multiplicityOfFeatures?.Model,
 				rhythmOfLight = this.rhythmOfLight?.Model,
@@ -7407,17 +7346,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 			remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-			colour = this.colour.ToList(),
 			height = this._height,
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
 			verticalLength = this._verticalLength,
 			effectiveIntensity = this._effectiveIntensity,
 			peakIntensity = this._peakIntensity,
-			exhibitionConditionOfLight = this._exhibitionConditionOfLight,
+			exhibitionConditionOfLight = this.exhibitionConditionOfLight.ToList(),
 			lightVisibility = this.lightVisibility.ToList(),
-			valueOfGeographicRange = this._valueOfGeographicRange,
-			valueOfLuminousRange = this._valueOfLuminousRange,
 			valueOfNominalRange = this._valueOfNominalRange,
 			multiplicityOfFeatures = this._multiplicityOfFeatures?.Model,
 			rhythmOfLight = this._rhythmOfLight?.Model,
@@ -7454,11 +7390,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			remoteMonitoringSystem.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(remoteMonitoringSystem));
 			};
-			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(colour));
-			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			exhibitionConditionOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(exhibitionConditionOfLight));
 			};
 			lightVisibility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(lightVisibility));
@@ -7645,13 +7581,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		[Category("GenericLight")]
-		[Multiplicity(1)]
-		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -7688,7 +7617,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -7808,11 +7737,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				foreach(var e in instance.remoteMonitoringSystem)
 					remoteMonitoringSystem.Add(e);
 			}
-			colour.Clear();
-			if (instance.colour is not null) {
-				foreach(var e in instance.colour)
-					colour.Add(e);
-			}
 			height = instance.height;
 			status.Clear();
 			if (instance.status is not null) {
@@ -7848,7 +7772,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				periodicDateRange = this.periodicDateRange?.Model,
 				SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 				remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-				colour = this.colour.ToList(),
 				height = this.height,
 				status = this.status.ToList(),
 				verticalDatum = this.verticalDatum,
@@ -7878,7 +7801,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			periodicDateRange = this._periodicDateRange?.Model,
 			SeasonalActionRequired = this.SeasonalActionRequired.ToList(),
 			remoteMonitoringSystem = this.remoteMonitoringSystem.ToList(),
-			colour = this.colour.ToList(),
 			height = this._height,
 			status = this.status.ToList(),
 			verticalDatum = this._verticalDatum,
@@ -7918,9 +7840,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 			remoteMonitoringSystem.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(remoteMonitoringSystem));
-			};
-			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(colour));
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -8143,7 +8062,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalAccuracy  = default;
 
@@ -9546,7 +9465,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
 					lower = 0,
-					upper = default,
+					upper = 1,
 					association = "VirtualAIS",
 					role = "virtualAISbroadcastBy",
 					roleType = roleType.association,
@@ -9908,7 +9827,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
+		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
 		[Category("Daymark")]
 		[Multiplicity(1)]
@@ -10012,7 +9931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -10479,7 +10398,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _height  = default;
 
@@ -11427,7 +11346,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
 					lower = 0,
-					upper = 1,
+					upper = default,
 					association = "VirtualAIS",
 					role = "virtualAISbroadcasts",
 					roleType = roleType.association,
@@ -11869,7 +11788,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
-					lower = 1,
+					lower = 0,
 					upper = default,
 					association = "PhysicalAIS",
 					role = "physicalAISbroadcasts",
@@ -12329,7 +12248,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			[Browsable(false)]
 			public featureBindingDefinition[] featureBindings => [
 				new featureBindingDefinition {
-					lower = 1,
+					lower = 0,
 					upper = default,
 					association = "SyntheticAIS",
 					role = "syntheticAISbroadcasts",
@@ -12829,7 +12748,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
 	[CategoryOrder("IsolatedDangerBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -14002,7 +13921,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
+	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
 	[CategoryOrder("IsolatedDangerBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -17045,7 +16964,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private visualProminence _visualProminence  = default;
 
@@ -18821,7 +18740,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -19431,7 +19350,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -19968,7 +19887,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -24823,7 +24742,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A safe water beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A safe water beacon may be used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
 	[CategoryOrder("SafeWaterBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -25400,7 +25319,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Beacon in general: A beacon whose appearance or purpose is not adequately known.
+	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
 	[CategoryOrder("SpecialPurposeGeneralBeacon",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -25788,7 +25707,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
+		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -25993,7 +25912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A safe water buoy is used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
+	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
 	[CategoryOrder("SafeWaterBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -26533,7 +26452,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 
 	/// <summary>
-	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Buoy in general: A buoy whose appearance or purpose is not adequately known.
+	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
 	[CategoryOrder("SpecialPurposeGeneralBuoy",0)]
 	[CategoryOrder("InformationBindings",100)]
@@ -26890,7 +26809,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
+		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];

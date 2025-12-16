@@ -17,25 +17,24 @@ namespace S100Framework.DomainModel.S131 {
 		public static string Scope => "Global coverage of maritime areas";
 		public static string ProductId => "S-131";
 		public static Version Version => new Version("2.0.0");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-10-25", "yyyy-MM-dd");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-11-12", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["bearingInformation","cargoServicesDescription","constructionInformation","contactAddress","depthsDescription","facilitiesLayoutDescription","featureName","fixedDateRange","frequencyPair","generalHarbourInformation","generalPortDescription","graphic","horizontalPositionUncertainty","information","landmarkDescription","limitsDescription","majorLightDescription","markedBy","offshoreMarkDescription","onlineResource","orientation","periodicDateRange","rxNCode","scheduleByDayOfWeek","sourceIndication","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","usefulMarkDescription","verticalUncertainty","vesselMeasurementsSpecification","weatherResource"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ServiceControl","ServiceContact","LocationHours","RelatedOrganisation","InclusionType","PermissionType","SpatialAssociation","LimitEntrance","ServiceAvailability"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","Subsection","Infrastructure","PrimaryAuxiliaryFacility","Demarcation","JurisdictionalLimit","LayoutDivision"];
 		public static string[] InformationTypes => ["Applicability","Authority","AvailablePortServices","ContactDetails","Entrance","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
-		public static string[] FeatureTypes => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DockArea","DryDock","Dolphin","DumpingGround","FenderLine","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
+		public static string[] FeatureTypes => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DockArea","DryDock","Dolphin","DumpingGround","FenderLine","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
-			Primitives.noGeometry => ["FeatureType","OrganizationContactArea","SupervisedArea","Layout"],
-			Primitives.point => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TextPlacement"],
-			Primitives.surface => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","DockArea","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","LockBasin","LockBasinPart","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData"],
-			Primitives.curve => ["AutomatedGuidedVehicle","Berth","FenderLine","OuterLimit"],
+			Primitives.point => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourFacility","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TextPlacement"],
+			Primitives.surface => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","DockArea","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","LockBasin","LockBasinPart","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData"],
+			Primitives.curve => ["AutomatedGuidedVehicle","Berth","FenderLine","HarbourFacility","OuterLimit"],
 			_ => throw new InvalidOperationException(),
 		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
-			"FeatureType" => [Primitives.noGeometry],
-			"OrganizationContactArea" => [Primitives.noGeometry],
-			"SupervisedArea" => [Primitives.noGeometry],
-			"HarbourPhysicalInfrastructure" => [Primitives.point,Primitives.surface],
-			"Layout" => [Primitives.noGeometry],
+			"FeatureType" => [],
+			"OrganizationContactArea" => [],
+			"SupervisedArea" => [],
+			"HarbourPhysicalInfrastructure" => [],
+			"Layout" => [],
 			"AnchorBerth" => [Primitives.point,Primitives.surface],
 			"AnchorageArea" => [Primitives.point,Primitives.surface],
 			"AutomatedGuidedVehicle" => [Primitives.point,Primitives.curve,Primitives.surface],
@@ -52,6 +51,7 @@ namespace S100Framework.DomainModel.S131 {
 			"HarbourAreaAdministrative" => [Primitives.point,Primitives.surface],
 			"HarbourAreaSection" => [Primitives.point,Primitives.surface],
 			"HarbourBasin" => [Primitives.surface],
+			"HarbourFacility" => [Primitives.point,Primitives.curve,Primitives.surface],
 			"LockBasin" => [Primitives.point,Primitives.surface],
 			"LockBasinPart" => [Primitives.point,Primitives.surface],
 			"MooringBuoy" => [Primitives.point],
@@ -2644,6 +2644,26 @@ namespace S100Framework.DomainModel.S131 {
 				definition = "The removal or treatment of biofouling (accumulation of aquatic organisms including microfouling and macrofouling) from a ship's submerged surfaces, including hull and niche areas, conducted either in-water or during dry-docking. The process includes both proactive cleaning (periodic removal of microfouling) and reactive cleaning (removal of micro- and macrofouling as corrective action).",
 				label = "Hull Cleaning",
 			},
+			new() {
+				code = 19,
+				definition = "The conduct of observational, sampling, or experimental activities by authorised personnel to collect scientific or environmental data, which may involve the deployment of scientific instruments, collection of biological or geological samples, or in-water survey operations.",
+				label = "Scientific Research",
+			},
+			new() {
+				code = 20,
+				definition = "Organised recreational visitation and leisure activities in marine areas, including sight-seeing, wildlife observation, glass-bottom vessel tours, and guided nature excursions conducted by commercial or permitted operators.",
+				label = "Tourism",
+			},
+			new() {
+				code = 21,
+				definition = "Structured activities conducted for training, awareness, or interpretive purposes involving groups or individuals learning about the marine environment, including guided educational programs, school activities, and field instruction conducted within designated marine areas.",
+				label = "Education",
+			},
+			new() {
+				code = 22,
+				definition = "Inspection, repair, or upkeep of existing marine or coastal infrastructure such as wharves, piers, pipelines, moorings, subsea cables, navigational aids, or coastal protection structures, including minor works that do not expand the original footprint.",
+				label = "Infrastructure Maintenance",
+			},
 		});
 
 		public static ImmutableArray<categoryOfRxN> categoryOfRxNS => ImmutableArray.Create<categoryOfRxN>(new categoryOfRxN[]{
@@ -3037,20 +3057,18 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair : ComplexType {
-			[XmlElement("frequencyShoreStationTransmits")]
-			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
-			[Optional]
-			public List<int> frequencyShoreStationTransmits {get;set;} = [];
-
 			[XmlElement("frequencyShoreStationReceives")]
-			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
+			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 			[Optional]
-			public List<int> frequencyShoreStationReceives {get;set;} = [];
+			public int? frequencyShoreStationReceives {get;set;} = default;
+
+			[XmlElement("frequencyShoreStationTransmits")]
+			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+			[Mandatory]
+			public int frequencyShoreStationTransmits {get;set;} = default;
 
 			#region ShouldSerialize
-			public bool ShouldSerializefrequencyShoreStationTransmits() { return frequencyShoreStationTransmits.Any(); }
-
-			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.Any(); }
+			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -3309,7 +3327,7 @@ namespace S100Framework.DomainModel.S131 {
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
 			[XmlElement("actionOrActivity")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 			[Optional]
 			public actionOrActivity? actionOrActivity {get;set;} = default;
 
@@ -3359,9 +3377,10 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? source {get;set;} = default;
 
-			[XmlElement("text")]
+			[XmlIgnore]
+			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
 			[Optional]
-			public String? text {get;set;} = default;
+			public sourceType? sourceType {get;set;} = default;
 
 			[XmlElement("reportedDate")]
 			[Optional]
@@ -3378,7 +3397,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
-			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
@@ -3389,6 +3408,10 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlElement("categoryOfAuthority")]
 			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("sourceType")]
+			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 			#endregion
 
 			#region Validation
@@ -4210,12 +4233,18 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
+			[XmlElement("text")]
+			[Optional]
+			public String? text {get;set;} = default;
+
 			[XmlElement("timeIntervalsByDayOfWeek")]
 			[Multiplicity(1)]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			#region ShouldSerialize
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
+
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
 			#endregion
@@ -5977,19 +6006,9 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public List<graphic> graphic {get;set;} = [];
 
-			[XmlElement("source")]
-			[StringLengthConstraint(150)]
+			[XmlElement("sourceIndication")]
 			[Optional]
-			public String? source {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public sourceType? sourceType {get;set;} = default;
-
-			[XmlElement("reportedDate")]
-			[Optional]
-			public String? reportedDate {get;set;} = default;
+			public List<sourceIndication> sourceIndication {get;set;} = [];
 
 			[XmlElement("textContent")]
 			[Optional]
@@ -6013,19 +6032,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
-			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
-
-			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
-
-			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializesourceIndication() { return sourceIndication.Any(); }
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("sourceType")]
-			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
+
 			#endregion
 
 			[JsonIgnore]
@@ -6075,7 +6088,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
 			public static Primitives[] _primitives => [
-				Primitives.noGeometry
+				
 			];
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -6135,7 +6148,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..OrganizationContactArea._primitives];
 			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
+				
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -6187,7 +6200,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..SupervisedArea._primitives];
 			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
+				
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -6230,7 +6243,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..HarbourPhysicalInfrastructure._primitives];
 			public new static Primitives[] _primitives => [
-				Primitives.point, Primitives.surface
+				
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -6281,7 +6294,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..Layout._primitives];
 			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
+				
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -8023,6 +8036,76 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// A harbour installation with a service or commercial operation of public interest.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(HarbourFacility);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..HarbourFacility._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..HarbourFacility._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..HarbourFacility._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<HarbourFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourFacility, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 		/// </summary>
 		[System.Serializable()]
@@ -9351,9 +9434,16 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public int? optimumDisplayScale {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
+			[TextPatternConstraint("urn:mrn:.+")]
+			[Optional]
+			public List<String> interoperabilityIdentifier {get;set;} = [];
+
 
 			#region ShouldSerialize
 			public bool ShouldSerializeoptimumDisplayScale() { return optimumDisplayScale.HasValue; }
+
+			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -9433,6 +9523,15 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
+			[TextPatternConstraint("urn:mrn:.+")]
+			[Optional]
+			public List<String> interoperabilityIdentifier {get;set;} = [];
+
+			[XmlElement("sourceIndication")]
+			[Optional]
+			public sourceIndication? sourceIndication {get;set;} = default;
+
 			[XmlElement("surveyDateRange")]
 			[Optional]
 			public surveyDateRange? surveyDateRange {get;set;} = default;
@@ -9454,6 +9553,10 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
+
+			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
+
+			public bool ShouldSerializesourceIndication() { return sourceIndication!=default; }
 
 			public bool ShouldSerializesurveyDateRange() { return surveyDateRange!=default; }
 
@@ -9800,6 +9903,7 @@ namespace S100Framework.DomainModel.S131 {
 		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1, ElementName = "HarbourAreaAdministrative")]
 		[XmlElement("FeatureTypes.HarbourAreaSection", typeof(FeatureTypes.HarbourAreaSection), Order = 1, ElementName = "HarbourAreaSection")]
 		[XmlElement("FeatureTypes.HarbourBasin", typeof(FeatureTypes.HarbourBasin), Order = 1, ElementName = "HarbourBasin")]
+		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1, ElementName = "HarbourFacility")]
 		[XmlElement("FeatureTypes.LockBasin", typeof(FeatureTypes.LockBasin), Order = 1, ElementName = "LockBasin")]
 		[XmlElement("FeatureTypes.LockBasinPart", typeof(FeatureTypes.LockBasinPart), Order = 1, ElementName = "LockBasinPart")]
 		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]

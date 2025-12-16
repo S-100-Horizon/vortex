@@ -13,70 +13,75 @@ using System.Xml.Serialization;
 namespace S100Framework.DomainModel.S125 {
 	public class Summary : ISummary
 	{
-		public static string Name => "S-125";
+		public static string Name => "Marine Aids to Navigation (AtoN)";
 		public static string Scope => "";
 		public static string ProductId => "S-125";
-		public static Version Version => new Version("0.0.4 with FIHO_FIXES 2025-10-03");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-09-11", "yyyy-MM-dd");
-		public static string[] ComplexTypes => ["horizontalPositionUncertainty","verticalUncertainty","directionalCharacter","featureName","fixedDateRange","information","lightSector","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","rhythmOfLight","sectorCharacteristics","ObscuredSector","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","signalSequence","ChangeDetails"];
+		public static Version Version => new Version("1.0.0 with FIHO_FIXES 2025-12-12");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-11-28", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["changeDetails","obscuredSector","contactAddress","featureName","fixedDateRange","horizontalPositionUncertainty","information","multiplicityOfFeatures","lightSector","directionalCharacter","orientation","periodicDateRange","radarWaveLength","sectorCharacteristics","sectorInformation","sectorLimit","sectorLimitOne","sectorLimitTwo","signalSequence","spatialAccuracy","textualDescription","verticalUncertainty","rhythmOfLight"];
 		public static string[] InformationAssociationTypes => ["Atonstatus"];
-		public static string[] FeatureAssociationTypes => ["BuoyTopmark","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS","AtonAggregations","AtonAssociations","RangeSystem","DangerousFeatureAssociation"];
-		public static string[] InformationTypes => ["AtonStatusInformation"];
-		public static string[] FeatureTypes => ["Equipment","GenericBuoy","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","SafeWaterBuoy","SpecialPurposeGeneralBuoy","NavigationLine","RecommendedTrack","VirtualAISAidToNavigation","Daymark","StructureObject","FogSignal","RadarReflector","GenericBeacon","RadarTransponderBeacon","RadioStation","LightAirObstruction","Retroreflector","LightAllAround","LightFogDetector","LightSectored","CardinalBeacon","IsolatedDangerBeacon","Landmark","LateralBeacon","Lighthouse","SafeWaterBeacon","SpecialPurposeGeneralBeacon","DangerousFeature","AtonAssociation","AtonAggregation","Topmark","PhysicalAISAidToNavigation","SyntheticAISAidToNavigation"];
+		public static string[] FeatureAssociationTypes => ["RangeSystem","AtonAggregations","AtonAssociations","DangerousFeatureAssociation","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS"];
+		public static string[] InformationTypes => ["SpatialQuality","AtonStatusInformation"];
+		public static string[] FeatureTypes => ["NavigationLine","RecommendedTrack","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","DangerousFeature","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","Topmark","AtonAggregation","AtonAssociation"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
-			Primitives.noGeometry => ["AidsToNavigation","StructureObject","GenericBeacon","AtonAssociation","AtonAggregation","ElectronicAton","GenericLight"],
-			Primitives.point => ["Equipment","GenericBuoy","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","SafeWaterBuoy","SpecialPurposeGeneralBuoy","VirtualAISAidToNavigation","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","LightAirObstruction","Retroreflector","LightAllAround","LightFogDetector","LightSectored","CardinalBeacon","IsolatedDangerBeacon","Landmark","LateralBeacon","Lighthouse","SafeWaterBeacon","SpecialPurposeGeneralBeacon","DangerousFeature","Topmark","PhysicalAISAidToNavigation","SyntheticAISAidToNavigation"],
-			Primitives.surface => ["SiloTank","OffshorePlatform","Landmark","Lighthouse"],
-			Primitives.curve => ["NavigationLine","RecommendedTrack","Landmark"],
+			Primitives.point => ["AidsToNavigation","Equipment","StructureObject","GenericBuoy","GenericBeacon","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","GenericLight","DangerousFeature","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","ElectronicAtoN","Topmark"],
+			Primitives.curve => ["NavigationLine","RecommendedTrack"],
+			Primitives.noGeometry => ["AtonAggregation","AtonAssociation"],
 			_ => throw new InvalidOperationException(),
 		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
-			"AidsToNavigation" => [Primitives.noGeometry],
+			"AidsToNavigation" => [Primitives.point],
+			"NavigationLine" => [Primitives.curve],
+			"RecommendedTrack" => [Primitives.curve],
 			"Equipment" => [Primitives.point],
+			"StructureObject" => [Primitives.point],
 			"GenericBuoy" => [Primitives.point],
+			"GenericBeacon" => [Primitives.point],
+			"Landmark" => [Primitives.point],
+			"Daymark" => [Primitives.point],
+			"FogSignal" => [Primitives.point],
+			"RadarReflector" => [Primitives.point],
+			"RadarTransponderBeacon" => [Primitives.point],
+			"RadioStation" => [Primitives.point],
+			"Retroreflector" => [Primitives.point],
+			"LightAirObstruction" => [Primitives.point],
+			"LightAllAround" => [Primitives.point],
+			"LightFogDetector" => [Primitives.point],
+			"LightSectored" => [Primitives.point],
+			"LightFloat" => [Primitives.point],
+			"LightVessel" => [Primitives.point],
+			"OffshorePlatform" => [Primitives.point],
 			"Pile" => [Primitives.point],
-			"SiloTank" => [Primitives.point,Primitives.surface],
+			"SiloTank" => [Primitives.point],
 			"CardinalBuoy" => [Primitives.point],
 			"EmergencyWreckMarkingBuoy" => [Primitives.point],
 			"InstallationBuoy" => [Primitives.point],
 			"IsolatedDangerBuoy" => [Primitives.point],
 			"LateralBuoy" => [Primitives.point],
-			"LightFloat" => [Primitives.point],
-			"LightVessel" => [Primitives.point],
 			"MooringBuoy" => [Primitives.point],
-			"OffshorePlatform" => [Primitives.point,Primitives.surface],
 			"SafeWaterBuoy" => [Primitives.point],
 			"SpecialPurposeGeneralBuoy" => [Primitives.point],
-			"NavigationLine" => [Primitives.curve],
-			"RecommendedTrack" => [Primitives.curve],
-			"VirtualAISAidToNavigation" => [Primitives.point],
-			"Daymark" => [Primitives.point],
-			"StructureObject" => [Primitives.noGeometry],
-			"FogSignal" => [Primitives.point],
-			"RadarReflector" => [Primitives.point],
-			"GenericBeacon" => [Primitives.noGeometry],
-			"RadarTransponderBeacon" => [Primitives.point],
-			"RadioStation" => [Primitives.point],
-			"LightAirObstruction" => [Primitives.point],
-			"Retroreflector" => [Primitives.point],
-			"LightAllAround" => [Primitives.point],
-			"LightFogDetector" => [Primitives.point],
-			"LightSectored" => [Primitives.point],
 			"CardinalBeacon" => [Primitives.point],
 			"IsolatedDangerBeacon" => [Primitives.point],
-			"Landmark" => [Primitives.point,Primitives.curve,Primitives.surface],
-			"LateralBeacon" => [Primitives.point],
-			"Lighthouse" => [Primitives.point,Primitives.surface],
 			"SafeWaterBeacon" => [Primitives.point],
 			"SpecialPurposeGeneralBeacon" => [Primitives.point],
+			"LateralBeacon" => [Primitives.point],
+			"WindTurbine" => [Primitives.point],
+			"VerticalDatumOfData" => [Primitives.point],
+			"DataCoverage" => [Primitives.point],
+			"LocalDirectionOfBuoyage" => [Primitives.point],
+			"NavigationalSystemOfMarks" => [Primitives.point],
+			"SoundingDatum" => [Primitives.point],
+			"QualityOfBathymetricData" => [Primitives.point],
+			"GenericLight" => [Primitives.point],
 			"DangerousFeature" => [Primitives.point],
-			"AtonAssociation" => [Primitives.noGeometry],
-			"AtonAggregation" => [Primitives.noGeometry],
-			"ElectronicAton" => [Primitives.noGeometry],
-			"GenericLight" => [Primitives.noGeometry],
-			"Topmark" => [Primitives.point],
-			"PhysicalAISAidToNavigation" => [Primitives.point],
 			"SyntheticAISAidToNavigation" => [Primitives.point],
+			"PhysicalAISAidToNavigation" => [Primitives.point],
+			"VirtualAISAidToNavigation" => [Primitives.point],
+			"ElectronicAtoN" => [Primitives.point],
+			"Topmark" => [Primitives.point],
+			"AtonAggregation" => [Primitives.noGeometry],
+			"AtonAssociation" => [Primitives.noGeometry],
 			_ or "" => throw new InvalidOperationException(),
 		};
 		public static Type InformationBindings(string code) => code switch {
@@ -84,15 +89,14 @@ namespace S100Framework.DomainModel.S125 {
 			_ or "" => throw new InvalidOperationException(),
 		};
 		public static Type FeatureBindings(string code) => code switch {
-			"BuoyTopmark" => typeof(featureBinding<FeatureAssociations.BuoyTopmark>),
+			"RangeSystem" => typeof(featureBinding<FeatureAssociations.RangeSystem>),
+			"AtonAggregations" => typeof(featureBinding<FeatureAssociations.AtonAggregations>),
+			"AtonAssociations" => typeof(featureBinding<FeatureAssociations.AtonAssociations>),
+			"DangerousFeatureAssociation" => typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>),
 			"StructureEquipment" => typeof(featureBinding<FeatureAssociations.StructureEquipment>),
 			"PhysicalAIS" => typeof(featureBinding<FeatureAssociations.PhysicalAIS>),
 			"SyntheticAIS" => typeof(featureBinding<FeatureAssociations.SyntheticAIS>),
 			"VirtualAIS" => typeof(featureBinding<FeatureAssociations.VirtualAIS>),
-			"AtonAggregations" => typeof(featureBinding<FeatureAssociations.AtonAggregations>),
-			"AtonAssociations" => typeof(featureBinding<FeatureAssociations.AtonAssociations>),
-			"RangeSystem" => typeof(featureBinding<FeatureAssociations.RangeSystem>),
-			"DangerousFeatureAssociation" => typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>),
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -119,15 +123,14 @@ namespace S100Framework.DomainModel.S125 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::S125::BuoyTopmark"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S125::RangeSystem"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S125::AtonAggregations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S125::AtonAssociations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S125::DangerousFeatureAssociation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::S125::StructureEquipment"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::S125::PhysicalAIS"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::S125::SyntheticAIS"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::S125::VirtualAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S125::AtonAggregations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S125::AtonAssociations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S125::RangeSystem"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S125::DangerousFeatureAssociation"));
 				}
 			});
 			return resolver;
@@ -149,15 +152,14 @@ namespace S100Framework.DomainModel.S125 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::S125::BuoyTopmark"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S125::RangeSystem"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S125::AtonAggregations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S125::AtonAssociations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S125::DangerousFeatureAssociation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::S125::StructureEquipment"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::S125::PhysicalAIS"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::S125::SyntheticAIS"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::S125::VirtualAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S125::AtonAggregations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S125::AtonAssociations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S125::RangeSystem"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S125::DangerousFeatureAssociation"));
 				}
 			});
 			return resolver;
@@ -165,1317 +167,917 @@ namespace S100Framework.DomainModel.S125 {
 	}
 
 	/// <summary>
-	/// Modifications to electronic or digital AtoNs, such as AIS (Automatic Identification System) AtoNs, virtual AtoNs, or remote-controlled systems.
+	/// A purpose of a virtual AIS Aid to Navigation.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum electronicAtonChange : int {
-		[System.ComponentModel.Description("The terrestrial AIS transmitter is inoperative due to a technical issue.")]
-		[EnumMember(Value = "AIS Transmitter Out Of Service")] 
+	public enum virtualAISAidToNavigationType : int {
+		[System.ComponentModel.Description("Indicates that it should be passed to the north side of the aid.")]
+		[EnumMember(Value = "North Cardinal")] 
 		[XmlEnum("1")] 
-		AisTransmitterOutOfService = 1,
+		NorthCardinal = 1,
 
-		[System.ComponentModel.Description("The terrestrial AIS transmitter is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "AIS Transmitter Unreliable")] 
+		[System.ComponentModel.Description("Indicates that it should be passed to the east side of the aid.")]
+		[EnumMember(Value = "East Cardinal")] 
 		[XmlEnum("2")] 
-		AisTransmitterUnreliable = 2,
+		EastCardinal = 2,
 
-		[System.ComponentModel.Description("The terrestrial AIS transmitter is operating as advertised.")]
-		[EnumMember(Value = "AIS Transmitter Operating Properly")] 
+		[System.ComponentModel.Description("Indicates that it should be passed to the south side of the aid.")]
+		[EnumMember(Value = "South Cardinal")] 
 		[XmlEnum("3")] 
-		AisTransmitterOperatingProperly = 3,
+		SouthCardinal = 3,
 
-		[System.ComponentModel.Description("Virtual AIS aid to navigation is extinguished.")]
-		[EnumMember(Value = "V-AIS Out Of Service")] 
+		[System.ComponentModel.Description("Indicates that it should be passed to the west side of the aid.")]
+		[EnumMember(Value = "West Cardinal")] 
 		[XmlEnum("4")] 
-		VAisOutOfService = 4,
+		WestCardinal = 4,
 
-		[System.ComponentModel.Description("Virtual AIS aid is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "V-AIS Unreliable")] 
+		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
+		[EnumMember(Value = "Port Lateral")] 
 		[XmlEnum("5")] 
-		VAisUnreliable = 5,
+		PortLateral = 5,
 
-		[System.ComponentModel.Description("Virtual AIS aid to navigation is operating as advertised.")]
-		[EnumMember(Value = "V-AIS Operating Properly")] 
+		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
+		[EnumMember(Value = "Starboard Lateral")] 
 		[XmlEnum("6")] 
-		VAisOperatingProperly = 6,
+		StarboardLateral = 6,
 
-		[System.ComponentModel.Description("The RACON is inoperative.")]
-		[EnumMember(Value = "RACON Out Of Service")] 
+		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
+		[EnumMember(Value = "Preferred Channel to Port")] 
 		[XmlEnum("7")] 
-		RaconOutOfService = 7,
+		PreferredChannelToPort = 7,
 
-		[System.ComponentModel.Description("The RACON is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "RACON Unreliable")] 
+		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
+		[EnumMember(Value = "Preferred Channel to Starboard")] 
 		[XmlEnum("8")] 
-		RaconUnreliable = 8,
+		PreferredChannelToStarboard = 8,
 
-		[System.ComponentModel.Description("The RACON is operating as advertised.")]
-		[EnumMember(Value = "RACON Operating Properly")] 
+		[System.ComponentModel.Description("A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.")]
+		[EnumMember(Value = "Isolated Danger")] 
 		[XmlEnum("9")] 
-		RaconOperatingProperly = 9,
+		IsolatedDanger = 9,
 
-		[System.ComponentModel.Description("The DGPS station is inoperative due to a technical issue.")]
-		[EnumMember(Value = "DGPS Out Of Service")] 
+		[System.ComponentModel.Description("Indicates that there is navigable water around the mark.")]
+		[EnumMember(Value = "Safe Water")] 
 		[XmlEnum("10")] 
-		DgpsOutOfService = 10,
+		SafeWater = 10,
 
-		[System.ComponentModel.Description("The DGPS station is operating as advertised.")]
-		[EnumMember(Value = "DGPS Operating Properly")] 
+		[System.ComponentModel.Description("A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners")]
+		[EnumMember(Value = "Special Purpose")] 
 		[XmlEnum("11")] 
-		DgpsOperatingProperly = 11,
+		SpecialPurpose = 11,
 
-		[System.ComponentModel.Description("The DGPS station is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "DGPS Unreliable")] 
+		[System.ComponentModel.Description("A mark used to indicate the existence of a recently identified new danger, such as a wreck.")]
+		[EnumMember(Value = "New Danger Marking")] 
 		[XmlEnum("12")] 
-		DgpsUnreliable = 12,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "LORAN C operating properly")] 
-		[XmlEnum("13")] 
-		LoranCOperatingProperly = 13,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "LORAN C unreliable")] 
-		[XmlEnum("14")] 
-		LoranCUnreliable = 14,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "LORAN C out of service")] 
-		[XmlEnum("15")] 
-		LoranCOutOfService = 15,
-
-		[System.ComponentModel.Description("The eLORAN station is operating as advertised.")]
-		[EnumMember(Value = "ELORAN Operating Properly")] 
-		[XmlEnum("16")] 
-		EloranOperatingProperly = 16,
-
-		[System.ComponentModel.Description("The eLORAN station is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "ELORAN Unreliable")] 
-		[XmlEnum("17")] 
-		EloranUnreliable = 17,
-
-		[System.ComponentModel.Description("The eLORAN station is inoperative due to a technical issue.")]
-		[EnumMember(Value = "ELORAN Out Of Service")] 
-		[XmlEnum("18")] 
-		EloranOutOfService = 18,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "DGLOANSS operating properly")] 
-		[XmlEnum("19")] 
-		DgloanssOperatingProperly = 19,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "DGLOANSS unreliable")] 
-		[XmlEnum("20")] 
-		DgloanssUnreliable = 20,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "DGLOANSS out of service")] 
-		[XmlEnum("21")] 
-		DgloanssOutOfService = 21,
-
-		[System.ComponentModel.Description("The Chayka station is operating as advertised.")]
-		[EnumMember(Value = "Chayka Operating Properly")] 
-		[XmlEnum("22")] 
-		ChaykaOperatingProperly = 22,
-
-		[System.ComponentModel.Description("The Chayka station is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "Chayka Unreliable")] 
-		[XmlEnum("23")] 
-		ChaykaUnreliable = 23,
-
-		[System.ComponentModel.Description("The Chayka station is inoperative due to a technical issue.")]
-		[EnumMember(Value = "Chayka Out Of Service")] 
-		[XmlEnum("24")] 
-		ChaykaOutOfService = 24,
-
-		[System.ComponentModel.Description("The e-Chayka station is operating as advertised.")]
-		[EnumMember(Value = "E-Chayka Operating Properly")] 
-		[XmlEnum("25")] 
-		EChaykaOperatingProperly = 25,
-
-		[System.ComponentModel.Description("The e-Chayka station is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "E-Chayka Unreliable")] 
-		[XmlEnum("26")] 
-		EChaykaUnreliable = 26,
-
-		[System.ComponentModel.Description("The e-Chayka station is inoperative due to a technical issue.")]
-		[EnumMember(Value = "E-Chayka Out Of Service")] 
-		[XmlEnum("27")] 
-		EChaykaOutOfService = 27,
-
-		[System.ComponentModel.Description("The EGNOS station is operating as advertised.")]
-		[EnumMember(Value = "EGNOS Operating Properly")] 
-		[XmlEnum("28")] 
-		EgnosOperatingProperly = 28,
-
-		[System.ComponentModel.Description("The EGNOS station is unreliable due to a technical issue or maintenance.")]
-		[EnumMember(Value = "EGNOS Unreliable")] 
-		[XmlEnum("29")] 
-		EgnosUnreliable = 29,
-
-		[System.ComponentModel.Description("The EGNOS station is inoperative due to a technical issue.")]
-		[EnumMember(Value = "EGNOS Out Of Service")] 
-		[XmlEnum("30")] 
-		EgnosOutOfService = 30,
-	}
-
-	/// <summary>
-	/// Updates or modifications to light-emitting AtoNs, including changing light characteristics, intensity, or operational status.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum lightedAtonChange : int {
-		[System.ComponentModel.Description("The light is extinguished.")]
-		[EnumMember(Value = "Light Unlit")] 
-		[XmlEnum("1")] 
-		LightUnlit = 1,
-
-		[System.ComponentModel.Description("The light is unreliable due to technical problems.")]
-		[EnumMember(Value = "Light Unreliable")] 
-		[XmlEnum("2")] 
-		LightUnreliable = 2,
-
-		[System.ComponentModel.Description("The re-establishment of a light which was previously announced as either destroyed or temporarily removed.")]
-		[EnumMember(Value = "Light Re-Establishment")] 
-		[XmlEnum("3")] 
-		LightReEstablishment = 3,
-
-		[System.ComponentModel.Description("The nominal range of the light is less than the advertised range.")]
-		[EnumMember(Value = "Light Range Reduced")] 
-		[XmlEnum("4")] 
-		LightRangeReduced = 4,
-
-		[System.ComponentModel.Description("Due to technical problems the light has no more rhythm and is in fixed light mode.")]
-		[EnumMember(Value = "Light Without Rhythm")] 
-		[XmlEnum("5")] 
-		LightWithoutRhythm = 5,
-
-		[System.ComponentModel.Description("The light is no longer synchronized with another light or group of lights.")]
-		[EnumMember(Value = "Light Out Of Synchronization")] 
-		[XmlEnum("6")] 
-		LightOutOfSynchronization = 6,
-
-		[System.ComponentModel.Description("The light daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).")]
-		[EnumMember(Value = "Light Daymark Unreliable")] 
-		[XmlEnum("7")] 
-		LightDaymarkUnreliable = 7,
-
-		[System.ComponentModel.Description("The light is operating as advertised")]
-		[EnumMember(Value = "Light Operating Properly")] 
-		[XmlEnum("8")] 
-		LightOperatingProperly = 8,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Sector light Sector obscured")] 
-		[XmlEnum("9")] 
-		SectorLightSectorObscured = 9,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range light Unlit")] 
-		[XmlEnum("10")] 
-		FrontLeadingRangeLightUnlit = 10,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range light Unlit")] 
-		[XmlEnum("11")] 
-		RearLeadingRangeLightUnlit = 11,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range light Unreliable")] 
-		[XmlEnum("12")] 
-		FrontLeadingRangeLightUnreliable = 12,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range light Unreliable")] 
-		[XmlEnum("13")] 
-		RearLeadingRangeLightUnreliable = 13,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range light Light range reduced")] 
-		[XmlEnum("14")] 
-		FrontLeadingRangeLightLightRangeReduced = 14,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range light Light range reduced")] 
-		[XmlEnum("15")] 
-		RearLeadingRangeLightLightRangeReduced = 15,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range light without rhythm")] 
-		[XmlEnum("16")] 
-		FrontLeadingRangeLightWithoutRhythm = 16,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range light without rhythm")] 
-		[XmlEnum("17")] 
-		RearLeadingRangeLightWithoutRhythm = 17,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Leading/range lights out of synchronization")] 
-		[XmlEnum("18")] 
-		LeadingRangeLightsOutOfSynchronization = 18,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range beacon Unreliable")] 
-		[XmlEnum("19")] 
-		FrontLeadingRangeBeaconUnreliable = 19,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range beacon Unreliable")] 
-		[XmlEnum("20")] 
-		RearLeadingRangeBeaconUnreliable = 20,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range light is operating properly")] 
-		[XmlEnum("21")] 
-		FrontLeadingRangeLightIsOperatingProperly = 21,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range light is operating properly")] 
-		[XmlEnum("22")] 
-		RearLeadingRangeLightIsOperatingProperly = 22,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Front leading/range beacon restored to normal")] 
-		[XmlEnum("23")] 
-		FrontLeadingRangeBeaconRestoredToNormal = 23,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Rear leading/range beacon restored to normal")] 
-		[XmlEnum("24")] 
-		RearLeadingRangeBeaconRestoredToNormal = 24,
-	}
-
-	/// <summary>
-	/// Any modification to an AtoN that uses sound signals, such as foghorns or bells, to assist in navigation under low visibility conditions.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum audibleSignalAtonChange : int {
-		[System.ComponentModel.Description("The audible signal (device activated by e.g. sea state or wind, irrespective of visibility) is inoperative.")]
-		[EnumMember(Value = "Audible Signal Out Of Service")] 
-		[XmlEnum("1")] 
-		AudibleSignalOutOfService = 1,
-
-		[System.ComponentModel.Description("The fog signal is inoperative.")]
-		[EnumMember(Value = "Fog Signal Out Of Service")] 
-		[XmlEnum("2")] 
-		FogSignalOutOfService = 2,
-
-		[System.ComponentModel.Description("The audible signal (device activated by e.g. sea state or wind, irrespective of visibility) is operating as advertised.")]
-		[EnumMember(Value = "Audible Signal Operating Properly")] 
-		[XmlEnum("3")] 
-		AudibleSignalOperatingProperly = 3,
-
-		[System.ComponentModel.Description("The fog signal is operating as advertised.")]
-		[EnumMember(Value = "Fog Signal Operating Properly")] 
-		[XmlEnum("4")] 
-		FogSignalOperatingProperly = 4,
-	}
-
-	/// <summary>
-	/// Adjustments or replacements related to floating AtoNs, such as buoys, which are anchored but can move with water currents.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum floatingAtonChange : int {
-		[System.ComponentModel.Description("The buoy is no longer secured to its moorings and is adrift.")]
-		[EnumMember(Value = "Buoy Adrift")] 
-		[XmlEnum("1")] 
-		BuoyAdrift = 1,
-
-		[System.ComponentModel.Description("The buoy has been damaged due to external factors (wind, sea state, collision with a vessel).")]
-		[EnumMember(Value = "Buoy Damaged")] 
-		[XmlEnum("2")] 
-		BuoyDamaged = 2,
-
-		[System.ComponentModel.Description("Colour of the buoy daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).")]
-		[EnumMember(Value = "Buoy Daymark Unreliable")] 
-		[XmlEnum("3")] 
-		BuoyDaymarkUnreliable = 3,
-
-		[System.ComponentModel.Description("The buoy has suffered extensive damage and is not useable.")]
-		[EnumMember(Value = "Buoy Destroyed")] 
-		[XmlEnum("4")] 
-		BuoyDestroyed = 4,
-
-		[System.ComponentModel.Description("No buoy at its advertised/charted position or in the vicinity.")]
-		[EnumMember(Value = "Buoy Missing")] 
-		[XmlEnum("5")] 
-		BuoyMissing = 5,
-
-		[System.ComponentModel.Description("The buoy has been or will be moved intentionally.")]
-		[EnumMember(Value = "Buoy Move")] 
-		[XmlEnum("6")] 
-		BuoyMove = 6,
-
-		[System.ComponentModel.Description("The buoy has been dragged off its advertised position due to wind or current affecting the mooring system.")]
-		[EnumMember(Value = "Buoy off Position")] 
-		[XmlEnum("7")] 
-		BuoyOffPosition = 7,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Buoy re-establishment")] 
-		[XmlEnum("8")] 
-		BuoyReEstablishment = 8,
-
-		[System.ComponentModel.Description("The buoy has been restored to normal condition.")]
-		[EnumMember(Value = "Buoy Restored to Normal")] 
-		[XmlEnum("9")] 
-		BuoyRestoredToNormal = 9,
-
-		[System.ComponentModel.Description("The topmark of the buoy is damaged due to external factors (wind, sea state, collision with a vessel).")]
-		[EnumMember(Value = "Buoy Topmark Damaged")] 
-		[XmlEnum("10")] 
-		BuoyTopmarkDamaged = 10,
-
-		[System.ComponentModel.Description("The topmark of the buoy is missing.")]
-		[EnumMember(Value = "Buoy Topmark Missing")] 
-		[XmlEnum("11")] 
-		BuoyTopmarkMissing = 11,
-
-		[System.ComponentModel.Description("The buoy has been scheduled for removal from service for a fixed term.")]
-		[EnumMember(Value = "Buoy Will Be Withdrawn")] 
-		[XmlEnum("12")] 
-		BuoyWillBeWithdrawn = 12,
-
-		[System.ComponentModel.Description("The buoy has been removed from service for a fixed term.")]
-		[EnumMember(Value = "Buoy Withdrawn")] 
-		[XmlEnum("13")] 
-		BuoyWithdrawn = 13,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Decommissioned for winter")] 
-		[XmlEnum("14")] 
-		DecommissionedForWinter = 14,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Lifted for Winter")] 
-		[XmlEnum("15")] 
-		LiftedForWinter = 15,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light buoy Light damaged")] 
-		[XmlEnum("16")] 
-		LightBuoyLightDamaged = 16,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light buoy Light not synchronized")] 
-		[XmlEnum("17")] 
-		LightBuoyLightNotSynchronized = 17,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light buoy Light unlit")] 
-		[XmlEnum("18")] 
-		LightBuoyLightUnlit = 18,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light buoy Light unreliable")] 
-		[XmlEnum("19")] 
-		LightBuoyLightUnreliable = 19,
-
-		[System.ComponentModel.Description("The position or status of Marine Aids to Navigation, over an extensive area, is unreliable due to a natural event (freshet, storm surge, flooding).")]
-		[EnumMember(Value = "Marine Aids to Navigation Unreliable")] 
-		[XmlEnum("20")] 
-		MarineAidsToNavigationUnreliable = 20,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Recommissioned for navigation season")] 
-		[XmlEnum("21")] 
-		RecommissionedForNavigationSeason = 21,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Replaced by Winter Spar")] 
-		[XmlEnum("22")] 
-		ReplacedByWinterSpar = 22,
-
-		[System.ComponentModel.Description("The completion of the process to remove summer buoys (and possibly replace some with winter spar buoys).")]
-		[EnumMember(Value = "Seasonal Decommissioning Complete")] 
-		[XmlEnum("23")] 
-		SeasonalDecommissioningComplete = 23,
-
-		[System.ComponentModel.Description("The commencement of the process to remove summer buoys (and possibly replace some with winter spar buoys).")]
-		[EnumMember(Value = "Seasonal Decommissioning in Progress")] 
-		[XmlEnum("24")] 
-		SeasonalDecommissioningInProgress = 24,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Seasonal recommissioning complete")] 
-		[XmlEnum("25")] 
-		SeasonalRecommissioningComplete = 25,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Seasonal recommissioning in progress")] 
-		[XmlEnum("26")] 
-		SeasonalRecommissioningInProgress = 26,
-	}
-
-	/// <summary>
-	/// Modifications or updates to fixed AtoNs, such as lighthouses or beacons, which are permanently positioned.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum fixedAtonChange : int {
-		[System.ComponentModel.Description("No beacon at the advertised position.")]
-		[EnumMember(Value = "Beacon Missing")] 
-		[XmlEnum("1")] 
-		BeaconMissing = 1,
-
-		[System.ComponentModel.Description("The beacon has sustained damage due to external factors (wind, sea state, collision with a vessel).")]
-		[EnumMember(Value = "Beacon Damaged")] 
-		[XmlEnum("2")] 
-		BeaconDamaged = 2,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light beacon Unlit")] 
-		[XmlEnum("3")] 
-		LightBeaconUnlit = 3,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light beacon Unreliable")] 
-		[XmlEnum("4")] 
-		LightBeaconUnreliable = 4,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light beacon Not synchronized")] 
-		[XmlEnum("5")] 
-		LightBeaconNotSynchronized = 5,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Light beacon damaged")] 
-		[XmlEnum("6")] 
-		LightBeaconDamaged = 6,
-
-		[System.ComponentModel.Description("The topmark of the beacon is missing.")]
-		[EnumMember(Value = "Beacon Topmark Missing")] 
-		[XmlEnum("7")] 
-		BeaconTopmarkMissing = 7,
-
-		[System.ComponentModel.Description("The topmark of the beacon is damaged due to external factors (wind, sea state, collision with a vessel).")]
-		[EnumMember(Value = "Beacon Topmark Damaged")] 
-		[XmlEnum("8")] 
-		BeaconTopmarkDamaged = 8,
-
-		[System.ComponentModel.Description("Colour of the beacon daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).")]
-		[EnumMember(Value = "Beacon Daymark Unreliable")] 
-		[XmlEnum("9")] 
-		BeaconDaymarkUnreliable = 9,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "Floodlit beacon Unlit")] 
-		[XmlEnum("10")] 
-		FloodlitBeaconUnlit = 10,
-
-		[System.ComponentModel.Description("The beacon has been restored to normal condition.")]
-		[EnumMember(Value = "Beacon Restored To Normal")] 
-		[XmlEnum("11")] 
-		BeaconRestoredToNormal = 11,
-	}
-
-	/// <summary>
-	/// The act of swapping an existing AtoN with a new or upgraded unit, either due to maintenance needs or technological improvements.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum atonReplacement : int {
-		[System.ComponentModel.Description("The characteristics of the buoy have been or will be changed.")]
-		[EnumMember(Value = "Buoy Change")] 
-		[XmlEnum("1")] 
-		BuoyChange = 1,
-
-		[System.ComponentModel.Description("The characteristics of the buoy have been or will be temporarily changed.")]
-		[EnumMember(Value = "Buoy Temporary Change")] 
-		[XmlEnum("2")] 
-		BuoyTemporaryChange = 2,
-
-		[System.ComponentModel.Description("The characteristics of the light have been or will be changed.")]
-		[EnumMember(Value = "Light Change")] 
-		[XmlEnum("3")] 
-		LightChange = 3,
-
-		[System.ComponentModel.Description("The characteristics of the light have been or will be temporarily changed.")]
-		[EnumMember(Value = "Light Temporary Change")] 
-		[XmlEnum("4")] 
-		LightTemporaryChange = 4,
-
-		[System.ComponentModel.Description("The characteristics of the sector light have been or will be changed.")]
-		[EnumMember(Value = "Sector Light Change")] 
-		[XmlEnum("5")] 
-		SectorLightChange = 5,
-
-		[System.ComponentModel.Description("The characteristics of the sector light have been or will be temporarily changed.")]
-		[EnumMember(Value = "Sector Light Temporary Change")] 
-		[XmlEnum("6")] 
-		SectorLightTemporaryChange = 6,
-
-		[System.ComponentModel.Description("The characteristics of the beacon have been or will be changed.")]
-		[EnumMember(Value = "Beacon Change")] 
-		[XmlEnum("7")] 
-		BeaconChange = 7,
-
-		[System.ComponentModel.Description("The characteristics of the beacon have been or will be temporarily changed.")]
-		[EnumMember(Value = "Beacon Temporary Change")] 
-		[XmlEnum("8")] 
-		BeaconTemporaryChange = 8,
-
-		[System.ComponentModel.Description("The characteristics of the fog signal have been or will be changed.")]
-		[EnumMember(Value = "Fog Signal Change")] 
-		[XmlEnum("9")] 
-		FogSignalChange = 9,
-
-		[System.ComponentModel.Description("The characteristics of the fog signal have been or will be temporarily changed.")]
-		[EnumMember(Value = "Fog Signal Temporary Change")] 
-		[XmlEnum("10")] 
-		FogSignalTemporaryChange = 10,
-
-		[System.ComponentModel.Description("The characteristics of the audible signal (device activated by e.g. sea state or wind, irrespective of visibility) have been or will be changed.")]
-		[EnumMember(Value = "Audible Signal Change")] 
-		[XmlEnum("11")] 
-		AudibleSignalChange = 11,
-
-		[System.ComponentModel.Description("The characteristics of the audible signal (device activated by e.g. sea state or wind, irrespective of visibility) have been or will be temporarily changed.")]
-		[EnumMember(Value = "Audible Signal Temporary Change")] 
-		[XmlEnum("12")] 
-		AudibleSignalTemporaryChange = 12,
-
-		[System.ComponentModel.Description("The characteristics of the V-AIS have been or will be changed.")]
-		[EnumMember(Value = "V-AIS Change")] 
-		[XmlEnum("13")] 
-		VAisChange = 13,
-
-		[System.ComponentModel.Description("The characteristics of the V-AIS have been or will be temporarily changed.")]
-		[EnumMember(Value = "V-AIS Temporary Change")] 
-		[XmlEnum("14")] 
-		VAisTemporaryChange = 14,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "RACON signal change")] 
-		[XmlEnum("15")] 
-		RaconSignalChange = 15,
-
-		[System.ComponentModel.Description("The characteristics of the RACON have been or will be temporarily changed.")]
-		[EnumMember(Value = "RACON Temporary Change")] 
-		[XmlEnum("16")] 
-		RaconTemporaryChange = 16,
-	}
-
-	/// <summary>
-	/// The process of decommissioning and physically removing an AtoN from its designated location, either temporarily or permanently.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum atonRemoval : int {
-		[System.ComponentModel.Description("Buoy has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Buoy Removal")] 
-		[XmlEnum("1")] 
-		BuoyRemoval = 1,
-
-		[System.ComponentModel.Description("Buoy has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Buoy Temporary Removal")] 
-		[XmlEnum("2")] 
-		BuoyTemporaryRemoval = 2,
-
-		[System.ComponentModel.Description("Light has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Light Removal")] 
-		[XmlEnum("3")] 
-		LightRemoval = 3,
-
-		[System.ComponentModel.Description("Light has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Light Temporary Removal")] 
-		[XmlEnum("4")] 
-		LightTemporaryRemoval = 4,
-
-		[System.ComponentModel.Description("Beacon has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Beacon Removal")] 
-		[XmlEnum("5")] 
-		BeaconRemoval = 5,
-
-		[System.ComponentModel.Description("Beacon has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Beacon Temporary Removal")] 
-		[XmlEnum("6")] 
-		BeaconTemporaryRemoval = 6,
-
-		[System.ComponentModel.Description("Fog signal has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Fog Signal Removal")] 
-		[XmlEnum("7")] 
-		FogSignalRemoval = 7,
-
-		[System.ComponentModel.Description("Fog signal has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Fog Signal Temporary Removal")] 
-		[XmlEnum("8")] 
-		FogSignalTemporaryRemoval = 8,
-
-		[System.ComponentModel.Description("Audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Audible Signal Removal")] 
-		[XmlEnum("9")] 
-		AudibleSignalRemoval = 9,
-
-		[System.ComponentModel.Description("Audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Audible Signal Temporary Removal")] 
-		[XmlEnum("10")] 
-		AudibleSignalTemporaryRemoval = 10,
-
-		[System.ComponentModel.Description("V-AIS has been or will be permanently removed from service.")]
-		[EnumMember(Value = "V-AIS Removal")] 
-		[XmlEnum("11")] 
-		VAisRemoval = 11,
-
-		[System.ComponentModel.Description("V-AIS has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "V-AIS Temporary Removal")] 
-		[XmlEnum("12")] 
-		VAisTemporaryRemoval = 12,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "RACON signal removal")] 
-		[XmlEnum("13")] 
-		RaconSignalRemoval = 13,
-
-		[System.ComponentModel.Description("RACON has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "RACON Temporary Removal")] 
-		[XmlEnum("14")] 
-		RaconTemporaryRemoval = 14,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "DGPS removal")] 
-		[XmlEnum("15")] 
-		DgpsRemoval = 15,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "DGPS temporary removal")] 
-		[XmlEnum("16")] 
-		DgpsTemporaryRemoval = 16,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "EGNOS removal")] 
-		[XmlEnum("17")] 
-		EgnosRemoval = 17,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "EGNOS temporary removal")] 
-		[XmlEnum("18")] 
-		EgnosTemporaryRemoval = 18,
-
-		[System.ComponentModel.Description("LORAN C station has been or will be permanently removed from service.")]
-		[EnumMember(Value = "LORAN C Station Removal")] 
-		[XmlEnum("19")] 
-		LoranCStationRemoval = 19,
-
-		[System.ComponentModel.Description("LORAN C station has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "LORAN C Station Temporary Removal")] 
-		[XmlEnum("20")] 
-		LoranCStationTemporaryRemoval = 20,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "eLORAN removal")] 
-		[XmlEnum("21")] 
-		EloranRemoval = 21,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "eLORAN temporary removal")] 
-		[XmlEnum("22")] 
-		EloranTemporaryRemoval = 22,
-
-		[System.ComponentModel.Description("Chayka station has been or will be permanently removed from service.")]
-		[EnumMember(Value = "Chayka Station Removal")] 
-		[XmlEnum("23")] 
-		ChaykaStationRemoval = 23,
-
-		[System.ComponentModel.Description("Chayka station has been or will be temporarily removed from service.")]
-		[EnumMember(Value = "Chayka Station Temporary Removal")] 
-		[XmlEnum("24")] 
-		ChaykaStationTemporaryRemoval = 24,
-
-		[System.ComponentModel.Description("The e-Chayka station has been or will be permanently removed from service.")]
-		[EnumMember(Value = "E-Chayka Station Removal")] 
-		[XmlEnum("25")] 
-		EChaykaStationRemoval = 25,
-
-		[System.ComponentModel.Description("The e-Chayka station has been or will be temporarily removed from service")]
-		[EnumMember(Value = "E-Chayka Station Temporary Removal")] 
-		[XmlEnum("26")] 
-		EChaykaStationTemporaryRemoval = 26,
+		NewDangerMarking = 12,
 	}
 
 	/// <summary>
 	/// The process of deploying and activating a new Aid to Navigation (AtoN), ensuring that it is properly installed and operational.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum atonCommissioning : int {
-		[System.ComponentModel.Description("A new buoy has been or will be established.")]
-		[EnumMember(Value = "Buoy Establishment")] 
-		[XmlEnum("1")] 
-		BuoyEstablishment = 1,
-
-		[System.ComponentModel.Description("A new light has been or will be established.")]
-		[EnumMember(Value = "Light Establishment")] 
-		[XmlEnum("2")] 
-		LightEstablishment = 2,
-
-		[System.ComponentModel.Description("A new beacon has been or will be established.")]
-		[EnumMember(Value = "Beacon Establishment")] 
-		[XmlEnum("3")] 
-		BeaconEstablishment = 3,
-
-		[System.ComponentModel.Description("A new audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be established.")]
-		[EnumMember(Value = "Audible Signal Establishment")] 
-		[XmlEnum("4")] 
-		AudibleSignalEstablishment = 4,
-
-		[System.ComponentModel.Description("A new fog signal has been or will be established.")]
-		[EnumMember(Value = "Fog Signal Establishment")] 
-		[XmlEnum("5")] 
-		FogSignalEstablishment = 5,
-
-		[System.ComponentModel.Description("A new AIS site has been or will be established.")]
-		[EnumMember(Value = "AIS Transmitter Establishment")] 
-		[XmlEnum("6")] 
-		AisTransmitterEstablishment = 6,
-
-		[System.ComponentModel.Description("A new V-AIS has been or will be established.")]
-		[EnumMember(Value = "V-AIS Establishment")] 
-		[XmlEnum("7")] 
-		VAisEstablishment = 7,
-
-		[System.ComponentModel.Description("A new RACON has been or will be established.")]
-		[EnumMember(Value = "RACON Establishment")] 
-		[XmlEnum("8")] 
-		RaconEstablishment = 8,
-
-		[System.ComponentModel.Description("A new DGPS station has been or will be established.")]
-		[EnumMember(Value = "DGPS Station Establishment")] 
-		[XmlEnum("9")] 
-		DgpsStationEstablishment = 9,
-
-		[System.ComponentModel.Description("A new eLORAN station has been or will be established.")]
-		[EnumMember(Value = "ELORAN Station Establishment")] 
-		[XmlEnum("10")] 
-		EloranStationEstablishment = 10,
-
-		[System.ComponentModel.Description("A new DGLONASS station has been or will be established.")]
-		[EnumMember(Value = "DGLONASS Station Establishment")] 
-		[XmlEnum("11")] 
-		DglonassStationEstablishment = 11,
-
-		[System.ComponentModel.Description("A new e-Chayka station has been or will be established.")]
-		[EnumMember(Value = "E-Chayka Station Establishment")] 
-		[XmlEnum("12")] 
-		EChaykaStationEstablishment = 12,
-
-		[System.ComponentModel.Description(".")]
-		[EnumMember(Value = "EGNOS establishment")] 
-		[XmlEnum("13")] 
-		EgnosEstablishment = 13,
-	}
-
-	/// <summary>
-	/// Direction of vessels passing a reference point.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum trafficFlow : int {
-		[System.ComponentModel.Description("Traffic flow in a general direction toward a port or similar destination.")]
-		[EnumMember(Value = "Inbound")] 
-		[XmlEnum("1")] 
-		Inbound = 1,
-
-		[System.ComponentModel.Description("Traffic flow in a general direction away from a port or similar point of origin.")]
-		[EnumMember(Value = "Outbound")] 
-		[XmlEnum("2")] 
-		Outbound = 2,
-
-		[System.ComponentModel.Description("Traffic flow in one general direction only.")]
-		[EnumMember(Value = "One-Way")] 
-		[XmlEnum("3")] 
-		OneWay = 3,
-
-		[System.ComponentModel.Description("Traffic flow in two generally opposite directions.")]
-		[EnumMember(Value = "Two-Way")] 
-		[XmlEnum("4")] 
-		TwoWay = 4,
-	}
-
-	/// <summary>
-	/// Different categories or kinds of modifications that can be made to data, positions, or objects. For example, changes may involve updates to position, orientation, or attributes of an object.
 	/// </summary>
 	/// <remarks>
 	/// -
 	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum ChangeTypes : int {
+	public enum atonCommissioning : int {
 		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Advanced notice of changes ")] 
+		[EnumMember(Value = "Buoy Establishment")] 
 		[XmlEnum("1")] 
-		AdvancedNoticeOfChanges = 1,
+		BuoyEstablishment = 1,
 
 		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Discrepancy ")] 
+		[EnumMember(Value = "Light Establishment")] 
 		[XmlEnum("2")] 
-		Discrepancy = 2,
+		LightEstablishment = 2,
 
 		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Proposed changes ")] 
+		[EnumMember(Value = "Beacon Establishment")] 
 		[XmlEnum("3")] 
-		ProposedChanges = 3,
+		BeaconEstablishment = 3,
 
 		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Temporary changes ")] 
+		[EnumMember(Value = "Audible Signal Establishment")] 
 		[XmlEnum("4")] 
-		TemporaryChanges = 4,
-	}
+		AudibleSignalEstablishment = 4,
 
-	/// <summary>
-	/// The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum colour : int {
-		[System.ComponentModel.Description("The achromatic object colour of greatest lightness characteristically perceived to belong to objects that reflect diffusely nearly all incident energy throughout the visible spectrum.")]
-		[EnumMember(Value = "White")] 
-		[XmlEnum("1")] 
-		White = 1,
-
-		[System.ComponentModel.Description("The achromatic color of least lightness characteristically perceived to belong to objects that neither reflect nor transmit light.")]
-		[EnumMember(Value = "Black")] 
-		[XmlEnum("2")] 
-		Black = 2,
-
-		[System.ComponentModel.Description("A color whose hue resembles that of blood or of the ruby or is that of the long-wave extreme of the visible spectrum.")]
-		[EnumMember(Value = "Red")] 
-		[XmlEnum("3")] 
-		Red = 3,
-
-		[System.ComponentModel.Description("Of the color green.")]
-		[EnumMember(Value = "Green")] 
-		[XmlEnum("4")] 
-		Green = 4,
-
-		[System.ComponentModel.Description("A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.")]
-		[EnumMember(Value = "Blue")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Fog Signal Establishment")] 
 		[XmlEnum("5")] 
-		Blue = 5,
+		FogSignalEstablishment = 5,
 
-		[System.ComponentModel.Description("A color whose hue resembles that of ripe lemons or sunflowers or is that of the portion of the spectrum lying between green and orange.")]
-		[EnumMember(Value = "Yellow")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "AIS Transmitter Establishment")] 
 		[XmlEnum("6")] 
-		Yellow = 6,
+		AisTransmitterEstablishment = 6,
 
-		[System.ComponentModel.Description("Of the color grey.")]
-		[EnumMember(Value = "Grey")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS Establishment")] 
 		[XmlEnum("7")] 
-		Grey = 7,
+		VAisEstablishment = 7,
 
-		[System.ComponentModel.Description("Any of a group of colors between red and yellow in hue, of medium to low lightness, and of moderate to low saturation.")]
-		[EnumMember(Value = "Brown")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Establishment")] 
 		[XmlEnum("8")] 
-		Brown = 8,
+		RaconEstablishment = 8,
 
-		[System.ComponentModel.Description("A variable color averaging a dark orange yellow.")]
-		[EnumMember(Value = "Amber")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGPS Station Establishment")] 
 		[XmlEnum("9")] 
-		Amber = 9,
+		DgpsStationEstablishment = 9,
 
-		[System.ComponentModel.Description("Any of a group of colors of reddish-blue hue, low lightness, and medium saturation.")]
-		[EnumMember(Value = "Violet")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "ELORAN Station Establishment")] 
 		[XmlEnum("10")] 
-		Violet = 10,
+		EloranStationEstablishment = 10,
 
-		[System.ComponentModel.Description("Any of a group of colors that are between red and yellow in hue.")]
-		[EnumMember(Value = "Orange")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGLONASS Station Establishment")] 
 		[XmlEnum("11")] 
-		Orange = 11,
+		DglonassStationEstablishment = 11,
 
-		[System.ComponentModel.Description("A deep purplish red.")]
-		[EnumMember(Value = "Magenta")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "E-Chayka Station Establishment")] 
 		[XmlEnum("12")] 
-		Magenta = 12,
+		EChaykaStationEstablishment = 12,
 
-		[System.ComponentModel.Description("Any of a group of colors bluish red to red in hue, of medium to high lightness, and of low to moderate saturation.")]
-		[EnumMember(Value = "Pink")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "EGNOS Station Establishment")] 
 		[XmlEnum("13")] 
-		Pink = 13,
+		EgnosStationEstablishment = 13,
 	}
 
 	/// <summary>
-	/// A regular repeated design containing more than one colour.
+	/// The process of decommissioning and physically removing an AtoN from its designated location, either temporarily or permanently.
 	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum colourPattern : int {
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented horizontally.")]
-		[EnumMember(Value = "Horizontal Stripes")] 
+	public enum atonRemoval : int {
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy Removal")] 
 		[XmlEnum("1")] 
-		HorizontalStripes = 1,
+		BuoyRemoval = 1,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented vertically.")]
-		[EnumMember(Value = "Vertical Stripes")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Buoy Temporary Removal")] 
 		[XmlEnum("2")] 
-		VerticalStripes = 2,
+		BuoyTemporaryRemoval = 2,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented diagonally (that is, not horizontally or vertically).")]
-		[EnumMember(Value = "Diagonal Stripes")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light Removal")] 
 		[XmlEnum("3")] 
-		DiagonalStripes = 3,
+		LightRemoval = 3,
 
-		[System.ComponentModel.Description("Often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
-		[EnumMember(Value = "Squared")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Light Temporary Removal")] 
 		[XmlEnum("4")] 
-		Squared = 4,
+		LightTemporaryRemoval = 4,
 
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented in an unknown direction.")]
-		[EnumMember(Value = "Stripes (Direction Unknown)")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon Removal")] 
 		[XmlEnum("5")] 
-		StripesDirectionUnknown = 5,
+		BeaconRemoval = 5,
 
-		[System.ComponentModel.Description("A band or stripe of colour which is displayed around the outer edge of the object, which may also form a border to an inner pattern or plain colour.")]
-		[EnumMember(Value = "Border Stripe")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Beacon Temporary Removal")] 
 		[XmlEnum("6")] 
-		BorderStripe = 6,
+		BeaconTemporaryRemoval = 6,
 
-		[System.ComponentModel.Description("One solid colour of uniform coverage.")]
-		[EnumMember(Value = "Single Colour")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog Signal Removal")] 
 		[XmlEnum("7")] 
-		SingleColour = 7,
+		FogSignalRemoval = 7,
 
-		[System.ComponentModel.Description("A four-sided shape that is made up of two pairs of parallel lines and that has four right angles, on a different coloured background.")]
-		[EnumMember(Value = "Rectangle")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Fog Signal Temporary Removal")] 
 		[XmlEnum("8")] 
-		Rectangle = 8,
+		FogSignalTemporaryRemoval = 8,
 
-		[System.ComponentModel.Description("A shape that is made up of three lines and three angles, on a different coloured background.")]
-		[EnumMember(Value = "Triangle")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible Signal Removal")] 
 		[XmlEnum("9")] 
-		Triangle = 9,
-	}
+		AudibleSignalRemoval = 9,
 
-	/// <summary>
-	/// The system of navigational buoyage a region complies with.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum marksNavigationalSystemOf : int {
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.")]
-		[EnumMember(Value = "IALA A")] 
-		[XmlEnum("1")] 
-		IalaA = 1,
-
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA B system.")]
-		[EnumMember(Value = "IALA B")] 
-		[XmlEnum("2")] 
-		IalaB = 2,
-
-		[System.ComponentModel.Description("Navigational aids do not conform to any defined system.")]
-		[EnumMember(Value = "No System")] 
-		[XmlEnum("9")] 
-		NoSystem = 9,
-
-		[System.ComponentModel.Description("Navigational aids conform to a defined system other than International Association of Lighthouse Authorities - IALA.")]
-		[EnumMember(Value = "Other System")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Audible Signal Temporary Removal")] 
 		[XmlEnum("10")] 
-		OtherSystem = 10,
+		AudibleSignalTemporaryRemoval = 10,
 
-		[System.ComponentModel.Description("Navigational aids as required in international, national or regional regulations that contain the same navigational aids as the European Code for Inland Waterways of UNECE, or if there is no regulation for a waterway, navigational aids as recommended in the European Code for Inland Waterways of UNECE")]
-		[EnumMember(Value = "Main European Inland Waterway Marking System")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS Transmitter Removal")] 
 		[XmlEnum("11")] 
-		MainEuropeanInlandWaterwayMarkingSystem = 11,
+		AisTransmitterRemoval = 11,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Russian inland waterway regulations.")]
-		[EnumMember(Value = "Russian Inland Waterway Regulations")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "AIS Transmitter Temporary Removal")] 
 		[XmlEnum("12")] 
-		RussianInlandWaterwayRegulations = 12,
+		AisTransmitterTemporaryRemoval = 12,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Brazilian national inland waterway regulation")]
-		[EnumMember(Value = "Brazilian National Inland Waterway Regulation")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS Removal")] 
 		[XmlEnum("13")] 
-		BrazilianNationalInlandWaterwayRegulation = 13,
+		VAisRemoval = 13,
 
-		[System.ComponentModel.Description("Navigational aids conform to the Brazilian complementary aids on the Paraguay-Parana waterway.")]
-		[EnumMember(Value = "Paraguay-Parana Waterway - Brazilian Complementary Aids")] 
-		[XmlEnum("15")] 
-		ParaguayParanaWaterwayBrazilianComplementaryAids = 15,
-	}
-
-	/// <summary>
-	/// The building's primary construction material.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum natureOfConstruction : int {
-		[System.ComponentModel.Description("Constructed of stones or bricks, usually quarried, shaped, and mortared.")]
-		[EnumMember(Value = "Masonry")] 
-		[XmlEnum("1")] 
-		Masonry = 1,
-
-		[System.ComponentModel.Description("Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
-		[EnumMember(Value = "Concreted")] 
-		[XmlEnum("2")] 
-		Concreted = 2,
-
-		[System.ComponentModel.Description("Constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
-		[EnumMember(Value = "Loose Boulders")] 
-		[XmlEnum("3")] 
-		LooseBoulders = 3,
-
-		[System.ComponentModel.Description("Constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
-		[EnumMember(Value = "Hard Surfaced")] 
-		[XmlEnum("4")] 
-		HardSurfaced = 4,
-
-		[System.ComponentModel.Description("Constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
-		[EnumMember(Value = "Unsurfaced")] 
-		[XmlEnum("5")] 
-		Unsurfaced = 5,
-
-		[System.ComponentModel.Description("Constructed from wood.")]
-		[EnumMember(Value = "Wooden")] 
-		[XmlEnum("6")] 
-		Wooden = 6,
-
-		[System.ComponentModel.Description("Constructed from metal.")]
-		[EnumMember(Value = "Metal")] 
-		[XmlEnum("7")] 
-		Metal = 7,
-
-		[System.ComponentModel.Description("Constructed from a plastic material strengthened with fibres of glass.")]
-		[EnumMember(Value = "Glass Reinforced Plastic")] 
-		[XmlEnum("8")] 
-		GlassReinforcedPlastic = 8,
-
-		[System.ComponentModel.Description("The application of paint to some other construction or natural feature.")]
-		[EnumMember(Value = "Painted")] 
-		[XmlEnum("9")] 
-		Painted = 9,
-
-		[System.ComponentModel.Description("Constructed from a lattice framework of, often diagonal, intersecting struts.")]
-		[EnumMember(Value = "Framework")] 
-		[XmlEnum("10")] 
-		Framework = 10,
-
-		[System.ComponentModel.Description("A structure of crossed wooden or metal strips usually arranged to form a diagonal pattern of open spaces between the strips.")]
-		[EnumMember(Value = "Latticed")] 
-		[XmlEnum("11")] 
-		Latticed = 11,
-
-		[System.ComponentModel.Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
-		[EnumMember(Value = "Glass")] 
-		[XmlEnum("12")] 
-		Glass = 12,
-
-		[System.ComponentModel.Description("Constructed from fiberglass.")]
-		[EnumMember(Value = "Fiberglass")] 
-		[XmlEnum("13")] 
-		Fiberglass = 13,
-
-		[System.ComponentModel.Description("Constructed from plastic.")]
-		[EnumMember(Value = "Plastic")] 
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "V-AIS Temporary Removal")] 
 		[XmlEnum("14")] 
-		Plastic = 14,
+		VAisTemporaryRemoval = 14,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON Removal")] 
+		[XmlEnum("15")] 
+		RaconRemoval = 15,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "RACON Temporary Removal")] 
+		[XmlEnum("16")] 
+		RaconTemporaryRemoval = 16,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS Station Removal")] 
+		[XmlEnum("17")] 
+		DgpsStationRemoval = 17,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "DGPS Station Temporary Removal")] 
+		[XmlEnum("18")] 
+		DgpsStationTemporaryRemoval = 18,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS Station Removal")] 
+		[XmlEnum("19")] 
+		EgnosStationRemoval = 19,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "EGNOS Station Temporary Removal")] 
+		[XmlEnum("20")] 
+		EgnosStationTemporaryRemoval = 20,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN station removal")] 
+		[XmlEnum("21")] 
+		LoranStationRemoval = 21,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "LORAN station temporary removal")] 
+		[XmlEnum("22")] 
+		LoranStationTemporaryRemoval = 22,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "ELORAN Station Temporary Removal")] 
+		[XmlEnum("24")] 
+		EloranStationTemporaryRemoval = 24,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka Station Removal")] 
+		[XmlEnum("25")] 
+		ChaykaStationRemoval = 25,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "Chayka Station Temporary Removal")] 
+		[XmlEnum("26")] 
+		ChaykaStationTemporaryRemoval = 26,
+
+		[System.ComponentModel.Description("")]
+		[EnumMember(Value = "E-Chayka Station Removal")] 
+		[XmlEnum("27")] 
+		EChaykaStationRemoval = 27,
 	}
 
 	/// <summary>
-	/// The principal shape and/or design of a buoy.
+	/// The act of swapping an existing AtoN with a new or upgraded unit, either due to maintenance needs or technological improvements.
 	/// </summary>
 	/// <remarks>
-	/// The principal shapes are those recommended in the International Association of Lighthouse Authorities - IALA System.
+	/// -
 	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum buoyShape : int {
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
-		[EnumMember(Value = "Conical")] 
+	public enum atonReplacement : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Change")] 
 		[XmlEnum("1")] 
-		Conical = 1,
+		BuoyChange = 1,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
-		[EnumMember(Value = "Can")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Temporary Change")] 
 		[XmlEnum("2")] 
-		Can = 2,
+		BuoyTemporaryChange = 2,
 
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
-		[EnumMember(Value = "Spherical")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Change")] 
 		[XmlEnum("3")] 
-		Spherical = 3,
+		LightChange = 3,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
-		[EnumMember(Value = "Pillar")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Temporary Change")] 
 		[XmlEnum("4")] 
-		Pillar = 4,
+		LightTemporaryChange = 4,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
-		[EnumMember(Value = "Spar")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Sector Light Change")] 
 		[XmlEnum("5")] 
-		Spar = 5,
+		SectorLightChange = 5,
 
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
-		[EnumMember(Value = "Barrel")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Sector Light Temporary Change")] 
 		[XmlEnum("6")] 
-		Barrel = 6,
+		SectorLightTemporaryChange = 6,
 
-		[System.ComponentModel.Description("A very large buoy designed to carry a signal light of high luminous intensity at a high elevation.")]
-		[EnumMember(Value = "Superbuoy")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Change")] 
 		[XmlEnum("7")] 
-		Superbuoy = 7,
+		BeaconChange = 7,
 
-		[System.ComponentModel.Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
-		[EnumMember(Value = "Ice Buoy")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beaon temporary change")] 
 		[XmlEnum("8")] 
-		IceBuoy = 8,
-	}
+		BeaonTemporaryChange = 8,
 
-	/// <summary>
-	/// Classification of pile, driven into the earth as a foundation or support for a structure.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPile : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole embedded in the seabed to serve as a marker or support.")]
-		[EnumMember(Value = "Stake")] 
-		[XmlEnum("1")] 
-		Stake = 1,
-
-		[System.ComponentModel.Description("A vertical piece of timber, metal or concrete forced into the earth or sea bed.")]
-		[EnumMember(Value = "Post")] 
-		[XmlEnum("3")] 
-		Post = 3,
-
-		[System.ComponentModel.Description("A single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or sea bed.")]
-		[EnumMember(Value = "Tripodal")] 
-		[XmlEnum("4")] 
-		Tripodal = 4,
-
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, and usually connected or bolted together.")]
-		[EnumMember(Value = "Piling")] 
-		[XmlEnum("5")] 
-		Piling = 5,
-
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, but not connected by structural members.")]
-		[EnumMember(Value = "Area of Piles")] 
-		[XmlEnum("6")] 
-		AreaOfPiles = 6,
-
-		[System.ComponentModel.Description("A vertical hollow cylinder of metal, wood, or other material forced into the earth or seabed.")]
-		[EnumMember(Value = "Pipe")] 
-		[XmlEnum("7")] 
-		Pipe = 7,
-
-		[System.ComponentModel.Description("A post where to which something (such as a craft) can be moored.")]
-		[EnumMember(Value = "Mooring Post")] 
-		[XmlEnum("8")] 
-		MooringPost = 8,
-	}
-
-	/// <summary>
-	/// The extent to which a feature, either natural or artificial, is visible from seaward.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum visualProminence : int {
-		[System.ComponentModel.Description("Term applied to a feature either natural or artificial which is distinctly and notably visible from seaward.")]
-		[EnumMember(Value = "Visually Conspicuous")] 
-		[XmlEnum("1")] 
-		VisuallyConspicuous = 1,
-
-		[System.ComponentModel.Description("An object that may be visible from seaward, but cannot be used as a fixing mark and is not conspicuous.")]
-		[EnumMember(Value = "Not Visually Conspicuous")] 
-		[XmlEnum("2")] 
-		NotVisuallyConspicuous = 2,
-
-		[System.ComponentModel.Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
-		[EnumMember(Value = "Prominent")] 
-		[XmlEnum("3")] 
-		Prominent = 3,
-	}
-
-	/// <summary>
-	/// The specific shape of the building.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum buildingShape : int {
-		[System.ComponentModel.Description("A building having many storeys.")]
-		[EnumMember(Value = "High-Rise Building")] 
-		[XmlEnum("5")] 
-		HighRiseBuilding = 5,
-
-		[System.ComponentModel.Description("A polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
-		[EnumMember(Value = "Pyramid")] 
-		[XmlEnum("6")] 
-		Pyramid = 6,
-
-		[System.ComponentModel.Description("Shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
-		[EnumMember(Value = "Cylindrical")] 
-		[XmlEnum("7")] 
-		Cylindrical = 7,
-
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
-		[EnumMember(Value = "Spherical")] 
-		[XmlEnum("8")] 
-		Spherical = 8,
-
-		[System.ComponentModel.Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
-		[EnumMember(Value = "Cubic")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Fog Signal Change")] 
 		[XmlEnum("9")] 
-		Cubic = 9,
+		FogSignalChange = 9,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Fog signal temporary chagne")] 
+		[XmlEnum("10")] 
+		FogSignalTemporaryChagne = 10,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Audible Signal Change")] 
+		[XmlEnum("11")] 
+		AudibleSignalChange = 11,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Audible Signal Temporary Change")] 
+		[XmlEnum("12")] 
+		AudibleSignalTemporaryChange = 12,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS Change")] 
+		[XmlEnum("13")] 
+		VAisChange = 13,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS Temporary Change")] 
+		[XmlEnum("14")] 
+		VAisTemporaryChange = 14,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Change")] 
+		[XmlEnum("15")] 
+		RaconChange = 15,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Temporary Change")] 
+		[XmlEnum("16")] 
+		RaconTemporaryChange = 16,
 	}
 
 	/// <summary>
-	/// Classification based on the product for which a silo or tank is used.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSiloTank : int {
-		[System.ComponentModel.Description("A large storage structure used for storing loose materials.")]
-		[EnumMember(Value = "Silo in General")] 
-		[XmlEnum("1")] 
-		SiloInGeneral = 1,
-
-		[System.ComponentModel.Description("A fixed structure for storing liquids.")]
-		[EnumMember(Value = "Tank in General")] 
-		[XmlEnum("2")] 
-		TankInGeneral = 2,
-
-		[System.ComponentModel.Description("A storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
-		[EnumMember(Value = "Grain Elevator")] 
-		[XmlEnum("3")] 
-		GrainElevator = 3,
-
-		[System.ComponentModel.Description("A tower supporting an elevated storage tank of water.")]
-		[EnumMember(Value = "Water Tower")] 
-		[XmlEnum("4")] 
-		WaterTower = 4,
-	}
-
-	/// <summary>
-	/// The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.
+	/// Modifications or updates to fixed AtoNs, such as lighthouses or beacons, which are permanently positioned.
 	/// </summary>
 	/// <remarks>
-	/// Cardinal marks are used in conjunction with the compass to indicate where a mariner will find safe navigable water.Cardinal marks do not have a distinctive shape but are normally pillar or spar. They are always painted in yellow and black horizontal bands and their distinctive double cone top-marks are always black. (Note that such top-marks are encoded as separate TOPMAR objects). Cardinal marks may also have a special system of flashing white lights and if such lights are fitted they are encoded as separate LIGHTS objects.
+	/// -
 	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum categoryOfCardinalMark : int {
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.")]
-		[EnumMember(Value = "North Cardinal Mark")] 
+	public enum fixedAtonChange : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Missing")] 
 		[XmlEnum("1")] 
-		NorthCardinalMark = 1,
+		BeaconMissing = 1,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.")]
-		[EnumMember(Value = "East Cardinal Mark")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Damaged")] 
 		[XmlEnum("2")] 
-		EastCardinalMark = 2,
+		BeaconDamaged = 2,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest; it should be passed to the south side of the mark.")]
-		[EnumMember(Value = "South Cardinal Mark")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light beacon Unlit")] 
 		[XmlEnum("3")] 
-		SouthCardinalMark = 3,
+		LightBeaconUnlit = 3,
 
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
-		[EnumMember(Value = "West Cardinal Mark")] 
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light beacon Unreliable")] 
 		[XmlEnum("4")] 
-		WestCardinalMark = 4,
+		LightBeaconUnreliable = 4,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light beacon Not synchronized")] 
+		[XmlEnum("5")] 
+		LightBeaconNotSynchronized = 5,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light beacon damaged")] 
+		[XmlEnum("6")] 
+		LightBeaconDamaged = 6,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Topmark Missing")] 
+		[XmlEnum("7")] 
+		BeaconTopmarkMissing = 7,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Topmark Damaged")] 
+		[XmlEnum("8")] 
+		BeaconTopmarkDamaged = 8,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Daymark Unreliable")] 
+		[XmlEnum("9")] 
+		BeaconDaymarkUnreliable = 9,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Floodlit beacon Unlit")] 
+		[XmlEnum("10")] 
+		FloodlitBeaconUnlit = 10,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Beacon Restored To Normal")] 
+		[XmlEnum("11")] 
+		BeaconRestoredToNormal = 11,
+	}
+
+	/// <summary>
+	/// Adjustments or replacements related to floating AtoNs, such as buoys, which are anchored but can move with water currents.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum floatingAtonChange : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Adrift")] 
+		[XmlEnum("1")] 
+		BuoyAdrift = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Damaged")] 
+		[XmlEnum("2")] 
+		BuoyDamaged = 2,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Daymark Unreliable")] 
+		[XmlEnum("3")] 
+		BuoyDaymarkUnreliable = 3,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Destroyed")] 
+		[XmlEnum("4")] 
+		BuoyDestroyed = 4,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Missing")] 
+		[XmlEnum("5")] 
+		BuoyMissing = 5,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Move")] 
+		[XmlEnum("6")] 
+		BuoyMove = 6,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy off Position")] 
+		[XmlEnum("7")] 
+		BuoyOffPosition = 7,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy re-establishment")] 
+		[XmlEnum("8")] 
+		BuoyReEstablishment = 8,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Restored to Normal")] 
+		[XmlEnum("9")] 
+		BuoyRestoredToNormal = 9,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Topmark Damaged")] 
+		[XmlEnum("10")] 
+		BuoyTopmarkDamaged = 10,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Topmark Missing")] 
+		[XmlEnum("11")] 
+		BuoyTopmarkMissing = 11,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Will Be Withdrawn")] 
+		[XmlEnum("12")] 
+		BuoyWillBeWithdrawn = 12,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Buoy Withdrawn")] 
+		[XmlEnum("13")] 
+		BuoyWithdrawn = 13,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Decommissioned for winter")] 
+		[XmlEnum("14")] 
+		DecommissionedForWinter = 14,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Lifted for Winter")] 
+		[XmlEnum("15")] 
+		LiftedForWinter = 15,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light buoy Light damaged")] 
+		[XmlEnum("16")] 
+		LightBuoyLightDamaged = 16,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light buoy Light not sychronized")] 
+		[XmlEnum("17")] 
+		LightBuoyLightNotSychronized = 17,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light buoy Light unlit")] 
+		[XmlEnum("18")] 
+		LightBuoyLightUnlit = 18,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light buoy Light unreliable")] 
+		[XmlEnum("19")] 
+		LightBuoyLightUnreliable = 19,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Marine Aids to Navigation Unreliable")] 
+		[XmlEnum("20")] 
+		MarineAidsToNavigationUnreliable = 20,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Recommissioned for navigation season")] 
+		[XmlEnum("21")] 
+		RecommissionedForNavigationSeason = 21,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Replaced by Winter Spar")] 
+		[XmlEnum("22")] 
+		ReplacedByWinterSpar = 22,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Seasonal Decommissioning Complete")] 
+		[XmlEnum("23")] 
+		SeasonalDecommissioningComplete = 23,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Seasonal Decommissioning in Progress")] 
+		[XmlEnum("24")] 
+		SeasonalDecommissioningInProgress = 24,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Seasonal recommissioning complete")] 
+		[XmlEnum("25")] 
+		SeasonalRecommissioningComplete = 25,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Seasonal recommissioning in progress")] 
+		[XmlEnum("26")] 
+		SeasonalRecommissioningInProgress = 26,
+	}
+
+	/// <summary>
+	/// Any modification to an AtoN that uses sound signals, such as foghorns or bells, to assist in navigation under low visibility conditions.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum audibleSignalAtonChange : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Audible Signal Out Of Service")] 
+		[XmlEnum("1")] 
+		AudibleSignalOutOfService = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Fog Signal Out Of Service")] 
+		[XmlEnum("2")] 
+		FogSignalOutOfService = 2,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Audible Signal Operating Properly")] 
+		[XmlEnum("3")] 
+		AudibleSignalOperatingProperly = 3,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Fog Signal Operating Properly")] 
+		[XmlEnum("4")] 
+		FogSignalOperatingProperly = 4,
+	}
+
+	/// <summary>
+	/// The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum signalStatus : int {
+		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of light or sound.")]
+		[EnumMember(Value = "Lit/Sound")] 
+		[XmlEnum("1")] 
+		LitSound = 1,
+
+		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
+		[EnumMember(Value = "Eclipsed/Silent")] 
+		[XmlEnum("2")] 
+		EclipsedSilent = 2,
+	}
+
+	/// <summary>
+	/// Updates or modifications to light-emitting AtoNs, including changing light characteristics, intensity, or operational status.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum lightedAtonChange : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Unlit")] 
+		[XmlEnum("1")] 
+		LightUnlit = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Unreliable")] 
+		[XmlEnum("2")] 
+		LightUnreliable = 2,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Re-Establishment")] 
+		[XmlEnum("3")] 
+		LightReEstablishment = 3,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Range Reduced")] 
+		[XmlEnum("4")] 
+		LightRangeReduced = 4,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Without Rhythm")] 
+		[XmlEnum("5")] 
+		LightWithoutRhythm = 5,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Out Of Synchronization")] 
+		[XmlEnum("6")] 
+		LightOutOfSynchronization = 6,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Daymark Unreliable")] 
+		[XmlEnum("7")] 
+		LightDaymarkUnreliable = 7,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Light Operating Properly")] 
+		[XmlEnum("8")] 
+		LightOperatingProperly = 8,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Sector light Sector obscured")] 
+		[XmlEnum("9")] 
+		SectorLightSectorObscured = 9,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/rnage light Unlit")] 
+		[XmlEnum("10")] 
+		FrontLeadingRnageLightUnlit = 10,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range light Unlit")] 
+		[XmlEnum("11")] 
+		RearLeadingRangeLightUnlit = 11,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range light Unreliable")] 
+		[XmlEnum("12")] 
+		FrontLeadingRangeLightUnreliable = 12,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range light Unreliable")] 
+		[XmlEnum("13")] 
+		RearLeadingRangeLightUnreliable = 13,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range light Light range reduced")] 
+		[XmlEnum("14")] 
+		FrontLeadingRangeLightLightRangeReduced = 14,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range light Light range reduced")] 
+		[XmlEnum("15")] 
+		RearLeadingRangeLightLightRangeReduced = 15,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range light without rhythm")] 
+		[XmlEnum("16")] 
+		FrontLeadingRangeLightWithoutRhythm = 16,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range light without rhythm")] 
+		[XmlEnum("17")] 
+		RearLeadingRangeLightWithoutRhythm = 17,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Leading/range lights out of synchronization")] 
+		[XmlEnum("18")] 
+		LeadingRangeLightsOutOfSynchronization = 18,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range beacon Unreliable")] 
+		[XmlEnum("19")] 
+		FrontLeadingRangeBeaconUnreliable = 19,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range beacon Unreliable")] 
+		[XmlEnum("20")] 
+		RearLeadingRangeBeaconUnreliable = 20,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range light is operating properly")] 
+		[XmlEnum("21")] 
+		FrontLeadingRangeLightIsOperatingProperly = 21,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range light is operating properly")] 
+		[XmlEnum("22")] 
+		RearLeadingRangeLightIsOperatingProperly = 22,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Front leading/range beacon restored to normal")] 
+		[XmlEnum("23")] 
+		FrontLeadingRangeBeaconRestoredToNormal = 23,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Rear leading/range beacon restored to normal")] 
+		[XmlEnum("24")] 
+		RearLeadingRangeBeaconRestoredToNormal = 24,
+	}
+
+	/// <summary>
+	/// Modifications to electronic or digital AtoNs, such as AIS (Automatic Identification System) AtoNs, virtual AtoNs, or remote-controlled systems.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum electronicAtoNChange : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "AIS Transmitter Out Of Service")] 
+		[XmlEnum("1")] 
+		AisTransmitterOutOfService = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "AIS Transmitter Unreliable")] 
+		[XmlEnum("2")] 
+		AisTransmitterUnreliable = 2,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "AIS trnasmitter operating properly")] 
+		[XmlEnum("3")] 
+		AisTrnasmitterOperatingProperly = 3,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS Out Of Service")] 
+		[XmlEnum("4")] 
+		VAisOutOfService = 4,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS unrealiable")] 
+		[XmlEnum("5")] 
+		VAisUnrealiable = 5,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "V-AIS Operating Properly")] 
+		[XmlEnum("6")] 
+		VAisOperatingProperly = 6,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Out Of Service")] 
+		[XmlEnum("7")] 
+		RaconOutOfService = 7,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Unreliable")] 
+		[XmlEnum("8")] 
+		RaconUnreliable = 8,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "RACON Operating Properly")] 
+		[XmlEnum("9")] 
+		RaconOperatingProperly = 9,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGPS Out Of Service")] 
+		[XmlEnum("10")] 
+		DgpsOutOfService = 10,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGPS Operating Properly")] 
+		[XmlEnum("11")] 
+		DgpsOperatingProperly = 11,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGPS Unreliable")] 
+		[XmlEnum("12")] 
+		DgpsUnreliable = 12,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "LORAN C operating properly")] 
+		[XmlEnum("13")] 
+		LoranCOperatingProperly = 13,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "LORAN C unreliable")] 
+		[XmlEnum("14")] 
+		LoranCUnreliable = 14,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "LORAN C out of service")] 
+		[XmlEnum("15")] 
+		LoranCOutOfService = 15,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "ELORAN Operating Properly")] 
+		[XmlEnum("16")] 
+		EloranOperatingProperly = 16,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "ELORAN Unreliable")] 
+		[XmlEnum("17")] 
+		EloranUnreliable = 17,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "ELORAN Out Of Service")] 
+		[XmlEnum("18")] 
+		EloranOutOfService = 18,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGLONASS Operating Properly")] 
+		[XmlEnum("19")] 
+		DglonassOperatingProperly = 19,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGLONASS Unreliable")] 
+		[XmlEnum("20")] 
+		DglonassUnreliable = 20,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "DGLONASS Out Of Service")] 
+		[XmlEnum("21")] 
+		DglonassOutOfService = 21,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Chayka Operating Properly")] 
+		[XmlEnum("22")] 
+		ChaykaOperatingProperly = 22,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Chayka Unreliable")] 
+		[XmlEnum("23")] 
+		ChaykaUnreliable = 23,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Chayka Out Of Service")] 
+		[XmlEnum("24")] 
+		ChaykaOutOfService = 24,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "E-Chayka Operating Properly")] 
+		[XmlEnum("25")] 
+		EChaykaOperatingProperly = 25,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "E-Chayka Unreliable")] 
+		[XmlEnum("26")] 
+		EChaykaUnreliable = 26,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "E-Chayka Out Of Service")] 
+		[XmlEnum("27")] 
+		EChaykaOutOfService = 27,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "EGNOS Operating Properly")] 
+		[XmlEnum("28")] 
+		EgnosOperatingProperly = 28,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "EGNOS Unreliable")] 
+		[XmlEnum("29")] 
+		EgnosUnreliable = 29,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "EGNOS Out Of Service")] 
+		[XmlEnum("30")] 
+		EgnosOutOfService = 30,
 	}
 
 	/// <summary>
@@ -1484,257 +1086,180 @@ namespace S100Framework.DomainModel.S125 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfInstallationBuoy : int {
-		[System.ComponentModel.Description("Incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
-		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
+		[System.ComponentModel.Description("incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
+		[EnumMember(Value = "catenary anchor leg mooring (CALM)")] 
 		[XmlEnum("1")] 
-		CatenaryAnchorLegMooring = 1,
+		CatenaryAnchorLegMooringCalm = 1,
 
-		[System.ComponentModel.Description("A large mooring buoy used by tankers to load and unload in port approaches or in offshore oil and gas fields.")]
-		[EnumMember(Value = "Single Buoy Mooring")] 
+		[System.ComponentModel.Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
+		[EnumMember(Value = "catenary anchor leg mooring (CALM)")] 
 		[XmlEnum("2")] 
-		SingleBuoyMooring = 2,
+		CatenaryAnchorLegMooringCalm = 2,
 	}
 
 	/// <summary>
-	/// Classification of lateral marks in the IALA Buoyage System.
+	/// The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.
 	/// </summary>
 	/// <remarks>
-	/// There are two international buoyage regions, A and B, between which lateral marks differ. When top-marks, retro reflectors and/or lights are fitted to these marks, they are encoded as separate features.
+	/// -
 	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum categoryOfLateralMark : int {
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
-		[EnumMember(Value = "Port-Hand Lateral Mark")] 
+	public enum lightCharacteristic : int {
+		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
+		[EnumMember(Value = "Fixed")] 
 		[XmlEnum("1")] 
-		PortHandLateralMark = 1,
+		Fixed = 1,
 
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
-		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
+		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
+		[EnumMember(Value = "Flashing")] 
 		[XmlEnum("2")] 
-		StarboardHandLateralMark = 2,
+		Flashing = 2,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
+		[System.ComponentModel.Description("A single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
+		[EnumMember(Value = "Long-Flashing")] 
 		[XmlEnum("3")] 
-		PreferredChannelToStarboardLateralMark = 3,
+		LongFlashing = 3,
 
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
+		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 50 flashes per minutes but less than 80 flashes per minutes. It may be: - Continuous quick-flashing: A quick-flashing light in which a flash is regularly repeated. - Group quick-flashing: A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Quick-Flashing")] 
 		[XmlEnum("4")] 
-		PreferredChannelToPortLateralMark = 4,
+		QuickFlashing = 4,
 
-		[System.ComponentModel.Description("Indicates the right-hand side of the inland waterway.")]
-		[EnumMember(Value = "Right-Hand Side of the Waterway")] 
+		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute. It may be:- Continuous very quick-flashing: A very quick-flashing light in which a flash is regularly repeated.- Group very quick-flashing: A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Very Quick-Flashing")] 
 		[XmlEnum("5")] 
-		RightHandSideOfTheWaterway = 5,
+		VeryQuickFlashing = 5,
 
-		[System.ComponentModel.Description("Indicates the left-hand side of the inland waterway.")]
-		[EnumMember(Value = "Left-Hand Side of the Waterway")] 
+		[System.ComponentModel.Description("A rhythmic light in which flashes are regularly repeated at a rate of not less than 160 flashes per minute.")]
+		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
 		[XmlEnum("6")] 
-		LeftHandSideOfTheWaterway = 6,
+		ContinuousUltraQuickFlashing = 6,
 
-		[System.ComponentModel.Description("Indicates the right-hand side of a channel of an inland waterway.")]
-		[EnumMember(Value = "Right-Hand Side of the Channel")] 
+		[System.ComponentModel.Description("A light with all durations of light and darkness equal.")]
+		[EnumMember(Value = "Isophased")] 
 		[XmlEnum("7")] 
-		RightHandSideOfTheChannel = 7,
+		Isophased = 7,
 
-		[System.ComponentModel.Description("Indicates the left-hand side of a channel of an inland waterway.")]
-		[EnumMember(Value = "Left-Hand Side of the Channel")] 
+		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration. It may be:  - Single-occulting: An occulting light in which an eclipse is regularly repeated.  - Group-occulting: An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.  - Composite group-occulting: An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
+		[EnumMember(Value = "Occulting")] 
 		[XmlEnum("8")] 
-		LeftHandSideOfTheChannel = 8,
+		Occulting = 8,
 
-		[System.ComponentModel.Description("Indicates a bifurcation of the inland waterway.")]
-		[EnumMember(Value = "Bifurcation of the Waterway")] 
+		[System.ComponentModel.Description("A quick light in which the sequence of flashes is interrupted by regularly repeated eclipses of constant and long duration.")]
+		[EnumMember(Value = "Interrupted Quick Flashing")] 
 		[XmlEnum("9")] 
-		BifurcationOfTheWaterway = 9,
+		InterruptedQuickFlashing = 9,
 
-		[System.ComponentModel.Description("Indicates a bifurcation of a channel of an inland waterway.")]
-		[EnumMember(Value = "Bifurcation of the Channel")] 
+		[System.ComponentModel.Description("A light in which the very rapid alterations of light and darkness are interrupted at regular intervals by eclipses of long duration.")]
+		[EnumMember(Value = "Interrupted Very Quick Flashing")] 
 		[XmlEnum("10")] 
-		BifurcationOfTheChannel = 10,
+		InterruptedVeryQuickFlashing = 10,
 
-		[System.ComponentModel.Description("Indicates that the channel is near the right bank.")]
-		[EnumMember(Value = "Channel Near the Right Bank")] 
+		[System.ComponentModel.Description("A light in which the ultra quick flashes (160 or more per minute) are interrupted at regular intervals by eclipses of long duration.")]
+		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
 		[XmlEnum("11")] 
-		ChannelNearTheRightBank = 11,
+		InterruptedUltraQuickFlashing = 11,
 
-		[System.ComponentModel.Description("Indicates that the channel is near the left bank.")]
-		[EnumMember(Value = "Channel Near the Left Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
+		[EnumMember(Value = "Morse")] 
 		[XmlEnum("12")] 
-		ChannelNearTheLeftBank = 12,
+		Morse = 12,
 
-		[System.ComponentModel.Description("Indicates that the channel crosses from the left to the right bank.")]
-		[EnumMember(Value = "Channel Cross-Over to the Right Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
+		[EnumMember(Value = "Fixed and Flash")] 
 		[XmlEnum("13")] 
-		ChannelCrossOverToTheRightBank = 13,
+		FixedAndFlash = 13,
 
-		[System.ComponentModel.Description("Indicates that the channel crosses from the right to the left bank.")]
-		[EnumMember(Value = "Channel Cross-Over to the Left Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which a flashing light is combined with a long-flashing light of higher luminous intensity.")]
+		[EnumMember(Value = "Flash and Long-Flash")] 
 		[XmlEnum("14")] 
-		ChannelCrossOverToTheLeftBank = 14,
+		FlashAndLongFlash = 14,
 
-		[System.ComponentModel.Description("Indicates a danger point or obstacles at the right-hand side.")]
-		[EnumMember(Value = "Danger Point or Obstacles at the Right-Hand Side")] 
+		[System.ComponentModel.Description("A rhythmic light in which an occulting light is combined with a flashing light of higher luminous intensity.")]
+		[EnumMember(Value = "Occulting and Flash")] 
 		[XmlEnum("15")] 
-		DangerPointOrObstaclesAtTheRightHandSide = 15,
+		OccultingAndFlash = 15,
 
-		[System.ComponentModel.Description("Indicates a danger point or obstacles at the left-hand side.")]
-		[EnumMember(Value = "Danger Point or Obstacles at the Left-Hand Side")] 
+		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a long-flashing light of higher luminous intensity.")]
+		[EnumMember(Value = "Fixed and Long-Flash")] 
 		[XmlEnum("16")] 
-		DangerPointOrObstaclesAtTheLeftHandSide = 16,
+		FixedAndLongFlash = 16,
 
-		[System.ComponentModel.Description("Indicates a turn off at the right-hand side.")]
-		[EnumMember(Value = "Turn Off at the Right-Hand Side")] 
+		[System.ComponentModel.Description("An alternating light in which the total duration of light in each period is clearly longer than the total duration of darkness and in which the intervals of darkness (occultations) are all of equal duration.")]
+		[EnumMember(Value = "Occulting Alternating")] 
 		[XmlEnum("17")] 
-		TurnOffAtTheRightHandSide = 17,
+		OccultingAlternating = 17,
 
-		[System.ComponentModel.Description("Indicates a turn off at the left-hand side.")]
-		[EnumMember(Value = "Turn Off at the Left-Hand Side")] 
+		[System.ComponentModel.Description("An alternating single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
+		[EnumMember(Value = "Long-Flash Alternating")] 
 		[XmlEnum("18")] 
-		TurnOffAtTheLeftHandSide = 18,
+		LongFlashAlternating = 18,
 
-		[System.ComponentModel.Description("Indicates a junction at the right-hand side.")]
-		[EnumMember(Value = "Junction at the Right-Hand Side")] 
+		[System.ComponentModel.Description("An alternating rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
+		[EnumMember(Value = "Flash Alternating")] 
 		[XmlEnum("19")] 
-		JunctionAtTheRightHandSide = 19,
+		FlashAlternating = 19,
 
-		[System.ComponentModel.Description("Indicates a junction at the left-hand side.")]
-		[EnumMember(Value = "Junction at the Left-Hand Side")] 
+		[System.ComponentModel.Description("Occulting light in which the occultations are combined in groups, each group including the same number of occultations, and in which the groups are repeated at regular intervals.")]
+		[EnumMember(Value = "Group Alternating")] 
 		[XmlEnum("20")] 
-		JunctionAtTheLeftHandSide = 20,
+		GroupAlternating = 20,
 
-		[System.ComponentModel.Description("Indicates a harbour entry at the right-hand side.")]
-		[EnumMember(Value = "Harbour Entry at the Right-Hand Side")] 
-		[XmlEnum("21")] 
-		HarbourEntryAtTheRightHandSide = 21,
-
-		[System.ComponentModel.Description("Indicates a harbour entry at the left-hand side.")]
-		[EnumMember(Value = "Harbour Entry at the Left-Hand Side")] 
-		[XmlEnum("22")] 
-		HarbourEntryAtTheLeftHandSide = 22,
-
-		[System.ComponentModel.Description("Indicates a bridge pier in an inland waterway.")]
-		[EnumMember(Value = "Bridge Pier Mark")] 
-		[XmlEnum("23")] 
-		BridgePierMark = 23,
-
-		[System.ComponentModel.Description("Indicates the right bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
-		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Right Bank")] 
-		[XmlEnum("24")] 
-		EntryFromALakeToANarrowerWaterwayRightBank = 24,
-
-		[System.ComponentModel.Description("Indicates the left bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
-		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Left Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which a group of quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("25")] 
-		EntryFromALakeToANarrowerWaterwayLeftBank = 25,
+		QuickFlashPlusLongFlash = 25,
 
-		[System.ComponentModel.Description("Change bank.")]
-		[EnumMember(Value = "Change Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which a group of very quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("26")] 
-		ChangeBank = 26,
+		VeryQuickFlashPlusLongFlash = 26,
 
-		[System.ComponentModel.Description("Continue along bank.")]
-		[EnumMember(Value = "Continue Along Bank")] 
+		[System.ComponentModel.Description("A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
+		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
 		[XmlEnum("27")] 
-		ContinueAlongBank = 27,
-	}
+		UltraQuickFlashPlusLongFlash = 27,
 
-	/// <summary>
-	/// Classification of an offshore raised structure.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfOffshorePlatform : int {
-		[System.ComponentModel.Description("A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
-		[EnumMember(Value = "Oil Rig")] 
+		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
+		[EnumMember(Value = "Alternating")] 
+		[XmlEnum("28")] 
+		Alternating = 28,
+
+		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.")]
+		[EnumMember(Value = "Fixed and Alternating Flashing")] 
+		[XmlEnum("29")] 
+		FixedAndAlternatingFlashing = 29,
+
+		[System.ComponentModel.Description("An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Group-Occulting Light")] 
 		[XmlEnum("1")] 
-		OilRig = 1,
+		GroupOccultingLight = 1,
 
-		[System.ComponentModel.Description("A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
-		[EnumMember(Value = "Production Platform")] 
+		[System.ComponentModel.Description("An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
+		[EnumMember(Value = "Composite Group-Occulting Light")] 
 		[XmlEnum("2")] 
-		ProductionPlatform = 2,
+		CompositeGroupOccultingLight = 2,
 
-		[System.ComponentModel.Description("A platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
-		[EnumMember(Value = "Observation/Research Platform")] 
+		[System.ComponentModel.Description("A flashing light in which a group of flashes, specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Group Flashing Light")] 
 		[XmlEnum("3")] 
-		ObservationResearchPlatform = 3,
+		GroupFlashingLight = 3,
 
-		[System.ComponentModel.Description("A metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the sea bed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
-		[EnumMember(Value = "Articulated Loading Platform")] 
+		[System.ComponentModel.Description("A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.")]
+		[EnumMember(Value = "Composite Group-Flashing Light")] 
 		[XmlEnum("4")] 
-		ArticulatedLoadingPlatform = 4,
+		CompositeGroupFlashingLight = 4,
 
-		[System.ComponentModel.Description("A rigid frame or tube with a buoyancy device at its upper end , secured at its lower end to a universal joint on a large steel or concrete base resting on the sea bed, and at its upper end to a mooring buoy by a chain or wire.")]
-		[EnumMember(Value = "Single Anchor Leg Mooring")] 
+		[System.ComponentModel.Description("A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Group Quick Light")] 
 		[XmlEnum("5")] 
-		SingleAnchorLegMooring = 5,
+		GroupQuickLight = 5,
 
-		[System.ComponentModel.Description("A platform secured to the sea bed and surmounted by a turntable to which ships moor.")]
-		[EnumMember(Value = "Mooring Tower")] 
+		[System.ComponentModel.Description("A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
+		[EnumMember(Value = "Group Very Quick Light")] 
 		[XmlEnum("6")] 
-		MooringTower = 6,
-
-		[System.ComponentModel.Description("A man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
-		[EnumMember(Value = "Artificial Island")] 
-		[XmlEnum("7")] 
-		ArtificialIsland = 7,
-
-		[System.ComponentModel.Description("An offshore oil/gas facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
-		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
-		[XmlEnum("8")] 
-		FloatingProductionStorageAndOffLoadingVessel = 8,
-
-		[System.ComponentModel.Description("A platform used primarily for eating, sleeping and recreation purposes.")]
-		[EnumMember(Value = "Accommodation Platform")] 
-		[XmlEnum("9")] 
-		AccommodationPlatform = 9,
-
-		[System.ComponentModel.Description("A floating structure with control room, power and storage facilities, attached to the sea bed by a flexible pipeline and cables.")]
-		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
-		[XmlEnum("10")] 
-		NavigationCommunicationAndControlBuoy = 10,
-
-		[System.ComponentModel.Description("A floating structure, anchored to the seabed, for storing oil.")]
-		[EnumMember(Value = "Floating Oil Tank")] 
-		[XmlEnum("11")] 
-		FloatingOilTank = 11,
-	}
-
-	/// <summary>
-	/// The various conditions of buildings and other constructions.
-	/// </summary>
-	/// <remarks>
-	/// The default 'condition' should be considered to be completed, undamaged and working normally.
-	/// </remarks>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum condition : int {
-		[System.ComponentModel.Description("Being built but not yet capable of function.")]
-		[EnumMember(Value = "Under Construction")] 
-		[XmlEnum("1")] 
-		UnderConstruction = 1,
-
-		[System.ComponentModel.Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
-		[EnumMember(Value = "Ruined")] 
-		[XmlEnum("2")] 
-		Ruined = 2,
-
-		[System.ComponentModel.Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
-		[EnumMember(Value = "Under Reclamation")] 
-		[XmlEnum("3")] 
-		UnderReclamation = 3,
-
-		[System.ComponentModel.Description("A windmill or wind turbine from which the vanes or turbine blades are missing.")]
-		[EnumMember(Value = "Wingless")] 
-		[XmlEnum("4")] 
-		Wingless = 4,
-
-		[System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
-		[EnumMember(Value = "Planned Construction")] 
-		[XmlEnum("5")] 
-		PlannedConstruction = 5,
+		GroupVeryQuickLight = 6,
 	}
 
 	/// <summary>
@@ -1822,372 +1347,6 @@ namespace S100Framework.DomainModel.S125 {
 	}
 
 	/// <summary>
-	/// Survey method used to obtain depth information.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum techniqueOfVerticalMeasurement : int {
-		[System.ComponentModel.Description("The depth was determined by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
-		[EnumMember(Value = "Found by Echo Sounder")] 
-		[XmlEnum("1")] 
-		FoundByEchoSounder = 1,
-
-		[System.ComponentModel.Description("The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.")]
-		[EnumMember(Value = "Found by Side Scan Sonar")] 
-		[XmlEnum("2")] 
-		FoundBySideScanSonar = 2,
-
-		[System.ComponentModel.Description("The depth was determined by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
-		[EnumMember(Value = "Found by Multi Beam")] 
-		[XmlEnum("3")] 
-		FoundByMultiBeam = 3,
-
-		[System.ComponentModel.Description("The depth was determined by a person skilled in the practice of diving.")]
-		[EnumMember(Value = "Found by Diver")] 
-		[XmlEnum("4")] 
-		FoundByDiver = 4,
-
-		[System.ComponentModel.Description("The depth was determined by using a line, graduated with attached marks and fastened to a sounding lead.")]
-		[EnumMember(Value = "Found by Lead Line")] 
-		[XmlEnum("5")] 
-		FoundByLeadLine = 5,
-
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a buoyed wire at the desired depth by two launches, or a least depth was identified using the same technique.")]
-		[EnumMember(Value = "Swept by Wire-Drag")] 
-		[XmlEnum("6")] 
-		SweptByWireDrag = 6,
-
-		[System.ComponentModel.Description("The depth was determined by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
-		[EnumMember(Value = "Found by Laser")] 
-		[XmlEnum("7")] 
-		FoundByLaser = 7,
-
-		[System.ComponentModel.Description("The given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
-		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
-		[XmlEnum("8")] 
-		SweptByVerticalAcousticSystem = 8,
-
-		[System.ComponentModel.Description("The depth was determined by using an instrument that compares electromagnetic signals.")]
-		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
-		[XmlEnum("9")] 
-		FoundByElectromagneticSensor = 9,
-
-		[System.ComponentModel.Description("The science or art of obtaining reliable measurements from photographs.")]
-		[EnumMember(Value = "Photogrammetry")] 
-		[XmlEnum("10")] 
-		Photogrammetry = 10,
-
-		[System.ComponentModel.Description("The depth was determined by using instruments placed aboard an artificial satellite.")]
-		[EnumMember(Value = "Satellite Imagery")] 
-		[XmlEnum("11")] 
-		SatelliteImagery = 11,
-
-		[System.ComponentModel.Description("The depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
-		[EnumMember(Value = "Found by Levelling")] 
-		[XmlEnum("12")] 
-		FoundByLevelling = 12,
-
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a side scan sonar.")]
-		[EnumMember(Value = "Swept by Side Scan Sonar")] 
-		[XmlEnum("13")] 
-		SweptBySideScanSonar = 13,
-
-		[System.ComponentModel.Description("The sounding was determined from a bottom model constructed using a computer.")]
-		[EnumMember(Value = "Computer Generated")] 
-		[XmlEnum("14")] 
-		ComputerGenerated = 14,
-
-		[System.ComponentModel.Description("The depth was measured by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
-		[EnumMember(Value = "Found by LIDAR")] 
-		[XmlEnum("15")] 
-		FoundByLidar = 15,
-
-		[System.ComponentModel.Description("A radar with a synthetic aperture antenna which is composed of a large number of elementary transducing elements. The signals are electronically combined into a resulting signal equivalent to that of a single antenna of a given aperture in a given direction.")]
-		[EnumMember(Value = "Synthetic Aperture Radar")] 
-		[XmlEnum("16")] 
-		SyntheticApertureRadar = 16,
-
-		[System.ComponentModel.Description("Term used to describe the imagery derived from subdividing the electromagnetic spectrum into very narrow bandwidths. These narrow bandwidths may be combined with or subtracted from each other in various ways to form images useful in precise terrain or target analysis.")]
-		[EnumMember(Value = "Hyperspectral Imagery")] 
-		[XmlEnum("17")] 
-		HyperspectralImagery = 17,
-
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a line or object below the surface at the desired depth; or least depth(s) and position(s) within an area was identified using the same technique.")]
-		[EnumMember(Value = "Mechanically Swept")] 
-		[XmlEnum("18")] 
-		MechanicallySwept = 18,
-	}
-
-	/// <summary>
-	/// The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum verticalDatum : int {
-		[System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.")]
-		[EnumMember(Value = "Mean Low Water Springs")] 
-		[XmlEnum("1")] 
-		MeanLowWaterSprings = 1,
-
-		[System.ComponentModel.Description("The average height of lower low water springs at a place.")]
-		[EnumMember(Value = "Mean Lower Low Water Springs")] 
-		[XmlEnum("2")] 
-		MeanLowerLowWaterSprings = 2,
-
-		[System.ComponentModel.Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
-		[EnumMember(Value = "Mean Sea Level")] 
-		[XmlEnum("3")] 
-		MeanSeaLevel = 3,
-
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest tide observed at a place, or some what lower.")]
-		[EnumMember(Value = "Lowest Low Water")] 
-		[XmlEnum("4")] 
-		LowestLowWater = 4,
-
-		[System.ComponentModel.Description("The average height of all low waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Low Water")] 
-		[XmlEnum("5")] 
-		MeanLowWater = 5,
-
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
-		[EnumMember(Value = "Lowest Low Water Springs")] 
-		[XmlEnum("6")] 
-		LowestLowWaterSprings = 6,
-
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
-		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
-		[XmlEnum("7")] 
-		ApproximateMeanLowWaterSprings = 7,
-
-		[System.ComponentModel.Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
-		[EnumMember(Value = "Indian Spring Low Water")] 
-		[XmlEnum("8")] 
-		IndianSpringLowWater = 8,
-
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
-		[EnumMember(Value = "Low Water Springs")] 
-		[XmlEnum("9")] 
-		LowWaterSprings = 9,
-
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
-		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
-		[XmlEnum("10")] 
-		ApproximateLowestAstronomicalTide = 10,
-
-		[System.ComponentModel.Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
-		[EnumMember(Value = "Nearly Lowest Low Water")] 
-		[XmlEnum("11")] 
-		NearlyLowestLowWater = 11,
-
-		[System.ComponentModel.Description("The average height of the lower low waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Lower Low Water")] 
-		[XmlEnum("12")] 
-		MeanLowerLowWater = 12,
-
-		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation. Also called low tide.")]
-		[EnumMember(Value = "Low Water")] 
-		[XmlEnum("13")] 
-		LowWater = 13,
-
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
-		[EnumMember(Value = "Approximate Mean Low Water")] 
-		[XmlEnum("14")] 
-		ApproximateMeanLowWater = 14,
-
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
-		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
-		[XmlEnum("15")] 
-		ApproximateMeanLowerLowWater = 15,
-
-		[System.ComponentModel.Description("The average height of all high waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean High Water")] 
-		[XmlEnum("16")] 
-		MeanHighWater = 16,
-
-		[System.ComponentModel.Description("The average height of the high waters of spring tides. Also called spring high water.")]
-		[EnumMember(Value = "Mean High Water Springs")] 
-		[XmlEnum("17")] 
-		MeanHighWaterSprings = 17,
-
-		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
-		[EnumMember(Value = "High Water")] 
-		[XmlEnum("18")] 
-		HighWater = 18,
-
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
-		[EnumMember(Value = "Approximate Mean Sea Level")] 
-		[XmlEnum("19")] 
-		ApproximateMeanSeaLevel = 19,
-
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
-		[EnumMember(Value = "High Water Springs")] 
-		[XmlEnum("20")] 
-		HighWaterSprings = 20,
-
-		[System.ComponentModel.Description("The average height of higher high waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Higher High Water")] 
-		[XmlEnum("21")] 
-		MeanHigherHighWater = 21,
-
-		[System.ComponentModel.Description("The level of low water springs near the time of an equinox.")]
-		[EnumMember(Value = "Equinoctial Spring Low Water")] 
-		[XmlEnum("22")] 
-		EquinoctialSpringLowWater = 22,
-
-		[System.ComponentModel.Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
-		[EnumMember(Value = "Lowest Astronomical Tide")] 
-		[XmlEnum("23")] 
-		LowestAstronomicalTide = 23,
-
-		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
-		[EnumMember(Value = "Local Datum")] 
-		[XmlEnum("24")] 
-		LocalDatum = 24,
-
-		[System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.")]
-		[EnumMember(Value = "International Great Lakes Datum 1985")] 
-		[XmlEnum("25")] 
-		InternationalGreatLakesDatum1985 = 25,
-
-		[System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
-		[EnumMember(Value = "Mean Water Level")] 
-		[XmlEnum("26")] 
-		MeanWaterLevel = 26,
-
-		[System.ComponentModel.Description("The average of the lowest low waters, one from each of 19 years of observations.")]
-		[EnumMember(Value = "Lower Low Water Large Tide")] 
-		[XmlEnum("27")] 
-		LowerLowWaterLargeTide = 27,
-
-		[System.ComponentModel.Description("The average of the highest high waters, one from each of 19 years of observations.")]
-		[EnumMember(Value = "Higher High Water Large Tide")] 
-		[XmlEnum("28")] 
-		HigherHighWaterLargeTide = 28,
-
-		[System.ComponentModel.Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
-		[EnumMember(Value = "Nearly Highest High Water")] 
-		[XmlEnum("29")] 
-		NearlyHighestHighWater = 29,
-
-		[System.ComponentModel.Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
-		[EnumMember(Value = "Highest Astronomical Tide")] 
-		[XmlEnum("30")] 
-		HighestAstronomicalTide = 30,
-
-		[System.ComponentModel.Description("Low water reference level of the local area.")]
-		[EnumMember(Value = "Local Low Water Reference Level")] 
-		[XmlEnum("31")] 
-		LocalLowWaterReferenceLevel = 31,
-
-		[System.ComponentModel.Description("High water reference level of the local area.")]
-		[EnumMember(Value = "Local High Water Reference Level")] 
-		[XmlEnum("32")] 
-		LocalHighWaterReferenceLevel = 32,
-
-		[System.ComponentModel.Description("Mean water reference level of the local area.")]
-		[EnumMember(Value = "Local Mean Water Reference Level")] 
-		[XmlEnum("33")] 
-		LocalMeanWaterReferenceLevel = 33,
-
-		[System.ComponentModel.Description("A low water level which is the result of a defined low water discharge - called \"equivalent discharge\".")]
-		[EnumMember(Value = "Equivalent Height of Water (German GlW)")] 
-		[XmlEnum("34")] 
-		EquivalentHeightOfWaterGermanGlw = 34,
-
-		[System.ComponentModel.Description("Upper limit of water levels where navigation is allowed.")]
-		[EnumMember(Value = "Highest Shipping Height of Water (German HSW)")] 
-		[XmlEnum("35")] 
-		HighestShippingHeightOfWaterGermanHsw = 35,
-
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.")]
-		[EnumMember(Value = "Reference Low Water Level According to Danube Commission")] 
-		[XmlEnum("36")] 
-		ReferenceLowWaterLevelAccordingToDanubeCommission = 36,
-
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.")]
-		[EnumMember(Value = "Highest Shipping Height of Water According to Danube Commission")] 
-		[XmlEnum("37")] 
-		HighestShippingHeightOfWaterAccordingToDanubeCommission = 37,
-
-		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.")]
-		[EnumMember(Value = "Dutch River Low Water Reference Level (OLR)")] 
-		[XmlEnum("38")] 
-		DutchRiverLowWaterReferenceLevelOlr = 38,
-
-		[System.ComponentModel.Description("Conditional low water level with established probability.")]
-		[EnumMember(Value = "Russian Project Water Level")] 
-		[XmlEnum("39")] 
-		RussianProjectWaterLevel = 39,
-
-		[System.ComponentModel.Description("Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.")]
-		[EnumMember(Value = "Russian Normal Backwater Level")] 
-		[XmlEnum("40")] 
-		RussianNormalBackwaterLevel = 40,
-
-		[System.ComponentModel.Description("The Ohio River datum.")]
-		[EnumMember(Value = "Ohio River Datum")] 
-		[XmlEnum("41")] 
-		OhioRiverDatum = 41,
-
-		[System.ComponentModel.Description("Dutch High Water Reference Level.")]
-		[EnumMember(Value = "Dutch High Water Reference Level")] 
-		[XmlEnum("43")] 
-		DutchHighWaterReferenceLevel = 43,
-
-		[System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
-		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
-		[XmlEnum("44")] 
-		BalticSeaChartDatum2000 = 44,
-
-		[System.ComponentModel.Description("Dutch Estuary Low Water Reference Level (OLW)")]
-		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
-		[XmlEnum("45")] 
-		DutchEstuaryLowWaterReferenceLevelOlw = 45,
-
-		[System.ComponentModel.Description("The 2020 update to the International Great Lakes Datum, the official reference system used to measure water level heights in the Great Lakes, connecting channels, and the St. Lawrence River system.")]
-		[EnumMember(Value = "International Great Lakes Datum 2020")] 
-		[XmlEnum("46")] 
-		InternationalGreatLakesDatum2020 = 46,
-
-		[System.ComponentModel.Description("The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.")]
-		[EnumMember(Value = "Sea Floor")] 
-		[XmlEnum("47")] 
-		SeaFloor = 47,
-
-		[System.ComponentModel.Description("A two-dimensional (in the horizontal plane) field representing the air-sea interface, with high-frequency fluctuations such as wind waves and swell, but not astronomical tides, filtered out.")]
-		[EnumMember(Value = "Sea Surface")] 
-		[XmlEnum("48")] 
-		SeaSurface = 48,
-
-		[System.ComponentModel.Description("A vertical reference near the lowest astronomical tide (LAT), below which the sea level falls only very exceptionally.")]
-		[EnumMember(Value = "Hydrographic Zero")] 
-		[XmlEnum("49")] 
-		HydrographicZero = 49,
-	}
-
-	/// <summary>
-	/// Classification of the type and display level of the name of a feature in an end-user system.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum nameUsage : int {
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
-		[EnumMember(Value = "Default Name Display")] 
-		[XmlEnum("1")] 
-		DefaultNameDisplay = 1,
-
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
-		[EnumMember(Value = "Alternate Name Display")] 
-		[XmlEnum("2")] 
-		AlternateNameDisplay = 2,
-
-		[System.ComponentModel.Description("The name or text is not intended to be displayed.")]
-		[EnumMember(Value = "No Chart Display")] 
-		[XmlEnum("3")] 
-		NoChartDisplay = 3,
-	}
-
-	/// <summary>
 	/// The condition of an object at a given instant in time.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2243,7 +1402,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("11")] 
 		Extinguished = 11,
 
-		[System.ComponentModel.Description("Lit by floodlights, strip lights, etc.")]
+		[System.ComponentModel.Description("Lit by flood lights, strip lights, etc.")]
 		[EnumMember(Value = "Illuminated")] 
 		[XmlEnum("12")] 
 		Illuminated = 12,
@@ -2397,6 +1556,1178 @@ namespace S100Framework.DomainModel.S125 {
 		[EnumMember(Value = "Candidate for Modification")] 
 		[XmlEnum("43")] 
 		CandidateForModification = 43,
+	}
+
+	/// <summary>
+	/// Survey method used to obtain depth information.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum techniqueOfVerticalMeasurement : int {
+		[System.ComponentModel.Description("The depth was measured by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
+		[EnumMember(Value = "Found by Echo Sounder")] 
+		[XmlEnum("1")] 
+		FoundByEchoSounder = 1,
+
+		[System.ComponentModel.Description("The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.")]
+		[EnumMember(Value = "Found by Side Scan Sonar")] 
+		[XmlEnum("2")] 
+		FoundBySideScanSonar = 2,
+
+		[System.ComponentModel.Description("The depth was measured by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
+		[EnumMember(Value = "Found by Multi Beam")] 
+		[XmlEnum("3")] 
+		FoundByMultiBeam = 3,
+
+		[System.ComponentModel.Description("The depth was determined by a person skilled in the practice of diving.")]
+		[EnumMember(Value = "Found by Diver")] 
+		[XmlEnum("4")] 
+		FoundByDiver = 4,
+
+		[System.ComponentModel.Description("The depth was measured by using a line, graduated with attached marks and fastened to a sounding lead.")]
+		[EnumMember(Value = "Found by Lead Line")] 
+		[XmlEnum("5")] 
+		FoundByLeadLine = 5,
+
+		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a buoyed wire at the desired depth by two launches, or a least depth was identified using the same technique.")]
+		[EnumMember(Value = "Swept by Wire-Drag")] 
+		[XmlEnum("6")] 
+		SweptByWireDrag = 6,
+
+		[System.ComponentModel.Description("The depth was determined by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
+		[EnumMember(Value = "Found by Laser")] 
+		[XmlEnum("7")] 
+		FoundByLaser = 7,
+
+		[System.ComponentModel.Description("The given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
+		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
+		[XmlEnum("8")] 
+		SweptByVerticalAcousticSystem = 8,
+
+		[System.ComponentModel.Description("The depth was determined by using an instrument that compares electromagnetic signals.")]
+		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
+		[XmlEnum("9")] 
+		FoundByElectromagneticSensor = 9,
+
+		[System.ComponentModel.Description("The science or art of obtaining reliable measurements from photographs.")]
+		[EnumMember(Value = "Photogrammetry")] 
+		[XmlEnum("10")] 
+		Photogrammetry = 10,
+
+		[System.ComponentModel.Description("The depth was determined by using instruments placed aboard an artificial satellite.")]
+		[EnumMember(Value = "Satellite Imagery")] 
+		[XmlEnum("11")] 
+		SatelliteImagery = 11,
+
+		[System.ComponentModel.Description("The depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
+		[EnumMember(Value = "Found by Levelling")] 
+		[XmlEnum("12")] 
+		FoundByLevelling = 12,
+
+		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a side scan sonar.")]
+		[EnumMember(Value = "Swept by Side Scan Sonar")] 
+		[XmlEnum("13")] 
+		SweptBySideScanSonar = 13,
+
+		[System.ComponentModel.Description("The sounding was determined from a bottom model constructed using a computer.")]
+		[EnumMember(Value = "Computer Generated")] 
+		[XmlEnum("14")] 
+		ComputerGenerated = 14,
+
+		[System.ComponentModel.Description("The depth was measured by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
+		[EnumMember(Value = "Found by LIDAR")] 
+		[XmlEnum("15")] 
+		FoundByLidar = 15,
+
+		[System.ComponentModel.Description("A radar with a synthetic aperture antenna which is composed of a large number of elementary transducing elements. The signals are electronically combined into a resulting signal equivalent to that of a single antenna of a given aperture in a given direction.")]
+		[EnumMember(Value = "Synthetic Aperture Radar")] 
+		[XmlEnum("16")] 
+		SyntheticApertureRadar = 16,
+
+		[System.ComponentModel.Description("Term used to describe the imagery derived from subdividing the electromagnetic spectrum into very narrow bandwidths. These narrow bandwidths may be combined with or subtracted from each other in various ways to form images useful in precise terrain or target analysis.")]
+		[EnumMember(Value = "Hyperspectral Imagery")] 
+		[XmlEnum("17")] 
+		HyperspectralImagery = 17,
+
+		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a line or object below the surface at the desired depth; or least depth(s) and position(s) within an area was identified using the same technique.")]
+		[EnumMember(Value = "Mechanically Swept")] 
+		[XmlEnum("18")] 
+		MechanicallySwept = 18,
+	}
+
+	/// <summary>
+	/// Direction of vessels passing a reference point.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum trafficFlow : int {
+		[System.ComponentModel.Description("Traffic flow in a general direction toward a port or similar destination.")]
+		[EnumMember(Value = "Inbound")] 
+		[XmlEnum("1")] 
+		Inbound = 1,
+
+		[System.ComponentModel.Description("Traffic flow in a general direction away from a port or similar point of origin.")]
+		[EnumMember(Value = "Outbound")] 
+		[XmlEnum("2")] 
+		Outbound = 2,
+
+		[System.ComponentModel.Description("Traffic flow in one general direction only.")]
+		[EnumMember(Value = "One-Way")] 
+		[XmlEnum("3")] 
+		OneWay = 3,
+
+		[System.ComponentModel.Description("Traffic flow in two generally opposite directions.")]
+		[EnumMember(Value = "Two-Way")] 
+		[XmlEnum("4")] 
+		TwoWay = 4,
+	}
+
+	/// <summary>
+	/// The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum verticalDatum : int {
+		[System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.")]
+		[EnumMember(Value = "Mean Low Water Springs")] 
+		[XmlEnum("1")] 
+		MeanLowWaterSprings = 1,
+
+		[System.ComponentModel.Description("The average height of lower low water springs at a place.")]
+		[EnumMember(Value = "Mean Lower Low Water Springs")] 
+		[XmlEnum("2")] 
+		MeanLowerLowWaterSprings = 2,
+
+		[System.ComponentModel.Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
+		[EnumMember(Value = "Mean Sea Level")] 
+		[XmlEnum("3")] 
+		MeanSeaLevel = 3,
+
+		[System.ComponentModel.Description("An arbitrary level conforming to the lowest tide observed at a place, or somewhat lower.")]
+		[EnumMember(Value = "Lowest Low Water")] 
+		[XmlEnum("4")] 
+		LowestLowWater = 4,
+
+		[System.ComponentModel.Description("The average height of all low waters at a place over a 19-year period.")]
+		[EnumMember(Value = "Mean Low Water")] 
+		[XmlEnum("5")] 
+		MeanLowWater = 5,
+
+		[System.ComponentModel.Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
+		[EnumMember(Value = "Lowest Low Water Springs")] 
+		[XmlEnum("6")] 
+		LowestLowWaterSprings = 6,
+
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
+		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
+		[XmlEnum("7")] 
+		ApproximateMeanLowWaterSprings = 7,
+
+		[System.ComponentModel.Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
+		[EnumMember(Value = "Indian Spring Low Water")] 
+		[XmlEnum("8")] 
+		IndianSpringLowWater = 8,
+
+		[System.ComponentModel.Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
+		[EnumMember(Value = "Low Water Springs")] 
+		[XmlEnum("9")] 
+		LowWaterSprings = 9,
+
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
+		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
+		[XmlEnum("10")] 
+		ApproximateLowestAstronomicalTide = 10,
+
+		[System.ComponentModel.Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
+		[EnumMember(Value = "Nearly Lowest Low Water")] 
+		[XmlEnum("11")] 
+		NearlyLowestLowWater = 11,
+
+		[System.ComponentModel.Description("The average height of the lower low waters at a place over a 19-year period.")]
+		[EnumMember(Value = "Mean Lower Low Water")] 
+		[XmlEnum("12")] 
+		MeanLowerLowWater = 12,
+
+		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation.")]
+		[EnumMember(Value = "Low Water")] 
+		[XmlEnum("13")] 
+		LowWater = 13,
+
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
+		[EnumMember(Value = "Approximate Mean Low Water")] 
+		[XmlEnum("14")] 
+		ApproximateMeanLowWater = 14,
+
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
+		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
+		[XmlEnum("15")] 
+		ApproximateMeanLowerLowWater = 15,
+
+		[System.ComponentModel.Description("The average height of all high waters at a place over a 19-year period.")]
+		[EnumMember(Value = "Mean High Water")] 
+		[XmlEnum("16")] 
+		MeanHighWater = 16,
+
+		[System.ComponentModel.Description("The average height of the high waters of spring tides.")]
+		[EnumMember(Value = "Mean High Water Springs")] 
+		[XmlEnum("17")] 
+		MeanHighWaterSprings = 17,
+
+		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
+		[EnumMember(Value = "High Water")] 
+		[XmlEnum("18")] 
+		HighWater = 18,
+
+		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
+		[EnumMember(Value = "Approximate Mean Sea Level")] 
+		[XmlEnum("19")] 
+		ApproximateMeanSeaLevel = 19,
+
+		[System.ComponentModel.Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
+		[EnumMember(Value = "High Water Springs")] 
+		[XmlEnum("20")] 
+		HighWaterSprings = 20,
+
+		[System.ComponentModel.Description("The average height of higher high waters at a place over a 19-year period.")]
+		[EnumMember(Value = "Mean Higher High Water")] 
+		[XmlEnum("21")] 
+		MeanHigherHighWater = 21,
+
+		[System.ComponentModel.Description("The level of low water springs near the time of an equinox.")]
+		[EnumMember(Value = "Equinoctial Spring Low Water")] 
+		[XmlEnum("22")] 
+		EquinoctialSpringLowWater = 22,
+
+		[System.ComponentModel.Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
+		[EnumMember(Value = "Lowest Astronomical Tide")] 
+		[XmlEnum("23")] 
+		LowestAstronomicalTide = 23,
+
+		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
+		[EnumMember(Value = "Local Datum")] 
+		[XmlEnum("24")] 
+		LocalDatum = 24,
+
+		[System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.")]
+		[EnumMember(Value = "International Great Lakes Datum 1985")] 
+		[XmlEnum("25")] 
+		InternationalGreatLakesDatum1985 = 25,
+
+		[System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
+		[EnumMember(Value = "Mean Water Level")] 
+		[XmlEnum("26")] 
+		MeanWaterLevel = 26,
+
+		[System.ComponentModel.Description("The average of the lowest low waters, one from each of 19 years of observations.")]
+		[EnumMember(Value = "Lower Low Water Large Tide")] 
+		[XmlEnum("27")] 
+		LowerLowWaterLargeTide = 27,
+
+		[System.ComponentModel.Description("The average of the highest high waters, one from each of 19 years of observations.")]
+		[EnumMember(Value = "Higher High Water Large Tide")] 
+		[XmlEnum("28")] 
+		HigherHighWaterLargeTide = 28,
+
+		[System.ComponentModel.Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
+		[EnumMember(Value = "Nearly Highest High Water")] 
+		[XmlEnum("29")] 
+		NearlyHighestHighWater = 29,
+
+		[System.ComponentModel.Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
+		[EnumMember(Value = "Highest Astronomical Tide")] 
+		[XmlEnum("30")] 
+		HighestAstronomicalTide = 30,
+
+		[System.ComponentModel.Description("Low water reference level of the local area.")]
+		[EnumMember(Value = "Local Low Water Reference Level")] 
+		[XmlEnum("31")] 
+		LocalLowWaterReferenceLevel = 31,
+
+		[System.ComponentModel.Description("High water reference level of the local area.")]
+		[EnumMember(Value = "Local High Water Reference Level")] 
+		[XmlEnum("32")] 
+		LocalHighWaterReferenceLevel = 32,
+
+		[System.ComponentModel.Description("Mean water reference level of the local area.")]
+		[EnumMember(Value = "Local Mean Water Reference Level")] 
+		[XmlEnum("33")] 
+		LocalMeanWaterReferenceLevel = 33,
+
+		[System.ComponentModel.Description("A low water level which is the result of a defined low water discharge - called \"equivalent discharge\".")]
+		[EnumMember(Value = "Equivalent Height of Water (German GlW)")] 
+		[XmlEnum("34")] 
+		EquivalentHeightOfWaterGermanGlw = 34,
+
+		[System.ComponentModel.Description("Upper limit of water levels where navigation is allowed.")]
+		[EnumMember(Value = "Highest Shipping Height of Water (German HSW)")] 
+		[XmlEnum("35")] 
+		HighestShippingHeightOfWaterGermanHsw = 35,
+
+		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.")]
+		[EnumMember(Value = "Reference Low Water Level According to Danube Commission")] 
+		[XmlEnum("36")] 
+		ReferenceLowWaterLevelAccordingToDanubeCommission = 36,
+
+		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.")]
+		[EnumMember(Value = "Highest Shipping Height of Water According to Danube Commission")] 
+		[XmlEnum("37")] 
+		HighestShippingHeightOfWaterAccordingToDanubeCommission = 37,
+
+		[System.ComponentModel.Description("The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.")]
+		[EnumMember(Value = "Dutch River Low Water Reference Level (OLR)")] 
+		[XmlEnum("38")] 
+		DutchRiverLowWaterReferenceLevelOlr = 38,
+
+		[System.ComponentModel.Description("Conditional low water level with established probability.")]
+		[EnumMember(Value = "Russian Project Water Level")] 
+		[XmlEnum("39")] 
+		RussianProjectWaterLevel = 39,
+
+		[System.ComponentModel.Description("Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.")]
+		[EnumMember(Value = "Russian Normal Backwater Level")] 
+		[XmlEnum("40")] 
+		RussianNormalBackwaterLevel = 40,
+
+		[System.ComponentModel.Description("The Ohio River datum.")]
+		[EnumMember(Value = "Ohio River Datum")] 
+		[XmlEnum("41")] 
+		OhioRiverDatum = 41,
+
+		[System.ComponentModel.Description("Dutch High Water Reference Level.")]
+		[EnumMember(Value = "Dutch High Water Reference Level")] 
+		[XmlEnum("43")] 
+		DutchHighWaterReferenceLevel = 43,
+
+		[System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
+		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
+		[XmlEnum("44")] 
+		BalticSeaChartDatum2000 = 44,
+
+		[System.ComponentModel.Description("Dutch Estuary Low Water Reference Level (OLW)")]
+		[EnumMember(Value = "Dutch Estuary Low Water Reference Level (OLW)")] 
+		[XmlEnum("45")] 
+		DutchEstuaryLowWaterReferenceLevelOlw = 45,
+
+		[System.ComponentModel.Description("The 2020 update to the International Great Lakes Datum, the official reference system used to measure water level heights in the Great Lakes, connecting channels, and the St. Lawrence River system.")]
+		[EnumMember(Value = "International Great Lakes Datum 2020")] 
+		[XmlEnum("46")] 
+		InternationalGreatLakesDatum2020 = 46,
+
+		[System.ComponentModel.Description("The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.")]
+		[EnumMember(Value = "Sea Floor")] 
+		[XmlEnum("47")] 
+		SeaFloor = 47,
+
+		[System.ComponentModel.Description("A two-dimensional (in the horizontal plane) field representing the air-sea interface, with high-frequency fluctuations such as wind waves and swell, but not astronomical tides, filtered out.")]
+		[EnumMember(Value = "Sea Surface")] 
+		[XmlEnum("48")] 
+		SeaSurface = 48,
+
+		[System.ComponentModel.Description("A vertical reference near the lowest astronomical tide (LAT), below which the sea level falls only very exceptionally.")]
+		[EnumMember(Value = "Hydrographic Zero")] 
+		[XmlEnum("49")] 
+		HydrographicZero = 49,
+	}
+
+	/// <summary>
+	/// The principal shape and/or design of a buoy.
+	/// </summary>
+	/// <remarks>
+	/// The principal shapes are those recommended in the International Association of Lighthouse Authorities - IALA System.
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum buoyShape : int {
+		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
+		[EnumMember(Value = "Conical")] 
+		[XmlEnum("1")] 
+		Conical = 1,
+
+		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
+		[EnumMember(Value = "Can")] 
+		[XmlEnum("2")] 
+		Can = 2,
+
+		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
+		[EnumMember(Value = "Spherical")] 
+		[XmlEnum("3")] 
+		Spherical = 3,
+
+		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
+		[EnumMember(Value = "Pillar")] 
+		[XmlEnum("4")] 
+		Pillar = 4,
+
+		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
+		[EnumMember(Value = "Spar")] 
+		[XmlEnum("5")] 
+		Spar = 5,
+
+		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
+		[EnumMember(Value = "Barrel")] 
+		[XmlEnum("6")] 
+		Barrel = 6,
+
+		[System.ComponentModel.Description("A very large buoy designed to carry a signal light of high luminous intensity at a high elevation.")]
+		[EnumMember(Value = "Superbuoy")] 
+		[XmlEnum("7")] 
+		Superbuoy = 7,
+
+		[System.ComponentModel.Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
+		[EnumMember(Value = "Ice Buoy")] 
+		[XmlEnum("8")] 
+		IceBuoy = 8,
+	}
+
+	/// <summary>
+	/// The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum colour : int {
+		[System.ComponentModel.Description("The achromatic object colour of greatest lightness characteristically perceived to belong to objects that reflect diffusely nearly all incident energy throughout the visible spectrum.")]
+		[EnumMember(Value = "White")] 
+		[XmlEnum("1")] 
+		White = 1,
+
+		[System.ComponentModel.Description("The achromatic color of least lightness characteristically perceived to belong to objects that neither reflect nor transmit light.")]
+		[EnumMember(Value = "Black")] 
+		[XmlEnum("2")] 
+		Black = 2,
+
+		[System.ComponentModel.Description("A color whose hue resembles that of blood or of the ruby or is that of the long-wave extreme of the visible spectrum.")]
+		[EnumMember(Value = "Red")] 
+		[XmlEnum("3")] 
+		Red = 3,
+
+		[System.ComponentModel.Description("Of the color green.")]
+		[EnumMember(Value = "Green")] 
+		[XmlEnum("4")] 
+		Green = 4,
+
+		[System.ComponentModel.Description("A color whose hue is that of the clear sky or that of the portion of the color spectrum lying between green and violet.")]
+		[EnumMember(Value = "Blue")] 
+		[XmlEnum("5")] 
+		Blue = 5,
+
+		[System.ComponentModel.Description("A color whose hue resembles that of ripe lemons or sunflowers or is that of the portion of the spectrum lying between green and orange.")]
+		[EnumMember(Value = "Yellow")] 
+		[XmlEnum("6")] 
+		Yellow = 6,
+
+		[System.ComponentModel.Description("Of the color grey.")]
+		[EnumMember(Value = "Grey")] 
+		[XmlEnum("7")] 
+		Grey = 7,
+
+		[System.ComponentModel.Description("Any of a group of colors between red and yellow in hue, of medium to low lightness, and of moderate to low saturation.")]
+		[EnumMember(Value = "Brown")] 
+		[XmlEnum("8")] 
+		Brown = 8,
+
+		[System.ComponentModel.Description("A variable color averaging a dark orange yellow.")]
+		[EnumMember(Value = "Amber")] 
+		[XmlEnum("9")] 
+		Amber = 9,
+
+		[System.ComponentModel.Description("Any of a group of colors of reddish-blue hue, low lightness, and medium saturation.")]
+		[EnumMember(Value = "Violet")] 
+		[XmlEnum("10")] 
+		Violet = 10,
+
+		[System.ComponentModel.Description("Any of a group of colors that are between red and yellow in hue.")]
+		[EnumMember(Value = "Orange")] 
+		[XmlEnum("11")] 
+		Orange = 11,
+
+		[System.ComponentModel.Description("A deep purplish red.")]
+		[EnumMember(Value = "Magenta")] 
+		[XmlEnum("12")] 
+		Magenta = 12,
+
+		[System.ComponentModel.Description("Any of a group of colors bluish red to red in hue, of medium to high lightness, and of low to moderate saturation.")]
+		[EnumMember(Value = "Pink")] 
+		[XmlEnum("13")] 
+		Pink = 13,
+	}
+
+	/// <summary>
+	/// A classification of AIS AtoNs that are transmitted electronically and linked to a real-world object but do not physically exist at the broadcast location.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfSyntheticAISAidtoNavigation : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "predicted")] 
+		[XmlEnum("1")] 
+		Predicted = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "monitored")] 
+		[XmlEnum("2")] 
+		Monitored = 2,
+	}
+
+	/// <summary>
+	/// A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfPhysicalAISAidToNavigation : int {
+		[System.ComponentModel.Description("Simple transmission of static, pre-programmed information.")]
+		[EnumMember(Value = "Physical AIS Type 1")] 
+		[XmlEnum("1")] 
+		PhysicalAisType1 = 1,
+
+		[System.ComponentModel.Description("	Transmission of dynamic, real-time updated information via connected sensors.")]
+		[EnumMember(Value = "Physical AIS Type 2")] 
+		[XmlEnum("2")] 
+		PhysicalAisType2 = 2,
+
+		[System.ComponentModel.Description("Full two-way communication including transmission, remote control and configuration")]
+		[EnumMember(Value = "Physical AIS Type 3")] 
+		[XmlEnum("3")] 
+		PhysicalAisType3 = 3,
+	}
+
+	/// <summary>
+	/// A regular repeated design containing more than one colour.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum colourPattern : int {
+		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented horizontally.")]
+		[EnumMember(Value = "Horizontal Stripes")] 
+		[XmlEnum("1")] 
+		HorizontalStripes = 1,
+
+		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented vertically.")]
+		[EnumMember(Value = "Vertical Stripes")] 
+		[XmlEnum("2")] 
+		VerticalStripes = 2,
+
+		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented diagonally (that is, not horizontally or vertically).")]
+		[EnumMember(Value = "Diagonal Stripes")] 
+		[XmlEnum("3")] 
+		DiagonalStripes = 3,
+
+		[System.ComponentModel.Description("Often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
+		[EnumMember(Value = "Squared")] 
+		[XmlEnum("4")] 
+		Squared = 4,
+
+		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented in an unknown direction.")]
+		[EnumMember(Value = "Stripes (Direction Unknown)")] 
+		[XmlEnum("5")] 
+		StripesDirectionUnknown = 5,
+
+		[System.ComponentModel.Description("A band or stripe of colour which is displayed around the outer edge of the feature, which may also form a border to an inner pattern or plain colour.")]
+		[EnumMember(Value = "Border Stripe")] 
+		[XmlEnum("6")] 
+		BorderStripe = 6,
+
+		[System.ComponentModel.Description("One solid colour of uniform coverage.")]
+		[EnumMember(Value = "Single Colour")] 
+		[XmlEnum("7")] 
+		SingleColour = 7,
+
+		[System.ComponentModel.Description("A four-sided shape that is made up of two pairs of parallel lines and that has four right angles, on a different coloured background.")]
+		[EnumMember(Value = "Rectangle")] 
+		[XmlEnum("8")] 
+		Rectangle = 8,
+
+		[System.ComponentModel.Description("A shape that is made up of three lines and three angles, on a different coloured background.")]
+		[EnumMember(Value = "Triangle")] 
+		[XmlEnum("9")] 
+		Triangle = 9,
+	}
+
+	/// <summary>
+	/// The system of navigational buoyage a region complies with.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum marksNavigationalSystemOf : int {
+		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.")]
+		[EnumMember(Value = "IALA A")] 
+		[XmlEnum("1")] 
+		IalaA = 1,
+
+		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA B system.")]
+		[EnumMember(Value = "IALA B")] 
+		[XmlEnum("2")] 
+		IalaB = 2,
+
+		[System.ComponentModel.Description("Navigational aids do not conform to any defined system.")]
+		[EnumMember(Value = "No System")] 
+		[XmlEnum("9")] 
+		NoSystem = 9,
+
+		[System.ComponentModel.Description("Navigational aids conform to a defined system other than International Association of Lighthouse Authorities - IALA.")]
+		[EnumMember(Value = "Other System")] 
+		[XmlEnum("10")] 
+		OtherSystem = 10,
+
+		[System.ComponentModel.Description("Navigational aids as required in international, national or regional regulations that contain the same navigational aids as the European Code for Inland Waterways of UNECE, or if there is no regulation for a waterway, navigational aids as recommended in the European Code for Inland Waterways of UNECE")]
+		[EnumMember(Value = "Main European Inland Waterway Marking System")] 
+		[XmlEnum("11")] 
+		MainEuropeanInlandWaterwayMarkingSystem = 11,
+
+		[System.ComponentModel.Description("Navigational aids conform to the Russian inland waterway regulations.")]
+		[EnumMember(Value = "Russian Inland Waterway Regulations")] 
+		[XmlEnum("12")] 
+		RussianInlandWaterwayRegulations = 12,
+
+		[System.ComponentModel.Description("Navigational aids conform to the Brazilian national inland waterway regulation")]
+		[EnumMember(Value = "Brazilian National Inland Waterway Regulation")] 
+		[XmlEnum("13")] 
+		BrazilianNationalInlandWaterwayRegulation = 13,
+
+		[System.ComponentModel.Description("Navigational aids conform to the Brazilian complementary aids on the Paraguay-Parana waterway.")]
+		[EnumMember(Value = "Paraguay-Parana Waterway - Brazilian Complementary Aids")] 
+		[XmlEnum("15")] 
+		ParaguayParanaWaterwayBrazilianComplementaryAids = 15,
+	}
+
+	/// <summary>
+	/// The building's primary construction material.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum natureOfConstruction : int {
+		[System.ComponentModel.Description("Constructed of stones or bricks, usually quarried, shaped, and mortared.")]
+		[EnumMember(Value = "Masonry")] 
+		[XmlEnum("1")] 
+		Masonry = 1,
+
+		[System.ComponentModel.Description("Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
+		[EnumMember(Value = "Concreted")] 
+		[XmlEnum("2")] 
+		Concreted = 2,
+
+		[System.ComponentModel.Description("Constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
+		[EnumMember(Value = "Loose Boulders")] 
+		[XmlEnum("3")] 
+		LooseBoulders = 3,
+
+		[System.ComponentModel.Description("Constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
+		[EnumMember(Value = "Hard Surfaced")] 
+		[XmlEnum("4")] 
+		HardSurfaced = 4,
+
+		[System.ComponentModel.Description("Constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
+		[EnumMember(Value = "Unsurfaced")] 
+		[XmlEnum("5")] 
+		Unsurfaced = 5,
+
+		[System.ComponentModel.Description("Constructed from wood.")]
+		[EnumMember(Value = "Wooden")] 
+		[XmlEnum("6")] 
+		Wooden = 6,
+
+		[System.ComponentModel.Description("Constructed from metal.")]
+		[EnumMember(Value = "Metal")] 
+		[XmlEnum("7")] 
+		Metal = 7,
+
+		[System.ComponentModel.Description("Constructed from a plastic material strengthened with fibres of glass.")]
+		[EnumMember(Value = "Glass Reinforced Plastic")] 
+		[XmlEnum("8")] 
+		GlassReinforcedPlastic = 8,
+
+		[System.ComponentModel.Description("The application of paint to some other construction or natural feature.")]
+		[EnumMember(Value = "Painted")] 
+		[XmlEnum("9")] 
+		Painted = 9,
+
+		[System.ComponentModel.Description("Constructed from a lattice framework of, often diagonal, intersecting struts.")]
+		[EnumMember(Value = "Framework")] 
+		[XmlEnum("10")] 
+		Framework = 10,
+
+		[System.ComponentModel.Description("A structure of crossed wooden or metal strips usually arranged to form a diagonal pattern of open spaces between the strips.")]
+		[EnumMember(Value = "Latticed")] 
+		[XmlEnum("11")] 
+		Latticed = 11,
+
+		[System.ComponentModel.Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
+		[EnumMember(Value = "Glass")] 
+		[XmlEnum("12")] 
+		Glass = 12,
+
+		[System.ComponentModel.Description("Constructed from fiberglass.")]
+		[EnumMember(Value = "Fiberglass")] 
+		[XmlEnum("13")] 
+		Fiberglass = 13,
+
+		[System.ComponentModel.Description("Constructed from plastic.")]
+		[EnumMember(Value = "Plastic")] 
+		[XmlEnum("14")] 
+		Plastic = 14,
+	}
+
+	/// <summary>
+	/// Describes the characteristic geometric form of the beacon.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum beaconShape : int {
+		[System.ComponentModel.Description("An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.")]
+		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
+		[XmlEnum("1")] 
+		StakePolePerchPost = 1,
+
+		[System.ComponentModel.Description("A tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
+		[EnumMember(Value = "Withy")] 
+		[XmlEnum("2")] 
+		Withy = 2,
+
+		[System.ComponentModel.Description("A solid structure of the order of 10 metres in height used as a navigational aid.")]
+		[EnumMember(Value = "Beacon Tower")] 
+		[XmlEnum("3")] 
+		BeaconTower = 3,
+
+		[System.ComponentModel.Description("A structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
+		[EnumMember(Value = "Lattice Beacon")] 
+		[XmlEnum("4")] 
+		LatticeBeacon = 4,
+
+		[System.ComponentModel.Description("A long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
+		[EnumMember(Value = "Pile Beacon")] 
+		[XmlEnum("5")] 
+		PileBeacon = 5,
+
+		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
+		[EnumMember(Value = "Cairn")] 
+		[XmlEnum("6")] 
+		Cairn = 6,
+
+		[System.ComponentModel.Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
+		[EnumMember(Value = "Buoyant Beacon")] 
+		[XmlEnum("7")] 
+		BuoyantBeacon = 7,
+	}
+
+	/// <summary>
+	/// The extent to which a feature, either natural or artificial, is visible from seaward.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum visualProminence : int {
+		[System.ComponentModel.Description("Term applied to an object either natural or artificial which is distinctly and notably visible from seaward.")]
+		[EnumMember(Value = "Visually Conspicuous")] 
+		[XmlEnum("1")] 
+		VisuallyConspicuous = 1,
+
+		[System.ComponentModel.Description("An object that may be visible from seaward, but cannot be used as a fixing mark and is not conspicuous.")]
+		[EnumMember(Value = "Not Visually Conspicuous")] 
+		[XmlEnum("2")] 
+		NotVisuallyConspicuous = 2,
+
+		[System.ComponentModel.Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
+		[EnumMember(Value = "Prominent")] 
+		[XmlEnum("3")] 
+		Prominent = 3,
+	}
+
+	/// <summary>
+	/// Classification of prominent cultural and natural features in the landscape.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfLandmark : int {
+		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
+		[EnumMember(Value = "Cairn")] 
+		[XmlEnum("1")] 
+		Cairn = 1,
+
+		[System.ComponentModel.Description("A site and associated structures devoted to the burial of the dead.")]
+		[EnumMember(Value = "Cemetery")] 
+		[XmlEnum("2")] 
+		Cemetery = 2,
+
+		[System.ComponentModel.Description("A vertical structure containing a passage or flue for discharging smoke and gases of combustion.")]
+		[EnumMember(Value = "Chimney")] 
+		[XmlEnum("3")] 
+		Chimney = 3,
+
+		[System.ComponentModel.Description("A parabolic aerial for the receipt and transmission of high frequency radio signals.")]
+		[EnumMember(Value = "Dish Aerial")] 
+		[XmlEnum("4")] 
+		DishAerial = 4,
+
+		[System.ComponentModel.Description("A staff or pole on which flags are raised.")]
+		[EnumMember(Value = "Flagstaff")] 
+		[XmlEnum("5")] 
+		Flagstaff = 5,
+
+		[System.ComponentModel.Description("A tall structure used for burning-off waste oil or gas.")]
+		[EnumMember(Value = "Flare Stack")] 
+		[XmlEnum("6")] 
+		FlareStack = 6,
+
+		[System.ComponentModel.Description("A relatively tall structure usually held vertical by guy lines.")]
+		[EnumMember(Value = "Mast")] 
+		[XmlEnum("7")] 
+		Mast = 7,
+
+		[System.ComponentModel.Description("A tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
+		[EnumMember(Value = "Windsock")] 
+		[XmlEnum("8")] 
+		Windsock = 8,
+
+		[System.ComponentModel.Description("A structure erected and/or maintained as a memorial to a person and/or event.")]
+		[EnumMember(Value = "Monument")] 
+		[XmlEnum("9")] 
+		Monument = 9,
+
+		[System.ComponentModel.Description("A cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
+		[EnumMember(Value = "Column/Pillar")] 
+		[XmlEnum("10")] 
+		ColumnPillar = 10,
+
+		[System.ComponentModel.Description("A slab of metal, usually ornamented, erected as a memorial to a person or event.")]
+		[EnumMember(Value = "Memorial Plaque")] 
+		[XmlEnum("11")] 
+		MemorialPlaque = 11,
+
+		[System.ComponentModel.Description("A tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
+		[EnumMember(Value = "Obelisk")] 
+		[XmlEnum("12")] 
+		Obelisk = 12,
+
+		[System.ComponentModel.Description("A representation of a living being, sculptured, moulded, or cast in a variety of materials (for example: marble, metal, or plaster).")]
+		[EnumMember(Value = "Statue")] 
+		[XmlEnum("13")] 
+		Statue = 13,
+
+		[System.ComponentModel.Description("A monument, or other structure in form of a cross.")]
+		[EnumMember(Value = "Cross")] 
+		[XmlEnum("14")] 
+		Cross = 14,
+
+		[System.ComponentModel.Description("A landmark comprising a hemispherical or spheroidal shaped structure.")]
+		[EnumMember(Value = "Dome")] 
+		[XmlEnum("15")] 
+		Dome = 15,
+
+		[System.ComponentModel.Description("A device used for directing a radar beam through a search pattern.")]
+		[EnumMember(Value = "Radar Scanner")] 
+		[XmlEnum("16")] 
+		RadarScanner = 16,
+
+		[System.ComponentModel.Description("A relatively tall, narrow structure that may either stand alone or may form part of another structure.")]
+		[EnumMember(Value = "Tower")] 
+		[XmlEnum("17")] 
+		Tower = 17,
+
+		[System.ComponentModel.Description("A system of vanes attached to a tower and driven by wind (excluding wind turbines).")]
+		[EnumMember(Value = "Windmill")] 
+		[XmlEnum("18")] 
+		Windmill = 18,
+
+		[System.ComponentModel.Description("A modern structure for the use of wind power.")]
+		[EnumMember(Value = "Windmotor")] 
+		[XmlEnum("19")] 
+		Windmotor = 19,
+
+		[System.ComponentModel.Description("A tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
+		[EnumMember(Value = "Spire/Minaret")] 
+		[XmlEnum("20")] 
+		SpireMinaret = 20,
+
+		[System.ComponentModel.Description("An isolated rocky formation or a single large stone.")]
+		[EnumMember(Value = "Large Rock or Boulder on Land")] 
+		[XmlEnum("21")] 
+		LargeRockOrBoulderOnLand = 21,
+
+		[System.ComponentModel.Description("A recoverable point on the earth, whose geographic position has been determined by angular methods with geodetic instruments. A triangulation point is a selected point, which has been marked with a station mark, or it is a conspicuous natural or artificial feature.")]
+		[EnumMember(Value = "Triangulation Mark")] 
+		[XmlEnum("22")] 
+		TriangulationMark = 22,
+
+		[System.ComponentModel.Description("A marker identifying the location of a surveyed boundary line.")]
+		[EnumMember(Value = "Boundary Mark")] 
+		[XmlEnum("23")] 
+		BoundaryMark = 23,
+
+		[System.ComponentModel.Description("Wheels with passenger cars mounted external to the rim and independently rotated by electric motors.")]
+		[EnumMember(Value = "Observation Wheel")] 
+		[XmlEnum("24")] 
+		ObservationWheel = 24,
+
+		[System.ComponentModel.Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
+		[EnumMember(Value = "Torii")] 
+		[XmlEnum("25")] 
+		Torii = 25,
+
+		[System.ComponentModel.Description("(1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
+		[EnumMember(Value = "Bridge")] 
+		[XmlEnum("26")] 
+		Bridge = 26,
+
+		[System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
+		[EnumMember(Value = "Dam")] 
+		[XmlEnum("27")] 
+		Dam = 27,
+	}
+
+	/// <summary>
+	/// A specific role that describes a feature.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum function : int {
+		[System.ComponentModel.Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
+		[EnumMember(Value = "Harbour-Masters Office")] 
+		[XmlEnum("2")] 
+		HarbourMastersOffice = 2,
+
+		[System.ComponentModel.Description("Serves as a government office where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
+		[EnumMember(Value = "Customs Office")] 
+		[XmlEnum("3")] 
+		CustomsOffice = 3,
+
+		[System.ComponentModel.Description("The office which is charged with the administration of health laws and sanitary inspections.")]
+		[EnumMember(Value = "Health Office")] 
+		[XmlEnum("4")] 
+		HealthOffice = 4,
+
+		[System.ComponentModel.Description("An institution or establishment providing medical or surgical treatment for the ill or wounded.")]
+		[EnumMember(Value = "Hospital")] 
+		[XmlEnum("5")] 
+		Hospital = 5,
+
+		[System.ComponentModel.Description("The public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
+		[EnumMember(Value = "Post Office")] 
+		[XmlEnum("6")] 
+		PostOffice = 6,
+
+		[System.ComponentModel.Description("An establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
+		[EnumMember(Value = "Hotel")] 
+		[XmlEnum("7")] 
+		Hotel = 7,
+
+		[System.ComponentModel.Description("A building with platforms where trains arrive, load, discharge and depart.")]
+		[EnumMember(Value = "Railway Station")] 
+		[XmlEnum("8")] 
+		RailwayStation = 8,
+
+		[System.ComponentModel.Description("The headquarters of a local police force and that is where those under arrest are first charged.")]
+		[EnumMember(Value = "Police Station")] 
+		[XmlEnum("9")] 
+		PoliceStation = 9,
+
+		[System.ComponentModel.Description("The headquarters of a local water-police force.")]
+		[EnumMember(Value = "Water-Police Station")] 
+		[XmlEnum("10")] 
+		WaterPoliceStation = 10,
+
+		[System.ComponentModel.Description("The office or headquarters of pilots; the place where the services of a pilot may be obtained.")]
+		[EnumMember(Value = "Pilot Office")] 
+		[XmlEnum("11")] 
+		PilotOffice = 11,
+
+		[System.ComponentModel.Description("A distinctive structure or place on shore from which personnel keep watch upon events at sea or along the coast.")]
+		[EnumMember(Value = "Pilot Lookout")] 
+		[XmlEnum("12")] 
+		PilotLookout = 12,
+
+		[System.ComponentModel.Description("An office for custody, deposit, loan, exchange or issue of money.")]
+		[EnumMember(Value = "Bank Office")] 
+		[XmlEnum("13")] 
+		BankOffice = 13,
+
+		[System.ComponentModel.Description("The quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
+		[EnumMember(Value = "Headquarters for District Control")] 
+		[XmlEnum("14")] 
+		HeadquartersForDistrictControl = 14,
+
+		[System.ComponentModel.Description("A building or part of a building for storage of wares or goods.")]
+		[EnumMember(Value = "Transit Shed/Warehouse")] 
+		[XmlEnum("15")] 
+		TransitShedWarehouse = 15,
+
+		[System.ComponentModel.Description("A building or buildings with Equipment for manufacturing; a workshop.")]
+		[EnumMember(Value = "Factory")] 
+		[XmlEnum("16")] 
+		Factory = 16,
+
+		[System.ComponentModel.Description("A stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
+		[EnumMember(Value = "Power Station")] 
+		[XmlEnum("17")] 
+		PowerStation = 17,
+
+		[System.ComponentModel.Description("A building for the management of affairs.")]
+		[EnumMember(Value = "Administrative")] 
+		[XmlEnum("18")] 
+		Administrative = 18,
+
+		[System.ComponentModel.Description("An establishment for teaching and learning (for example school, college, university, etc).")]
+		[EnumMember(Value = "Educational Facility")] 
+		[XmlEnum("19")] 
+		EducationalFacility = 19,
+
+		[System.ComponentModel.Description("A building for public Christian worship.")]
+		[EnumMember(Value = "Church")] 
+		[XmlEnum("20")] 
+		Church = 20,
+
+		[System.ComponentModel.Description("A place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
+		[EnumMember(Value = "Chapel")] 
+		[XmlEnum("21")] 
+		Chapel = 21,
+
+		[System.ComponentModel.Description("A building for public Jewish worship.")]
+		[EnumMember(Value = "Temple")] 
+		[XmlEnum("22")] 
+		Temple = 22,
+
+		[System.ComponentModel.Description("A Hindu or Buddhist temple or sacred building.")]
+		[EnumMember(Value = "Pagoda")] 
+		[XmlEnum("23")] 
+		Pagoda = 23,
+
+		[System.ComponentModel.Description("A building for public Shinto worship.")]
+		[EnumMember(Value = "Shinto Shrine")] 
+		[XmlEnum("24")] 
+		ShintoShrine = 24,
+
+		[System.ComponentModel.Description("A building for public Buddhist worship.")]
+		[EnumMember(Value = "Buddhist Temple")] 
+		[XmlEnum("25")] 
+		BuddhistTemple = 25,
+
+		[System.ComponentModel.Description("A Muslim place of worship.")]
+		[EnumMember(Value = "Mosque")] 
+		[XmlEnum("26")] 
+		Mosque = 26,
+
+		[System.ComponentModel.Description("A shrine marking the burial place of a Muslim holy man.")]
+		[EnumMember(Value = "Marabout")] 
+		[XmlEnum("27")] 
+		Marabout = 27,
+
+		[System.ComponentModel.Description("Keeping a watch upon events at sea or along the coast.")]
+		[EnumMember(Value = "Lookout")] 
+		[XmlEnum("28")] 
+		Lookout = 28,
+
+		[System.ComponentModel.Description("Transmitting and/or receiving electronic communication signals.")]
+		[EnumMember(Value = "Communication")] 
+		[XmlEnum("29")] 
+		Communication = 29,
+
+		[System.ComponentModel.Description("A system for reproducing on a screen visual images transmitted (usually with sound) by radio signals.")]
+		[EnumMember(Value = "Television")] 
+		[XmlEnum("30")] 
+		Television = 30,
+
+		[System.ComponentModel.Description("Transmitting and/or receiving radio-frequency electromagnetic waves as a means of communication.")]
+		[EnumMember(Value = "Radio")] 
+		[XmlEnum("31")] 
+		Radio = 31,
+
+		[System.ComponentModel.Description("A method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
+		[EnumMember(Value = "Radar")] 
+		[XmlEnum("32")] 
+		Radar = 32,
+
+		[System.ComponentModel.Description("A structure serving as a support for one or more lights.")]
+		[EnumMember(Value = "Light Support")] 
+		[XmlEnum("33")] 
+		LightSupport = 33,
+
+		[System.ComponentModel.Description("Broadcasting and receiving signals using microwaves.")]
+		[EnumMember(Value = "Microwave")] 
+		[XmlEnum("34")] 
+		Microwave = 34,
+
+		[System.ComponentModel.Description("Generation of chilled liquid and/or gas for cooling purposes.")]
+		[EnumMember(Value = "Cooling")] 
+		[XmlEnum("35")] 
+		Cooling = 35,
+
+		[System.ComponentModel.Description("A place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
+		[EnumMember(Value = "Observation")] 
+		[XmlEnum("36")] 
+		Observation = 36,
+
+		[System.ComponentModel.Description("A visual time signal in the form of a ball.")]
+		[EnumMember(Value = "Timeball")] 
+		[XmlEnum("37")] 
+		Timeball = 37,
+
+		[System.ComponentModel.Description("Instrument for measuring time and recording hours.")]
+		[EnumMember(Value = "Clock")] 
+		[XmlEnum("38")] 
+		Clock = 38,
+
+		[System.ComponentModel.Description("Used to control the flow of traffic within a specified range of an installation.")]
+		[EnumMember(Value = "Control")] 
+		[XmlEnum("39")] 
+		Control = 39,
+
+		[System.ComponentModel.Description("Equipment or structure to secure an airship.")]
+		[EnumMember(Value = "Airship Mooring")] 
+		[XmlEnum("40")] 
+		AirshipMooring = 40,
+
+		[System.ComponentModel.Description("An arena for holding and viewing events.")]
+		[EnumMember(Value = "Stadium")] 
+		[XmlEnum("41")] 
+		Stadium = 41,
+
+		[System.ComponentModel.Description("A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.")]
+		[EnumMember(Value = "Bus Station")] 
+		[XmlEnum("42")] 
+		BusStation = 42,
+
+		[System.ComponentModel.Description("A building within a terminal for the loading and unloading of passengers.")]
+		[EnumMember(Value = "Passenger Terminal Building")] 
+		[XmlEnum("43")] 
+		PassengerTerminalBuilding = 43,
+
+		[System.ComponentModel.Description("A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.")]
+		[EnumMember(Value = "Sea Rescue Control")] 
+		[XmlEnum("44")] 
+		SeaRescueControl = 44,
+
+		[System.ComponentModel.Description("A building designed and equipped for making observations of astronomical, meteorological, or other natural phenomena.")]
+		[EnumMember(Value = "Observatory")] 
+		[XmlEnum("45")] 
+		Observatory = 45,
+
+		[System.ComponentModel.Description("A building or structure used to crush ore.")]
+		[EnumMember(Value = "Ore Crusher")] 
+		[XmlEnum("46")] 
+		OreCrusher = 46,
+
+		[System.ComponentModel.Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
+		[EnumMember(Value = "Boathouse")] 
+		[XmlEnum("47")] 
+		Boathouse = 47,
+
+		[System.ComponentModel.Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
+		[EnumMember(Value = "Pumping Station")] 
+		[XmlEnum("48")] 
+		PumpingStation = 48,
+
+		[System.ComponentModel.Description("A roof that is extending above navigable water, e.g. to protect open cargo holds from rain during loading and unloading. Depending on the vertical clearance vessels can pass under the roof above navigable water.")]
+		[EnumMember(Value = "Roof Above Navigable Water")] 
+		[XmlEnum("49")] 
+		RoofAboveNavigableWater = 49,
+
+		[System.ComponentModel.Description("The part of a building on land that is extending above navigable water. Depending on the vertical clearance vessels can pass under the building above navigable water.")]
+		[EnumMember(Value = "Building Above Navigable Water")] 
+		[XmlEnum("50")] 
+		BuildingAboveNavigableWater = 50,
 	}
 
 	/// <summary>
@@ -2643,7 +2974,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("48")] 
 		GnssMark = 48,
 
-		[System.ComponentModel.Description("A mark indicating an area where sea-planes land.")]
+		[System.ComponentModel.Description("A mark indicating an area where seaplanes land.")]
 		[EnumMember(Value = "Seaplane Landing Mark")] 
 		[XmlEnum("49")] 
 		SeaplaneLandingMark = 49,
@@ -2693,7 +3024,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("58")] 
 		NatureReserveMark = 58,
 
-		[System.ComponentModel.Description("A fish aggregating (or aggregation) device (FAD) is a man-made object used to attract ocean going pelagic fish such as marlin, tuna and mahi-mahi (dolphin fish). They usually consist of buoys or floats tethered to the ocean floor with concrete blocks.")]
+		[System.ComponentModel.Description("A fish aggregating (or aggregation) device (FAD) is a man-made object used to attract ocean going pelagic fish such as marlin, tuna and mahi-mahi (dolphin fish). They usually consist of buoys or floats tethered to the ocean floor with concrete blocks or adrift.")]
 		[EnumMember(Value = "Fish Aggregating Device")] 
 		[XmlEnum("59")] 
 		FishAggregatingDevice = 59,
@@ -2725,129 +3056,17 @@ namespace S100Framework.DomainModel.S125 {
 	}
 
 	/// <summary>
-	/// A classification of AIS AtoNs that are transmitted electronically and linked to a real-world object but do not physically exist at the broadcast location.
-	/// </summary>
-	/// <remarks>
-	/// -
-	/// </remarks>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum CategoryOfSyntheticAISAidtoNavigation : int {
-		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "predicted")] 
-		[XmlEnum("1")] 
-		Predicted = 1,
-
-		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "monitored")] 
-		[XmlEnum("2")] 
-		Monitored = 2,
-	}
-
-	/// <summary>
-	/// A purpose of a virtual AIS Aid to Navigation.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum virtualAISAidToNavigationType : int {
-		[System.ComponentModel.Description("Indicates that it should be passed to the north side of the aid.")]
-		[EnumMember(Value = "North Cardinal")] 
-		[XmlEnum("1")] 
-		NorthCardinal = 1,
-
-		[System.ComponentModel.Description("Indicates that it should be passed to the east side of the aid.")]
-		[EnumMember(Value = "East Cardinal")] 
-		[XmlEnum("2")] 
-		EastCardinal = 2,
-
-		[System.ComponentModel.Description("Indicates that it should be passed to the south side of the aid.")]
-		[EnumMember(Value = "South Cardinal")] 
-		[XmlEnum("3")] 
-		SouthCardinal = 3,
-
-		[System.ComponentModel.Description("Indicates that it should be passed to the west side of the aid.")]
-		[EnumMember(Value = "West Cardinal")] 
-		[XmlEnum("4")] 
-		WestCardinal = 4,
-
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
-		[EnumMember(Value = "Port Lateral")] 
-		[XmlEnum("5")] 
-		PortLateral = 5,
-
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the conventional direction of buoyage.")]
-		[EnumMember(Value = "Starboard Lateral")] 
-		[XmlEnum("6")] 
-		StarboardLateral = 6,
-
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Port")] 
-		[XmlEnum("7")] 
-		PreferredChannelToPort = 7,
-
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Starboard")] 
-		[XmlEnum("8")] 
-		PreferredChannelToStarboard = 8,
-
-		[System.ComponentModel.Description("A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.")]
-		[EnumMember(Value = "Isolated Danger")] 
-		[XmlEnum("9")] 
-		IsolatedDanger = 9,
-
-		[System.ComponentModel.Description("Indicates that there is navigable water around the mark.")]
-		[EnumMember(Value = "Safe Water")] 
-		[XmlEnum("10")] 
-		SafeWater = 10,
-
-		[System.ComponentModel.Description("A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners")]
-		[EnumMember(Value = "Special Purpose")] 
-		[XmlEnum("11")] 
-		SpecialPurpose = 11,
-
-		[System.ComponentModel.Description("A mark used to indicate the existence of a recently identified new danger, such as a wreck.")]
-		[EnumMember(Value = "New Danger Marking")] 
-		[XmlEnum("12")] 
-		NewDangerMarking = 12,
-	}
-
-	/// <summary>
-	/// A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.
-	/// </summary>
-	/// <remarks>
-	/// -
-	/// </remarks>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum CategoryOfPhysicalAISAidToNavigation : int {
-		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Physical AIS Type 1")] 
-		[XmlEnum("1")] 
-		PhysicalAisType1 = 1,
-
-		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Physical AIS Type 2")] 
-		[XmlEnum("2")] 
-		PhysicalAisType2 = 2,
-
-		[System.ComponentModel.Description("-")]
-		[EnumMember(Value = "Physical AIS Type 3")] 
-		[XmlEnum("3")] 
-		PhysicalAisType3 = 3,
-	}
-
-	/// <summary>
 	/// The shape a topmark or daymark exhibits.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum topmarkDaymarkShape : int {
-		[System.ComponentModel.Description("Is where the vertex points up. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks, lateral.")]
+		[System.ComponentModel.Description("Is where the vertex points up.")]
 		[EnumMember(Value = "Cone (Point Up)")] 
 		[XmlEnum("1")] 
 		ConePointUp = 1,
 
-		[System.ComponentModel.Description("Is where the vertex points down. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks, lateral.")]
+		[System.ComponentModel.Description("Is where the vertex points down.")]
 		[EnumMember(Value = "Cone (Point Down)")] 
 		[XmlEnum("2")] 
 		ConePointDown = 2,
@@ -2862,7 +3081,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("4")] 
 		twoSpheres = 4,
 
-		[System.ComponentModel.Description("A solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, it's ends being parallel circles). Cylinders are commonly used as International Association of Lighthouse Authorities - IALA topmarks lateral.")]
+		[System.ComponentModel.Description("A solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, its ends being parallel circles).")]
 		[EnumMember(Value = "Cylinder")] 
 		[XmlEnum("5")] 
 		Cylinder = 5,
@@ -2872,7 +3091,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("6")] 
 		Board = 6,
 
-		[System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X. An x-shape as an International Association of Lighthouse Authorities - IALA topmark should be 3 dimensional in shape. It is made of at least three crossed bars.")]
+		[System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X.")]
 		[EnumMember(Value = "X-Shaped")] 
 		[XmlEnum("7")] 
 		XShaped = 7,
@@ -2912,12 +3131,12 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("14")] 
 		twoConesPointsDownward = 14,
 
-		[System.ComponentModel.Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point up is where the thicker (untied) end of the besom is at the bottom.")]
+		[System.ComponentModel.Description("A bundle of rods or twigs. A besom, point up is where the thicker (untied) end of the besom is at the bottom.")]
 		[EnumMember(Value = "Besom (Point Up)")] 
 		[XmlEnum("15")] 
 		BesomPointUp = 15,
 
-		[System.ComponentModel.Description("Besom: A bundle of rods or twigs. Perch: A staff placed on top of a buoy, rock or shoal as a mark for navigation. A besom, point down is where the thinner (tied) end of the besom is at the bottom.")]
+		[System.ComponentModel.Description("A bundle of rods or twigs. A besom, point down is where the thinner (tied) end of the besom is at the bottom.")]
 		[EnumMember(Value = "Besom (Point Down)")] 
 		[XmlEnum("16")] 
 		BesomPointDown = 16,
@@ -2937,12 +3156,12 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("19")] 
 		Square = 19,
 
-		[System.ComponentModel.Description("Where the two longer opposite sides are standing horizontally. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
+		[System.ComponentModel.Description("A horizontal rectangle is where the two longer opposite sides are standing horizontally.")]
 		[EnumMember(Value = "Rectangle (Horizontal)")] 
 		[XmlEnum("20")] 
 		RectangleHorizontal = 20,
 
-		[System.ComponentModel.Description("Where the two longer opposite sides are standing vertically. A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length.")]
+		[System.ComponentModel.Description("A rectangle is a plane figure with four right angles and four straight sides, opposite sides being parallel and equal in length. A vertical rectangle is where the two longer opposite sides are standing vertically.")]
 		[EnumMember(Value = "Rectangle (Vertical)")] 
 		[XmlEnum("21")] 
 		RectangleVertical = 21,
@@ -3074,48 +3293,6 @@ namespace S100Framework.DomainModel.S125 {
 	}
 
 	/// <summary>
-	/// Describes the characteristic geometric form of the beacon.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum beaconShape : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.")]
-		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
-		[XmlEnum("1")] 
-		StakePolePerchPost = 1,
-
-		[System.ComponentModel.Description("A tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
-		[EnumMember(Value = "Withy")] 
-		[XmlEnum("2")] 
-		Withy = 2,
-
-		[System.ComponentModel.Description("A solid structure of the order of 10 metres in height used as a navigational aid.")]
-		[EnumMember(Value = "Beacon Tower")] 
-		[XmlEnum("3")] 
-		BeaconTower = 3,
-
-		[System.ComponentModel.Description("A structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
-		[EnumMember(Value = "Lattice Beacon")] 
-		[XmlEnum("4")] 
-		LatticeBeacon = 4,
-
-		[System.ComponentModel.Description("A long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
-		[EnumMember(Value = "Pile Beacon")] 
-		[XmlEnum("5")] 
-		PileBeacon = 5,
-
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
-		[EnumMember(Value = "Cairn")] 
-		[XmlEnum("6")] 
-		Cairn = 6,
-
-		[System.ComponentModel.Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
-		[EnumMember(Value = "Buoyant Beacon")] 
-		[XmlEnum("7")] 
-		BuoyantBeacon = 7,
-	}
-
-	/// <summary>
 	/// Classification of radar transponder beacon based on functionality.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3191,7 +3368,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("9")] 
 		LoranC = 9,
 
-		[System.ComponentModel.Description("A radiobeacon transmitting DGPS correction signals.")]
+		[System.ComponentModel.Description("Differential GNSS is implemented by placing a GNSS monitor receiver at a precisely known location. Instead of computing a navigation fix, the monitor determines the range error to every GNSS satellite it can track. These ranging errors are then transmitted to local users where they are applied as corrections before computing the navigation result.")]
 		[EnumMember(Value = "Differential GNSS")] 
 		[XmlEnum("10")] 
 		DifferentialGnss = 10,
@@ -3211,17 +3388,17 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("13")] 
 		Syledis = 13,
 
-		[System.ComponentModel.Description("Chaika is a low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
+		[System.ComponentModel.Description("A low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
 		[EnumMember(Value = "Chaika")] 
 		[XmlEnum("14")] 
 		Chaika = 14,
 
-		[System.ComponentModel.Description("The equipment needed at one station to carry on two way voice communication by radio waves only.")]
+		[System.ComponentModel.Description("The Equipment needed at one station to carry on two way voice communication by radio waves only.")]
 		[EnumMember(Value = "Radio Telephone Station")] 
 		[XmlEnum("19")] 
 		RadioTelephoneStation = 19,
 
-		[System.ComponentModel.Description("An onshore AIS unit that monitors traffic in the waterways.")]
+		[System.ComponentModel.Description("An AIS shore station for use by competent authorities to provide AIS service, manage the data link and enable effective ship to shore / shore to ship transmission of information.")]
 		[EnumMember(Value = "AIS Base Station")] 
 		[XmlEnum("20")] 
 		AisBaseStation = 20,
@@ -3273,7 +3450,7 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlEnum("8")] 
 		PartiallyObscured = 8,
 
-		[System.ComponentModel.Description("Lights that must in line to be visible.")]
+		[System.ComponentModel.Description("Lights that must be in line to be visible.")]
 		[EnumMember(Value = "Visible in Line of Range")] 
 		[XmlEnum("9")] 
 		VisibleInLineOfRange = 9,
@@ -3434,560 +3611,443 @@ namespace S100Framework.DomainModel.S125 {
 	}
 
 	/// <summary>
-	/// Classification of prominent cultural and natural features in the landscape.
+	/// Classification of an offshore raised structure.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum categoryOfLandmark : int {
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
-		[EnumMember(Value = "Cairn")] 
+	public enum categoryOfOffshorePlatform : int {
+		[System.ComponentModel.Description("A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
+		[EnumMember(Value = "Oil Rig")] 
 		[XmlEnum("1")] 
-		Cairn = 1,
+		OilRig = 1,
 
-		[System.ComponentModel.Description("A site and associated structures devoted to the burial of the dead.")]
-		[EnumMember(Value = "Cemetery")] 
+		[System.ComponentModel.Description("A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
+		[EnumMember(Value = "Production Platform")] 
 		[XmlEnum("2")] 
-		Cemetery = 2,
+		ProductionPlatform = 2,
 
-		[System.ComponentModel.Description("A vertical structure containing a passage or flue for discharging smoke and gases of combustion.")]
-		[EnumMember(Value = "Chimney")] 
+		[System.ComponentModel.Description("A platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
+		[EnumMember(Value = "Observation/Research Platform")] 
 		[XmlEnum("3")] 
-		Chimney = 3,
+		ObservationResearchPlatform = 3,
 
-		[System.ComponentModel.Description("A parabolic aerial for the receipt and transmission of high frequency radio signals.")]
-		[EnumMember(Value = "Dish Aerial")] 
+		[System.ComponentModel.Description("A metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the seabed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
+		[EnumMember(Value = "Articulated Loading Platform")] 
 		[XmlEnum("4")] 
-		DishAerial = 4,
+		ArticulatedLoadingPlatform = 4,
 
-		[System.ComponentModel.Description("A staff or pole on which flags are raised.")]
-		[EnumMember(Value = "Flagstaff")] 
+		[System.ComponentModel.Description("A rigid frame or tube with a buoyancy device at its upper end, secured at its lower end to a universal joint on a large steel or concrete base resting on the seabed, and at its upper end to a mooring buoy by a chain or wire.")]
+		[EnumMember(Value = "Single Anchor Leg Mooring")] 
 		[XmlEnum("5")] 
-		Flagstaff = 5,
+		SingleAnchorLegMooring = 5,
 
-		[System.ComponentModel.Description("A tall structure used for burning-off waste oil or gas.")]
-		[EnumMember(Value = "Flare Stack")] 
+		[System.ComponentModel.Description("A platform secured to the seabed and surmounted by a turntable to which ships moor.")]
+		[EnumMember(Value = "Mooring Tower")] 
 		[XmlEnum("6")] 
-		FlareStack = 6,
+		MooringTower = 6,
 
-		[System.ComponentModel.Description("A relatively tall structure usually held vertical by guy lines.")]
-		[EnumMember(Value = "Mast")] 
+		[System.ComponentModel.Description("A man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
+		[EnumMember(Value = "Artificial Island")] 
 		[XmlEnum("7")] 
-		Mast = 7,
+		ArtificialIsland = 7,
 
-		[System.ComponentModel.Description("A tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
-		[EnumMember(Value = "Windsock")] 
+		[System.ComponentModel.Description("An offshore facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
+		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
 		[XmlEnum("8")] 
-		Windsock = 8,
+		FloatingProductionStorageAndOffLoadingVessel = 8,
 
-		[System.ComponentModel.Description("A structure erected and/or maintained as a memorial to a person and/or event.")]
-		[EnumMember(Value = "Monument")] 
+		[System.ComponentModel.Description("A platform used primarily for eating, sleeping and recreation purposes.")]
+		[EnumMember(Value = "Accommodation Platform")] 
 		[XmlEnum("9")] 
-		Monument = 9,
+		AccommodationPlatform = 9,
 
-		[System.ComponentModel.Description("A cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
-		[EnumMember(Value = "Column/Pillar")] 
+		[System.ComponentModel.Description("A floating structure with control room, power and storage facilities, attached to the seabed by a flexible pipeline and cables.")]
+		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
 		[XmlEnum("10")] 
-		ColumnPillar = 10,
+		NavigationCommunicationAndControlBuoy = 10,
 
-		[System.ComponentModel.Description("A slab of metal, usually ornamented, erected as a memorial to a person or event.")]
-		[EnumMember(Value = "Memorial Plaque")] 
+		[System.ComponentModel.Description("A floating structure, anchored to the seabed, for storing oil.")]
+		[EnumMember(Value = "Floating Oil Tank")] 
 		[XmlEnum("11")] 
-		MemorialPlaque = 11,
+		FloatingOilTank = 11,
+	}
 
-		[System.ComponentModel.Description("A tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
-		[EnumMember(Value = "Obelisk")] 
+	/// <summary>
+	/// The various conditions of buildings and other constructions.
+	/// </summary>
+	/// <remarks>
+	/// The default 'condition' should be considered to be completed, undamaged and working normally.
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum condition : int {
+		[System.ComponentModel.Description("Being built but not yet capable of function.")]
+		[EnumMember(Value = "Under Construction")] 
+		[XmlEnum("1")] 
+		UnderConstruction = 1,
+
+		[System.ComponentModel.Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
+		[EnumMember(Value = "Ruined")] 
+		[XmlEnum("2")] 
+		Ruined = 2,
+
+		[System.ComponentModel.Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
+		[EnumMember(Value = "Under Reclamation")] 
+		[XmlEnum("3")] 
+		UnderReclamation = 3,
+
+		[System.ComponentModel.Description("A windmill or wind turbine from which the vanes or turbine blades are missing.")]
+		[EnumMember(Value = "Wingless")] 
+		[XmlEnum("4")] 
+		Wingless = 4,
+
+		[System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
+		[EnumMember(Value = "Planned Construction")] 
+		[XmlEnum("5")] 
+		PlannedConstruction = 5,
+	}
+
+	/// <summary>
+	/// Classification of pile, driven into the earth as a foundation or support for a structure.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfPile : int {
+		[System.ComponentModel.Description("An elongated wood or metal pole embedded in the seabed to serve as a marker or support.")]
+		[EnumMember(Value = "Stake")] 
+		[XmlEnum("1")] 
+		Stake = 1,
+
+		[System.ComponentModel.Description("A vertical piece of timber, metal or concrete forced into the earth or seabed.")]
+		[EnumMember(Value = "Post")] 
+		[XmlEnum("3")] 
+		Post = 3,
+
+		[System.ComponentModel.Description("A single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or seabed.")]
+		[EnumMember(Value = "Tripodal")] 
+		[XmlEnum("4")] 
+		Tripodal = 4,
+
+		[System.ComponentModel.Description("A number of piles, usually in a straight line, and usually connected or bolted together.")]
+		[EnumMember(Value = "Piling")] 
+		[XmlEnum("5")] 
+		Piling = 5,
+
+		[System.ComponentModel.Description("A number of piles, usually in a straight line, but not connected by structural members.")]
+		[EnumMember(Value = "Area of Piles")] 
+		[XmlEnum("6")] 
+		AreaOfPiles = 6,
+
+		[System.ComponentModel.Description("A vertical hollow cylinder of metal, wood, or other material forced into the earth or seabed.")]
+		[EnumMember(Value = "Pipe")] 
+		[XmlEnum("7")] 
+		Pipe = 7,
+
+		[System.ComponentModel.Description("A post where to which something (such as a craft) can be moored.")]
+		[EnumMember(Value = "Mooring Post")] 
+		[XmlEnum("8")] 
+		MooringPost = 8,
+	}
+
+	/// <summary>
+	/// The specific shape of the building.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum buildingShape : int {
+		[System.ComponentModel.Description("A building having many storeys.")]
+		[EnumMember(Value = "High-Rise Building")] 
+		[XmlEnum("5")] 
+		HighRiseBuilding = 5,
+
+		[System.ComponentModel.Description("A polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
+		[EnumMember(Value = "Pyramid")] 
+		[XmlEnum("6")] 
+		Pyramid = 6,
+
+		[System.ComponentModel.Description("Shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
+		[EnumMember(Value = "Cylindrical")] 
+		[XmlEnum("7")] 
+		Cylindrical = 7,
+
+		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
+		[EnumMember(Value = "Spherical")] 
+		[XmlEnum("8")] 
+		Spherical = 8,
+
+		[System.ComponentModel.Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
+		[EnumMember(Value = "Cubic")] 
+		[XmlEnum("9")] 
+		Cubic = 9,
+	}
+
+	/// <summary>
+	/// Classification based on the product for which a silo or tank is used.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfSiloTank : int {
+		[System.ComponentModel.Description("A large storage structure used for storing loose materials.")]
+		[EnumMember(Value = "Silo in General")] 
+		[XmlEnum("1")] 
+		SiloInGeneral = 1,
+
+		[System.ComponentModel.Description("A fixed structure for storing liquids.")]
+		[EnumMember(Value = "Tank in General")] 
+		[XmlEnum("2")] 
+		TankInGeneral = 2,
+
+		[System.ComponentModel.Description("A storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
+		[EnumMember(Value = "Grain Elevator")] 
+		[XmlEnum("3")] 
+		GrainElevator = 3,
+
+		[System.ComponentModel.Description("A tower supporting an elevated storage tank of water.")]
+		[EnumMember(Value = "Water Tower")] 
+		[XmlEnum("4")] 
+		WaterTower = 4,
+	}
+
+	/// <summary>
+	/// Classification of lateral marks in the IALA Buoyage System.
+	/// </summary>
+	/// <remarks>
+	/// There are two international buoyage regions, A and B, between which lateral marks differ. When top-marks, retro reflectors and/or lights are fitted to these marks, they are encoded as separate features.
+	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfLateralMark : int {
+		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
+		[EnumMember(Value = "Port-Hand Lateral Mark")] 
+		[XmlEnum("1")] 
+		PortHandLateralMark = 1,
+
+		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
+		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
+		[XmlEnum("2")] 
+		StarboardHandLateralMark = 2,
+
+		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
+		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
+		[XmlEnum("3")] 
+		PreferredChannelToStarboardLateralMark = 3,
+
+		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
+		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
+		[XmlEnum("4")] 
+		PreferredChannelToPortLateralMark = 4,
+
+		[System.ComponentModel.Description("Indicates the right-hand side of the inland waterway.")]
+		[EnumMember(Value = "Right-Hand Side of the Waterway")] 
+		[XmlEnum("5")] 
+		RightHandSideOfTheWaterway = 5,
+
+		[System.ComponentModel.Description("Indicates the left-hand side of the inland waterway.")]
+		[EnumMember(Value = "Left-Hand Side of the Waterway")] 
+		[XmlEnum("6")] 
+		LeftHandSideOfTheWaterway = 6,
+
+		[System.ComponentModel.Description("Indicates the right-hand side of a channel of an inland waterway.")]
+		[EnumMember(Value = "Right-Hand Side of the Channel")] 
+		[XmlEnum("7")] 
+		RightHandSideOfTheChannel = 7,
+
+		[System.ComponentModel.Description("Indicates the left-hand side of a channel of an inland waterway.")]
+		[EnumMember(Value = "Left-Hand Side of the Channel")] 
+		[XmlEnum("8")] 
+		LeftHandSideOfTheChannel = 8,
+
+		[System.ComponentModel.Description("Indicates a bifurcation of the inland waterway.")]
+		[EnumMember(Value = "Bifurcation of the Waterway")] 
+		[XmlEnum("9")] 
+		BifurcationOfTheWaterway = 9,
+
+		[System.ComponentModel.Description("Indicates a bifurcation of a channel of an inland waterway.")]
+		[EnumMember(Value = "Bifurcation of the Channel")] 
+		[XmlEnum("10")] 
+		BifurcationOfTheChannel = 10,
+
+		[System.ComponentModel.Description("Indicates that the channel is near the right bank.")]
+		[EnumMember(Value = "Channel Near the Right Bank")] 
+		[XmlEnum("11")] 
+		ChannelNearTheRightBank = 11,
+
+		[System.ComponentModel.Description("Indicates that the channel is near the left bank.")]
+		[EnumMember(Value = "Channel Near the Left Bank")] 
 		[XmlEnum("12")] 
-		Obelisk = 12,
+		ChannelNearTheLeftBank = 12,
 
-		[System.ComponentModel.Description("A representation of a living being, sculptured, moulded, or cast in a variety of materials (for example: marble, metal, or plaster).")]
-		[EnumMember(Value = "Statue")] 
+		[System.ComponentModel.Description("Indicates that the channel crosses from the left to the right bank.")]
+		[EnumMember(Value = "Channel Cross-Over to the Right Bank")] 
 		[XmlEnum("13")] 
-		Statue = 13,
+		ChannelCrossOverToTheRightBank = 13,
 
-		[System.ComponentModel.Description("A monument, or other structure in form of a cross.")]
-		[EnumMember(Value = "Cross")] 
+		[System.ComponentModel.Description("Indicates that the channel crosses from the right to the left bank.")]
+		[EnumMember(Value = "Channel Cross-Over to the Left Bank")] 
 		[XmlEnum("14")] 
-		Cross = 14,
+		ChannelCrossOverToTheLeftBank = 14,
 
-		[System.ComponentModel.Description("A landmark comprising a hemispherical or spheroidal shaped structure.")]
-		[EnumMember(Value = "Dome")] 
+		[System.ComponentModel.Description("Indicates a danger point or obstacles at the right-hand side.")]
+		[EnumMember(Value = "Danger Point or Obstacles at the Right-Hand Side")] 
 		[XmlEnum("15")] 
-		Dome = 15,
+		DangerPointOrObstaclesAtTheRightHandSide = 15,
 
-		[System.ComponentModel.Description("A device used for directing a radar beam through a search pattern.")]
-		[EnumMember(Value = "Radar Scanner")] 
+		[System.ComponentModel.Description("Indicates a danger point or obstacles at the left-hand side.")]
+		[EnumMember(Value = "Danger Point or Obstacles at the Left-Hand Side")] 
 		[XmlEnum("16")] 
-		RadarScanner = 16,
+		DangerPointOrObstaclesAtTheLeftHandSide = 16,
 
-		[System.ComponentModel.Description("A relatively tall, narrow structure that may either stand alone or may form part of another structure.")]
-		[EnumMember(Value = "Tower")] 
+		[System.ComponentModel.Description("Indicates a turn off at the right-hand side.")]
+		[EnumMember(Value = "Turn Off at the Right-Hand Side")] 
 		[XmlEnum("17")] 
-		Tower = 17,
+		TurnOffAtTheRightHandSide = 17,
 
-		[System.ComponentModel.Description("A system of vanes attached to a tower and driven by wind (excluding wind turbines).")]
-		[EnumMember(Value = "Windmill")] 
+		[System.ComponentModel.Description("Indicates a turn off at the left-hand side.")]
+		[EnumMember(Value = "Turn Off at the Left-Hand Side")] 
 		[XmlEnum("18")] 
-		Windmill = 18,
+		TurnOffAtTheLeftHandSide = 18,
 
-		[System.ComponentModel.Description("A modern structure for the use of wind power.")]
-		[EnumMember(Value = "Windmotor")] 
+		[System.ComponentModel.Description("Indicates a junction at the right-hand side.")]
+		[EnumMember(Value = "Junction at the Right-Hand Side")] 
 		[XmlEnum("19")] 
-		Windmotor = 19,
+		JunctionAtTheRightHandSide = 19,
 
-		[System.ComponentModel.Description("A tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
-		[EnumMember(Value = "Spire/Minaret")] 
+		[System.ComponentModel.Description("Indicates a junction at the left-hand side.")]
+		[EnumMember(Value = "Junction at the Left-Hand Side")] 
 		[XmlEnum("20")] 
-		SpireMinaret = 20,
+		JunctionAtTheLeftHandSide = 20,
 
-		[System.ComponentModel.Description("An isolated rocky formation or a single large stone.")]
-		[EnumMember(Value = "Large Rock or Boulder on Land")] 
+		[System.ComponentModel.Description("Indicates a harbour entry at the right-hand side.")]
+		[EnumMember(Value = "Harbour Entry at the Right-Hand Side")] 
 		[XmlEnum("21")] 
-		LargeRockOrBoulderOnLand = 21,
+		HarbourEntryAtTheRightHandSide = 21,
 
-		[System.ComponentModel.Description("A recoverable point on the earth, whose geographic position has been determined by angular methods with geodetic instruments. A triangulation point is a selected point, which has been marked with a station mark, or it is a conspicuous natural or artificial feature.")]
-		[EnumMember(Value = "Triangulation Mark")] 
+		[System.ComponentModel.Description("Indicates a harbour entry at the left-hand side.")]
+		[EnumMember(Value = "Harbour Entry at the Left-Hand Side")] 
 		[XmlEnum("22")] 
-		TriangulationMark = 22,
+		HarbourEntryAtTheLeftHandSide = 22,
 
-		[System.ComponentModel.Description("A marker identifying the location of a surveyed boundary line.")]
-		[EnumMember(Value = "Boundary Mark")] 
+		[System.ComponentModel.Description("Indicates a bridge pier in an inland waterway.")]
+		[EnumMember(Value = "Bridge Pier Mark")] 
 		[XmlEnum("23")] 
-		BoundaryMark = 23,
+		BridgePierMark = 23,
 
-		[System.ComponentModel.Description("Wheels with passenger cars mounted external to the rim and independently rotated by electric motors.")]
-		[EnumMember(Value = "Observation Wheel")] 
+		[System.ComponentModel.Description("Indicates the right bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
+		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Right Bank")] 
 		[XmlEnum("24")] 
-		ObservationWheel = 24,
+		EntryFromALakeToANarrowerWaterwayRightBank = 24,
 
-		[System.ComponentModel.Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
-		[EnumMember(Value = "Torii")] 
+		[System.ComponentModel.Description("Indicates the left bank of the entry from a lake or a lake-like expansion to a section of the waterway which is narrower.")]
+		[EnumMember(Value = "Entry From a Lake to a Narrower Waterway, Left Bank")] 
 		[XmlEnum("25")] 
-		Torii = 25,
+		EntryFromALakeToANarrowerWaterwayLeftBank = 25,
 
-		[System.ComponentModel.Description("A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
-		[EnumMember(Value = "Bridge")] 
+		[System.ComponentModel.Description("Change bank.")]
+		[EnumMember(Value = "Change Bank")] 
 		[XmlEnum("26")] 
-		Bridge = 26,
+		ChangeBank = 26,
 
-		[System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
-		[EnumMember(Value = "Dam")] 
+		[System.ComponentModel.Description("Continue along bank.")]
+		[EnumMember(Value = "Continue Along Bank")] 
 		[XmlEnum("27")] 
-		Dam = 27,
+		ContinueAlongBank = 27,
 	}
 
 	/// <summary>
-	/// A specific role that describes a feature.
+	/// The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.
 	/// </summary>
+	/// <remarks>
+	/// Cardinal marks are used in conjunction with the compass to indicate where a mariner will find safe navigable water.Cardinal marks do not have a distinctive shape but are normally pillar or spar. They are always painted in yellow and black horizontal bands and their distinctive double cone top-marks are always black. (Note that such top-marks are encoded as separate TOPMAR objects). Cardinal marks may also have a special system of flashing white lights and if such lights are fitted they are encoded as separate LIGHTS objects.
+	/// </remarks>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum function : int {
-		[System.ComponentModel.Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
-		[EnumMember(Value = "Harbour-Masters Office")] 
-		[XmlEnum("2")] 
-		HarbourMastersOffice = 2,
-
-		[System.ComponentModel.Description("Serves as a government office where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
-		[EnumMember(Value = "Customs Office")] 
-		[XmlEnum("3")] 
-		CustomsOffice = 3,
-
-		[System.ComponentModel.Description("The office which is charged with the administration of health laws and sanitary inspections.")]
-		[EnumMember(Value = "Health Office")] 
-		[XmlEnum("4")] 
-		HealthOffice = 4,
-
-		[System.ComponentModel.Description("An institution or establishment providing medical or surgical treatment for the ill or wounded.")]
-		[EnumMember(Value = "Hospital")] 
-		[XmlEnum("5")] 
-		Hospital = 5,
-
-		[System.ComponentModel.Description("The public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
-		[EnumMember(Value = "Post Office")] 
-		[XmlEnum("6")] 
-		PostOffice = 6,
-
-		[System.ComponentModel.Description("An establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
-		[EnumMember(Value = "Hotel")] 
-		[XmlEnum("7")] 
-		Hotel = 7,
-
-		[System.ComponentModel.Description("A building with platforms where trains arrive, load, discharge and depart.")]
-		[EnumMember(Value = "Railway Station")] 
-		[XmlEnum("8")] 
-		RailwayStation = 8,
-
-		[System.ComponentModel.Description("The headquarters of a local police force and that is where those under arrest are first charged.")]
-		[EnumMember(Value = "Police Station")] 
-		[XmlEnum("9")] 
-		PoliceStation = 9,
-
-		[System.ComponentModel.Description("The headquarters of a local water-police force.")]
-		[EnumMember(Value = "Water-Police Station")] 
-		[XmlEnum("10")] 
-		WaterPoliceStation = 10,
-
-		[System.ComponentModel.Description("The office or headquarters of pilots; the place where the services of a pilot may be obtained.")]
-		[EnumMember(Value = "Pilot Office")] 
-		[XmlEnum("11")] 
-		PilotOffice = 11,
-
-		[System.ComponentModel.Description("A distinctive structure or place on shore from which personnel keep watch upon events at sea or along the coast.")]
-		[EnumMember(Value = "Pilot Lookout")] 
-		[XmlEnum("12")] 
-		PilotLookout = 12,
-
-		[System.ComponentModel.Description("An office for custody, deposit, loan, exchange or issue of money.")]
-		[EnumMember(Value = "Bank Office")] 
-		[XmlEnum("13")] 
-		BankOffice = 13,
-
-		[System.ComponentModel.Description("The quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
-		[EnumMember(Value = "Headquarters for District Control")] 
-		[XmlEnum("14")] 
-		HeadquartersForDistrictControl = 14,
-
-		[System.ComponentModel.Description("A building or part of a building for storage of wares or goods.")]
-		[EnumMember(Value = "Transit Shed/Warehouse")] 
-		[XmlEnum("15")] 
-		TransitShedWarehouse = 15,
-
-		[System.ComponentModel.Description("A building or buildings with equipment for manufacturing; a workshop.")]
-		[EnumMember(Value = "Factory")] 
-		[XmlEnum("16")] 
-		Factory = 16,
-
-		[System.ComponentModel.Description("A stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
-		[EnumMember(Value = "Power Station")] 
-		[XmlEnum("17")] 
-		PowerStation = 17,
-
-		[System.ComponentModel.Description("A building for the management of affairs.")]
-		[EnumMember(Value = "Administrative")] 
-		[XmlEnum("18")] 
-		Administrative = 18,
-
-		[System.ComponentModel.Description("A building concerned with education (for example school, college, university, etc).")]
-		[EnumMember(Value = "Educational Facility")] 
-		[XmlEnum("19")] 
-		EducationalFacility = 19,
-
-		[System.ComponentModel.Description("A building for public Christian worship.")]
-		[EnumMember(Value = "Church")] 
-		[XmlEnum("20")] 
-		Church = 20,
-
-		[System.ComponentModel.Description("A place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
-		[EnumMember(Value = "Chapel")] 
-		[XmlEnum("21")] 
-		Chapel = 21,
-
-		[System.ComponentModel.Description("A building for public Jewish worship.")]
-		[EnumMember(Value = "Temple")] 
-		[XmlEnum("22")] 
-		Temple = 22,
-
-		[System.ComponentModel.Description("A Hindu or Buddhist temple or sacred building.")]
-		[EnumMember(Value = "Pagoda")] 
-		[XmlEnum("23")] 
-		Pagoda = 23,
-
-		[System.ComponentModel.Description("A building for public Shinto worship.")]
-		[EnumMember(Value = "Shinto Shrine")] 
-		[XmlEnum("24")] 
-		ShintoShrine = 24,
-
-		[System.ComponentModel.Description("A building for public Buddhist worship.")]
-		[EnumMember(Value = "Buddhist Temple")] 
-		[XmlEnum("25")] 
-		BuddhistTemple = 25,
-
-		[System.ComponentModel.Description("A Muslim place of worship.")]
-		[EnumMember(Value = "Mosque")] 
-		[XmlEnum("26")] 
-		Mosque = 26,
-
-		[System.ComponentModel.Description("A shrine marking the burial place of a Muslim holy man.")]
-		[EnumMember(Value = "Marabout")] 
-		[XmlEnum("27")] 
-		Marabout = 27,
-
-		[System.ComponentModel.Description("Keeping a watch upon events at sea or along the coast.")]
-		[EnumMember(Value = "Lookout")] 
-		[XmlEnum("28")] 
-		Lookout = 28,
-
-		[System.ComponentModel.Description("Transmitting and/or receiving electronic communication signals.")]
-		[EnumMember(Value = "Communication")] 
-		[XmlEnum("29")] 
-		Communication = 29,
-
-		[System.ComponentModel.Description("A system for reproducing on a screen visual images transmitted (usually with sound) by radio signals.")]
-		[EnumMember(Value = "Television")] 
-		[XmlEnum("30")] 
-		Television = 30,
-
-		[System.ComponentModel.Description("Transmitting and/or receiving radio-frequency electromagnetic waves as a means of communication.")]
-		[EnumMember(Value = "Radio")] 
-		[XmlEnum("31")] 
-		Radio = 31,
-
-		[System.ComponentModel.Description("A method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
-		[EnumMember(Value = "Radar")] 
-		[XmlEnum("32")] 
-		Radar = 32,
-
-		[System.ComponentModel.Description("A structure serving as a support for one or more lights.")]
-		[EnumMember(Value = "Light Support")] 
-		[XmlEnum("33")] 
-		LightSupport = 33,
-
-		[System.ComponentModel.Description("Broadcasting and receiving signals using microwaves.")]
-		[EnumMember(Value = "Microwave")] 
-		[XmlEnum("34")] 
-		Microwave = 34,
-
-		[System.ComponentModel.Description("Generation of chilled liquid and/or gas for cooling purposes.")]
-		[EnumMember(Value = "Cooling")] 
-		[XmlEnum("35")] 
-		Cooling = 35,
-
-		[System.ComponentModel.Description("A place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
-		[EnumMember(Value = "Observation")] 
-		[XmlEnum("36")] 
-		Observation = 36,
-
-		[System.ComponentModel.Description("A visual time signal in the form of a ball.")]
-		[EnumMember(Value = "Timeball")] 
-		[XmlEnum("37")] 
-		Timeball = 37,
-
-		[System.ComponentModel.Description("Instrument for measuring time and recording hours.")]
-		[EnumMember(Value = "Clock")] 
-		[XmlEnum("38")] 
-		Clock = 38,
-
-		[System.ComponentModel.Description("Used to control the flow of traffic within a specified range of an installation.")]
-		[EnumMember(Value = "Control")] 
-		[XmlEnum("39")] 
-		Control = 39,
-
-		[System.ComponentModel.Description("Equipment or structure to secure an airship.")]
-		[EnumMember(Value = "Airship Mooring")] 
-		[XmlEnum("40")] 
-		AirshipMooring = 40,
-
-		[System.ComponentModel.Description("An arena for holding and viewing events.")]
-		[EnumMember(Value = "Stadium")] 
-		[XmlEnum("41")] 
-		Stadium = 41,
-
-		[System.ComponentModel.Description("A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.")]
-		[EnumMember(Value = "Bus Station")] 
-		[XmlEnum("42")] 
-		BusStation = 42,
-
-		[System.ComponentModel.Description("A building within a terminal for the loading and unloading of passengers.")]
-		[EnumMember(Value = "Passenger Terminal Building")] 
-		[XmlEnum("43")] 
-		PassengerTerminalBuilding = 43,
-
-		[System.ComponentModel.Description("A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.")]
-		[EnumMember(Value = "Sea Rescue Control")] 
-		[XmlEnum("44")] 
-		SeaRescueControl = 44,
-
-		[System.ComponentModel.Description("A building designed and equipped for making observations of astronomical, meteorological, or other natural phenomena.")]
-		[EnumMember(Value = "Observatory")] 
-		[XmlEnum("45")] 
-		Observatory = 45,
-
-		[System.ComponentModel.Description("A building or structure used to crush ore.")]
-		[EnumMember(Value = "Ore Crusher")] 
-		[XmlEnum("46")] 
-		OreCrusher = 46,
-
-		[System.ComponentModel.Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
-		[EnumMember(Value = "Boathouse")] 
-		[XmlEnum("47")] 
-		Boathouse = 47,
-
-		[System.ComponentModel.Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
-		[EnumMember(Value = "Pumping Station")] 
-		[XmlEnum("48")] 
-		PumpingStation = 48,
-
-		[System.ComponentModel.Description("A roof that is extending above navigable water, e.g. to protect open cargo holds from rain during loading and unloading. Depending on the vertical clearance vessels can pass under the roof above navigable water.")]
-		[EnumMember(Value = "Roof Above Navigable Water")] 
-		[XmlEnum("49")] 
-		RoofAboveNavigableWater = 49,
-
-		[System.ComponentModel.Description("The part of a building on land that is extending above navigable water. Depending on the vertical clearance vessels can pass under the building above navigable water.")]
-		[EnumMember(Value = "Building Above Navigable Water")] 
-		[XmlEnum("50")] 
-		BuildingAboveNavigableWater = 50,
-	}
-
-	/// <summary>
-	/// The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum lightCharacteristic : int {
-		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
-		[EnumMember(Value = "Fixed")] 
+	public enum categoryOfCardinalMark : int {
+		[System.ComponentModel.Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.")]
+		[EnumMember(Value = "North Cardinal Mark")] 
 		[XmlEnum("1")] 
-		Fixed = 1,
+		NorthCardinalMark = 1,
 
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
-		[EnumMember(Value = "Flashing")] 
+		[System.ComponentModel.Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.")]
+		[EnumMember(Value = "East Cardinal Mark")] 
 		[XmlEnum("2")] 
-		Flashing = 2,
+		EastCardinalMark = 2,
 
-		[System.ComponentModel.Description("A single-flashing light in which a single flash of not less than two seconds duration is regularly repeated.")]
-		[EnumMember(Value = "Long-Flashing")] 
+		[System.ComponentModel.Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest; it should be passed to the south side of the mark.")]
+		[EnumMember(Value = "South Cardinal Mark")] 
 		[XmlEnum("3")] 
-		LongFlashing = 3,
+		SouthCardinalMark = 3,
 
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 50 flashes per minutes but less than 80 flashes per minutes. It may be: - Continuous quick-flashing: A quick-flashing light in which a flash is regularly repeated. - Group quick-flashing: A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
-		[EnumMember(Value = "Quick-Flashing")] 
+		[System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
+		[EnumMember(Value = "West Cardinal Mark")] 
 		[XmlEnum("4")] 
-		QuickFlashing = 4,
-
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute. It may be:- Continuous very quick-flashing: A very quick-flashing light in which a flash is regularly repeated.- Group very quick-flashing: A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
-		[EnumMember(Value = "Very Quick-Flashing")] 
-		[XmlEnum("5")] 
-		VeryQuickFlashing = 5,
-
-		[System.ComponentModel.Description("A rhythmic light in which flashes are regularly repeated at a rate of not less than 160 flashes per minute.")]
-		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
-		[XmlEnum("6")] 
-		ContinuousUltraQuickFlashing = 6,
-
-		[System.ComponentModel.Description("A light with all durations of light and darkness equal.")]
-		[EnumMember(Value = "Isophased")] 
-		[XmlEnum("7")] 
-		Isophased = 7,
-
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration. It may be:  - Single-occulting: An occulting light in which an eclipse is regularly repeated.  - Group-occulting: An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.  - Composite group-occulting: An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
-		[EnumMember(Value = "Occulting")] 
-		[XmlEnum("8")] 
-		Occulting = 8,
-
-		[System.ComponentModel.Description("A quick light in which the sequence of flashes is interrupted by regularly repeated eclipses of constant and long duration.")]
-		[EnumMember(Value = "Interrupted Quick Flashing")] 
-		[XmlEnum("9")] 
-		InterruptedQuickFlashing = 9,
-
-		[System.ComponentModel.Description("A light in which the very rapid alterations of light and darkness are interrupted at regular intervals by eclipses of long duration.")]
-		[EnumMember(Value = "Interrupted Very Quick Flashing")] 
-		[XmlEnum("10")] 
-		InterruptedVeryQuickFlashing = 10,
-
-		[System.ComponentModel.Description("A light in which the ultra quick flashes (160 or more per minute) are interrupted at regular intervals by eclipses of long duration.")]
-		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
-		[XmlEnum("11")] 
-		InterruptedUltraQuickFlashing = 11,
-
-		[System.ComponentModel.Description("A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
-		[EnumMember(Value = "Morse")] 
-		[XmlEnum("12")] 
-		Morse = 12,
-
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Fixed and Flash")] 
-		[XmlEnum("13")] 
-		FixedAndFlash = 13,
-
-		[System.ComponentModel.Description("A rhythmic light in which a flashing light is combined with a long-flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Flash and Long-Flash")] 
-		[XmlEnum("14")] 
-		FlashAndLongFlash = 14,
-
-		[System.ComponentModel.Description("A rhythmic light in which an occulting light is combined with a flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Occulting and Flash")] 
-		[XmlEnum("15")] 
-		OccultingAndFlash = 15,
-
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a long-flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Fixed and Long-Flash")] 
-		[XmlEnum("16")] 
-		FixedAndLongFlash = 16,
-
-		[System.ComponentModel.Description("An alternating light in which the total duration of light in each period is clearly longer than the total duration of darkness and in which the intervals of darkness (occultations) are all of equal duration.")]
-		[EnumMember(Value = "Occulting Alternating")] 
-		[XmlEnum("17")] 
-		OccultingAlternating = 17,
-
-		[System.ComponentModel.Description("An alternating single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
-		[EnumMember(Value = "Long-Flash Alternating")] 
-		[XmlEnum("18")] 
-		LongFlashAlternating = 18,
-
-		[System.ComponentModel.Description("An alternating rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
-		[EnumMember(Value = "Flash Alternating")] 
-		[XmlEnum("19")] 
-		FlashAlternating = 19,
-
-		[System.ComponentModel.Description("Occulting light in which the occultations are combined in groups, each group including the same number of occultations, and in which the groups are repeated at regular intervals.")]
-		[EnumMember(Value = "Group Alternating")] 
-		[XmlEnum("20")] 
-		GroupAlternating = 20,
-
-		[System.ComponentModel.Description("A rhythmic light in which a group of quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
-		[XmlEnum("25")] 
-		QuickFlashPlusLongFlash = 25,
-
-		[System.ComponentModel.Description("A rhythmic light in which a group of very quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
-		[XmlEnum("26")] 
-		VeryQuickFlashPlusLongFlash = 26,
-
-		[System.ComponentModel.Description("A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
-		[XmlEnum("27")] 
-		UltraQuickFlashPlusLongFlash = 27,
-
-		[System.ComponentModel.Description("A signal light that shows, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Alternating")] 
-		[XmlEnum("28")] 
-		Alternating = 28,
-
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.")]
-		[EnumMember(Value = "Fixed and Alternating Flashing")] 
-		[XmlEnum("29")] 
-		FixedAndAlternatingFlashing = 29,
+		WestCardinalMark = 4,
 	}
 
 	/// <summary>
-	/// The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.
+	/// An assessment of the likelihood of change over time.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum signalStatus : int {
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of light or sound.")]
-		[EnumMember(Value = "Lit/Sound")] 
+	public enum categoryOfTemporalVariation : int {
+		[System.ComponentModel.Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
+		[EnumMember(Value = "Extreme Event")] 
 		[XmlEnum("1")] 
-		LitSound = 1,
+		ExtremeEvent = 1,
 
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
-		[EnumMember(Value = "Eclipsed/Silent")] 
+		[System.ComponentModel.Description("Continuous or frequent change (for example river siltation, sand waves, seasonal storms, icebergs, etc) that is likely to result in new significant shoaling.")]
+		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
 		[XmlEnum("2")] 
-		EclipsedSilent = 2,
+		LikelyToChangeAndSignificantShoalingExpected = 2,
+
+		[System.ComponentModel.Description("Continuous or frequent change (for example sand wave shift, seasonal storms, icebergs, etc) that is not likely to result in new significant shoaling.")]
+		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
+		[XmlEnum("3")] 
+		LikelyToChangeButSignificantShoalingNotExpected = 3,
+
+		[System.ComponentModel.Description("Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).")]
+		[EnumMember(Value = "Likely to Change")] 
+		[XmlEnum("4")] 
+		LikelyToChange = 4,
+
+		[System.ComponentModel.Description("Significant change to the seafloor is not expected.")]
+		[EnumMember(Value = "Unlikely to Change")] 
+		[XmlEnum("5")] 
+		UnlikelyToChange = 5,
+
+		[System.ComponentModel.Description("Not having been assessed.")]
+		[EnumMember(Value = "Unassessed")] 
+		[XmlEnum("6")] 
+		Unassessed = 6,
 	}
 
 	/// <summary>
-	/// Named aggregations between two or more aids to navigation and/or navigationally relevant features.
+	/// Different categories or kinds of modifications that can be made to data, positions, or objects. For example, changes may involve updates to position, orientation, or attributes of an object.
 	/// </summary>
 	/// <remarks>
 	/// -
 	/// </remarks>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public class CategoryOfAggregation
-	{
-		public required string label { get; set; }
-		public required string definition { get; set; }
-		public required int code { get; set; }
+	public enum changeTypes : int {
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Advanced notice of changes")] 
+		[XmlEnum("1")] 
+		AdvancedNoticeOfChanges = 1,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Discrepancy")] 
+		[XmlEnum("2")] 
+		Discrepancy = 2,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Proposed changes")] 
+		[XmlEnum("3")] 
+		ProposedChanges = 3,
+
+		[System.ComponentModel.Description("-")]
+		[EnumMember(Value = "Temporary changes")] 
+		[XmlEnum("4")] 
+		TemporaryChanges = 4,
 	}
 
 	/// <summary>
@@ -3997,7 +4057,21 @@ namespace S100Framework.DomainModel.S125 {
 	/// -
 	/// </remarks>
 	[System.Serializable()]
-	public class CategoryOfAssociation
+	public class categoryOfAssociation
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	/// <summary>
+	/// Named aggregations between two or more aids to navigation and/or navigationally relevant features.
+	/// </summary>
+	/// <remarks>
+	/// -
+	/// </remarks>
+	[System.Serializable()]
+	public class categoryOfAggregation
 	{
 		public required string label { get; set; }
 		public required string definition { get; set; }
@@ -4006,7 +4080,20 @@ namespace S100Framework.DomainModel.S125 {
 
 	public static class CodeList
 	{
-		public static ImmutableArray<CategoryOfAggregation> CategoryOfAggregations => ImmutableArray.Create<CategoryOfAggregation>(new CategoryOfAggregation[]{
+		public static ImmutableArray<categoryOfAssociation> categoryOfAssociations => ImmutableArray.Create<categoryOfAssociation>(new categoryOfAssociation[]{
+			new() {
+				code = 1,
+				definition = "-",
+				label = "Channel Markings",
+			},
+			new() {
+				code = 2,
+				definition = "-",
+				label = "Danger Markings",
+			},
+		});
+
+		public static ImmutableArray<categoryOfAggregation> categoryOfAggregations => ImmutableArray.Create<categoryOfAggregation>(new categoryOfAggregation[]{
 			new() {
 				code = 1,
 				definition = "-",
@@ -4023,22 +4110,245 @@ namespace S100Framework.DomainModel.S125 {
 				label = "range system ",
 			},
 		});
-
-		public static ImmutableArray<CategoryOfAssociation> CategoryOfAssociations => ImmutableArray.Create<CategoryOfAssociation>(new CategoryOfAssociation[]{
-			new() {
-				code = 1,
-				definition = "A group of channel marks which indicate channel limits.",
-				label = "Channel Markings",
-			},
-			new() {
-				code = 2,
-				definition = "One of more aids to navigation and the danger(s) that are marked.",
-				label = "Danger Markings",
-			},
-		});
 	}
 
 	namespace ComplexAttributes {
+		/// <summary>
+		/// Specific information or description regarding modifications or updates made to an object, system, or dataset. This term typically includes the nature, scope, and reason for the change, as well as any impact it may have on operations or functionality.
+		/// </summary>
+		/// <remarks>
+		/// -
+		/// </remarks>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class changeDetails : ComplexType {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
+			public atonCommissioning? atonCommissioning {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27])]
+			[Optional]
+			public atonRemoval? atonRemoval {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[Optional]
+			public atonReplacement? atonReplacement {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[Optional]
+			public fixedAtonChange? fixedAtonChange {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
+			[Optional]
+			public floatingAtonChange? floatingAtonChange {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4])]
+			[Optional]
+			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
+			[Optional]
+			public lightedAtonChange? lightedAtonChange {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
+			[Optional]
+			public electronicAtoNChange? electronicAtoNChange {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
+
+			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
+
+			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
+
+			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
+
+			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
+
+			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
+
+			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
+
+			public bool ShouldSerializeelectronicAtoNChange() { return electronicAtoNChange.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("atonCommissioning")]
+			public SerializableEnumeration<atonCommissioning>? atonCommissioningElement { get { return atonCommissioning; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("atonRemoval")]
+			public SerializableEnumeration<atonRemoval>? atonRemovalElement { get { return atonRemoval; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("atonReplacement")]
+			public SerializableEnumeration<atonReplacement>? atonReplacementElement { get { return atonReplacement; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("fixedAtonChange")]
+			public SerializableEnumeration<fixedAtonChange>? fixedAtonChangeElement { get { return fixedAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("floatingAtonChange")]
+			public SerializableEnumeration<floatingAtonChange>? floatingAtonChangeElement { get { return floatingAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("audibleSignalAtonChange")]
+			public SerializableEnumeration<audibleSignalAtonChange>? audibleSignalAtonChangeElement { get { return audibleSignalAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("lightedAtonChange")]
+			public SerializableEnumeration<lightedAtonChange>? lightedAtonChangeElement { get { return lightedAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("electronicAtoNChange")]
+			public SerializableEnumeration<electronicAtoNChange>? electronicAtoNChangeElement { get { return electronicAtoNChange; } set { } }
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<changeDetails, bool>> _conditionalUnknown = new Dictionary<string,Func<changeDetails, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class contactAddress : ComplexType {
+			[XmlElement("deliveryPoint")]
+			[Optional]
+			public String? deliveryPoint {get;set;} = default;
+
+			[XmlElement("cityName")]
+			[Optional]
+			public String? cityName {get;set;} = default;
+
+			[XmlElement("administrativeDivision")]
+			[Optional]
+			public String? administrativeDivision {get;set;} = default;
+
+			[XmlElement("countryName")]
+			[Optional]
+			public String? countryName {get;set;} = default;
+
+			[XmlElement("postalCode")]
+			[Optional]
+			public String? postalCode {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
+
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
+
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
+
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
+
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalUnknown = new Dictionary<string,Func<contactAddress, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class featureName : ComplexType {
+			[XmlElement("Language")]
+			[Mandatory]
+			public String Language {get;set;} = string.Empty;
+
+			[XmlElement("name")]
+			[Mandatory]
+			public String name {get;set;} = string.Empty;
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
+		/// </summary>
+		/// <remarks>
+		/// Dates must be encoded in the format YYYYMMDD; using 4 digits for the calendar year (YYYY) and, optionally, 2 digits for the month (MM) (for example April = 04) and 2 digits for the day (DD). When no specific month and/or day is required/known, the values are replaced with dashes (-). The date range of a recurring event or occurrence must be encoded using periodicDateRange.
+		/// </remarks>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class fixedDateRange : ComplexType {
+			[XmlElement("dateEnd")]
+			[Optional]
+			public String? dateEnd {get;set;} = default;
+
+			[XmlElement("dateStart")]
+			[Optional]
+			public String? dateStart {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
+
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
 		/// <summary>
 		/// The best estimate of the accuracy of a position.
 		/// </summary>
@@ -4076,132 +4386,6 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
-		/// </summary>
-		/// <remarks>
-		/// Encodes the vertical uncertainty associated with any vertical measurement.
-		/// </remarks>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class verticalUncertainty : ComplexType {
-			[XmlElement("uncertaintyFixed")]
-			[Mandatory]
-			public double uncertaintyFixed {get;set;} = default;
-
-			[XmlElement("uncertaintyVariableFactor")]
-			[Optional]
-			public double? uncertaintyVariableFactor {get;set;} = default;
-
-			#region ShouldSerialize
-			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalUncertainty, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureName : ComplexType {
-			[XmlElement("language")]
-			[Mandatory]
-			public String language {get;set;} = string.Empty;
-
-			[XmlElement("name")]
-			[Mandatory]
-			public String name {get;set;} = string.Empty;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Optional]
-			public nameUsage? nameUsage {get;set;} = default;
-
-			#region ShouldSerialize
-			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("nameUsage")]
-			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
-		/// </summary>
-		/// <remarks>
-		/// Dates must be encoded in the format YYYYMMDD; using 4 digits for the calendar year (YYYY) and, optionally, 2 digits for the month (MM) (for example April = 04) and 2 digits for the day (DD). When no specific month and/or day is required/known, the values are replaced with dashes (-). The date range of a recurring event or occurrence must be encoded using periodicDateRange.
-		/// </remarks>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class fixedDateRange : ComplexType {
-			[XmlElement("dateEnd")]
-			[Optional]
-			public String? dateEnd {get;set;} = default;
-
-			[XmlElement("dateStart")]
-			[Optional]
-			public String? dateStart {get;set;} = default;
-
-			[XmlElement("timeOfDayEnd")]
-			[Optional]
-			public S100Framework.DomainModel.S100.Time? timeOfDayEnd {get;set;} = default;
-
-			[XmlElement("timeOfDayStart")]
-			[Optional]
-			public S100Framework.DomainModel.S100.Time? timeOfDayStart {get;set;} = default;
-
-			#region ShouldSerialize
-			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
-
-			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
-
-			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.HasValue; }
-
-			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
 		/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 		/// </summary>
 		/// <remarks>
@@ -4222,9 +4406,9 @@ namespace S100Framework.DomainModel.S125 {
 			[Optional]
 			public String? headline {get;set;} = default;
 
-			[XmlElement("language")]
+			[XmlElement("Language")]
 			[Mandatory]
-			public String language {get;set;} = string.Empty;
+			public String Language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
 			[Optional]
@@ -4256,7 +4440,7 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The number of features of identical character that exist as a colocated group.
+		/// The number of features of identical character that exist as a co-located group.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4289,7 +4473,7 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The angular distance measured from true north to the major axis of the feature.
+		/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4393,16 +4577,16 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorInformation : ComplexType {
-			[XmlElement("language")]
+			[XmlElement("Language")]
 			[Optional]
-			public String? language {get;set;} = default;
+			public String? Language {get;set;} = default;
 
 			[XmlElement("text")]
 			[Mandatory]
 			public String text {get;set;} = string.Empty;
 
 			#region ShouldSerialize
-			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			public bool ShouldSerializeLanguage() { return !string.IsNullOrEmpty(Language); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -4432,7 +4616,7 @@ namespace S100Framework.DomainModel.S125 {
 
 			[XmlElement("sectorLineLength")]
 			[Optional]
-			public double? sectorLineLength {get;set;} = default;
+			public int? sectorLineLength {get;set;} = default;
 
 			#region ShouldSerialize
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
@@ -4465,7 +4649,7 @@ namespace S100Framework.DomainModel.S125 {
 
 			[XmlElement("sectorLineLength")]
 			[Optional]
-			public double? sectorLineLength {get;set;} = default;
+			public int? sectorLineLength {get;set;} = default;
 
 			#region ShouldSerialize
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
@@ -4487,7 +4671,7 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The sequence of times occupied by intervals of light and eclipse for all light characteristics.
+		/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4523,6 +4707,75 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
+		/// Encodes the file name of a single external text file that contains the text in a defined language, which provides additional textual information that cannot be provided using other allowable attributes for the feature.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class textualDescription : ComplexType {
+			[XmlElement("fileReference")]
+			[Mandatory]
+			public String fileReference {get;set;} = string.Empty;
+
+			[XmlElement("Language")]
+			[Optional]
+			public String? Language {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializeLanguage() { return !string.IsNullOrEmpty(Language); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<textualDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<textualDescription, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
+		/// </summary>
+		/// <remarks>
+		/// Encodes the vertical uncertainty associated with any vertical measurement.
+		/// </remarks>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class verticalUncertainty : ComplexType {
+			[XmlElement("uncertaintyFixed")]
+			[Mandatory]
+			public double uncertaintyFixed {get;set;} = default;
+
+			[XmlElement("uncertaintyVariableFactor")]
+			[Optional]
+			public double? uncertaintyVariableFactor {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalUncertainty, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// -
 		/// </summary>
 		/// <remarks>
@@ -4530,103 +4783,42 @@ namespace S100Framework.DomainModel.S125 {
 		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class ChangeDetails : ComplexType {
+		public class rhythmOfLight : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Optional]
-			public atonCommissioning? atonCommissioning {get;set;} = default;
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[Mandatory]
+			public lightCharacteristic lightCharacteristic {get;set;}
 
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[XmlElement("signalGroup")]
 			[Optional]
-			public atonRemoval? atonRemoval {get;set;} = default;
+			public List<String> signalGroup {get;set;} = [];
 
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[XmlElement("signalPeriod")]
 			[Optional]
-			public atonReplacement? atonReplacement {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[XmlElement("signalSequence")]
 			[Optional]
-			public fixedAtonChange? fixedAtonChange {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
-			[Optional]
-			public floatingAtonChange? floatingAtonChange {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
-			[Optional]
-			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
-			[Optional]
-			public lightedAtonChange? lightedAtonChange {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
-			[Optional]
-			public electronicAtonChange? electronicAtonChange {get;set;} = default;
+			public List<signalSequence> signalSequence {get;set;} = [];
 
 			#region ShouldSerialize
-			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
-			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
-			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
-
-			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
-
-			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
-
-			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
-
-			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
-
-			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
 			[JsonIgnore]
-			[XmlElement("atonCommissioning")]
-			public SerializableEnumeration<atonCommissioning>? atonCommissioningElement { get { return atonCommissioning; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("atonRemoval")]
-			public SerializableEnumeration<atonRemoval>? atonRemovalElement { get { return atonRemoval; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("atonReplacement")]
-			public SerializableEnumeration<atonReplacement>? atonReplacementElement { get { return atonReplacement; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("fixedAtonChange")]
-			public SerializableEnumeration<fixedAtonChange>? fixedAtonChangeElement { get { return fixedAtonChange; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("floatingAtonChange")]
-			public SerializableEnumeration<floatingAtonChange>? floatingAtonChangeElement { get { return floatingAtonChange; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("audibleSignalAtonChange")]
-			public SerializableEnumeration<audibleSignalAtonChange>? audibleSignalAtonChangeElement { get { return audibleSignalAtonChange; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("lightedAtonChange")]
-			public SerializableEnumeration<lightedAtonChange>? lightedAtonChangeElement { get { return lightedAtonChange; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("electronicAtonChange")]
-			public SerializableEnumeration<electronicAtonChange>? electronicAtonChangeElement { get { return electronicAtonChange; } set { } }
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
 			#endregion
 
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ChangeDetails, bool>> _conditionalUnknown = new Dictionary<string,Func<ChangeDetails, bool>> {
+			private IReadOnlyDictionary<string, Func<rhythmOfLight, bool>> _conditionalUnknown = new Dictionary<string,Func<rhythmOfLight, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -4662,54 +4854,6 @@ namespace S100Framework.DomainModel.S125 {
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<directionalCharacter, bool>> _conditionalUnknown = new Dictionary<string,Func<directionalCharacter, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class rhythmOfLight : ComplexType {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
-			[Mandatory]
-			public lightCharacteristic lightCharacteristic {get;set;}
-
-			[XmlElement("signalGroup")]
-			[Multiplicity(0, 10)]
-			public List<String> signalGroup {get;set;} = [];
-
-			[XmlElement("signalPeriod")]
-			[Optional]
-			public double? signalPeriod {get;set;} = default;
-
-			[XmlElement("signalSequence")]
-			[Multiplicity(0, 10)]
-			public List<signalSequence> signalSequence {get;set;} = [];
-
-			#region ShouldSerialize
-			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
-
-			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
-
-			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("lightCharacteristic")]
-			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<rhythmOfLight, bool>> _conditionalUnknown = new Dictionary<string,Func<rhythmOfLight, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -4755,6 +4899,90 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
+		/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class spatialAccuracy : ComplexType {
+			[XmlElement("fixedDateRange")]
+			[Optional]
+			public fixedDateRange? fixedDateRange {get;set;} = default;
+
+			[XmlElement("horizontalPositionUncertainty")]
+			[Optional]
+			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
+
+			[XmlElement("verticalUncertainty")]
+			[Optional]
+			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
+
+			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<spatialAccuracy, bool>> _conditionalUnknown = new Dictionary<string,Func<spatialAccuracy, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A portion or sector of a navigational aid, such as a light or beacon, that is blocked or obscured from view due to obstacles (e.g., landforms, buildings, or other structures). In marine or aviation navigation, it usually refers to an area where the light signal or visibility is intentionally or unintentionally reduced or not visible to vessels or aircraft.
+		/// </summary>
+		/// <remarks>
+		/// -
+		/// </remarks>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class obscuredSector : ComplexType {
+			[XmlElement("sectorLimit")]
+			[Mandatory]
+			public sectorLimit sectorLimit {get;set;} = new sectorLimit {
+				sectorLimitOne = new sectorLimitOne {
+							sectorBearing = default,
+						},
+				sectorLimitTwo = new sectorLimitTwo {
+							sectorBearing = default,
+						},
+			};
+
+			[XmlElement("sectorInformation")]
+			[Optional]
+			public sectorInformation? sectorInformation {get;set;} = default;
+
+			#region ShouldSerialize
+			public bool ShouldSerializesectorInformation() { return sectorInformation!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<obscuredSector, bool>> _conditionalUnknown = new Dictionary<string,Func<obscuredSector, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 		/// </summary>
 		[System.Serializable()]
@@ -4762,7 +4990,7 @@ namespace S100Framework.DomainModel.S125 {
 		public class lightSector : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Multiplicity(1, 99)]
+			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlElement("directionalCharacter")]
@@ -4771,7 +4999,7 @@ namespace S100Framework.DomainModel.S125 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Multiplicity(0, 99)]
+			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			[XmlElement("sectorLimit")]
@@ -4783,7 +5011,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? valueOfNominalRange {get;set;} = default;
 
 			[XmlElement("sectorInformation")]
-			[Multiplicity(0, 99)]
+			[Optional]
 			public List<sectorInformation> sectorInformation {get;set;} = [];
 
 			[XmlElement("sectorArcExtension")]
@@ -4881,89 +5109,44 @@ namespace S100Framework.DomainModel.S125 {
 			#endregion
 		}
 
-		/// <summary>
-		/// -
-		/// </summary>
-		/// <remarks>
-		/// -
-		/// </remarks>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class ObscuredSector : ComplexType {
-			[XmlElement("sectorLimit")]
-			[Mandatory]
-			public sectorLimit sectorLimit {get;set;} = new sectorLimit {
-				sectorLimitOne = new sectorLimitOne {
-							sectorBearing = default,
-						},
-				sectorLimitTwo = new sectorLimitTwo {
-							sectorBearing = default,
-						},
-			};
-
-			[XmlElement("sectorInformation")]
-			[Optional]
-			public sectorInformation? sectorInformation {get;set;} = default;
-
-			#region ShouldSerialize
-			public bool ShouldSerializesectorInformation() { return sectorInformation!=default; }
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<ObscuredSector, bool>> _conditionalUnknown = new Dictionary<string,Func<ObscuredSector, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
 	}
 	public enum Role {
 		[System.ComponentModel.Description("-")]
-		parent,
+		navigationLine,
 		[System.ComponentModel.Description("-")]
-		child,
+		atonAssociationBy,
 		[System.ComponentModel.Description("-")]
-		virtualAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
-		syntheticAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
-		physicalAISbroadcastBy,
-		[System.ComponentModel.Description("-")]
-		peerAtonAggregation,
-		[System.ComponentModel.Description("-")]
-		peerAtonAssociation,
-		[System.ComponentModel.Description("The role given to the navigable part of the navigation line.")]
-		navigableTrack,
-		[System.ComponentModel.Description("A signal or message warning of the presence of a danger to navigation.")]
-		danger,
-		[System.ComponentModel.Description("-")]
-		topmarkPart,
+		atonAggregationBy,
 		[System.ComponentModel.Description("-")]
 		Statuspart,
+		[System.ComponentModel.Description("-")]
+		physicalAISbroadcasts,
 		[System.ComponentModel.Description("-")]
 		virtualAISbroadcasts,
 		[System.ComponentModel.Description("-")]
 		syntheticAISbroadcasts,
 		[System.ComponentModel.Description("-")]
-		physicalAISbroadcasts,
-		[System.ComponentModel.Description("-")]
-		atonAggregationBy,
-		[System.ComponentModel.Description("-")]
-		atonAssociationBy,
-		[System.ComponentModel.Description("The role given to the navigation line(s) that is generally formed between two or more objects, or by one object and a bearing.")]
-		navigationLine,
+		child,
 		[System.ComponentModel.Description("-")]
 		markingAton,
+		[System.ComponentModel.Description("The role given to the navigable part of the navigation line.")]
+		navigableTrack,
 		[System.ComponentModel.Description("-")]
-		buoyPart,
+		peerAtonAssociation,
+		[System.ComponentModel.Description("-")]
+		peerAtonAggregation,
+		[System.ComponentModel.Description("-")]
+		Atonpart,
+		[System.ComponentModel.Description("-")]
+		danger,
+		[System.ComponentModel.Description("-")]
+		parent,
+		[System.ComponentModel.Description("-")]
+		physicalAISbroadcastBy,
+		[System.ComponentModel.Description("-")]
+		syntheticAISbroadcastBy,
+		[System.ComponentModel.Description("-")]
+		virtualAISbroadcastBy,
 	}
 
 	namespace InformationAssociations {
@@ -4994,7 +5177,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class BuoyTopmark : FeatureAssociation {
+		public partial class RangeSystem : FeatureAssociation {
 
 			#region ShouldSerialize
 
@@ -5006,11 +5189,71 @@ namespace S100Framework.DomainModel.S125 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(BuoyTopmark);
+			public override string Code => nameof(RangeSystem);
 		}
 
 		/// <summary>
-		/// A feature association for the binding between a navigation aid equipment feature and the structure that supports it.
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAggregations : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(AtonAggregations);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAssociations : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(AtonAssociations);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DangerousFeatureAssociation : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(DangerousFeatureAssociation);
+		}
+
+		/// <summary>
+		/// 
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -5088,86 +5331,6 @@ namespace S100Framework.DomainModel.S125 {
 			[XmlIgnore]
 			public override string Code => nameof(VirtualAIS);
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAggregations : FeatureAssociation {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(AtonAggregations);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAssociations : FeatureAssociation {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(AtonAssociations);
-		}
-
-		/// <summary>
-		/// Navigation system limited in their positioning capability to coastal regions, or those systems limited to making landfall
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RangeSystem : FeatureAssociation {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(RangeSystem);
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DangerousFeatureAssociation : FeatureAssociation {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(DangerousFeatureAssociation);
-		}
 	}
 
 }
@@ -5179,30 +5342,85 @@ namespace S100Framework.DomainModel.S125 {
 
 	namespace InformationTypes {
 		/// <summary>
-		/// -
+		/// The indication of the quality of the locational information for features in a dataset.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[Optional]
+			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
+
+			[XmlElement("spatialAccuracy")]
+			[Optional]
+			public spatialAccuracy? spatialAccuracy {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.HasValue; }
+
+			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("qualityOfVerticalMeasurement")]
+			public SerializableEnumeration<qualityOfVerticalMeasurement>? qualityOfVerticalMeasurementElement { get { return qualityOfVerticalMeasurement; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(SpatialQuality);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SpatialQuality, bool>> _conditionalUnknown = new Dictionary<string,Func<SpatialQuality, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// This refers to the current operational status or condition of an Aid to Navigation (AtoN). It provides details about whether the navigational aid (such as a buoy, light, or beacon) is functioning properly, temporarily out of service, under maintenance, or has any other status that affects its operation or visibility to mariners.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonStatusInformation : InformationNode, IInformationBindingDefinition {
-			[XmlElement("ChangeDetails")]
+			[XmlElement("changeDetails")]
 			[Mandatory]
-			public ChangeDetails ChangeDetails {get;set;} = new ChangeDetails {
+			public changeDetails changeDetails {get;set;} = new changeDetails {
 			};
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
-			public ChangeTypes? ChangeTypes {get;set;} = default;
+			public changeTypes? changeTypes {get;set;} = default;
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializeChangeTypes() { return ChangeTypes.HasValue; }
+			public bool ShouldSerializechangeTypes() { return changeTypes.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
 			[JsonIgnore]
-			[XmlElement("ChangeTypes")]
-			public SerializableEnumeration<ChangeTypes>? ChangeTypesElement { get { return ChangeTypes; } set { } }
+			[XmlElement("changeTypes")]
+			public SerializableEnumeration<changeTypes>? changeTypesElement { get { return changeTypes; } set { } }
 			#endregion
 
 			[JsonIgnore]
@@ -5244,13 +5462,9 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("iDCode")]
-			[Optional]
-			public String? iDCode {get;set;} = default;
-
 			[XmlElement("interoperabilityIdentifier")]
-			[Mandatory]
-			public String interoperabilityIdentifier {get;set;} = string.Empty;
+			[Optional]
+			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlElement("information")]
 			[Optional]
@@ -5288,9 +5502,13 @@ namespace S100Framework.DomainModel.S125 {
 			[Optional]
 			public periodicDateRange? periodicDateRange {get;set;} = default;
 
+			[XmlElement("seasonalActionRequired")]
+			[Optional]
+			public List<String> seasonalActionRequired {get;set;} = [];
+
 
 			#region ShouldSerialize
-			public bool ShouldSerializeiDCode() { return !string.IsNullOrEmpty(iDCode); }
+			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
@@ -5309,6 +5527,8 @@ namespace S100Framework.DomainModel.S125 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
+
+			public bool ShouldSerializeseasonalActionRequired() { return seasonalActionRequired.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -5344,7 +5564,7 @@ namespace S100Framework.DomainModel.S125 {
 			[JsonIgnore]
 			public override Primitives[] primitives => AidsToNavigation._primitives;
 			public static Primitives[] _primitives => [
-				Primitives.noGeometry
+				Primitives.point
 			];
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
@@ -5369,75 +5589,6 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The implements used in an operation or activity.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Equipment : AidsToNavigation {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(Equipment);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Equipment._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Equipment._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Equipment._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.parent)!,
-					featureTypes = [nameof(StructureObject)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<Equipment, bool>> _conditionalUnknown = new Dictionary<string,Func<Equipment, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
 		/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 		/// </summary>
 		[System.Serializable()]
@@ -5455,7 +5606,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5675,7 +5825,514 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
+		/// The implements used in an operation or activity.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class Equipment : AidsToNavigation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(Equipment);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Equipment._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Equipment._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Equipment._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(StructureEquipment),
+					role = Enum.GetName<Role>(Role.parent)!,
+					featureTypes = [nameof(StructureObject)],
+				},
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// Something (such as a house, tower, bridge, etc.) that is built by putting parts together and that usually stands on its own.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class StructureObject : AidsToNavigation {
+			[XmlElement("atoNNumber")]
+			[Mandatory]
+			public String atoNNumber {get;set;} = string.Empty;
+
+			[XmlElement("contactAddress")]
+			[Optional]
+			public contactAddress? contactAddress {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecontactAddress() { return contactAddress!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(StructureObject);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..StructureObject._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..StructureObject._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..StructureObject._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(StructureEquipment),
+					role = Enum.GetName<Role>(Role.child)!,
+					featureTypes = [nameof(Equipment)],
+				},
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// A floating object moored to the bottom in a particular (charted) place, as an aid to navigation or for other specific purposes.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericBuoy : StructureObject {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Mandatory]
+			public buoyShape buoyShape {get;set;}
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Multiplicity(1)]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[XmlElement("radarConspicuous")]
+			[Optional]
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[Optional]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+			[XmlElement("typeOfBuoy")]
+			[Optional]
+			public String? typeOfBuoy {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("buoyShape")]
+			public SerializableEnumeration<buoyShape> buoyShapeElement { get { return buoyShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(GenericBuoy);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBuoy._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// A fixed artificial navigation mark that can be recognized by its shape, colour, pattern, topmark or light character, or a combination of these. It may carry various additional aids to navigation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericBeacon : StructureObject {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Mandatory]
+			public beaconShape beaconShape {get;set;}
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Multiplicity(1)]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[XmlElement("radarConspicuous")]
+			[Optional]
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Optional]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			[XmlElement("height")]
+			[Optional]
+			public double? height {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[Optional]
+			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[XmlElement("verticalLength")]
+			[Optional]
+			public double? verticalLength {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+			[XmlElement("verticalAccuracy")]
+			[Optional]
+			public double? verticalAccuracy {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("beaconShape")]
+			public SerializableEnumeration<beaconShape> beaconShapeElement { get { return beaconShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(GenericBeacon);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBeacon._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Landmark : StructureObject {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[Multiplicity(1)]
+			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[XmlElement("radarConspicuous")]
+			[Optional]
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Mandatory]
+			public visualProminence visualProminence {get;set;}
+
+			[XmlIgnore]
+			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50])]
+			[Optional]
+			public List<function> function {get;set;} = [];
+
+			[XmlElement("height")]
+			[Optional]
+			public double? height {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializefunction() { return function.Any(); }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfLandmark")]
+			public SerializableEnumeration<categoryOfLandmark>[] categoryOfLandmarkElement { get { return [.. categoryOfLandmark]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence> visualProminenceElement { get { return visualProminence; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("function")]
+			public SerializableEnumeration<function>[] functionElement { get { return [.. function]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(Landmark);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Landmark._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Landmark._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..StructureObject._primitives, ..Landmark._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<Landmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Landmark, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// (1) The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (2) An unlighted navigational mark.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -5700,7 +6357,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -5714,9 +6371,9 @@ namespace S100Framework.DomainModel.S125 {
 			[Mandatory]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
-			[XmlElement("orientation")]
-			[Optional]
-			public orientation? orientation {get;set;} = default;
+			[XmlElement("isSlatted")]
+			[Mandatory]
+			public Boolean isSlatted {get;set;} = false;
 
 
 			#region ShouldSerialize
@@ -5731,8 +6388,6 @@ namespace S100Framework.DomainModel.S125 {
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			public bool ShouldSerializestatus() { return status.Any(); }
-
-			public bool ShouldSerializeorientation() { return orientation!=default; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -5788,72 +6443,6 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<Daymark, bool>> _conditionalUnknown = new Dictionary<string,Func<Daymark, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// Something (such as a house, tower, bridge, etc.) that is built by putting parts together and that usually stands on its own.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StructureObject : AidsToNavigation {
-			[XmlElement("AtoNNumber")]
-			[Mandatory]
-			public String AtoNNumber {get;set;} = string.Empty;
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(StructureObject);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..StructureObject._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..StructureObject._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..StructureObject._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.child)!,
-					featureTypes = [nameof(Equipment)],
-				},
-			];
-			#endregion
-
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
@@ -5865,7 +6454,7 @@ namespace S100Framework.DomainModel.S125 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<StructureObject, bool>> _conditionalUnknown = new Dictionary<string,Func<StructureObject, bool>> {
+			private IReadOnlyDictionary<string, Func<Daymark, bool>> _conditionalUnknown = new Dictionary<string,Func<Daymark, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -5937,6 +6526,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -5944,7 +6541,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -6004,6 +6600,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -6011,150 +6615,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A fixed artificial navigation mark that can be recognized by its shape, colour, pattern, topmark or light character, or a combination of these. It may carry various additional aids to navigation.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class GenericBeacon : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Mandatory]
-			public beaconShape beaconShape {get;set;}
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Multiplicity(1)]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Optional]
-			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[XmlElement("radarConspicuous")]
-			[Optional]
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Optional]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[XmlElement("height")]
-			[Optional]
-			public double? height {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
-			[Optional]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[XmlElement("verticalLength")]
-			[Optional]
-			public double? verticalLength {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("beaconShape")]
-			public SerializableEnumeration<beaconShape> beaconShapeElement { get { return beaconShape; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(GenericBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBeacon._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<GenericBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<GenericBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -6169,10 +6629,6 @@ namespace S100Framework.DomainModel.S125 {
 			[EnumerationValue([1,2,3])]
 			[Mandatory]
 			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
-
-			[XmlElement("radarWaveLength")]
-			[Optional]
-			public radarWaveLength? radarWaveLength {get;set;} = default;
 
 			[XmlElement("sectorLimitOne")]
 			[Optional]
@@ -6199,10 +6655,12 @@ namespace S100Framework.DomainModel.S125 {
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
 
+			[XmlElement("radarWaveLength")]
+			[Optional]
+			public radarWaveLength? radarWaveLength {get;set;} = default;
+
 
 			#region ShouldSerialize
-			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
-
 			public bool ShouldSerializesectorLimitOne() { return sectorLimitOne!=default; }
 
 			public bool ShouldSerializesectorLimitTwo() { return sectorLimitTwo!=default; }
@@ -6214,6 +6672,8 @@ namespace S100Framework.DomainModel.S125 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6253,6 +6713,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -6260,7 +6728,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -6272,7 +6739,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20])]
+			[EnumerationValue([20])]
 			[Mandatory]
 			public categoryOfRadioStation categoryOfRadioStation {get;set;}
 
@@ -6353,6 +6820,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -6360,13 +6835,12 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
 
 		/// <summary>
-		/// A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light.
+		/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -6447,6 +6921,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -6454,140 +6936,19 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
 
 		/// <summary>
-		/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
+		/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CardinalBeacon : GenericBeacon {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
-			[Mandatory]
-			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfCardinalMark")]
-			public SerializableEnumeration<categoryOfCardinalMark> categoryOfCardinalMarkElement { get { return categoryOfCardinalMark; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(CardinalBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..CardinalBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..CardinalBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..GenericBeacon._primitives, ..CardinalBeacon._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<CardinalBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IsolatedDangerBeacon : GenericBeacon {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(IsolatedDangerBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..IsolatedDangerBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..IsolatedDangerBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..GenericBeacon._primitives, ..IsolatedDangerBeacon._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<IsolatedDangerBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A prominent object at a fixed location on land which can be used in determining a location or a direction.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Landmark : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
-			[Multiplicity(1)]
-			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
-
+		public partial class LightFloat : StructureObject {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Optional]
+			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
@@ -6601,16 +6962,11 @@ namespace S100Framework.DomainModel.S125 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
-			[Mandatory]
-			public visualProminence visualProminence {get;set;}
-
-			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50])]
 			[Optional]
-			public List<function> function {get;set;} = [];
+			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -6619,34 +6975,22 @@ namespace S100Framework.DomainModel.S125 {
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[XmlElement("height")]
-			[Optional]
-			public double? height {get;set;} = default;
-
 
 			#region ShouldSerialize
-			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
-
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
-			public bool ShouldSerializefunction() { return function.Any(); }
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			public bool ShouldSerializestatus() { return status.Any(); }
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfLandmark")]
-			public SerializableEnumeration<categoryOfLandmark>[] categoryOfLandmarkElement { get { return [.. categoryOfLandmark]; } set { } }
-
 			[JsonIgnore]
 			[XmlElement("colour")]
 			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
@@ -6657,11 +7001,7 @@ namespace S100Framework.DomainModel.S125 {
 
 			[JsonIgnore]
 			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence> visualProminenceElement { get { return visualProminence; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("function")]
-			public SerializableEnumeration<function>[] functionElement { get { return [.. function]; } set { } }
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("natureOfConstruction")]
@@ -6674,12 +7014,12 @@ namespace S100Framework.DomainModel.S125 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(Landmark);
+			public override string Code => nameof(LightFloat);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Landmark._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightFloat._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 			#endregion
@@ -6687,317 +7027,15 @@ namespace S100Framework.DomainModel.S125 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Landmark._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightFloat._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..Landmark._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point, Primitives.curve, Primitives.surface
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<Landmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Landmark, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LateralBeacon : GenericBeacon {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
-			[Mandatory]
-			public categoryOfLateralMark categoryOfLateralMark {get;set;}
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfLateralMark")]
-			public SerializableEnumeration<categoryOfLateralMark> categoryOfLateralMarkElement { get { return categoryOfLateralMark; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(LateralBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..LateralBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..LateralBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..GenericBeacon._primitives, ..LateralBeacon._primitives];
+			public override Primitives[] primitives => [..StructureObject._primitives, ..LightFloat._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.point
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<LateralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A distinctive structure on or off a coast exhibiting a major light designed to serve as an aid to navigation.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Lighthouse : Landmark {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(Lighthouse);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Landmark._informationBindingDefinitions, ..Lighthouse._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Landmark._featureBindingDefinitions, ..Lighthouse._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..Landmark._primitives, ..Lighthouse._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point, Primitives.surface
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<Lighthouse, bool>> _conditionalUnknown = new Dictionary<string,Func<Lighthouse, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A safe water beacon is used to indicate that there is navigable water around the mark.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SafeWaterBeacon : GenericBeacon {
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(SafeWaterBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SafeWaterBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SafeWaterBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SafeWaterBeacon._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<SafeWaterBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
-			[Multiplicity(1)]
-			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfSpecialPurposeMark")]
-			public SerializableEnumeration<categoryOfSpecialPurposeMark>[] categoryOfSpecialPurposeMarkElement { get { return [.. categoryOfSpecialPurposeMark]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(SpecialPurposeGeneralBeacon);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SpecialPurposeGeneralBeacon._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SpecialPurposeGeneralBeacon._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SpecialPurposeGeneralBeacon._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBeacon, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// -
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("information")]
-			[Optional]
-			public List<information> information {get;set;} = [];
-
-			[XmlElement("interoperabilityIdentifier")]
-			[Optional]
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializeinformation() { return information.Any(); }
-
-			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(DangerousFeature);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DangerousFeature._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DangerousFeature._featureBindingDefinitions;
-
-			[JsonIgnore]
-			public override Primitives[] primitives => DangerousFeature._primitives;
-			public static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  default,
-					association = nameof(DangerousFeatureAssociation),
-					role = Enum.GetName<Role>(Role.markingAton)!,
-					featureTypes = [nameof(AtonAssociation)],
-				},
 			];
 			#endregion
 
@@ -7012,7 +7050,7 @@ namespace S100Framework.DomainModel.S125 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DangerousFeature, bool>> _conditionalUnknown = new Dictionary<string,Func<DangerousFeature, bool>> {
+			private IReadOnlyDictionary<string, Func<LightFloat, bool>> _conditionalUnknown = new Dictionary<string,Func<LightFloat, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -7021,583 +7059,11 @@ namespace S100Framework.DomainModel.S125 {
 		}
 
 		/// <summary>
-		/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
+		/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAssociation : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("CategoryOfAssociation")]
-			[EnumerationValue([1,2])]
-			[Mandatory]
-			public CategoryOfAssociation CategoryOfAssociation {get;set;} = default;
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(AtonAssociation);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AtonAssociation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AtonAssociation._featureBindingDefinitions;
-
-			[JsonIgnore]
-			public override Primitives[] primitives => AtonAssociation._primitives;
-			public static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DangerousFeatureAssociation),
-					role = Enum.GetName<Role>(Role.danger)!,
-					featureTypes = [nameof(DangerousFeature)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AtonAssociations),
-					role = Enum.GetName<Role>(Role.atonAssociationBy)!,
-					featureTypes = [nameof(AidsToNavigation)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<AtonAssociation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAssociation, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAggregation : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("CategoryOfAggregation")]
-			[EnumerationValue([1,3,2])]
-			[Mandatory]
-			public CategoryOfAggregation CategoryOfAggregation {get;set;} = default;
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(AtonAggregation);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AtonAggregation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AtonAggregation._featureBindingDefinitions;
-
-			[JsonIgnore]
-			public override Primitives[] primitives => AtonAggregation._primitives;
-			public static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AtonAggregations),
-					role = Enum.GetName<Role>(Role.atonAggregationBy)!,
-					featureTypes = [nameof(AidsToNavigation)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<AtonAggregation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAggregation, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// TBD
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class ElectronicAton : AidsToNavigation {
-			[XmlElement("AtoNNumber")]
-			[Optional]
-			public String? AtoNNumber {get;set;} = default;
-
-			[XmlElement("mMSICode")]
-			[Mandatory]
-			public String mMSICode {get;set;} = string.Empty;
-
-			[XmlIgnore]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(ElectronicAton);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..ElectronicAton._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..ElectronicAton._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..ElectronicAton._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-		}
-
-		/// <summary>
-		/// -
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class GenericLight : Equipment {
-			[XmlElement("height")]
-			[Optional]
-			public double? height {get;set;} = default;
-
-			[XmlElement("verticalLength")]
-			[Optional]
-			public double? verticalLength {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
-			[Optional]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-			[XmlElement("effectiveIntensity")]
-			[Optional]
-			public double? effectiveIntensity {get;set;} = default;
-
-			[XmlElement("peakIntensity")]
-			[Optional]
-			public double? peakIntensity {get;set;} = default;
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
-			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
-
-			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(GenericLight);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..GenericLight._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..GenericLight._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..Equipment._primitives, ..GenericLight._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.noGeometry
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-		}
-
-		/// <summary>
-		/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Topmark : AidsToNavigation {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Optional]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Optional]
-			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
-			[Mandatory]
-			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("topmarkDaymarkShape")]
-			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(Topmark);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Topmark._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Topmark._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Topmark._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(BuoyTopmark),
-					role = Enum.GetName<Role>(Role.buoyPart)!,
-					featureTypes = [nameof(GenericBuoy)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<Topmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Topmark, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PhysicalAISAidToNavigation : ElectronicAton {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Mandatory]
-			public CategoryOfPhysicalAISAidToNavigation CategoryOfPhysicalAISAidToNavigation {get;set;}
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("CategoryOfPhysicalAISAidToNavigation")]
-			public SerializableEnumeration<CategoryOfPhysicalAISAidToNavigation> CategoryOfPhysicalAISAidToNavigationElement { get { return CategoryOfPhysicalAISAidToNavigation; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(PhysicalAISAidToNavigation);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..PhysicalAISAidToNavigation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..PhysicalAISAidToNavigation._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..ElectronicAton._primitives, ..PhysicalAISAidToNavigation._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PhysicalAIS),
-					role = Enum.GetName<Role>(Role.physicalAISbroadcasts)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<PhysicalAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<PhysicalAISAidToNavigation, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station located remotely from the intended physical Aid to Navigation.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SyntheticAISAidToNavigation : ElectronicAton {
-			[XmlIgnore]
-			[EnumerationValue([1,2])]
-			[Mandatory]
-			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
-			[Mandatory]
-			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
-
-
-			#region ShouldSerialize
-
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("CategoryOfSyntheticAISAidtoNavigation")]
-			public SerializableEnumeration<CategoryOfSyntheticAISAidtoNavigation> CategoryOfSyntheticAISAidtoNavigationElement { get { return CategoryOfSyntheticAISAidtoNavigation; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("virtualAISAidToNavigationType")]
-			public SerializableEnumeration<virtualAISAidToNavigationType> virtualAISAidToNavigationTypeElement { get { return virtualAISAidToNavigationType; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(SyntheticAISAidToNavigation);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..ElectronicAton._primitives, ..SyntheticAISAidToNavigation._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(SyntheticAIS),
-					role = Enum.GetName<Role>(Role.syntheticAISbroadcasts)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
-			#endregion
-
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<SyntheticAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<SyntheticAISAidToNavigation, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-		/// <summary>
-		/// A floating object moored to the bottom in a particular (charted) place, as an aid to navigation or for other specific purposes.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class GenericBuoy : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Mandatory]
-			public buoyShape buoyShape {get;set;}
-
+		public partial class LightVessel : StructureObject {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
@@ -7613,12 +7079,12 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[EnumerationValue([1,2,3])]
 			[Optional]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
+			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -7626,10 +7092,6 @@ namespace S100Framework.DomainModel.S125 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
-
-			[XmlElement("typeOfBuoy")]
-			[Optional]
-			public String? typeOfBuoy {get;set;} = default;
 
 
 			#region ShouldSerialize
@@ -7639,20 +7101,14 @@ namespace S100Framework.DomainModel.S125 {
 
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			public bool ShouldSerializestatus() { return status.Any(); }
-
-			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("buoyShape")]
-			public SerializableEnumeration<buoyShape> buoyShapeElement { get { return buoyShape; } set { } }
-
 			[JsonIgnore]
 			[XmlElement("colour")]
 			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
@@ -7662,8 +7118,8 @@ namespace S100Framework.DomainModel.S125 {
 			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
 
 			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("natureOfConstruction")]
@@ -7676,12 +7132,12 @@ namespace S100Framework.DomainModel.S125 {
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(GenericBuoy);
+			public override string Code => nameof(LightVessel);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBuoy._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightVessel._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 			#endregion
@@ -7689,40 +7145,179 @@ namespace S100Framework.DomainModel.S125 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBuoy._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightVessel._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBuoy._primitives];
+			public override Primitives[] primitives => [..StructureObject._primitives, ..LightVessel._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.point
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BuoyTopmark),
-					role = Enum.GetName<Role>(Role.topmarkPart)!,
-					featureTypes = [nameof(Topmark)],
-				},
 			];
 			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
 
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<GenericBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<GenericBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<LightVessel, bool>> _conditionalUnknown = new Dictionary<string,Func<LightVessel, bool>> {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
 
 		/// <summary>
-		/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or sea floor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
+		/// A permanent offshore structure, either fixed or floating.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class OffshorePlatform : StructureObject {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[Optional]
+			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5])]
+			[Optional]
+			public condition? condition {get;set;} = default;
+
+			[XmlElement("radarConspicuous")]
+			[Optional]
+			public Boolean? radarConspicuous {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Optional]
+			public visualProminence? visualProminence {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializecondition() { return condition.HasValue; }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfOffshorePlatform")]
+			public SerializableEnumeration<categoryOfOffshorePlatform>[] categoryOfOffshorePlatformElement { get { return [.. categoryOfOffshorePlatform]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("condition")]
+			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(OffshorePlatform);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..OffshorePlatform._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..OffshorePlatform._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..StructureObject._primitives, ..OffshorePlatform._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<OffshorePlatform, bool>> _conditionalUnknown = new Dictionary<string,Func<OffshorePlatform, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -7809,6 +7404,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -7816,7 +7419,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -7856,8 +7458,12 @@ namespace S100Framework.DomainModel.S125 {
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
+			[XmlElement("height")]
+			[Optional]
+			public double? height {get;set;} = default;
+
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -7865,10 +7471,6 @@ namespace S100Framework.DomainModel.S125 {
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
-
-			[XmlElement("height")]
-			[Optional]
-			public double? height {get;set;} = default;
 
 
 			#region ShouldSerialize
@@ -7884,11 +7486,11 @@ namespace S100Framework.DomainModel.S125 {
 
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			public bool ShouldSerializestatus() { return status.Any(); }
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -7941,12 +7543,20 @@ namespace S100Framework.DomainModel.S125 {
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..SiloTank._primitives];
 			public new static Primitives[] _primitives => [
-				Primitives.point, Primitives.surface
+				Primitives.point
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
 
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
@@ -7955,7 +7565,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8009,6 +7618,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8016,7 +7633,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8063,6 +7679,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8070,7 +7694,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8124,6 +7747,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8131,7 +7762,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8178,6 +7808,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8185,7 +7823,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8239,6 +7876,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8246,229 +7891,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightFloat : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Multiplicity(1)]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Optional]
-			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[XmlElement("radarConspicuous")]
-			[Optional]
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Optional]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(LightFloat);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightFloat._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightFloat._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..LightFloat._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<LightFloat, bool>> _conditionalUnknown = new Dictionary<string,Func<LightFloat, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightVessel : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Multiplicity(1)]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Optional]
-			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[XmlElement("radarConspicuous")]
-			[Optional]
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Optional]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(LightVessel);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightVessel._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightVessel._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..LightVessel._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<LightVessel, bool>> _conditionalUnknown = new Dictionary<string,Func<LightVessel, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8515,6 +7937,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8522,140 +7952,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
-			}
-			#endregion
-		}
-
-		/// <summary>
-		/// A permanent offshore structure, either fixed or floating.
-		/// </summary>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OffshorePlatform : StructureObject {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
-			[Optional]
-			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Optional]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
-			[Optional]
-			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
-			[Optional]
-			public condition? condition {get;set;} = default;
-
-			[XmlElement("radarConspicuous")]
-			[Optional]
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
-			[Optional]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
-			[Optional]
-			public List<status> status {get;set;} = [];
-
-
-			#region ShouldSerialize
-			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
-			public bool ShouldSerializecondition() { return condition.HasValue; }
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfOffshorePlatform")]
-			public SerializableEnumeration<categoryOfOffshorePlatform>[] categoryOfOffshorePlatformElement { get { return [.. categoryOfOffshorePlatform]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("condition")]
-			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-			#endregion
-
-			[JsonIgnore]
-			[XmlIgnore]
-			public override string Code => nameof(OffshorePlatform);
-
-			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..OffshorePlatform._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-			#endregion
-
-			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..OffshorePlatform._featureBindingDefinitions];
-
-			[JsonIgnore]
-			public override Primitives[] primitives => [..StructureObject._primitives, ..OffshorePlatform._primitives];
-			public new static Primitives[] _primitives => [
-				Primitives.point, Primitives.surface
-			];
-
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<OffshorePlatform, bool>> _conditionalUnknown = new Dictionary<string,Func<OffshorePlatform, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8702,6 +7998,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8709,7 +8013,6 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
@@ -8763,6 +8066,14 @@ namespace S100Framework.DomainModel.S125 {
 			];
 			#endregion
 
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -8770,21 +8081,20 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			public override void RunValidationChecks() {
-				base.RunValidationChecks();
 			}
 			#endregion
 		}
 
 		/// <summary>
-		/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
+		/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VirtualAISAidToNavigation : ElectronicAton {
+		public partial class CardinalBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[EnumerationValue([1,2,3,4])]
 			[Mandatory]
-			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
+			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
 
 			#region ShouldSerialize
@@ -8793,18 +8103,18 @@ namespace S100Framework.DomainModel.S125 {
 
 			#region SerializableEnumeration
 			[JsonIgnore]
-			[XmlElement("virtualAISAidToNavigationType")]
-			public SerializableEnumeration<virtualAISAidToNavigationType> virtualAISAidToNavigationTypeElement { get { return virtualAISAidToNavigationType; } set { } }
+			[XmlElement("categoryOfCardinalMark")]
+			public SerializableEnumeration<categoryOfCardinalMark> categoryOfCardinalMarkElement { get { return categoryOfCardinalMark; } set { } }
 			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(VirtualAISAidToNavigation);
+			public override string Code => nameof(CardinalBeacon);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..VirtualAISAidToNavigation._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..CardinalBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 			#endregion
@@ -8812,22 +8122,999 @@ namespace S100Framework.DomainModel.S125 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..VirtualAISAidToNavigation._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..CardinalBeacon._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..ElectronicAton._primitives, ..VirtualAISAidToNavigation._primitives];
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..CardinalBeacon._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.point
 			];
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<CardinalBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBeacon, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class IsolatedDangerBeacon : GenericBeacon {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(IsolatedDangerBeacon);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..IsolatedDangerBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..IsolatedDangerBeacon._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..IsolatedDangerBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<IsolatedDangerBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBeacon, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A safe water beacon is used to indicate that there is navigable water around the mark.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SafeWaterBeacon : GenericBeacon {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(SafeWaterBeacon);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SafeWaterBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SafeWaterBeacon._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SafeWaterBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SafeWaterBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBeacon, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[Multiplicity(1)]
+			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfSpecialPurposeMark")]
+			public SerializableEnumeration<categoryOfSpecialPurposeMark>[] categoryOfSpecialPurposeMarkElement { get { return [.. categoryOfSpecialPurposeMark]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(SpecialPurposeGeneralBeacon);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SpecialPurposeGeneralBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SpecialPurposeGeneralBeacon._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SpecialPurposeGeneralBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBeacon, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LateralBeacon : GenericBeacon {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[Mandatory]
+			public categoryOfLandmark categoryOfLandmark {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfLandmark")]
+			public SerializableEnumeration<categoryOfLandmark> categoryOfLandmarkElement { get { return categoryOfLandmark; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(LateralBeacon);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..LateralBeacon._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..LateralBeacon._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..GenericBeacon._primitives, ..LateralBeacon._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<LateralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBeacon, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A tower and associated Equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class WindTurbine : StructureObject {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public colourPattern? colourPattern {get;set;} = default;
+
+			[XmlIgnore]
+			[Optional]
+			public condition? condition {get;set;} = default;
+
+			[XmlElement("elevation")]
+			[Optional]
+			public double? elevation {get;set;} = default;
+
+			[XmlElement("height")]
+			[Optional]
+			public double? height {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
+
+			[XmlElement("radarConspicuous")]
+			[Optional]
+			public List<Boolean> radarConspicuous {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
+
+			public bool ShouldSerializecondition() { return condition.HasValue; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>? colourPatternElement { get { return colourPattern; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("condition")]
+			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(WindTurbine);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..WindTurbine._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..WindTurbine._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..StructureObject._primitives, ..WindTurbine._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<WindTurbine, bool>> _conditionalUnknown = new Dictionary<string,Func<WindTurbine, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[Mandatory]
+			public verticalDatum verticalDatum {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(VerticalDatumOfData);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => VerticalDatumOfData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<VerticalDatumOfData, bool>> _conditionalUnknown = new Dictionary<string,Func<VerticalDatumOfData, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A geographical area that describes the coverage and extent of spatial objects.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("maximumDisplayScale")]
+			[Mandatory]
+			public int maximumDisplayScale {get;set;} = default;
+
+			[XmlElement("minimumDisplayScale")]
+			[Mandatory]
+			public int minimumDisplayScale {get;set;} = default;
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(DataCoverage);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => DataCoverage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<DataCoverage, bool>> _conditionalUnknown = new Dictionary<string,Func<DataCoverage, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An area within which the navigational system of marks has been established in relation to a specific direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("orientation")]
+			[Mandatory]
+			public orientation orientation {get;set;} = new orientation {
+				orientationValue = default,
+			};
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(LocalDirectionOfBuoyage);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<LocalDirectionOfBuoyage, bool>> _conditionalUnknown = new Dictionary<string,Func<LocalDirectionOfBuoyage, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An area within which the navigational system of marks has been established in relation to a specific direction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
+			[XmlIgnore]
+			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[Mandatory]
+			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf> marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(NavigationalSystemOfMarks);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<NavigationalSystemOfMarks, bool>> _conditionalUnknown = new Dictionary<string,Func<NavigationalSystemOfMarks, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[Mandatory]
+			public verticalDatum verticalDatum {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(SoundingDatum);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => SoundingDatum._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SoundingDatum, bool>> _conditionalUnknown = new Dictionary<string,Func<SoundingDatum, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An area within which a uniform assessment of the quality of the bathymetric data exists.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6])]
+			[Mandatory]
+			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
+
+			[XmlElement("orientationUncertainty")]
+			[Optional]
+			public double? orientationUncertainty {get;set;} = default;
+
+			[XmlElement("horizontalDistanceUncertainty")]
+			[Optional]
+			public double? horizontalDistanceUncertainty {get;set;} = default;
+
+			[XmlElement("horizontalPositionUncertainty")]
+			[Mandatory]
+			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
+				uncertaintyFixed = default,
+			};
+
+			[XmlElement("verticalUncertainty")]
+			[Optional]
+			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+
+			[XmlElement("information")]
+			[Optional]
+			public information? information {get;set;} = default;
+
+			[XmlElement("textualDescription")]
+			[Optional]
+			public textualDescription? textualDescription {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
+
+			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+
+			public bool ShouldSerializeinformation() { return information!=default; }
+
+			public bool ShouldSerializetextualDescription() { return textualDescription!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfTemporalVariation")]
+			public SerializableEnumeration<categoryOfTemporalVariation> categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(QualityOfBathymetricData);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<QualityOfBathymetricData, bool>> _conditionalUnknown = new Dictionary<string,Func<QualityOfBathymetricData, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A source of light, usually artificial, that serves as an aid to navigation, providing visibility and guidance, especially in low-light conditions. It could be mounted on various structures like buoys, beacons, or lighthouses to indicate a specific location or navigational point.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class GenericLight : Equipment {
+			[XmlElement("height")]
+			[Optional]
+			public double? height {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[Optional]
+			public verticalDatum? verticalDatum {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+			[XmlElement("effectiveIntensity")]
+			[Optional]
+			public double? effectiveIntensity {get;set;} = default;
+
+			[XmlElement("peakIntensity")]
+			[Optional]
+			public double? peakIntensity {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
+
+			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(GenericLight);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..GenericLight._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..GenericLight._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..Equipment._primitives, ..GenericLight._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// A characteristic or element in the environment that poses a potential risk to navigation or safety. This could include hazards such as rocks, submerged objects, shallow waters, or man-made structures that could endanger vessels or other forms of transportation.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("interoperabilityIdentifier")]
+			[Mandatory]
+			public String interoperabilityIdentifier {get;set;} = string.Empty;
+
+			[XmlElement("information")]
+			[Optional]
+			public List<information> information {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeinformation() { return information.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(DangerousFeature);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => DangerousFeature._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => DangerousFeature._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => DangerousFeature._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
-					lower = 0,
+					lower = 1,
 					upper =  default,
-					association = nameof(VirtualAIS),
-					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
-					featureTypes = [nameof(RadioStation)],
+					association = nameof(DangerousFeatureAssociation),
+					role = Enum.GetName<Role>(Role.markingAton)!,
+					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
 			#endregion
@@ -8843,7 +9130,7 @@ namespace S100Framework.DomainModel.S125 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<VirtualAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<VirtualAISAidToNavigation, bool>> {
+			private IReadOnlyDictionary<string, Func<DangerousFeature, bool>> _conditionalUnknown = new Dictionary<string,Func<DangerousFeature, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -8851,6 +9138,317 @@ namespace S100Framework.DomainModel.S125 {
 			#endregion
 		}
 
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class ElectronicAtoN : AidsToNavigation {
+			[XmlElement("atoNNumber")]
+			[Mandatory]
+			public String atoNNumber {get;set;} = string.Empty;
+
+			[XmlElement("mMSICode")]
+			[Mandatory]
+			public String mMSICode {get;set;} = string.Empty;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(ElectronicAtoN);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..ElectronicAtoN._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..ElectronicAtoN._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..ElectronicAtoN._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+		}
+
+		/// <summary>
+		/// -
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Topmark : Equipment {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
+			public List<colour> colour {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[Optional]
+			public List<colourPattern> colourPattern {get;set;} = [];
+
+			[XmlIgnore]
+			[Optional]
+			public List<status> status {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
+			[Mandatory]
+			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("topmarkDaymarkShape")]
+			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(Topmark);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..Topmark._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Topmark._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..Equipment._primitives, ..Topmark._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<Topmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Topmark, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAggregation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfAggregation")]
+			[EnumerationValue([1,3,2])]
+			[Mandatory]
+			public categoryOfAggregation categoryOfAggregation {get;set;} = default;
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(AtonAggregation);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtonAggregation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => AtonAggregation._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => AtonAggregation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAggregations),
+					role = Enum.GetName<Role>(Role.atonAggregationBy)!,
+					featureTypes = [nameof(AidsToNavigation)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<AtonAggregation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAggregation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AtonAssociation : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("categoryOfAssociation")]
+			[EnumerationValue([1,2])]
+			[Mandatory]
+			public categoryOfAssociation categoryOfAssociation {get;set;} = default;
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(AtonAssociation);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => AtonAssociation._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => AtonAssociation._featureBindingDefinitions;
+
+			[JsonIgnore]
+			public override Primitives[] primitives => AtonAssociation._primitives;
+			public static Primitives[] _primitives => [
+				Primitives.noGeometry
+			];
+
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(DangerousFeatureAssociation),
+					role = Enum.GetName<Role>(Role.danger)!,
+					featureTypes = [nameof(DangerousFeature)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AtonAssociations),
+					role = Enum.GetName<Role>(Role.atonAssociationBy)!,
+					featureTypes = [nameof(AidsToNavigation)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<AtonAssociation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAssociation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
 		/// <summary>
 		/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 		/// </summary>
@@ -8972,7 +9570,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
@@ -9001,13 +9599,17 @@ namespace S100Framework.DomainModel.S125 {
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
+
+			[XmlElement("flareBearing")]
+			[Optional]
+			public int? flareBearing {get;set;} = default;
 
 			[XmlElement("multiplicityOfFeatures")]
 			[Optional]
@@ -9036,6 +9638,8 @@ namespace S100Framework.DomainModel.S125 {
 			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 			#endregion
@@ -9118,23 +9722,34 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFogDetector : GenericLight {
-			[XmlElement("rhythmOfLight")]
-			[Mandatory]
-			public rhythmOfLight rhythmOfLight {get;set;} = new rhythmOfLight {
-				lightCharacteristic = Enum.GetValues<lightCharacteristic>()[0],
-			};
+			[XmlIgnore]
+			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[Optional]
+			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
+			[XmlElement("rhythmOfLight")]
+			[Mandatory]
+			public rhythmOfLight rhythmOfLight {get;set;} = new rhythmOfLight {
+				lightCharacteristic = Enum.GetValues<lightCharacteristic>()[0],
+			};
+
 
 			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("signalGeneration")]
 			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
@@ -9193,11 +9808,6 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
-			[Multiplicity(1)]
-			public List<colour> colour {get;set;} = [];
-
-			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
@@ -9213,7 +9823,7 @@ namespace S100Framework.DomainModel.S125 {
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
@@ -9221,14 +9831,16 @@ namespace S100Framework.DomainModel.S125 {
 			[Multiplicity(1)]
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
+			[XmlElement("obscuredSector")]
+			[Optional]
+			public List<obscuredSector> obscuredSector {get;set;} = [];
+
 			[XmlElement("multiplicityOfFeatures")]
 			[Optional]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
@@ -9239,14 +9851,12 @@ namespace S100Framework.DomainModel.S125 {
 
 			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
 
+			public bool ShouldSerializeobscuredSector() { return obscuredSector.Any(); }
+
 			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
 			[JsonIgnore]
 			[XmlElement("signalGeneration")]
 			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
@@ -9309,10 +9919,238 @@ namespace S100Framework.DomainModel.S125 {
 			}
 			#endregion
 		}
+
+		/// <summary>
+		/// A virtual or synthetic Aid to Navigation (AtoN) transmitted via the Automatic Identification System (AIS). Unlike a physical AtoN, which exists in the real world (like buoys or lighthouses), a synthetic AIS AtoN is created in the AIS network to provide navigational information to mariners about a point of interest or hazard, even if no physical object is present at that location. It helps in improving situational awareness.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class SyntheticAISAidToNavigation : ElectronicAtoN {
+			[XmlIgnore]
+			[EnumerationValue([1,2])]
+			[Mandatory]
+			public categoryOfSyntheticAISAidtoNavigation categoryOfSyntheticAISAidtoNavigation {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfSyntheticAISAidtoNavigation")]
+			public SerializableEnumeration<categoryOfSyntheticAISAidtoNavigation> categoryOfSyntheticAISAidtoNavigationElement { get { return categoryOfSyntheticAISAidtoNavigation; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(SyntheticAISAidToNavigation);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAtoN._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAtoN._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..SyntheticAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(SyntheticAIS),
+					role = Enum.GetName<Role>(Role.syntheticAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SyntheticAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<SyntheticAISAidToNavigation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PhysicalAISAidToNavigation : ElectronicAtoN {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Mandatory]
+			public categoryOfPhysicalAISAidToNavigation categoryOfPhysicalAISAidToNavigation {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfPhysicalAISAidToNavigation")]
+			public SerializableEnumeration<categoryOfPhysicalAISAidToNavigation> categoryOfPhysicalAISAidToNavigationElement { get { return categoryOfPhysicalAISAidToNavigation; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(PhysicalAISAidToNavigation);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAtoN._informationBindingDefinitions, ..PhysicalAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAtoN._featureBindingDefinitions, ..PhysicalAISAidToNavigation._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..PhysicalAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PhysicalAIS),
+					role = Enum.GetName<Role>(Role.physicalAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<PhysicalAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<PhysicalAISAidToNavigation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VirtualAISAidToNavigation : ElectronicAtoN {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[Mandatory]
+			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
+
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("virtualAISAidToNavigationType")]
+			public SerializableEnumeration<virtualAISAidToNavigationType> virtualAISAidToNavigationTypeElement { get { return virtualAISAidToNavigationType; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(VirtualAISAidToNavigation);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAtoN._informationBindingDefinitions, ..VirtualAISAidToNavigation._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAtoN._featureBindingDefinitions, ..VirtualAISAidToNavigation._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..VirtualAISAidToNavigation._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(VirtualAIS),
+					role = Enum.GetName<Role>(Role.virtualAISbroadcasts)!,
+					featureTypes = [nameof(RadioStation)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<VirtualAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<VirtualAISAidToNavigation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S125/0.0")]
-	[XmlRoot(Namespace = "http://www.iho.int/S125/0.0")]
+	[XmlType(Namespace = "http://www.iho.int/S125/1.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S125/1.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]
@@ -9320,15 +10158,30 @@ namespace S100Framework.DomainModel.S125 {
 
 		[JsonIgnore]
 		[XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-		public override string SchemaLocation { get; set; } = "http://www.iho.int/S125/0.0 125_0.0.4 with FIHO_FIXES 2025-10-03.xsd";
+		public override string SchemaLocation { get; set; } = "http://www.iho.int/S125/1.0 125_1.0.0 with FIHO_FIXES 2025-12-12.xsd";
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S125/0.0", TypeName = "members")]
+	[XmlType(Namespace = "http://www.iho.int/S125/1.0", TypeName = "members")]
 	public class Members
 	{
+		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
 		[XmlElement("InformationTypes.AtonStatusInformation", typeof(InformationTypes.AtonStatusInformation), Order = 1, ElementName = "AtonStatusInformation")]
-		[XmlElement("FeatureTypes.Equipment", typeof(FeatureTypes.Equipment), Order = 1, ElementName = "Equipment")]
-		[XmlElement("FeatureTypes.GenericBuoy", typeof(FeatureTypes.GenericBuoy), Order = 1, ElementName = "GenericBuoy")]
+		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1, ElementName = "NavigationLine")]
+		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1, ElementName = "RecommendedTrack")]
+		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1, ElementName = "Landmark")]
+		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1, ElementName = "Daymark")]
+		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1, ElementName = "FogSignal")]
+		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1, ElementName = "RadarReflector")]
+		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1, ElementName = "RadarTransponderBeacon")]
+		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
+		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1, ElementName = "Retroreflector")]
+		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1, ElementName = "LightAirObstruction")]
+		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1, ElementName = "LightAllAround")]
+		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1, ElementName = "LightFogDetector")]
+		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1, ElementName = "LightSectored")]
+		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1, ElementName = "LightFloat")]
+		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1, ElementName = "LightVessel")]
+		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1, ElementName = "OffshorePlatform")]
 		[XmlElement("FeatureTypes.Pile", typeof(FeatureTypes.Pile), Order = 1, ElementName = "Pile")]
 		[XmlElement("FeatureTypes.SiloTank", typeof(FeatureTypes.SiloTank), Order = 1, ElementName = "SiloTank")]
 		[XmlElement("FeatureTypes.CardinalBuoy", typeof(FeatureTypes.CardinalBuoy), Order = 1, ElementName = "CardinalBuoy")]
@@ -9336,40 +10189,28 @@ namespace S100Framework.DomainModel.S125 {
 		[XmlElement("FeatureTypes.InstallationBuoy", typeof(FeatureTypes.InstallationBuoy), Order = 1, ElementName = "InstallationBuoy")]
 		[XmlElement("FeatureTypes.IsolatedDangerBuoy", typeof(FeatureTypes.IsolatedDangerBuoy), Order = 1, ElementName = "IsolatedDangerBuoy")]
 		[XmlElement("FeatureTypes.LateralBuoy", typeof(FeatureTypes.LateralBuoy), Order = 1, ElementName = "LateralBuoy")]
-		[XmlElement("FeatureTypes.LightFloat", typeof(FeatureTypes.LightFloat), Order = 1, ElementName = "LightFloat")]
-		[XmlElement("FeatureTypes.LightVessel", typeof(FeatureTypes.LightVessel), Order = 1, ElementName = "LightVessel")]
 		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]
-		[XmlElement("FeatureTypes.OffshorePlatform", typeof(FeatureTypes.OffshorePlatform), Order = 1, ElementName = "OffshorePlatform")]
 		[XmlElement("FeatureTypes.SafeWaterBuoy", typeof(FeatureTypes.SafeWaterBuoy), Order = 1, ElementName = "SafeWaterBuoy")]
 		[XmlElement("FeatureTypes.SpecialPurposeGeneralBuoy", typeof(FeatureTypes.SpecialPurposeGeneralBuoy), Order = 1, ElementName = "SpecialPurposeGeneralBuoy")]
-		[XmlElement("FeatureTypes.NavigationLine", typeof(FeatureTypes.NavigationLine), Order = 1, ElementName = "NavigationLine")]
-		[XmlElement("FeatureTypes.RecommendedTrack", typeof(FeatureTypes.RecommendedTrack), Order = 1, ElementName = "RecommendedTrack")]
-		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1, ElementName = "VirtualAISAidToNavigation")]
-		[XmlElement("FeatureTypes.Daymark", typeof(FeatureTypes.Daymark), Order = 1, ElementName = "Daymark")]
-		[XmlElement("FeatureTypes.StructureObject", typeof(FeatureTypes.StructureObject), Order = 1, ElementName = "StructureObject")]
-		[XmlElement("FeatureTypes.FogSignal", typeof(FeatureTypes.FogSignal), Order = 1, ElementName = "FogSignal")]
-		[XmlElement("FeatureTypes.RadarReflector", typeof(FeatureTypes.RadarReflector), Order = 1, ElementName = "RadarReflector")]
-		[XmlElement("FeatureTypes.GenericBeacon", typeof(FeatureTypes.GenericBeacon), Order = 1, ElementName = "GenericBeacon")]
-		[XmlElement("FeatureTypes.RadarTransponderBeacon", typeof(FeatureTypes.RadarTransponderBeacon), Order = 1, ElementName = "RadarTransponderBeacon")]
-		[XmlElement("FeatureTypes.RadioStation", typeof(FeatureTypes.RadioStation), Order = 1, ElementName = "RadioStation")]
-		[XmlElement("FeatureTypes.LightAirObstruction", typeof(FeatureTypes.LightAirObstruction), Order = 1, ElementName = "LightAirObstruction")]
-		[XmlElement("FeatureTypes.Retroreflector", typeof(FeatureTypes.Retroreflector), Order = 1, ElementName = "Retroreflector")]
-		[XmlElement("FeatureTypes.LightAllAround", typeof(FeatureTypes.LightAllAround), Order = 1, ElementName = "LightAllAround")]
-		[XmlElement("FeatureTypes.LightFogDetector", typeof(FeatureTypes.LightFogDetector), Order = 1, ElementName = "LightFogDetector")]
-		[XmlElement("FeatureTypes.LightSectored", typeof(FeatureTypes.LightSectored), Order = 1, ElementName = "LightSectored")]
 		[XmlElement("FeatureTypes.CardinalBeacon", typeof(FeatureTypes.CardinalBeacon), Order = 1, ElementName = "CardinalBeacon")]
 		[XmlElement("FeatureTypes.IsolatedDangerBeacon", typeof(FeatureTypes.IsolatedDangerBeacon), Order = 1, ElementName = "IsolatedDangerBeacon")]
-		[XmlElement("FeatureTypes.Landmark", typeof(FeatureTypes.Landmark), Order = 1, ElementName = "Landmark")]
-		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1, ElementName = "LateralBeacon")]
-		[XmlElement("FeatureTypes.Lighthouse", typeof(FeatureTypes.Lighthouse), Order = 1, ElementName = "Lighthouse")]
 		[XmlElement("FeatureTypes.SafeWaterBeacon", typeof(FeatureTypes.SafeWaterBeacon), Order = 1, ElementName = "SafeWaterBeacon")]
 		[XmlElement("FeatureTypes.SpecialPurposeGeneralBeacon", typeof(FeatureTypes.SpecialPurposeGeneralBeacon), Order = 1, ElementName = "SpecialPurposeGeneralBeacon")]
+		[XmlElement("FeatureTypes.LateralBeacon", typeof(FeatureTypes.LateralBeacon), Order = 1, ElementName = "LateralBeacon")]
+		[XmlElement("FeatureTypes.WindTurbine", typeof(FeatureTypes.WindTurbine), Order = 1, ElementName = "WindTurbine")]
+		[XmlElement("FeatureTypes.VerticalDatumOfData", typeof(FeatureTypes.VerticalDatumOfData), Order = 1, ElementName = "VerticalDatumOfData")]
+		[XmlElement("FeatureTypes.DataCoverage", typeof(FeatureTypes.DataCoverage), Order = 1, ElementName = "DataCoverage")]
+		[XmlElement("FeatureTypes.LocalDirectionOfBuoyage", typeof(FeatureTypes.LocalDirectionOfBuoyage), Order = 1, ElementName = "LocalDirectionOfBuoyage")]
+		[XmlElement("FeatureTypes.NavigationalSystemOfMarks", typeof(FeatureTypes.NavigationalSystemOfMarks), Order = 1, ElementName = "NavigationalSystemOfMarks")]
+		[XmlElement("FeatureTypes.SoundingDatum", typeof(FeatureTypes.SoundingDatum), Order = 1, ElementName = "SoundingDatum")]
+		[XmlElement("FeatureTypes.QualityOfBathymetricData", typeof(FeatureTypes.QualityOfBathymetricData), Order = 1, ElementName = "QualityOfBathymetricData")]
 		[XmlElement("FeatureTypes.DangerousFeature", typeof(FeatureTypes.DangerousFeature), Order = 1, ElementName = "DangerousFeature")]
-		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1, ElementName = "AtonAssociation")]
-		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1, ElementName = "AtonAggregation")]
-		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1, ElementName = "Topmark")]
-		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1, ElementName = "PhysicalAISAidToNavigation")]
 		[XmlElement("FeatureTypes.SyntheticAISAidToNavigation", typeof(FeatureTypes.SyntheticAISAidToNavigation), Order = 1, ElementName = "SyntheticAISAidToNavigation")]
+		[XmlElement("FeatureTypes.PhysicalAISAidToNavigation", typeof(FeatureTypes.PhysicalAISAidToNavigation), Order = 1, ElementName = "PhysicalAISAidToNavigation")]
+		[XmlElement("FeatureTypes.VirtualAISAidToNavigation", typeof(FeatureTypes.VirtualAISAidToNavigation), Order = 1, ElementName = "VirtualAISAidToNavigation")]
+		[XmlElement("FeatureTypes.Topmark", typeof(FeatureTypes.Topmark), Order = 1, ElementName = "Topmark")]
+		[XmlElement("FeatureTypes.AtonAggregation", typeof(FeatureTypes.AtonAggregation), Order = 1, ElementName = "AtonAggregation")]
+		[XmlElement("FeatureTypes.AtonAssociation", typeof(FeatureTypes.AtonAssociation), Order = 1, ElementName = "AtonAssociation")]
 		public List<object> elements { get; set; } = new List<object>();
 	}
 }
