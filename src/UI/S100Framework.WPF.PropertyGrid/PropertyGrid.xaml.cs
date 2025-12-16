@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,11 +25,13 @@ namespace S100Framework.WPF
         {
             InitializeComponent();
             _properties = new ObservableCollection<PropertyItem>();
-            // DataContext is no longer set here - control is independent
 
             // Initialize commands
             AddCollectionItemCommand = new RelayCommand(ExecuteAddCollectionItem, CanExecuteAddCollectionItem);
             RemoveCollectionItemCommand = new RelayCommand(ExecuteRemoveCollectionItem, CanExecuteRemoveCollectionItem);
+            
+            // Subscribe to property processing errors
+            PropertyGridBuilder.PropertyProcessingError += OnPropertyGridBuilderError;
         }
 
         #region Dependency Properties
@@ -55,7 +58,24 @@ namespace S100Framework.WPF
             {
                 grid._selectedObject = e.NewValue;
                 grid.RefreshProperties();
+                grid.UpdateDescriptionForRootObject();
             }
+        }
+
+        /// <summary>
+        /// The description text to display in the description panel
+        /// </summary>
+        public static readonly DependencyProperty SelectedDescriptionProperty =
+            DependencyProperty.Register(
+                nameof(SelectedDescription),
+                typeof(string),
+                typeof(PropertyGrid),
+                new PropertyMetadata(string.Empty));
+
+        public string SelectedDescription
+        {
+            get => (string)GetValue(SelectedDescriptionProperty);
+            set => SetValue(SelectedDescriptionProperty, value);
         }
 
         #endregion
@@ -102,6 +122,39 @@ namespace S100Framework.WPF
         public void Refresh()
         {
             RefreshProperties();
+        }
+
+        /// <summary>
+        /// Updates the description panel to show the root object's description
+        /// </summary>
+        private void UpdateDescriptionForRootObject()
+        {
+            if (_selectedObject == null)
+            {
+                SelectedDescription = string.Empty;
+                return;
+            }
+
+            var description = GetDescriptionFromType(_selectedObject.GetType());
+            SelectedDescription = description;
+        }
+
+        /// <summary>
+        /// Extracts description from a Type using reflection
+        /// </summary>
+        private string GetDescriptionFromType(Type type)
+        {
+            var descriptionAttr = type.GetCustomAttribute<DescriptionAttribute>();
+            return descriptionAttr?.Description ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Extracts description from a PropertyInfo using reflection
+        /// </summary>
+        private string GetDescriptionFromProperty(PropertyInfo propertyInfo)
+        {
+            var descriptionAttr = propertyInfo.GetCustomAttribute<DescriptionAttribute>();
+            return descriptionAttr?.Description ?? string.Empty;
         }
 
         #endregion
@@ -220,6 +273,44 @@ namespace S100Framework.WPF
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// Handles errors from PropertyGridBuilder
+        /// </summary>
+        private void OnPropertyGridBuilderError(object? sender, PropertyGridErrorEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"PropertyGrid: Error processing property '{e.PropertyName}': {e.Exception.Message}");
+            // Future: Could display error in UI or raise event for consumer to handle
+        }
+
+        /// <summary>
+        /// Handles TreeView selection changes to update the description panel
+        /// </summary>
+        private void PropertyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is PropertyItem selectedItem)
+            {
+                // Use the Description property if it's already populated
+                if (!string.IsNullOrEmpty(selectedItem.Description))
+                {
+                    SelectedDescription = selectedItem.Description;
+                }
+                // Otherwise, try to get it from reflection
+                else if (selectedItem.PropertyInfo != null)
+                {
+                    SelectedDescription = GetDescriptionFromProperty(selectedItem.PropertyInfo);
+                }
+                else
+                {
+                    SelectedDescription = string.Empty;
+                }
+            }
+            else
+            {
+                // No property selected, show root object description
+                UpdateDescriptionForRootObject();
+            }
+        }
 
         private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

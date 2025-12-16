@@ -216,7 +216,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*" MinHeight="60"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
@@ -242,7 +244,8 @@
                   ItemTemplate="{StaticResource PropertyItemTemplate}"
                   BorderThickness="0"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  SelectedItemChanged="PropertyTreeView_SelectedItemChanged">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="TreeViewItem">
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
@@ -252,5 +255,46 @@
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>
+
+        <!-- GridSplitter -->
+        <GridSplitter Grid.Row="2" 
+                      Height="5" 
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center"
+                      Background="#DDD"
+                      ResizeDirection="Rows"
+                      ResizeBehavior="PreviousAndNext"/>
+
+        <!-- Description Panel -->
+        <Border Grid.Row="3" 
+                Background="#F9F9F9" 
+                BorderBrush="#999" 
+                BorderThickness="0,1,0,0"
+                Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Description Header -->
+                <TextBlock Grid.Row="0" 
+                           Text="Description" 
+                           FontWeight="Bold" 
+                           FontSize="11"
+                           Margin="0,0,0,4"/>
+
+                <!-- Description Content -->
+                <ScrollViewer Grid.Row="1" 
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <TextBlock Text="{Binding SelectedDescription, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                               TextWrapping="Wrap"
+                               FontSize="11"
+                               Foreground="#333"
+                               Padding="2"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
