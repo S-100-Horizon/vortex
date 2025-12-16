@@ -66,6 +66,11 @@ namespace S100Framework.WPF.Converters
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets a friendly display name for a type, handling generics
+        /// </summary>
+        /// <param name="type">The type to get a friendly name for</param>
+        /// <returns>A human-readable type name</returns>
         private string GetFriendlyTypeName(Type type)
         {
             if (type.IsGenericType)
@@ -129,13 +134,18 @@ namespace S100Framework.WPF.Converters
     /// </summary>
     public class CollectionItemVisibilityConverter : IValueConverter
     {
+        private const string CollectionItemPrefix = "[";
+        private const string CollectionItemSuffix = "]";
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string name && name.StartsWith("[") && name.EndsWith("]"))
+            if (value is string name && 
+                name.StartsWith(CollectionItemPrefix) && 
+                name.EndsWith(CollectionItemSuffix))
             {
-                return System.Windows.Visibility.Visible;
+                return Visibility.Visible;
             }
-            return System.Windows.Visibility.Collapsed;
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
