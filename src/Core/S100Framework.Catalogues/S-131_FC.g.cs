@@ -4933,9 +4933,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationType._informationBindingDefinitions;
 			#endregion
 
 		}
@@ -4981,27 +4979,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AbstractRxN._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.isApplicableTo)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RelatedOrganisation),
-					role = Enum.GetName<Role>(Role.theOrganisation)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.AbstractRxN._informationBindingDefinitions];
 			#endregion
 
 		}
@@ -5113,18 +5091,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Applicability._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Applicability._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5175,36 +5142,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Authority._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RelatedOrganisation),
-					role = Enum.GetName<Role>(Role.organisationRelatedRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Authority._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5365,9 +5303,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AvailablePortServices._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.AvailablePortServices._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5480,18 +5416,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ContactDetails._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ContactDetails._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5589,9 +5514,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Entrance._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Entrance._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5631,9 +5554,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..NauticalInformation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.NauticalInformation._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5689,9 +5610,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..NonStandardWorkingDay._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.NonStandardWorkingDay._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5731,9 +5650,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Recommendations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Recommendations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5773,9 +5690,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Regulations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Regulations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5815,9 +5730,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Restrictions._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Restrictions._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5867,27 +5780,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ServiceHours._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ExceptionalWorkday),
-					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
-					informationTypes = [nameof(NonStandardWorkingDay)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ServiceHours._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5940,9 +5833,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -6048,42 +5939,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PermissionType),
-					role = Enum.GetName<Role>(Role.permission)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AssociatedRxN),
-					role = Enum.GetName<Role>(Role.theRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FeatureType._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FeatureType._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
@@ -6091,16 +5953,6 @@ namespace S100Framework.DomainModel.S131 {
 				
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 		}
 
@@ -6126,24 +5978,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..OrganizationContactArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.OrganizationContactArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..OrganizationContactArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.OrganizationContactArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..OrganizationContactArea._primitives];
@@ -6151,8 +5992,6 @@ namespace S100Framework.DomainModel.S131 {
 				
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 		}
 
@@ -6178,24 +6017,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..OrganizationContactArea._informationBindingDefinitions, ..SupervisedArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceControl),
-					role = Enum.GetName<Role>(Role.controlAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea._informationBindingDefinitions, ..InformationBindings.SupervisedArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..OrganizationContactArea._featureBindingDefinitions, ..SupervisedArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea._featureBindingDefinitions, ..FeatureBindings.SupervisedArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..SupervisedArea._primitives];
@@ -6203,8 +6031,6 @@ namespace S100Framework.DomainModel.S131 {
 				
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 		}
 
@@ -6230,15 +6056,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..SupervisedArea._informationBindingDefinitions, ..HarbourPhysicalInfrastructure._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea._informationBindingDefinitions, ..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..SupervisedArea._featureBindingDefinitions, ..HarbourPhysicalInfrastructure._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea._featureBindingDefinitions, ..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..HarbourPhysicalInfrastructure._primitives];
@@ -6246,16 +6070,6 @@ namespace S100Framework.DomainModel.S131 {
 				
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(Infrastructure),
-					role = Enum.GetName<Role>(Role.infrastructureLocation)!,
-					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
-				},
-			];
 			#endregion
 		}
 
@@ -6281,15 +6095,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..SupervisedArea._informationBindingDefinitions, ..Layout._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea._informationBindingDefinitions, ..InformationBindings.Layout._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..SupervisedArea._featureBindingDefinitions, ..Layout._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea._featureBindingDefinitions, ..FeatureBindings.Layout._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..Layout._primitives];
@@ -6297,8 +6109,6 @@ namespace S100Framework.DomainModel.S131 {
 				
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 		}
 
@@ -6350,33 +6160,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..AnchorBerth._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.AnchorBerth._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..AnchorBerth._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.AnchorBerth._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..AnchorBerth._primitives];
@@ -6384,16 +6174,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PrimaryAuxiliaryFacility),
-					role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
-					featureTypes = [nameof(MooringWarpingFacility)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6484,24 +6264,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..AnchorageArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.AnchorageArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..AnchorageArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.AnchorageArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..AnchorageArea._primitives];
@@ -6509,16 +6278,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6562,24 +6321,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..AutomatedGuidedVehicle._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.AutomatedGuidedVehicle._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..AutomatedGuidedVehicle._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.AutomatedGuidedVehicle._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..AutomatedGuidedVehicle._primitives];
@@ -6587,8 +6335,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6788,33 +6534,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..Berth._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.Berth._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..Berth._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.Berth._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..Berth._primitives];
@@ -6822,24 +6548,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Demarcation),
-					role = Enum.GetName<Role>(Role.demarcationIndicator)!,
-					featureTypes = [nameof(BerthPosition)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6917,15 +6625,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..BerthPosition._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.BerthPosition._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..BerthPosition._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.BerthPosition._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..BerthPosition._primitives];
@@ -6933,24 +6639,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 1,
-					upper =  1,
-					association = nameof(Demarcation),
-					role = Enum.GetName<Role>(Role.demarcatedFeature)!,
-					featureTypes = [nameof(Berth)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PrimaryAuxiliaryFacility),
-					role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
-					featureTypes = [nameof(MooringWarpingFacility)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7006,15 +6694,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Bollard._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Bollard._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Bollard._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Bollard._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Bollard._primitives];
@@ -7022,8 +6708,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7092,33 +6776,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..DockArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.DockArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..DockArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.DockArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..DockArea._primitives];
@@ -7126,16 +6790,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7191,24 +6845,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..DryDock._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.DryDock._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..DryDock._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.DryDock._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..DryDock._primitives];
@@ -7216,8 +6859,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7268,15 +6909,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Dolphin._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Dolphin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Dolphin._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Dolphin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Dolphin._primitives];
@@ -7284,8 +6923,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7354,24 +6991,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..DumpingGround._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.DumpingGround._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..DumpingGround._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.DumpingGround._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..DumpingGround._primitives];
@@ -7379,16 +7005,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface, Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7436,15 +7052,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..FenderLine._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.FenderLine._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..FenderLine._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.FenderLine._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..FenderLine._primitives];
@@ -7452,16 +7066,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.curve
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7510,24 +7114,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..FloatingDock._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.FloatingDock._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FloatingDock._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.FloatingDock._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..FloatingDock._primitives];
@@ -7535,8 +7128,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7592,24 +7183,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Gridiron._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Gridiron._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Gridiron._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Gridiron._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Gridiron._primitives];
@@ -7617,8 +7197,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7705,33 +7283,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourAreaAdministrative._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourAreaAdministrative._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourAreaAdministrative._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourAreaAdministrative._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourAreaAdministrative._primitives];
@@ -7739,24 +7297,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(JurisdictionalLimit),
-					role = Enum.GetName<Role>(Role.limitExtent)!,
-					featureTypes = [nameof(OuterLimit)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.layoutUnit)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7835,33 +7375,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourAreaSection._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourAreaSection._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourAreaSection._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourAreaSection._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourAreaSection._primitives];
@@ -7869,48 +7389,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaAdministrative)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(Subsection),
-					role = Enum.GetName<Role>(Role.constitute)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Subsection),
-					role = Enum.GetName<Role>(Role.subUnit)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Infrastructure),
-					role = Enum.GetName<Role>(Role.hasInfrastructure)!,
-					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.layoutUnit)!,
-					featureTypes = [nameof(AnchorageArea),nameof(Berth),nameof(DockArea),nameof(DumpingGround),nameof(FenderLine),nameof(HarbourBasin),nameof(PilotBoardingPlace),nameof(SeaplaneLandingArea),nameof(Terminal),nameof(TurningBasin),nameof(WaterwayArea)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -7979,24 +7457,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..HarbourBasin._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..HarbourBasin._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourBasin._primitives];
@@ -8004,16 +7471,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8057,24 +7514,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..HarbourFacility._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.HarbourFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..HarbourFacility._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.HarbourFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..HarbourFacility._primitives];
@@ -8082,8 +7528,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8132,24 +7576,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..LockBasin._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.LockBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..LockBasin._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.LockBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasin._primitives];
@@ -8157,8 +7590,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8207,24 +7638,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..LockBasinPart._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.LockBasinPart._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..LockBasinPart._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.LockBasinPart._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasinPart._primitives];
@@ -8232,8 +7652,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8304,15 +7722,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..MooringBuoy._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.MooringBuoy._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..MooringBuoy._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.MooringBuoy._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..MooringBuoy._primitives];
@@ -8320,8 +7736,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8393,33 +7807,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..MooringWarpingFacility._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.MooringWarpingFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..MooringWarpingFacility._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.MooringWarpingFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..MooringWarpingFacility._primitives];
@@ -8427,16 +7821,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(PrimaryAuxiliaryFacility),
-					role = Enum.GetName<Role>(Role.primaryFacility)!,
-					featureTypes = [nameof(AnchorBerth),nameof(BerthPosition)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8530,24 +7914,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..OnshorePowerFacility._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.OnshorePowerFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..OnshorePowerFacility._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.OnshorePowerFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..OnshorePowerFacility._primitives];
@@ -8555,8 +7928,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8634,24 +8005,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..OuterLimit._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LimitEntrance),
-					role = Enum.GetName<Role>(Role.entranceReference)!,
-					informationTypes = [nameof(Entrance)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.OuterLimit._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..OuterLimit._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.OuterLimit._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..OuterLimit._primitives];
@@ -8659,16 +8019,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(JurisdictionalLimit),
-					role = Enum.GetName<Role>(Role.limitReference)!,
-					featureTypes = [nameof(HarbourAreaAdministrative)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8748,24 +8098,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..PilotBoardingPlace._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.PilotBoardingPlace._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..PilotBoardingPlace._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.PilotBoardingPlace._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..PilotBoardingPlace._primitives];
@@ -8773,16 +8112,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface, Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8851,24 +8180,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..SeaplaneLandingArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.SeaplaneLandingArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..SeaplaneLandingArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.SeaplaneLandingArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..SeaplaneLandingArea._primitives];
@@ -8876,16 +8194,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface, Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8934,24 +8242,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..ShipLift._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.ShipLift._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..ShipLift._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.ShipLift._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..ShipLift._primitives];
@@ -8959,8 +8256,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9004,24 +8299,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..StraddleCarrier._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.StraddleCarrier._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..StraddleCarrier._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.StraddleCarrier._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..StraddleCarrier._primitives];
@@ -9029,8 +8313,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9128,33 +8410,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..Terminal._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceAvailability),
-					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
-					informationTypes = [nameof(AvailablePortServices)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.Terminal._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..Terminal._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.Terminal._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..Terminal._primitives];
@@ -9162,32 +8424,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.layoutUnit)!,
-					featureTypes = [nameof(Berth)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Infrastructure),
-					role = Enum.GetName<Role>(Role.hasInfrastructure)!,
-					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9256,24 +8492,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..TurningBasin._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.TurningBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..TurningBasin._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.TurningBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..TurningBasin._primitives];
@@ -9281,16 +8506,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9357,24 +8572,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..WaterwayArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.WaterwayArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..WaterwayArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.WaterwayArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..WaterwayArea._primitives];
@@ -9382,16 +8586,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(LayoutDivision),
-					role = Enum.GetName<Role>(Role.componentOf)!,
-					featureTypes = [nameof(HarbourAreaSection)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9457,15 +8651,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -9473,8 +8665,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9578,15 +8768,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -9594,8 +8782,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9650,15 +8836,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
@@ -9666,8 +8850,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9722,15 +8904,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
@@ -9738,8 +8918,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9812,15 +8990,13 @@ namespace S100Framework.DomainModel.S131 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -9828,16 +9004,6 @@ namespace S100Framework.DomainModel.S131 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 1,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.thePositionProvider)!,
-					featureTypes = [nameof(FeatureType)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9859,6 +9025,1042 @@ namespace S100Framework.DomainModel.S131 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class InformationType {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class AbstractRxN {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.isApplicableTo)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.theOrganisation)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Applicability {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Authority {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.organisationRelatedRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AvailablePortServices {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ContactDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Entrance {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NauticalInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NonStandardWorkingDay {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Recommendations {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Regulations {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Restrictions {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ServiceHours {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
+					informationTypes = [nameof(NonStandardWorkingDay)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpatialQuality {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class FeatureType {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PermissionType),
+					role = Enum.GetName<Role>(Role.permission)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AssociatedRxN),
+					role = Enum.GetName<Role>(Role.theRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OrganizationContactArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SupervisedArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceControl),
+					role = Enum.GetName<Role>(Role.controlAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourPhysicalInfrastructure {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Layout {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class AnchorBerth {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AnchorageArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AutomatedGuidedVehicle {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Berth {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class BerthPosition {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Bollard {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class DockArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DryDock {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Dolphin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class DumpingGround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FenderLine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class FloatingDock {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Gridiron {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourAreaAdministrative {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourAreaSection {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourBasin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LockBasin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LockBasinPart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MooringBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class MooringWarpingFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OnshorePowerFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OuterLimit {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LimitEntrance),
+					role = Enum.GetName<Role>(Role.entranceReference)!,
+					informationTypes = [nameof(Entrance)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PilotBoardingPlace {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SeaplaneLandingArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ShipLift {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class StraddleCarrier {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Terminal {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceAvailability),
+					role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+					informationTypes = [nameof(AvailablePortServices)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TurningBasin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class WaterwayArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DataCoverage {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class SoundingDatum {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class VerticalDatumOfData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class TextPlacement {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class FeatureType {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class OrganizationContactArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class SupervisedArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class HarbourPhysicalInfrastructure {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.Infrastructure),
+					role = Enum.GetName<Role>(Role.infrastructureLocation)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection),nameof(FeatureTypes.Terminal)],
+				},
+			];
+		}
+		public static class Layout {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class AnchorBerth {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.PrimaryAuxiliaryFacility),
+					role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
+					featureTypes = [nameof(FeatureTypes.MooringWarpingFacility)],
+				},
+			];
+		}
+		public static class AnchorageArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class AutomatedGuidedVehicle {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class Berth {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Demarcation),
+					role = Enum.GetName<Role>(Role.demarcationIndicator)!,
+					featureTypes = [nameof(FeatureTypes.BerthPosition)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection),nameof(FeatureTypes.Terminal)],
+				},
+			];
+		}
+		public static class BerthPosition {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.Demarcation),
+					role = Enum.GetName<Role>(Role.demarcatedFeature)!,
+					featureTypes = [nameof(FeatureTypes.Berth)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.PrimaryAuxiliaryFacility),
+					role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
+					featureTypes = [nameof(FeatureTypes.MooringWarpingFacility)],
+				},
+			];
+		}
+		public static class Bollard {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class DockArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class DryDock {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class Dolphin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class DumpingGround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class FenderLine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class FloatingDock {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class Gridiron {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class HarbourAreaAdministrative {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.JurisdictionalLimit),
+					role = Enum.GetName<Role>(Role.limitExtent)!,
+					featureTypes = [nameof(FeatureTypes.OuterLimit)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.layoutUnit)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class HarbourAreaSection {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaAdministrative)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.Subsection),
+					role = Enum.GetName<Role>(Role.constitute)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Subsection),
+					role = Enum.GetName<Role>(Role.subUnit)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Infrastructure),
+					role = Enum.GetName<Role>(Role.hasInfrastructure)!,
+					featureTypes = [nameof(FeatureTypes.HarbourPhysicalInfrastructure)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.layoutUnit)!,
+					featureTypes = [nameof(FeatureTypes.AnchorageArea),nameof(FeatureTypes.Berth),nameof(FeatureTypes.DockArea),nameof(FeatureTypes.DumpingGround),nameof(FeatureTypes.FenderLine),nameof(FeatureTypes.HarbourBasin),nameof(FeatureTypes.PilotBoardingPlace),nameof(FeatureTypes.SeaplaneLandingArea),nameof(FeatureTypes.Terminal),nameof(FeatureTypes.TurningBasin),nameof(FeatureTypes.WaterwayArea)],
+				},
+			];
+		}
+		public static class HarbourBasin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class HarbourFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class LockBasin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class LockBasinPart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class MooringBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class MooringWarpingFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.PrimaryAuxiliaryFacility),
+					role = Enum.GetName<Role>(Role.primaryFacility)!,
+					featureTypes = [nameof(FeatureTypes.AnchorBerth),nameof(FeatureTypes.BerthPosition)],
+				},
+			];
+		}
+		public static class OnshorePowerFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class OuterLimit {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.JurisdictionalLimit),
+					role = Enum.GetName<Role>(Role.limitReference)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaAdministrative)],
+				},
+			];
+		}
+		public static class PilotBoardingPlace {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class SeaplaneLandingArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class ShipLift {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class StraddleCarrier {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class Terminal {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.layoutUnit)!,
+					featureTypes = [nameof(FeatureTypes.Berth)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Infrastructure),
+					role = Enum.GetName<Role>(Role.hasInfrastructure)!,
+					featureTypes = [nameof(FeatureTypes.HarbourPhysicalInfrastructure)],
+				},
+			];
+		}
+		public static class TurningBasin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class WaterwayArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(FeatureTypes.HarbourAreaSection)],
+				},
+			];
+		}
+		public static class DataCoverage {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class SoundingDatum {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class VerticalDatumOfData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class TextPlacement {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
+					featureTypes = [nameof(FeatureTypes.FeatureType)],
+				},
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S131/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S131/2.0")]

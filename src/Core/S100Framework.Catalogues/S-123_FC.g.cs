@@ -3459,18 +3459,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationType._informationBindingDefinitions;
 			#endregion
 
 		}
@@ -3522,27 +3511,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AbstractRxN._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.isApplicableTo)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(relatedOrganisation),
-					role = Enum.GetName<Role>(Role.theOrganisation)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.AbstractRxN._informationBindingDefinitions];
 			#endregion
 
 		}
@@ -3646,18 +3615,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Applicability._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Applicability._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3710,27 +3668,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Authority._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Authority._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3807,18 +3745,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..BroadcastDetails._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastTransmission),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.BroadcastDetails._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3906,9 +3833,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ConnectivityQualityOfService._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ConnectivityQualityOfService._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4012,18 +3937,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ContactDetails._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theAuthority)!,
-					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ContactDetails._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4063,9 +3977,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..NauticalInformation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.NauticalInformation._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4121,18 +4033,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..NonStandardWorkingDay._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ExceptionalWorkday),
-					role = Enum.GetName<Role>(Role.theServiceHours_nsdy)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.NonStandardWorkingDay._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4190,36 +4091,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..RadioControlCentre._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TMAS),
-					role = Enum.GetName<Role>(Role.theTMAS)!,
-					informationTypes = [nameof(TelemedicalAssistanceService)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.RadioControlCentre._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4259,9 +4131,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Recommendations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Recommendations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4301,9 +4171,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Regulations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Regulations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4343,9 +4211,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Restrictions._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Restrictions._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4395,27 +4261,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ServiceHours._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theAuthority)!,
-					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ExceptionalWorkday),
-					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
-					informationTypes = [nameof(NonStandardWorkingDay)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ServiceHours._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4468,9 +4314,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4538,18 +4382,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..TelemedicalAssistanceService._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RadioServiceControl),
-					role = Enum.GetName<Role>(Role.theControlCentre)!,
-					informationTypes = [nameof(RadioControlCentre)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.TelemedicalAssistanceService._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4625,18 +4458,7 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..TransmissionDetails._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastTransmission),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.TransmissionDetails._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4723,42 +4545,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AssociatedRxN),
-					role = Enum.GetName<Role>(Role.theRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PermissionType),
-					role = Enum.GetName<Role>(Role.permission)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FeatureType._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FeatureType._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
@@ -4766,8 +4559,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 		}
 
@@ -4837,51 +4628,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..ConnectivitySubscriptionArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ConnectivityService),
-					role = Enum.GetName<Role>(Role.connectivityServiceProvider)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AvailableQoS),
-					role = Enum.GetName<Role>(Role.theQoS)!,
-					informationTypes = [nameof(ConnectivityQualityOfService)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.ConnectivitySubscriptionArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..ConnectivitySubscriptionArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.ConnectivitySubscriptionArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..ConnectivitySubscriptionArea._primitives];
@@ -4889,16 +4642,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface, Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4963,51 +4706,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..GMDSSArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RadioServiceControl),
-					role = Enum.GetName<Role>(Role.theControlCentre)!,
-					informationTypes = [nameof(RadioControlCentre)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.GMDSSArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..GMDSSArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.GMDSSArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..GMDSSArea._primitives];
@@ -5015,16 +4720,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5075,15 +4770,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..IndeterminateZone._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.IndeterminateZone._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..IndeterminateZone._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.IndeterminateZone._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..IndeterminateZone._primitives];
@@ -5091,16 +4784,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 1,
-					upper =  1,
-					association = nameof(fuzzyZoneAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FuzzyAreaAggregate)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5152,60 +4835,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..METAREA._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.METAREA._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..METAREA._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.METAREA._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..METAREA._primitives];
@@ -5213,16 +4849,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5274,60 +4900,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NAVAREA._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.NAVAREA._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NAVAREA._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.NAVAREA._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVAREA._primitives];
@@ -5335,16 +4914,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5418,60 +4987,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..NAVTEXServiceArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.NAVTEXServiceArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..NAVTEXServiceArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.NAVTEXServiceArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVTEXServiceArea._primitives];
@@ -5479,16 +5001,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5563,69 +5075,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..RadioServiceArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RadioServiceControl),
-					role = Enum.GetName<Role>(Role.theControlCentre)!,
-					informationTypes = [nameof(RadioControlCentre)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.RadioServiceArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..RadioServiceArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.RadioServiceArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadioServiceArea._primitives];
@@ -5633,24 +5089,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(coreAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RadioServiceAreaAggregate)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5749,69 +5187,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..RadioStation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RadioServiceControl),
-					role = Enum.GetName<Role>(Role.theControlCentre)!,
-					informationTypes = [nameof(RadioControlCentre)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.RadioStation._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..RadioStation._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.RadioStation._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadioStation._primitives];
@@ -5819,16 +5201,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.point
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceArea)!,
-					featureTypes = [nameof(ConnectivitySubscriptionArea),nameof(GMDSSArea),nameof(METAREA),nameof(NAVAREA),nameof(NAVTEXServiceArea),nameof(RadioServiceArea),nameof(WeatherForecastAndWarningArea)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -5876,51 +5248,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..SearchAndRescueRegion._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RadioServiceControl),
-					role = Enum.GetName<Role>(Role.theControlCentre)!,
-					informationTypes = [nameof(RadioControlCentre)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TMAS),
-					role = Enum.GetName<Role>(Role.theTMAS)!,
-					informationTypes = [nameof(TelemedicalAssistanceService)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.SearchAndRescueRegion._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..SearchAndRescueRegion._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.SearchAndRescueRegion._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..SearchAndRescueRegion._primitives];
@@ -5928,8 +5262,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6001,60 +5333,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..WeatherForecastAndWarningArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceCoordination),
-					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BroadcastService),
-					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
-					informationTypes = [nameof(BroadcastDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TransmissionService),
-					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
-					informationTypes = [nameof(TransmissionDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.WeatherForecastAndWarningArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..WeatherForecastAndWarningArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.WeatherForecastAndWarningArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..WeatherForecastAndWarningArea._primitives];
@@ -6062,16 +5347,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ServiceProvisionArea),
-					role = Enum.GetName<Role>(Role.serviceProvider)!,
-					featureTypes = [nameof(RadioStation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6115,15 +5390,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..FuzzyAreaAggregate._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.FuzzyAreaAggregate._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..FuzzyAreaAggregate._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.FuzzyAreaAggregate._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..FuzzyAreaAggregate._primitives];
@@ -6131,16 +5404,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.noGeometry
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 1,
-					upper =  default,
-					association = nameof(fuzzyZoneAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(IndeterminateZone)],
-				},
-			];
 			#endregion
 		}
 
@@ -6166,15 +5429,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FuzzyAreaAggregate._informationBindingDefinitions, ..RadioServiceAreaAggregate._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FuzzyAreaAggregate._informationBindingDefinitions, ..InformationBindings.RadioServiceAreaAggregate._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FuzzyAreaAggregate._featureBindingDefinitions, ..RadioServiceAreaAggregate._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FuzzyAreaAggregate._featureBindingDefinitions, ..FeatureBindings.RadioServiceAreaAggregate._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FuzzyAreaAggregate._primitives, ..RadioServiceAreaAggregate._primitives];
@@ -6182,16 +5443,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.noGeometry
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 1,
-					upper =  1,
-					association = nameof(coreAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(RadioServiceArea)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6253,15 +5504,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -6269,8 +5518,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6357,15 +5604,13 @@ namespace S100Framework.DomainModel.S123 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -6373,8 +5618,6 @@ namespace S100Framework.DomainModel.S123 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -6396,6 +5639,871 @@ namespace S100Framework.DomainModel.S123 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class InformationType {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AbstractRxN {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.isApplicableTo)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(relatedOrganisation),
+					role = Enum.GetName<Role>(Role.theOrganisation)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Applicability {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Authority {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class BroadcastDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastTransmission),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ConnectivityQualityOfService {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ContactDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theAuthority)!,
+					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NauticalInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NonStandardWorkingDay {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.theServiceHours_nsdy)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadioControlCentre {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TMAS),
+					role = Enum.GetName<Role>(Role.theTMAS)!,
+					informationTypes = [nameof(TelemedicalAssistanceService)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Recommendations {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Regulations {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Restrictions {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ServiceHours {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theAuthority)!,
+					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
+					informationTypes = [nameof(NonStandardWorkingDay)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpatialQuality {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class TelemedicalAssistanceService {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RadioServiceControl),
+					role = Enum.GetName<Role>(Role.theControlCentre)!,
+					informationTypes = [nameof(RadioControlCentre)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TransmissionDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastTransmission),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FeatureType {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AssociatedRxN),
+					role = Enum.GetName<Role>(Role.theRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PermissionType),
+					role = Enum.GetName<Role>(Role.permission)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ConnectivitySubscriptionArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ConnectivityService),
+					role = Enum.GetName<Role>(Role.connectivityServiceProvider)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AvailableQoS),
+					role = Enum.GetName<Role>(Role.theQoS)!,
+					informationTypes = [nameof(ConnectivityQualityOfService)],
+					primitives = [],
+				},
+			];
+		}
+		public static class GMDSSArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RadioServiceControl),
+					role = Enum.GetName<Role>(Role.theControlCentre)!,
+					informationTypes = [nameof(RadioControlCentre)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IndeterminateZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class METAREA {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NAVAREA {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NAVTEXServiceArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadioServiceArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RadioServiceControl),
+					role = Enum.GetName<Role>(Role.theControlCentre)!,
+					informationTypes = [nameof(RadioControlCentre)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadioStation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RadioServiceControl),
+					role = Enum.GetName<Role>(Role.theControlCentre)!,
+					informationTypes = [nameof(RadioControlCentre)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SearchAndRescueRegion {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RadioServiceControl),
+					role = Enum.GetName<Role>(Role.theControlCentre)!,
+					informationTypes = [nameof(RadioControlCentre)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TMAS),
+					role = Enum.GetName<Role>(Role.theTMAS)!,
+					informationTypes = [nameof(TelemedicalAssistanceService)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class WeatherForecastAndWarningArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceCoordination),
+					role = Enum.GetName<Role>(Role.coordinatingAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ServiceContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(BroadcastService),
+					role = Enum.GetName<Role>(Role.theBroadcastDetails)!,
+					informationTypes = [nameof(BroadcastDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(TransmissionService),
+					role = Enum.GetName<Role>(Role.theTransmissionDetails)!,
+					informationTypes = [nameof(TransmissionDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FuzzyAreaAggregate {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class RadioServiceAreaAggregate {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class DataCoverage {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class FeatureType {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class ConnectivitySubscriptionArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class GMDSSArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class IndeterminateZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.fuzzyZoneAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FuzzyAreaAggregate)],
+				},
+			];
+		}
+		public static class METAREA {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class NAVAREA {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class NAVTEXServiceArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class RadioServiceArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.coreAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RadioServiceAreaAggregate)],
+				},
+			];
+		}
+		public static class RadioStation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceArea)!,
+					featureTypes = [nameof(FeatureTypes.ConnectivitySubscriptionArea),nameof(FeatureTypes.GMDSSArea),nameof(FeatureTypes.METAREA),nameof(FeatureTypes.NAVAREA),nameof(FeatureTypes.NAVTEXServiceArea),nameof(FeatureTypes.RadioServiceArea),nameof(FeatureTypes.WeatherForecastAndWarningArea)],
+				},
+			];
+		}
+		public static class SearchAndRescueRegion {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class WeatherForecastAndWarningArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ServiceProvisionArea),
+					role = Enum.GetName<Role>(Role.serviceProvider)!,
+					featureTypes = [nameof(FeatureTypes.RadioStation)],
+				},
+			];
+		}
+		public static class FuzzyAreaAggregate {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 1,
+					upper =  default,
+					association = nameof(FeatureAssociations.fuzzyZoneAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.IndeterminateZone)],
+				},
+			];
+		}
+		public static class RadioServiceAreaAggregate {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.coreAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.RadioServiceArea)],
+				},
+			];
+		}
+		public static class DataCoverage {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S123/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S123/2.0")]

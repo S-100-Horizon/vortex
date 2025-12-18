@@ -8552,9 +8552,7 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails._informationBindingDefinitions;
 			#endregion
 
 
@@ -8613,9 +8611,7 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ServiceHours._informationBindingDefinitions;
 			#endregion
 
 
@@ -8681,9 +8677,7 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NonStandardWorkingDay._informationBindingDefinitions;
 			#endregion
 
 
@@ -8742,9 +8736,7 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NauticalInformation._informationBindingDefinitions;
 			#endregion
 
 
@@ -8794,9 +8786,7 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 
@@ -8888,15 +8878,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -8904,16 +8892,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -8984,15 +8962,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -9000,8 +8976,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9059,15 +9033,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationalSystemOfMarks._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationalSystemOfMarks._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
@@ -9075,16 +9047,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9154,15 +9116,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalDirectionOfBuoyage._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalDirectionOfBuoyage._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
@@ -9170,16 +9130,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9285,24 +9235,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(QualityOfBathymetricDataComposition),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfBathymetricData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
@@ -9310,16 +9249,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9377,15 +9306,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
@@ -9393,16 +9320,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9460,15 +9377,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
@@ -9476,16 +9391,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9651,24 +9556,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfSurvey._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfSurvey._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfSurvey._primitives;
@@ -9676,16 +9570,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9767,24 +9651,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UpdateInformation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UpdateInformation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UpdateInformation._primitives;
@@ -9792,40 +9665,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdateAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(UpdateAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdatedObject)!,
-					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(CautionArea),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContiguousZone),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(CustomZone),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DepthArea),nameof(DepthContour),nameof(DepthNoBottomFound),nameof(DiscolouredWater),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(ExclusiveEconomicZone),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InshoreTrafficZone),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalDirectionOfBuoyage),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MagneticVariation),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(NavigationLine),nameof(NavigationalSystemOfMarks),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(QualityOfBathymetricData),nameof(QualityOfNonBathymetricData),nameof(QualityOfSurvey),nameof(RadarLine),nameof(RadarRange),nameof(RadarReflector),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RecommendedTrafficLanePart),nameof(RescueStation),nameof(RestrictedArea),nameof(Retroreflector),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(Sandwave),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(SeparationZoneOrLine),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SmallCraftFacility),nameof(SlopeTopline),nameof(SlopingGround),nameof(Sounding),nameof(SoundingDatum),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StraightTerritorialSeaBaseline),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TerritorialSeaArea),nameof(TidalStreamPanelData),nameof(TidalStreamFloodEbb),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(Tunnel),nameof(TwoWayRoute),nameof(TwoWayRoutePart),nameof(UnderwaterAwashRock),nameof(UnsurveyedArea),nameof(UpdateInformation),nameof(Vegetation),nameof(VerticalDatumOfData),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -9896,33 +9735,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MagneticVariation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MagneticVariation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MagneticVariation._primitives;
@@ -9930,16 +9749,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10013,33 +9822,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalMagneticAnomaly._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalMagneticAnomaly._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LocalMagneticAnomaly._primitives;
@@ -10047,24 +9836,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10181,33 +9952,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Coastline._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Coastline._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Coastline._primitives;
@@ -10215,24 +9966,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10320,33 +10053,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandArea._primitives;
@@ -10354,32 +10067,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10441,24 +10128,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IslandGroup._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IslandGroup._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IslandGroup._primitives;
@@ -10466,40 +10142,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(LandArea),nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10576,33 +10218,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandElevation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandElevation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandElevation._primitives;
@@ -10610,24 +10232,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10698,33 +10302,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.River._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.River._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => River._primitives;
@@ -10732,24 +10316,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10817,33 +10383,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Rapids._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Rapids._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Rapids._primitives;
@@ -10851,24 +10397,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -10945,33 +10473,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Waterfall._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Waterfall._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Waterfall._primitives;
@@ -10979,24 +10487,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11074,24 +10564,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Lake._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Lake._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Lake._primitives;
@@ -11099,24 +10578,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11209,33 +10670,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandRegion._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandRegion._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandRegion._primitives;
@@ -11243,24 +10684,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11360,33 +10783,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Vegetation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Vegetation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Vegetation._primitives;
@@ -11394,24 +10797,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11534,24 +10919,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IceArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IceArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IceArea._primitives;
@@ -11559,24 +10933,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11686,33 +11042,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SlopingGround._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SlopingGround._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SlopingGround._primitives;
@@ -11720,24 +11056,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11854,33 +11172,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SlopeTopline._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SlopeTopline._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SlopeTopline._primitives;
@@ -11888,24 +11186,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -11967,33 +11247,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Tideway._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Tideway._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Tideway._primitives;
@@ -12001,24 +11261,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -12141,33 +11383,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.BuiltUpArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.BuiltUpArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => BuiltUpArea._primitives;
@@ -12175,24 +11397,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -12389,33 +11593,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Building._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Building._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Building._primitives;
@@ -12423,48 +11607,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -12569,33 +11711,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AirportAirfield._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AirportAirfield._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AirportAirfield._primitives;
@@ -12603,24 +11725,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -12725,33 +11829,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Runway._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Runway._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Runway._primitives;
@@ -12759,24 +11843,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -12881,33 +11947,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Helipad._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Helipad._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Helipad._primitives;
@@ -12915,32 +11961,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Building),nameof(Landmark),nameof(OffshorePlatform)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -13137,33 +12157,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Bridge._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Bridge._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Bridge._primitives;
@@ -13171,48 +12171,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(SpanFixed),nameof(SpanOpening),nameof(Pontoon),nameof(PylonBridgeSupport)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -13303,33 +12261,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpanFixed._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpanFixed._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpanFixed._primitives;
@@ -13337,48 +12275,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -13473,33 +12369,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpanOpening._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpanOpening._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpanOpening._primitives;
@@ -13507,48 +12383,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -13750,33 +12584,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Conveyor._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Conveyor._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Conveyor._primitives;
@@ -13784,40 +12598,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -13974,33 +12754,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableOverhead._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableOverhead._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableOverhead._primitives;
@@ -14008,32 +12768,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(RadarReflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -14190,33 +12924,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PipelineOverhead._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PipelineOverhead._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PipelineOverhead._primitives;
@@ -14224,40 +12938,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(RadarReflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -14446,33 +13126,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PylonBridgeSupport._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PylonBridgeSupport._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PylonBridgeSupport._primitives;
@@ -14480,56 +13140,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RoofedStructureAggregation),
-					role = Enum.GetName<Role>(Role.theRoofedStructure)!,
-					featureTypes = [nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -14697,33 +13307,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FenceWall._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FenceWall._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FenceWall._primitives;
@@ -14731,24 +13321,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -14842,33 +13414,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Railway._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Railway._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Railway._primitives;
@@ -14876,24 +13428,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -15003,33 +13537,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Road._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Road._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Road._primitives;
@@ -15037,24 +13551,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -15171,33 +13667,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Tunnel._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Tunnel._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Tunnel._primitives;
@@ -15205,24 +13681,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -15429,33 +13887,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Landmark._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Landmark._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Landmark._primitives;
@@ -15463,56 +13901,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -15720,33 +14108,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SiloTank._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SiloTank._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SiloTank._primitives;
@@ -15754,48 +14122,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -16004,33 +14330,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WindTurbine._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WindTurbine._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WindTurbine._primitives;
@@ -16038,40 +14344,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -16222,33 +14494,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FortifiedStructure._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FortifiedStructure._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FortifiedStructure._primitives;
@@ -16256,48 +14508,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -16454,33 +14664,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProductionStorageArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ProductionStorageArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ProductionStorageArea._primitives;
@@ -16488,24 +14678,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -16587,33 +14759,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Checkpoint._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Checkpoint._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Checkpoint._primitives;
@@ -16621,24 +14773,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -16801,33 +14935,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Hulk._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Hulk._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Hulk._primitives;
@@ -16835,40 +14949,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -17030,33 +15110,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Pile._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Pile._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Pile._primitives;
@@ -17064,56 +15124,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -17236,33 +15246,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dyke._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dyke._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dyke._primitives;
@@ -17270,24 +15260,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -17483,33 +15455,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ShorelineConstruction._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ShorelineConstruction._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ShorelineConstruction._primitives;
@@ -17517,40 +15469,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -17775,24 +15693,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.StructureOverNavigableWater._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.StructureOverNavigableWater._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => StructureOverNavigableWater._primitives;
@@ -17800,48 +15707,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RoofedStructureAggregation),
-					role = Enum.GetName<Role>(Role.theSupport)!,
-					featureTypes = [nameof(PylonBridgeSupport)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -17951,33 +15816,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Causeway._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Causeway._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Causeway._primitives;
@@ -17985,24 +15830,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -18119,33 +15946,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Canal._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Canal._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Canal._primitives;
@@ -18153,24 +15960,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -18250,33 +16039,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistanceMark._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DistanceMark._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DistanceMark._primitives;
@@ -18284,32 +16053,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -18460,33 +16203,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Gate._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Gate._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Gate._primitives;
@@ -18494,24 +16217,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -18683,33 +16388,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dam._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dam._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dam._primitives;
@@ -18717,24 +16402,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -18925,33 +16592,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Crane._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Crane._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Crane._primitives;
@@ -18959,40 +16606,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -19127,33 +16740,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Berth._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Berth._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Berth._primitives;
@@ -19161,32 +16754,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -19372,33 +16939,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dolphin._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dolphin._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dolphin._primitives;
@@ -19406,48 +16953,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -19553,33 +17058,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Bollard._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Bollard._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Bollard._primitives;
@@ -19587,32 +17072,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Dolphin),nameof(FortifiedStructure),nameof(Hulk),nameof(Landmark),nameof(OffshorePlatform),nameof(Pile),nameof(PylonBridgeSupport),nameof(ShorelineConstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -19761,24 +17220,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DryDock._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DryDock._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DryDock._primitives;
@@ -19786,24 +17234,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -19985,33 +17415,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FloatingDock._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FloatingDock._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FloatingDock._primitives;
@@ -20019,40 +17429,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20175,33 +17551,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Pontoon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Pontoon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Pontoon._primitives;
@@ -20209,48 +17565,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20379,24 +17693,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DockArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DockArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DockArea._primitives;
@@ -20404,24 +17707,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20532,24 +17817,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Gridiron._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Gridiron._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Gridiron._primitives;
@@ -20557,24 +17831,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20675,24 +17931,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LockBasin._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LockBasin._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LockBasin._primitives;
@@ -20700,24 +17945,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20785,24 +18012,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringTrot._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringTrot._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringTrot._primitives;
@@ -20810,32 +18026,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(Berth),nameof(CableSubmarine),nameof(MooringBuoy),nameof(Obstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -20906,33 +18096,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeaAreaNamedWaterArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeaAreaNamedWaterArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeaAreaNamedWaterArea._primitives;
@@ -20940,24 +18110,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21045,33 +18197,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TidalStreamFloodEbb._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TidalStreamFloodEbb._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamFloodEbb._primitives;
@@ -21079,24 +18211,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21191,33 +18305,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CurrentNonGravitational._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CurrentNonGravitational._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CurrentNonGravitational._primitives;
@@ -21225,24 +18319,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21312,33 +18388,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WaterTurbulence._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WaterTurbulence._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WaterTurbulence._primitives;
@@ -21346,24 +18402,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21444,33 +18482,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TidalStreamPanelData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TidalStreamPanelData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamPanelData._primitives;
@@ -21478,24 +18496,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21594,33 +18594,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.pointSet],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Sounding._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Sounding._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Sounding._primitives;
@@ -21628,24 +18608,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.pointSet
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21769,24 +18731,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DredgedArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DredgedArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DredgedArea._primitives;
@@ -21794,32 +18745,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21887,24 +18812,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SweptArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SweptArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SweptArea._primitives;
@@ -21912,32 +18826,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -21998,33 +18886,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthContour._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthContour._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthContour._primitives;
@@ -22032,16 +18900,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22103,24 +18961,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthArea._primitives;
@@ -22128,16 +18975,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22202,33 +19039,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.pointSet],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthNoBottomFound._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthNoBottomFound._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthNoBottomFound._primitives;
@@ -22236,16 +19053,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.pointSet
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22295,24 +19102,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnsurveyedArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnsurveyedArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UnsurveyedArea._primitives;
@@ -22320,16 +19116,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22406,33 +19192,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeabedArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeabedArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeabedArea._primitives;
@@ -22440,24 +19206,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22529,33 +19277,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WeedKelp._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WeedKelp._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WeedKelp._primitives;
@@ -22563,24 +19291,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22642,33 +19352,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Seagrass._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Seagrass._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Seagrass._primitives;
@@ -22676,24 +19366,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22755,33 +19427,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Sandwave._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Sandwave._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Sandwave._primitives;
@@ -22789,16 +19441,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -22860,33 +19502,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Spring._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Spring._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Spring._primitives;
@@ -22894,24 +19516,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23060,33 +19664,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnderwaterAwashRock._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnderwaterAwashRock._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UnderwaterAwashRock._primitives;
@@ -23094,24 +19678,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23291,33 +19857,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Wreck._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Wreck._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Wreck._primitives;
@@ -23325,32 +19871,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23552,33 +20072,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Obstruction._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Obstruction._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Obstruction._primitives;
@@ -23586,32 +20086,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23722,33 +20196,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FoulGround._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FoulGround._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FoulGround._primitives;
@@ -23756,24 +20210,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23835,33 +20271,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DiscolouredWater._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DiscolouredWater._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DiscolouredWater._primitives;
@@ -23869,16 +20285,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -23989,33 +20395,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FishingFacility._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FishingFacility._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FishingFacility._primitives;
@@ -24023,40 +20409,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -24224,33 +20576,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MarineFarmCulture._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MarineFarmCulture._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MarineFarmCulture._primitives;
@@ -24258,24 +20590,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -24454,33 +20768,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OffshorePlatform._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OffshorePlatform._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OffshorePlatform._primitives;
@@ -24488,40 +20782,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -24626,33 +20886,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableSubmarine._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableSubmarine._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableSubmarine._primitives;
@@ -24660,32 +20900,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -24790,24 +21004,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableArea._primitives;
@@ -24815,24 +21018,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -24991,33 +21176,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PipelineSubmarineOnLand._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PipelineSubmarineOnLand._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PipelineSubmarineOnLand._primitives;
@@ -25025,24 +21190,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -25158,33 +21305,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SubmarinePipelineArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SubmarinePipelineArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SubmarinePipelineArea._primitives;
@@ -25192,24 +21319,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -25382,24 +21491,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OffshoreProductionArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OffshoreProductionArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OffshoreProductionArea._primitives;
@@ -25407,24 +21505,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -25523,33 +21603,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationLine._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationLine._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavigationLine._primitives;
@@ -25557,24 +21617,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -25719,33 +21761,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedTrack._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedTrack._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrack._primitives;
@@ -25753,40 +21775,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -25860,33 +21848,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RangeSystem._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RangeSystem._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RangeSystem._primitives;
@@ -25894,48 +21862,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(Building),nameof(Daymark),nameof(Dolphin),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(LightAllAround),nameof(LightSectored),nameof(NavigationLine),nameof(Pile),nameof(RadarTransponderBeacon),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(SafeWaterBeacon),nameof(SiloTank),nameof(SpecialPurposeGeneralBeacon)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26077,24 +22003,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Fairway._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Fairway._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Fairway._primitives;
@@ -26102,40 +22017,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.theAuxiliaryFeature)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CautionArea),nameof(Daymark),nameof(DredgedArea),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Landmark),nameof(Pile),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RestrictedArea),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(SweptArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26215,24 +22096,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FairwaySystem._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FairwaySystem._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FairwaySystem._primitives;
@@ -26240,40 +22110,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(FairwayAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26414,33 +22250,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedRouteCentreline._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedRouteCentreline._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedRouteCentreline._primitives;
@@ -26448,40 +22264,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26609,24 +22391,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TwoWayRoutePart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TwoWayRoutePart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoutePart._primitives;
@@ -26634,32 +22405,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TwoWayRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26733,24 +22478,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TwoWayRoute._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TwoWayRoute._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoute._primitives;
@@ -26758,48 +22492,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TwoWayRouteAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(TwoWayRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -26876,33 +22568,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedTrafficLanePart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedTrafficLanePart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrafficLanePart._primitives;
@@ -26910,16 +22582,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27058,33 +22720,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRouteCentreline._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRouteCentreline._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRouteCentreline._primitives;
@@ -27092,40 +22734,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27275,24 +22883,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRoutePart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRoutePart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoutePart._primitives;
@@ -27300,40 +22897,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27407,24 +22970,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRoute._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRoute._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoute._primitives;
@@ -27432,48 +22984,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27561,24 +23071,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InshoreTrafficZone._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InshoreTrafficZone._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InshoreTrafficZone._primitives;
@@ -27586,24 +23085,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27703,33 +23184,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PrecautionaryArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PrecautionaryArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PrecautionaryArea._primitives;
@@ -27737,32 +23198,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27857,24 +23292,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeLanePart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeLanePart._primitives;
@@ -27882,24 +23306,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -27970,33 +23376,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeparationZoneOrLine._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeparationZoneOrLine._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeparationZoneOrLine._primitives;
@@ -28004,24 +23390,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28092,33 +23460,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeBoundary._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeBoundary._primitives;
@@ -28126,24 +23474,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28231,24 +23561,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeCrossing._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeCrossing._primitives;
@@ -28256,24 +23575,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28361,24 +23662,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeRoundabout._primitives;
@@ -28386,24 +23676,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28483,24 +23755,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationScheme._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationScheme._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationScheme._primitives;
@@ -28508,56 +23769,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(InshoreTrafficZone),nameof(PrecautionaryArea),nameof(RestrictedArea),nameof(SeparationZoneOrLine),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(TwoWayRoute),nameof(TwoWayRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(CautionArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28631,24 +23842,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLaneArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLaneArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneArea._primitives;
@@ -28656,32 +23856,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28755,33 +23929,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLaneAxis._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLaneAxis._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneAxis._primitives;
@@ -28789,32 +23943,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -28887,24 +24015,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLane._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLane._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLane._primitives;
@@ -28912,48 +24029,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface, Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(CautionArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29059,33 +24134,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadioCallingInPoint._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadioCallingInPoint._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadioCallingInPoint._primitives;
@@ -29093,24 +24148,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29204,33 +24241,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FerryRoute._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FerryRoute._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FerryRoute._primitives;
@@ -29238,24 +24255,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29332,33 +24331,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarLine._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarLine._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarLine._primitives;
@@ -29366,24 +24345,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29466,24 +24427,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarRange._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarRange._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarRange._primitives;
@@ -29491,24 +24441,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29621,33 +24553,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarStation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarStation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarStation._primitives;
@@ -29655,24 +24567,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29794,33 +24688,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorageArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorageArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AnchorageArea._primitives;
@@ -29828,24 +24702,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -29968,33 +24824,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringArea._primitives;
@@ -30002,24 +24838,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30130,33 +24948,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorBerth._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorBerth._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AnchorBerth._primitives;
@@ -30164,24 +24962,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30275,33 +25055,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeaplaneLandingArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeaplaneLandingArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeaplaneLandingArea._primitives;
@@ -30309,24 +25069,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30431,33 +25173,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DumpingGround._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DumpingGround._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DumpingGround._primitives;
@@ -30465,24 +25187,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30599,33 +25303,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MilitaryPracticeArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MilitaryPracticeArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MilitaryPracticeArea._primitives;
@@ -30633,24 +25317,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30738,33 +25404,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AdministrationArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AdministrationArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AdministrationArea._primitives;
@@ -30772,24 +25418,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -30889,33 +25517,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CargoTranshipmentArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CargoTranshipmentArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CargoTranshipmentArea._primitives;
@@ -30923,24 +25531,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31040,33 +25630,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CautionArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CautionArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CautionArea._primitives;
@@ -31074,32 +25644,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31185,33 +25729,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InformationArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InformationArea._primitives;
@@ -31219,24 +25743,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31310,33 +25816,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContiguousZone._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ContiguousZone._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ContiguousZone._primitives;
@@ -31344,16 +25830,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31421,33 +25897,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContinentalShelfArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ContinentalShelfArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ContinentalShelfArea._primitives;
@@ -31455,24 +25911,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31533,24 +25971,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CustomZone._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CustomZone._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CustomZone._primitives;
@@ -31558,16 +25985,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31635,33 +26052,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ExclusiveEconomicZone._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ExclusiveEconomicZone._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ExclusiveEconomicZone._primitives;
@@ -31669,16 +26066,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31754,24 +26141,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FisheryZone._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FisheryZone._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FisheryZone._primitives;
@@ -31779,24 +26155,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -31890,24 +26248,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FishingGround._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FishingGround._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FishingGround._primitives;
@@ -31915,24 +26262,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32003,24 +26332,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FreePortArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FreePortArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FreePortArea._primitives;
@@ -32028,24 +26346,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32116,24 +26416,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourAreaAdministrative._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourAreaAdministrative._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => HarbourAreaAdministrative._primitives;
@@ -32141,24 +26430,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32235,33 +26506,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LogPond._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LogPond._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LogPond._primitives;
@@ -32269,24 +26520,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32391,33 +26624,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OilBarrier._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OilBarrier._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OilBarrier._primitives;
@@ -32425,24 +26638,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32503,33 +26698,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.StraightTerritorialSeaBaseline._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => StraightTerritorialSeaBaseline._primitives;
@@ -32537,16 +26712,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32629,33 +26794,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TerritorialSeaArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TerritorialSeaArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TerritorialSeaArea._primitives;
@@ -32663,16 +26808,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32755,24 +26890,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SubmarineTransitLane._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SubmarineTransitLane._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SubmarineTransitLane._primitives;
@@ -32780,24 +26904,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32865,24 +26971,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotageDistrict._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotageDistrict._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PilotageDistrict._primitives;
@@ -32890,32 +26985,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PilotageDistrictAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(PilotBoardingPlace)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -32996,33 +27065,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CollisionRegulationsLimit._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CollisionRegulationsLimit._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CollisionRegulationsLimit._primitives;
@@ -33030,24 +27079,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.curve
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -33116,24 +27147,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MarinePollutionRegulationsArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MarinePollutionRegulationsArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MarinePollutionRegulationsArea._primitives;
@@ -33141,24 +27161,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -33269,24 +27271,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RestrictedArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RestrictedArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RestrictedArea._primitives;
@@ -33294,40 +27285,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -33529,33 +27486,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightAllAround._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightAllAround._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightAllAround._primitives;
@@ -33563,48 +27500,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -33760,33 +27655,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightSectored._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightSectored._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightSectored._primitives;
@@ -33794,48 +27669,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(Conveyor),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -33975,33 +27808,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightFogDetector._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightFogDetector._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightFogDetector._primitives;
@@ -34009,32 +27822,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -34191,33 +27978,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightAirObstruction._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightAirObstruction._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightAirObstruction._primitives;
@@ -34225,32 +27992,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(Conveyor),nameof(Landmark),nameof(OffshorePlatform),nameof(PylonBridgeSupport),nameof(SpanFixed),nameof(SpanOpening),nameof(WindTurbine),nameof(LightAllAround),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -34421,33 +28162,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LateralBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LateralBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LateralBuoy._primitives;
@@ -34455,48 +28176,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -34667,33 +28346,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CardinalBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CardinalBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBuoy._primitives;
@@ -34701,48 +28360,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -34903,33 +28520,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IsolatedDangerBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IsolatedDangerBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBuoy._primitives;
@@ -34937,48 +28534,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -35139,33 +28694,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SafeWaterBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SafeWaterBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBuoy._primitives;
@@ -35173,48 +28708,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -35386,33 +28879,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpecialPurposeGeneralBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBuoy._primitives;
@@ -35420,48 +28893,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -35605,33 +29036,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.EmergencyWreckMarkingBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.EmergencyWreckMarkingBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => EmergencyWreckMarkingBuoy._primitives;
@@ -35639,40 +29050,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -35843,33 +29220,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InstallationBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InstallationBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InstallationBuoy._primitives;
@@ -35877,32 +29234,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -36058,33 +29389,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringBuoy._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringBuoy._primitives;
@@ -36092,48 +29403,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -36345,33 +29614,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LateralBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LateralBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LateralBeacon._primitives;
@@ -36379,56 +29628,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -36640,33 +29839,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CardinalBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CardinalBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBeacon._primitives;
@@ -36674,56 +29853,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -36925,33 +30054,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IsolatedDangerBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IsolatedDangerBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBeacon._primitives;
@@ -36959,56 +30068,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -37210,33 +30269,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SafeWaterBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SafeWaterBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBeacon._primitives;
@@ -37244,56 +30283,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -37506,33 +30495,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpecialPurposeGeneralBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBeacon._primitives;
@@ -37540,56 +30509,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -37763,33 +30682,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Daymark._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Daymark._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Daymark._primitives;
@@ -37797,64 +30696,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38017,33 +30858,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightFloat._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightFloat._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightFloat._primitives;
@@ -38051,48 +30872,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38249,33 +31028,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightVessel._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightVessel._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightVessel._primitives;
@@ -38283,48 +31042,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38429,33 +31146,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Retroreflector._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Retroreflector._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Retroreflector._primitives;
@@ -38463,24 +31160,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38563,33 +31242,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarReflector._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarReflector._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarReflector._primitives;
@@ -38597,24 +31256,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(CableOverhead),nameof(PipelineOverhead)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38749,33 +31390,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FogSignal._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FogSignal._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FogSignal._primitives;
@@ -38783,32 +31404,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -38905,33 +31500,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PhysicalAISAidToNavigation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PhysicalAISAidToNavigation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PhysicalAISAidToNavigation._primitives;
@@ -38939,32 +31514,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39071,33 +31620,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VirtualAISAidToNavigation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VirtualAISAidToNavigation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VirtualAISAidToNavigation._primitives;
@@ -39105,24 +31634,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39242,33 +31753,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadioStation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadioStation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadioStation._primitives;
@@ -39276,24 +31767,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39417,33 +31890,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarTransponderBeacon._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarTransponderBeacon._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarTransponderBeacon._primitives;
@@ -39451,40 +31904,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39613,33 +32032,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotBoardingPlace._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotBoardingPlace._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PilotBoardingPlace._primitives;
@@ -39647,32 +32046,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(PilotageDistrictAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(PilotageDistrict)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39734,24 +32107,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VesselTrafficServiceArea._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VesselTrafficServiceArea._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VesselTrafficServiceArea._primitives;
@@ -39759,24 +32121,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -39871,33 +32215,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CoastGuardStation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CoastGuardStation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CoastGuardStation._primitives;
@@ -39905,24 +32229,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40022,33 +32328,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationWarning._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationWarning._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationWarning._primitives;
@@ -40056,32 +32342,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40181,33 +32441,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationTraffic._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationTraffic._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationTraffic._primitives;
@@ -40215,32 +32455,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40340,33 +32554,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RescueStation._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RescueStation._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RescueStation._primitives;
@@ -40374,24 +32568,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40553,33 +32729,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourFacility._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourFacility._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => HarbourFacility._primitives;
@@ -40587,24 +32743,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40698,33 +32836,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SmallCraftFacility._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SmallCraftFacility._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SmallCraftFacility._primitives;
@@ -40732,24 +32850,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40819,24 +32919,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -40844,16 +32933,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.thePositionProvider)!,
-					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBuoy),nameof(CardinalBeacon),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(Chart1Feature),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(RadarLine),nameof(RadarRange),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RescueStation),nameof(RestrictedArea),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SlopeTopline),nameof(SlopingGround),nameof(SmallCraftFacility),nameof(Sounding),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TidalStreamFloodEbb),nameof(TidalStreamPanelData),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(Tunnel),nameof(TwoWayRoute),nameof(UnderwaterAwashRock),nameof(Vegetation),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40903,24 +32982,13 @@ namespace S100Framework.DomainModel.S101 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(SpatialAssociation),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-					primitives = [Primitives.point,Primitives.pointSet,Primitives.curve],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Chart1Feature._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Chart1Feature._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Chart1Feature._primitives;
@@ -40928,16 +32996,6 @@ namespace S100Framework.DomainModel.S101 {
 				Primitives.point, Primitives.pointSet, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -40955,6 +33013,7436 @@ namespace S100Framework.DomainModel.S101 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class ContactDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ServiceHours {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NonStandardWorkingDay {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NauticalInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class SpatialQuality {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class DataCoverage {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NavigationalSystemOfMarks {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class LocalDirectionOfBuoyage {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfBathymetricData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(QualityOfBathymetricDataComposition),
+					role = Enum.GetName<Role>(Role.theQualityInformation)!,
+					informationTypes = [nameof(SpatialQuality)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SoundingDatum {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class VerticalDatumOfData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfSurvey {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class UpdateInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class MagneticVariation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LocalMagneticAnomaly {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Coastline {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LandArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IslandGroup {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LandElevation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class River {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Rapids {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Waterfall {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Lake {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LandRegion {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Vegetation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IceArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SlopingGround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SlopeTopline {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Tideway {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class BuiltUpArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Building {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AirportAirfield {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Runway {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Helipad {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Bridge {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpanFixed {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpanOpening {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Conveyor {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CableOverhead {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PipelineOverhead {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PylonBridgeSupport {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FenceWall {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Railway {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Road {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Tunnel {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Landmark {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SiloTank {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class WindTurbine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FortifiedStructure {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ProductionStorageArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Checkpoint {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Hulk {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Pile {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Dyke {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ShorelineConstruction {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class StructureOverNavigableWater {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Causeway {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Canal {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DistanceMark {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Gate {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Dam {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Crane {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Berth {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Dolphin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Bollard {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DryDock {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FloatingDock {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Pontoon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DockArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Gridiron {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LockBasin {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MooringTrot {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SeaAreaNamedWaterArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TidalStreamFloodEbb {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CurrentNonGravitational {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class WaterTurbulence {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TidalStreamPanelData {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Sounding {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DredgedArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SweptArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DepthContour {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DepthArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DepthNoBottomFound {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class UnsurveyedArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SeabedArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class WeedKelp {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Seagrass {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Sandwave {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Spring {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class UnderwaterAwashRock {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Wreck {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Obstruction {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FoulGround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DiscolouredWater {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FishingFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MarineFarmCulture {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OffshorePlatform {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CableSubmarine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CableArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PipelineSubmarineOnLand {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SubmarinePipelineArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OffshoreProductionArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NavigationLine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RecommendedTrack {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RangeSystem {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Fairway {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FairwaySystem {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RecommendedRouteCentreline {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TwoWayRoutePart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TwoWayRoute {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RecommendedTrafficLanePart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DeepWaterRouteCentreline {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DeepWaterRoutePart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DeepWaterRoute {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class InshoreTrafficZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PrecautionaryArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeLanePart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SeparationZoneOrLine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeBoundary {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeCrossing {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeRoundabout {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TrafficSeparationScheme {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLaneArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLaneAxis {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLane {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadioCallingInPoint {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FerryRoute {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadarLine {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadarRange {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadarStation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AnchorageArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MooringArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AnchorBerth {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SeaplaneLandingArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DumpingGround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MilitaryPracticeArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class AdministrationArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CargoTranshipmentArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CautionArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class InformationArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ContiguousZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ContinentalShelfArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CustomZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ExclusiveEconomicZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FisheryZone {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FishingGround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FreePortArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourAreaAdministrative {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LogPond {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class OilBarrier {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class StraightTerritorialSeaBaseline {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TerritorialSeaArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SubmarineTransitLane {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PilotageDistrict {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CollisionRegulationsLimit {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MarinePollutionRegulationsArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RestrictedArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightAllAround {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightSectored {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightFogDetector {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightAirObstruction {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LateralBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CardinalBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IsolatedDangerBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SafeWaterBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpecialPurposeGeneralBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class EmergencyWreckMarkingBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class InstallationBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class MooringBuoy {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LateralBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CardinalBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IsolatedDangerBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SafeWaterBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpecialPurposeGeneralBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Daymark {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightFloat {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class LightVessel {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Retroreflector {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadarReflector {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class FogSignal {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PhysicalAISAidToNavigation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class VirtualAISAidToNavigation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadioStation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RadarTransponderBeacon {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class PilotBoardingPlace {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class VesselTrafficServiceArea {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CoastGuardStation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SignalStationWarning {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SignalStationTraffic {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RescueStation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class HarbourFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SmallCraftFacility {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class TextPlacement {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class Chart1Feature {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class QualityOfNonBathymetricData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class DataCoverage {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class NavigationalSystemOfMarks {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class LocalDirectionOfBuoyage {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class QualityOfBathymetricData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class SoundingDatum {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class VerticalDatumOfData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class QualityOfSurvey {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class UpdateInformation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdateAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.UpdateAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdatedObject)!,
+					featureTypes = [nameof(FeatureTypes.AdministrationArea),nameof(FeatureTypes.AirportAirfield),nameof(FeatureTypes.AnchorBerth),nameof(FeatureTypes.AnchorageArea),nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.ArchipelagicSeaLaneArea),nameof(FeatureTypes.ArchipelagicSeaLaneAxis),nameof(FeatureTypes.Berth),nameof(FeatureTypes.Bollard),nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.BuiltUpArea),nameof(FeatureTypes.CableArea),nameof(FeatureTypes.CableOverhead),nameof(FeatureTypes.CableSubmarine),nameof(FeatureTypes.Canal),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.CargoTranshipmentArea),nameof(FeatureTypes.Causeway),nameof(FeatureTypes.CautionArea),nameof(FeatureTypes.Checkpoint),nameof(FeatureTypes.CoastGuardStation),nameof(FeatureTypes.Coastline),nameof(FeatureTypes.CollisionRegulationsLimit),nameof(FeatureTypes.ContiguousZone),nameof(FeatureTypes.ContinentalShelfArea),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CurrentNonGravitational),nameof(FeatureTypes.CustomZone),nameof(FeatureTypes.Dam),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.DeepWaterRouteCentreline),nameof(FeatureTypes.DeepWaterRoutePart),nameof(FeatureTypes.DepthArea),nameof(FeatureTypes.DepthContour),nameof(FeatureTypes.DepthNoBottomFound),nameof(FeatureTypes.DiscolouredWater),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.DockArea),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.DredgedArea),nameof(FeatureTypes.DryDock),nameof(FeatureTypes.DumpingGround),nameof(FeatureTypes.Dyke),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.ExclusiveEconomicZone),nameof(FeatureTypes.Fairway),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.FenceWall),nameof(FeatureTypes.FerryRoute),nameof(FeatureTypes.FisheryZone),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FishingGround),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.FoulGround),nameof(FeatureTypes.FreePortArea),nameof(FeatureTypes.Gate),nameof(FeatureTypes.Gridiron),nameof(FeatureTypes.HarbourAreaAdministrative),nameof(FeatureTypes.HarbourFacility),nameof(FeatureTypes.Helipad),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.IceArea),nameof(FeatureTypes.InformationArea),nameof(FeatureTypes.InshoreTrafficZone),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IslandGroup),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Lake),nameof(FeatureTypes.LandArea),nameof(FeatureTypes.LandElevation),nameof(FeatureTypes.LandRegion),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightAirObstruction),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.LocalDirectionOfBuoyage),nameof(FeatureTypes.LocalMagneticAnomaly),nameof(FeatureTypes.LockBasin),nameof(FeatureTypes.LogPond),nameof(FeatureTypes.MagneticVariation),nameof(FeatureTypes.MarineFarmCulture),nameof(FeatureTypes.MarinePollutionRegulationsArea),nameof(FeatureTypes.MilitaryPracticeArea),nameof(FeatureTypes.MooringArea),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.MooringTrot),nameof(FeatureTypes.NavigationLine),nameof(FeatureTypes.NavigationalSystemOfMarks),nameof(FeatureTypes.Obstruction),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.OffshoreProductionArea),nameof(FeatureTypes.OilBarrier),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PilotBoardingPlace),nameof(FeatureTypes.PilotageDistrict),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.PipelineSubmarineOnLand),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PrecautionaryArea),nameof(FeatureTypes.ProductionStorageArea),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.QualityOfBathymetricData),nameof(FeatureTypes.QualityOfNonBathymetricData),nameof(FeatureTypes.QualityOfSurvey),nameof(FeatureTypes.RadarLine),nameof(FeatureTypes.RadarRange),nameof(FeatureTypes.RadarReflector),nameof(FeatureTypes.RadarStation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.RadioCallingInPoint),nameof(FeatureTypes.RadioStation),nameof(FeatureTypes.Railway),nameof(FeatureTypes.RangeSystem),nameof(FeatureTypes.Rapids),nameof(FeatureTypes.RecommendedRouteCentreline),nameof(FeatureTypes.RecommendedTrack),nameof(FeatureTypes.RecommendedTrafficLanePart),nameof(FeatureTypes.RescueStation),nameof(FeatureTypes.RestrictedArea),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.River),nameof(FeatureTypes.Road),nameof(FeatureTypes.Runway),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.Sandwave),nameof(FeatureTypes.SeaAreaNamedWaterArea),nameof(FeatureTypes.SeabedArea),nameof(FeatureTypes.Seagrass),nameof(FeatureTypes.SeaplaneLandingArea),nameof(FeatureTypes.SeparationZoneOrLine),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SmallCraftFacility),nameof(FeatureTypes.SlopeTopline),nameof(FeatureTypes.SlopingGround),nameof(FeatureTypes.Sounding),nameof(FeatureTypes.SoundingDatum),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Spring),nameof(FeatureTypes.StraightTerritorialSeaBaseline),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.SubmarinePipelineArea),nameof(FeatureTypes.SubmarineTransitLane),nameof(FeatureTypes.SweptArea),nameof(FeatureTypes.TerritorialSeaArea),nameof(FeatureTypes.TidalStreamPanelData),nameof(FeatureTypes.TidalStreamFloodEbb),nameof(FeatureTypes.Tideway),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TrafficSeparationSchemeBoundary),nameof(FeatureTypes.TrafficSeparationSchemeCrossing),nameof(FeatureTypes.TrafficSeparationSchemeLanePart),nameof(FeatureTypes.TrafficSeparationSchemeRoundabout),nameof(FeatureTypes.Tunnel),nameof(FeatureTypes.TwoWayRoute),nameof(FeatureTypes.TwoWayRoutePart),nameof(FeatureTypes.UnderwaterAwashRock),nameof(FeatureTypes.UnsurveyedArea),nameof(FeatureTypes.UpdateInformation),nameof(FeatureTypes.Vegetation),nameof(FeatureTypes.VerticalDatumOfData),nameof(FeatureTypes.VesselTrafficServiceArea),nameof(FeatureTypes.VirtualAISAidToNavigation),nameof(FeatureTypes.WaterTurbulence),nameof(FeatureTypes.Waterfall),nameof(FeatureTypes.WeedKelp),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class MagneticVariation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class LocalMagneticAnomaly {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Coastline {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LandArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.IslandAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.IslandGroup)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class IslandGroup {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.IslandAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.LandArea),nameof(FeatureTypes.IslandGroup)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.IslandAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.IslandGroup)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LandElevation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class River {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Rapids {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Waterfall {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Lake {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LandRegion {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Vegetation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class IceArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SlopingGround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SlopeTopline {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Tideway {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class BuiltUpArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Building {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.Helipad),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class AirportAirfield {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Runway {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Helipad {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Building),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.OffshorePlatform)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Bridge {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.BridgeAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SpanFixed {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.BridgeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.Bridge)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class SpanOpening {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.BridgeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.Bridge)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class Conveyor {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CableOverhead {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.RadarReflector)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class PipelineOverhead {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.RadarReflector)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class PylonBridgeSupport {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.BridgeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.Bridge)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RoofedStructureAggregation),
+					role = Enum.GetName<Role>(Role.theRoofedStructure)!,
+					featureTypes = [nameof(FeatureTypes.StructureOverNavigableWater)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class FenceWall {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Railway {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Road {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Tunnel {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Landmark {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.Helipad),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SiloTank {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class WindTurbine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FortifiedStructure {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ProductionStorageArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Checkpoint {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Hulk {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.Bollard)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Pile {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Dyke {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ShorelineConstruction {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class StructureOverNavigableWater {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.RoofedStructureAggregation),
+					role = Enum.GetName<Role>(Role.theSupport)!,
+					featureTypes = [nameof(FeatureTypes.PylonBridgeSupport)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class Causeway {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Canal {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DistanceMark {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Gate {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Dam {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Crane {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Berth {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.MooringTrotAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.MooringTrot)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Dolphin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Bollard {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.ShorelineConstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DryDock {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FloatingDock {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Pontoon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.BridgeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.Bridge)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DockArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Gridiron {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LockBasin {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MooringTrot {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.MooringTrotAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.Berth),nameof(FeatureTypes.CableSubmarine),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.Obstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SeaAreaNamedWaterArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class TidalStreamFloodEbb {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CurrentNonGravitational {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class WaterTurbulence {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class TidalStreamPanelData {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Sounding {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DredgedArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SweptArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DepthContour {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class DepthArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class DepthNoBottomFound {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class UnsurveyedArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class SeabedArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class WeedKelp {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Seagrass {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Sandwave {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class Spring {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class UnderwaterAwashRock {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Wreck {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Obstruction {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.MooringTrotAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.MooringTrot)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FoulGround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DiscolouredWater {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class FishingFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MarineFarmCulture {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class OffshorePlatform {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.Helipad),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Bollard),nameof(FeatureTypes.LightAirObstruction)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CableSubmarine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.MooringTrotAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.MooringTrot)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CableArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class PipelineSubmarineOnLand {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SubmarinePipelineArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class OffshoreProductionArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class NavigationLine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class RecommendedTrack {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+			];
+		}
+		public static class RangeSystem {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.Building),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.NavigationLine),nameof(FeatureTypes.Pile),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.RangeSystem),nameof(FeatureTypes.RecommendedRouteCentreline),nameof(FeatureTypes.RecommendedTrack),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpecialPurposeGeneralBeacon)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Fairway {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.FairwaySystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.theAuxiliaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.CautionArea),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DredgedArea),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.Pile),nameof(FeatureTypes.RangeSystem),nameof(FeatureTypes.RecommendedRouteCentreline),nameof(FeatureTypes.RecommendedTrack),nameof(FeatureTypes.RestrictedArea),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.SweptArea)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FairwaySystem {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Pile),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.StructureOverNavigableWater)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.FairwayAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RecommendedRouteCentreline {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class TwoWayRoutePart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TwoWayRouteAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TwoWayRoute {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Pile),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.StructureOverNavigableWater)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.TwoWayRouteAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.TwoWayRoutePart)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RecommendedTrafficLanePart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class DeepWaterRouteCentreline {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.DeepWaterRouteAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DeepWaterRoutePart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.DeepWaterRouteAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DeepWaterRoute {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Pile),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.WindTurbine)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.DeepWaterRouteAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRouteCentreline),nameof(FeatureTypes.DeepWaterRoutePart)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class InshoreTrafficZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class PrecautionaryArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeLanePart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class SeparationZoneOrLine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeBoundary {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeCrossing {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TrafficSeparationSchemeRoundabout {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TrafficSeparationScheme {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Pile),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.StructureOverNavigableWater)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.DeepWaterRouteCentreline),nameof(FeatureTypes.DeepWaterRoutePart),nameof(FeatureTypes.InshoreTrafficZone),nameof(FeatureTypes.PrecautionaryArea),nameof(FeatureTypes.RestrictedArea),nameof(FeatureTypes.SeparationZoneOrLine),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TrafficSeparationSchemeBoundary),nameof(FeatureTypes.TrafficSeparationSchemeCrossing),nameof(FeatureTypes.TrafficSeparationSchemeLanePart),nameof(FeatureTypes.TrafficSeparationSchemeRoundabout),nameof(FeatureTypes.TwoWayRoute),nameof(FeatureTypes.TwoWayRoutePart)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.CautionAreaAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.CautionArea)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLaneArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.ASLAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLaneAxis {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.ASLAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ArchipelagicSeaLane {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.Pile),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ASLAggregation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLaneArea),nameof(FeatureTypes.ArchipelagicSeaLaneAxis)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.CautionAreaAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.CautionArea)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadioCallingInPoint {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FerryRoute {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadarLine {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadarRange {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadarStation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class AnchorageArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MooringArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class AnchorBerth {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SeaplaneLandingArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class DumpingGround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MilitaryPracticeArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class AdministrationArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CargoTranshipmentArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CautionArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.CautionAreaAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class InformationArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class ContiguousZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class ContinentalShelfArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CustomZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class ExclusiveEconomicZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class FisheryZone {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FishingGround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class FreePortArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class HarbourAreaAdministrative {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LogPond {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class OilBarrier {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class StraightTerritorialSeaBaseline {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class TerritorialSeaArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class SubmarineTransitLane {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class PilotageDistrict {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.PilotageDistrictAssociation),
+					role = Enum.GetName<Role>(Role.theComponent)!,
+					featureTypes = [nameof(FeatureTypes.PilotBoardingPlace)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CollisionRegulationsLimit {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MarinePollutionRegulationsArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RestrictedArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TrafficSeparationSchemeAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.TrafficSeparationScheme)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightAllAround {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAirObstruction),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightSectored {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAirObstruction),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightFogDetector {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightAirObstruction {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LateralBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CardinalBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class IsolatedDangerBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SafeWaterBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SpecialPurposeGeneralBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class EmergencyWreckMarkingBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class InstallationBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class MooringBuoy {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.MooringTrotAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.MooringTrot)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LateralBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CardinalBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class IsolatedDangerBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SafeWaterBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SpecialPurposeGeneralBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.LightSectored)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Daymark {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightFloat {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class LightVessel {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theEquipment)!,
+					featureTypes = [nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.Retroreflector),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.AidsToNavigationAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.TwoWayRoute)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.FairwayAuxiliary),
+					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
+					featureTypes = [nameof(FeatureTypes.Fairway)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class Retroreflector {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class RadarReflector {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.CableOverhead),nameof(FeatureTypes.PipelineOverhead)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+			];
+		}
+		public static class FogSignal {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class PhysicalAISAidToNavigation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class VirtualAISAidToNavigation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadioStation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RadarTransponderBeacon {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.RangeSystemAggregation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.RangeSystem)],
+				},
+			];
+		}
+		public static class PilotBoardingPlace {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.PilotageDistrictAssociation),
+					role = Enum.GetName<Role>(Role.theCollection)!,
+					featureTypes = [nameof(FeatureTypes.PilotageDistrict)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class VesselTrafficServiceArea {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class CoastGuardStation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SignalStationWarning {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SignalStationTraffic {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.StructureEquipment),
+					role = Enum.GetName<Role>(Role.theStructure)!,
+					featureTypes = [nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck),nameof(FeatureTypes.Daymark)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class RescueStation {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class HarbourFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class SmallCraftFacility {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.UpdatedInformation),
+					role = Enum.GetName<Role>(Role.theUpdate)!,
+					featureTypes = [nameof(FeatureTypes.UpdateInformation)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class TextPlacement {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
+					featureTypes = [nameof(FeatureTypes.AdministrationArea),nameof(FeatureTypes.AirportAirfield),nameof(FeatureTypes.AnchorBerth),nameof(FeatureTypes.AnchorageArea),nameof(FeatureTypes.ArchipelagicSeaLane),nameof(FeatureTypes.ArchipelagicSeaLaneArea),nameof(FeatureTypes.ArchipelagicSeaLaneAxis),nameof(FeatureTypes.Berth),nameof(FeatureTypes.Bollard),nameof(FeatureTypes.Bridge),nameof(FeatureTypes.Building),nameof(FeatureTypes.BuiltUpArea),nameof(FeatureTypes.CableArea),nameof(FeatureTypes.CableOverhead),nameof(FeatureTypes.CableSubmarine),nameof(FeatureTypes.Canal),nameof(FeatureTypes.CardinalBuoy),nameof(FeatureTypes.CardinalBeacon),nameof(FeatureTypes.CargoTranshipmentArea),nameof(FeatureTypes.Causeway),nameof(FeatureTypes.Chart1Feature),nameof(FeatureTypes.Checkpoint),nameof(FeatureTypes.CoastGuardStation),nameof(FeatureTypes.Coastline),nameof(FeatureTypes.CollisionRegulationsLimit),nameof(FeatureTypes.ContinentalShelfArea),nameof(FeatureTypes.Conveyor),nameof(FeatureTypes.Crane),nameof(FeatureTypes.CurrentNonGravitational),nameof(FeatureTypes.Dam),nameof(FeatureTypes.Daymark),nameof(FeatureTypes.DeepWaterRoute),nameof(FeatureTypes.DeepWaterRouteCentreline),nameof(FeatureTypes.DeepWaterRoutePart),nameof(FeatureTypes.DistanceMark),nameof(FeatureTypes.DockArea),nameof(FeatureTypes.Dolphin),nameof(FeatureTypes.DredgedArea),nameof(FeatureTypes.DryDock),nameof(FeatureTypes.DumpingGround),nameof(FeatureTypes.Dyke),nameof(FeatureTypes.EmergencyWreckMarkingBuoy),nameof(FeatureTypes.Fairway),nameof(FeatureTypes.FairwaySystem),nameof(FeatureTypes.FenceWall),nameof(FeatureTypes.FerryRoute),nameof(FeatureTypes.FisheryZone),nameof(FeatureTypes.FishingFacility),nameof(FeatureTypes.FishingGround),nameof(FeatureTypes.FloatingDock),nameof(FeatureTypes.FogSignal),nameof(FeatureTypes.FortifiedStructure),nameof(FeatureTypes.FoulGround),nameof(FeatureTypes.FreePortArea),nameof(FeatureTypes.Gate),nameof(FeatureTypes.Gridiron),nameof(FeatureTypes.HarbourAreaAdministrative),nameof(FeatureTypes.HarbourFacility),nameof(FeatureTypes.Helipad),nameof(FeatureTypes.Hulk),nameof(FeatureTypes.IceArea),nameof(FeatureTypes.InformationArea),nameof(FeatureTypes.InstallationBuoy),nameof(FeatureTypes.IslandGroup),nameof(FeatureTypes.IsolatedDangerBeacon),nameof(FeatureTypes.IsolatedDangerBuoy),nameof(FeatureTypes.Lake),nameof(FeatureTypes.LandArea),nameof(FeatureTypes.LandElevation),nameof(FeatureTypes.LandRegion),nameof(FeatureTypes.Landmark),nameof(FeatureTypes.LateralBeacon),nameof(FeatureTypes.LateralBuoy),nameof(FeatureTypes.LightAirObstruction),nameof(FeatureTypes.LightAllAround),nameof(FeatureTypes.LightFloat),nameof(FeatureTypes.LightFogDetector),nameof(FeatureTypes.LightSectored),nameof(FeatureTypes.LightVessel),nameof(FeatureTypes.LocalMagneticAnomaly),nameof(FeatureTypes.LockBasin),nameof(FeatureTypes.LogPond),nameof(FeatureTypes.MarineFarmCulture),nameof(FeatureTypes.MarinePollutionRegulationsArea),nameof(FeatureTypes.MilitaryPracticeArea),nameof(FeatureTypes.MooringArea),nameof(FeatureTypes.MooringBuoy),nameof(FeatureTypes.MooringTrot),nameof(FeatureTypes.Obstruction),nameof(FeatureTypes.OffshorePlatform),nameof(FeatureTypes.OffshoreProductionArea),nameof(FeatureTypes.OilBarrier),nameof(FeatureTypes.PhysicalAISAidToNavigation),nameof(FeatureTypes.Pile),nameof(FeatureTypes.PilotBoardingPlace),nameof(FeatureTypes.PilotageDistrict),nameof(FeatureTypes.PipelineOverhead),nameof(FeatureTypes.PipelineSubmarineOnLand),nameof(FeatureTypes.Pontoon),nameof(FeatureTypes.PrecautionaryArea),nameof(FeatureTypes.ProductionStorageArea),nameof(FeatureTypes.PylonBridgeSupport),nameof(FeatureTypes.RadarLine),nameof(FeatureTypes.RadarRange),nameof(FeatureTypes.RadarStation),nameof(FeatureTypes.RadarTransponderBeacon),nameof(FeatureTypes.RadioCallingInPoint),nameof(FeatureTypes.RadioStation),nameof(FeatureTypes.Railway),nameof(FeatureTypes.RangeSystem),nameof(FeatureTypes.Rapids),nameof(FeatureTypes.RecommendedRouteCentreline),nameof(FeatureTypes.RecommendedTrack),nameof(FeatureTypes.RescueStation),nameof(FeatureTypes.RestrictedArea),nameof(FeatureTypes.River),nameof(FeatureTypes.Road),nameof(FeatureTypes.Runway),nameof(FeatureTypes.SafeWaterBeacon),nameof(FeatureTypes.SafeWaterBuoy),nameof(FeatureTypes.SeaAreaNamedWaterArea),nameof(FeatureTypes.SeabedArea),nameof(FeatureTypes.Seagrass),nameof(FeatureTypes.SeaplaneLandingArea),nameof(FeatureTypes.ShorelineConstruction),nameof(FeatureTypes.SignalStationTraffic),nameof(FeatureTypes.SignalStationWarning),nameof(FeatureTypes.SiloTank),nameof(FeatureTypes.SlopeTopline),nameof(FeatureTypes.SlopingGround),nameof(FeatureTypes.SmallCraftFacility),nameof(FeatureTypes.Sounding),nameof(FeatureTypes.SpanFixed),nameof(FeatureTypes.SpanOpening),nameof(FeatureTypes.SpecialPurposeGeneralBeacon),nameof(FeatureTypes.SpecialPurposeGeneralBuoy),nameof(FeatureTypes.Spring),nameof(FeatureTypes.StructureOverNavigableWater),nameof(FeatureTypes.SubmarinePipelineArea),nameof(FeatureTypes.SubmarineTransitLane),nameof(FeatureTypes.SweptArea),nameof(FeatureTypes.TidalStreamFloodEbb),nameof(FeatureTypes.TidalStreamPanelData),nameof(FeatureTypes.Tideway),nameof(FeatureTypes.TrafficSeparationScheme),nameof(FeatureTypes.Tunnel),nameof(FeatureTypes.TwoWayRoute),nameof(FeatureTypes.UnderwaterAwashRock),nameof(FeatureTypes.Vegetation),nameof(FeatureTypes.VesselTrafficServiceArea),nameof(FeatureTypes.VirtualAISAidToNavigation),nameof(FeatureTypes.WaterTurbulence),nameof(FeatureTypes.Waterfall),nameof(FeatureTypes.WeedKelp),nameof(FeatureTypes.WindTurbine),nameof(FeatureTypes.Wreck)],
+				},
+			];
+		}
+		public static class Chart1Feature {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  2,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S101/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S101/2.0")]

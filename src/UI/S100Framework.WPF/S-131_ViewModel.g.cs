@@ -3692,7 +3692,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			vesselMeasurementsSpecification = this.vesselMeasurementsSpecification.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Applicability._informationBindingDefinitions;
 
 		public ApplicabilityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -4080,7 +4080,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this._textContent?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Authority._informationBindingDefinitions;
 
 		public AuthorityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -4406,7 +4406,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => AvailablePortServices._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AvailablePortServices._informationBindingDefinitions;
 
 		public AvailablePortServicesViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -4814,7 +4814,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			telecommunications = this.telecommunications.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails._informationBindingDefinitions;
 
 		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5098,7 +5098,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Entrance._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Entrance._informationBindingDefinitions;
 
 		public EntranceViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5287,7 +5287,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NauticalInformation._informationBindingDefinitions;
 
 		public NauticalInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5451,7 +5451,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			information = this.information.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NonStandardWorkingDay._informationBindingDefinitions;
 
 		public NonStandardWorkingDayViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5628,7 +5628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Recommendations._informationBindingDefinitions;
 
 		public RecommendationsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5802,7 +5802,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Regulations._informationBindingDefinitions;
 
 		public RegulationsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5976,7 +5976,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Restrictions._informationBindingDefinitions;
 
 		public RestrictionsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -6269,7 +6269,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			information = this.information.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ServiceHours._informationBindingDefinitions;
 
 		public ServiceHoursViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -6367,7 +6367,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			spatialAccuracy = this.spatialAccuracy.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 
 		public SpatialQualityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -6830,10 +6830,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			radius = this._radius,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. AnchorBerth._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorBerth._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.AnchorBerth._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorBerth._featureBindingDefinitions;
 
 		public AnchorBerthViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -7329,10 +7329,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			markedBy = this._markedBy?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. AnchorageArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorageArea._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.AnchorageArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorageArea._featureBindingDefinitions;
 
 		public AnchorageAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -7632,10 +7632,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => AutomatedGuidedVehicle._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. AutomatedGuidedVehicle._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AutomatedGuidedVehicle._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.AutomatedGuidedVehicle._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => AutomatedGuidedVehicle._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AutomatedGuidedVehicle._featureBindingDefinitions;
 
 		public AutomatedGuidedVehicleViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -8523,10 +8523,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfCargo = this.categoryOfCargo.ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. Berth._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Berth._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.Berth._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Berth._featureBindingDefinitions;
 
 		public BerthViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -9042,10 +9042,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			locationByText = this._locationByText,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => BerthPosition._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. BerthPosition._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.BerthPosition._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.BerthPosition._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => BerthPosition._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.BerthPosition._featureBindingDefinitions;
 
 		public BerthPositionViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -9301,10 +9301,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			verticalLength = this._verticalLength,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. Bollard._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Bollard._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.Bollard._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Bollard._featureBindingDefinitions;
 
 		public BollardViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -9823,10 +9823,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DockArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DockArea._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.DockArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DockArea._featureBindingDefinitions;
 
 		public DockAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -10158,10 +10158,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DryDock._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DryDock._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.DryDock._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DryDock._featureBindingDefinitions;
 
 		public DryDockViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -10393,10 +10393,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			categoryOfDolphin = this.categoryOfDolphin.ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. Dolphin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dolphin._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.Dolphin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dolphin._featureBindingDefinitions;
 
 		public DolphinViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -10850,10 +10850,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DumpingGround._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DumpingGround._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.DumpingGround._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DumpingGround._featureBindingDefinitions;
 
 		public DumpingGroundViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -11177,10 +11177,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			orientation = this._orientation?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => FenderLine._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. FenderLine._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FenderLine._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.FenderLine._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => FenderLine._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FenderLine._featureBindingDefinitions;
 
 		public FenderLineViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -11488,10 +11488,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			sillDepth = this._sillDepth,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. FloatingDock._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FloatingDock._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.FloatingDock._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FloatingDock._featureBindingDefinitions;
 
 		public FloatingDockViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -11817,10 +11817,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. Gridiron._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Gridiron._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.Gridiron._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Gridiron._featureBindingDefinitions;
 
 		public GridironViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -12450,10 +12450,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			generalHarbourInformation = this._generalHarbourInformation?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourAreaAdministrative._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourAreaAdministrative._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.HarbourAreaAdministrative._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourAreaAdministrative._featureBindingDefinitions;
 
 		public HarbourAreaAdministrativeViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -13156,10 +13156,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			facilitiesLayoutDescription = this._facilitiesLayoutDescription?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaSection._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourAreaSection._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourAreaSection._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.HarbourAreaSection._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaSection._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourAreaSection._featureBindingDefinitions;
 
 		public HarbourAreaSectionViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -13628,10 +13628,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => HarbourBasin._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourBasin._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.HarbourBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => HarbourBasin._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourBasin._featureBindingDefinitions;
 
 		public HarbourBasinViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -13925,10 +13925,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. HarbourFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourFacility._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.HarbourFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourFacility._featureBindingDefinitions;
 
 		public HarbourFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -14236,10 +14236,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			sillDepth = this._sillDepth,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. LockBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LockBasin._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.LockBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LockBasin._featureBindingDefinitions;
 
 		public LockBasinViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -14547,10 +14547,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			sillDepth = this._sillDepth,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => LockBasinPart._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. LockBasinPart._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LockBasinPart._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.LockBasinPart._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => LockBasinPart._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LockBasinPart._featureBindingDefinitions;
 
 		public LockBasinPartViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -14839,10 +14839,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			visitorsMooring = this._visitorsMooring,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. MooringBuoy._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringBuoy._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.MooringBuoy._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringBuoy._featureBindingDefinitions;
 
 		public MooringBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -15373,10 +15373,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			heavingLinesFromShore = this._heavingLinesFromShore,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => MooringWarpingFacility._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. MooringWarpingFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringWarpingFacility._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.MooringWarpingFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => MooringWarpingFacility._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringWarpingFacility._featureBindingDefinitions;
 
 		public MooringWarpingFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -15789,10 +15789,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			shorePowerServiceProvider = this._shorePowerServiceProvider,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => OnshorePowerFacility._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. OnshorePowerFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OnshorePowerFacility._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.OnshorePowerFacility._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => OnshorePowerFacility._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OnshorePowerFacility._featureBindingDefinitions;
 
 		public OnshorePowerFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -16255,10 +16255,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			usefulMarkDescription = this.usefulMarkDescription.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => OuterLimit._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. OuterLimit._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OuterLimit._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.OuterLimit._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => OuterLimit._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OuterLimit._featureBindingDefinitions;
 
 		public OuterLimitViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -16745,10 +16745,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PilotBoardingPlace._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotBoardingPlace._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.PilotBoardingPlace._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotBoardingPlace._featureBindingDefinitions;
 
 		public PilotBoardingPlaceViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -17208,10 +17208,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SeaplaneLandingArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeaplaneLandingArea._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.SeaplaneLandingArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeaplaneLandingArea._featureBindingDefinitions;
 
 		public SeaplaneLandingAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -17522,10 +17522,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => ShipLift._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. ShipLift._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ShipLift._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.ShipLift._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => ShipLift._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ShipLift._featureBindingDefinitions;
 
 		public ShipLiftViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -17816,10 +17816,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			textContent = this.textContent.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => StraddleCarrier._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. StraddleCarrier._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.StraddleCarrier._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.StraddleCarrier._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => StraddleCarrier._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.StraddleCarrier._featureBindingDefinitions;
 
 		public StraddleCarrierViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -18469,10 +18469,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			uNLocationCode = this._uNLocationCode,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => Terminal._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. Terminal._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Terminal._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.Terminal._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => Terminal._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Terminal._featureBindingDefinitions;
 
 		public TerminalViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -18941,10 +18941,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			iSPSLevel = this._iSPSLevel,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => TurningBasin._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TurningBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TurningBasin._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.TurningBasin._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => TurningBasin._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TurningBasin._featureBindingDefinitions;
 
 		public TurningBasinViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -19401,10 +19401,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			markedBy = this._markedBy?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => WaterwayArea._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. WaterwayArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WaterwayArea._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.WaterwayArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => WaterwayArea._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WaterwayArea._featureBindingDefinitions;
 
 		public WaterwayAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -19546,10 +19546,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DataCoverage._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.DataCoverage._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage._featureBindingDefinitions;
 
 		public DataCoverageViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -19766,10 +19766,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			information = this.information.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. QualityOfNonBathymetricData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData._featureBindingDefinitions;
 
 		public QualityOfNonBathymetricDataViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -19857,10 +19857,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			information = this.information.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SoundingDatum._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.SoundingDatum._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum._featureBindingDefinitions;
 
 		public SoundingDatumViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -19945,10 +19945,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			information = this.information.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. VerticalDatumOfData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.VerticalDatumOfData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData._featureBindingDefinitions;
 
 		public VerticalDatumOfDataViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -20170,10 +20170,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			scaleMinimum = this._scaleMinimum,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);

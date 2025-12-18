@@ -2634,18 +2634,7 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(navwarnReferences),
-					role = Enum.GetName<Role>(Role.theWarning)!,
-					informationTypes = [nameof(NavwarnPreamble)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.References._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2736,18 +2725,7 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(navwarnReferences),
-					role = Enum.GetName<Role>(Role.theReferences)!,
-					informationTypes = [nameof(References)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPreamble._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2800,9 +2778,7 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2878,24 +2854,13 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(navwarnPreambleContent),
-					role = Enum.GetName<Role>(Role.header)!,
-					informationTypes = [nameof(NavwarnPreamble)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnPart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnPart._primitives;
@@ -2903,24 +2868,6 @@ namespace S100Framework.DomainModel.S124 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(areaAffected),
-					role = Enum.GetName<Role>(Role.affects)!,
-					featureTypes = [nameof(NavwarnAreaAffected)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.thePositionProvider)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -2964,15 +2911,13 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnAreaAffected._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnAreaAffected._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnAreaAffected._primitives;
@@ -2980,16 +2925,6 @@ namespace S100Framework.DomainModel.S124 {
 				Primitives.point, Primitives.curve, Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(areaAffected),
-					role = Enum.GetName<Role>(Role.impacts)!,
-					featureTypes = [nameof(NavwarnPart)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -3053,15 +2988,13 @@ namespace S100Framework.DomainModel.S124 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -3069,16 +3002,6 @@ namespace S100Framework.DomainModel.S124 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(NavwarnPart)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -3100,6 +3023,115 @@ namespace S100Framework.DomainModel.S124 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class References {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(navwarnReferences),
+					role = Enum.GetName<Role>(Role.theWarning)!,
+					informationTypes = [nameof(NavwarnPreamble)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NavwarnPreamble {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(navwarnReferences),
+					role = Enum.GetName<Role>(Role.theReferences)!,
+					informationTypes = [nameof(References)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpatialQuality {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class NavwarnPart {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(navwarnPreambleContent),
+					role = Enum.GetName<Role>(Role.header)!,
+					informationTypes = [nameof(NavwarnPreamble)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NavwarnAreaAffected {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class TextPlacement {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class NavwarnPart {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.areaAffected),
+					role = Enum.GetName<Role>(Role.affects)!,
+					featureTypes = [nameof(FeatureTypes.NavwarnAreaAffected)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class NavwarnAreaAffected {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.areaAffected),
+					role = Enum.GetName<Role>(Role.impacts)!,
+					featureTypes = [nameof(FeatureTypes.NavwarnPart)],
+				},
+			];
+		}
+		public static class TextPlacement {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.NavwarnPart)],
+				},
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S124/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S124/2.0")]

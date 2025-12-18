@@ -2434,36 +2434,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PriceOfNauticalProduct),
-					role = Enum.GetName<Role>(Role.thePriceInformation)!,
-					informationTypes = [nameof(PriceInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ProductionDetails),
-					role = Enum.GetName<Role>(Role.theProducer)!,
-					informationTypes = [nameof(ProducerInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DistributionDetails),
-					role = Enum.GetName<Role>(Role.theDistributor)!,
-					informationTypes = [nameof(DistributorInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueSectionHeader._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2535,27 +2506,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ProducerContact),
-					role = Enum.GetName<Role>(Role.theProducer)!,
-					informationTypes = [nameof(ProducerInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(DistributorContact),
-					role = Enum.GetName<Role>(Role.theDistributor)!,
-					informationTypes = [nameof(DistributorInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2611,9 +2562,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IndicationOfCarriageRequirement._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2675,18 +2624,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PriceOfNauticalProduct),
-					role = Enum.GetName<Role>(Role.theCatalogueOfNauticalProduct)!,
-					informationTypes = [nameof(CatalogueSectionHeader)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PriceInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2734,27 +2672,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ProducerContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ProductionDetails),
-					role = Enum.GetName<Role>(Role.catalogueHeader)!,
-					informationTypes = [nameof(CatalogueSectionHeader)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProducerInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2798,27 +2716,7 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DistributionDetails),
-					role = Enum.GetName<Role>(Role.catalogueHeader)!,
-					informationTypes = [nameof(CatalogueSectionHeader)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DistributorContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistributorInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2938,42 +2836,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(CarriageRequirement),
-					role = Enum.GetName<Role>(Role.theRequirement)!,
-					informationTypes = [nameof(IndicationOfCarriageRequirement)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PriceOfElement),
-					role = Enum.GetName<Role>(Role.thePriceInformation)!,
-					informationTypes = [nameof(PriceInformation)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 1,
-					upper =  default,
-					association = nameof(ProductPackage),
-					role = Enum.GetName<Role>(Role.elementContainer)!,
-					informationTypes = [nameof(CatalogueSectionHeader)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueElement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CatalogueElement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CatalogueElement._primitives;
@@ -2981,16 +2850,6 @@ namespace S100Framework.DomainModel.S128 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ProductMapping),
-					role = Enum.GetName<Role>(Role.theReference)!,
-					featureTypes = [nameof(CatalogueElement)],
-				},
-			];
 			#endregion
 		}
 
@@ -3128,15 +2987,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..NavigationalProduct._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement._informationBindingDefinitions, ..InformationBindings.NavigationalProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..NavigationalProduct._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement._featureBindingDefinitions, ..FeatureBindings.NavigationalProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
@@ -3144,24 +3001,6 @@ namespace S100Framework.DomainModel.S128 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Correlated),
-					role = Enum.GetName<Role>(Role.theMain)!,
-					featureTypes = [nameof(NavigationalProduct)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(Correlated),
-					role = Enum.GetName<Role>(Role.thePanel)!,
-					featureTypes = [nameof(NavigationalProduct)],
-				},
-			];
 			#endregion
 		}
 
@@ -3228,15 +3067,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..ElectronicProduct._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct._informationBindingDefinitions, ..InformationBindings.ElectronicProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..ElectronicProduct._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct._featureBindingDefinitions, ..FeatureBindings.ElectronicProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
@@ -3244,8 +3081,6 @@ namespace S100Framework.DomainModel.S128 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -3329,15 +3164,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..NavigationalProduct._informationBindingDefinitions, ..PhysicalProduct._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct._informationBindingDefinitions, ..InformationBindings.PhysicalProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..NavigationalProduct._featureBindingDefinitions, ..PhysicalProduct._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct._featureBindingDefinitions, ..FeatureBindings.PhysicalProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
@@ -3345,8 +3178,6 @@ namespace S100Framework.DomainModel.S128 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -3430,15 +3261,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..CatalogueElement._informationBindingDefinitions, ..S100Service._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement._informationBindingDefinitions, ..InformationBindings.S100Service._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..CatalogueElement._featureBindingDefinitions, ..S100Service._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement._featureBindingDefinitions, ..FeatureBindings.S100Service._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];
@@ -3446,8 +3275,6 @@ namespace S100Framework.DomainModel.S128 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -3469,6 +3296,225 @@ namespace S100Framework.DomainModel.S128 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class CatalogueSectionHeader {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PriceOfNauticalProduct),
+					role = Enum.GetName<Role>(Role.thePriceInformation)!,
+					informationTypes = [nameof(PriceInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ProductionDetails),
+					role = Enum.GetName<Role>(Role.theProducer)!,
+					informationTypes = [nameof(ProducerInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(DistributionDetails),
+					role = Enum.GetName<Role>(Role.theDistributor)!,
+					informationTypes = [nameof(DistributorInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ContactDetails {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ProducerContact),
+					role = Enum.GetName<Role>(Role.theProducer)!,
+					informationTypes = [nameof(ProducerInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(DistributorContact),
+					role = Enum.GetName<Role>(Role.theDistributor)!,
+					informationTypes = [nameof(DistributorInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class IndicationOfCarriageRequirement {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class PriceInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PriceOfNauticalProduct),
+					role = Enum.GetName<Role>(Role.theCatalogueOfNauticalProduct)!,
+					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ProducerInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ProducerContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ProductionDetails),
+					role = Enum.GetName<Role>(Role.catalogueHeader)!,
+					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DistributorInformation {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(DistributionDetails),
+					role = Enum.GetName<Role>(Role.catalogueHeader)!,
+					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(DistributorContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+			];
+		}
+		public static class CatalogueElement {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(CarriageRequirement),
+					role = Enum.GetName<Role>(Role.theRequirement)!,
+					informationTypes = [nameof(IndicationOfCarriageRequirement)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PriceOfElement),
+					role = Enum.GetName<Role>(Role.thePriceInformation)!,
+					informationTypes = [nameof(PriceInformation)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 1,
+					upper =  default,
+					association = nameof(ProductPackage),
+					role = Enum.GetName<Role>(Role.elementContainer)!,
+					informationTypes = [nameof(CatalogueSectionHeader)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NavigationalProduct {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class ElectronicProduct {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class PhysicalProduct {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+		public static class S100Service {
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class CatalogueElement {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.ProductMapping),
+					role = Enum.GetName<Role>(Role.theReference)!,
+					featureTypes = [nameof(FeatureTypes.CatalogueElement)],
+				},
+			];
+		}
+		public static class NavigationalProduct {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Correlated),
+					role = Enum.GetName<Role>(Role.theMain)!,
+					featureTypes = [nameof(FeatureTypes.NavigationalProduct)],
+				},
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(FeatureAssociations.Correlated),
+					role = Enum.GetName<Role>(Role.thePanel)!,
+					featureTypes = [nameof(FeatureTypes.NavigationalProduct)],
+				},
+			];
+		}
+		public static class ElectronicProduct {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class PhysicalProduct {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+		public static class S100Service {
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S128/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S128/2.0")]
