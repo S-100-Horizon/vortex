@@ -2632,9 +2632,6 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(References);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.References._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2723,9 +2720,6 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnPreamble);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPreamble._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2776,9 +2770,6 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2852,15 +2843,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnPart);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPart._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnPart._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnPart._primitives;
@@ -2909,15 +2894,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnAreaAffected);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnAreaAffected._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnAreaAffected._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnAreaAffected._primitives;
@@ -2986,15 +2965,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(TextPlacement);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;

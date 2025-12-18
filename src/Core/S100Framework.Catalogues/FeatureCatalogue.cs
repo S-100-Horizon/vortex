@@ -179,20 +179,20 @@ namespace S100Framework.Catalogues
                     TypeInfoResolver = DomainModel.S201.Summary.SharedBindingResolver(),
                 }
             },
-            new("S-501", DomainModel.S501.Summary.Version) {
-                Assembly = typeof(DomainModel.S501.Summary).Assembly,
-                FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S501.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
-                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
-                DefaultJsonOptions = new JsonSerializerOptions {
-                    Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    PropertyNameCaseInsensitive = true,
-                    WriteIndented = false,
-                    TypeInfoResolver = DomainModel.S501.Summary.SharedBindingResolver(),
-                }
-            },
+            //new("S-501", DomainModel.S501.Summary.Version) {
+            //    Assembly = typeof(DomainModel.S501.Summary).Assembly,
+            //    FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
+            //    FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+            //    InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S501.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+            //    InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+            //    FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(DomainModel.S501.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+            //    DefaultJsonOptions = new JsonSerializerOptions {
+            //        Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            //        PropertyNameCaseInsensitive = true,
+            //        WriteIndented = false,
+            //        TypeInfoResolver = DomainModel.S501.Summary.SharedBindingResolver(),
+            //    }
+            //},
         });
     }
 }

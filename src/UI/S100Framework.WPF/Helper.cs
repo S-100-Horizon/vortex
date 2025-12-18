@@ -16,7 +16,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateInformationAssociation(type, pid),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateInformationAssociation(type, pid),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.CreateInformationAssociation(type, pid),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateInformationAssociation(type, pid),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.CreateInformationAssociation(type, pid),
                 _ => null
             };
         }
@@ -33,7 +33,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateFeatureAssociation(type, pid),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateFeatureAssociation(type, pid),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.CreateFeatureAssociation(type, pid),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateFeatureAssociation(type, pid),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.CreateFeatureAssociation(type, pid),
                 _ => null
             };
         }
@@ -50,7 +50,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateInformationType(type, pid),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateInformationType(type, pid),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.CreateInformationType(type, pid),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateInformationType(type, pid),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.CreateInformationType(type, pid),
                 _ => null
             };
         }
@@ -67,7 +67,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateFeatureType(type, pid),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateFeatureType(type, pid),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.CreateFeatureType(type, pid),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateFeatureType(type, pid),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.CreateFeatureType(type, pid),
                 _ => null
             };
         }
@@ -84,7 +84,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.InformationAssociationBindings(association, role),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.InformationAssociationBindings(association, role),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.InformationAssociationBindings(association, role),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.InformationAssociationBindings(association, role),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.InformationAssociationBindings(association, role),
                 _ => null
             };
         }
@@ -101,7 +101,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => ViewModel.S128.Bootstrap.FeatureAssociationBindings(association, role),
                 "s131" or "s-131" => ViewModel.S131.Bootstrap.FeatureAssociationBindings(association, role),
                 "s201" or "s-201" => ViewModel.S201.Bootstrap.FeatureAssociationBindings(association, role),
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.FeatureAssociationBindings(association, role),
+                //"s501" or "s-501" => ViewModel.S501.Bootstrap.FeatureAssociationBindings(association, role),
                 _ => null
             };
         }

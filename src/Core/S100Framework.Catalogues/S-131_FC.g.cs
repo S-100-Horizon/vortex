@@ -4931,9 +4931,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(InformationType);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationType._informationBindingDefinitions;
 			#endregion
 
 		}
@@ -4977,9 +4974,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AbstractRxN);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.AbstractRxN._informationBindingDefinitions];
 			#endregion
 
 		}
@@ -5089,9 +5083,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Applicability);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Applicability._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5140,9 +5131,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Authority);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Authority._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5301,9 +5289,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AvailablePortServices);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.AvailablePortServices._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5414,9 +5399,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ContactDetails);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ContactDetails._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5512,9 +5494,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Entrance);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.Entrance._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5552,9 +5531,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(NauticalInformation);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.NauticalInformation._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5608,9 +5584,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.NonStandardWorkingDay._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5648,9 +5621,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Recommendations);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Recommendations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5688,9 +5658,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Regulations);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Regulations._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5728,9 +5695,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Restrictions);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN._informationBindingDefinitions, ..InformationBindings.Restrictions._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5778,9 +5742,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ServiceHours);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType._informationBindingDefinitions, ..InformationBindings.ServiceHours._informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -5831,9 +5792,6 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -5937,15 +5895,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(FeatureType);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FeatureType._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FeatureType._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
@@ -5976,15 +5928,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(OrganizationContactArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType._informationBindingDefinitions, ..InformationBindings.OrganizationContactArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType._featureBindingDefinitions, ..FeatureBindings.OrganizationContactArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..OrganizationContactArea._primitives];
@@ -6015,15 +5961,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(SupervisedArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea._informationBindingDefinitions, ..InformationBindings.SupervisedArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea._featureBindingDefinitions, ..FeatureBindings.SupervisedArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..SupervisedArea._primitives];
@@ -6054,15 +5994,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(HarbourPhysicalInfrastructure);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea._informationBindingDefinitions, ..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea._featureBindingDefinitions, ..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..HarbourPhysicalInfrastructure._primitives];
@@ -6093,15 +6027,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Layout);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea._informationBindingDefinitions, ..InformationBindings.Layout._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea._featureBindingDefinitions, ..FeatureBindings.Layout._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..Layout._primitives];
@@ -6158,15 +6086,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AnchorBerth);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.AnchorBerth._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.AnchorBerth._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..AnchorBerth._primitives];
@@ -6262,15 +6184,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AnchorageArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.AnchorageArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.AnchorageArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..AnchorageArea._primitives];
@@ -6319,15 +6235,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(AutomatedGuidedVehicle);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.AutomatedGuidedVehicle._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.AutomatedGuidedVehicle._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..AutomatedGuidedVehicle._primitives];
@@ -6532,15 +6442,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Berth);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.Berth._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.Berth._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..Berth._primitives];
@@ -6623,15 +6527,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(BerthPosition);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.BerthPosition._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.BerthPosition._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..BerthPosition._primitives];
@@ -6692,15 +6590,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Bollard);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Bollard._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Bollard._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Bollard._primitives];
@@ -6774,15 +6666,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(DockArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.DockArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.DockArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..DockArea._primitives];
@@ -6843,15 +6729,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(DryDock);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.DryDock._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.DryDock._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..DryDock._primitives];
@@ -6907,15 +6787,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Dolphin);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Dolphin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Dolphin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Dolphin._primitives];
@@ -6989,15 +6863,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(DumpingGround);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.DumpingGround._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.DumpingGround._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..DumpingGround._primitives];
@@ -7050,15 +6918,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(FenderLine);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.FenderLine._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.FenderLine._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..FenderLine._primitives];
@@ -7112,15 +6974,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(FloatingDock);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.FloatingDock._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.FloatingDock._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..FloatingDock._primitives];
@@ -7181,15 +7037,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Gridiron);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.Gridiron._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.Gridiron._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Gridiron._primitives];
@@ -7281,15 +7131,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(HarbourAreaAdministrative);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourAreaAdministrative._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourAreaAdministrative._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourAreaAdministrative._primitives];
@@ -7373,15 +7217,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(HarbourAreaSection);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourAreaSection._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourAreaSection._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourAreaSection._primitives];
@@ -7455,15 +7293,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(HarbourBasin);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.HarbourBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.HarbourBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..HarbourBasin._primitives];
@@ -7512,15 +7344,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(HarbourFacility);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.HarbourFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.HarbourFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..HarbourFacility._primitives];
@@ -7574,15 +7400,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(LockBasin);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.LockBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.LockBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasin._primitives];
@@ -7636,15 +7456,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(LockBasinPart);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.LockBasinPart._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.LockBasinPart._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasinPart._primitives];
@@ -7720,15 +7534,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(MooringBuoy);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.MooringBuoy._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.MooringBuoy._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..MooringBuoy._primitives];
@@ -7805,15 +7613,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(MooringWarpingFacility);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.MooringWarpingFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.MooringWarpingFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..MooringWarpingFacility._primitives];
@@ -7912,15 +7714,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(OnshorePowerFacility);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.OnshorePowerFacility._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.OnshorePowerFacility._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..OnshorePowerFacility._primitives];
@@ -8003,15 +7799,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(OuterLimit);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.OuterLimit._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.OuterLimit._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..OuterLimit._primitives];
@@ -8096,15 +7886,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(PilotBoardingPlace);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.PilotBoardingPlace._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.PilotBoardingPlace._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..PilotBoardingPlace._primitives];
@@ -8178,15 +7962,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(SeaplaneLandingArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.SeaplaneLandingArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.SeaplaneLandingArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..SeaplaneLandingArea._primitives];
@@ -8240,15 +8018,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(ShipLift);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.ShipLift._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.ShipLift._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..ShipLift._primitives];
@@ -8297,15 +8069,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(StraddleCarrier);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.HarbourPhysicalInfrastructure._informationBindingDefinitions, ..InformationBindings.StraddleCarrier._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.HarbourPhysicalInfrastructure._featureBindingDefinitions, ..FeatureBindings.StraddleCarrier._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..StraddleCarrier._primitives];
@@ -8408,15 +8174,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(Terminal);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.Terminal._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.Terminal._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..Terminal._primitives];
@@ -8490,15 +8250,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(TurningBasin);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.TurningBasin._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.TurningBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..TurningBasin._primitives];
@@ -8570,15 +8324,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(WaterwayArea);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Layout._informationBindingDefinitions, ..InformationBindings.WaterwayArea._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Layout._featureBindingDefinitions, ..FeatureBindings.WaterwayArea._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Layout._primitives, ..WaterwayArea._primitives];
@@ -8649,15 +8397,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(DataCoverage);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -8766,15 +8508,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -8834,15 +8570,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(SoundingDatum);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
@@ -8902,15 +8632,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(VerticalDatumOfData);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
@@ -8988,15 +8712,9 @@ namespace S100Framework.DomainModel.S131 {
 			public override string Code => nameof(TextPlacement);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;

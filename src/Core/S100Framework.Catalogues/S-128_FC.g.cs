@@ -2432,9 +2432,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueSectionHeader);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueSectionHeader._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2504,9 +2501,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ContactDetails);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2560,9 +2554,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(IndicationOfCarriageRequirement);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IndicationOfCarriageRequirement._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2622,9 +2613,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PriceInformation);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PriceInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2670,9 +2658,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProducerInformation);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProducerInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2714,9 +2699,6 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(DistributorInformation);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistributorInformation._informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2834,15 +2816,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueElement);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueElement._informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CatalogueElement._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CatalogueElement._primitives;
@@ -2985,15 +2961,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(NavigationalProduct);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement._informationBindingDefinitions, ..InformationBindings.NavigationalProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement._featureBindingDefinitions, ..FeatureBindings.NavigationalProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
@@ -3065,15 +3035,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ElectronicProduct);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct._informationBindingDefinitions, ..InformationBindings.ElectronicProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct._featureBindingDefinitions, ..FeatureBindings.ElectronicProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
@@ -3162,15 +3126,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PhysicalProduct);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct._informationBindingDefinitions, ..InformationBindings.PhysicalProduct._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct._featureBindingDefinitions, ..FeatureBindings.PhysicalProduct._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
@@ -3259,15 +3217,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(S100Service);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement._informationBindingDefinitions, ..InformationBindings.S100Service._informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement._featureBindingDefinitions, ..FeatureBindings.S100Service._featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];

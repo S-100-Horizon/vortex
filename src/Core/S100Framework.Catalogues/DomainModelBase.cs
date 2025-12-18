@@ -176,14 +176,14 @@ namespace S100Framework.DomainModel
 
     public interface IInformationBindingDefinition
     {
-        informationBindingDefinition[] informationBindingDefinitions { get; }
+        ////informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
     public interface IFeatureBindingDefinition
     {
-        informationBindingDefinition[] informationBindingDefinitions { get; }
+        ////informationBindingDefinition[] informationBindingDefinitions { get; }
 
-        featureBindingDefinition[] featureBindingDefinitions { get; }
+        ////featureBindingDefinition[] featureBindingDefinitions { get; }
 
         Primitives[] primitives { get; }
     }
@@ -215,14 +215,14 @@ namespace S100Framework.DomainModel
     [System.SerializableAttribute()]
     public abstract class InformationNode : Node
     {
-        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+        ////public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
     [System.SerializableAttribute()]
     public abstract class FeatureNode : Node
     {
-        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
-        public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
+        ////public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+        ////public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
         public abstract Primitives[] primitives { get; }
     }
 

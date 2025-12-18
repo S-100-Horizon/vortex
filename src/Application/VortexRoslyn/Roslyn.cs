@@ -2086,12 +2086,12 @@ namespace S100Framework.Applications
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t#region InformationBindings");
-                builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[XmlIgnore]");
-                if (superType != null)
-                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}._informationBindingDefinitions, ..InformationBindings.{code}._informationBindingDefinitions];");
-                else
-                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}._informationBindingDefinitions;");
+                ////builder.AppendLine("\t\t\t[JsonIgnore]");
+                ////builder.AppendLine("\t\t\t[XmlIgnore]");
+                ////if (superType != null)
+                ////    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}._informationBindingDefinitions, ..InformationBindings.{code}._informationBindingDefinitions];");
+                ////else
+                ////    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}._informationBindingDefinitions;");
 
                 ////informationBindings.AppendLine("\t\t\t];");
                 ////builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
@@ -2138,12 +2138,12 @@ namespace S100Framework.Applications
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t#region IFeatureBindings");
-                builder.AppendLine("\t\t\t[JsonIgnore]");
-                builder.AppendLine("\t\t\t[XmlIgnore]");
-                if (superType != null)
-                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}._featureBindingDefinitions, ..FeatureBindings.{code}._featureBindingDefinitions];");
-                else
-                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}._featureBindingDefinitions;");
+                ////builder.AppendLine("\t\t\t[JsonIgnore]");
+                ////builder.AppendLine("\t\t\t[XmlIgnore]");
+                ////if (superType != null)
+                ////    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}._featureBindingDefinitions, ..FeatureBindings.{code}._featureBindingDefinitions];");
+                ////else
+                ////    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}._featureBindingDefinitions;");
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
