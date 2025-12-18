@@ -1845,8 +1845,8 @@ namespace S100Framework.Applications
             var code = e.Element(XName.Get("code", scope_S100))!.Value;            
 
             var inheritance = e.Name.LocalName switch {
-                "S100_FC_InformationType" => "InformationNode, IInformationBindingDefinition",
-                "S100_FC_FeatureType" => "FeatureNode, IFeatureBindingDefinition",
+                "S100_FC_InformationType" => "InformationNode",
+                "S100_FC_FeatureType" => "FeatureNode",
                 "S100_FC_InformationAssociation" => "InformationAssociation",
                 "S100_FC_FeatureAssociation" => "FeatureAssociation",
                 _ => throw new InvalidDataException(),
