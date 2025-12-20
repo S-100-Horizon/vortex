@@ -4290,7 +4290,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.AbstractRxN.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AbstractRxN.informationBindingDefinitions;
 			#endregion
 
 		}
@@ -4402,7 +4402,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.Applicability.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Applicability.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4453,7 +4453,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.Authority.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Authority.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4567,7 +4567,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ContactDetails.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4607,7 +4607,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.NauticalInformation.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NauticalInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4663,7 +4663,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.NonStandardWorkingDay.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NonStandardWorkingDay.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4703,7 +4703,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Recommendations.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Recommendations.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4743,7 +4743,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Regulations.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Regulations.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4783,7 +4783,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Restrictions.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Restrictions.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4833,7 +4833,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ServiceHours.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ServiceHours.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4907,7 +4907,7 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ShipReport.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ShipReport.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -5085,13 +5085,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.OrganizationContactArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OrganizationContactArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.OrganizationContactArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OrganizationContactArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..OrganizationContactArea._primitives];
@@ -5124,13 +5124,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea.informationBindingDefinitions, ..InformationBindings.SupervisedArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SupervisedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea.featureBindingDefinitions, ..FeatureBindings.SupervisedArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SupervisedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..SupervisedArea._primitives];
@@ -5163,13 +5163,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea.informationBindingDefinitions, ..InformationBindings.ReportableServiceArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ReportableServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea.featureBindingDefinitions, ..FeatureBindings.ReportableServiceArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ReportableServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..ReportableServiceArea._primitives];
@@ -5220,13 +5220,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.CautionArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CautionArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.CautionArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CautionArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..CautionArea._primitives];
@@ -5295,13 +5295,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.ConcentrationOfShippingHazardArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ConcentrationOfShippingHazardArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.ConcentrationOfShippingHazardArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ConcentrationOfShippingHazardArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..ConcentrationOfShippingHazardArea._primitives];
@@ -5359,13 +5359,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea.informationBindingDefinitions, ..InformationBindings.ISPSCodeSecurityLevel.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ISPSCodeSecurityLevel.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea.featureBindingDefinitions, ..FeatureBindings.ISPSCodeSecurityLevel.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ISPSCodeSecurityLevel.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..ISPSCodeSecurityLevel._primitives];
@@ -5424,13 +5424,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.LocalPortBroadcastServiceArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalPortBroadcastServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.LocalPortBroadcastServiceArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalPortBroadcastServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..LocalPortBroadcastServiceArea._primitives];
@@ -5516,13 +5516,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea.informationBindingDefinitions, ..InformationBindings.MilitaryPracticeArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MilitaryPracticeArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea.featureBindingDefinitions, ..FeatureBindings.MilitaryPracticeArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MilitaryPracticeArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..MilitaryPracticeArea._primitives];
@@ -5644,13 +5644,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea.informationBindingDefinitions, ..InformationBindings.PilotBoardingPlace.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotBoardingPlace.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea.featureBindingDefinitions, ..FeatureBindings.PilotBoardingPlace.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotBoardingPlace.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..PilotBoardingPlace._primitives];
@@ -5735,13 +5735,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.PilotService.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotService.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.PilotService.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotService.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..PilotService._primitives];
@@ -5796,13 +5796,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.PilotageDistrict.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotageDistrict.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.PilotageDistrict.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotageDistrict.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..PilotageDistrict._primitives];
@@ -5871,13 +5871,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.PiracyRiskArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PiracyRiskArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.PiracyRiskArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PiracyRiskArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..PiracyRiskArea._primitives];
@@ -5941,13 +5941,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.PlaceOfRefuge.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PlaceOfRefuge.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.PlaceOfRefuge.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PlaceOfRefuge.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..PlaceOfRefuge._primitives];
@@ -6011,13 +6011,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.RadarRange.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarRange.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.RadarRange.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarRange.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadarRange._primitives];
@@ -6122,13 +6122,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.RadioCallingInPoint.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadioCallingInPoint.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.RadioCallingInPoint.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadioCallingInPoint.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadioCallingInPoint._primitives];
@@ -6208,13 +6208,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea.informationBindingDefinitions, ..InformationBindings.RestrictedArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RestrictedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea.featureBindingDefinitions, ..FeatureBindings.RestrictedArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RestrictedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..RestrictedArea._primitives];
@@ -6292,13 +6292,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.RouteingMeasure.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RouteingMeasure.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.RouteingMeasure.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RouteingMeasure.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RouteingMeasure._primitives];
@@ -6357,13 +6357,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.ShipReportingServiceArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ShipReportingServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.ShipReportingServiceArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ShipReportingServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..ShipReportingServiceArea._primitives];
@@ -6438,13 +6438,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.SignalStationWarning.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationWarning.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.SignalStationWarning.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationWarning.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..SignalStationWarning._primitives];
@@ -6519,13 +6519,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.OrganizationContactArea.informationBindingDefinitions, ..InformationBindings.SignalStationTraffic.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationTraffic.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.OrganizationContactArea.featureBindingDefinitions, ..FeatureBindings.SignalStationTraffic.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationTraffic.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..OrganizationContactArea._primitives, ..SignalStationTraffic._primitives];
@@ -6589,13 +6589,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.UnderKeelClearanceAllowanceArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnderKeelClearanceAllowanceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.UnderKeelClearanceAllowanceArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnderKeelClearanceAllowanceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..UnderKeelClearanceAllowanceArea._primitives];
@@ -6653,13 +6653,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.UnderKeelClearanceManagementArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnderKeelClearanceManagementArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.UnderKeelClearanceManagementArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnderKeelClearanceManagementArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..UnderKeelClearanceManagementArea._primitives];
@@ -6718,13 +6718,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ReportableServiceArea.informationBindingDefinitions, ..InformationBindings.VesselTrafficServiceArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VesselTrafficServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ReportableServiceArea.featureBindingDefinitions, ..FeatureBindings.VesselTrafficServiceArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VesselTrafficServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ReportableServiceArea._primitives, ..VesselTrafficServiceArea._primitives];
@@ -6797,13 +6797,13 @@ namespace S100Framework.DomainModel.S127 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.SupervisedArea.informationBindingDefinitions, ..InformationBindings.WaterwayArea.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WaterwayArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.SupervisedArea.featureBindingDefinitions, ..FeatureBindings.WaterwayArea.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WaterwayArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..SupervisedArea._primitives, ..WaterwayArea._primitives];
@@ -7291,7 +7291,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class OrganizationContactArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions,
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7304,7 +7304,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class SupervisedArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. OrganizationContactArea.informationBindingDefinitions,
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7317,7 +7317,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class ReportableServiceArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. SupervisedArea.informationBindingDefinitions,
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7330,23 +7330,23 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class CautionArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class ConcentrationOfShippingHazardArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class ISPSCodeSecurityLevel {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. OrganizationContactArea.informationBindingDefinitions
 			];
 		}
 		public static class LocalPortBroadcastServiceArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class MilitaryPracticeArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. SupervisedArea.informationBindingDefinitions,
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7359,11 +7359,11 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class PilotBoardingPlace {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. OrganizationContactArea.informationBindingDefinitions
 			];
 		}
 		public static class PilotService {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions,
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7376,59 +7376,59 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class PilotageDistrict {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class PiracyRiskArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class PlaceOfRefuge {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class RadarRange {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class RadioCallingInPoint {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class RestrictedArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. SupervisedArea.informationBindingDefinitions
 			];
 		}
 		public static class RouteingMeasure {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class ShipReportingServiceArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class SignalStationWarning {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class SignalStationTraffic {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. OrganizationContactArea.informationBindingDefinitions
 			];
 		}
 		public static class UnderKeelClearanceAllowanceArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
 			];
 		}
 		public static class UnderKeelClearanceManagementArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class VesselTrafficServiceArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. ReportableServiceArea.informationBindingDefinitions
 			];
 		}
 		public static class WaterwayArea {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. SupervisedArea.informationBindingDefinitions
 			];
 		}
 		public static class DataCoverage {
@@ -7463,31 +7463,31 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class OrganizationContactArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
 			];
 		}
 		public static class SupervisedArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. OrganizationContactArea.featureBindingDefinitions
 			];
 		}
 		public static class ReportableServiceArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. SupervisedArea.featureBindingDefinitions
 			];
 		}
 		public static class CautionArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
 			];
 		}
 		public static class ConcentrationOfShippingHazardArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
 			];
 		}
 		public static class ISPSCodeSecurityLevel {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. OrganizationContactArea.featureBindingDefinitions
 			];
 		}
 		public static class LocalPortBroadcastServiceArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7499,11 +7499,11 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class MilitaryPracticeArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. SupervisedArea.featureBindingDefinitions
 			];
 		}
 		public static class PilotBoardingPlace {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. OrganizationContactArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7523,7 +7523,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class PilotService {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7543,7 +7543,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class PilotageDistrict {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7563,15 +7563,15 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class PiracyRiskArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions
 			];
 		}
 		public static class PlaceOfRefuge {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions
 			];
 		}
 		public static class RadarRange {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7583,7 +7583,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class RadioCallingInPoint {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7595,15 +7595,15 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class RestrictedArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. SupervisedArea.featureBindingDefinitions
 			];
 		}
 		public static class RouteingMeasure {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
 			];
 		}
 		public static class ShipReportingServiceArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7615,7 +7615,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class SignalStationWarning {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7627,7 +7627,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class SignalStationTraffic {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. OrganizationContactArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -7639,15 +7639,15 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class UnderKeelClearanceAllowanceArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
 			];
 		}
 		public static class UnderKeelClearanceManagementArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions
 			];
 		}
 		public static class VesselTrafficServiceArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. ReportableServiceArea.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -7659,7 +7659,7 @@ namespace S100Framework.DomainModel.S127 {
 			];
 		}
 		public static class WaterwayArea {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. SupervisedArea.featureBindingDefinitions
 			];
 		}
 		public static class DataCoverage {

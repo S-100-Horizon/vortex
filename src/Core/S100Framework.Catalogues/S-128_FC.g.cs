@@ -2987,13 +2987,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement.informationBindingDefinitions, ..InformationBindings.NavigationalProduct.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationalProduct.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement.featureBindingDefinitions, ..FeatureBindings.NavigationalProduct.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationalProduct.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
@@ -3067,13 +3067,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct.informationBindingDefinitions, ..InformationBindings.ElectronicProduct.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ElectronicProduct.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct.featureBindingDefinitions, ..FeatureBindings.ElectronicProduct.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ElectronicProduct.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
@@ -3164,13 +3164,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct.informationBindingDefinitions, ..InformationBindings.PhysicalProduct.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PhysicalProduct.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct.featureBindingDefinitions, ..FeatureBindings.PhysicalProduct.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PhysicalProduct.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
@@ -3261,13 +3261,13 @@ namespace S100Framework.DomainModel.S128 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement.informationBindingDefinitions, ..InformationBindings.S100Service.informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.S100Service.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement.featureBindingDefinitions, ..FeatureBindings.S100Service.featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.S100Service.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];
@@ -3446,19 +3446,19 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class NavigationalProduct {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. CatalogueElement.informationBindingDefinitions
 			];
 		}
 		public static class ElectronicProduct {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. NavigationalProduct.informationBindingDefinitions
 			];
 		}
 		public static class PhysicalProduct {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. NavigationalProduct.informationBindingDefinitions
 			];
 		}
 		public static class S100Service {
-			public static informationBindingDefinition[] informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. CatalogueElement.informationBindingDefinitions
 			];
 		}
 	}
@@ -3481,7 +3481,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class NavigationalProduct {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. CatalogueElement.featureBindingDefinitions,
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3501,15 +3501,15 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class ElectronicProduct {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. NavigationalProduct.featureBindingDefinitions
 			];
 		}
 		public static class PhysicalProduct {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. NavigationalProduct.featureBindingDefinitions
 			];
 		}
 		public static class S100Service {
-			public static featureBindingDefinition[] featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. CatalogueElement.featureBindingDefinitions
 			];
 		}
 	}

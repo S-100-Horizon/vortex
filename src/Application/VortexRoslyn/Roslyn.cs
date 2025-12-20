@@ -236,7 +236,7 @@ namespace S100Framework.Applications
                         //listedValueDefinition = RemoveSpecialChars(listedValueDefinition).Replace("\"", "\\\"");
 
                         listedValueDefinition = listedValueDefinition.Replace("\"", "\\\"").Replace(Environment.NewLine, " ").Replace("\n", " "); ;
-                        
+
                         builderDomainModel.AppendLine($"\t\t[Description(\"{listedValueDefinition}\")]");
                         builderDomainModel.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
                         builderDomainModel.AppendLine($"\t\t[XmlEnum(\"{listedValueCode}\")] ");
@@ -261,7 +261,7 @@ namespace S100Framework.Applications
                     //    //}
                     //    //else
                     //    //    b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
-                                                
+
                     //    b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
                     //});
                 }
@@ -289,7 +289,7 @@ namespace S100Framework.Applications
                             builderDomainModel.AppendLine($"\t/// {remarks}");
                             builderDomainModel.AppendLine($"\t/// </remarks>");
                         }
-                        
+
                         definitions.Add(code, definition);
 
                         builderDomainModel.AppendLine("\t[System.Serializable()]");
@@ -352,7 +352,7 @@ namespace S100Framework.Applications
                 foreach (var e in elements) {
                     var valueType = e.Element(XName.Get("valueType", scope_S100))!.Value;
 
-                    var simpleAttribute = valueType?.ToLowerInvariant() switch {                        
+                    var simpleAttribute = valueType?.ToLowerInvariant() switch {
                         "s100_codelist" => false,
                         "enumeration" => false,
                         _ => true,
@@ -392,7 +392,7 @@ namespace S100Framework.Applications
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
                         editorBuilders.Add(code, (b, lower, upper) => {
                             b.AppendLine("\t\t[S100TruncatedDateAttribute]");
-                            if(!(upper.HasValue && upper.Value > 1)) {
+                            if (!(upper.HasValue && upper.Value > 1)) {
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                             }
                             //if (lower > 1 || (upper.HasValue && upper.Value > 1))
@@ -544,7 +544,7 @@ namespace S100Framework.Applications
                         complexTypes.Add(code);
                         knownTypes.Add(code);
                         knowTypesPrefix.Add(code, code);
-                        
+
                         definitions.Add(code, definition);
 
                         shouldSerialize.Add($"{code}?", (code) => {
@@ -1250,7 +1250,14 @@ namespace S100Framework.Applications
                             //}
 
                             builderInformationBindings.AppendLine($"\t\tpublic static class {code} {{");
-                            builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
+                            if (superType is not null) {
+                                if (e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Any())
+                                    builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [.. {superType.Value}.informationBindingDefinitions,");
+                                else
+                                    builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [.. {superType.Value}.informationBindingDefinitions");
+                            }
+                            else
+                                builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
                                 var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
@@ -1277,7 +1284,14 @@ namespace S100Framework.Applications
                             builderInformationBindings.AppendLine("\t\t}");
 
                             builderFeatureBindings.AppendLine($"\t\tpublic static class {code} {{");
-                            builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [");
+                            if (superType is not null) {
+                                if (e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager).Any())
+                                    builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [.. {superType.Value}.featureBindingDefinitions,");
+                                else
+                                    builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [.. {superType.Value}.featureBindingDefinitions");
+                            }
+                            else
+                                builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [");
                             foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
                                 var roleType = featureBinding.Attribute("roleType")!.Value;
                                 var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
@@ -1397,7 +1411,7 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required ProductFormat ProductFormat { get; init; }
 
-            public  required IReadOnlyDictionary<string,string> Definitions { get; init; }
+            public required IReadOnlyDictionary<string, string> Definitions { get; init; }
             public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IReadOnlyDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
@@ -1842,7 +1856,7 @@ namespace S100Framework.Applications
             var definition = e.Element(XName.Get("definition", scope_S100))!.Value.TrimEnd(Environment.NewLine.ToArray());
             definition = definition.Replace("\"", "\\\"").Replace(Environment.NewLine, " ").Replace("\n", " ").TrimEnd('\t').TrimEnd(' ');
 
-            var code = e.Element(XName.Get("code", scope_S100))!.Value;            
+            var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
             var inheritance = e.Name.LocalName switch {
                 "S100_FC_InformationType" => "InformationNode",
@@ -2088,10 +2102,10 @@ namespace S100Framework.Applications
                 builder.AppendLine("\t\t\t#region InformationBindings");
                 builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine("\t\t\t[XmlIgnore]");
-                if (superType != null)
-                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}.informationBindingDefinitions, ..InformationBindings.{code}.informationBindingDefinitions];");
-                else
-                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}.informationBindingDefinitions;");
+                //if (superType != null)
+                //    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}.informationBindingDefinitions, ..InformationBindings.{code}.informationBindingDefinitions];");
+                //else
+                builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}.informationBindingDefinitions;");
 
                 ////informationBindings.AppendLine("\t\t\t];");
                 ////builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
@@ -2140,10 +2154,10 @@ namespace S100Framework.Applications
                 builder.AppendLine("\t\t\t#region IFeatureBindings");
                 builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine("\t\t\t[XmlIgnore]");
-                if (superType != null)
-                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}.featureBindingDefinitions, ..FeatureBindings.{code}.featureBindingDefinitions];");
-                else
-                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}.featureBindingDefinitions;");
+                //if (superType != null)
+                //    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}.featureBindingDefinitions, ..FeatureBindings.{code}.featureBindingDefinitions];");
+                //else
+                builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}.featureBindingDefinitions;");
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
@@ -2184,7 +2198,7 @@ namespace S100Framework.Applications
             public required IReadOnlyCollection<string> CodeListTypes { get; init; }
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required ProductFormat ProductFormat { get; init; }
-            public required IReadOnlyDictionary<string,string> Definitions { get; init; }
+            public required IReadOnlyDictionary<string, string> Definitions { get; init; }
             public required string BaseClass { get; init; }
             public required string LoadPrefix { get; init; }
             public required IReadOnlyDictionary<string, Action<StringBuilder, int, int?>> Editors { get; init; }
@@ -2219,7 +2233,7 @@ namespace S100Framework.Applications
 
             builder.AppendLine($"\t/// <summary>");
             builder.AppendLine($"\t/// {definition}");
-            builder.AppendLine($"\t/// </summary>");            
+            builder.AppendLine($"\t/// </summary>");
             builder.AppendLine($"\t[Description(\"{definition}\")]");
 
             builder.AppendLine($"\t[CategoryOrder(\"{code}\",0)]");
@@ -2646,7 +2660,7 @@ namespace S100Framework.Applications
             public required XmlNamespaceManager XmlNamespaceManager { get; init; }
             public required XPathNavigator XPathNavigator { get; init; }
             public required ProductFormat ProductFormat { get; init; }
-            public required IReadOnlyDictionary<string,string> Definitions { get; init; }
+            public required IReadOnlyDictionary<string, string> Definitions { get; init; }
         }
 
         private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client, Action<string, int, int?, bool> callback) {
@@ -2668,7 +2682,7 @@ namespace S100Framework.Applications
             foreach (var attributeBinding in attributeBindings) {
                 if (!first)
                     builder.AppendLine();
-                first = false;                
+                first = false;
 
                 var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
                 var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
