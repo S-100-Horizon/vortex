@@ -1094,7 +1094,7 @@ namespace S100Framework.DomainModel.S125 {
 		[Description("a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)")]
 		[EnumMember(Value = "catenary anchor leg mooring (CALM)")] 
 		[XmlEnum("2")] 
-		CatenaryAnchorLegMooringCalm2= 2,
+		CatenaryAnchorLegMooringCalm2 = 2,
 	}
 
 	/// <summary>
@@ -5346,7 +5346,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
@@ -5374,6 +5374,9 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -5396,7 +5399,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonStatusInformation : InformationNode, IInformationBindingDefinition {
+		public partial class AtonStatusInformation : InformationNode {
 			[XmlElement("changeDetails")]
 			[Mandatory]
 			public changeDetails changeDetails {get;set;} = new changeDetails {
@@ -5423,6 +5426,9 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(AtonStatusInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AtonStatusInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -5451,7 +5457,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class AidsToNavigation : FeatureNode, IFeatureBindingDefinition {
+		public abstract class AidsToNavigation : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -5530,9 +5536,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(AidsToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AidsToNavigation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AidsToNavigation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AidsToNavigation._primitives;
@@ -5584,9 +5596,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(NavigationLine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AidsToNavigation.informationBindingDefinitions, ..InformationBindings.NavigationLine.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.AidsToNavigation.featureBindingDefinitions, ..FeatureBindings.NavigationLine.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..NavigationLine._primitives];
@@ -5712,9 +5730,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(RecommendedTrack);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AidsToNavigation.informationBindingDefinitions, ..InformationBindings.RecommendedTrack.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.AidsToNavigation.featureBindingDefinitions, ..FeatureBindings.RecommendedTrack.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..RecommendedTrack._primitives];
@@ -5763,9 +5787,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Equipment);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AidsToNavigation.informationBindingDefinitions, ..InformationBindings.Equipment.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.AidsToNavigation.featureBindingDefinitions, ..FeatureBindings.Equipment.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..Equipment._primitives];
@@ -5804,9 +5834,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(StructureObject);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AidsToNavigation.informationBindingDefinitions, ..InformationBindings.StructureObject.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.AidsToNavigation.featureBindingDefinitions, ..FeatureBindings.StructureObject.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..StructureObject._primitives];
@@ -5909,9 +5945,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(GenericBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.GenericBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.GenericBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBuoy._primitives];
@@ -6037,9 +6079,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(GenericBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.GenericBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.GenericBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..GenericBeacon._primitives];
@@ -6153,9 +6201,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Landmark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.Landmark.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.Landmark.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..Landmark._primitives];
@@ -6274,9 +6328,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Daymark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.Daymark.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.Daymark.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..Daymark._primitives];
@@ -6347,9 +6407,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(FogSignal);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.FogSignal.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.FogSignal.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..FogSignal._primitives];
@@ -6411,9 +6477,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(RadarReflector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.RadarReflector.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.RadarReflector.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..RadarReflector._primitives];
@@ -6514,9 +6586,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(RadarTransponderBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.RadarTransponderBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.RadarTransponderBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..RadarTransponderBeacon._primitives];
@@ -6587,9 +6665,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(RadioStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.RadioStation.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.RadioStation.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..RadioStation._primitives];
@@ -6678,9 +6762,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Retroreflector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.Retroreflector.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.Retroreflector.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..Retroreflector._primitives];
@@ -6786,9 +6876,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightFloat);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.LightFloat.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.LightFloat.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..LightFloat._primitives];
@@ -6894,9 +6990,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightVessel);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.LightVessel.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.LightVessel.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..LightVessel._primitives];
@@ -7024,9 +7126,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(OffshorePlatform);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.OffshorePlatform.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.OffshorePlatform.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..OffshorePlatform._primitives];
@@ -7121,9 +7229,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Pile);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.Pile.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.Pile.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..Pile._primitives];
@@ -7257,9 +7371,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SiloTank);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.SiloTank.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.SiloTank.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..SiloTank._primitives];
@@ -7315,9 +7435,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(CardinalBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.CardinalBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.CardinalBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..CardinalBuoy._primitives];
@@ -7366,9 +7492,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.EmergencyWreckMarkingBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.EmergencyWreckMarkingBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..EmergencyWreckMarkingBuoy._primitives];
@@ -7424,9 +7556,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(InstallationBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.InstallationBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.InstallationBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..InstallationBuoy._primitives];
@@ -7475,9 +7613,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(IsolatedDangerBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.IsolatedDangerBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.IsolatedDangerBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..IsolatedDangerBuoy._primitives];
@@ -7533,9 +7677,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LateralBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.LateralBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.LateralBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..LateralBuoy._primitives];
@@ -7584,9 +7734,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(MooringBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.MooringBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.MooringBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..MooringBuoy._primitives];
@@ -7635,9 +7791,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SafeWaterBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.SafeWaterBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.SafeWaterBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..SafeWaterBuoy._primitives];
@@ -7693,9 +7855,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBuoy.informationBindingDefinitions, ..InformationBindings.SpecialPurposeGeneralBuoy.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBuoy.featureBindingDefinitions, ..FeatureBindings.SpecialPurposeGeneralBuoy.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBuoy._primitives, ..SpecialPurposeGeneralBuoy._primitives];
@@ -7751,9 +7919,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(CardinalBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBeacon.informationBindingDefinitions, ..InformationBindings.CardinalBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBeacon.featureBindingDefinitions, ..FeatureBindings.CardinalBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBeacon._primitives, ..CardinalBeacon._primitives];
@@ -7802,9 +7976,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(IsolatedDangerBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBeacon.informationBindingDefinitions, ..InformationBindings.IsolatedDangerBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBeacon.featureBindingDefinitions, ..FeatureBindings.IsolatedDangerBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBeacon._primitives, ..IsolatedDangerBeacon._primitives];
@@ -7853,9 +8033,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SafeWaterBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBeacon.informationBindingDefinitions, ..InformationBindings.SafeWaterBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBeacon.featureBindingDefinitions, ..FeatureBindings.SafeWaterBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SafeWaterBeacon._primitives];
@@ -7911,9 +8097,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBeacon.informationBindingDefinitions, ..InformationBindings.SpecialPurposeGeneralBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBeacon.featureBindingDefinitions, ..FeatureBindings.SpecialPurposeGeneralBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBeacon._primitives, ..SpecialPurposeGeneralBeacon._primitives];
@@ -7969,9 +8161,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LateralBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericBeacon.informationBindingDefinitions, ..InformationBindings.LateralBeacon.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericBeacon.featureBindingDefinitions, ..FeatureBindings.LateralBeacon.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericBeacon._primitives, ..LateralBeacon._primitives];
@@ -8088,9 +8286,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(WindTurbine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.StructureObject.informationBindingDefinitions, ..InformationBindings.WindTurbine.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.StructureObject.featureBindingDefinitions, ..FeatureBindings.WindTurbine.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..StructureObject._primitives, ..WindTurbine._primitives];
@@ -8124,7 +8328,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
+		public partial class VerticalDatumOfData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Mandatory]
@@ -8146,9 +8350,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(VerticalDatumOfData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
@@ -8182,7 +8392,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+		public partial class DataCoverage : FeatureNode {
 			[XmlElement("maximumDisplayScale")]
 			[Mandatory]
 			public int maximumDisplayScale {get;set;} = default;
@@ -8205,9 +8415,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(DataCoverage);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -8241,7 +8457,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
+		public partial class LocalDirectionOfBuoyage : FeatureNode {
 			[XmlElement("orientation")]
 			[Mandatory]
 			public orientation orientation {get;set;} = new orientation {
@@ -8262,9 +8478,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LocalDirectionOfBuoyage);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalDirectionOfBuoyage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalDirectionOfBuoyage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
@@ -8298,7 +8520,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavigationalSystemOfMarks : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,15])]
 			[Mandatory]
@@ -8320,9 +8542,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(NavigationalSystemOfMarks);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationalSystemOfMarks.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationalSystemOfMarks.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
@@ -8356,7 +8584,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
+		public partial class SoundingDatum : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Mandatory]
@@ -8378,9 +8606,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SoundingDatum);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
@@ -8414,7 +8648,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfBathymetricData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Mandatory]
@@ -8470,9 +8704,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(QualityOfBathymetricData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfBathymetricData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfBathymetricData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
@@ -8557,9 +8797,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(GenericLight);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.GenericLight.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.GenericLight.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..GenericLight._primitives];
@@ -8575,7 +8821,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DangerousFeature : FeatureNode, IFeatureBindingDefinition {
+		public partial class DangerousFeature : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Mandatory]
 			public String interoperabilityIdentifier {get;set;} = string.Empty;
@@ -8598,9 +8844,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(DangerousFeature);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DangerousFeature.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DangerousFeature.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DangerousFeature._primitives;
@@ -8664,9 +8916,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(ElectronicAtoN);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AidsToNavigation.informationBindingDefinitions, ..InformationBindings.ElectronicAtoN.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.AidsToNavigation.featureBindingDefinitions, ..FeatureBindings.ElectronicAtoN.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..AidsToNavigation._primitives, ..ElectronicAtoN._primitives];
@@ -8734,9 +8992,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(Topmark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.Equipment.informationBindingDefinitions, ..InformationBindings.Topmark.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.Equipment.featureBindingDefinitions, ..FeatureBindings.Topmark.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..Equipment._primitives, ..Topmark._primitives];
@@ -8770,7 +9034,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAggregation : FeatureNode, IFeatureBindingDefinition {
+		public partial class AtonAggregation : FeatureNode {
 			[XmlElement("categoryOfAggregation")]
 			[EnumerationValue([1,3,2])]
 			[Mandatory]
@@ -8790,9 +9054,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(AtonAggregation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AtonAggregation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AtonAggregation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AtonAggregation._primitives;
@@ -8826,7 +9096,7 @@ namespace S100Framework.DomainModel.S125 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AtonAssociation : FeatureNode, IFeatureBindingDefinition {
+		public partial class AtonAssociation : FeatureNode {
 			[XmlElement("categoryOfAssociation")]
 			[EnumerationValue([1,2])]
 			[Mandatory]
@@ -8846,9 +9116,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(AtonAssociation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AtonAssociation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AtonAssociation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AtonAssociation._primitives;
@@ -8949,9 +9225,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightAirObstruction);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericLight.informationBindingDefinitions, ..InformationBindings.LightAirObstruction.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericLight.featureBindingDefinitions, ..FeatureBindings.LightAirObstruction.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericLight._primitives, ..LightAirObstruction._primitives];
@@ -9092,9 +9374,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightAllAround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericLight.informationBindingDefinitions, ..InformationBindings.LightAllAround.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericLight.featureBindingDefinitions, ..FeatureBindings.LightAllAround.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericLight._primitives, ..LightAllAround._primitives];
@@ -9167,9 +9455,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightFogDetector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericLight.informationBindingDefinitions, ..InformationBindings.LightFogDetector.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericLight.featureBindingDefinitions, ..FeatureBindings.LightFogDetector.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericLight._primitives, ..LightFogDetector._primitives];
@@ -9276,9 +9570,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(LightSectored);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.GenericLight.informationBindingDefinitions, ..InformationBindings.LightSectored.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.GenericLight.featureBindingDefinitions, ..FeatureBindings.LightSectored.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..GenericLight._primitives, ..LightSectored._primitives];
@@ -9334,9 +9634,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(SyntheticAISAidToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ElectronicAtoN.informationBindingDefinitions, ..InformationBindings.SyntheticAISAidToNavigation.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ElectronicAtoN.featureBindingDefinitions, ..FeatureBindings.SyntheticAISAidToNavigation.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..SyntheticAISAidToNavigation._primitives];
@@ -9392,9 +9698,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(PhysicalAISAidToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ElectronicAtoN.informationBindingDefinitions, ..InformationBindings.PhysicalAISAidToNavigation.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ElectronicAtoN.featureBindingDefinitions, ..FeatureBindings.PhysicalAISAidToNavigation.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..PhysicalAISAidToNavigation._primitives];
@@ -9450,9 +9762,15 @@ namespace S100Framework.DomainModel.S125 {
 			public override string Code => nameof(VirtualAISAidToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.ElectronicAtoN.informationBindingDefinitions, ..InformationBindings.VirtualAISAidToNavigation.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.ElectronicAtoN.featureBindingDefinitions, ..FeatureBindings.VirtualAISAidToNavigation.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..ElectronicAtoN._primitives, ..VirtualAISAidToNavigation._primitives];
@@ -9486,15 +9804,15 @@ namespace S100Framework.DomainModel.S125 {
 	public static class InformationBindings
 	{
 		public static class SpatialQuality {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class AtonStatusInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class AidsToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9507,207 +9825,207 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class NavigationLine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class RecommendedTrack {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Equipment {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class StructureObject {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class GenericBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class GenericBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Landmark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Daymark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class FogSignal {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class RadarReflector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class RadarTransponderBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class RadioStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Retroreflector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightFloat {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightVessel {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class OffshorePlatform {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Pile {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SiloTank {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class CardinalBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class EmergencyWreckMarkingBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class InstallationBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class IsolatedDangerBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LateralBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class MooringBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SafeWaterBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SpecialPurposeGeneralBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class CardinalBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class IsolatedDangerBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SafeWaterBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SpecialPurposeGeneralBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LateralBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class WindTurbine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class VerticalDatumOfData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class DataCoverage {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LocalDirectionOfBuoyage {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NavigationalSystemOfMarks {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SoundingDatum {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class QualityOfBathymetricData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class GenericLight {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class DangerousFeature {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class ElectronicAtoN {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Topmark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class AtonAggregation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class AtonAssociation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightAirObstruction {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightAllAround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightFogDetector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LightSectored {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SyntheticAISAidToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class PhysicalAISAidToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class VirtualAISAidToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 	}
@@ -9718,7 +10036,7 @@ namespace S100Framework.DomainModel.S125 {
 	public static class FeatureBindings
 	{
 		public static class AidsToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9738,7 +10056,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class NavigationLine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9750,7 +10068,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class RecommendedTrack {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -9762,7 +10080,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class Equipment {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -9774,7 +10092,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class StructureObject {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9786,35 +10104,35 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class GenericBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class GenericBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class Landmark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class Daymark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class FogSignal {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class RadarReflector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class RadarTransponderBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class RadioStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9842,115 +10160,115 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class Retroreflector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LightFloat {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LightVessel {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class OffshorePlatform {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class Pile {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SiloTank {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class CardinalBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class EmergencyWreckMarkingBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class InstallationBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class IsolatedDangerBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LateralBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class MooringBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SafeWaterBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SpecialPurposeGeneralBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class CardinalBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class IsolatedDangerBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SafeWaterBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SpecialPurposeGeneralBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LateralBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class WindTurbine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class VerticalDatumOfData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class DataCoverage {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LocalDirectionOfBuoyage {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class NavigationalSystemOfMarks {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SoundingDatum {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class QualityOfBathymetricData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class GenericLight {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class DangerousFeature {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -9962,15 +10280,15 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class ElectronicAtoN {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class Topmark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class AtonAggregation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -9982,7 +10300,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class AtonAssociation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -10002,23 +10320,23 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class LightAirObstruction {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LightAllAround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LightFogDetector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class LightSectored {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class SyntheticAISAidToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -10030,7 +10348,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class PhysicalAISAidToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -10042,7 +10360,7 @@ namespace S100Framework.DomainModel.S125 {
 			];
 		}
 		public static class VirtualAISAidToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,

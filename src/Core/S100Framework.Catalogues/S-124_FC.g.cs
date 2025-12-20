@@ -2602,7 +2602,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class References : InformationNode, IInformationBindingDefinition {
+		public partial class References : InformationNode {
 			[XmlElement("messageSeriesIdentifier")]
 			[Optional]
 			public List<messageSeriesIdentifier> messageSeriesIdentifier {get;set;} = [];
@@ -2632,6 +2632,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(References);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.References.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2654,7 +2657,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavwarnPreamble : InformationNode, IInformationBindingDefinition {
+		public partial class NavwarnPreamble : InformationNode {
 			[XmlElement("affectedChartPublications")]
 			[Optional]
 			public List<affectedChartPublications> affectedChartPublications {get;set;} = [];
@@ -2720,6 +2723,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnPreamble);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPreamble.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2742,7 +2748,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
@@ -2770,6 +2776,9 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2798,7 +2807,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavwarnPart : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavwarnPart : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([7,8,14,25,27])]
 			[Optional]
@@ -2843,9 +2852,15 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnPart);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnPart.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnPart.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnPart._primitives;
@@ -2879,7 +2894,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavwarnAreaAffected : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavwarnAreaAffected : FeatureNode {
 
 			#region ShouldSerialize
 
@@ -2894,9 +2909,15 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(NavwarnAreaAffected);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavwarnAreaAffected.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavwarnAreaAffected.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavwarnAreaAffected._primitives;
@@ -2930,7 +2951,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+		public partial class TextPlacement : FeatureNode {
 			[XmlElement("scaleMinimum")]
 			[Optional]
 			public int? scaleMinimum {get;set;} = default;
@@ -2965,9 +2986,15 @@ namespace S100Framework.DomainModel.S124 {
 			public override string Code => nameof(TextPlacement);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -3001,7 +3028,7 @@ namespace S100Framework.DomainModel.S124 {
 	public static class InformationBindings
 	{
 		public static class References {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -3014,7 +3041,7 @@ namespace S100Framework.DomainModel.S124 {
 			];
 		}
 		public static class NavwarnPreamble {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3027,11 +3054,11 @@ namespace S100Framework.DomainModel.S124 {
 			];
 		}
 		public static class SpatialQuality {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NavwarnPart {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -3044,11 +3071,11 @@ namespace S100Framework.DomainModel.S124 {
 			];
 		}
 		public static class NavwarnAreaAffected {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class TextPlacement {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 	}
@@ -3059,7 +3086,7 @@ namespace S100Framework.DomainModel.S124 {
 	public static class FeatureBindings
 	{
 		public static class NavwarnPart {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3079,7 +3106,7 @@ namespace S100Framework.DomainModel.S124 {
 			];
 		}
 		public static class NavwarnAreaAffected {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,
@@ -3091,7 +3118,7 @@ namespace S100Framework.DomainModel.S124 {
 			];
 		}
 		public static class TextPlacement {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 1,

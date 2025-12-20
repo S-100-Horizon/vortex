@@ -2403,7 +2403,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
+		public partial class CatalogueSectionHeader : InformationNode {
 			[XmlElement("catalogueSectionNumber")]
 			[Mandatory]
 			public int catalogueSectionNumber {get;set;} = default;
@@ -2432,6 +2432,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueSectionHeader);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueSectionHeader.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2454,7 +2457,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
+		public partial class ContactDetails : InformationNode {
 			[XmlElement("contactInstructions")]
 			[Mandatory]
 			public String contactInstructions {get;set;} = string.Empty;
@@ -2501,6 +2504,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ContactDetails);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2523,7 +2529,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
+		public partial class IndicationOfCarriageRequirement : InformationNode {
 			[XmlElement("domesticCarriageRequirements")]
 			[Optional]
 			public String? domesticCarriageRequirements {get;set;} = default;
@@ -2554,6 +2560,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(IndicationOfCarriageRequirement);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IndicationOfCarriageRequirement.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2576,7 +2585,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PriceInformation : InformationNode, IInformationBindingDefinition {
+		public partial class PriceInformation : InformationNode {
 			[XmlElement("information")]
 			[Optional]
 			public List<information> information {get;set;} = [];
@@ -2613,6 +2622,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PriceInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PriceInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2635,7 +2647,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
+		public partial class ProducerInformation : InformationNode {
 			[XmlElement("agencyResponsibleForProduction")]
 			[Mandatory]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
@@ -2658,6 +2670,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ProducerInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProducerInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2680,7 +2695,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
+		public partial class DistributorInformation : InformationNode {
 			[XmlElement("distributorName")]
 			[Mandatory]
 			public String distributorName {get;set;} = string.Empty;
@@ -2699,6 +2714,9 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(DistributorInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistributorInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -2727,7 +2745,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
+		public abstract class CatalogueElement : FeatureNode {
 			[XmlElement("agencyResponsibleForProduction")]
 			[Optional]
 			public String? agencyResponsibleForProduction {get;set;} = default;
@@ -2816,9 +2834,15 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(CatalogueElement);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueElement.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CatalogueElement.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CatalogueElement._primitives;
@@ -2961,9 +2985,15 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(NavigationalProduct);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement.informationBindingDefinitions, ..InformationBindings.NavigationalProduct.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement.featureBindingDefinitions, ..FeatureBindings.NavigationalProduct.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..NavigationalProduct._primitives];
@@ -3035,9 +3065,15 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(ElectronicProduct);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct.informationBindingDefinitions, ..InformationBindings.ElectronicProduct.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct.featureBindingDefinitions, ..FeatureBindings.ElectronicProduct.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..ElectronicProduct._primitives];
@@ -3126,9 +3162,15 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(PhysicalProduct);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.NavigationalProduct.informationBindingDefinitions, ..InformationBindings.PhysicalProduct.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.NavigationalProduct.featureBindingDefinitions, ..FeatureBindings.PhysicalProduct.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..NavigationalProduct._primitives, ..PhysicalProduct._primitives];
@@ -3217,9 +3259,15 @@ namespace S100Framework.DomainModel.S128 {
 			public override string Code => nameof(S100Service);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.CatalogueElement.informationBindingDefinitions, ..InformationBindings.S100Service.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.CatalogueElement.featureBindingDefinitions, ..FeatureBindings.S100Service.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..CatalogueElement._primitives, ..S100Service._primitives];
@@ -3253,7 +3301,7 @@ namespace S100Framework.DomainModel.S128 {
 	public static class InformationBindings
 	{
 		public static class CatalogueSectionHeader {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3284,7 +3332,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class ContactDetails {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3306,11 +3354,11 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class IndicationOfCarriageRequirement {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class PriceInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3323,7 +3371,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class ProducerInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3345,7 +3393,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class DistributorInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3367,7 +3415,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class CatalogueElement {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3398,19 +3446,19 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class NavigationalProduct {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class ElectronicProduct {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class PhysicalProduct {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class S100Service {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 	}
@@ -3421,7 +3469,7 @@ namespace S100Framework.DomainModel.S128 {
 	public static class FeatureBindings
 	{
 		public static class CatalogueElement {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3433,7 +3481,7 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class NavigationalProduct {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -3453,15 +3501,15 @@ namespace S100Framework.DomainModel.S128 {
 			];
 		}
 		public static class ElectronicProduct {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class PhysicalProduct {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class S100Service {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 	}

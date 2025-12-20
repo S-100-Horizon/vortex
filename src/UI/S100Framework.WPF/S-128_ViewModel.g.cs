@@ -2551,7 +2551,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			information = this._information?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueSectionHeader._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CatalogueSectionHeader.informationBindingDefinitions;
 
 		public CatalogueSectionHeaderViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -2820,7 +2820,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails.informationBindingDefinitions;
 
 		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -2930,7 +2930,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IndicationOfCarriageRequirement._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IndicationOfCarriageRequirement.informationBindingDefinitions;
 
 		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -3095,7 +3095,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PriceInformation._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PriceInformation.informationBindingDefinitions;
 
 		public PriceInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -3328,7 +3328,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			agencyName = this._agencyName,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProducerInformation._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProducerInformation.informationBindingDefinitions;
 
 		public ProducerInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -3534,7 +3534,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			distributorName = this._distributorName,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistributorInformation._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistributorInformation.informationBindingDefinitions;
 
 		public DistributorInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -4181,10 +4181,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			productSpecification = this._productSpecification?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ElectronicProduct._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.ElectronicProduct._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ElectronicProduct.informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.ElectronicProduct.informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ElectronicProduct._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ElectronicProduct.featureBindingDefinitions;
 
 		public ElectronicProductViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -4854,10 +4854,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			referenceToNM = this._referenceToNM?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PhysicalProduct._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.PhysicalProduct._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PhysicalProduct.informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.PhysicalProduct.informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PhysicalProduct._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PhysicalProduct.featureBindingDefinitions;
 
 		public PhysicalProductViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);
@@ -5251,10 +5251,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			productSpecification = this._productSpecification?.Model,
 		};
 
-		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.S100Service._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.S100Service._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+		public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.S100Service.informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.S100Service.informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
-		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.S100Service._featureBindingDefinitions;
+		public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.S100Service.featureBindingDefinitions;
 
 		public S100ServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
 			this.LoadInformationBinding(bindings);

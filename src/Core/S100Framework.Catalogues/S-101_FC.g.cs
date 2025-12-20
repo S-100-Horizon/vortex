@@ -8486,7 +8486,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
+		public partial class ContactDetails : InformationNode {
 			[XmlElement("callSign")]
 			[StringLengthConstraint(150)]
 			[Optional]
@@ -8550,6 +8550,9 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContactDetails);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails.informationBindingDefinitions;
 			#endregion
 
 
@@ -8569,7 +8572,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ServiceHours : InformationNode, IInformationBindingDefinition {
+		public partial class ServiceHours : InformationNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -8606,6 +8609,9 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ServiceHours);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ServiceHours.informationBindingDefinitions;
 			#endregion
 
 
@@ -8625,7 +8631,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NonStandardWorkingDay : InformationNode, IInformationBindingDefinition {
+		public partial class NonStandardWorkingDay : InformationNode {
 			[XmlElement("dateFixed")]
 			[Optional]
 			public List<String> dateFixed {get;set;} = [];
@@ -8669,6 +8675,9 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NonStandardWorkingDay.informationBindingDefinitions;
 			#endregion
 
 
@@ -8688,7 +8697,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NauticalInformation : InformationNode, IInformationBindingDefinition {
+		public partial class NauticalInformation : InformationNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -8725,6 +8734,9 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NauticalInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NauticalInformation.informationBindingDefinitions;
 			#endregion
 
 
@@ -8744,7 +8756,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
 			[EnumerationValue([4])]
 			[Optional]
@@ -8772,6 +8784,9 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality.informationBindingDefinitions;
 			#endregion
 
 
@@ -8797,7 +8812,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfNonBathymetricData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,4])]
 			[Optional]
@@ -8861,9 +8876,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -8893,7 +8914,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+		public partial class DataCoverage : FeatureNode {
 			[XmlElement("drawingIndex")]
 			[Optional]
 			public int? drawingIndex {get;set;} = default;
@@ -8939,9 +8960,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DataCoverage);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -8971,7 +8998,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavigationalSystemOfMarks : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,11])]
 			[Mandatory]
@@ -9004,9 +9031,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NavigationalSystemOfMarks);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationalSystemOfMarks.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationalSystemOfMarks.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavigationalSystemOfMarks._primitives;
@@ -9036,7 +9069,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
+		public partial class LocalDirectionOfBuoyage : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9081,9 +9114,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LocalDirectionOfBuoyage);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalDirectionOfBuoyage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalDirectionOfBuoyage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LocalDirectionOfBuoyage._primitives;
@@ -9113,7 +9152,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfBathymetricData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5,6])]
 			[Mandatory]
@@ -9194,9 +9233,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfBathymetricData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfBathymetricData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfBathymetricData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfBathymetricData._primitives;
@@ -9226,7 +9271,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
+		public partial class SoundingDatum : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9259,9 +9304,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SoundingDatum);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SoundingDatum.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SoundingDatum.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SoundingDatum._primitives;
@@ -9291,7 +9342,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
+		public partial class VerticalDatumOfData : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9324,9 +9375,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VerticalDatumOfData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VerticalDatumOfData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VerticalDatumOfData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VerticalDatumOfData._primitives;
@@ -9356,7 +9413,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfSurvey : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfSurvey : FeatureNode {
 			[XmlElement("depthRangeMaximumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Optional]
@@ -9497,9 +9554,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(QualityOfSurvey);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfSurvey.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfSurvey.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfSurvey._primitives;
@@ -9529,7 +9592,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UpdateInformation : FeatureNode, IFeatureBindingDefinition {
+		public partial class UpdateInformation : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -9586,9 +9649,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UpdateInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UpdateInformation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UpdateInformation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UpdateInformation._primitives;
@@ -9618,7 +9687,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
+		public partial class MagneticVariation : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -9664,9 +9733,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MagneticVariation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MagneticVariation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MagneticVariation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MagneticVariation._primitives;
@@ -9696,7 +9771,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LocalMagneticAnomaly : FeatureNode, IFeatureBindingDefinition {
+		public partial class LocalMagneticAnomaly : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -9745,9 +9820,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LocalMagneticAnomaly);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LocalMagneticAnomaly.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LocalMagneticAnomaly.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LocalMagneticAnomaly._primitives;
@@ -9777,7 +9858,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
+		public partial class Coastline : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,6,7,8,10])]
 			[Optional]
@@ -9869,9 +9950,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Coastline);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Coastline.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Coastline.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Coastline._primitives;
@@ -9901,7 +9988,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class LandArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,5])]
 			[Optional]
@@ -9964,9 +10051,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandArea._primitives;
@@ -9996,7 +10089,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IslandGroup : FeatureNode, IFeatureBindingDefinition {
+		public partial class IslandGroup : FeatureNode {
 			[XmlElement("featureName")]
 			[Multiplicity(1)]
 			public List<featureName> featureName {get;set;} = [];
@@ -10033,9 +10126,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IslandGroup);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IslandGroup.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IslandGroup.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IslandGroup._primitives;
@@ -10065,7 +10164,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
+		public partial class LandElevation : FeatureNode {
 			[XmlElement("elevation")]
 			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
 			[Mandatory]
@@ -10117,9 +10216,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandElevation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandElevation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandElevation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandElevation._primitives;
@@ -10149,7 +10254,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class River : FeatureNode, IFeatureBindingDefinition {
+		public partial class River : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -10195,9 +10300,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(River);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.River.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.River.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => River._primitives;
@@ -10227,7 +10338,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Rapids : FeatureNode, IFeatureBindingDefinition {
+		public partial class Rapids : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -10270,9 +10381,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Rapids);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Rapids.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Rapids.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Rapids._primitives;
@@ -10302,7 +10419,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Waterfall : FeatureNode, IFeatureBindingDefinition {
+		public partial class Waterfall : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -10354,9 +10471,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Waterfall);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Waterfall.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Waterfall.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Waterfall._primitives;
@@ -10386,7 +10509,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Lake : FeatureNode, IFeatureBindingDefinition {
+		public partial class Lake : FeatureNode {
 			[XmlElement("elevation")]
 			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
 			[Optional]
@@ -10439,9 +10562,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Lake);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Lake.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Lake.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Lake._primitives;
@@ -10471,7 +10600,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandRegion : FeatureNode, IFeatureBindingDefinition {
+		public partial class LandRegion : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			[Optional]
@@ -10539,9 +10668,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LandRegion);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LandRegion.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LandRegion.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LandRegion._primitives;
@@ -10571,7 +10706,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Vegetation : FeatureNode, IFeatureBindingDefinition {
+		public partial class Vegetation : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,6,11,13,14,15,16,17,18,19,20,22])]
 			[Mandatory]
@@ -10646,9 +10781,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Vegetation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Vegetation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Vegetation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Vegetation._primitives;
@@ -10678,7 +10819,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IceArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class IceArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,5,8])]
 			[Mandatory]
@@ -10776,9 +10917,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IceArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IceArea._primitives;
@@ -10808,7 +10955,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SlopingGround : FeatureNode, IFeatureBindingDefinition {
+		public partial class SlopingGround : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Optional]
@@ -10893,9 +11040,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SlopingGround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SlopingGround.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SlopingGround.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SlopingGround._primitives;
@@ -10925,7 +11078,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SlopeTopline : FeatureNode, IFeatureBindingDefinition {
+		public partial class SlopeTopline : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,6])]
 			[Optional]
@@ -11017,9 +11170,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SlopeTopline);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SlopeTopline.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SlopeTopline.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SlopeTopline._primitives;
@@ -11049,7 +11208,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Tideway : FeatureNode, IFeatureBindingDefinition {
+		public partial class Tideway : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -11086,9 +11245,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Tideway);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Tideway.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Tideway.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Tideway._primitives;
@@ -11118,7 +11283,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class BuiltUpArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class BuiltUpArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
@@ -11216,9 +11381,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(BuiltUpArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.BuiltUpArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.BuiltUpArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => BuiltUpArea._primitives;
@@ -11248,7 +11419,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Building : FeatureNode, IFeatureBindingDefinition {
+		public partial class Building : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([5,6,7,8,9])]
 			[Optional]
@@ -11420,9 +11591,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Building);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Building.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Building.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Building._primitives;
@@ -11452,7 +11629,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
+		public partial class AirportAirfield : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			[Optional]
@@ -11532,9 +11709,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AirportAirfield);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AirportAirfield.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AirportAirfield.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AirportAirfield._primitives;
@@ -11564,7 +11747,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Runway : FeatureNode, IFeatureBindingDefinition {
+		public partial class Runway : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Optional]
@@ -11644,9 +11827,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Runway);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Runway.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Runway.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Runway._primitives;
@@ -11676,7 +11865,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Helipad : FeatureNode, IFeatureBindingDefinition {
+		public partial class Helipad : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Optional]
@@ -11756,9 +11945,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Helipad);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Helipad.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Helipad.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Helipad._primitives;
@@ -11788,7 +11983,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Bridge : FeatureNode, IFeatureBindingDefinition {
+		public partial class Bridge : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[Optional]
@@ -11960,9 +12155,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Bridge);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Bridge.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Bridge.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Bridge._primitives;
@@ -11994,7 +12195,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpanFixed : FeatureNode, IFeatureBindingDefinition {
+		public partial class SpanFixed : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -12058,9 +12259,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpanFixed);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpanFixed.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpanFixed.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpanFixed._primitives;
@@ -12090,7 +12297,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpanOpening : FeatureNode, IFeatureBindingDefinition {
+		public partial class SpanOpening : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -12160,9 +12367,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpanOpening);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpanOpening.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpanOpening.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpanOpening._primitives;
@@ -12192,7 +12405,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
+		public partial class Conveyor : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
@@ -12369,9 +12582,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Conveyor);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Conveyor.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Conveyor.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Conveyor._primitives;
@@ -12401,7 +12620,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
+		public partial class CableOverhead : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,10])]
 			[Optional]
@@ -12533,9 +12752,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableOverhead);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableOverhead.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableOverhead.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableOverhead._primitives;
@@ -12566,7 +12791,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PipelineOverhead : FeatureNode, IFeatureBindingDefinition {
+		public partial class PipelineOverhead : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,6])]
 			[Optional]
@@ -12697,9 +12922,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PipelineOverhead);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PipelineOverhead.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PipelineOverhead.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PipelineOverhead._primitives;
@@ -12729,7 +12960,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PylonBridgeSupport : FeatureNode, IFeatureBindingDefinition {
+		public partial class PylonBridgeSupport : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Mandatory]
@@ -12893,9 +13124,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PylonBridgeSupport);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PylonBridgeSupport.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PylonBridgeSupport.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PylonBridgeSupport._primitives;
@@ -12925,7 +13162,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FenceWall : FeatureNode, IFeatureBindingDefinition {
+		public partial class FenceWall : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4])]
 			[Optional]
@@ -13068,9 +13305,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FenceWall);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FenceWall.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FenceWall.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FenceWall._primitives;
@@ -13100,7 +13343,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Railway : FeatureNode, IFeatureBindingDefinition {
+		public partial class Railway : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,5])]
 			[Optional]
@@ -13169,9 +13412,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Railway);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Railway.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Railway.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Railway._primitives;
@@ -13201,7 +13450,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Road : FeatureNode, IFeatureBindingDefinition {
+		public partial class Road : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
@@ -13286,9 +13535,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Road);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Road.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Road.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Road._primitives;
@@ -13318,7 +13573,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Tunnel : FeatureNode, IFeatureBindingDefinition {
+		public partial class Tunnel : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,5])]
 			[Optional]
@@ -13410,9 +13665,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Tunnel);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Tunnel.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Tunnel.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Tunnel._primitives;
@@ -13442,7 +13703,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Landmark : FeatureNode, IFeatureBindingDefinition {
+		public partial class Landmark : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27])]
 			[Multiplicity(1)]
@@ -13624,9 +13885,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Landmark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Landmark.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Landmark.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Landmark._primitives;
@@ -13656,7 +13923,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SiloTank : FeatureNode, IFeatureBindingDefinition {
+		public partial class SiloTank : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([5,6,7,8,9])]
 			[Optional]
@@ -13839,9 +14106,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SiloTank);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SiloTank.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SiloTank.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SiloTank._primitives;
@@ -13871,7 +14144,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WindTurbine : FeatureNode, IFeatureBindingDefinition {
+		public partial class WindTurbine : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
@@ -14055,9 +14328,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WindTurbine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WindTurbine.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WindTurbine.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WindTurbine._primitives;
@@ -14087,7 +14366,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FortifiedStructure : FeatureNode, IFeatureBindingDefinition {
+		public partial class FortifiedStructure : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,9])]
 			[Optional]
@@ -14213,9 +14492,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FortifiedStructure);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FortifiedStructure.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FortifiedStructure.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FortifiedStructure._primitives;
@@ -14245,7 +14530,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ProductionStorageArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class ProductionStorageArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
@@ -14377,9 +14662,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ProductionStorageArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ProductionStorageArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ProductionStorageArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ProductionStorageArea._primitives;
@@ -14409,7 +14700,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
+		public partial class Checkpoint : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1])]
 			[Optional]
@@ -14466,9 +14757,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Checkpoint);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Checkpoint.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Checkpoint.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Checkpoint._primitives;
@@ -14498,7 +14795,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Hulk : FeatureNode, IFeatureBindingDefinition {
+		public partial class Hulk : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Optional]
@@ -14636,9 +14933,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Hulk);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Hulk.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Hulk.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Hulk._primitives;
@@ -14668,7 +14971,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Pile : FeatureNode, IFeatureBindingDefinition {
+		public partial class Pile : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8])]
 			[Optional]
@@ -14805,9 +15108,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Pile);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Pile.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Pile.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Pile._primitives;
@@ -14837,7 +15146,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dyke : FeatureNode, IFeatureBindingDefinition {
+		public partial class Dyke : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Optional]
@@ -14935,9 +15244,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dyke);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dyke.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dyke.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dyke._primitives;
@@ -14967,7 +15282,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
+		public partial class ShorelineConstruction : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23])]
 			[Optional]
@@ -15138,9 +15453,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ShorelineConstruction);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ShorelineConstruction.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ShorelineConstruction.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ShorelineConstruction._primitives;
@@ -15170,7 +15491,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StructureOverNavigableWater : FeatureNode, IFeatureBindingDefinition {
+		public partial class StructureOverNavigableWater : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[Optional]
@@ -15370,9 +15691,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(StructureOverNavigableWater);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.StructureOverNavigableWater.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.StructureOverNavigableWater.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => StructureOverNavigableWater._primitives;
@@ -15402,7 +15729,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Causeway : FeatureNode, IFeatureBindingDefinition {
+		public partial class Causeway : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Optional]
@@ -15487,9 +15814,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Causeway);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Causeway.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Causeway.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Causeway._primitives;
@@ -15519,7 +15852,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Canal : FeatureNode, IFeatureBindingDefinition {
+		public partial class Canal : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
@@ -15611,9 +15944,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Canal);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Canal.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Canal.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Canal._primitives;
@@ -15643,7 +15982,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DistanceMark : FeatureNode, IFeatureBindingDefinition {
+		public partial class DistanceMark : FeatureNode {
 			[XmlElement("distanceMarkVisible")]
 			[Mandatory]
 			[UnknownValue]
@@ -15698,9 +16037,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DistanceMark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DistanceMark.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DistanceMark.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DistanceMark._primitives;
@@ -15730,7 +16075,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Gate : FeatureNode, IFeatureBindingDefinition {
+		public partial class Gate : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6])]
 			[Optional]
@@ -15856,9 +16201,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Gate);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Gate.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Gate.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Gate._primitives;
@@ -15888,7 +16239,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dam : FeatureNode, IFeatureBindingDefinition {
+		public partial class Dam : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
@@ -16035,9 +16386,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dam);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dam.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dam.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dam._primitives;
@@ -16067,7 +16424,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Crane : FeatureNode, IFeatureBindingDefinition {
+		public partial class Crane : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6])]
 			[Optional]
@@ -16233,9 +16590,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Crane);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Crane.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Crane.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Crane._primitives;
@@ -16265,7 +16628,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Berth : FeatureNode, IFeatureBindingDefinition {
+		public partial class Berth : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Optional]
@@ -16375,9 +16738,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Berth);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Berth.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Berth.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Berth._primitives;
@@ -16407,7 +16776,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
+		public partial class Dolphin : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Multiplicity(1)]
@@ -16568,9 +16937,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Dolphin);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Dolphin.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Dolphin.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Dolphin._primitives;
@@ -16600,7 +16975,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
+		public partial class Bollard : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,5])]
 			[Optional]
@@ -16681,9 +17056,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Bollard);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Bollard.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Bollard.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Bollard._primitives;
@@ -16713,7 +17094,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DryDock : FeatureNode, IFeatureBindingDefinition {
+		public partial class DryDock : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Optional]
@@ -16837,9 +17218,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DryDock);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DryDock.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DryDock.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DryDock._primitives;
@@ -16869,7 +17256,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FloatingDock : FeatureNode, IFeatureBindingDefinition {
+		public partial class FloatingDock : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
@@ -17026,9 +17413,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FloatingDock);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FloatingDock.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FloatingDock.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FloatingDock._primitives;
@@ -17058,7 +17451,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Pontoon : FeatureNode, IFeatureBindingDefinition {
+		public partial class Pontoon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,5])]
 			[Optional]
@@ -17156,9 +17549,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Pontoon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Pontoon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Pontoon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Pontoon._primitives;
@@ -17188,7 +17587,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DockArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class DockArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			[Optional]
@@ -17292,9 +17691,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DockArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DockArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DockArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DockArea._primitives;
@@ -17324,7 +17729,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Gridiron : FeatureNode, IFeatureBindingDefinition {
+		public partial class Gridiron : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -17410,9 +17815,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Gridiron);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Gridiron.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Gridiron.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Gridiron._primitives;
@@ -17442,7 +17853,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LockBasin : FeatureNode, IFeatureBindingDefinition {
+		public partial class LockBasin : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -17518,9 +17929,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LockBasin);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LockBasin.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LockBasin.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LockBasin._primitives;
@@ -17550,7 +17967,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringTrot : FeatureNode, IFeatureBindingDefinition {
+		public partial class MooringTrot : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -17593,9 +18010,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringTrot);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringTrot.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringTrot.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringTrot._primitives;
@@ -17625,7 +18048,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class SeaAreaNamedWaterArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56])]
 			[Optional]
@@ -17671,9 +18094,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeaAreaNamedWaterArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeaAreaNamedWaterArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeaAreaNamedWaterArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeaAreaNamedWaterArea._primitives;
@@ -17703,7 +18132,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TidalStreamFloodEbb : FeatureNode, IFeatureBindingDefinition {
+		public partial class TidalStreamFloodEbb : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Mandatory]
@@ -17766,9 +18195,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TidalStreamFloodEbb);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TidalStreamFloodEbb.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TidalStreamFloodEbb.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamFloodEbb._primitives;
@@ -17798,7 +18233,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
+		public partial class CurrentNonGravitational : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -17868,9 +18303,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CurrentNonGravitational);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CurrentNonGravitational.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CurrentNonGravitational.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CurrentNonGravitational._primitives;
@@ -17900,7 +18341,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WaterTurbulence : FeatureNode, IFeatureBindingDefinition {
+		public partial class WaterTurbulence : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[Mandatory]
@@ -17945,9 +18386,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WaterTurbulence);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WaterTurbulence.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WaterTurbulence.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WaterTurbulence._primitives;
@@ -17977,7 +18424,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TidalStreamPanelData : FeatureNode, IFeatureBindingDefinition {
+		public partial class TidalStreamPanelData : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -18033,9 +18480,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TidalStreamPanelData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TidalStreamPanelData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TidalStreamPanelData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TidalStreamPanelData._primitives;
@@ -18065,7 +18518,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
+		public partial class Sounding : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -18139,9 +18592,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Sounding);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Sounding.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Sounding.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Sounding._primitives;
@@ -18171,7 +18630,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class DredgedArea : FeatureNode {
 			[XmlElement("depthRangeMinimumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Mandatory]
@@ -18270,9 +18729,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DredgedArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DredgedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DredgedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DredgedArea._primitives;
@@ -18302,7 +18767,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class SweptArea : FeatureNode {
 			[XmlElement("depthRangeMinimumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Mandatory]
@@ -18345,9 +18810,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SweptArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SweptArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SweptArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SweptArea._primitives;
@@ -18377,7 +18848,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
+		public partial class DepthContour : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -18413,9 +18884,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthContour);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthContour.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthContour.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthContour._primitives;
@@ -18445,7 +18922,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class DepthArea : FeatureNode {
 			[XmlElement("depthRangeMinimumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Mandatory]
@@ -18482,9 +18959,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthArea._primitives;
@@ -18514,7 +18997,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthNoBottomFound : FeatureNode, IFeatureBindingDefinition {
+		public partial class DepthNoBottomFound : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -18554,9 +19037,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DepthNoBottomFound);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DepthNoBottomFound.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DepthNoBottomFound.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DepthNoBottomFound._primitives;
@@ -18586,7 +19075,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UnsurveyedArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class UnsurveyedArea : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -18611,9 +19100,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UnsurveyedArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnsurveyedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnsurveyedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UnsurveyedArea._primitives;
@@ -18643,7 +19138,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class SeabedArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -18695,9 +19190,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeabedArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeabedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeabedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeabedArea._primitives;
@@ -18728,7 +19229,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WeedKelp : FeatureNode, IFeatureBindingDefinition {
+		public partial class WeedKelp : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,4])]
 			[Optional]
@@ -18774,9 +19275,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(WeedKelp);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.WeedKelp.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.WeedKelp.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => WeedKelp._primitives;
@@ -18806,7 +19313,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Seagrass : FeatureNode, IFeatureBindingDefinition {
+		public partial class Seagrass : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -18843,9 +19350,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Seagrass);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Seagrass.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Seagrass.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Seagrass._primitives;
@@ -18875,7 +19388,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Sandwave : FeatureNode, IFeatureBindingDefinition {
+		public partial class Sandwave : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -18912,9 +19425,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Sandwave);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Sandwave.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Sandwave.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Sandwave._primitives;
@@ -18944,7 +19463,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Spring : FeatureNode, IFeatureBindingDefinition {
+		public partial class Spring : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -18981,9 +19500,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Spring);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Spring.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Spring.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Spring._primitives;
@@ -19013,7 +19538,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
+		public partial class UnderwaterAwashRock : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			[Optional]
@@ -19137,9 +19662,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(UnderwaterAwashRock);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.UnderwaterAwashRock.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.UnderwaterAwashRock.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => UnderwaterAwashRock._primitives;
@@ -19169,7 +19700,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
+		public partial class Wreck : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[DependentUnknownValue("valueOfSounding")]
@@ -19324,9 +19855,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Wreck);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Wreck.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Wreck.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Wreck._primitives;
@@ -19356,7 +19893,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
+		public partial class Obstruction : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23])]
 			[Optional]
@@ -19533,9 +20070,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Obstruction);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Obstruction.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Obstruction.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Obstruction._primitives;
@@ -19565,7 +20108,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
+		public partial class FoulGround : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -19651,9 +20194,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FoulGround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FoulGround.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FoulGround.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FoulGround._primitives;
@@ -19683,7 +20232,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
+		public partial class DiscolouredWater : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -19720,9 +20269,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DiscolouredWater);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DiscolouredWater.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DiscolouredWater.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DiscolouredWater._primitives;
@@ -19752,7 +20307,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
+		public partial class FishingFacility : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
@@ -19838,9 +20393,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FishingFacility);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FishingFacility.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FishingFacility.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FishingFacility._primitives;
@@ -19870,7 +20431,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MarineFarmCulture : FeatureNode, IFeatureBindingDefinition {
+		public partial class MarineFarmCulture : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[Optional]
@@ -20013,9 +20574,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MarineFarmCulture);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MarineFarmCulture.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MarineFarmCulture.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MarineFarmCulture._primitives;
@@ -20045,7 +20612,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OffshorePlatform : FeatureNode, IFeatureBindingDefinition {
+		public partial class OffshorePlatform : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
@@ -20199,9 +20766,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OffshorePlatform);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OffshorePlatform.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OffshorePlatform.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OffshorePlatform._primitives;
@@ -20231,7 +20804,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
+		public partial class CableSubmarine : FeatureNode {
 			[XmlElement("buriedDepth")]
 			[Optional]
 			public double? buriedDepth {get;set;} = default;
@@ -20311,9 +20884,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableSubmarine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableSubmarine.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableSubmarine.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableSubmarine._primitives;
@@ -20343,7 +20922,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class CableArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,7,10])]
 			[Optional]
@@ -20423,9 +21002,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CableArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CableArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CableArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CableArea._primitives;
@@ -20455,7 +21040,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PipelineSubmarineOnLand : FeatureNode, IFeatureBindingDefinition {
+		public partial class PipelineSubmarineOnLand : FeatureNode {
 			[XmlElement("buriedDepth")]
 			[Optional]
 			public double? buriedDepth {get;set;} = default;
@@ -20589,9 +21174,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PipelineSubmarineOnLand);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PipelineSubmarineOnLand.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PipelineSubmarineOnLand.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PipelineSubmarineOnLand._primitives;
@@ -20621,7 +21212,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SubmarinePipelineArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class SubmarinePipelineArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6])]
 			[Optional]
@@ -20712,9 +21303,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SubmarinePipelineArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SubmarinePipelineArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SubmarinePipelineArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SubmarinePipelineArea._primitives;
@@ -20744,7 +21341,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OffshoreProductionArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class OffshoreProductionArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
@@ -20892,9 +21489,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OffshoreProductionArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OffshoreProductionArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OffshoreProductionArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OffshoreProductionArea._primitives;
@@ -20924,7 +21527,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavigationLine : FeatureNode, IFeatureBindingDefinition {
+		public partial class NavigationLine : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Mandatory]
@@ -20998,9 +21601,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(NavigationLine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NavigationLine.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.NavigationLine.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => NavigationLine._primitives;
@@ -21030,7 +21639,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedTrack : FeatureNode, IFeatureBindingDefinition {
+		public partial class RecommendedTrack : FeatureNode {
 			[XmlElement("basedOnFixedMarks")]
 			[Mandatory]
 			[UnknownValue]
@@ -21150,9 +21759,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedTrack);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedTrack.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedTrack.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrack._primitives;
@@ -21182,7 +21797,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RangeSystem : FeatureNode, IFeatureBindingDefinition {
+		public partial class RangeSystem : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -21231,9 +21846,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RangeSystem);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RangeSystem.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RangeSystem.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RangeSystem._primitives;
@@ -21263,7 +21884,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Fairway : FeatureNode, IFeatureBindingDefinition {
+		public partial class Fairway : FeatureNode {
 			[XmlElement("depthRangeMinimumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Optional]
@@ -21380,9 +22001,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Fairway);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Fairway.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Fairway.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Fairway._primitives;
@@ -21412,7 +22039,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FairwaySystem : FeatureNode, IFeatureBindingDefinition {
+		public partial class FairwaySystem : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -21467,9 +22094,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FairwaySystem);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FairwaySystem.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FairwaySystem.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FairwaySystem._primitives;
@@ -21499,7 +22132,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedRouteCentreline : FeatureNode, IFeatureBindingDefinition {
+		public partial class RecommendedRouteCentreline : FeatureNode {
 			[XmlElement("basedOnFixedMarks")]
 			[Mandatory]
 			[UnknownValue]
@@ -21615,9 +22248,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedRouteCentreline);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedRouteCentreline.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedRouteCentreline.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedRouteCentreline._primitives;
@@ -21647,7 +22286,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TwoWayRoutePart : FeatureNode, IFeatureBindingDefinition {
+		public partial class TwoWayRoutePart : FeatureNode {
 			[XmlElement("basedOnFixedMarks")]
 			[Optional]
 			public Boolean? basedOnFixedMarks {get;set;} = default;
@@ -21750,9 +22389,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TwoWayRoutePart);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TwoWayRoutePart.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TwoWayRoutePart.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoutePart._primitives;
@@ -21782,7 +22427,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TwoWayRoute : FeatureNode, IFeatureBindingDefinition {
+		public partial class TwoWayRoute : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -21831,9 +22476,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TwoWayRoute);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TwoWayRoute.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TwoWayRoute.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TwoWayRoute._primitives;
@@ -21863,7 +22514,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedTrafficLanePart : FeatureNode, IFeatureBindingDefinition {
+		public partial class RecommendedTrafficLanePart : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -21915,9 +22566,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RecommendedTrafficLanePart);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RecommendedTrafficLanePart.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RecommendedTrafficLanePart.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RecommendedTrafficLanePart._primitives;
@@ -21947,7 +22604,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
+		public partial class DeepWaterRouteCentreline : FeatureNode {
 			[XmlElement("basedOnFixedMarks")]
 			[Mandatory]
 			[UnknownValue]
@@ -22061,9 +22718,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRouteCentreline);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRouteCentreline.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRouteCentreline.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRouteCentreline._primitives;
@@ -22093,7 +22756,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
+		public partial class DeepWaterRoutePart : FeatureNode {
 			[XmlElement("depthRangeMinimumValue")]
 			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[Mandatory]
@@ -22218,9 +22881,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRoutePart);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRoutePart.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRoutePart.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoutePart._primitives;
@@ -22250,7 +22919,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRoute : FeatureNode, IFeatureBindingDefinition {
+		public partial class DeepWaterRoute : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -22299,9 +22968,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DeepWaterRoute);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DeepWaterRoute.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DeepWaterRoute.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DeepWaterRoute._primitives;
@@ -22331,7 +23006,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InshoreTrafficZone : FeatureNode, IFeatureBindingDefinition {
+		public partial class InshoreTrafficZone : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22394,9 +23069,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InshoreTrafficZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InshoreTrafficZone.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InshoreTrafficZone.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InshoreTrafficZone._primitives;
@@ -22426,7 +23107,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PrecautionaryArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class PrecautionaryArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -22501,9 +23182,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PrecautionaryArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PrecautionaryArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PrecautionaryArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PrecautionaryArea._primitives;
@@ -22533,7 +23220,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
+		public partial class TrafficSeparationSchemeLanePart : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22603,9 +23290,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeLanePart.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeLanePart.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeLanePart._primitives;
@@ -22635,7 +23328,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
+		public partial class SeparationZoneOrLine : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22681,9 +23374,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeparationZoneOrLine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeparationZoneOrLine.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeparationZoneOrLine.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeparationZoneOrLine._primitives;
@@ -22713,7 +23412,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
+		public partial class TrafficSeparationSchemeBoundary : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22759,9 +23458,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeBoundary.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeBoundary.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeBoundary._primitives;
@@ -22791,7 +23496,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
+		public partial class TrafficSeparationSchemeCrossing : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22854,9 +23559,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeCrossing.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeCrossing.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeCrossing._primitives;
@@ -22886,7 +23597,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
+		public partial class TrafficSeparationSchemeRoundabout : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -22949,9 +23660,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationSchemeRoundabout.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationSchemeRoundabout.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationSchemeRoundabout._primitives;
@@ -22981,7 +23698,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationScheme : FeatureNode, IFeatureBindingDefinition {
+		public partial class TrafficSeparationScheme : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -23036,9 +23753,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TrafficSeparationScheme);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TrafficSeparationScheme.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TrafficSeparationScheme.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TrafficSeparationScheme._primitives;
@@ -23068,7 +23791,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLaneArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class ArchipelagicSeaLaneArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -23117,9 +23840,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLaneArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLaneArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLaneArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneArea._primitives;
@@ -23149,7 +23878,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLaneAxis : FeatureNode, IFeatureBindingDefinition {
+		public partial class ArchipelagicSeaLaneAxis : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -23198,9 +23927,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLaneAxis.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLaneAxis.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLaneAxis._primitives;
@@ -23230,7 +23965,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLane : FeatureNode, IFeatureBindingDefinition {
+		public partial class ArchipelagicSeaLane : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -23278,9 +24013,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ArchipelagicSeaLane);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ArchipelagicSeaLane.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ArchipelagicSeaLane.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ArchipelagicSeaLane._primitives;
@@ -23310,7 +24051,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadioCallingInPoint : FeatureNode {
 			[XmlElement("communicationChannel")]
 			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
@@ -23391,9 +24132,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadioCallingInPoint);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadioCallingInPoint.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadioCallingInPoint.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadioCallingInPoint._primitives;
@@ -23423,7 +24170,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
+		public partial class FerryRoute : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
 			[Multiplicity(1)]
@@ -23492,9 +24239,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FerryRoute);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FerryRoute.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FerryRoute.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FerryRoute._primitives;
@@ -23524,7 +24277,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarLine : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadarLine : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -23576,9 +24329,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarLine);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarLine.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarLine.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarLine._primitives;
@@ -23608,7 +24367,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadarRange : FeatureNode {
 			[XmlElement("communicationChannel")]
 			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
@@ -23666,9 +24425,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarRange);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarRange.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarRange.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarRange._primitives;
@@ -23698,7 +24463,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadarStation : FeatureNode {
 			[XmlElement("callSign")]
 			[StringLengthConstraint(150)]
 			[Optional]
@@ -23786,9 +24551,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarStation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarStation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarStation._primitives;
@@ -23818,7 +24589,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class AnchorageArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5,6,7,9,10,14,15])]
 			[Optional]
@@ -23915,9 +24686,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AnchorageArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorageArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorageArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AnchorageArea._primitives;
@@ -23947,7 +24724,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class MooringArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
@@ -24045,9 +24822,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringArea._primitives;
@@ -24077,7 +24860,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AnchorBerth : FeatureNode, IFeatureBindingDefinition {
+		public partial class AnchorBerth : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5,6,7,9,10,14])]
 			[Optional]
@@ -24163,9 +24946,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AnchorBerth);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AnchorBerth.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AnchorBerth.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AnchorBerth._primitives;
@@ -24195,7 +24984,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeaplaneLandingArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class SeaplaneLandingArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -24264,9 +25053,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SeaplaneLandingArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SeaplaneLandingArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SeaplaneLandingArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SeaplaneLandingArea._primitives;
@@ -24296,7 +25091,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
+		public partial class DumpingGround : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6])]
 			[Optional]
@@ -24376,9 +25171,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(DumpingGround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DumpingGround.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DumpingGround.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DumpingGround._primitives;
@@ -24408,7 +25209,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class MilitaryPracticeArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6])]
 			[Optional]
@@ -24500,9 +25301,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MilitaryPracticeArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MilitaryPracticeArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MilitaryPracticeArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MilitaryPracticeArea._primitives;
@@ -24532,7 +25339,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class AdministrationArea : FeatureNode {
 			[XmlElement("inDispute")]
 			[Optional]
 			public Boolean? inDispute {get;set;} = default;
@@ -24595,9 +25402,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(AdministrationArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AdministrationArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.AdministrationArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => AdministrationArea._primitives;
@@ -24627,7 +25440,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CargoTranshipmentArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class CargoTranshipmentArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -24702,9 +25515,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CargoTranshipmentArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CargoTranshipmentArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CargoTranshipmentArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CargoTranshipmentArea._primitives;
@@ -24734,7 +25553,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class CautionArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,5])]
 			[Optional]
@@ -24809,9 +25628,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CautionArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CautionArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CautionArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CautionArea._primitives;
@@ -24841,7 +25666,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InformationArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class InformationArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -24902,9 +25727,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InformationArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InformationArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InformationArea._primitives;
@@ -24934,7 +25765,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
+		public partial class ContiguousZone : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -24983,9 +25814,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContiguousZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContiguousZone.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ContiguousZone.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ContiguousZone._primitives;
@@ -25015,7 +25852,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class ContinentalShelfArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25058,9 +25895,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ContinentalShelfArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContinentalShelfArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ContinentalShelfArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ContinentalShelfArea._primitives;
@@ -25090,7 +25933,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CustomZone : FeatureNode, IFeatureBindingDefinition {
+		public partial class CustomZone : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -25126,9 +25969,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CustomZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CustomZone.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CustomZone.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CustomZone._primitives;
@@ -25158,7 +26007,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
+		public partial class ExclusiveEconomicZone : FeatureNode {
 			[XmlElement("inDispute")]
 			[Optional]
 			public Boolean? inDispute {get;set;} = default;
@@ -25201,9 +26050,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(ExclusiveEconomicZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ExclusiveEconomicZone.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.ExclusiveEconomicZone.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => ExclusiveEconomicZone._primitives;
@@ -25233,7 +26088,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
+		public partial class FisheryZone : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25284,9 +26139,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FisheryZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FisheryZone.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FisheryZone.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FisheryZone._primitives;
@@ -25316,7 +26177,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
+		public partial class FishingGround : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25385,9 +26246,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FishingGround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FishingGround.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FishingGround.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FishingGround._primitives;
@@ -25417,7 +26284,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FreePortArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class FreePortArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25463,9 +26330,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FreePortArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FreePortArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FreePortArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FreePortArea._primitives;
@@ -25495,7 +26368,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class HarbourAreaAdministrative : FeatureNode, IFeatureBindingDefinition {
+		public partial class HarbourAreaAdministrative : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25541,9 +26414,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(HarbourAreaAdministrative);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourAreaAdministrative.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourAreaAdministrative.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => HarbourAreaAdministrative._primitives;
@@ -25573,7 +26452,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LogPond : FeatureNode, IFeatureBindingDefinition {
+		public partial class LogPond : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25625,9 +26504,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LogPond);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LogPond.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LogPond.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LogPond._primitives;
@@ -25657,7 +26542,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OilBarrier : FeatureNode, IFeatureBindingDefinition {
+		public partial class OilBarrier : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
 			[Optional]
@@ -25737,9 +26622,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(OilBarrier);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.OilBarrier.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.OilBarrier.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => OilBarrier._primitives;
@@ -25769,7 +26660,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
+		public partial class StraightTerritorialSeaBaseline : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[Optional]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -25805,9 +26696,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(StraightTerritorialSeaBaseline);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.StraightTerritorialSeaBaseline.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.StraightTerritorialSeaBaseline.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => StraightTerritorialSeaBaseline._primitives;
@@ -25837,7 +26734,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class TerritorialSeaArea : FeatureNode {
 			[XmlElement("inDispute")]
 			[Optional]
 			public Boolean? inDispute {get;set;} = default;
@@ -25895,9 +26792,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TerritorialSeaArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TerritorialSeaArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TerritorialSeaArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TerritorialSeaArea._primitives;
@@ -25927,7 +26830,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
+		public partial class SubmarineTransitLane : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -25985,9 +26888,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SubmarineTransitLane);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SubmarineTransitLane.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SubmarineTransitLane.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SubmarineTransitLane._primitives;
@@ -26017,7 +26926,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PilotageDistrict : FeatureNode, IFeatureBindingDefinition {
+		public partial class PilotageDistrict : FeatureNode {
 			[XmlElement("communicationChannel")]
 			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
@@ -26060,9 +26969,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PilotageDistrict);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotageDistrict.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotageDistrict.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PilotageDistrict._primitives;
@@ -26092,7 +27007,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CollisionRegulationsLimit : FeatureNode, IFeatureBindingDefinition {
+		public partial class CollisionRegulationsLimit : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -26148,9 +27063,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CollisionRegulationsLimit);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CollisionRegulationsLimit.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CollisionRegulationsLimit.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CollisionRegulationsLimit._primitives;
@@ -26180,7 +27101,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MarinePollutionRegulationsArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class MarinePollutionRegulationsArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -26224,9 +27145,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MarinePollutionRegulationsArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MarinePollutionRegulationsArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MarinePollutionRegulationsArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MarinePollutionRegulationsArea._primitives;
@@ -26256,7 +27183,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class RestrictedArea : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32])]
 			[Optional]
@@ -26342,9 +27269,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RestrictedArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RestrictedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RestrictedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RestrictedArea._primitives;
@@ -26374,7 +27307,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightAllAround : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
@@ -26551,9 +27484,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightAllAround);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightAllAround.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightAllAround.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightAllAround._primitives;
@@ -26583,7 +27522,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightSectored : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
@@ -26714,9 +27653,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightSectored);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightSectored.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightSectored.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightSectored._primitives;
@@ -26746,7 +27691,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightFogDetector : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightFogDetector : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			[Optional]
@@ -26861,9 +27806,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightFogDetector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightFogDetector.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightFogDetector.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightFogDetector._primitives;
@@ -26893,7 +27844,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightAirObstruction : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,9,10,11])]
 			[Optional]
@@ -27025,9 +27976,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightAirObstruction);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightAirObstruction.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightAirObstruction.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightAirObstruction._primitives;
@@ -27057,7 +28014,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class LateralBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -27203,9 +28160,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LateralBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LateralBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LateralBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LateralBuoy._primitives;
@@ -27235,7 +28198,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class CardinalBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -27381,9 +28344,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CardinalBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CardinalBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CardinalBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBuoy._primitives;
@@ -27413,7 +28382,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class IsolatedDangerBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -27549,9 +28518,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IsolatedDangerBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IsolatedDangerBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IsolatedDangerBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBuoy._primitives;
@@ -27581,7 +28556,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class SafeWaterBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -27717,9 +28692,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SafeWaterBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SafeWaterBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SafeWaterBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBuoy._primitives;
@@ -27749,7 +28730,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class SpecialPurposeGeneralBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -27896,9 +28877,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpecialPurposeGeneralBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpecialPurposeGeneralBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBuoy._primitives;
@@ -27928,7 +28915,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class EmergencyWreckMarkingBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class EmergencyWreckMarkingBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Mandatory]
@@ -28047,9 +29034,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.EmergencyWreckMarkingBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.EmergencyWreckMarkingBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => EmergencyWreckMarkingBuoy._primitives;
@@ -28079,7 +29072,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class InstallationBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -28225,9 +29218,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(InstallationBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InstallationBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InstallationBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InstallationBuoy._primitives;
@@ -28257,7 +29256,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
+		public partial class MooringBuoy : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			[Mandatory]
@@ -28388,9 +29387,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(MooringBuoy);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MooringBuoy.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MooringBuoy.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => MooringBuoy._primitives;
@@ -28420,7 +29425,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class LateralBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
@@ -28607,9 +29612,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LateralBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LateralBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LateralBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LateralBeacon._primitives;
@@ -28639,7 +29650,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class CardinalBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
@@ -28826,9 +29837,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CardinalBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CardinalBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CardinalBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CardinalBeacon._primitives;
@@ -28858,7 +29875,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class IsolatedDangerBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
@@ -29035,9 +30052,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(IsolatedDangerBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.IsolatedDangerBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.IsolatedDangerBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => IsolatedDangerBeacon._primitives;
@@ -29067,7 +30090,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class SafeWaterBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
@@ -29244,9 +30267,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SafeWaterBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SafeWaterBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SafeWaterBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SafeWaterBeacon._primitives;
@@ -29276,7 +30305,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class SpecialPurposeGeneralBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
@@ -29464,9 +30493,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpecialPurposeGeneralBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SpecialPurposeGeneralBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SpecialPurposeGeneralBeacon._primitives;
@@ -29496,7 +30531,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Daymark : FeatureNode, IFeatureBindingDefinition {
+		public partial class Daymark : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			[Optional]
@@ -29645,9 +30680,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Daymark);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Daymark.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Daymark.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Daymark._primitives;
@@ -29677,7 +30718,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightFloat : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
@@ -29815,9 +30856,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightFloat);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightFloat.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightFloat.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightFloat._primitives;
@@ -29847,7 +30894,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
+		public partial class LightVessel : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
@@ -29979,9 +31026,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(LightVessel);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.LightVessel.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.LightVessel.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => LightVessel._primitives;
@@ -30011,7 +31064,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Retroreflector : FeatureNode, IFeatureBindingDefinition {
+		public partial class Retroreflector : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
@@ -30091,9 +31144,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Retroreflector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Retroreflector.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Retroreflector.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Retroreflector._primitives;
@@ -30123,7 +31182,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarReflector : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadarReflector : FeatureNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -30181,9 +31240,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarReflector);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarReflector.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarReflector.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarReflector._primitives;
@@ -30213,7 +31278,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FogSignal : FeatureNode, IFeatureBindingDefinition {
+		public partial class FogSignal : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			[Mandatory]
@@ -30323,9 +31388,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(FogSignal);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FogSignal.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FogSignal.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FogSignal._primitives;
@@ -30355,7 +31426,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PhysicalAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
+		public partial class PhysicalAISAidToNavigation : FeatureNode {
 			[XmlElement("estimatedRangeOfTransmission")]
 			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
 			[Optional]
@@ -30427,9 +31498,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PhysicalAISAidToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PhysicalAISAidToNavigation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PhysicalAISAidToNavigation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PhysicalAISAidToNavigation._primitives;
@@ -30459,7 +31536,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VirtualAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
+		public partial class VirtualAISAidToNavigation : FeatureNode {
 			[XmlElement("estimatedRangeOfTransmission")]
 			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
 			[Optional]
@@ -30541,9 +31618,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VirtualAISAidToNavigation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VirtualAISAidToNavigation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VirtualAISAidToNavigation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VirtualAISAidToNavigation._primitives;
@@ -30573,7 +31656,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadioStation : FeatureNode {
 			[XmlElement("callSign")]
 			[StringLengthConstraint(150)]
 			[Optional]
@@ -30668,9 +31751,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadioStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadioStation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadioStation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadioStation._primitives;
@@ -30700,7 +31789,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarTransponderBeacon : FeatureNode, IFeatureBindingDefinition {
+		public partial class RadarTransponderBeacon : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Mandatory]
@@ -30799,9 +31888,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RadarTransponderBeacon);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RadarTransponderBeacon.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RadarTransponderBeacon.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RadarTransponderBeacon._primitives;
@@ -30831,7 +31926,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PilotBoardingPlace : FeatureNode, IFeatureBindingDefinition {
+		public partial class PilotBoardingPlace : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
@@ -30935,9 +32030,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(PilotBoardingPlace);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.PilotBoardingPlace.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.PilotBoardingPlace.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => PilotBoardingPlace._primitives;
@@ -30967,7 +32068,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VesselTrafficServiceArea : FeatureNode, IFeatureBindingDefinition {
+		public partial class VesselTrafficServiceArea : FeatureNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -31004,9 +32105,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(VesselTrafficServiceArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VesselTrafficServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VesselTrafficServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => VesselTrafficServiceArea._primitives;
@@ -31036,7 +32143,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
+		public partial class CoastGuardStation : FeatureNode {
 			[XmlElement("communicationChannel")]
 			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
@@ -31106,9 +32213,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(CoastGuardStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.CoastGuardStation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.CoastGuardStation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => CoastGuardStation._primitives;
@@ -31138,7 +32251,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SignalStationWarning : FeatureNode, IFeatureBindingDefinition {
+		public partial class SignalStationWarning : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Multiplicity(1)]
@@ -31213,9 +32326,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SignalStationWarning);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationWarning.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationWarning.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationWarning._primitives;
@@ -31245,7 +32364,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SignalStationTraffic : FeatureNode, IFeatureBindingDefinition {
+		public partial class SignalStationTraffic : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
 			[Multiplicity(1)]
@@ -31320,9 +32439,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SignalStationTraffic);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SignalStationTraffic.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SignalStationTraffic.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SignalStationTraffic._primitives;
@@ -31352,7 +32477,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
+		public partial class RescueStation : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,4,5,6,7,8])]
 			[Optional]
@@ -31427,9 +32552,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(RescueStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RescueStation.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RescueStation.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => RescueStation._primitives;
@@ -31459,7 +32590,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class HarbourFacility : FeatureNode, IFeatureBindingDefinition {
+		public partial class HarbourFacility : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Multiplicity(1)]
@@ -31596,9 +32727,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(HarbourFacility);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.HarbourFacility.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.HarbourFacility.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => HarbourFacility._primitives;
@@ -31628,7 +32765,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SmallCraftFacility : FeatureNode, IFeatureBindingDefinition {
+		public partial class SmallCraftFacility : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33])]
 			[Multiplicity(1)]
@@ -31697,9 +32834,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(SmallCraftFacility);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SmallCraftFacility.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.SmallCraftFacility.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => SmallCraftFacility._primitives;
@@ -31729,7 +32872,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+		public partial class TextPlacement : FeatureNode {
 			[XmlElement("textOffsetBearing")]
 			[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 			[Mandatory]
@@ -31774,9 +32917,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(TextPlacement);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -31806,7 +32955,7 @@ namespace S100Framework.DomainModel.S101 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Chart1Feature : FeatureNode, IFeatureBindingDefinition {
+		public partial class Chart1Feature : FeatureNode {
 			[XmlElement("drawingInstruction")]
 			[Optional]
 			public List<String> drawingInstruction {get;set;} = [];
@@ -31831,9 +32980,15 @@ namespace S100Framework.DomainModel.S101 {
 			public override string Code => nameof(Chart1Feature);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Chart1Feature.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.Chart1Feature.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => Chart1Feature._primitives;
@@ -31863,43 +33018,43 @@ namespace S100Framework.DomainModel.S101 {
 	public static class InformationBindings
 	{
 		public static class ContactDetails {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class ServiceHours {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NonStandardWorkingDay {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NauticalInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class SpatialQuality {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class QualityOfNonBathymetricData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class DataCoverage {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NavigationalSystemOfMarks {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class LocalDirectionOfBuoyage {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class QualityOfBathymetricData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31912,23 +33067,23 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SoundingDatum {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class VerticalDatumOfData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class QualityOfSurvey {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class UpdateInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class MagneticVariation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31941,7 +33096,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LocalMagneticAnomaly {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31954,7 +33109,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Coastline {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31967,7 +33122,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31980,7 +33135,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IslandGroup {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -31993,7 +33148,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandElevation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32006,7 +33161,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class River {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32019,7 +33174,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Rapids {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32032,7 +33187,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Waterfall {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32045,7 +33200,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Lake {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32058,7 +33213,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandRegion {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32071,7 +33226,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Vegetation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32084,7 +33239,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IceArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32097,7 +33252,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SlopingGround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32110,7 +33265,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SlopeTopline {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32123,7 +33278,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Tideway {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32136,7 +33291,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class BuiltUpArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32149,7 +33304,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Building {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32162,7 +33317,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AirportAirfield {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32175,7 +33330,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Runway {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32188,7 +33343,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Helipad {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32201,7 +33356,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Bridge {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32214,7 +33369,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpanFixed {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32227,7 +33382,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpanOpening {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32240,7 +33395,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Conveyor {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32253,7 +33408,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableOverhead {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32266,7 +33421,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PipelineOverhead {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32279,7 +33434,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PylonBridgeSupport {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32292,7 +33447,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FenceWall {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32305,7 +33460,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Railway {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32318,7 +33473,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Road {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32331,7 +33486,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Tunnel {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32344,7 +33499,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Landmark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32357,7 +33512,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SiloTank {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32370,7 +33525,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WindTurbine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32383,7 +33538,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FortifiedStructure {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32396,7 +33551,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ProductionStorageArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32409,7 +33564,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Checkpoint {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32422,7 +33577,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Hulk {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32435,7 +33590,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Pile {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32448,7 +33603,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dyke {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32461,7 +33616,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ShorelineConstruction {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32474,7 +33629,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class StructureOverNavigableWater {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32487,7 +33642,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Causeway {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32500,7 +33655,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Canal {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32513,7 +33668,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DistanceMark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32526,7 +33681,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Gate {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32539,7 +33694,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dam {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32552,7 +33707,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Crane {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32565,7 +33720,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Berth {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32578,7 +33733,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dolphin {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32591,7 +33746,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Bollard {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32604,7 +33759,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DryDock {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32617,7 +33772,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FloatingDock {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32630,7 +33785,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Pontoon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32643,7 +33798,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DockArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32656,7 +33811,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Gridiron {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32669,7 +33824,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LockBasin {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32682,7 +33837,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringTrot {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32695,7 +33850,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeaAreaNamedWaterArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32708,7 +33863,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TidalStreamFloodEbb {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32721,7 +33876,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CurrentNonGravitational {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32734,7 +33889,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WaterTurbulence {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32747,7 +33902,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TidalStreamPanelData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32760,7 +33915,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Sounding {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32773,7 +33928,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DredgedArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32786,7 +33941,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SweptArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32799,7 +33954,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthContour {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32812,7 +33967,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32825,7 +33980,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthNoBottomFound {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32838,7 +33993,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class UnsurveyedArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32851,7 +34006,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeabedArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32864,7 +34019,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WeedKelp {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32877,7 +34032,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Seagrass {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32890,7 +34045,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Sandwave {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32903,7 +34058,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Spring {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32916,7 +34071,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class UnderwaterAwashRock {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32929,7 +34084,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Wreck {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32942,7 +34097,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Obstruction {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32955,7 +34110,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FoulGround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32968,7 +34123,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DiscolouredWater {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32981,7 +34136,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FishingFacility {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -32994,7 +34149,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MarineFarmCulture {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33007,7 +34162,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OffshorePlatform {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33020,7 +34175,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableSubmarine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33033,7 +34188,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33046,7 +34201,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PipelineSubmarineOnLand {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33059,7 +34214,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SubmarinePipelineArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33072,7 +34227,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OffshoreProductionArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33085,7 +34240,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class NavigationLine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33098,7 +34253,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedTrack {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33111,7 +34266,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RangeSystem {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33124,7 +34279,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Fairway {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33137,7 +34292,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FairwaySystem {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33150,7 +34305,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedRouteCentreline {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33163,7 +34318,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TwoWayRoutePart {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33176,7 +34331,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TwoWayRoute {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33189,7 +34344,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedTrafficLanePart {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33202,7 +34357,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRouteCentreline {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33215,7 +34370,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRoutePart {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33228,7 +34383,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRoute {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33241,7 +34396,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InshoreTrafficZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33254,7 +34409,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PrecautionaryArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33267,7 +34422,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeLanePart {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33280,7 +34435,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeparationZoneOrLine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33293,7 +34448,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeBoundary {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33306,7 +34461,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeCrossing {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33319,7 +34474,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeRoundabout {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33332,7 +34487,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationScheme {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33345,7 +34500,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLaneArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33358,7 +34513,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLaneAxis {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33371,7 +34526,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLane {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33384,7 +34539,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadioCallingInPoint {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33397,7 +34552,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FerryRoute {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33410,7 +34565,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarLine {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33423,7 +34578,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarRange {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33436,7 +34591,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33449,7 +34604,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AnchorageArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33462,7 +34617,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33475,7 +34630,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AnchorBerth {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33488,7 +34643,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeaplaneLandingArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33501,7 +34656,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DumpingGround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33514,7 +34669,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MilitaryPracticeArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33527,7 +34682,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AdministrationArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33540,7 +34695,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CargoTranshipmentArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33553,7 +34708,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CautionArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33566,7 +34721,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InformationArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33579,7 +34734,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ContiguousZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33592,7 +34747,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ContinentalShelfArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33605,7 +34760,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CustomZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33618,7 +34773,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ExclusiveEconomicZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33631,7 +34786,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FisheryZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33644,7 +34799,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FishingGround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33657,7 +34812,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FreePortArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33670,7 +34825,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class HarbourAreaAdministrative {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33683,7 +34838,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LogPond {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33696,7 +34851,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OilBarrier {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33709,7 +34864,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class StraightTerritorialSeaBaseline {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33722,7 +34877,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TerritorialSeaArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33735,7 +34890,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SubmarineTransitLane {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33748,7 +34903,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PilotageDistrict {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33761,7 +34916,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CollisionRegulationsLimit {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33774,7 +34929,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MarinePollutionRegulationsArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33787,7 +34942,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RestrictedArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33800,7 +34955,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightAllAround {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33813,7 +34968,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightSectored {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33826,7 +34981,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightFogDetector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33839,7 +34994,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightAirObstruction {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33852,7 +35007,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LateralBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33865,7 +35020,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CardinalBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33878,7 +35033,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IsolatedDangerBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33891,7 +35046,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SafeWaterBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33904,7 +35059,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpecialPurposeGeneralBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33917,7 +35072,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class EmergencyWreckMarkingBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33930,7 +35085,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InstallationBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33943,7 +35098,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringBuoy {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33956,7 +35111,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LateralBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33969,7 +35124,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CardinalBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33982,7 +35137,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IsolatedDangerBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -33995,7 +35150,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SafeWaterBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34008,7 +35163,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpecialPurposeGeneralBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34021,7 +35176,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Daymark {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34034,7 +35189,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightFloat {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34047,7 +35202,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightVessel {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34060,7 +35215,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Retroreflector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34073,7 +35228,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarReflector {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34086,7 +35241,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FogSignal {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34099,7 +35254,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PhysicalAISAidToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34112,7 +35267,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class VirtualAISAidToNavigation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34125,7 +35280,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadioStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34138,7 +35293,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarTransponderBeacon {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34151,7 +35306,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PilotBoardingPlace {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34164,7 +35319,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class VesselTrafficServiceArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34177,7 +35332,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CoastGuardStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34190,7 +35345,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SignalStationWarning {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34203,7 +35358,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SignalStationTraffic {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34216,7 +35371,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RescueStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34229,7 +35384,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class HarbourFacility {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34242,7 +35397,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SmallCraftFacility {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34255,11 +35410,11 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TextPlacement {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Chart1Feature {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 	}
@@ -34270,7 +35425,7 @@ namespace S100Framework.DomainModel.S101 {
 	public static class FeatureBindings
 	{
 		public static class QualityOfNonBathymetricData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34282,11 +35437,11 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DataCoverage {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class NavigationalSystemOfMarks {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34298,7 +35453,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LocalDirectionOfBuoyage {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34310,7 +35465,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class QualityOfBathymetricData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34322,7 +35477,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SoundingDatum {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34334,7 +35489,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class VerticalDatumOfData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34346,7 +35501,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class QualityOfSurvey {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34358,7 +35513,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class UpdateInformation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34394,7 +35549,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MagneticVariation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34406,7 +35561,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LocalMagneticAnomaly {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34426,7 +35581,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Coastline {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34446,7 +35601,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -34474,7 +35629,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IslandGroup {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34510,7 +35665,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandElevation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34530,7 +35685,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class River {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34550,7 +35705,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Rapids {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34570,7 +35725,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Waterfall {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34590,7 +35745,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Lake {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34610,7 +35765,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LandRegion {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34630,7 +35785,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Vegetation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34650,7 +35805,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IceArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34670,7 +35825,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SlopingGround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34690,7 +35845,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SlopeTopline {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34710,7 +35865,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Tideway {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34730,7 +35885,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class BuiltUpArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34750,7 +35905,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Building {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34794,7 +35949,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AirportAirfield {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34814,7 +35969,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Runway {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34834,7 +35989,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Helipad {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -34862,7 +36017,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Bridge {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -34906,7 +36061,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpanFixed {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -34950,7 +36105,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpanOpening {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -34994,7 +36149,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Conveyor {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35030,7 +36185,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableOverhead {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35058,7 +36213,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PipelineOverhead {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35094,7 +36249,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PylonBridgeSupport {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -35146,7 +36301,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FenceWall {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35166,7 +36321,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Railway {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35186,7 +36341,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Road {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35206,7 +36361,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Tunnel {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35226,7 +36381,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Landmark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35278,7 +36433,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SiloTank {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35322,7 +36477,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WindTurbine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35358,7 +36513,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FortifiedStructure {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35402,7 +36557,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ProductionStorageArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35422,7 +36577,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Checkpoint {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35442,7 +36597,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Hulk {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35478,7 +36633,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Pile {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35530,7 +36685,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dyke {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35550,7 +36705,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ShorelineConstruction {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35586,7 +36741,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class StructureOverNavigableWater {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -35630,7 +36785,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Causeway {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35650,7 +36805,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Canal {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35670,7 +36825,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DistanceMark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -35698,7 +36853,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Gate {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35718,7 +36873,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dam {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35738,7 +36893,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Crane {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35774,7 +36929,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Berth {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -35802,7 +36957,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Dolphin {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35846,7 +37001,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Bollard {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -35874,7 +37029,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DryDock {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35894,7 +37049,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FloatingDock {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35930,7 +37085,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Pontoon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -35974,7 +37129,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DockArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -35994,7 +37149,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Gridiron {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36014,7 +37169,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LockBasin {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36034,7 +37189,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringTrot {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36062,7 +37217,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeaAreaNamedWaterArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36082,7 +37237,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TidalStreamFloodEbb {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36102,7 +37257,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CurrentNonGravitational {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36122,7 +37277,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WaterTurbulence {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36142,7 +37297,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TidalStreamPanelData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36162,7 +37317,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Sounding {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36182,7 +37337,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DredgedArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36210,7 +37365,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SweptArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36238,7 +37393,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthContour {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36250,7 +37405,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36262,7 +37417,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DepthNoBottomFound {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36274,7 +37429,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class UnsurveyedArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36286,7 +37441,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeabedArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36306,7 +37461,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class WeedKelp {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36326,7 +37481,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Seagrass {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36346,7 +37501,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Sandwave {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36358,7 +37513,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Spring {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36378,7 +37533,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class UnderwaterAwashRock {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36398,7 +37553,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Wreck {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36426,7 +37581,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Obstruction {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36454,7 +37609,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FoulGround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36474,7 +37629,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DiscolouredWater {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36486,7 +37641,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FishingFacility {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36522,7 +37677,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MarineFarmCulture {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36542,7 +37697,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OffshorePlatform {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36578,7 +37733,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableSubmarine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36606,7 +37761,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CableArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36626,7 +37781,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PipelineSubmarineOnLand {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36646,7 +37801,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SubmarinePipelineArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36666,7 +37821,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OffshoreProductionArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36686,7 +37841,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class NavigationLine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36706,7 +37861,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedTrack {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36742,7 +37897,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RangeSystem {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36786,7 +37941,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Fairway {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36822,7 +37977,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FairwaySystem {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36858,7 +38013,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedRouteCentreline {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36894,7 +38049,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TwoWayRoutePart {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -36922,7 +38077,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TwoWayRoute {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36966,7 +38121,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RecommendedTrafficLanePart {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -36978,7 +38133,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRouteCentreline {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37014,7 +38169,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRoutePart {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37050,7 +38205,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DeepWaterRoute {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37094,7 +38249,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InshoreTrafficZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37114,7 +38269,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PrecautionaryArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37142,7 +38297,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeLanePart {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37162,7 +38317,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeparationZoneOrLine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37182,7 +38337,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeBoundary {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37202,7 +38357,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeCrossing {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37222,7 +38377,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationSchemeRoundabout {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37242,7 +38397,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TrafficSeparationScheme {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37294,7 +38449,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLaneArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37322,7 +38477,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLaneAxis {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -37350,7 +38505,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ArchipelagicSeaLane {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37394,7 +38549,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadioCallingInPoint {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37414,7 +38569,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FerryRoute {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37434,7 +38589,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarLine {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37454,7 +38609,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarRange {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37474,7 +38629,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37494,7 +38649,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AnchorageArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37514,7 +38669,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37534,7 +38689,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AnchorBerth {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37554,7 +38709,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SeaplaneLandingArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37574,7 +38729,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class DumpingGround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37594,7 +38749,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MilitaryPracticeArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37614,7 +38769,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class AdministrationArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37634,7 +38789,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CargoTranshipmentArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37654,7 +38809,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CautionArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37682,7 +38837,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InformationArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37702,7 +38857,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ContiguousZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37714,7 +38869,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ContinentalShelfArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37734,7 +38889,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CustomZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37746,7 +38901,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class ExclusiveEconomicZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37758,7 +38913,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FisheryZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37778,7 +38933,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FishingGround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37798,7 +38953,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FreePortArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37818,7 +38973,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class HarbourAreaAdministrative {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37838,7 +38993,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LogPond {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37858,7 +39013,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class OilBarrier {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37878,7 +39033,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class StraightTerritorialSeaBaseline {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37890,7 +39045,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TerritorialSeaArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37902,7 +39057,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SubmarineTransitLane {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37922,7 +39077,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PilotageDistrict {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37950,7 +39105,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CollisionRegulationsLimit {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37970,7 +39125,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MarinePollutionRegulationsArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -37990,7 +39145,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RestrictedArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -38026,7 +39181,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightAllAround {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38070,7 +39225,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightSectored {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38114,7 +39269,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightFogDetector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38142,7 +39297,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightAirObstruction {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38170,7 +39325,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LateralBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38214,7 +39369,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CardinalBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38258,7 +39413,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IsolatedDangerBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38302,7 +39457,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SafeWaterBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38346,7 +39501,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpecialPurposeGeneralBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38390,7 +39545,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class EmergencyWreckMarkingBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -38426,7 +39581,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class InstallationBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38454,7 +39609,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class MooringBuoy {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -38498,7 +39653,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LateralBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38550,7 +39705,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CardinalBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38602,7 +39757,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class IsolatedDangerBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38654,7 +39809,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SafeWaterBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38706,7 +39861,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SpecialPurposeGeneralBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38758,7 +39913,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Daymark {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38818,7 +39973,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightFloat {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38862,7 +40017,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class LightVessel {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -38906,7 +40061,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Retroreflector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38926,7 +40081,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarReflector {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38946,7 +40101,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class FogSignal {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -38974,7 +40129,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PhysicalAISAidToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -39002,7 +40157,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class VirtualAISAidToNavigation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39022,7 +40177,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadioStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39042,7 +40197,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RadarTransponderBeacon {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -39078,7 +40233,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class PilotBoardingPlace {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 0,
@@ -39106,7 +40261,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class VesselTrafficServiceArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39126,7 +40281,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class CoastGuardStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39146,7 +40301,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SignalStationWarning {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -39174,7 +40329,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SignalStationTraffic {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -39202,7 +40357,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class RescueStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39222,7 +40377,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class HarbourFacility {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39242,7 +40397,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class SmallCraftFacility {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -39262,7 +40417,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class TextPlacement {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 0,
@@ -39274,7 +40429,7 @@ namespace S100Framework.DomainModel.S101 {
 			];
 		}
 		public static class Chart1Feature {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,

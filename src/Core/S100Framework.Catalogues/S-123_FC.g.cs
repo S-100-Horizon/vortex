@@ -3413,7 +3413,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class InformationType : InformationNode, IInformationBindingDefinition {
+		public abstract class InformationType : InformationNode {
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
@@ -3457,6 +3457,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(InformationType);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationType.informationBindingDefinitions;
 			#endregion
 
 		}
@@ -3506,6 +3509,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(AbstractRxN);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.AbstractRxN.informationBindingDefinitions];
 			#endregion
 
 		}
@@ -3607,6 +3613,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(Applicability);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.Applicability.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3657,6 +3666,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(Authority);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.Authority.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3731,6 +3743,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(BroadcastDetails);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.BroadcastDetails.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3816,6 +3831,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(ConnectivityQualityOfService);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ConnectivityQualityOfService.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3917,6 +3935,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(ContactDetails);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ContactDetails.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -3954,6 +3975,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(NauticalInformation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.NauticalInformation.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4007,6 +4031,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(NonStandardWorkingDay);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.NonStandardWorkingDay.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4062,6 +4089,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(RadioControlCentre);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.RadioControlCentre.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4099,6 +4129,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(Recommendations);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Recommendations.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4136,6 +4169,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(Regulations);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Regulations.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4173,6 +4209,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(Restrictions);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.AbstractRxN.informationBindingDefinitions, ..InformationBindings.Restrictions.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4220,6 +4259,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(ServiceHours);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.ServiceHours.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4242,7 +4284,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
 			[EnumerationValue([4])]
 			[Optional]
@@ -4270,6 +4312,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(SpatialQuality);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -4335,6 +4380,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(TelemedicalAssistanceService);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.TelemedicalAssistanceService.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4408,6 +4456,9 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(TransmissionDetails);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.InformationType.informationBindingDefinitions, ..InformationBindings.TransmissionDetails.informationBindingDefinitions];
 			#endregion
 
 			[JsonIgnore]
@@ -4436,7 +4487,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
+		public abstract class FeatureType : FeatureNode {
 			[XmlElement("textContent")]
 			[Optional]
 			public List<textContent> textContent {get;set;} = [];
@@ -4492,9 +4543,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(FeatureType);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FeatureType.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FeatureType.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
@@ -4569,9 +4626,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(ConnectivitySubscriptionArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.ConnectivitySubscriptionArea.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.ConnectivitySubscriptionArea.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..ConnectivitySubscriptionArea._primitives];
@@ -4641,9 +4704,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(GMDSSArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.GMDSSArea.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.GMDSSArea.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..GMDSSArea._primitives];
@@ -4699,9 +4768,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(IndeterminateZone);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.IndeterminateZone.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.IndeterminateZone.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..IndeterminateZone._primitives];
@@ -4758,9 +4833,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(METAREA);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.METAREA.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.METAREA.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..METAREA._primitives];
@@ -4817,9 +4898,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(NAVAREA);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.NAVAREA.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.NAVAREA.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVAREA._primitives];
@@ -4898,9 +4985,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(NAVTEXServiceArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.NAVTEXServiceArea.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.NAVTEXServiceArea.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..NAVTEXServiceArea._primitives];
@@ -4980,9 +5073,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(RadioServiceArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.RadioServiceArea.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.RadioServiceArea.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadioServiceArea._primitives];
@@ -5086,9 +5185,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(RadioStation);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.RadioStation.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.RadioStation.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RadioStation._primitives];
@@ -5141,9 +5246,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(SearchAndRescueRegion);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.SearchAndRescueRegion.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.SearchAndRescueRegion.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..SearchAndRescueRegion._primitives];
@@ -5220,9 +5331,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(WeatherForecastAndWarningArea);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.WeatherForecastAndWarningArea.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.WeatherForecastAndWarningArea.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..WeatherForecastAndWarningArea._primitives];
@@ -5271,9 +5388,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(FuzzyAreaAggregate);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FeatureType.informationBindingDefinitions, ..InformationBindings.FuzzyAreaAggregate.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FeatureType.featureBindingDefinitions, ..FeatureBindings.FuzzyAreaAggregate.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..FuzzyAreaAggregate._primitives];
@@ -5304,9 +5427,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(RadioServiceAreaAggregate);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.FuzzyAreaAggregate.informationBindingDefinitions, ..InformationBindings.RadioServiceAreaAggregate.informationBindingDefinitions];
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.FuzzyAreaAggregate.featureBindingDefinitions, ..FeatureBindings.RadioServiceAreaAggregate.featureBindingDefinitions];
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FuzzyAreaAggregate._primitives, ..RadioServiceAreaAggregate._primitives];
@@ -5340,7 +5469,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+		public partial class DataCoverage : FeatureNode {
 			[XmlElement("maximumDisplayScale")]
 			[Mandatory]
 			public int maximumDisplayScale {get;set;} = default;
@@ -5373,9 +5502,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(DataCoverage);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -5409,7 +5544,7 @@ namespace S100Framework.DomainModel.S123 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfNonBathymetricData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,4,5])]
 			[Optional]
@@ -5467,9 +5602,15 @@ namespace S100Framework.DomainModel.S123 {
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
 			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -5503,7 +5644,7 @@ namespace S100Framework.DomainModel.S123 {
 	public static class InformationBindings
 	{
 		public static class InformationType {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5516,7 +5657,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class AbstractRxN {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5538,7 +5679,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class Applicability {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5551,7 +5692,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class Authority {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5573,7 +5714,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class BroadcastDetails {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5586,11 +5727,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class ConnectivityQualityOfService {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class ContactDetails {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5603,11 +5744,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class NauticalInformation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class NonStandardWorkingDay {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5620,7 +5761,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioControlCentre {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5651,19 +5792,19 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class Recommendations {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Regulations {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class Restrictions {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class ServiceHours {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5685,11 +5826,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class SpatialQuality {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class TelemedicalAssistanceService {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5702,7 +5843,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class TransmissionDetails {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5715,7 +5856,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class FeatureType {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5746,7 +5887,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class ConnectivitySubscriptionArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5786,7 +5927,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class GMDSSArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5826,11 +5967,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class IndeterminateZone {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class METAREA {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5879,7 +6020,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class NAVAREA {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5928,7 +6069,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class NAVTEXServiceArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -5977,7 +6118,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioServiceArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6035,7 +6176,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioStation {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6093,7 +6234,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class SearchAndRescueRegion {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6133,7 +6274,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class WeatherForecastAndWarningArea {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6182,19 +6323,19 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class FuzzyAreaAggregate {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class RadioServiceAreaAggregate {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class DataCoverage {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 		public static class QualityOfNonBathymetricData {
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
 	}
@@ -6205,11 +6346,11 @@ namespace S100Framework.DomainModel.S123 {
 	public static class FeatureBindings
 	{
 		public static class FeatureType {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class ConnectivitySubscriptionArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6221,7 +6362,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class GMDSSArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6233,7 +6374,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class IndeterminateZone {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 1,
@@ -6245,7 +6386,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class METAREA {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6257,7 +6398,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class NAVAREA {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6269,7 +6410,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class NAVTEXServiceArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6281,7 +6422,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioServiceArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6301,7 +6442,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioStation {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6313,11 +6454,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class SearchAndRescueRegion {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class WeatherForecastAndWarningArea {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
@@ -6329,7 +6470,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class FuzzyAreaAggregate {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.composition,
 					lower = 1,
@@ -6341,7 +6482,7 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class RadioServiceAreaAggregate {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
 					lower = 1,
@@ -6353,11 +6494,11 @@ namespace S100Framework.DomainModel.S123 {
 			];
 		}
 		public static class DataCoverage {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 		public static class QualityOfNonBathymetricData {
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
 	}

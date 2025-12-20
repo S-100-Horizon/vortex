@@ -1082,7 +1082,7 @@ namespace S100Framework.Applications
                             }
 
                             builderInformationBindings.AppendLine($"\t\tpublic static class {code} {{");
-                            builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] _informationBindingDefinitions => [");
+                            builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
                                 var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
@@ -1250,7 +1250,7 @@ namespace S100Framework.Applications
                             //}
 
                             builderInformationBindings.AppendLine($"\t\tpublic static class {code} {{");
-                            builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] _informationBindingDefinitions => [");
+                            builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
                                 var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
@@ -1277,7 +1277,7 @@ namespace S100Framework.Applications
                             builderInformationBindings.AppendLine("\t\t}");
 
                             builderFeatureBindings.AppendLine($"\t\tpublic static class {code} {{");
-                            builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] _featureBindingDefinitions => [");
+                            builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [");
                             foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
                                 var roleType = featureBinding.Attribute("roleType")!.Value;
                                 var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
@@ -1679,7 +1679,7 @@ namespace S100Framework.Applications
                         Definitions = client.Definitions,
                     }, (b) => {
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}._informationBindingDefinitions;");
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}.informationBindingDefinitions;");
 
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
@@ -1737,10 +1737,10 @@ namespace S100Framework.Applications
                         Definitions = client.Definitions
                     }, (b) => {
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}._informationBindingDefinitions;");
-                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.{code}._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}.informationBindingDefinitions;");
+                        b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. InformationBindings.{code}.informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}._featureBindingDefinitions;");
+                        b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}.featureBindingDefinitions;");
 
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
@@ -2026,9 +2026,9 @@ namespace S100Framework.Applications
                 var informationBindings = new StringBuilder();
 
                 if (superType != null)
-                    informationBindings.AppendLine("\t\t\tpublic new static informationBindingDefinition[] _informationBindingDefinitions => [");
+                    informationBindings.AppendLine("\t\t\tpublic new static informationBindingDefinition[] informationBindingDefinitions => [");
                 else
-                    informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] _informationBindingDefinitions => [");
+                    informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
 
                 foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                     ////var roleType = informationBinding.Attribute("roleType")!.Value;
@@ -2086,12 +2086,12 @@ namespace S100Framework.Applications
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t#region InformationBindings");
-                ////builder.AppendLine("\t\t\t[JsonIgnore]");
-                ////builder.AppendLine("\t\t\t[XmlIgnore]");
-                ////if (superType != null)
-                ////    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}._informationBindingDefinitions, ..InformationBindings.{code}._informationBindingDefinitions];");
-                ////else
-                ////    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}._informationBindingDefinitions;");
+                builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[XmlIgnore]");
+                if (superType != null)
+                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => [..InformationBindings.{superType!.Value}.informationBindingDefinitions, ..InformationBindings.{code}.informationBindingDefinitions];");
+                else
+                    builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.{code}.informationBindingDefinitions;");
 
                 ////informationBindings.AppendLine("\t\t\t];");
                 ////builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
@@ -2138,12 +2138,12 @@ namespace S100Framework.Applications
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t#region IFeatureBindings");
-                ////builder.AppendLine("\t\t\t[JsonIgnore]");
-                ////builder.AppendLine("\t\t\t[XmlIgnore]");
-                ////if (superType != null)
-                ////    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}._featureBindingDefinitions, ..FeatureBindings.{code}._featureBindingDefinitions];");
-                ////else
-                ////    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}._featureBindingDefinitions;");
+                builder.AppendLine("\t\t\t[JsonIgnore]");
+                builder.AppendLine("\t\t\t[XmlIgnore]");
+                if (superType != null)
+                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => [..FeatureBindings.{superType!.Value}.featureBindingDefinitions, ..FeatureBindings.{code}.featureBindingDefinitions];");
+                else
+                    builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.{code}.featureBindingDefinitions;");
 
                 builder.AppendLine();
                 builder.AppendLine("\t\t\t[JsonIgnore]");
