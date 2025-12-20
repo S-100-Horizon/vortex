@@ -3168,7 +3168,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class InformationType : InformationNode, IInformationBindingDefinition {
+		public abstract class InformationType : InformationNode {
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -3213,9 +3213,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationType.informationBindingDefinitions;
 			#endregion
 
 		}
@@ -3261,27 +3259,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..AbstractRxN._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.isApplicableTo)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RelatedOrganisation),
-					role = Enum.GetName<Role>(Role.theOrganisation)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.AbstractRxN.informationBindingDefinitions;
 			#endregion
 
 		}
@@ -3393,18 +3371,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Applicability._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(InclusionType),
-					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Applicability.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3455,36 +3422,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..Authority._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theContactDetails)!,
-					informationTypes = [nameof(ContactDetails)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RelatedOrganisation),
-					role = Enum.GetName<Role>(Role.organisationRelatedRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theServiceHours)!,
-					informationTypes = [nameof(ServiceHours)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Authority.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3597,18 +3535,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ContactDetails._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityContact),
-					role = Enum.GetName<Role>(Role.theAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ContactDetails.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3648,9 +3575,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..NauticalInformation._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NauticalInformation.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3706,9 +3631,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..NonStandardWorkingDay._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.NonStandardWorkingDay.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3748,9 +3671,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Recommendations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Recommendations.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3790,9 +3711,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Regulations._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Regulations.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3832,9 +3751,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..Restrictions._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.Restrictions.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3884,27 +3801,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..InformationType._informationBindingDefinitions, ..ServiceHours._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ExceptionalWorkday),
-					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
-					informationTypes = [nameof(NonStandardWorkingDay)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AuthorityHours),
-					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.ServiceHours.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3927,7 +3824,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
+		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
@@ -3957,9 +3854,7 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.SpatialQuality.informationBindingDefinitions;
 			#endregion
 
 			[JsonIgnore]
@@ -3988,7 +3883,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
+		public abstract class FeatureType : FeatureNode {
 			[XmlElement("interoperabilityIdentifier")]
 			[TextPatternConstraint("urn:mrn:.+")]
 			[Optional]
@@ -4046,42 +3941,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PermissionType),
-					role = Enum.GetName<Role>(Role.permission)!,
-					informationTypes = [nameof(Applicability)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AssociatedRxN),
-					role = Enum.GetName<Role>(Role.theRxN)!,
-					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.FeatureType.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.FeatureType.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => FeatureType._primitives;
@@ -4089,16 +3955,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.noGeometry
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
 			#endregion
 		}
 
@@ -4136,15 +3992,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..InformationArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.InformationArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..InformationArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.InformationArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..InformationArea._primitives];
@@ -4152,8 +4006,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4250,24 +4102,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..MarineProtectedArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ProtectedAreaAuthority),
-					role = Enum.GetName<Role>(Role.responsibleAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.MarineProtectedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..MarineProtectedArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.MarineProtectedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..MarineProtectedArea._primitives];
@@ -4275,8 +4116,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.curve, Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4349,15 +4188,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..RestrictedArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.RestrictedArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..RestrictedArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.RestrictedArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..RestrictedArea._primitives];
@@ -4365,8 +4202,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4410,24 +4245,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..FeatureType._informationBindingDefinitions, ..VesselTrafficServiceArea._informationBindingDefinitions];
-			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(ServiceControl),
-					role = Enum.GetName<Role>(Role.controlAuthority)!,
-					informationTypes = [nameof(Authority)],
-					primitives = [],
-				},
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.VesselTrafficServiceArea.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..FeatureType._featureBindingDefinitions, ..VesselTrafficServiceArea._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.VesselTrafficServiceArea.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => [..FeatureType._primitives, ..VesselTrafficServiceArea._primitives];
@@ -4435,8 +4259,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.surface
 			];
 
-			public new static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4463,7 +4285,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+		public partial class DataCoverage : FeatureNode {
 			[XmlElement("maximumDisplayScale")]
 			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			[Mandatory]
@@ -4502,15 +4324,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.DataCoverage.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.DataCoverage.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => DataCoverage._primitives;
@@ -4518,8 +4338,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4546,7 +4364,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
+		public partial class QualityOfNonBathymetricData : FeatureNode {
 			[XmlIgnore]
 			[EnumerationValue([1,4,5,6])]
 			[Optional]
@@ -4615,15 +4433,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.QualityOfNonBathymetricData.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.QualityOfNonBathymetricData.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => QualityOfNonBathymetricData._primitives;
@@ -4631,8 +4447,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.surface
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4659,7 +4473,7 @@ namespace S100Framework.DomainModel.S122 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+		public partial class TextPlacement : FeatureNode {
 			[XmlElement("textOffsetBearing")]
 			[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 			[Mandatory]
@@ -4705,15 +4519,13 @@ namespace S100Framework.DomainModel.S122 {
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
+			public override informationBindingDefinition[] informationBindingDefinitions => InformationBindings.TextPlacement.informationBindingDefinitions;
 			#endregion
 
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+			public override featureBindingDefinition[] featureBindingDefinitions => FeatureBindings.TextPlacement.featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => TextPlacement._primitives;
@@ -4721,16 +4533,6 @@ namespace S100Framework.DomainModel.S122 {
 				Primitives.point
 			];
 
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 1,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.thePositionProvider)!,
-					featureTypes = [nameof(FeatureType)],
-				},
-			];
 			#endregion
 
 			[JsonIgnore]
@@ -4752,6 +4554,274 @@ namespace S100Framework.DomainModel.S122 {
 			#endregion
 		}
 	}
+
+	#region InformationBindings
+	public static class InformationBindings
+	{
+		public static class InformationType {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class AbstractRxN {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.isApplicableTo)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.theOrganisation)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Applicability {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(InclusionType),
+					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+			];
+		}
+		public static class Authority {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.organisationRelatedRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+		}
+		public static class ContactDetails {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class NauticalInformation {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class NonStandardWorkingDay {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class Recommendations {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class Regulations {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class Restrictions {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class ServiceHours {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
+					informationTypes = [nameof(NonStandardWorkingDay)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class SpatialQuality {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class FeatureType {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(PermissionType),
+					role = Enum.GetName<Role>(Role.permission)!,
+					informationTypes = [nameof(Applicability)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AssociatedRxN),
+					role = Enum.GetName<Role>(Role.theRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+					primitives = [],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AdditionalInformation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+					primitives = [],
+				},
+			];
+		}
+		public static class InformationArea {
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
+			];
+		}
+		public static class MarineProtectedArea {
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions,
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ProtectedAreaAuthority),
+					role = Enum.GetName<Role>(Role.responsibleAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class RestrictedArea {
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions
+			];
+		}
+		public static class VesselTrafficServiceArea {
+			public static informationBindingDefinition[] informationBindingDefinitions => [.. FeatureType.informationBindingDefinitions,
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceControl),
+					role = Enum.GetName<Role>(Role.controlAuthority)!,
+					informationTypes = [nameof(Authority)],
+					primitives = [],
+				},
+			];
+		}
+		public static class DataCoverage {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+		public static class TextPlacement {
+			public static informationBindingDefinition[] informationBindingDefinitions => [
+			];
+		}
+	}
+
+	#endregion
+
+	#region FeatureBindings
+	public static class FeatureBindings
+	{
+		public static class FeatureType {
+			public static featureBindingDefinition[] featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
+					featureTypes = [nameof(FeatureTypes.TextPlacement)],
+				},
+			];
+		}
+		public static class InformationArea {
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
+			];
+		}
+		public static class MarineProtectedArea {
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
+			];
+		}
+		public static class RestrictedArea {
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
+			];
+		}
+		public static class VesselTrafficServiceArea {
+			public static featureBindingDefinition[] featureBindingDefinitions => [.. FeatureType.featureBindingDefinitions
+			];
+		}
+		public static class DataCoverage {
+			public static featureBindingDefinition[] featureBindingDefinitions => [
+			];
+		}
+		public static class QualityOfNonBathymetricData {
+			public static featureBindingDefinition[] featureBindingDefinitions => [
+			];
+		}
+		public static class TextPlacement {
+			public static featureBindingDefinition[] featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.composition,
+					lower = 1,
+					upper =  1,
+					association = nameof(FeatureAssociations.TextAssociation),
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
+					featureTypes = [nameof(FeatureTypes.FeatureType)],
+				},
+			];
+		}
+	}
+
+	#endregion
 
 	[XmlType(Namespace = "http://www.iho.int/S122/2.0")]
 	[XmlRoot(Namespace = "http://www.iho.int/S122/2.0")]

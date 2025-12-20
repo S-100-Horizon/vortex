@@ -17,7 +17,7 @@ namespace S100Framework.Catalogues
                 "s128" or "s-128" => new DomainModel.S128.Summary(),
                 "s131" or "s-131" => new DomainModel.S131.Summary(),
                 "s201" or "s-201" => new DomainModel.S201.Summary(),
-                "s501" or "s-501" => new DomainModel.S501.Summary(),
+                //"s501" or "s-501" => new DomainModel.S501.Summary(),
                 _ => null
             };
         }

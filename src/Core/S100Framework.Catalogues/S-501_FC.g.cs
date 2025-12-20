@@ -6910,11 +6910,6 @@ namespace S100Framework.DomainModel.S501 {
 			public override string Code => nameof(ReferenceToAPublication);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
 			#endregion
 
 
@@ -7085,17 +7080,9 @@ namespace S100Framework.DomainModel.S501 {
 			public override string Code => nameof(InstallationBuoy);
 
 			#region InformationBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
 			#endregion
 
 			#region IFeatureBindings
-			[JsonIgnore]
-			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
 			[JsonIgnore]
 			public override Primitives[] primitives => InstallationBuoy._primitives;

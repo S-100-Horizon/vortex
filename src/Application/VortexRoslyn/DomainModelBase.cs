@@ -212,17 +212,17 @@ namespace S100Framework.DomainModel
     }
 
     [System.SerializableAttribute()]
-    public abstract class InformationNode : Node
+    public abstract class InformationNode : Node, IInformationBindingDefinition
     {
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
     [System.SerializableAttribute()]
-    public abstract class FeatureNode : Node
+    public abstract class FeatureNode : Node, IFeatureBindingDefinition
     {
+        public abstract Primitives[] primitives { get; }
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
-        public abstract Primitives[] primitives { get; }
     }
 
     [System.SerializableAttribute()]

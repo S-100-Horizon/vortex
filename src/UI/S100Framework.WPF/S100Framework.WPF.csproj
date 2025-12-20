@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Compile Remove="S-127_ViewModel.g.cs" />
+    <Compile Remove="S-501_ViewModel.g.cs" />
   </ItemGroup>
 
   <ItemGroup>
