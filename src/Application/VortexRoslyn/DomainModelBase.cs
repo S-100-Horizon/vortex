@@ -44,16 +44,16 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class EnumerationValueAttribute : System.Attribute
+    public class PermittedValuesAttribute : System.Attribute
     {
         private int[] _propertyValues;
         public int[] PropertyValues => _propertyValues;
 
-        public EnumerationValueAttribute(int propertyValue) {
+        public PermittedValuesAttribute(int propertyValue) {
             _propertyValues = [propertyValue];
         }
 
-        public EnumerationValueAttribute(int[] propertyValues) {
+        public PermittedValuesAttribute(int[] propertyValues) {
             _propertyValues = propertyValues;
         }
     }

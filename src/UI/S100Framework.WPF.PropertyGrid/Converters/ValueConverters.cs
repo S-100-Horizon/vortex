@@ -1,10 +1,21 @@
+using S100Framework.DomainModel;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
 namespace S100Framework.WPF.Converters
 {
+    public static class Nullable {
+        public static Type GetUnderlyingType(Type type) {
+            var underlyingType = System.Nullable.GetUnderlyingType(type);
+            if (underlyingType == null)
+                return type;
+            return underlyingType;
+        }
+    }
+
     /// <summary>
     /// Converts indentation level to margin for hierarchical display
     /// </summary>
@@ -12,17 +23,14 @@ namespace S100Framework.WPF.Converters
     {
         public double IndentSize { get; set; } = 20;
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is int level)
-            {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is int level) {
                 return new Thickness(level * IndentSize, 0, 0, 0);
             }
             return new Thickness(0);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
     }
@@ -34,15 +42,13 @@ namespace S100Framework.WPF.Converters
     {
         public bool Inverted { get; set; }
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             bool boolValue = value is bool b && b;
             if (Inverted) boolValue = !boolValue;
             return boolValue ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
     }
@@ -52,17 +58,14 @@ namespace S100Framework.WPF.Converters
     /// </summary>
     public class TypeToStringConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is Type type)
-            {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is Type type) {
                 return GetFriendlyTypeName(type);
             }
             return value?.ToString() ?? string.Empty;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
 
@@ -71,10 +74,8 @@ namespace S100Framework.WPF.Converters
         /// </summary>
         /// <param name="type">The type to get a friendly name for</param>
         /// <returns>A human-readable type name</returns>
-        private string GetFriendlyTypeName(Type type)
-        {
-            if (type.IsGenericType)
-            {
+        private string GetFriendlyTypeName(Type type) {
+            if (type.IsGenericType) {
                 string genericTypeName = type.GetGenericTypeDefinition().Name;
                 genericTypeName = genericTypeName.Substring(0, genericTypeName.IndexOf('`'));
                 string genericArgs = string.Join(", ", Array.ConvertAll(type.GetGenericArguments(), t => GetFriendlyTypeName(t)));
@@ -90,17 +91,23 @@ namespace S100Framework.WPF.Converters
     /// </summary>
     public class EnumValuesConverter : IValueConverter
     {
-        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is Type type && type.IsEnum)
-            {
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            var propertyItem = value as Models.PropertyItem;
+            if (propertyItem is not null) {
+                var permittedValues = propertyItem.Attributes.SingleOrDefault(e => e.GetType().Equals(typeof(PermittedValuesAttribute))) as PermittedValuesAttribute;
+                if (permittedValues is not null) {
+                    var underlyingType = Nullable.GetUnderlyingType(propertyItem.PropertyType);
+                    return permittedValues.PropertyValues.Select(e => Enum.GetName(underlyingType, e));
+                }
+            }
+
+            if (value is Type type && type.IsEnum) {
                 return Enum.GetValues(type);
             }
             return null;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
     }
@@ -110,19 +117,15 @@ namespace S100Framework.WPF.Converters
     /// </summary>
     public class InverseBooleanConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is bool boolValue)
-            {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool boolValue) {
                 return !boolValue;
             }
             return true;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is bool boolValue)
-            {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool boolValue) {
                 return !boolValue;
             }
             return true;
@@ -137,19 +140,16 @@ namespace S100Framework.WPF.Converters
         private const string CollectionItemPrefix = "[";
         private const string CollectionItemSuffix = "]";
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value is string name && 
-                name.StartsWith(CollectionItemPrefix) && 
-                name.EndsWith(CollectionItemSuffix))
-            {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is string name &&
+                name.StartsWith(CollectionItemPrefix) &&
+                name.EndsWith(CollectionItemSuffix)) {
                 return Visibility.Visible;
             }
             return Visibility.Collapsed;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
     }

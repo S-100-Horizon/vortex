@@ -30,6 +30,7 @@ namespace S100Framework.WPF.Models
         public string? Description { get; set; }
         public int CollectionIndex { get; set; } = -1; // Index in parent collection, -1 if not a collection item
         public CollectionPropertyItem? ParentCollectionItem { get; set; } // Reference to parent collection wrapper
+        public Attribute[] Attributes { get; set; } = Array.Empty<Attribute>();
 
         public PropertyItem()
         {

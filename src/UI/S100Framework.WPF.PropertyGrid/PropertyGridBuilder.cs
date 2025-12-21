@@ -24,16 +24,14 @@ namespace S100Framework.WPF
         /// <param name="obj">The object to extract properties from</param>
         /// <param name="level">The indentation level for hierarchical display</param>
         /// <returns>An observable collection of PropertyItem objects</returns>
-        public static ObservableCollection<PropertyItem> GetProperties(object obj, int level = 0)
-        {
+        public static ObservableCollection<PropertyItem> GetProperties(object obj, int level = 0) {
             var items = new ObservableCollection<PropertyItem>();
             if (obj == null) return items;
 
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var prop in properties.OrderBy(p => p.Name))
-            {
+            foreach (var prop in properties.OrderBy(p => p.Name)) {
                 // Skip indexed properties
                 if (prop.GetIndexParameters().Length > 0)
                     continue;
@@ -47,30 +45,25 @@ namespace S100Framework.WPF
                 if (prop.GetCustomAttribute<System.Text.Json.Serialization.JsonIgnoreAttribute>() != null)
                     continue;
 
-                try
-                {
+                try {
                     object? value = prop.CanRead ? prop.GetValue(obj) : null;
 
                     // Check if it's a collection
-                    if (typeof(System.Collections.IList).IsAssignableFrom(prop.PropertyType) && 
-                        prop.PropertyType != typeof(string))
-                    {
+                    if (typeof(System.Collections.IList).IsAssignableFrom(prop.PropertyType) &&
+                        prop.PropertyType != typeof(string)) {
                         var collectionItem = CreateCollectionItem(prop, obj, value as System.Collections.IList, level);
                         items.Add(collectionItem);
                     }
-                    else if (IsComplexType(prop.PropertyType))
-                    {
+                    else if (IsComplexType(prop.PropertyType)) {
                         var complexItem = CreateComplexItem(prop, obj, value, level);
                         items.Add(complexItem);
                     }
-                    else
-                    {
+                    else {
                         var simpleItem = CreateSimpleItem(prop, obj, value, level);
                         items.Add(simpleItem);
                     }
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     OnPropertyProcessingError(prop.Name, ex);
                 }
             }
@@ -81,27 +74,22 @@ namespace S100Framework.WPF
         /// <summary>
         /// Creates a collection property item
         /// </summary>
-        private static CollectionPropertyItem CreateCollectionItem(PropertyInfo prop, object parentObj, 
-            System.Collections.IList? collection, int level)
-        {
+        private static CollectionPropertyItem CreateCollectionItem(PropertyInfo prop, object parentObj,
+            System.Collections.IList? collection, int level) {
             Type elementType = typeof(object);
 
             // Try to determine element type
-            if (prop.PropertyType.IsGenericType)
-            {
+            if (prop.PropertyType.IsGenericType) {
                 Type[] genericArgs = prop.PropertyType.GetGenericArguments();
-                if (genericArgs.Length > 0)
-                {
+                if (genericArgs.Length > 0) {
                     elementType = genericArgs[0];
                 }
             }
-            else if (prop.PropertyType.IsArray)
-            {
+            else if (prop.PropertyType.IsArray) {
                 elementType = prop.PropertyType.GetElementType() ?? typeof(object);
             }
 
-            var item = new CollectionPropertyItem
-            {
+            var item = new CollectionPropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),
                 PropertyType = prop.PropertyType,
@@ -117,13 +105,10 @@ namespace S100Framework.WPF
             };
 
             // Populate collection items
-            if (collection != null)
-            {
+            if (collection != null) {
                 int index = 0;
-                foreach (var element in collection)
-                {
-                    var childItem = new PropertyItem
-                    {
+                foreach (var element in collection) {
+                    var childItem = new PropertyItem {
                         Name = $"[{index}]",
                         DisplayName = $"[{index}]",
                         PropertyType = element?.GetType() ?? elementType,
@@ -135,12 +120,10 @@ namespace S100Framework.WPF
                         ParentCollectionItem = item
                     };
 
-                    if (element != null && IsComplexType(element.GetType()))
-                    {
+                    if (element != null && IsComplexType(element.GetType())) {
                         childItem.IsComplexType = true;
                         var childProperties = GetProperties(element, level + 2);
-                        foreach (var childProp in childProperties)
-                        {
+                        foreach (var childProp in childProperties) {
                             childItem.Children.Add(childProp);
                         }
                     }
@@ -156,10 +139,8 @@ namespace S100Framework.WPF
         /// <summary>
         /// Creates a complex type property item
         /// </summary>
-        private static PropertyItem CreateComplexItem(PropertyInfo prop, object parentObj, object? value, int level)
-        {
-            var item = new PropertyItem
-            {
+        private static PropertyItem CreateComplexItem(PropertyInfo prop, object parentObj, object? value, int level) {
+            var item = new PropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),
                 PropertyType = prop.PropertyType,
@@ -174,11 +155,9 @@ namespace S100Framework.WPF
             };
 
             // Recursively get properties of complex type
-            if (value != null)
-            {
+            if (value != null) {
                 var childProperties = GetProperties(value, level + 1);
-                foreach (var childProp in childProperties)
-                {
+                foreach (var childProp in childProperties) {
                     item.Children.Add(childProp);
                 }
             }
@@ -189,10 +168,8 @@ namespace S100Framework.WPF
         /// <summary>
         /// Creates a simple type property item
         /// </summary>
-        private static PropertyItem CreateSimpleItem(PropertyInfo prop, object parentObj, object? value, int level)
-        {
-            return new PropertyItem
-            {
+        private static PropertyItem CreateSimpleItem(PropertyInfo prop, object parentObj, object? value, int level) {
+            return new PropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),
                 PropertyType = prop.PropertyType,
@@ -202,15 +179,15 @@ namespace S100Framework.WPF
                 Value = value,
                 IsReadOnly = !prop.CanWrite,
                 Category = GetCategory(prop),
-                Description = GetDescription(prop)
+                Description = GetDescription(prop),
+                Attributes = [.. prop.GetCustomAttributes()],
             };
         }
 
         /// <summary>
         /// Determines if a type is a complex type (not a simple value type)
         /// </summary>
-        private static bool IsComplexType(Type type)
-        {
+        private static bool IsComplexType(Type type) {
             // Unwrap nullable types
             Type actualType = Nullable.GetUnderlyingType(type) ?? type;
 
@@ -228,8 +205,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Gets the display name for a property
         /// </summary>
-        private static string GetDisplayName(PropertyInfo prop)
-        {
+        private static string GetDisplayName(PropertyInfo prop) {
             var displayAttr = prop.GetCustomAttribute<DisplayNameAttribute>();
             return displayAttr?.DisplayName ?? prop.Name;
         }
@@ -237,8 +213,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Gets the category for a property
         /// </summary>
-        private static string? GetCategory(PropertyInfo prop)
-        {
+        private static string? GetCategory(PropertyInfo prop) {
             var categoryAttr = prop.GetCustomAttribute<CategoryAttribute>();
             return categoryAttr?.Category;
         }
@@ -248,8 +223,7 @@ namespace S100Framework.WPF
         /// </summary>
         /// <param name="prop">The property to get description for</param>
         /// <returns>The description text, or null if not found</returns>
-        private static string? GetDescription(PropertyInfo prop)
-        {
+        private static string? GetDescription(PropertyInfo prop) {
             // First: Try property's Description attribute
             var propDescAttr = prop.GetCustomAttribute<DescriptionAttribute>();
             if (!string.IsNullOrEmpty(propDescAttr?.Description))
@@ -261,11 +235,9 @@ namespace S100Framework.WPF
                 return typeDescAttr.Description;
 
             // Third: For generic types (like List<T>, ObservableCollection<T>), get T's description
-            if (prop.PropertyType.IsGenericType)
-            {
+            if (prop.PropertyType.IsGenericType) {
                 var genericArg = prop.PropertyType.GetGenericArguments().FirstOrDefault();
-                if (genericArg != null)
-                {
+                if (genericArg != null) {
                     var genericDescAttr = genericArg.GetCustomAttribute<DescriptionAttribute>();
                     if (!string.IsNullOrEmpty(genericDescAttr?.Description))
                         return genericDescAttr.Description;
@@ -278,8 +250,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Raises the PropertyProcessingError event
         /// </summary>
-        private static void OnPropertyProcessingError(string propertyName, Exception ex)
-        {
+        private static void OnPropertyProcessingError(string propertyName, Exception ex) {
             System.Diagnostics.Debug.WriteLine($"Error processing property {propertyName}: {ex.Message}");
             PropertyProcessingError?.Invoke(null, new PropertyGridErrorEventArgs(propertyName, ex));
         }
@@ -303,8 +274,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Initializes a new instance of PropertyGridErrorEventArgs
         /// </summary>
-        public PropertyGridErrorEventArgs(string propertyName, Exception exception)
-        {
+        public PropertyGridErrorEventArgs(string propertyName, Exception exception) {
             PropertyName = propertyName;
             Exception = exception;
         }

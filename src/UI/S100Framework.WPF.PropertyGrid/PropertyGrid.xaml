@@ -96,7 +96,7 @@
 
         <!-- Enum Editor -->
         <DataTemplate x:Key="EnumEditorTemplate">
-            <ComboBox ItemsSource="{Binding PropertyType, Converter={StaticResource EnumValuesConverter}}"
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumValuesConverter}}"
                       SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
                       IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
                       Margin="2"

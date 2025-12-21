@@ -26,9 +26,11 @@ namespace PropertyGridApplication
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             var feature = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.LightSectored>(json)!;
-            var viewModel = new S100Framework.WPF.ViewModel.S101.LightSectoredViewModel {
+            //var viewModel = new S100Framework.WPF.ViewModel.S101.LightSectoredViewModel {
+            //}.Load(feature);
 
-            }.Load(feature);
+            var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel {
+            };
 
             this.MainPropertyGrid.SelectedObject = viewModel;
 

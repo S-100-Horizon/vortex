@@ -696,6 +696,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The scope of the MSI warning - NAVAREA, sub-area, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public warningType warningType {
 			get {
@@ -705,9 +706,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _warningType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public warningType[] warningTypeList => [(warningType)1,(warningType)2,(warningType)3,(warningType)4,(warningType)5,(warningType)6,(warningType)7,(warningType)8,(warningType)9,(warningType)10,(warningType)11,(warningType)12];
 
 		private int _year  = default;
 
@@ -980,6 +978,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public nameUsage? nameUsage {
 			get {
@@ -989,9 +988,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nameUsage, value);
 			}
 		}
-
-		[Browsable(false)]
-		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
 		public featureNameViewModel Load(featureName instance) {
@@ -1230,6 +1226,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("Category of reference.")]
 		[Category("References")]
 		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public referenceCategory referenceCategory {
 			get {
@@ -1239,9 +1236,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _referenceCategory, value);
 			}
 		}
-
-		[Browsable(false)]
-		public referenceCategory[] referenceCategoryList => [(referenceCategory)1,(referenceCategory)2,(referenceCategory)3];
 
 
 		#region InformationBindings
@@ -1446,6 +1440,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("General type of a navigational warning or navigational hazard.")]
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 		[Mandatory]
 		public navwarnTypeGeneral navwarnTypeGeneral {
 			get {
@@ -1455,9 +1450,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _navwarnTypeGeneral, value);
 			}
 		}
-
-		[Browsable(false)]
-		public navwarnTypeGeneral[] navwarnTypeGeneralList =>  CodeList.navwarnTypeGenerals.ToArray();
 
 		private DateTime _publicationTime  = default;
 
@@ -1654,6 +1646,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
@@ -1663,9 +1656,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _qualityOfHorizontalMeasurement, value);
 			}
 		}
-
-		[Browsable(false)]
-		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
 
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
@@ -1734,6 +1724,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("NavwarnPart")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([7,8,14,25,27])]
 		[Optional]
 		public restriction? restriction {
 			get {
@@ -1743,9 +1734,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _restriction, value);
 			}
 		}
-
-		[Browsable(false)]
-		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
 
 		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("NavwarnPart")]

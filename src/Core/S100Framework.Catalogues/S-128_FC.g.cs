@@ -1520,7 +1520,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class printSize : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Optional]
 			public iSO216? iSO216 {get;set;} = default;
 
@@ -1697,7 +1697,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sourceIndication : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			[Optional]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
@@ -1714,7 +1714,7 @@ namespace S100Framework.DomainModel.S128 {
 			public String? source {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,2,7,8,9,10,11,12,13,14,15])]
 			[Optional]
 			public sourceType? sourceType {get;set;} = default;
 
@@ -1772,7 +1772,7 @@ namespace S100Framework.DomainModel.S128 {
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Optional]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
 
@@ -1804,7 +1804,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalOfCycle : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Multiplicity(1)]
 			public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit {get;set;} = [];
 
@@ -1964,12 +1964,12 @@ namespace S100Framework.DomainModel.S128 {
 			public String? comment {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([8])]
+			[PermittedValues([8])]
 			[Mandatory]
 			public digitalSignatureReference digitalSignatureReference {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public digitalSignatureValue? digitalSignatureValue {get;set;} = default;
 
@@ -1994,12 +1994,12 @@ namespace S100Framework.DomainModel.S128 {
 			public String? otherDataTypeDescription {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,100])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,100])]
 			[Mandatory]
 			public supportFileFormat supportFileFormat {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public supportFilePurpose supportFilePurpose {get;set;}
 
@@ -2349,7 +2349,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductMapping : FeatureAssociation {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public categoryOfProductMapping categoryOfProductMapping {get;set;}
 
@@ -2868,7 +2868,7 @@ namespace S100Framework.DomainModel.S128 {
 			public List<int> compilationScale {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public distributionStatus? distributionStatus {get;set;} = default;
 
@@ -2885,7 +2885,7 @@ namespace S100Framework.DomainModel.S128 {
 			public int? minimumDisplayScale {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Multiplicity(0, 3)]
 			public List<navigationPurpose> navigationPurpose {get;set;} = [];
 
@@ -2906,7 +2906,7 @@ namespace S100Framework.DomainModel.S128 {
 			public String? productNumber {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public specificUsage? specificUsage {get;set;} = default;
 
@@ -2923,7 +2923,7 @@ namespace S100Framework.DomainModel.S128 {
 			public horizontalDatumEPSGCode? horizontalDatumEPSGCode {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -3035,7 +3035,7 @@ namespace S100Framework.DomainModel.S128 {
 			public S100Framework.DomainModel.S100.Time? issueTime {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 
@@ -3214,12 +3214,12 @@ namespace S100Framework.DomainModel.S128 {
 			public String? serviceName {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public serviceStatus? serviceStatus {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			public typeOfProductFormat typeOfProductFormat {get;set;}
 

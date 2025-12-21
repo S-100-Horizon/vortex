@@ -2753,7 +2753,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String name {get;set;} = string.Empty;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -2960,7 +2960,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? noticeTimeText {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public operation? operation {get;set;} = default;
 
@@ -3016,7 +3016,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? onlineResourceDescription {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public onlineFunction? onlineFunction {get;set;} = default;
 
@@ -3135,12 +3135,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rxNCode : ComplexType {
 			[XmlElement("categoryOfRxN")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
 			[XmlElement("actionOrActivity")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 			[Optional]
 			public actionOrActivity? actionOrActivity {get;set;} = default;
 
@@ -3178,7 +3178,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sourceIndication : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Optional]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
@@ -3191,7 +3191,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? source {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
+			[PermittedValues([1,2,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public sourceType? sourceType {get;set;} = default;
 
@@ -3316,7 +3316,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
@@ -3333,7 +3333,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? contactInstructions {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Optional]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
 
@@ -3378,7 +3378,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class textContent : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfText? categoryOfText {get;set;} = default;
 
@@ -3428,7 +3428,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Multiplicity(0, 7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
@@ -3495,7 +3495,7 @@ namespace S100Framework.DomainModel.S127 {
 			public double? underKeelAllowanceVariableDraughtBased {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public operation? operation {get;set;} = default;
 
@@ -3536,12 +3536,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class vesselMeasurementsSpecification : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			public comparisonOperator comparisonOperator {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,6,7,8,9,10,11,12,13])]
 			[Mandatory]
 			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
@@ -3550,7 +3550,7 @@ namespace S100Framework.DomainModel.S127 {
 			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,9])]
+			[PermittedValues([1,3,4,5,6,7,9])]
 			[Mandatory]
 			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
@@ -3590,7 +3590,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Optional]
 			public cardinalDirection? cardinalDirection {get;set;} = default;
 
@@ -3693,7 +3693,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
@@ -3896,7 +3896,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InclusionType : InformationAssociation {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			public membership membership {get;set;}
 
@@ -3923,7 +3923,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			public categoryOfRelationship categoryOfRelationship {get;set;}
 
@@ -4256,7 +4256,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class AbstractRxN : InformationType {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Optional]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
@@ -4306,27 +4306,27 @@ namespace S100Framework.DomainModel.S127 {
 			public Boolean? inBallast {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,13,14,15])]
+			[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,13,14,15])]
 			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			[Optional]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
 
 			[XmlElement("categoryOfVessel")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			[Optional]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
 
@@ -4427,7 +4427,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Authority : InformationType {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Mandatory]
 			public categoryOfAuthority categoryOfAuthority {get;set;}
 
@@ -4486,7 +4486,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? callSign {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
@@ -4858,7 +4858,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShipReport : InformationType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Multiplicity(1)]
 			public List<categoryOfShipReport> categoryOfShipReport {get;set;} = [];
 
@@ -4867,7 +4867,7 @@ namespace S100Framework.DomainModel.S127 {
 			public Boolean iMOFormatForReporting {get;set;} = false;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			[Optional]
 			public List<sRSFormatCode> sRSFormatCode {get;set;} = [];
 
@@ -4932,7 +4932,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
@@ -5187,12 +5187,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionArea : FeatureType {
 			[XmlIgnore]
-			[EnumerationValue([1,3,5])]
+			[PermittedValues([1,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5,7])]
+			[PermittedValues([5,7])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -5262,12 +5262,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ConcentrationOfShippingHazardArea : FeatureType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public List<categoryOfConcentrationOfShippingHazardArea> categoryOfConcentrationOfShippingHazardArea {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,16,17])]
+			[PermittedValues([1,2,5,7,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5337,7 +5337,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ISPSCodeSecurityLevel : OrganizationContactArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public iSPSLevel iSPSLevel {get;set;}
 
@@ -5466,7 +5466,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MilitaryPracticeArea : SupervisedArea {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea {get;set;} = [];
 
@@ -5475,12 +5475,12 @@ namespace S100Framework.DomainModel.S127 {
 			public String? nationality {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,7,16,17])]
+			[PermittedValues([1,2,5,6,7,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5562,17 +5562,17 @@ namespace S100Framework.DomainModel.S127 {
 			public String? callSign {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfPreference? categoryOfPreference {get;set;} = default;
 
 			[XmlElement("categoryOfVessel")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			[Optional]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
 
@@ -5585,7 +5585,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? destination {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public pilotMovement? pilotMovement {get;set;} = default;
 
@@ -5594,7 +5594,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? pilotVessel {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,9,16,17,28])]
+			[PermittedValues([1,2,5,6,9,16,17,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5686,12 +5686,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotService : ReportableServiceArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public List<categoryOfPilot> categoryOfPilot {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Optional]
 			public pilotQualification? pilotQualification {get;set;} = default;
 
@@ -5838,12 +5838,12 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PiracyRiskArea : ReportableServiceArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,18,19,20,21,24,25,26,27,31,32,33,34])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,14,18,19,20,21,24,25,26,27,31,32,33,34])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7])]
+			[PermittedValues([1,2,5,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5917,7 +5917,7 @@ namespace S100Framework.DomainModel.S127 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,28])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5987,7 +5987,7 @@ namespace S100Framework.DomainModel.S127 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,7])]
+			[PermittedValues([1,2,4,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6061,12 +6061,12 @@ namespace S100Framework.DomainModel.S127 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			[XmlElement("categoryOfVessel")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			[Optional]
 			public List<categoryOfVessel> categoryOfVessel {get;set;} = [];
 
@@ -6077,12 +6077,12 @@ namespace S100Framework.DomainModel.S127 {
 			public List<double> orientationValue {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,9])]
+			[PermittedValues([1,3,4,5,6,7,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public trafficFlow trafficFlow {get;set;}
 
@@ -6164,17 +6164,17 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RestrictedArea : SupervisedArea {
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,19,20,22,23,25,27,28,29,30,31,32])]
+			[PermittedValues([1,4,5,6,7,8,9,10,12,14,19,20,22,23,25,27,28,29,30,31,32])]
 			[Optional]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,35,36,37,38,39,40,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,35,36,37,38,39,40,41,42,43])]
 			[Multiplicity(1)]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,9,18,28])]
+			[PermittedValues([1,2,3,4,5,6,7,9,18,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6250,17 +6250,17 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RouteingMeasure : FeatureType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			public categoryOfRouteingMeasure categoryOfRouteingMeasure {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfTrafficSeparationScheme? categoryOfTrafficSeparationScheme {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfNavigationLine? categoryOfNavigationLine {get;set;} = default;
 
@@ -6399,7 +6399,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationWarning : FeatureType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
 			[Multiplicity(1)]
 			public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning {get;set;} = [];
 
@@ -6408,7 +6408,7 @@ namespace S100Framework.DomainModel.S127 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
+			[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6480,7 +6480,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationTraffic : OrganizationContactArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,13])]
 			[Multiplicity(1)]
 			public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic {get;set;} = [];
 
@@ -6489,7 +6489,7 @@ namespace S100Framework.DomainModel.S127 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
+			[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6565,7 +6565,7 @@ namespace S100Framework.DomainModel.S127 {
 			public underKeelAllowance? underKeelAllowance {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public waterLevelTrend? waterLevelTrend {get;set;} = default;
 
@@ -6631,7 +6631,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnderKeelClearanceManagementArea : ReportableServiceArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public dynamicResource dynamicResource {get;set;}
 
@@ -6760,7 +6760,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterwayArea : SupervisedArea {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public dynamicResource dynamicResource {get;set;}
 
@@ -6769,7 +6769,7 @@ namespace S100Framework.DomainModel.S127 {
 			public String? siltationRate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,28])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6917,7 +6917,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6])]
+			[PermittedValues([1,4,5,6])]
 			[Optional]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
@@ -7039,7 +7039,7 @@ namespace S100Framework.DomainModel.S127 {
 			public Boolean? textRotation {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1])]
+			[PermittedValues([1])]
 			[Multiplicity(1, 2)]
 			public List<textType> textType {get;set;} = [];
 

@@ -496,9 +496,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
 		[Description("A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.")]
@@ -516,9 +513,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
-
-		[Browsable(false)]
-		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
@@ -894,6 +888,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
 			get {
@@ -903,9 +898,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _lightCharacteristic, value);
 			}
 		}
-
-		[Browsable(false)]
-		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 
 		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Multiplicity(0, 10)]
@@ -989,6 +981,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,31,32,33,34,35])]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
 			get {
@@ -998,9 +991,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _lightCharacteristic, value);
 			}
 		}
-
-		[Browsable(false)]
-		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 
 		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference.")]
 		[Multiplicity(1, 10)]
@@ -1423,6 +1413,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description("The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.")]
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Mandatory]
 		public signalStatus signalStatus {
 			get {
@@ -1432,9 +1423,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalStatus, value);
 			}
 		}
-
-		[Browsable(false)]
-		public signalStatus[] signalStatusList => [(signalStatus)1,(signalStatus)2];
 
 
 		public signalSequenceViewModel Load(signalSequence instance) {
@@ -1574,6 +1562,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description("Units of measure of waterway distances. (IHO Registry)")]
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Mandatory]
 		public heightLengthUnits heightLengthUnits {
 			get {
@@ -1583,9 +1572,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _heightLengthUnits, value);
 			}
 		}
-
-		[Browsable(false)]
-		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
 
 		private double _diameter  = default;
 
@@ -1641,6 +1627,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public atonCommissioning? atonCommissioning {
 			get {
@@ -1651,13 +1638,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public atonCommissioning[] atonCommissioningList => [(atonCommissioning)1,(atonCommissioning)2,(atonCommissioning)3,(atonCommissioning)4,(atonCommissioning)5,(atonCommissioning)6,(atonCommissioning)7,(atonCommissioning)8,(atonCommissioning)9,(atonCommissioning)10,(atonCommissioning)11,(atonCommissioning)12,(atonCommissioning)13];
-
 		private atonRemoval? _atonRemoval  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 		[Optional]
 		public atonRemoval? atonRemoval {
 			get {
@@ -1668,13 +1653,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public atonRemoval[] atonRemovalList => [(atonRemoval)1,(atonRemoval)2,(atonRemoval)3,(atonRemoval)4,(atonRemoval)5,(atonRemoval)6,(atonRemoval)7,(atonRemoval)8,(atonRemoval)9,(atonRemoval)10,(atonRemoval)11,(atonRemoval)12,(atonRemoval)13,(atonRemoval)14,(atonRemoval)15,(atonRemoval)16,(atonRemoval)17,(atonRemoval)18,(atonRemoval)19,(atonRemoval)20,(atonRemoval)21,(atonRemoval)22,(atonRemoval)23,(atonRemoval)24,(atonRemoval)25,(atonRemoval)26,(atonRemoval)27];
-
 		private atonReplacement? _atonReplacement  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public atonReplacement? atonReplacement {
 			get {
@@ -1685,13 +1668,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public atonReplacement[] atonReplacementList => [(atonReplacement)1,(atonReplacement)2,(atonReplacement)3,(atonReplacement)4,(atonReplacement)5,(atonReplacement)6,(atonReplacement)7,(atonReplacement)8,(atonReplacement)9,(atonReplacement)10,(atonReplacement)11,(atonReplacement)12,(atonReplacement)13,(atonReplacement)14,(atonReplacement)15,(atonReplacement)16];
-
 		private fixedAtonChange? _fixedAtonChange  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public fixedAtonChange? fixedAtonChange {
 			get {
@@ -1702,13 +1683,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public fixedAtonChange[] fixedAtonChangeList => [(fixedAtonChange)1,(fixedAtonChange)2,(fixedAtonChange)3,(fixedAtonChange)4,(fixedAtonChange)5,(fixedAtonChange)6,(fixedAtonChange)7,(fixedAtonChange)8,(fixedAtonChange)9,(fixedAtonChange)10,(fixedAtonChange)11];
-
 		private floatingAtonChange? _floatingAtonChange  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 		[Optional]
 		public floatingAtonChange? floatingAtonChange {
 			get {
@@ -1719,13 +1698,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public floatingAtonChange[] floatingAtonChangeList => [(floatingAtonChange)1,(floatingAtonChange)2,(floatingAtonChange)3,(floatingAtonChange)4,(floatingAtonChange)5,(floatingAtonChange)6,(floatingAtonChange)7,(floatingAtonChange)8,(floatingAtonChange)9,(floatingAtonChange)10,(floatingAtonChange)11,(floatingAtonChange)12,(floatingAtonChange)13,(floatingAtonChange)14,(floatingAtonChange)15,(floatingAtonChange)16,(floatingAtonChange)17,(floatingAtonChange)18,(floatingAtonChange)19,(floatingAtonChange)20,(floatingAtonChange)21,(floatingAtonChange)22,(floatingAtonChange)23,(floatingAtonChange)24,(floatingAtonChange)25,(floatingAtonChange)26];
-
 		private audibleSignalAtonChange? _audibleSignalAtonChange  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public audibleSignalAtonChange? audibleSignalAtonChange {
 			get {
@@ -1736,13 +1713,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public audibleSignalAtonChange[] audibleSignalAtonChangeList => [(audibleSignalAtonChange)1,(audibleSignalAtonChange)2,(audibleSignalAtonChange)3,(audibleSignalAtonChange)4];
-
 		private lightedAtonChange? _lightedAtonChange  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 		[Optional]
 		public lightedAtonChange? lightedAtonChange {
 			get {
@@ -1753,13 +1728,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public lightedAtonChange[] lightedAtonChangeList => [(lightedAtonChange)1,(lightedAtonChange)2,(lightedAtonChange)3,(lightedAtonChange)4,(lightedAtonChange)5,(lightedAtonChange)6,(lightedAtonChange)7,(lightedAtonChange)8,(lightedAtonChange)9,(lightedAtonChange)10,(lightedAtonChange)11,(lightedAtonChange)12,(lightedAtonChange)13,(lightedAtonChange)14,(lightedAtonChange)15,(lightedAtonChange)16,(lightedAtonChange)17,(lightedAtonChange)18,(lightedAtonChange)19,(lightedAtonChange)20,(lightedAtonChange)21,(lightedAtonChange)22,(lightedAtonChange)23,(lightedAtonChange)24];
-
 		private electronicAtonChange? _electronicAtonChange  = default;
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 		[Optional]
 		public electronicAtonChange? electronicAtonChange {
 			get {
@@ -1769,9 +1742,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _electronicAtonChange, value);
 			}
 		}
-
-		[Browsable(false)]
-		public electronicAtonChange[] electronicAtonChangeList => [(electronicAtonChange)1,(electronicAtonChange)2,(electronicAtonChange)3,(electronicAtonChange)4,(electronicAtonChange)5,(electronicAtonChange)6,(electronicAtonChange)7,(electronicAtonChange)8,(electronicAtonChange)9,(electronicAtonChange)10,(electronicAtonChange)11,(electronicAtonChange)12,(electronicAtonChange)13,(electronicAtonChange)14,(electronicAtonChange)15,(electronicAtonChange)16,(electronicAtonChange)17,(electronicAtonChange)18,(electronicAtonChange)19,(electronicAtonChange)20,(electronicAtonChange)21,(electronicAtonChange)22,(electronicAtonChange)23,(electronicAtonChange)24,(electronicAtonChange)25,(electronicAtonChange)26,(electronicAtonChange)27,(electronicAtonChange)28,(electronicAtonChange)29,(electronicAtonChange)30];
 
 
 		public ChangeDetailsViewModel Load(ChangeDetails instance) {
@@ -1895,6 +1865,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description("Units of measure of waterway distances. (IHO Registry)")]
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Mandatory]
 		public heightLengthUnits heightLengthUnits {
 			get {
@@ -1904,9 +1875,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _heightLengthUnits, value);
 			}
 		}
-
-		[Browsable(false)]
-		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
 
 		private double? _horizontalLength  = default;
 
@@ -1993,6 +1961,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Description(".")]
 		[Editor(typeof(Editors.HorizonEditor<positioningMethod>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public positioningEquipment positioningEquipment {
 			get {
@@ -2002,9 +1971,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _positioningEquipment, value);
 			}
 		}
-
-		[Browsable(false)]
-		public positioningEquipment[] positioningEquipmentList => [(positioningEquipment)1,(positioningEquipment)2,(positioningEquipment)3,(positioningEquipment)4];
 
 		private String _NMEAString  = string.Empty;
 
@@ -2831,6 +2797,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Horizontal reference surface or the reference coordinate system used for geodetic control in the calculation of coordinates of points on the earth.")]
 		[Category("AtoNFixingMethod")]
 		[Editor(typeof(Editors.HorizonEditor<AtoNFixingMethod>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
 		[Optional]
 		public horizontalDatum? horizontalDatum {
 			get {
@@ -2840,9 +2807,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public horizontalDatum[] horizontalDatumList => [(horizontalDatum)1,(horizontalDatum)2,(horizontalDatum)3,(horizontalDatum)4,(horizontalDatum)5,(horizontalDatum)6,(horizontalDatum)7,(horizontalDatum)8,(horizontalDatum)9,(horizontalDatum)10,(horizontalDatum)11,(horizontalDatum)12,(horizontalDatum)13,(horizontalDatum)14,(horizontalDatum)15,(horizontalDatum)16,(horizontalDatum)17,(horizontalDatum)18,(horizontalDatum)19,(horizontalDatum)20,(horizontalDatum)21,(horizontalDatum)22,(horizontalDatum)23,(horizontalDatum)24,(horizontalDatum)25,(horizontalDatum)26,(horizontalDatum)27,(horizontalDatum)28,(horizontalDatum)29,(horizontalDatum)30,(horizontalDatum)31,(horizontalDatum)32,(horizontalDatum)33,(horizontalDatum)34,(horizontalDatum)35,(horizontalDatum)36,(horizontalDatum)37,(horizontalDatum)38,(horizontalDatum)39,(horizontalDatum)40,(horizontalDatum)41,(horizontalDatum)42,(horizontalDatum)43,(horizontalDatum)44,(horizontalDatum)45,(horizontalDatum)46,(horizontalDatum)47,(horizontalDatum)48,(horizontalDatum)49,(horizontalDatum)50,(horizontalDatum)51,(horizontalDatum)52,(horizontalDatum)53,(horizontalDatum)54,(horizontalDatum)55,(horizontalDatum)56,(horizontalDatum)57,(horizontalDatum)58,(horizontalDatum)59,(horizontalDatum)60,(horizontalDatum)61,(horizontalDatum)62,(horizontalDatum)63,(horizontalDatum)64,(horizontalDatum)65,(horizontalDatum)66,(horizontalDatum)67,(horizontalDatum)68,(horizontalDatum)69,(horizontalDatum)70,(horizontalDatum)71,(horizontalDatum)72,(horizontalDatum)73,(horizontalDatum)74,(horizontalDatum)75,(horizontalDatum)76,(horizontalDatum)77,(horizontalDatum)78,(horizontalDatum)79,(horizontalDatum)80,(horizontalDatum)81,(horizontalDatum)82,(horizontalDatum)83,(horizontalDatum)84,(horizontalDatum)85,(horizontalDatum)86,(horizontalDatum)87,(horizontalDatum)88,(horizontalDatum)89,(horizontalDatum)90,(horizontalDatum)91,(horizontalDatum)92,(horizontalDatum)93,(horizontalDatum)94,(horizontalDatum)95,(horizontalDatum)96,(horizontalDatum)97,(horizontalDatum)98,(horizontalDatum)99,(horizontalDatum)100,(horizontalDatum)101,(horizontalDatum)102,(horizontalDatum)103,(horizontalDatum)104,(horizontalDatum)105,(horizontalDatum)106,(horizontalDatum)107,(horizontalDatum)108,(horizontalDatum)109,(horizontalDatum)110,(horizontalDatum)111,(horizontalDatum)112,(horizontalDatum)113,(horizontalDatum)114,(horizontalDatum)116,(horizontalDatum)117,(horizontalDatum)118,(horizontalDatum)119,(horizontalDatum)120,(horizontalDatum)121,(horizontalDatum)122,(horizontalDatum)123,(horizontalDatum)124,(horizontalDatum)125,(horizontalDatum)126,(horizontalDatum)127,(horizontalDatum)128,(horizontalDatum)129,(horizontalDatum)130,(horizontalDatum)131];
 
 		private DateOnly _sourceDate  = default;
 
@@ -2944,6 +2908,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("-")]
 		[Category("AtonStatusInformation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonStatusInformation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public ChangeTypes? ChangeTypes {
 			get {
@@ -2953,9 +2918,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _ChangeTypes, value);
 			}
 		}
-
-		[Browsable(false)]
-		public ChangeTypes[] ChangeTypesList => [(ChangeTypes)1,(ChangeTypes)2,(ChangeTypes)3,(ChangeTypes)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -3086,6 +3048,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
@@ -3095,9 +3058,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _qualityOfHorizontalMeasurement, value);
 			}
 		}
-
-		[Browsable(false)]
-		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
 
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
@@ -3361,6 +3321,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -3371,14 +3332,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -3388,9 +3347,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -3412,40 +3368,25 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
-		[Browsable(false)]
-		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
-
 		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -3467,14 +3408,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -3485,14 +3424,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
-
 		private visualProminence _visualProminence  = default;
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public visualProminence visualProminence {
 			get {
@@ -3502,9 +3439,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _elevation  = default;
 
@@ -4001,6 +3935,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -4011,14 +3946,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -4028,9 +3961,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -4052,6 +3982,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
 			get {
@@ -4062,24 +3993,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -4116,6 +4038,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -4126,16 +4049,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -4157,9 +4074,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private double? _verticalLength  = default;
 
 		[Description("The total vertical length of a feature.")]
@@ -4180,6 +4094,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -4189,9 +4104,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -4213,6 +4125,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfLateralMark categoryOfLateralMark {
 			get {
@@ -4222,9 +4135,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfLateralMark, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -4629,6 +4539,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -4639,14 +4550,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -4656,9 +4565,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -4680,6 +4586,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -4690,30 +4597,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -4724,16 +4623,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -4754,9 +4647,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -4808,6 +4698,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfLateralMark categoryOfLateralMark {
 			get {
@@ -4817,9 +4708,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfLateralMark, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -5203,6 +5091,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of route guidance given to vessels.")]
 		[Category("NavigationLine")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfNavigationLine categoryOfNavigationLine {
 			get {
@@ -5213,16 +5102,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
-
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private orientationViewModel _orientation  = default;
 
@@ -5695,14 +5578,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -5712,9 +5593,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private orientationViewModel _orientation  = default;
 
@@ -5751,22 +5629,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
-		[Browsable(false)]
-		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)5,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9,(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
-
 		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
-
-		[Browsable(false)]
-		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)6,(techniqueOfVerticalMeasurement)7,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)14,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17];
 
 		private trafficFlow _trafficFlow  = default;
 
 		[Description("Direction of vessels passing a reference point.")]
 		[Category("RecommendedTrack")]
 		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public trafficFlow trafficFlow {
 			get {
@@ -5776,9 +5649,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _trafficFlow, value);
 			}
 		}
-
-		[Browsable(false)]
-		public trafficFlow[] trafficFlowList => [(trafficFlow)1,(trafficFlow)2,(trafficFlow)3,(trafficFlow)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -6249,14 +6119,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -6266,9 +6134,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -6320,22 +6185,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		[Description("Classification of different light types.")]
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
 		[Description("The outward display of the light.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public exhibitionConditionOfLight? exhibitionConditionOfLight {
 			get {
@@ -6346,14 +6206,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -6364,14 +6222,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		private signalGeneration? _signalGeneration  = default;
 
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightSectored")]
 		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
 			get {
@@ -6381,9 +6237,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGeneration, value);
 			}
 		}
-
-		[Browsable(false)]
-		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 
 		[Description("-")]
 		[Category("LightSectored")]
@@ -6805,14 +6658,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -6822,9 +6673,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -6876,22 +6724,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-
 		[Description("Classification of different light types.")]
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
 
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
 		[Description("The outward display of the light.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public exhibitionConditionOfLight? exhibitionConditionOfLight {
 			get {
@@ -6902,14 +6745,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
-
 		private lightVisibility? _lightVisibility  = default;
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public lightVisibility? lightVisibility {
 			get {
@@ -6919,9 +6760,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _lightVisibility, value);
 			}
 		}
-
-		[Browsable(false)]
-		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
 
 		private Boolean? _majorLight  = default;
 
@@ -6943,6 +6781,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -6953,14 +6792,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		private signalGeneration? _signalGeneration  = default;
 
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightAllAround")]
 		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
 			get {
@@ -6970,9 +6807,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGeneration, value);
 			}
 		}
-
-		[Browsable(false)]
-		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 
 		private double? _valueOfNominalRange  = default;
 
@@ -7448,14 +7282,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -7465,9 +7297,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -7519,16 +7348,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
 
-		[Browsable(false)]
-		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
-
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
-
-		[Browsable(false)]
-		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
 
 		private double? _valueOfNominalRange  = default;
 
@@ -7989,14 +7812,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
 		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -8006,9 +7827,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -8060,6 +7878,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightFogDetector")]
 		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
 			get {
@@ -8069,9 +7888,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGeneration, value);
 			}
 		}
-
-		[Browsable(false)]
-		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
@@ -8458,14 +8274,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("RadarReflector")]
 		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -8475,9 +8289,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalAccuracy  = default;
 
@@ -8834,6 +8645,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of the various means of generating the fog signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Mandatory]
 		public categoryOfFogSignal categoryOfFogSignal {
 			get {
@@ -8843,9 +8655,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfFogSignal, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfFogSignal[] categoryOfFogSignalList => [(categoryOfFogSignal)1,(categoryOfFogSignal)2,(categoryOfFogSignal)3,(categoryOfFogSignal)4,(categoryOfFogSignal)5,(categoryOfFogSignal)6,(categoryOfFogSignal)7,(categoryOfFogSignal)8,(categoryOfFogSignal)9,(categoryOfFogSignal)10];
 
 		private int? _signalFrequency  = default;
 
@@ -8867,6 +8676,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("FogSignal")]
 		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
 			get {
@@ -8876,9 +8686,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGeneration, value);
 			}
 		}
-
-		[Browsable(false)]
-		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 
 		private String? _signalGroup  = default;
 
@@ -8929,9 +8736,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private double? _valueOfMaximumRange  = default;
 
@@ -9336,9 +9140,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		[Description("Type of sensor used to observe the environment. For example Anemometer, fog monitor, etc.")]
 		[Category("EnvironmentObservationEquipment")]
 		[Multiplicity(1)]
@@ -9688,6 +9489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of radio services offered by a radio station.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,19,20])]
 		[Mandatory]
 		public categoryOfRadioStation categoryOfRadioStation {
 			get {
@@ -9697,9 +9499,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfRadioStation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)1,(categoryOfRadioStation)2,(categoryOfRadioStation)3,(categoryOfRadioStation)4,(categoryOfRadioStation)5,(categoryOfRadioStation)6,(categoryOfRadioStation)7,(categoryOfRadioStation)8,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)12,(categoryOfRadioStation)13,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 
 		private double? _estimatedRangeOfTransmission  = default;
 
@@ -9721,6 +9520,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioStation")]
 		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public status? status {
 			get {
@@ -9730,9 +9530,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _status, value);
 			}
 		}
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -10312,6 +10109,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67])]
 		[Optional]
 		public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {
 			get {
@@ -10322,24 +10120,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Daymark")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -10376,9 +10165,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		private double? _orientationValue  = default;
 
 		[Description("The angular distance measured from true north to the major axis of the feature.")]
@@ -10399,14 +10185,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 		[Mandatory]
 		public topmarkDaymarkShape topmarkDaymarkShape {
 			get {
@@ -10417,14 +10201,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Daymark")]
 		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -10434,9 +10216,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -10874,22 +10653,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -10900,22 +10674,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Retroreflector")]
 		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -10925,9 +10694,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _height  = default;
 
@@ -11322,6 +11088,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of radar transponder beacon based on functionality.")]
 		[Category("RadarTransponderBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {
 			get {
@@ -11331,9 +11098,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfRadarTransponderBeacon, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfRadarTransponderBeacon[] categoryOfRadarTransponderBeaconList => [(categoryOfRadarTransponderBeacon)1,(categoryOfRadarTransponderBeacon)2,(categoryOfRadarTransponderBeacon)3];
 
 		private radarWaveLengthViewModel? _radarWaveLength  = default;
 
@@ -11369,9 +11133,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private double? _valueOfNominalRange  = default;
 
@@ -11840,14 +11601,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => Enum.GetValues<status>();
-
 		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
 		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("VirtualAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public virtualAISAidToNavigationType virtualAISAidToNavigationType {
 			get {
@@ -11857,9 +11616,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _virtualAISAidToNavigationType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -12302,14 +12058,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => Enum.GetValues<status>();
-
 		private CategoryOfPhysicalAISAidToNavigation _CategoryOfPhysicalAISAidToNavigation  = default;
 
 		[Description("A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.")]
 		[Category("PhysicalAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public CategoryOfPhysicalAISAidToNavigation CategoryOfPhysicalAISAidToNavigation {
 			get {
@@ -12319,9 +12073,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _CategoryOfPhysicalAISAidToNavigation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public CategoryOfPhysicalAISAidToNavigation[] CategoryOfPhysicalAISAidToNavigationList => [(CategoryOfPhysicalAISAidToNavigation)1,(CategoryOfPhysicalAISAidToNavigation)2,(CategoryOfPhysicalAISAidToNavigation)3];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -12764,14 +12515,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => Enum.GetValues<status>();
-
 		private CategoryOfSyntheticAISAidtoNavigation _CategoryOfSyntheticAISAidtoNavigation  = default;
 
 		[Description("-")]
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Mandatory]
 		public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {
 			get {
@@ -12782,14 +12531,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public CategoryOfSyntheticAISAidtoNavigation[] CategoryOfSyntheticAISAidtoNavigationList => [(CategoryOfSyntheticAISAidtoNavigation)1,(CategoryOfSyntheticAISAidtoNavigation)2];
-
 		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
 		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("SyntheticAISAidToNavigation")]
 		[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public virtualAISAidToNavigationType virtualAISAidToNavigationType {
 			get {
@@ -12799,9 +12546,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _virtualAISAidToNavigationType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -13222,6 +12966,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("-")]
 		[Category("PowerSource")]
 		[Editor(typeof(Editors.HorizonEditor<PowerSource>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public CategoryOfPowerSource CategoryOfPowerSource {
 			get {
@@ -13232,16 +12977,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public CategoryOfPowerSource[] CategoryOfPowerSourceList => [(CategoryOfPowerSource)1,(CategoryOfPowerSource)2,(CategoryOfPowerSource)3,(CategoryOfPowerSource)4];
-
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PowerSource")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -13587,6 +13326,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -13597,14 +13337,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -13614,9 +13352,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -13638,6 +13373,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
 			get {
@@ -13648,24 +13384,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -13702,6 +13429,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -13712,16 +13440,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -13743,9 +13465,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private double? _verticalLength  = default;
 
 		[Description("The total vertical length of a feature.")]
@@ -13766,6 +13485,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -13775,9 +13495,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -14195,6 +13912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -14205,14 +13923,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -14222,9 +13938,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -14246,6 +13959,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
 			get {
@@ -14256,24 +13970,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -14310,6 +14015,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -14320,16 +14026,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -14351,9 +14051,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private double? _verticalLength  = default;
 
 		[Description("The total vertical length of a feature.")]
@@ -14374,6 +14071,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -14383,9 +14081,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -14407,6 +14102,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfCardinalMark categoryOfCardinalMark {
 			get {
@@ -14416,9 +14112,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfCardinalMark, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -14823,6 +14516,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -14833,14 +14527,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -14850,9 +14542,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -14874,6 +14563,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -14884,30 +14574,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -14918,16 +14600,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -14948,9 +14624,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -15392,6 +15065,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -15402,14 +15076,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -15419,9 +15091,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -15443,6 +15112,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -15453,30 +15123,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -15487,16 +15149,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -15517,9 +15173,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -15571,6 +15224,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfCardinalMark categoryOfCardinalMark {
 			get {
@@ -15580,9 +15234,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfCardinalMark, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -15981,6 +15632,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -15991,14 +15643,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -16008,9 +15658,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -16032,6 +15679,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -16042,30 +15690,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -16076,16 +15716,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -16106,9 +15740,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -16160,6 +15791,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("	Classification of fixed installation buoy.")]
 		[Category("InstallationBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Mandatory]
 		public categoryOfInstallationBuoy categoryOfInstallationBuoy {
 			get {
@@ -16169,9 +15801,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfInstallationBuoy, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -16570,6 +16199,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -16580,14 +16210,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -16597,9 +16225,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -16621,6 +16246,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -16631,30 +16257,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -16665,16 +16283,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -16695,9 +16307,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -17139,6 +16748,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -17149,14 +16759,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -17166,9 +16774,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -17190,6 +16795,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -17200,30 +16806,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -17234,16 +16832,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -17264,9 +16856,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -17708,6 +17297,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -17718,14 +17308,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -17735,9 +17323,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -17759,40 +17344,25 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
-		[Browsable(false)]
-		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
-
 		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -17814,14 +17384,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -17832,14 +17400,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
-
 		private visualProminence _visualProminence  = default;
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
 		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public visualProminence visualProminence {
 			get {
@@ -17849,9 +17415,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _elevation  = default;
 
@@ -18349,6 +17912,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -18359,14 +17923,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -18376,9 +17938,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -18400,16 +17959,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _horizontalLength  = default;
 
@@ -18461,9 +18014,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		private Boolean? _radarConspicuous  = default;
 
 		[Description("A feature which returns a strong radar echo.")]
@@ -18483,9 +18033,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private double? _verticalLength  = default;
 
@@ -18507,6 +18054,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightFloat")]
 		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -18516,9 +18064,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -18950,6 +18495,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -18960,14 +18506,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -18977,9 +18521,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -19001,16 +18542,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _horizontalLength  = default;
 
@@ -19062,9 +18597,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		private Boolean? _radarConspicuous  = default;
 
 		[Description("A feature which returns a strong radar echo.")]
@@ -19084,9 +18616,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private double? _verticalLength  = default;
 
@@ -19108,6 +18637,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightVessel")]
 		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -19117,9 +18647,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -19551,6 +19078,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -19561,14 +19089,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -19578,9 +19104,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -19602,24 +19125,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<categoryOfOffshorePlatform> categoryOfOffshorePlatform  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1,(categoryOfOffshorePlatform)2,(categoryOfOffshorePlatform)3,(categoryOfOffshorePlatform)4,(categoryOfOffshorePlatform)5,(categoryOfOffshorePlatform)6,(categoryOfOffshorePlatform)7,(categoryOfOffshorePlatform)8,(categoryOfOffshorePlatform)9,(categoryOfOffshorePlatform)10,(categoryOfOffshorePlatform)11];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _height  = default;
 
@@ -19656,16 +19170,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
-
-		[Browsable(false)]
-		public product[] productList => [(product)1,(product)2,(product)3,(product)4,(product)5,(product)6,(product)7,(product)8,(product)9,(product)10,(product)11,(product)12,(product)13,(product)14,(product)15,(product)16,(product)17,(product)18,(product)19,(product)20,(product)21,(product)22,(product)23,(product)24,(product)25];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -19687,14 +19195,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -19704,9 +19210,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -19728,6 +19231,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("OffshorePlatform")]
 		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -19737,9 +19241,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -20173,6 +19674,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -20183,14 +19685,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -20200,9 +19700,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -20224,6 +19721,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The specific shape of the building.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([5,6,7,8,9])]
 		[Optional]
 		public buildingShape? buildingShape {
 			get {
@@ -20234,14 +19732,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buildingShape[] buildingShapeList => [(buildingShape)5,(buildingShape)6,(buildingShape)7,(buildingShape)8,(buildingShape)9];
-
 		private categoryOfSiloTank? _categoryOfSiloTank  = default;
 
 		[Description("Classification based on the product for which a silo or tank is used.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public categoryOfSiloTank? categoryOfSiloTank {
 			get {
@@ -20252,24 +19748,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1,(categoryOfSiloTank)2,(categoryOfSiloTank)3,(categoryOfSiloTank)4];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -20306,9 +19793,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		private Boolean? _radarConspicuous  = default;
 
 		[Description("A feature which returns a strong radar echo.")]
@@ -20329,14 +19813,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private verticalDatum? _verticalDatum  = default;
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -20346,9 +19828,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -20370,6 +19849,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SiloTank")]
 		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -20379,9 +19859,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -20801,6 +20278,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -20811,14 +20289,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -20828,9 +20304,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -20852,6 +20325,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of pile, driven into the earth as a foundation or support for a structure.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,4,5,6,7])]
 		[Optional]
 		public categoryOfPile? categoryOfPile {
 			get {
@@ -20862,24 +20336,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1,(categoryOfPile)3,(categoryOfPile)4,(categoryOfPile)5,(categoryOfPile)6,(categoryOfPile)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _height  = default;
 
@@ -20901,6 +20366,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -20910,9 +20376,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		private double? _verticalLength  = default;
 
@@ -20934,6 +20397,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Pile")]
 		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -20943,9 +20407,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -21336,6 +20797,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -21346,14 +20808,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -21363,9 +20823,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -21719,6 +21176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -21729,14 +21187,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -21746,9 +21202,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -22087,6 +21540,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The building's primary construction material.")]
 		[Category("SinkerAnchor")]
 		[Editor(typeof(Editors.HorizonEditor<SinkerAnchor>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public natureOfConstruction? natureOfConstruction {
 			get {
@@ -22096,9 +21550,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _natureOfConstruction, value);
 			}
 		}
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private sinkerDimensionsViewModel? _sinkerDimensions  = default;
 
@@ -22552,6 +22003,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The building's primary construction material.")]
 		[Category("MooringShackle")]
 		[Editor(typeof(Editors.HorizonEditor<MooringShackle>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public natureOfConstruction? natureOfConstruction {
 			get {
@@ -22562,14 +22014,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-
 		private ShackleType? _ShackleType  = default;
 
 		[Description("Types of shackle.")]
 		[Category("MooringShackle")]
 		[Editor(typeof(Editors.HorizonEditor<MooringShackle>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public ShackleType? ShackleType {
 			get {
@@ -22579,9 +22029,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _ShackleType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public ShackleType[] ShackleTypeList => [(ShackleType)1,(ShackleType)2,(ShackleType)3,(ShackleType)4,(ShackleType)5,(ShackleType)6];
 
 		private double? _weight  = default;
 
@@ -23338,6 +22785,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableSubmarine")]
 		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,4,5,6,7,8])]
 		[Mandatory]
 		public categoryOfCable categoryOfCable {
 			get {
@@ -23348,16 +22796,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)3,(categoryOfCable)4,(categoryOfCable)5,(categoryOfCable)6,(categoryOfCable)7,(categoryOfCable)8];
-
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -23932,6 +23374,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The building's primary construction material.")]
 		[Category("Swivel")]
 		[Editor(typeof(Editors.HorizonEditor<Swivel>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public natureOfConstruction? natureOfConstruction {
 			get {
@@ -23941,9 +23384,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _natureOfConstruction, value);
 			}
 		}
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private double? _weight  = default;
 
@@ -25204,6 +24644,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The building's primary construction material.")]
 		[Category("CounterWeight")]
 		[Editor(typeof(Editors.HorizonEditor<CounterWeight>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public natureOfConstruction? natureOfConstruction {
 			get {
@@ -25213,9 +24654,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _natureOfConstruction, value);
 			}
 		}
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private double _weight  = default;
 
@@ -25648,30 +25086,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Topmark")]
 		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 		[Mandatory]
 		public topmarkDaymarkShape topmarkDaymarkShape {
 			get {
@@ -25681,9 +25111,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _topmarkDaymarkShape, value);
 			}
 		}
-
-		[Browsable(false)]
-		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
 
 		private double? _verticalLength  = default;
 
@@ -26143,6 +25570,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -26153,14 +25581,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -26170,9 +25596,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -26194,6 +25617,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
 			get {
@@ -26204,24 +25628,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -26258,6 +25673,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -26268,16 +25684,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -26299,9 +25709,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private double? _verticalLength  = default;
 
 		[Description("The total vertical length of a feature.")]
@@ -26322,6 +25729,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -26331,9 +25739,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -26751,6 +26156,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -26761,14 +26167,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -26778,9 +26182,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -26802,6 +26203,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
 			get {
@@ -26812,24 +26214,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
-
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 
 		private double? _elevation  = default;
 
@@ -26866,6 +26259,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -26876,16 +26270,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -26907,9 +26295,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-
 		private double? _verticalLength  = default;
 
 		[Description("The total vertical length of a feature.")]
@@ -26930,6 +26315,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
 			get {
@@ -26939,9 +26325,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _visualProminence, value);
 			}
 		}
-
-		[Browsable(false)]
-		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 		private double? _verticalAccuracy  = default;
 
@@ -26962,9 +26345,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("SpecialPurposeGeneralBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -27376,6 +26756,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -27386,14 +26767,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -27403,9 +26782,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -27427,6 +26803,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -27437,30 +26814,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -27471,16 +26840,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -27501,9 +26864,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -27945,6 +27305,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("A Category denoting the significance of an Aid to Navigation, expressed in terms of the probability that an AtoN or system of AtoN, as defined by the Competent Authority, is performing its specified function at any randomly chosen time. This is expressed as a percentage of total time that an AtoN or system of AtoN should be performing their specified function.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public aidAvailabilityCategory? aidAvailabilityCategory {
 			get {
@@ -27955,14 +27316,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
-
 		private condition? _condition  = default;
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("StructureObject")]
 		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -27972,9 +27331,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
 
 		private contactAddressViewModel? _contactAddress  = default;
 
@@ -27996,6 +27352,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
 			get {
@@ -28006,30 +27363,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
-
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
-
-		[Browsable(false)]
-		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
-		[Browsable(false)]
-		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
 		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,14,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
 			get {
@@ -28040,16 +27389,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
-
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
-
-		[Browsable(false)]
-		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 
 		private Boolean? _radarConspicuous  = default;
 
@@ -28070,9 +27413,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
-
-		[Browsable(false)]
-		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 		private String? _typeOfBuoy  = default;
 
@@ -28123,9 +27463,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("SpecialPurposeGeneralBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64,(categoryOfSpecialPurposeMark)65,(categoryOfSpecialPurposeMark)66,(categoryOfSpecialPurposeMark)67];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -28489,6 +27826,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("named aggregations between two or more aids to navigation and/or navigationally relevant features")]
 		[Category("AtonAggregation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonAggregation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,2])]
 		[Mandatory]
 		public CategoryOfAggregation CategoryOfAggregation {
 			get {
@@ -28498,9 +27836,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _CategoryOfAggregation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public CategoryOfAggregation[] CategoryOfAggregationList =>  CodeList.CategoryOfAggregations.ToArray();
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -28648,6 +27983,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("named associations between two or more aids to navigation and/or navigationally relevant features")]
 		[Category("AtonAssociation")]
 		[Editor(typeof(Editors.HorizonEditor<AtonAssociation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Mandatory]
 		public CategoryOfAssociation CategoryOfAssociation {
 			get {
@@ -28657,9 +27993,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _CategoryOfAssociation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public CategoryOfAssociation[] CategoryOfAssociationList =>  CodeList.CategoryOfAssociations.ToArray();
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -28888,6 +28221,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Mandatory]
 		public categoryOfTemporalVariation categoryOfTemporalVariation {
 			get {
@@ -28897,9 +28231,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _categoryOfTemporalVariation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
 
 		private double? _orientationUncertainty  = default;
 
@@ -29251,6 +28582,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("NavigationalSystemOfMarks")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Mandatory]
 		public marksNavigationalSystemOf marksNavigationalSystemOf {
 			get {
@@ -29260,9 +28592,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _marksNavigationalSystemOf, value);
 			}
 		}
-
-		[Browsable(false)]
-		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)15];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -29321,6 +28650,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
@@ -29330,9 +28660,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -29391,6 +28718,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
@@ -29400,9 +28728,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];

@@ -2130,7 +2130,7 @@ namespace S100Framework.DomainModel.S124 {
 			public int warningNumber {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			public warningType warningType {get;set;}
 
@@ -2279,7 +2279,7 @@ namespace S100Framework.DomainModel.S124 {
 			public String name {get;set;} = string.Empty;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -2612,7 +2612,7 @@ namespace S100Framework.DomainModel.S124 {
 			public Boolean noMessageOnHand {get;set;} = false;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public referenceCategory referenceCategory {get;set;}
 
@@ -2693,7 +2693,7 @@ namespace S100Framework.DomainModel.S124 {
 			public Boolean intService {get;set;} = false;
 
 			[XmlElement("navwarnTypeGeneral")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 			[Mandatory]
 			public navwarnTypeGeneral navwarnTypeGeneral {get;set;} = default;
 
@@ -2750,7 +2750,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
@@ -2809,7 +2809,7 @@ namespace S100Framework.DomainModel.S124 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavwarnPart : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([7,8,14,25,27])]
+			[PermittedValues([7,8,14,25,27])]
 			[Optional]
 			public restriction? restriction {get;set;} = default;
 

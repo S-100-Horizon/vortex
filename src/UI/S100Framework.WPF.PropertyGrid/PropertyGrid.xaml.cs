@@ -21,15 +21,14 @@ namespace S100Framework.WPF
         private object? _selectedObject;
         private ObservableCollection<PropertyItem> _properties;
 
-        public PropertyGrid()
-        {
+        public PropertyGrid() {
             InitializeComponent();
             _properties = new ObservableCollection<PropertyItem>();
 
             // Initialize commands
             AddCollectionItemCommand = new RelayCommand(ExecuteAddCollectionItem, CanExecuteAddCollectionItem);
             RemoveCollectionItemCommand = new RelayCommand(ExecuteRemoveCollectionItem, CanExecuteRemoveCollectionItem);
-            
+
             // Subscribe to property processing errors
             PropertyGridBuilder.PropertyProcessingError += OnPropertyGridBuilderError;
         }
@@ -46,16 +45,13 @@ namespace S100Framework.WPF
                 typeof(PropertyGrid),
                 new PropertyMetadata(null, OnSelectedObjectChanged));
 
-        public object? SelectedObject
-        {
+        public object? SelectedObject {
             get => GetValue(SelectedObjectProperty);
             set => SetValue(SelectedObjectProperty, value);
         }
 
-        private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is PropertyGrid grid)
-            {
+        private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            if (d is PropertyGrid grid) {
                 grid._selectedObject = e.NewValue;
                 grid.RefreshProperties();
                 grid.UpdateDescriptionForRootObject();
@@ -72,8 +68,7 @@ namespace S100Framework.WPF
                 typeof(PropertyGrid),
                 new PropertyMetadata(string.Empty));
 
-        public string SelectedDescription
-        {
+        public string SelectedDescription {
             get => (string)GetValue(SelectedDescriptionProperty);
             set => SetValue(SelectedDescriptionProperty, value);
         }
@@ -82,11 +77,9 @@ namespace S100Framework.WPF
 
         #region Properties
 
-        public ObservableCollection<PropertyItem> Properties
-        {
+        public ObservableCollection<PropertyItem> Properties {
             get => _properties;
-            set
-            {
+            set {
                 _properties = value;
                 OnPropertyChanged(nameof(Properties));
             }
@@ -102,16 +95,14 @@ namespace S100Framework.WPF
         /// <summary>
         /// Refreshes the property list from the selected object
         /// </summary>
-        public void RefreshProperties()
-        {
+        public void RefreshProperties() {
             Properties.Clear();
 
             if (_selectedObject == null)
                 return;
 
             var items = PropertyGridBuilder.GetProperties(_selectedObject);
-            foreach (var item in items)
-            {
+            foreach (var item in items) {
                 Properties.Add(item);
             }
         }
@@ -119,18 +110,15 @@ namespace S100Framework.WPF
         /// <summary>
         /// Updates the display to reflect changes in the object
         /// </summary>
-        public void Refresh()
-        {
+        public void Refresh() {
             RefreshProperties();
         }
 
         /// <summary>
         /// Updates the description panel to show the root object's description
         /// </summary>
-        private void UpdateDescriptionForRootObject()
-        {
-            if (_selectedObject == null)
-            {
+        private void UpdateDescriptionForRootObject() {
+            if (_selectedObject == null) {
                 SelectedDescription = string.Empty;
                 return;
             }
@@ -142,8 +130,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Extracts description from a Type using reflection
         /// </summary>
-        private string GetDescriptionFromType(Type type)
-        {
+        private string GetDescriptionFromType(Type type) {
             var descriptionAttr = type.GetCustomAttribute<DescriptionAttribute>();
             return descriptionAttr?.Description ?? string.Empty;
         }
@@ -151,8 +138,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Extracts description from a PropertyInfo using reflection
         /// </summary>
-        private string GetDescriptionFromProperty(PropertyInfo propertyInfo)
-        {
+        private string GetDescriptionFromProperty(PropertyInfo propertyInfo) {
             var descriptionAttr = propertyInfo.GetCustomAttribute<DescriptionAttribute>();
             return descriptionAttr?.Description ?? string.Empty;
         }
@@ -161,112 +147,91 @@ namespace S100Framework.WPF
 
         #region Command Handlers
 
-        private void ExecuteAddCollectionItem(object? parameter)
-        {
-            if (parameter is CollectionPropertyItem collectionItem)
-            {
+        private void ExecuteAddCollectionItem(object? parameter) {
+            if (parameter is CollectionPropertyItem collectionItem) {
                 collectionItem.AddItem();
             }
         }
 
-        private bool CanExecuteAddCollectionItem(object? parameter)
-        {
+        private bool CanExecuteAddCollectionItem(object? parameter) {
             return parameter is CollectionPropertyItem collectionItem && collectionItem.CanAddItems;
         }
 
-        private void ExecuteRemoveCollectionItem(object? parameter)
-        {
+        private void ExecuteRemoveCollectionItem(object? parameter) {
             System.Diagnostics.Debug.WriteLine($"ExecuteRemoveCollectionItem called with parameter: {parameter?.GetType().Name}");
-            
-            if (parameter is PropertyItem item)
-            {
+
+            if (parameter is PropertyItem item) {
                 System.Diagnostics.Debug.WriteLine($"Item Name: {item.Name}, CollectionIndex: {item.CollectionIndex}");
                 System.Diagnostics.Debug.WriteLine($"ParentObject type: {item.ParentObject?.GetType().Name}");
-                
-                if (item.ParentObject is IList list)
-                {
+
+                if (item.ParentObject is IList list) {
                     System.Diagnostics.Debug.WriteLine($"List Count: {list.Count}, IsReadOnly: {list.IsReadOnly}, IsFixedSize: {list.IsFixedSize}");
-                    
-                    try
-                    {
+
+                    try {
                         // Use the stored collection index to remove the correct item
-                        if (item.CollectionIndex >= 0 && item.CollectionIndex < list.Count)
-                        {
+                        if (item.CollectionIndex >= 0 && item.CollectionIndex < list.Count) {
                             System.Diagnostics.Debug.WriteLine($"Removing item at index {item.CollectionIndex}");
                             list.RemoveAt(item.CollectionIndex);
                             System.Diagnostics.Debug.WriteLine($"Item removed. New count: {list.Count}");
-                            
+
                             // If we have a reference to the parent collection item, refresh it
                             // This will automatically update the UI
-                            if (item.ParentCollectionItem != null)
-                            {
+                            if (item.ParentCollectionItem != null) {
                                 System.Diagnostics.Debug.WriteLine("Refreshing parent collection item");
-                                
+
                                 // Ensure we're on the UI thread
-                                Dispatcher.Invoke(() =>
-                                {
+                                Dispatcher.Invoke(() => {
                                     item.ParentCollectionItem.RefreshChildren();
                                 });
                             }
-                            else
-                            {
+                            else {
                                 // Fallback: refresh all properties
                                 System.Diagnostics.Debug.WriteLine("No parent collection item, refreshing all properties");
-                                Dispatcher.Invoke(() =>
-                                {
+                                Dispatcher.Invoke(() => {
                                     RefreshProperties();
                                 });
                             }
                         }
-                        else
-                        {
+                        else {
                             System.Diagnostics.Debug.WriteLine($"Invalid index: {item.CollectionIndex}, List count: {list.Count}");
                         }
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
                         System.Diagnostics.Debug.WriteLine($"Error removing collection item: {ex.Message}");
                         System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                     }
                 }
-                else
-                {
+                else {
                     System.Diagnostics.Debug.WriteLine("ParentObject is not IList");
                 }
             }
-            else
-            {
+            else {
                 System.Diagnostics.Debug.WriteLine("Parameter is not PropertyItem");
             }
         }
 
-        private bool CanExecuteRemoveCollectionItem(object? parameter)
-        {
+        private bool CanExecuteRemoveCollectionItem(object? parameter) {
             System.Diagnostics.Debug.WriteLine($"CanExecuteRemoveCollectionItem called with parameter: {parameter?.GetType().Name ?? "null"}");
-            
-            if (parameter is PropertyItem item)
-            {
+
+            if (parameter is PropertyItem item) {
                 System.Diagnostics.Debug.WriteLine($"  Item Name: {item.Name}, CollectionIndex: {item.CollectionIndex}");
                 System.Diagnostics.Debug.WriteLine($"  ParentObject: {item.ParentObject?.GetType().Name ?? "null"}");
-                
-                if (item.ParentObject is IList list)
-                {
+
+                if (item.ParentObject is IList list) {
                     System.Diagnostics.Debug.WriteLine($"  List Count: {list.Count}, IsReadOnly: {list.IsReadOnly}, IsFixedSize: {list.IsFixedSize}");
-                    bool canExecute = !list.IsReadOnly && !list.IsFixedSize && 
+                    bool canExecute = !list.IsReadOnly && !list.IsFixedSize &&
                            item.CollectionIndex >= 0 && item.CollectionIndex < list.Count;
                     System.Diagnostics.Debug.WriteLine($"  CanExecute result: {canExecute}");
                     return canExecute;
                 }
-                else
-                {
+                else {
                     System.Diagnostics.Debug.WriteLine("  ParentObject is not IList - returning false");
                 }
             }
-            else
-            {
+            else {
                 System.Diagnostics.Debug.WriteLine("  Parameter is not PropertyItem - returning false");
             }
-            
+
             return false;
         }
 
@@ -277,8 +242,7 @@ namespace S100Framework.WPF
         /// <summary>
         /// Handles errors from PropertyGridBuilder
         /// </summary>
-        private void OnPropertyGridBuilderError(object? sender, PropertyGridErrorEventArgs e)
-        {
+        private void OnPropertyGridBuilderError(object? sender, PropertyGridErrorEventArgs e) {
             System.Diagnostics.Debug.WriteLine($"PropertyGrid: Error processing property '{e.PropertyName}': {e.Exception.Message}");
             // Future: Could display error in UI or raise event for consumer to handle
         }
@@ -286,34 +250,27 @@ namespace S100Framework.WPF
         /// <summary>
         /// Handles TreeView selection changes to update the description panel
         /// </summary>
-        private void PropertyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            if (e.NewValue is PropertyItem selectedItem)
-            {
+        private void PropertyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e) {
+            if (e.NewValue is PropertyItem selectedItem) {
                 // Use the Description property if it's already populated
-                if (!string.IsNullOrEmpty(selectedItem.Description))
-                {
+                if (!string.IsNullOrEmpty(selectedItem.Description)) {
                     SelectedDescription = selectedItem.Description;
                 }
                 // Otherwise, try to get it from reflection
-                else if (selectedItem.PropertyInfo != null)
-                {
+                else if (selectedItem.PropertyInfo != null) {
                     SelectedDescription = GetDescriptionFromProperty(selectedItem.PropertyInfo);
                 }
-                else
-                {
+                else {
                     SelectedDescription = string.Empty;
                 }
             }
-            else
-            {
+            else {
                 // No property selected, show root object description
                 UpdateDescriptionForRootObject();
             }
         }
 
-        private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
+        private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e) {
             // Allow only numbers, decimal point, and minus sign
             Regex regex = new Regex("[^0-9.-]+");
             e.Handled = regex.IsMatch(e.Text);
@@ -325,8 +282,7 @@ namespace S100Framework.WPF
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
+        protected virtual void OnPropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
@@ -341,25 +297,21 @@ namespace S100Framework.WPF
         private readonly Action<object?> _execute;
         private readonly Func<object?, bool>? _canExecute;
 
-        public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
-        {
+        public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null) {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
-        public event EventHandler? CanExecuteChanged
-        {
+        public event EventHandler? CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public bool CanExecute(object? parameter)
-        {
+        public bool CanExecute(object? parameter) {
             return _canExecute == null || _canExecute(parameter);
         }
 
-        public void Execute(object? parameter)
-        {
+        public void Execute(object? parameter) {
             _execute(parameter);
         }
     }

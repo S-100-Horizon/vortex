@@ -26,7 +26,7 @@ namespace S100Framework.Catalogues
             var property = intance.GetProperty(propertyName);
             if (property == null) return null;
 
-            var attribute = (EnumerationValueAttribute?)property!.GetCustomAttribute(typeof(EnumerationValueAttribute));
+            var attribute = (PermittedValuesAttribute?)property!.GetCustomAttribute(typeof(PermittedValuesAttribute));
             if (attribute == null) return ((int[])Enum.GetValues(property.PropertyType)).Select(e => (int)e).ToArray();
 
             return attribute.PropertyValues;

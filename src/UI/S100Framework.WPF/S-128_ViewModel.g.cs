@@ -382,9 +382,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Browsable(false)]
-		public nameUsage[] nameUsageList => Enum.GetValues<nameUsage>();
-
 
 		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
@@ -989,6 +986,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("ISO 216 is a paper-size standard established by the International Organization for Standardization (ISO).")]
 		[Editor(typeof(Editors.HorizonEditor<printSize>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Optional]
 		public iSO216? iSO216 {
 			get {
@@ -998,9 +996,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _iSO216, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSO216[] iSO216List => [(iSO216)1,(iSO216)2,(iSO216)3,(iSO216)4,(iSO216)5,(iSO216)6,(iSO216)7,(iSO216)8];
 
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
@@ -1165,6 +1160,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("Specifies the algorithm used to compute digital signature value.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([8])]
 		[Mandatory]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
@@ -1175,13 +1171,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Browsable(false)]
-		public digitalSignatureReference[] digitalSignatureReferenceList => [(digitalSignatureReference)8];
-
 		private digitalSignatureValue? _digitalSignatureValue  = default;
 
 		[Description("Value derived from the digital signature.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Optional]
 		public digitalSignatureValue? digitalSignatureValue {
 			get {
@@ -1191,9 +1185,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _digitalSignatureValue, value);
 			}
 		}
-
-		[Browsable(false)]
-		public digitalSignatureValue[] digitalSignatureValueList => [(digitalSignatureValue)1,(digitalSignatureValue)2];
 
 		private int? _editionNumber  = default;
 
@@ -1269,6 +1260,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("The format used for the support file.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,100])]
 		[Mandatory]
 		public supportFileFormat supportFileFormat {
 			get {
@@ -1279,13 +1271,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Browsable(false)]
-		public supportFileFormat[] supportFileFormatList => [(supportFileFormat)1,(supportFileFormat)2,(supportFileFormat)3,(supportFileFormat)4,(supportFileFormat)5,(supportFileFormat)6,(supportFileFormat)7,(supportFileFormat)8,(supportFileFormat)9,(supportFileFormat)100];
-
 		private supportFilePurpose _supportFilePurpose  = default;
 
 		[Description("The reason for inclusion of the support file.")]
 		[Editor(typeof(Editors.HorizonEditor<supportFile>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public supportFilePurpose supportFilePurpose {
 			get {
@@ -1295,9 +1285,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _supportFilePurpose, value);
 			}
 		}
-
-		[Browsable(false)]
-		public supportFilePurpose[] supportFilePurposeList => [(supportFilePurpose)1,(supportFilePurpose)2,(supportFilePurpose)3];
 
 		private defaultLocaleViewModel _defaultLocale  = default;
 
@@ -1556,6 +1543,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -1565,9 +1553,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16,(categoryOfAuthority)17,(categoryOfAuthority)18,(categoryOfAuthority)19];
 
 		private String? _countryName  = default;
 
@@ -1615,6 +1600,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("Type of the source.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public sourceType? sourceType {
 			get {
@@ -1624,9 +1610,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _sourceType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 
 		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Optional]
@@ -1718,9 +1701,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public telecommunicationService[] telecommunicationServiceList => [(telecommunicationService)1,(telecommunicationService)2,(telecommunicationService)3,(telecommunicationService)4,(telecommunicationService)5,(telecommunicationService)6,(telecommunicationService)7,(telecommunicationService)8];
 
 
 		public telecommunicationsViewModel Load(telecommunications instance) {
@@ -1852,9 +1832,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The unit of a value indicating a time Time Interval.")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
-
-		[Browsable(false)]
-		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnitList => [(typeOfTimeIntervalUnit)1,(typeOfTimeIntervalUnit)2,(typeOfTimeIntervalUnit)3,(typeOfTimeIntervalUnit)4];
 
 		private int _valueOfTime  = default;
 
@@ -2212,6 +2189,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("A classification of the internal relationships between products and services.")]
 		[Category("ProductMapping")]
 		[Editor(typeof(Editors.HorizonEditor<ProductMapping>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
@@ -2221,9 +2199,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _categoryOfProductMapping, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfProductMapping[] categoryOfProductMappingList => [(categoryOfProductMapping)1,(categoryOfProductMapping)2,(categoryOfProductMapping)3,(categoryOfProductMapping)4];
 
 
 		public override string Serialize() {
@@ -3583,9 +3558,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
-		[Browsable(false)]
-		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
-
 		private String? _catalogueElementIdentifier  = default;
 
 		[Description("Identifier of a catalogue element.")]
@@ -3620,9 +3592,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 
 		private Boolean _notForNavigation  = false;
 
@@ -3714,6 +3683,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("Supply status of nautical products.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Optional]
 		public distributionStatus? distributionStatus {
 			get {
@@ -3723,9 +3693,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _distributionStatus, value);
 			}
 		}
-
-		[Browsable(false)]
-		public distributionStatus[] distributionStatusList => [(distributionStatus)1,(distributionStatus)2];
 
 		private int? _editionNumber  = default;
 
@@ -3776,9 +3743,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
-
-		[Browsable(false)]
-		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
 
 		private int? _optimumDisplayScale  = default;
 
@@ -3845,6 +3809,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The use for which the dataset is intended.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public specificUsage? specificUsage {
 			get {
@@ -3854,9 +3819,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _specificUsage, value);
 			}
 		}
-
-		[Browsable(false)]
-		public specificUsage[] specificUsageList => [(specificUsage)1,(specificUsage)2,(specificUsage)3,(specificUsage)4,(specificUsage)5,(specificUsage)6];
 
 		private DateOnly? _updateDate  = default;
 
@@ -3908,6 +3870,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -3917,9 +3880,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)42,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
 
 		private Boolean? _compressionFlag  = default;
 
@@ -3986,6 +3946,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The type of product format.")]
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.HorizonEditor<ElectronicProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
@@ -3995,9 +3956,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _typeOfProductFormat, value);
 			}
 		}
-
-		[Browsable(false)]
-		public typeOfProductFormat[] typeOfProductFormatList => [(typeOfProductFormat)1,(typeOfProductFormat)2,(typeOfProductFormat)3,(typeOfProductFormat)4,(typeOfProductFormat)5,(typeOfProductFormat)6,(typeOfProductFormat)7,(typeOfProductFormat)8,(typeOfProductFormat)9,(typeOfProductFormat)10,(typeOfProductFormat)11,(typeOfProductFormat)12];
 
 		private productSpecificationViewModel? _productSpecification  = default;
 
@@ -4256,9 +4214,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
-		[Browsable(false)]
-		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
-
 		private String? _catalogueElementIdentifier  = default;
 
 		[Description("Identifier of a catalogue element.")]
@@ -4293,9 +4248,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 
 		private Boolean _notForNavigation  = false;
 
@@ -4387,6 +4339,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("Supply status of nautical products.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Optional]
 		public distributionStatus? distributionStatus {
 			get {
@@ -4396,9 +4349,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _distributionStatus, value);
 			}
 		}
-
-		[Browsable(false)]
-		public distributionStatus[] distributionStatusList => [(distributionStatus)1,(distributionStatus)2];
 
 		private int? _editionNumber  = default;
 
@@ -4449,9 +4399,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
-
-		[Browsable(false)]
-		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
 
 		private int? _optimumDisplayScale  = default;
 
@@ -4518,6 +4465,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The use for which the dataset is intended.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public specificUsage? specificUsage {
 			get {
@@ -4527,9 +4475,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _specificUsage, value);
 			}
 		}
-
-		[Browsable(false)]
-		public specificUsage[] specificUsageList => [(specificUsage)1,(specificUsage)2,(specificUsage)3,(specificUsage)4,(specificUsage)5,(specificUsage)6];
 
 		private DateOnly? _updateDate  = default;
 
@@ -4581,6 +4526,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45])]
 		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
@@ -4590,9 +4536,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)42,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
 
 		private DateOnly _editionDate  = default;
 
@@ -4929,9 +4872,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
-		[Browsable(false)]
-		public catalogueElementClassification[] catalogueElementClassificationList => Enum.GetValues<catalogueElementClassification>();
-
 		private String? _catalogueElementIdentifier  = default;
 
 		[Description("Identifier of a catalogue element.")]
@@ -4966,9 +4906,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public iMOMaritimeService[] iMOMaritimeServiceList => Enum.GetValues<iMOMaritimeService>();
 
 		private Boolean _notForNavigation  = false;
 
@@ -5080,6 +5017,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Description("Types of status of services.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public serviceStatus? serviceStatus {
 			get {
@@ -5090,14 +5028,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Browsable(false)]
-		public serviceStatus[] serviceStatusList => [(serviceStatus)1,(serviceStatus)2,(serviceStatus)3,(serviceStatus)4];
-
 		private typeOfProductFormat _typeOfProductFormat  = default;
 
 		[Description("The type of product format.")]
 		[Category("S100Service")]
 		[Editor(typeof(Editors.HorizonEditor<S100Service>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
@@ -5107,9 +5043,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _typeOfProductFormat, value);
 			}
 		}
-
-		[Browsable(false)]
-		public typeOfProductFormat[] typeOfProductFormatList => [(typeOfProductFormat)1,(typeOfProductFormat)2,(typeOfProductFormat)3,(typeOfProductFormat)4,(typeOfProductFormat)5,(typeOfProductFormat)6,(typeOfProductFormat)7,(typeOfProductFormat)8,(typeOfProductFormat)9,(typeOfProductFormat)10,(typeOfProductFormat)11,(typeOfProductFormat)12];
 
 		private serviceSpecificationViewModel? _serviceSpecification  = default;
 

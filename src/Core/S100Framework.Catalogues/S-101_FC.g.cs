@@ -6319,7 +6319,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? name {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public nameUsage? nameUsage {get;set;} = default;
 
@@ -6616,7 +6616,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class measuredDistanceValue : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Mandatory]
 			[UnknownValue]
 			public distanceUnitOfMeasurement? distanceUnitOfMeasurement {get;set;} = default;
@@ -6985,7 +6985,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? signalDuration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			[UnknownValue]
 			public signalStatus? signalStatus {get;set;} = default;
@@ -7052,13 +7052,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surfaceCharacteristics : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			[ConditionalUnknownDependency("surfaceCharacteristics.natureOfSurface")]
 			[Optional]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 			[Multiplicity(0, 3)]
 			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
 
@@ -7148,7 +7148,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? telecommunicationIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Optional]
 			public telecommunicationService? telecommunicationService {get;set;} = default;
 
@@ -7223,7 +7223,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class timeIntervalsByDayOfWeek : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Multiplicity(0, 7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
@@ -7273,17 +7273,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class topmark : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			[Mandatory]
 			[UnknownValue]
 			public topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
@@ -7338,7 +7338,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? magneticAnomalyValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5,13])]
+			[PermittedValues([5,13])]
 			[Optional]
 			public referenceDirection? referenceDirection {get;set;} = default;
 
@@ -7409,7 +7409,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? speedLimit {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4])]
+			[PermittedValues([2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public speedUnits? speedUnits {get;set;} = default;
@@ -7447,7 +7447,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class zoneOfConfidence : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfZoneOfConfidenceInData? categoryOfZoneOfConfidenceInData {get;set;} = default;
@@ -7531,7 +7531,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
+			[PermittedValues([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			[Mandatory]
 			[UnknownValue]
 			public lightCharacteristic? lightCharacteristic {get;set;} = default;
@@ -7583,7 +7583,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class scheduleByDayOfWeek : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
@@ -7699,13 +7699,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class tidalStreamPanelValues : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			[UnknownValue]
 			public referenceTide? referenceTide {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public referenceTideType? referenceTideType {get;set;} = default;
@@ -7894,7 +7894,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class lightSector : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
@@ -7903,7 +7903,7 @@ namespace S100Framework.DomainModel.S101 {
 			public directionalCharacter? directionalCharacter {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9])]
+			[PermittedValues([1,2,3,4,5,6,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
@@ -7968,7 +7968,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
+			[PermittedValues([1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29])]
 			[Mandatory]
 			[UnknownValue]
 			public lightCharacteristic? lightCharacteristic {get;set;} = default;
@@ -8758,7 +8758,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
-			[EnumerationValue([4])]
+			[PermittedValues([4])]
 			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
@@ -8814,7 +8814,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,4])]
+			[PermittedValues([1,4])]
 			[Optional]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
@@ -9000,7 +9000,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationalSystemOfMarks : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Mandatory]
 			[UnknownValue]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -9075,7 +9075,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Mandatory]
 			[UnknownValue]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
@@ -9154,13 +9154,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfBathymetricData : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6])]
+			[PermittedValues([1,2,3,5,6])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public dataAssessment? dataAssessment {get;set;} = default;
@@ -9277,7 +9277,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 			[Mandatory]
 			[UnknownValue]
 			public verticalDatum? verticalDatum {get;set;} = default;
@@ -9348,7 +9348,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Mandatory]
 			[UnknownValue]
 			public verticalDatum? verticalDatum {get;set;} = default;
@@ -9453,12 +9453,12 @@ namespace S100Framework.DomainModel.S101 {
 			public int? measurementDistanceMinimum {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4])]
+			[PermittedValues([4])]
 			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,6,7,8,9,10,11])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -9483,12 +9483,12 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<surveyType> surveyType {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -9607,7 +9607,7 @@ namespace S100Framework.DomainModel.S101 {
 			public int? updateNumber {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public updateType? updateType {get;set;} = default;
@@ -9860,12 +9860,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Coastline : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8,10])]
+			[PermittedValues([1,2,6,7,8,10])]
 			[Optional]
 			public categoryOfCoastline? categoryOfCoastline {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
+			[PermittedValues([1,2,3,4,6,7,8,11,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
@@ -9883,7 +9883,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17])]
 			[Optional]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
@@ -9892,7 +9892,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -9990,7 +9990,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,5])]
+			[PermittedValues([1,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -10007,7 +10007,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([18])]
+			[PermittedValues([18])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -10180,7 +10180,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -10264,7 +10264,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5])]
+			[PermittedValues([5])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -10433,7 +10433,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -10524,7 +10524,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5])]
+			[PermittedValues([5])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -10602,7 +10602,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandRegion : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 			[Optional]
 			public List<categoryOfLandRegion> categoryOfLandRegion {get;set;} = [];
 
@@ -10615,12 +10615,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			[Optional]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,6])]
+			[PermittedValues([1,6])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -10708,7 +10708,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Vegetation : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([3,4,5,6,11,13,14,15,16,17,18,19,20,22])]
+			[PermittedValues([3,4,5,6,11,13,14,15,16,17,18,19,20,22])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfVegetation? categoryOfVegetation {get;set;} = default;
@@ -10735,7 +10735,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -10821,7 +10821,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IceArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,5,8])]
+			[PermittedValues([1,5,8])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfIce? categoryOfIce {get;set;} = default;
@@ -10852,7 +10852,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,18])]
+			[PermittedValues([1,5,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -10861,7 +10861,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -10957,12 +10957,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SlopingGround : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public categoryOfSlope? categoryOfSlope {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
+			[PermittedValues([1,2,3,4,6,7,8,11,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
@@ -10975,7 +10975,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5,6,7,9,11])]
+			[PermittedValues([4,5,6,7,9,11])]
 			[Optional]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
@@ -10984,7 +10984,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -11080,12 +11080,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SlopeTopline : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,6])]
+			[PermittedValues([1,2,6])]
 			[Optional]
 			public categoryOfSlope? categoryOfSlope {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,11,13])]
+			[PermittedValues([1,2,3,4,6,7,8,11,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
@@ -11103,7 +11103,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5,6,7,9,11])]
+			[PermittedValues([4,5,6,7,9,11])]
 			[Optional]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
@@ -11112,7 +11112,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -11285,12 +11285,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BuiltUpArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public categoryOfBuiltUpArea? categoryOfBuiltUpArea {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -11315,7 +11315,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -11421,22 +11421,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Building : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([5,6,7,8,9])]
+			[PermittedValues([5,6,7,8,9])]
 			[Optional]
 			public buildingShape? buildingShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -11450,7 +11450,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<featureName> featureName {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 			[Optional]
 			public List<function> function {get;set;} = [];
 
@@ -11467,7 +11467,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8,12])]
+			[PermittedValues([1,2,6,7,8,12])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -11480,7 +11480,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,7,8,12,13,14])]
+			[PermittedValues([4,7,8,12,13,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -11489,7 +11489,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -11631,12 +11631,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AirportAirfield : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9])]
+			[PermittedValues([1,2,3,4,5,6,8,9])]
 			[Optional]
 			public List<categoryOfAirportAirfield> categoryOfAirportAirfield {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -11653,7 +11653,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
+			[PermittedValues([1,2,4,5,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -11749,7 +11749,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Runway : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -11762,7 +11762,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7])]
+			[PermittedValues([1,2,4,5,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -11775,7 +11775,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
+			[PermittedValues([1,2,4,5,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -11867,7 +11867,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Helipad : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -11880,7 +11880,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7])]
+			[PermittedValues([1,2,4,5,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -11893,7 +11893,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
+			[PermittedValues([1,2,4,5,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -11985,33 +11985,33 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bridge : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Optional]
 			public bridgeConstruction? bridgeConstruction {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public List<bridgeFunction> bridgeFunction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([3,4,5,7])]
+			[PermittedValues([3,4,5,7])]
 			[ConditionalUnknownDependency("Bridge.categoryOfOpeningBridge")]
 			[Optional]
 			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -12032,7 +12032,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,11])]
+			[PermittedValues([1,2,6,7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -12050,12 +12050,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,12])]
+			[PermittedValues([1,2,4,5,7,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -12215,7 +12215,7 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -12323,7 +12323,7 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -12407,22 +12407,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Conveyor : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfConveyor? categoryOfConveyor {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -12451,7 +12451,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5,6,10,11,12,13,14,15,16,17,21,22,25])]
+			[PermittedValues([4,5,6,10,11,12,13,14,15,16,17,21,22,25])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -12464,7 +12464,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,12])]
+			[PermittedValues([4,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -12473,7 +12473,7 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -12482,7 +12482,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -12622,12 +12622,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableOverhead : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,10])]
+			[PermittedValues([1,3,10])]
 			[Optional]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,5])]
+			[PermittedValues([1,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -12660,7 +12660,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,7,12,28])]
+			[PermittedValues([1,4,5,7,12,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -12673,12 +12673,12 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -12793,12 +12793,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PipelineOverhead : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,6])]
+			[PermittedValues([2,3,4,6])]
 			[Optional]
 			public categoryOfPipelinePipe? categoryOfPipelinePipe {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,5])]
+			[PermittedValues([1,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -12819,7 +12819,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,7,8,9,18,19,20,22])]
+			[PermittedValues([1,2,3,7,8,9,18,19,20,22])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -12832,7 +12832,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,7,12])]
+			[PermittedValues([1,4,7,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -12841,12 +12841,12 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -12962,23 +12962,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PylonBridgeSupport : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfPylon? categoryOfPylon {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13003,7 +13003,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,11])]
+			[PermittedValues([1,2,6,7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -13016,7 +13016,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,12])]
+			[PermittedValues([4,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13025,12 +13025,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -13164,22 +13164,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FenceWall : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4])]
+			[PermittedValues([1,3,4])]
 			[Optional]
 			public categoryOfFence? categoryOfFence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13201,7 +13201,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6,7,11])]
+			[PermittedValues([1,2,3,6,7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -13214,7 +13214,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,7,12,13])]
+			[PermittedValues([1,7,12,13])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13223,7 +13223,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -13345,7 +13345,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Railway : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13366,7 +13366,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,12,13,14])]
+			[PermittedValues([1,4,6,12,13,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13452,12 +13452,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Road : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public categoryOfRoad? categoryOfRoad {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13470,7 +13470,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5])]
+			[PermittedValues([4,5])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -13479,7 +13479,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,7,8,12,13,14])]
+			[PermittedValues([1,4,6,7,8,12,13,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13575,7 +13575,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Tunnel : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13596,7 +13596,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,6,8,14])]
+			[PermittedValues([1,3,4,6,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13605,7 +13605,7 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -13705,27 +13705,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Landmark : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27])]
 			[Multiplicity(1)]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([16,17,41])]
+			[PermittedValues([16,17,41])]
 			[Optional]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5])]
+			[PermittedValues([1,2,4,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13739,7 +13739,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<featureName> featureName {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 			[Optional]
 			public List<function> function {get;set;} = [];
 
@@ -13756,7 +13756,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6,7,8,11,12])]
+			[PermittedValues([1,2,3,6,7,8,11,12])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -13769,7 +13769,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,4,5,7,8,12,13,14])]
+			[PermittedValues([2,4,5,7,8,12,13,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13778,7 +13778,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public visualProminence? visualProminence {get;set;} = default;
@@ -13925,27 +13925,27 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SiloTank : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([5,6,7,8,9])]
+			[PermittedValues([5,6,7,8,9])]
 			[Optional]
 			public buildingShape? buildingShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -13971,12 +13971,12 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,7,8,9,13,14,16,18,19,20,21,22,24])]
+			[PermittedValues([1,2,3,5,7,8,9,13,14,16,18,19,20,21,22,24])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -13989,7 +13989,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,12,13])]
+			[PermittedValues([4,12,13])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -13998,7 +13998,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -14146,17 +14146,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WindTurbine : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5])]
+			[PermittedValues([1,4,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -14186,7 +14186,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,6,7,8,11])]
+			[PermittedValues([2,6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -14199,7 +14199,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,13,14,28])]
+			[PermittedValues([1,2,4,5,7,8,12,13,14,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -14208,7 +14208,7 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -14217,12 +14217,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,7])]
+			[PermittedValues([2,7])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -14368,12 +14368,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FortifiedStructure : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9])]
+			[PermittedValues([1,2,3,4,5,6,8,9])]
 			[Optional]
 			public categoryOfFortifiedStructure? categoryOfFortifiedStructure {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -14390,7 +14390,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6,7])]
+			[PermittedValues([1,2,3,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -14403,7 +14403,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,7,8,12,13,14,28])]
+			[PermittedValues([4,7,8,12,13,14,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -14412,7 +14412,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -14532,13 +14532,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ProductionStorageArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfProductionArea? categoryOfProductionArea {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -14564,7 +14564,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -14577,7 +14577,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,12])]
+			[PermittedValues([4,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -14586,7 +14586,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -14702,7 +14702,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Checkpoint : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1])]
+			[PermittedValues([1])]
 			[Optional]
 			public categoryOfCheckpoint? categoryOfCheckpoint {get;set;} = default;
 
@@ -14715,7 +14715,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,9,12])]
+			[PermittedValues([1,2,5,7,9,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -14797,22 +14797,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Hulk : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public List<categoryOfHulk> categoryOfHulk {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -14853,7 +14853,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -14973,22 +14973,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Pile : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,8])]
+			[PermittedValues([1,3,4,5,6,7,8])]
 			[Optional]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15017,7 +15017,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,7,8,12,14])]
+			[PermittedValues([1,4,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -15026,7 +15026,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -15148,7 +15148,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dyke : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15169,7 +15169,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -15186,7 +15186,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -15284,22 +15284,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShorelineConstruction : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23])]
 			[Optional]
 			public categoryOfShorelineConstruction? categoryOfShorelineConstruction {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15332,7 +15332,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -15345,7 +15345,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,12,13,14,28])]
+			[PermittedValues([1,2,3,4,6,7,8,12,13,14,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -15354,12 +15354,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -15493,22 +15493,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StructureOverNavigableWater : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Optional]
 			public List<categoryOfStructure> categoryOfStructure {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15543,7 +15543,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8,11,12])]
+			[PermittedValues([1,2,6,7,8,11,12])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -15552,7 +15552,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([7,12,13,21,22,25])]
+			[PermittedValues([7,12,13,21,22,25])]
 			[Optional]
 			public product? product {get;set;} = default;
 
@@ -15565,7 +15565,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,7,8,12,14])]
+			[PermittedValues([1,4,5,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -15576,7 +15576,7 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -15585,7 +15585,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -15731,7 +15731,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Causeway : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15744,7 +15744,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -15753,12 +15753,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,7,8,12,14])]
+			[PermittedValues([1,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -15854,12 +15854,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Canal : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfCanal? categoryOfCanal {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -15888,7 +15888,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,8,14])]
+			[PermittedValues([1,3,4,5,6,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16077,12 +16077,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gate : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public categoryOfGate? categoryOfGate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -16104,17 +16104,17 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7])]
+			[PermittedValues([1,2,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,6,7])]
+			[PermittedValues([2,3,4,6,7])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,16,17])]
+			[PermittedValues([1,4,6,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16123,7 +16123,7 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceOpen? verticalClearanceOpen {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -16241,22 +16241,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dam : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfDam? categoryOfDam {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -16277,7 +16277,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6,7])]
+			[PermittedValues([1,2,3,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -16286,7 +16286,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8,14,28])]
+			[PermittedValues([1,2,6,7,8,14,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16295,12 +16295,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6])]
+			[PermittedValues([1,2,3,6])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -16426,22 +16426,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Crane : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public categoryOfCrane? categoryOfCrane {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -16474,7 +16474,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? radius {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,12])]
+			[PermittedValues([1,4,6,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16483,7 +16483,7 @@ namespace S100Framework.DomainModel.S101 {
 			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -16492,7 +16492,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -16630,7 +16630,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
@@ -16667,12 +16667,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,9,12])]
+			[PermittedValues([1,2,5,7,9,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16778,22 +16778,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Dolphin : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Multiplicity(1)]
 			public List<categoryOfDolphin> categoryOfDolphin {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -16819,7 +16819,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7])]
+			[PermittedValues([1,2,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -16836,7 +16836,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,12,14,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,12,14,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -16845,7 +16845,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -16977,7 +16977,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bollard : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -17002,7 +17002,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,6,7,8,12,14])]
+			[PermittedValues([1,3,4,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17096,7 +17096,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -17143,12 +17143,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? maximumPermittedDraught {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,6,7,8,9])]
+			[PermittedValues([2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,8,12,14])]
+			[PermittedValues([1,4,6,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17258,17 +17258,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -17318,7 +17318,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,7,8,12])]
+			[PermittedValues([1,4,6,7,8,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17327,7 +17327,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -17453,7 +17453,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Pontoon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -17478,7 +17478,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,12,14])]
+			[PermittedValues([1,2,4,5,6,7,8,12,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17487,7 +17487,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -17589,12 +17589,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DockArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfDock? categoryOfDock {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -17631,7 +17631,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? maximumPermittedDraught {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,8,14])]
+			[PermittedValues([1,4,6,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17747,12 +17747,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,11])]
+			[PermittedValues([1,2,6,7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,8,14,28])]
+			[PermittedValues([1,4,6,8,14,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -17761,7 +17761,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5])]
+			[PermittedValues([1,4,5])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -17883,7 +17883,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,8,13,14,16,17])]
+			[PermittedValues([1,4,6,8,13,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -18050,7 +18050,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaAreaNamedWaterArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56])]
 			[Optional]
 			public categoryOfSeaArea? categoryOfSeaArea {get;set;} = default;
 
@@ -18134,7 +18134,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TidalStreamFloodEbb : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfTidalStream? categoryOfTidalStream {get;set;} = default;
@@ -18263,7 +18263,7 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([5])]
+			[PermittedValues([5])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -18343,7 +18343,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WaterTurbulence : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfWaterTurbulence? categoryOfWaterTurbulence {get;set;} = default;
@@ -18528,7 +18528,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,8,9])]
+			[PermittedValues([1,3,4,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -18537,12 +18537,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([18])]
+			[PermittedValues([18])]
 			[Optional]
 			public status? status {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -18659,17 +18659,17 @@ namespace S100Framework.DomainModel.S101 {
 			public double? maximumPermittedDraught {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([10,11])]
+			[PermittedValues([10,11])]
 			[Optional]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
+			[PermittedValues([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,8,9,13,15,16,17,18])]
+			[PermittedValues([1,2,3,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -19003,7 +19003,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,8,9,13,15,16,17,18])]
+			[PermittedValues([1,2,3,5,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -19152,7 +19152,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<surfaceCharacteristics> surfaceCharacteristics {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([3,4,5])]
+			[PermittedValues([3,4,5])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -19231,7 +19231,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WeedKelp : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,4])]
+			[PermittedValues([1,2,4])]
 			[Optional]
 			public categoryOfWeedKelp? categoryOfWeedKelp {get;set;} = default;
 
@@ -19540,7 +19540,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class UnderwaterAwashRock : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
@@ -19553,12 +19553,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([14])]
+			[PermittedValues([14])]
 			[Optional]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9])]
+			[PermittedValues([1,2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -19567,12 +19567,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([18])]
+			[PermittedValues([18])]
 			[Optional]
 			public status? status {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -19582,7 +19582,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? valueOfSounding {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,4,5])]
+			[PermittedValues([3,4,5])]
 			[Mandatory]
 			[UnknownValue]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
@@ -19702,13 +19702,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Wreck : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[DependentUnknownValue("valueOfSounding")]
 			[Optional]
 			public categoryOfWreck? categoryOfWreck {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
@@ -19725,7 +19725,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9])]
+			[PermittedValues([1,2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -19738,12 +19738,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([7,13,18])]
+			[PermittedValues([7,13,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -19752,12 +19752,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? valueOfSounding {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Mandatory]
 			[UnknownValue]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
@@ -19895,17 +19895,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Obstruction : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23])]
 			[Optional]
 			public categoryOfObstruction? categoryOfObstruction {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
@@ -19926,17 +19926,17 @@ namespace S100Framework.DomainModel.S101 {
 			public double? maximumPermittedDraught {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 			[Optional]
 			public List<natureOfSurface> natureOfSurface {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,8,23])]
+			[PermittedValues([1,2,3,8,23])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9])]
+			[PermittedValues([1,2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -19945,12 +19945,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,7,8,13,18,28])]
+			[PermittedValues([1,4,5,7,8,13,18,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -19964,7 +19964,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,7])]
+			[PermittedValues([1,2,3,4,5,7])]
 			[Mandatory]
 			[UnknownValue]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
@@ -20118,7 +20118,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9])]
+			[PermittedValues([1,2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -20127,12 +20127,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([13,18,28])]
+			[PermittedValues([13,18,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
@@ -20309,12 +20309,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FishingFacility : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfFishingFacility? categoryOfFishingFacility {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -20335,7 +20335,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,7,8,12,18,28])]
+			[PermittedValues([1,4,5,6,7,8,12,18,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -20433,12 +20433,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MarineFarmCulture : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Optional]
 			public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public expositionOfSounding? expositionOfSounding {get;set;} = default;
 
@@ -20463,17 +20463,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7,8,9])]
+			[PermittedValues([1,2,3,4,6,7,8,9])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,14,16,17,28])]
+			[PermittedValues([1,2,4,5,6,7,8,14,16,17,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -20495,7 +20495,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,7])]
+			[PermittedValues([1,2,3,4,5,7])]
 			[Mandatory]
 			[UnknownValue]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
@@ -20614,22 +20614,22 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OffshorePlatform : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public categoryOfOffshorePlatform? categoryOfOffshorePlatform {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -20654,7 +20654,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,18,19,23])]
+			[PermittedValues([1,2,3,18,19,23])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -20667,7 +20667,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,7,8,12,28])]
+			[PermittedValues([1,2,4,7,8,12,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -20676,7 +20676,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -20810,12 +20810,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? buriedDepth {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,6,7,9,10])]
+			[PermittedValues([1,6,7,9,10])]
 			[Optional]
 			public categoryOfCable? categoryOfCable {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,5])]
+			[PermittedValues([1,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -20832,7 +20832,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,13,18])]
+			[PermittedValues([1,4,13,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -20924,7 +20924,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,7,10])]
+			[PermittedValues([1,7,10])]
 			[Optional]
 			public List<categoryOfCable> categoryOfCable {get;set;} = [];
 
@@ -20941,12 +20941,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,7,13])]
+			[PermittedValues([1,7,13])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -21046,12 +21046,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? buriedDepth {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7])]
+			[PermittedValues([2,3,4,5,6,7])]
 			[Optional]
 			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,5])]
+			[PermittedValues([1,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -21082,7 +21082,7 @@ namespace S100Framework.DomainModel.S101 {
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,7,8,9,18,19])]
+			[PermittedValues([1,2,3,7,8,9,18,19])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -21091,12 +21091,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
+			[PermittedValues([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,7,12])]
+			[PermittedValues([1,4,7,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -21214,7 +21214,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SubmarinePipelineArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
 
@@ -21231,17 +21231,17 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,7,8,18,19])]
+			[PermittedValues([1,2,3,7,8,18,19])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,7])]
+			[PermittedValues([1,4,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -21343,12 +21343,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OffshoreProductionArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5])]
+			[PermittedValues([1,2,4,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -21369,7 +21369,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,6,10,14,23])]
+			[PermittedValues([1,2,4,6,10,14,23])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -21382,12 +21382,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,7,8,12,28])]
+			[PermittedValues([1,4,7,8,12,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -21400,12 +21400,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,7])]
+			[PermittedValues([2,3,4,7])]
 			[Optional]
 			public waterLevelEffect? waterLevelEffect {get;set;} = default;
 
@@ -21529,7 +21529,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationLine : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfNavigationLine? categoryOfNavigationLine {get;set;} = default;
@@ -21557,7 +21557,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,14])]
+			[PermittedValues([1,2,5,7,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -21677,22 +21677,22 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6])]
+			[PermittedValues([1,2,6])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,8,9,14])]
+			[PermittedValues([1,2,5,6,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,8,9,13,15,16,17,18])]
+			[PermittedValues([1,2,3,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public trafficFlow? trafficFlow {get;set;} = default;
@@ -21912,22 +21912,22 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6])]
+			[PermittedValues([1,2,6])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,7,9,28])]
+			[PermittedValues([1,3,6,7,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public trafficFlow? trafficFlow {get;set;} = default;
 
@@ -22165,22 +22165,22 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6])]
+			[PermittedValues([1,2,3,4,6])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,6,9])]
+			[PermittedValues([1,5,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,8,9,13,15,16,17,18])]
+			[PermittedValues([1,3,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public trafficFlow? trafficFlow {get;set;} = default;
 
@@ -22311,22 +22311,22 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6])]
+			[PermittedValues([1,2,3,4,6])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9])]
+			[PermittedValues([1,3,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
+			[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public trafficFlow? trafficFlow {get;set;} = default;
@@ -22530,7 +22530,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,6,9])]
+			[PermittedValues([1,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -22638,22 +22638,22 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7])]
+			[PermittedValues([1,2,3,4,6,7])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9])]
+			[PermittedValues([1,3,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
+			[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public trafficFlow? trafficFlow {get;set;} = default;
@@ -22786,27 +22786,27 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,6,7])]
+			[PermittedValues([1,2,3,4,6,7])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9,28])]
+			[PermittedValues([1,3,6,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,5,8,9,13,15,16,17,18])]
+			[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public trafficFlow? trafficFlow {get;set;} = default;
@@ -23016,12 +23016,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9,16,17])]
+			[PermittedValues([1,3,6,9,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23125,12 +23125,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,9,28])]
+			[PermittedValues([1,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23235,12 +23235,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9,28])]
+			[PermittedValues([1,3,6,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23338,7 +23338,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,9,28])]
+			[PermittedValues([1,3,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23422,7 +23422,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,9,28])]
+			[PermittedValues([1,3,9,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23506,12 +23506,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9])]
+			[PermittedValues([1,3,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -23607,12 +23607,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,6,9])]
+			[PermittedValues([1,3,6,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24078,12 +24078,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,9])]
+			[PermittedValues([1,3,4,5,6,7,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public trafficFlow? trafficFlow {get;set;} = default;
@@ -24172,7 +24172,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FerryRoute : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Multiplicity(1)]
 			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
 
@@ -24193,7 +24193,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,9,14])]
+			[PermittedValues([1,2,4,5,6,7,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24293,7 +24293,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,7])]
+			[PermittedValues([1,2,3,4,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24385,7 +24385,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,7])]
+			[PermittedValues([1,2,4,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24470,7 +24470,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? callSign {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public List<categoryOfRadarStation> categoryOfRadarStation {get;set;} = [];
 
@@ -24495,7 +24495,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,7,8])]
+			[PermittedValues([1,2,4,7,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24591,12 +24591,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6,7,9,10,14,15])]
+			[PermittedValues([1,2,3,5,6,7,9,10,14,15])]
 			[Optional]
 			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
@@ -24617,12 +24617,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39])]
+			[PermittedValues([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6,7,8,9,14])]
+			[PermittedValues([1,2,3,5,6,7,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24726,7 +24726,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public List<categoryOfMooringArea> categoryOfMooringArea {get;set;} = [];
 
@@ -24755,12 +24755,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,25,27,39,42])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,25,27,39,42])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6,7,8,9,14])]
+			[PermittedValues([1,2,3,5,6,7,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24862,12 +24862,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorBerth : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6,7,9,10,14])]
+			[PermittedValues([1,2,3,5,6,7,9,10,14])]
 			[Optional]
 			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
@@ -24892,7 +24892,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? radius {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,14])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -24998,12 +24998,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,14])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -25093,7 +25093,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DumpingGround : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public List<categoryOfDumpingGround> categoryOfDumpingGround {get;set;} = [];
 
@@ -25110,12 +25110,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,6,7])]
+			[PermittedValues([1,2,4,6,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -25211,7 +25211,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MilitaryPracticeArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6])]
+			[PermittedValues([2,3,4,5,6])]
 			[Optional]
 			public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea {get;set;} = [];
 
@@ -25236,12 +25236,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,7,16,17])]
+			[PermittedValues([1,2,5,6,7,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -25345,7 +25345,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? inDispute {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public jurisdiction? jurisdiction {get;set;} = default;
@@ -25458,12 +25458,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,24,27,39])]
+			[PermittedValues([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,24,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5,6,7,9])]
+			[PermittedValues([1,2,3,5,6,7,9])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -25555,7 +25555,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CautionArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,5])]
+			[PermittedValues([1,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -25576,7 +25576,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5,7])]
+			[PermittedValues([5,7])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -26103,7 +26103,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? nationality {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,6,7])]
+			[PermittedValues([1,5,6,7])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26191,12 +26191,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
+			[PermittedValues([1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,6,7,8,14,16,17,28])]
+			[PermittedValues([1,5,6,7,8,14,16,17,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26294,7 +26294,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,6,8,14])]
+			[PermittedValues([1,6,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26378,7 +26378,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,6,8,14])]
+			[PermittedValues([1,4,6,8,14])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26466,7 +26466,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,7,8])]
+			[PermittedValues([1,2,5,6,7,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26544,12 +26544,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OilBarrier : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfOilBarrier? categoryOfOilBarrier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -26570,7 +26570,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8])]
+			[PermittedValues([1,2,4,5,7,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -26748,7 +26748,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<String> nationality {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
+			[PermittedValues([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
@@ -26844,7 +26844,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? nationality {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
@@ -27185,7 +27185,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RestrictedArea : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32])]
+			[PermittedValues([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32])]
 			[Optional]
 			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
 
@@ -27206,12 +27206,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
 			[Multiplicity(1)]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,9,18,28])]
+			[PermittedValues([1,2,3,4,5,6,7,9,18,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -27309,17 +27309,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
@@ -27344,7 +27344,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
@@ -27353,7 +27353,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? majorLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
@@ -27372,12 +27372,12 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([5,6])]
+			[PermittedValues([5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
+			[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -27386,7 +27386,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? valueOfNominalRange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -27524,12 +27524,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
@@ -27550,7 +27550,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
@@ -27567,17 +27567,17 @@ namespace S100Framework.DomainModel.S101 {
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([5,6])]
+			[PermittedValues([5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
+			[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -27693,7 +27693,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFogDetector : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
@@ -27726,17 +27726,17 @@ namespace S100Framework.DomainModel.S101 {
 			public rhythmOfLight? rhythmOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5,6])]
+			[PermittedValues([5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
+			[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -27846,12 +27846,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
@@ -27876,7 +27876,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
@@ -27893,7 +27893,7 @@ namespace S100Framework.DomainModel.S101 {
 			public rhythmOfLight? rhythmOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8,11,14,15,16,17])]
+			[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -27902,7 +27902,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? valueOfNominalRange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -28016,24 +28016,24 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28050,12 +28050,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -28068,7 +28068,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,18])]
+			[PermittedValues([1,2,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -28200,24 +28200,24 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28234,12 +28234,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -28252,7 +28252,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,18])]
+			[PermittedValues([1,2,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -28384,18 +28384,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28412,12 +28412,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -28430,7 +28430,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,18])]
+			[PermittedValues([1,2,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -28558,18 +28558,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28586,12 +28586,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -28604,7 +28604,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,18])]
+			[PermittedValues([1,2,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -28732,23 +28732,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28765,12 +28765,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -28783,7 +28783,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,7,8,18])]
+			[PermittedValues([1,2,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -28917,18 +28917,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EmergencyWreckMarkingBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -28945,12 +28945,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,11])]
+			[PermittedValues([6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29074,23 +29074,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfInstallationBuoy? categoryOfInstallationBuoy {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -29107,7 +29107,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([7,11])]
+			[PermittedValues([7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29116,7 +29116,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,18,19])]
+			[PermittedValues([1,2,18,19])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
@@ -29125,12 +29125,12 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,18])]
+			[PermittedValues([1,2,4,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -29258,18 +29258,18 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringBuoy : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			[UnknownValue]
 			public buoyShape? buoyShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -29294,7 +29294,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? maximumPermittedVesselLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([7,8,11])]
+			[PermittedValues([7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29303,7 +29303,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,18])]
+			[PermittedValues([1,2,4,5,7,8,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -29427,29 +29427,29 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			[UnknownValue]
 			public beaconShape? beaconShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfLateralMark? categoryOfLateralMark {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -29475,12 +29475,12 @@ namespace S100Framework.DomainModel.S101 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29497,7 +29497,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,18])]
+			[PermittedValues([1,2,4,5,7,8,12,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -29510,7 +29510,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -29652,29 +29652,29 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			[UnknownValue]
 			public beaconShape? beaconShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfCardinalMark? categoryOfCardinalMark {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -29700,12 +29700,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29722,7 +29722,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,18])]
+			[PermittedValues([1,2,4,5,7,8,12,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -29735,7 +29735,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -29877,23 +29877,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			[UnknownValue]
 			public beaconShape? beaconShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -29919,12 +29919,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -29941,7 +29941,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,18])]
+			[PermittedValues([1,2,4,5,7,8,12,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -29954,7 +29954,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -30092,23 +30092,23 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			[UnknownValue]
 			public beaconShape? beaconShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -30134,12 +30134,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -30156,7 +30156,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,18])]
+			[PermittedValues([1,2,4,5,7,8,12,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -30169,7 +30169,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -30307,28 +30307,28 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			[UnknownValue]
 			public beaconShape? beaconShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
+			[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5])]
+			[PermittedValues([1,2,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -30354,12 +30354,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,11])]
+			[PermittedValues([1,2,9,11])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,6,7,8])]
+			[PermittedValues([1,2,6,7,8])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -30376,7 +30376,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,18])]
+			[PermittedValues([1,2,4,5,7,8,12,18])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -30389,7 +30389,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -30533,17 +30533,17 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Daymark : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
+			[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 			[Optional]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -30569,7 +30569,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,6,7,8,11])]
+			[PermittedValues([1,2,4,6,7,8,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -30582,12 +30582,12 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,7,8,12])]
+			[PermittedValues([1,4,5,7,8,12])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33])]
 			[Mandatory]
 			[UnknownValue]
 			public topmarkDaymarkShape? topmarkDaymarkShape {get;set;} = default;
@@ -30720,12 +30720,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFloat : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -30750,7 +30750,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,11])]
+			[PermittedValues([6,7,11])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -30763,7 +30763,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
+			[PermittedValues([1,2,4,5,7,8,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -30776,7 +30776,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -30896,12 +30896,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightVessel : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -30926,7 +30926,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7])]
+			[PermittedValues([6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -30939,7 +30939,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
+			[PermittedValues([1,2,4,5,7,8,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -30948,7 +30948,7 @@ namespace S100Framework.DomainModel.S101 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -31066,12 +31066,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Retroreflector : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -31092,7 +31092,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,8])]
+			[PermittedValues([1,4,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -31200,7 +31200,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,8])]
+			[PermittedValues([1,4,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -31280,7 +31280,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FogSignal : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfFogSignal? categoryOfFogSignal {get;set;} = default;
@@ -31306,7 +31306,7 @@ namespace S100Framework.DomainModel.S101 {
 			public int? signalFrequency {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
@@ -31324,7 +31324,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,15])]
+			[PermittedValues([1,2,4,5,7,8,15])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -31454,7 +31454,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,7])]
+			[PermittedValues([1,5,7])]
 			[Optional]
 			public status? status {get;set;} = default;
 
@@ -31564,12 +31564,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,5,7])]
+			[PermittedValues([1,5,7])]
 			[Optional]
 			public status? status {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			[UnknownValue]
 			public virtualAISAidToNavigationType? virtualAISAidToNavigationType {get;set;} = default;
@@ -31663,7 +31663,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? callSign {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([5,10,11,14,19,20])]
+			[PermittedValues([5,10,11,14,19,20])]
 			[Optional]
 			public List<categoryOfRadioStation> categoryOfRadioStation {get;set;} = [];
 
@@ -31697,7 +31697,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8])]
+			[PermittedValues([1,2,4,5,7,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -31791,7 +31791,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarTransponderBeacon : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			[UnknownValue]
 			public categoryOfRadarTransponderBeacon? categoryOfRadarTransponderBeacon {get;set;} = default;
@@ -31830,7 +31830,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<signalSequence> signalSequence {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8])]
+			[PermittedValues([1,2,4,5,7,8])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -31928,12 +31928,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotBoardingPlace : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Optional]
 			public categoryOfPreference? categoryOfPreference {get;set;} = default;
 
@@ -31963,12 +31963,12 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public List<pilotMovement> pilotMovement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,5,6,9,16,17,28])]
+			[PermittedValues([1,2,5,6,9,16,17,28])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32169,7 +32169,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,16,17])]
+			[PermittedValues([1,4,5,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32253,7 +32253,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationWarning : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Multiplicity(1)]
 			public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning {get;set;} = [];
 
@@ -32278,7 +32278,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
+			[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32366,7 +32366,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SignalStationTraffic : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 			[Multiplicity(1)]
 			public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic {get;set;} = [];
 
@@ -32391,7 +32391,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,12,14,15,16,17])]
+			[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32479,7 +32479,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RescueStation : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,6,7,8])]
+			[PermittedValues([1,2,4,5,6,7,8])]
 			[Optional]
 			public List<categoryOfRescueStation> categoryOfRescueStation {get;set;} = [];
 
@@ -32504,7 +32504,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,4,5,7,8,14,16,17])]
+			[PermittedValues([1,2,4,5,7,8,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32592,7 +32592,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourFacility : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[PermittedValues([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 			[Multiplicity(1)]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
@@ -32601,7 +32601,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<String> communicationChannel {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,5])]
+			[PermittedValues([1,2,3,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -32618,7 +32618,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? interoperabilityIdentifier {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,6,7])]
+			[PermittedValues([1,2,3,6,7])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -32627,7 +32627,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,25])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,25])]
 			[Optional]
 			public product? product {get;set;} = default;
 
@@ -32636,12 +32636,12 @@ namespace S100Framework.DomainModel.S101 {
 			public String? reportedDate {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
+			[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
 			[Optional]
 			public List<restriction> restriction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,4,5,6,7,8,9,12,13,14,16,17])]
+			[PermittedValues([1,4,5,6,7,8,9,12,13,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32767,7 +32767,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SmallCraftFacility : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33])]
 			[Multiplicity(1)]
 			public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility {get;set;} = [];
 
@@ -32784,7 +32784,7 @@ namespace S100Framework.DomainModel.S101 {
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,12,14,16,17])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,12,14,16,17])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -32889,7 +32889,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? textRotation {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Multiplicity(1, 2)]
 			public List<textType> textType {get;set;} = [];
 

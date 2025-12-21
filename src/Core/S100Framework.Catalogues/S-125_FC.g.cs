@@ -4123,42 +4123,42 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class changeDetails : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public atonCommissioning? atonCommissioning {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27])]
 			[Optional]
 			public atonRemoval? atonRemoval {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Optional]
 			public atonReplacement? atonReplacement {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public fixedAtonChange? fixedAtonChange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			[Optional]
 			public floatingAtonChange? floatingAtonChange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			[Optional]
 			public lightedAtonChange? lightedAtonChange {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 			[Optional]
 			public electronicAtoNChange? electronicAtoNChange {get;set;} = default;
 
@@ -4681,7 +4681,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double signalDuration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			public signalStatus signalStatus {get;set;}
 
@@ -4785,7 +4785,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class rhythmOfLight : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
 			[Mandatory]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -4989,7 +4989,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class lightSector : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
@@ -4998,7 +4998,7 @@ namespace S100Framework.DomainModel.S125 {
 			public directionalCharacter? directionalCharacter {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
@@ -5062,7 +5062,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorCharacteristics : ComplexType {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
 			[Mandatory]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
@@ -5348,7 +5348,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpatialQuality : InformationNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
 
@@ -5406,7 +5406,7 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public changeTypes? changeTypes {get;set;} = default;
 
@@ -5562,7 +5562,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationLine : AidsToNavigation {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public categoryOfNavigationLine categoryOfNavigationLine {get;set;}
 
@@ -5658,7 +5658,7 @@ namespace S100Framework.DomainModel.S125 {
 			};
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
 
@@ -5667,22 +5667,22 @@ namespace S100Framework.DomainModel.S125 {
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public trafficFlow trafficFlow {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
@@ -5860,17 +5860,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericBuoy : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[PermittedValues([1,2,3,4,5,6,7,8])]
 			[Mandatory]
 			public buoyShape buoyShape {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -5879,17 +5879,17 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -5971,17 +5971,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class GenericBeacon : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[PermittedValues([1,2,3,4,5,6,7])]
 			[Mandatory]
 			public beaconShape beaconShape {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -5990,7 +5990,7 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -5999,12 +5999,12 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -6013,7 +6013,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? verticalLength {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6105,17 +6105,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Landmark : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			[Multiplicity(1)]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -6124,12 +6124,12 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public visualProminence visualProminence {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50])]
+			[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50])]
 			[Optional]
 			public List<function> function {get;set;} = [];
 
@@ -6138,12 +6138,12 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6245,17 +6245,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Daymark : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			[Optional]
 			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -6264,17 +6264,17 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Mandatory]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
@@ -6372,12 +6372,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FogSignal : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 			[Mandatory]
 			public categoryOfFogSignal categoryOfFogSignal {get;set;}
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6455,7 +6455,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6521,7 +6521,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarTransponderBeacon : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
 
@@ -6542,7 +6542,7 @@ namespace S100Framework.DomainModel.S125 {
 			public signalSequence? signalSequence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6630,7 +6630,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([20])]
+			[PermittedValues([20])]
 			[Mandatory]
 			public categoryOfRadioStation categoryOfRadioStation {get;set;}
 
@@ -6639,7 +6639,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6709,22 +6709,22 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Retroreflector : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6806,12 +6806,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFloat : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -6820,17 +6820,17 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -6920,12 +6920,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightVessel : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -6934,17 +6934,17 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -7034,22 +7034,22 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OffshorePlatform : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5])]
+			[PermittedValues([1,2,3,4,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
@@ -7058,17 +7058,17 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -7170,22 +7170,22 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Pile : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,7,8])]
+			[PermittedValues([1,3,4,5,6,7,8])]
 			[Optional]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -7273,22 +7273,22 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SiloTank : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([5,6,7,8,9])]
+			[PermittedValues([5,6,7,8,9])]
 			[Optional]
 			public buildingShape? buildingShape {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -7297,7 +7297,7 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? radarConspicuous {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
@@ -7306,12 +7306,12 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -7415,7 +7415,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
@@ -7536,7 +7536,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class InstallationBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			public categoryOfInstallationBuoy categoryOfInstallationBuoy {get;set;}
 
@@ -7657,7 +7657,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			[Mandatory]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
@@ -7835,7 +7835,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBuoy : GenericBuoy {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
@@ -7899,7 +7899,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CardinalBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Mandatory]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
@@ -8077,7 +8077,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SpecialPurposeGeneralBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
@@ -8141,7 +8141,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : GenericBeacon {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			[Mandatory]
 			public categoryOfLandmark categoryOfLandmark {get;set;}
 
@@ -8205,12 +8205,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class WindTurbine : StructureObject {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public colourPattern? colourPattern {get;set;} = default;
 
@@ -8227,7 +8227,7 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([6,7,8,9,10,11,12,13,14])]
+			[PermittedValues([6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
@@ -8236,7 +8236,7 @@ namespace S100Framework.DomainModel.S125 {
 			public List<Boolean> radarConspicuous {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -8330,7 +8330,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
@@ -8522,7 +8522,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NavigationalSystemOfMarks : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Mandatory]
 			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
 
@@ -8586,7 +8586,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SoundingDatum : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
@@ -8650,7 +8650,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfBathymetricData : FeatureNode {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Mandatory]
 			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
 
@@ -8752,12 +8752,12 @@ namespace S100Framework.DomainModel.S125 {
 			public double? height {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -8896,7 +8896,7 @@ namespace S100Framework.DomainModel.S125 {
 			public String mMSICode {get;set;} = string.Empty;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
@@ -8942,12 +8942,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Topmark : Equipment {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
@@ -8956,7 +8956,7 @@ namespace S100Framework.DomainModel.S125 {
 			public List<status> status {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Mandatory]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
@@ -9036,7 +9036,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAggregation : FeatureNode {
 			[XmlElement("categoryOfAggregation")]
-			[EnumerationValue([1,3,2])]
+			[PermittedValues([1,3,2])]
 			[Mandatory]
 			public categoryOfAggregation categoryOfAggregation {get;set;} = default;
 
@@ -9098,7 +9098,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAssociation : FeatureNode {
 			[XmlElement("categoryOfAssociation")]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			public categoryOfAssociation categoryOfAssociation {get;set;} = default;
 
@@ -9159,17 +9159,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAirObstruction : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
@@ -9269,17 +9269,17 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightAllAround : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
@@ -9288,17 +9288,17 @@ namespace S100Framework.DomainModel.S125 {
 			public Boolean? majorLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
@@ -9418,12 +9418,12 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightFogDetector : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,3,4,5,6,9,10,11])]
+			[PermittedValues([1,3,4,5,6,9,10,11])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
@@ -9499,22 +9499,22 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LightSectored : GenericLight {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[PermittedValues([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,9,10,11,12,13,15])]
+			[PermittedValues([1,2,9,10,11,12,13,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
+			[PermittedValues([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
+			[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
@@ -9614,7 +9614,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SyntheticAISAidToNavigation : ElectronicAtoN {
 			[XmlIgnore]
-			[EnumerationValue([1,2])]
+			[PermittedValues([1,2])]
 			[Mandatory]
 			public categoryOfSyntheticAISAidtoNavigation categoryOfSyntheticAISAidtoNavigation {get;set;}
 
@@ -9678,7 +9678,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalAISAidToNavigation : ElectronicAtoN {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3])]
+			[PermittedValues([1,2,3])]
 			[Mandatory]
 			public categoryOfPhysicalAISAidToNavigation categoryOfPhysicalAISAidToNavigation {get;set;}
 
@@ -9742,7 +9742,7 @@ namespace S100Framework.DomainModel.S125 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VirtualAISAidToNavigation : ElectronicAtoN {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
+			[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
 

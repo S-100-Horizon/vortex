@@ -31,7 +31,7 @@ namespace TestS100Framework
         public void Test_GetEnumValues() {
             var instance = new Landmark();
 
-            var attribute = (EnumerationValueAttribute?)typeof(Landmark).GetProperty("natureOfConstruction")!.GetCustomAttribute(typeof(EnumerationValueAttribute));
+            var attribute = (PermittedValuesAttribute?)typeof(Landmark).GetProperty("natureOfConstruction")!.GetCustomAttribute(typeof(PermittedValuesAttribute));
             //attribute.PropertyValues
 
             var values = Enum.GetValues(typeof(S100Framework.DomainModel.S101.natureOfConstruction));

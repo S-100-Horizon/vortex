@@ -157,6 +157,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Principal and intermediate compass points.")]
 		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public cardinalDirection? cardinalDirection {
 			get {
@@ -166,9 +167,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _cardinalDirection, value);
 			}
 		}
-
-		[Browsable(false)]
-		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
 
 		private double? _distance  = default;
 
@@ -316,6 +314,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Editor(typeof(Editors.HorizonEditor<constructionInformation>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,5])]
 		[Optional]
 		public condition? condition {
 			get {
@@ -325,9 +324,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _condition, value);
 			}
 		}
-
-		[Browsable(false)]
-		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 
 		private String _development  = string.Empty;
 
@@ -532,6 +528,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of significant aspects of depths about which information is provided.")]
 		[Editor(typeof(Editors.HorizonEditor<depthsDescription>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfDepthsDescription categoryOfDepthsDescription {
 			get {
@@ -541,9 +538,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfDepthsDescription, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfDepthsDescription[] categoryOfDepthsDescriptionList => [(categoryOfDepthsDescription)1,(categoryOfDepthsDescription)2,(categoryOfDepthsDescription)3];
 
 		[Description("Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.")]
 		[Multiplicity(1)]
@@ -668,6 +662,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public nameUsage? nameUsage {
 			get {
@@ -677,9 +672,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _nameUsage, value);
 			}
 		}
-
-		[Browsable(false)]
-		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
 		public featureNameViewModel Load(featureName instance) {
@@ -1611,6 +1603,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Code for function performed by the online resource.")]
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public onlineFunction? onlineFunction {
 			get {
@@ -1620,9 +1613,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _onlineFunction, value);
 			}
 		}
-
-		[Browsable(false)]
-		public onlineFunction[] onlineFunctionList => [(onlineFunction)1,(onlineFunction)3,(onlineFunction)4,(onlineFunction)5,(onlineFunction)6,(onlineFunction)7,(onlineFunction)8,(onlineFunction)9,(onlineFunction)10,(onlineFunction)11];
 
 		private String? _protocolRequest  = default;
 
@@ -1814,6 +1804,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The principal subject matter of regulations, restrictions, recommendations or nautical information.")]
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public categoryOfRxN? categoryOfRxN {
 			get {
@@ -1824,13 +1815,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfRxN[] categoryOfRxNList =>  CodeList.categoryOfRxNS.ToArray();
-
 		private actionOrActivity? _actionOrActivity  = default;
 
 		[Description("The action or activity of a vessel.")]
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 		[Optional]
 		public actionOrActivity? actionOrActivity {
 			get {
@@ -1840,9 +1829,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _actionOrActivity, value);
 			}
 		}
-
-		[Browsable(false)]
-		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 
 		[Description("Words set at the head of a passage or page to introduce or categorize.")]
 		[Optional]
@@ -1898,6 +1884,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The type of schedule, for instance opening, closure, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
@@ -1907,9 +1894,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfSchedule, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
 		private String? _text  = default;
 
@@ -1989,9 +1973,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => Enum.GetValues<categoryOfAuthority>();
-
 		private String? _countryName  = default;
 
 		[Description("The name of a nation.")]
@@ -2024,6 +2005,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Type of the source.")]
 		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public sourceType? sourceType {
 			get {
@@ -2033,9 +2015,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _sourceType, value);
 			}
 		}
-
-		[Browsable(false)]
-		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 
 		private String? _reportedDate  = default;
 
@@ -2265,6 +2244,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.")]
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
@@ -2274,9 +2254,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfCommunicationPreference, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 
 		private String _telecommunicationIdentifier  = string.Empty;
 
@@ -2323,9 +2300,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public telecommunicationService[] telecommunicationServiceList => [(telecommunicationService)1,(telecommunicationService)2,(telecommunicationService)3,(telecommunicationService)4,(telecommunicationService)5,(telecommunicationService)6,(telecommunicationService)7,(telecommunicationService)8];
 
 
 		public telecommunicationsViewModel Load(telecommunications instance) {
@@ -2383,6 +2357,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of completeness of textual information in relation to the source material from which it is derived.")]
 		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public categoryOfText? categoryOfText {
 			get {
@@ -2392,9 +2367,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfText, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 
 		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Optional]
@@ -2480,9 +2452,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Any one of seven days in a week.")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
-
-		[Browsable(false)]
-		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 
 		private Boolean? _dayOfWeekIsRange  = default;
 
@@ -2678,6 +2647,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Numerical comparison.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
 			get {
@@ -2688,13 +2658,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
-
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
 		[Description("Characteristics of vessels.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,6,7,8,9,10,11,12,13])]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
@@ -2704,9 +2672,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _vesselsCharacteristics, value);
 			}
 		}
-
-		[Browsable(false)]
-		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
 
 		private double _vesselsCharacteristicsValue  = default;
 
@@ -2726,6 +2691,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The unit used for vessel characteristics attribute.")]
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,4,5,6,7,9])]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
@@ -2735,9 +2701,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _vesselsCharacteristicsUnit, value);
 			}
 		}
-
-		[Browsable(false)]
-		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)1,(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
 
 
 		public vesselMeasurementsSpecificationViewModel Load(vesselMeasurementsSpecification instance) {
@@ -2796,6 +2759,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Whether a vessel must use a shore-based or other resource to obtain up-to-date information.")]
 		[Editor(typeof(Editors.HorizonEditor<weatherResource>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public dynamicResource? dynamicResource {
 			get {
@@ -2805,9 +2769,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _dynamicResource, value);
 			}
 		}
-
-		[Browsable(false)]
-		public dynamicResource[] dynamicResourceList => [(dynamicResource)1,(dynamicResource)2,(dynamicResource)3,(dynamicResource)4];
 
 		private textContentViewModel? _textContent  = default;
 
@@ -3060,6 +3021,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Indicates whether a vessel is included or excluded from the regulation/restriction/recommendation/nautical information.")]
 		[Category("InclusionType")]
 		[Editor(typeof(Editors.HorizonEditor<InclusionType>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Mandatory]
 		public membership membership {
 			get {
@@ -3069,9 +3031,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _membership, value);
 			}
 		}
-
-		[Browsable(false)]
-		public membership[] membershipList => [(membership)1,(membership)2];
 
 
 		public override string Serialize() {
@@ -3099,6 +3058,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Expresses constraints or requirements on vessel actions or activities in relation to a geographic feature, facility, or service.")]
 		[Category("PermissionType")]
 		[Editor(typeof(Editors.HorizonEditor<PermissionType>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
@@ -3108,9 +3068,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfRelationship, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfRelationship[] categoryOfRelationshipList => [(categoryOfRelationship)1,(categoryOfRelationship)2,(categoryOfRelationship)3,(categoryOfRelationship)4,(categoryOfRelationship)5,(categoryOfRelationship)6,(categoryOfRelationship)7];
 
 
 		public override string Serialize() {
@@ -3398,22 +3355,17 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
-
 		[Description("Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).")]
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfDangerousOrHazardousCargo[] categoryOfDangerousOrHazardousCargoList => [(categoryOfDangerousOrHazardousCargo)1,(categoryOfDangerousOrHazardousCargo)2,(categoryOfDangerousOrHazardousCargo)3,(categoryOfDangerousOrHazardousCargo)4,(categoryOfDangerousOrHazardousCargo)5,(categoryOfDangerousOrHazardousCargo)6,(categoryOfDangerousOrHazardousCargo)7,(categoryOfDangerousOrHazardousCargo)8,(categoryOfDangerousOrHazardousCargo)9,(categoryOfDangerousOrHazardousCargo)10,(categoryOfDangerousOrHazardousCargo)11,(categoryOfDangerousOrHazardousCargo)12,(categoryOfDangerousOrHazardousCargo)13,(categoryOfDangerousOrHazardousCargo)14,(categoryOfDangerousOrHazardousCargo)15,(categoryOfDangerousOrHazardousCargo)16,(categoryOfDangerousOrHazardousCargo)17,(categoryOfDangerousOrHazardousCargo)18,(categoryOfDangerousOrHazardousCargo)19,(categoryOfDangerousOrHazardousCargo)20,(categoryOfDangerousOrHazardousCargo)21];
 
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Description("Classification of vessels by function or use.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
@@ -3424,14 +3376,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
-
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
 		[Description("The locality of vessel registration or enrolment relative to the nationality of a port, territorial sea, administrative area, exclusive zone or other location.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Optional]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
@@ -3442,14 +3392,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfVesselRegistry[] categoryOfVesselRegistryList => [(categoryOfVesselRegistry)1,(categoryOfVesselRegistry)2];
-
 		private logicalConnectives? _logicalConnectives  = default;
 
 		[Description("Expresses whether all the constraints described by its co-attributes must be satisfied, or only one such constraint need be satisfied.")]
 		[Category("Applicability")]
 		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2])]
 		[Optional]
 		public logicalConnectives? logicalConnectives {
 			get {
@@ -3459,9 +3407,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _logicalConnectives, value);
 			}
 		}
-
-		[Browsable(false)]
-		public logicalConnectives[] logicalConnectivesList => [(logicalConnectives)1,(logicalConnectives)2];
 
 		private int? _thicknessOfIceCapability  = default;
 
@@ -3782,6 +3727,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("Authority")]
 		[Editor(typeof(Editors.HorizonEditor<Authority>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
@@ -3791,9 +3737,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
 		private textContentViewModel? _textContent  = default;
 
@@ -4164,88 +4107,55 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
 
-		[Browsable(false)]
-		public firefightingService[] firefightingServiceList => [(firefightingService)1,(firefightingService)2,(firefightingService)3];
-
 		[Description("Services for the prevention or treatment of, or response to injury or illness.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public medicalService[] medicalServiceList => [(medicalService)1,(medicalService)2,(medicalService)3,(medicalService)4,(medicalService)5];
 
 		[Description("Work or maintenance activities whereby vessels or equipment are restored to working order, renovated, or improved in condition.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
 
-		[Browsable(false)]
-		public repairService[] repairServiceList => [(repairService)1,(repairService)2,(repairService)3,(repairService)4,(repairService)5,(repairService)6,(repairService)7,(repairService)8,(repairService)9,(repairService)10];
-
 		[Description("Services for the adjustment of vessel equipment or for assessments pertaining to cargo, compliance with regulations, safety, or security.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public technicalPortService[] technicalPortServiceList => [(technicalPortService)1,(technicalPortService)2,(technicalPortService)3,(technicalPortService)4];
 
 		[Description("Application of measures to ensure that a vessel is free of disease and disease risks, or issue of completion or exemption certificates for such measures.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
 
-		[Browsable(false)]
-		public shipSanitationControl[] shipSanitationControlList => [(shipSanitationControl)1,(shipSanitationControl)2,(shipSanitationControl)3];
-
 		[Description("Classification of services for the conveyance of persons and/or goods, according to means of transport, nature of path, or representative installation.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<transportConnection> transportConnection  { get; set; } = new ();
-
-		[Browsable(false)]
-		public transportConnection[] transportConnectionList =>  CodeList.transportConnections.ToArray();
 
 		[Description("Classification of assistance for mooring or anchoring operations.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
 
-		[Browsable(false)]
-		public berthingAssistance[] berthingAssistanceList => [(berthingAssistance)1,(berthingAssistance)2,(berthingAssistance)3,(berthingAssistance)4,(berthingAssistance)5,(berthingAssistance)6];
-
 		[Description("Classification of services related to the goods or items carried by vessels.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public cargoService[] cargoServiceList => [(cargoService)1,(cargoService)2,(cargoService)3,(cargoService)4];
 
 		[Description("Protective services, law enforcement, or services for responding to sudden danger.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService  { get; set; } = new ();
 
-		[Browsable(false)]
-		public securitySafetyEmergencyService[] securitySafetyEmergencyServiceList =>  CodeList.securitySafetyEmergencyServices.ToArray();
-
 		[Description("Service for the reception of residues, polluting substances, refuse, oily wastes, and by-products from ships.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
 
-		[Browsable(false)]
-		public wasteDisposalService[] wasteDisposalServiceList => [(wasteDisposalService)1,(wasteDisposalService)2,(wasteDisposalService)3,(wasteDisposalService)4,(wasteDisposalService)5,(wasteDisposalService)6,(wasteDisposalService)7,(wasteDisposalService)8,(wasteDisposalService)9,(wasteDisposalService)10,(wasteDisposalService)11,(wasteDisposalService)12,(wasteDisposalService)13,(wasteDisposalService)14,(wasteDisposalService)15,(wasteDisposalService)16,(wasteDisposalService)17,(wasteDisposalService)18,(wasteDisposalService)19,(wasteDisposalService)20,(wasteDisposalService)21,(wasteDisposalService)22,(wasteDisposalService)23,(wasteDisposalService)24];
-
 		[Description("Classification of services for the provision of materials, goods, utilities, or personal services to vessels, passengers, or crew.")]
 		[Category("AvailablePortServices")]
 		[Optional]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
-
-		[Browsable(false)]
-		public supplyService[] supplyServiceList => [(supplyService)1,(supplyService)2,(supplyService)3,(supplyService)4,(supplyService)5,(supplyService)6,(supplyService)7,(supplyService)8,(supplyService)9,(supplyService)10];
 
 		private String? _tugInformation  = default;
 
@@ -4547,6 +4457,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.")]
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
@@ -4556,9 +4467,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfCommunicationPreference, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 
 		[Description("A channel number assigned to a specific radio frequency, frequencies or frequency band.")]
 		[Category("ContactDetails")]
@@ -5194,6 +5102,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -5203,9 +5112,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
 		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
@@ -5535,6 +5441,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -5544,9 +5451,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
 		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
@@ -5709,6 +5613,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -5718,9 +5623,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
 		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
@@ -5883,6 +5785,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.")]
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -5892,9 +5795,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfAuthority, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 
 		[Description("A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.")]
 		[Category("AbstractRxN")]
@@ -6321,6 +6221,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
@@ -6330,9 +6231,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _qualityOfHorizontalMeasurement, value);
 			}
 		}
-
-		[Browsable(false)]
-		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
 
 		[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 		[Category("SpatialQuality")]
@@ -6481,16 +6379,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1,(categoryOfAnchorage)2,(categoryOfAnchorage)3,(categoryOfAnchorage)5,(categoryOfAnchorage)6,(categoryOfAnchorage)7,(categoryOfAnchorage)9,(categoryOfAnchorage)10,(categoryOfAnchorage)14];
-
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorBerth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
 		private double? _radius  = default;
 
@@ -6985,14 +6877,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1,(categoryOfAnchorage)2,(categoryOfAnchorage)3,(categoryOfAnchorage)5,(categoryOfAnchorage)6,(categoryOfAnchorage)7,(categoryOfAnchorage)9,(categoryOfAnchorage)10,(categoryOfAnchorage)14,(categoryOfAnchorage)15];
-
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -7003,16 +6893,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
-
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorageArea")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
 		private String? _locationByText  = default;
 
@@ -7865,6 +7749,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of a berth according to the method of describing its location or extent.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public categoryOfBerthLocation? categoryOfBerthLocation {
 			get {
@@ -7874,9 +7759,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfBerthLocation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfBerthLocation[] categoryOfBerthLocationList => [(categoryOfBerthLocation)1,(categoryOfBerthLocation)2,(categoryOfBerthLocation)3,(categoryOfBerthLocation)4];
 
 		private String? _portFacilityNumber  = default;
 
@@ -7958,6 +7840,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The process, arrangement or scheme of attachment used to secure a vessel to a berth.")]
 		[Category("Berth")]
 		[Editor(typeof(Editors.HorizonEditor<Berth>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Optional]
 		public methodOfSecuring? methodOfSecuring {
 			get {
@@ -7967,9 +7850,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _methodOfSecuring, value);
 			}
 		}
-
-		[Browsable(false)]
-		public methodOfSecuring[] methodOfSecuringList => [(methodOfSecuring)1,(methodOfSecuring)2,(methodOfSecuring)3,(methodOfSecuring)4,(methodOfSecuring)5,(methodOfSecuring)6,(methodOfSecuring)7,(methodOfSecuring)8,(methodOfSecuring)9,(methodOfSecuring)10];
 
 		private String _uNLocationCode  = string.Empty;
 
@@ -8021,16 +7901,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<categoryOfFrequency> categoryOfFrequency  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfFrequency[] categoryOfFrequencyList => [(categoryOfFrequency)1,(categoryOfFrequency)2];
-
 		[Description("The electrical voltage provided by the power supply station.")]
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfVoltage[] categoryOfVoltageList => [(categoryOfVoltage)1,(categoryOfVoltage)2,(categoryOfVoltage)3,(categoryOfVoltage)4,(categoryOfVoltage)5,(categoryOfVoltage)6,(categoryOfVoltage)7,(categoryOfVoltage)8,(categoryOfVoltage)9,(categoryOfVoltage)10,(categoryOfVoltage)11,(categoryOfVoltage)12,(categoryOfVoltage)13,(categoryOfVoltage)14];
 
 		[Description("The type of plug(s) available at the power supply station.")]
 		[Category("Berth")]
@@ -8041,9 +7915,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Berth")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
 
 		#region InformationBindings
@@ -9486,6 +9357,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("DockArea")]
 		[Editor(typeof(Editors.HorizonEditor<DockArea>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -9495,9 +9367,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -10302,9 +10171,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public ObservableCollection<categoryOfDolphin> categoryOfDolphin  { get; set; } = new ();
 
 		[Browsable(false)]
-		public categoryOfDolphin[] categoryOfDolphinList => [(categoryOfDolphin)1,(categoryOfDolphin)2,(categoryOfDolphin)3,(categoryOfDolphin)4];
-
-		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
 
 		[Browsable(false)]
@@ -10581,6 +10447,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -10590,9 +10457,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -12005,6 +11869,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaAdministrative>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -12015,16 +11880,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
-
 		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaAdministrative")]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1,(categoryOfHarbourFacility)3,(categoryOfHarbourFacility)4,(categoryOfHarbourFacility)5,(categoryOfHarbourFacility)6,(categoryOfHarbourFacility)7,(categoryOfHarbourFacility)8,(categoryOfHarbourFacility)9,(categoryOfHarbourFacility)10,(categoryOfHarbourFacility)11,(categoryOfHarbourFacility)12,(categoryOfHarbourFacility)13,(categoryOfHarbourFacility)14,(categoryOfHarbourFacility)15];
 
 		private generalHarbourInformationViewModel? _generalHarbourInformation  = default;
 
@@ -12605,6 +12464,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of subdivisions of a port or harbour area by usage.")]
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaSection>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,8,9,11,12])]
 		[Optional]
 		public categoryOfPortSection? categoryOfPortSection {
 			get {
@@ -12615,22 +12475,17 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1,(categoryOfPortSection)3,(categoryOfPortSection)8,(categoryOfPortSection)9,(categoryOfPortSection)11,(categoryOfPortSection)12];
-
 		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaSection")]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)4,(categoryOfHarbourFacility)5,(categoryOfHarbourFacility)6,(categoryOfHarbourFacility)9,(categoryOfHarbourFacility)14,(categoryOfHarbourFacility)15,(categoryOfHarbourFacility)16,(categoryOfHarbourFacility)17];
 
 		private iSPSLevel? _iSPSLevel  = default;
 
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourAreaSection>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -12640,9 +12495,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 		private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription  = default;
 
@@ -13359,6 +13211,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("HarbourBasin")]
 		[Editor(typeof(Editors.HorizonEditor<HarbourBasin>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -13368,9 +13221,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -14979,6 +14829,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("A place or structure to which a vessel can be secured.")]
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.HorizonEditor<MooringWarpingFacility>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([4,5,6])]
 		[Mandatory]
 		public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
 			get {
@@ -14988,9 +14839,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfMooringWarpingFacility, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfMooringWarpingFacility[] categoryOfMooringWarpingFacilityList => [(categoryOfMooringWarpingFacility)4,(categoryOfMooringWarpingFacility)5,(categoryOfMooringWarpingFacility)6];
 
 		private String _iDCode  = string.Empty;
 
@@ -15522,6 +15370,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of equipment or installations that are used for providing shoreside electrical power to a vessel at berth.")]
 		[Category("OnshorePowerFacility")]
 		[Editor(typeof(Editors.HorizonEditor<OnshorePowerFacility>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public categoryOfShorePowerFacility? categoryOfShorePowerFacility {
 			get {
@@ -15531,9 +15380,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfShorePowerFacility, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfShorePowerFacility[] categoryOfShorePowerFacilityList => [(categoryOfShorePowerFacility)1,(categoryOfShorePowerFacility)2,(categoryOfShorePowerFacility)3];
 
 		private String _iDCode  = string.Empty;
 
@@ -15570,16 +15416,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfVoltage[] categoryOfVoltageList => [(categoryOfVoltage)1,(categoryOfVoltage)2,(categoryOfVoltage)3,(categoryOfVoltage)4,(categoryOfVoltage)5,(categoryOfVoltage)6,(categoryOfVoltage)7,(categoryOfVoltage)8,(categoryOfVoltage)9,(categoryOfVoltage)10,(categoryOfVoltage)11,(categoryOfVoltage)12,(categoryOfVoltage)13,(categoryOfVoltage)14];
-
 		[Description("The electrical frequency provided by the power supply station.")]
 		[Category("OnshorePowerFacility")]
 		[Optional]
 		public ObservableCollection<categoryOfFrequency> categoryOfFrequency  { get; set; } = new ();
-
-		[Browsable(false)]
-		public categoryOfFrequency[] categoryOfFrequencyList => Enum.GetValues<categoryOfFrequency>();
 
 		[Description("The type of plug(s) available at the power supply station.")]
 		[Category("OnshorePowerFacility")]
@@ -16446,9 +16286,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Multiplicity(0, 3)]
 		public ObservableCollection<pilotMovement> pilotMovement  { get; set; } = new ();
 
-		[Browsable(false)]
-		public pilotMovement[] pilotMovementList => [(pilotMovement)1,(pilotMovement)2,(pilotMovement)3];
-
 		private markedByViewModel? _markedBy  = default;
 
 		[Description("Description of the aids to navigation used to mark an area or object.")]
@@ -16469,6 +16306,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -16478,9 +16316,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -16939,6 +16774,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.HorizonEditor<SeaplaneLandingArea>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -16948,9 +16784,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -17974,6 +17807,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of terminals according to type of use, purpose, or type of cargo loaded or unloaded.")]
 		[Category("Terminal")]
 		[Editor(typeof(Editors.HorizonEditor<Terminal>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,7,8,10,11])]
 		[Optional]
 		public categoryOfTerminal? categoryOfTerminal {
 			get {
@@ -17984,24 +17818,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Browsable(false)]
-		public categoryOfTerminal[] categoryOfTerminalList => [(categoryOfTerminal)1,(categoryOfTerminal)3,(categoryOfTerminal)7,(categoryOfTerminal)8,(categoryOfTerminal)10,(categoryOfTerminal)11];
-
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Terminal")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
-		[Browsable(false)]
-		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)2,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
-
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Terminal")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
-
-		[Browsable(false)]
-		public product[] productList => [(product)1,(product)2,(product)4,(product)5,(product)6,(product)7,(product)9,(product)10,(product)11,(product)12,(product)13,(product)14,(product)15,(product)16,(product)17,(product)18,(product)19,(product)20,(product)21,(product)22];
 
 		private String? _terminalIdentifier  = default;
 
@@ -18672,6 +18497,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of ISPS security levels according to the ISPS Code.")]
 		[Category("TurningBasin")]
 		[Editor(typeof(Editors.HorizonEditor<TurningBasin>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
@@ -18681,9 +18507,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _iSPSLevel, value);
 			}
 		}
-
-		[Browsable(false)]
-		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
 		#region InformationBindings
@@ -19087,6 +18910,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("Classification of subdivisions of a port or harbour area by usage.")]
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,3,8,9,11,12])]
 		[Mandatory]
 		public categoryOfPortSection categoryOfPortSection {
 			get {
@@ -19096,9 +18920,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfPortSection, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1,(categoryOfPortSection)3,(categoryOfPortSection)8,(categoryOfPortSection)9,(categoryOfPortSection)11,(categoryOfPortSection)12];
 
 		private depthsDescriptionViewModel? _depthsDescription  = default;
 
@@ -19585,6 +19406,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
@@ -19594,9 +19416,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _categoryOfTemporalVariation, value);
 			}
 		}
-
-		[Browsable(false)]
-		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
 
 		private double? _horizontalDistanceUncertainty  = default;
 
@@ -19808,6 +19627,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
@@ -19817,9 +19637,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)19,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)44];
 
 		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("SoundingDatum")]
@@ -19896,6 +19713,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
+		[PermittedValues([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
@@ -19905,9 +19723,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _verticalDatum, value);
 			}
 		}
-
-		[Browsable(false)]
-		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
 
 		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Category("VerticalDatumOfData")]
@@ -20028,9 +19843,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("TextPlacement")]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
-
-		[Browsable(false)]
-		public textType[] textTypeList => [(textType)1];
 
 		private int? _scaleMinimum  = default;
 

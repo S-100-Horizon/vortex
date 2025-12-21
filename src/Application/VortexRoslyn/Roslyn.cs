@@ -595,7 +595,7 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                             if (permittedValues is not null) {
-                                builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
+                                builderDomainModel.AppendLine($"\t\t\t[PermittedValues([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
                             foreach (var attributeRule in attributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
@@ -1913,7 +1913,7 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                 if (permittedValues is not null) {
-                    builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
+                    builder.AppendLine($"\t\t\t[PermittedValues([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
                 foreach (var attributeRule in client.AttributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
@@ -2746,6 +2746,10 @@ namespace S100Framework.Applications
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
 
+                    if (permittedValues is not null) {
+                        builder.AppendLine($"\t\t[PermittedValues([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
+                    }
+
                     if (upper.HasValue) {
                         if (lower == 0 && upper == 1)
                             builder.AppendLine($"\t\t[Optional]");
@@ -2837,22 +2841,22 @@ namespace S100Framework.Applications
 
                 if (permittedValues is not null) {
                     if (client.BuildViewModelClassClient.CodeListTypes.Contains(referenceCode)) {
-                        builder.AppendLine();
-                        builder.AppendLine("\t\t[Browsable(false)]");
-                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
+                        //builder.AppendLine();
+                        //builder.AppendLine("\t\t[Browsable(false)]");
+                        //builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List =>  CodeList.{pluralizer.Pluralize(referenceCode)}.ToArray();");
                     }
                     else {
                         var values = permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value);
 
-                        builder.AppendLine();
-                        builder.AppendLine("\t\t[Browsable(false)]");
-                        builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
+                        //builder.AppendLine();
+                        //builder.AppendLine("\t\t[Browsable(false)]");
+                        //builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => [{string.Join(',', values.Select(e => $"({referenceCode}){e}"))}];");
                     }
                 }
                 else if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t[Browsable(false)]");
-                    builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => Enum.GetValues<{referenceCode}>();");
+                    //builder.AppendLine();
+                    //builder.AppendLine("\t\t[Browsable(false)]");
+                    //builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => Enum.GetValues<{referenceCode}>();");
                 }
 
                 callback(referenceCode, lower, upper, isCollection);
