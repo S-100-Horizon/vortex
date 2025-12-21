@@ -31,7 +31,7 @@ namespace TestNIPWG
         public string PathIALA(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(_iala, ps));
 
         [Fact]
-        public void ExportS125() {            
+        public void ExportS125() {
 
             var productSpecification = XDocument.Load(this.PathIHO(@"S-125-Product-Specification-Development\FC\S125FC.xml"));
 
@@ -67,12 +67,81 @@ namespace TestNIPWG
             var builder = new StringBuilder();
 
             {
+                builder.AppendLine("--- S100FC:S100_FC_SimpleAttribute ------------------------------------");
+                var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
+
+                elements = elements
+                    .OrderBy(e => (e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)) ? 10 : 1)
+                    .ThenBy(e => e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault() is null ? 10 : 1)
+                    .ThenBy(e => e.Element(XName.Get("code", scope_S100))!.Value);
+
+                foreach (var element in elements) {
+                    var name = element.Element(XName.Get("name", scope_S100))!.Value;
+                    var code = element.Element(XName.Get("code", scope_S100))!.Value;
+                    var valueType = element.Element(XName.Get("valueType", scope_S100))!.Value;
+
+                    var prefix = "";
+                    if (!(element.Attribute("isAbstract") is null || element.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase))) {
+                        prefix = "abstract ";
+                    }
+
+                    builder.AppendLine($"{prefix}{code}:{valueType}");
+
+                    if (valueType.Equals("enumeration") || valueType.Equals("S100_CodeList")) {
+                        foreach(var listedValue in element.Element(XName.Get("listedValues", scope_S100))!.Elements()) {
+                            var listedValueLabel = listedValue.Element(XName.Get("label", scope_S100))!.Value!;
+                            var listedValueDefinition = listedValue.Element(XName.Get("definition", scope_S100))!.Value!;
+                            var listedValueCode = listedValue.Element(XName.Get("code", scope_S100))!.Value!;
+
+                            builder.AppendLine($"\t{listedValueCode}:{listedValueLabel}:{listedValueDefinition}");
+                        }
+                    }
+                }
+                builder.AppendLine();
+            }
+
+            {
+                builder.AppendLine("--- S100FC:S100_FC_ComplexAttribute ------------------------------------");
+                var notFinished = false;
+                do {
+                    notFinished = false;
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager);
+
+                    elements = elements
+                        .OrderBy(e => (e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)) ? 10 : 1)
+                        .ThenBy(e => e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault() is null ? 10 : 1)
+                        .ThenBy(e => e.Element(XName.Get("code", scope_S100))!.Value);
+
+                    foreach (var element in elements) {
+                        var name = element.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = element.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var prefix = "";
+                        if (!(element.Attribute("isAbstract") is null || element.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase))) {
+                            prefix = "abstract ";
+                        }
+
+                        var superType = element.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
+                        if (superType != null) {
+                            builder.AppendLine($"{prefix}{code} : {superType.Value!}");
+                        }
+                        else
+                            builder.AppendLine($"{prefix}{code}");
+
+                        if (!(element.Attribute("isAbstract") != default && bool.Parse(element.Attribute("isAbstract")!.Value))) {
+                            Attributes(element, builder, "subAttributeBinding");
+                        }
+                    }
+                } while (notFinished);
+                builder.AppendLine();
+            }
+
+            {
                 builder.AppendLine("--- S100FC:S100_FC_InformationType ------------------------------------");
                 var notFinished = false;
                 do {
                     notFinished = false;
                     var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
-
 
                     elements = elements
                         .OrderBy(e => (e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)) ? 10 : 1)
@@ -111,7 +180,7 @@ namespace TestNIPWG
                     var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
 
                     elements = elements
-                        .OrderBy(e =>( e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)) ? 10 : 1)
+                        .OrderBy(e => (e.Attribute("isAbstract") is null || e.Attribute("isAbstract")!.Value.Equals("false", StringComparison.OrdinalIgnoreCase)) ? 10 : 1)
                         .ThenBy(e => e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault() is null ? 10 : 1)
                         .ThenBy(e => e.Element(XName.Get("code", scope_S100))!.Value);
 
@@ -125,7 +194,7 @@ namespace TestNIPWG
                             prefix = "abstract ";
                         }
 
-                            var superType = element.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
+                        var superType = element.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
                         if (superType != null) {
                             builder.AppendLine($"{prefix}{code} : {superType.Value!}");
                         }
@@ -143,7 +212,7 @@ namespace TestNIPWG
             return builder;
         }
 
-        private void Attributes(XElement element, StringBuilder builder) {
+        private void Attributes(XElement element, StringBuilder builder, string tag = "attributeBinding") {
             var navigator = element.Parent!.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -158,8 +227,8 @@ namespace TestNIPWG
             foreach (var e in scopes)
                 xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
-            var elements = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager);
-            elements = elements.OrderBy(e =>e.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!);
+            var elements = element.XPathSelectElements($"S100FC:{tag}", xmlNamespaceManager);
+            elements = elements.OrderBy(e => e.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!);
             foreach (var attributeBinding in elements) {
                 var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
                 var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
