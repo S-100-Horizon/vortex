@@ -393,7 +393,7 @@ namespace S100Framework.Applications
                         editorBuilders.Add(code, (b, lower, upper) => {
                             b.AppendLine("\t\t[S100TruncatedDateAttribute]");
                             if (!(upper.HasValue && upper.Value > 1)) {
-                                b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                                b.AppendLine($"\t\t//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
                             }
                             //if (lower > 1 || (upper.HasValue && upper.Value > 1))
                             //    b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
@@ -2295,7 +2295,8 @@ namespace S100Framework.Applications
                         bindings.Add(association, []);
 
                         informationBindingExtension.AppendLine($"\t\t\t\tif(informationBinding is informationBinding<{association}> {CamelCase(association)}) {{");
-                        informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        //informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new InformationRefViewModel {{");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationId = {CamelCase(association)}.referenceId,");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationType = {CamelCase(association)}.informationType,");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
@@ -2306,127 +2307,58 @@ namespace S100Framework.Applications
                 }
 
                 if (associations.Any())
-                    builder.AppendLine("\t\t#region InformationBindings");
+                    builder.AppendLine("\t\t#region InformationBindings");               
 
                 foreach (var association in associations) {
                     builder.AppendLine();
-                    //builder.AppendLine($"\t\tpublic class {association}ViewModel : informationBindingViewModel<{productId}.{association}ViewModel>, IInformationBindings {{");
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : ViewModelBase, IInformationBinding {{");
-                    builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
-                    builder.AppendLine("\t\t\t\tif (informationBindings.Length == 1)");
-                    builder.AppendLine("\t\t\t\t\tthis.role = informationBindings[0].role;");
-                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
 
-                    builder.AppendLine();
-
-
-                    //  informationBindingViewModel
-                    builder.AppendLine($"\t\t\tprivate string _role = string.Empty;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]");
-                    builder.AppendLine($"\t\t\tpublic string role {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _role; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _role, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprivate string _referenceId = string.Empty;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]");
-                    builder.AppendLine($"\t\t\tpublic string informationId {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _referenceId; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _referenceId, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprivate string? _informationType = default;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[ReadOnly(true)]");
-                    builder.AppendLine($"\t\t\tpublic string? informationType {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _informationType; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _informationType, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprotected override void Validate() {{");
-                    builder.AppendLine($"\t\t\t\t//TODO: Validate role and referenceId");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-
-                    builder.AppendLine("\t\t\t[Browsable(false)]");
-                    builder.AppendLine("\t\t\tpublic informationBindingDefinition[] informationBindings => [");
                     foreach (var binding in bindings[association].Distinct()) {
                         var roleType = binding.Attribute("roleType")!.Value;
                         var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
                         var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                         var _ = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                        int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
-
-                        builder.AppendLine("\t\t\t\tnew informationBindingDefinition {");
-                        builder.AppendLine($"\t\t\t\t\tlower = {lower},");
-                        if (upper.HasValue)
-                            builder.AppendLine($"\t\t\t\t\tupper = {upper},");
-                        else
-                            builder.AppendLine($"\t\t\t\t\tupper = default,");
-                        builder.AppendLine($"\t\t\t\t\tassociation = \"{association}\",");
-                        builder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
-                        builder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
+                        int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
 
                         var informationTypes = binding.Elements(XName.Get("informationType", scope_S100));
                         var names = informationTypes.Select(e => $"\"{e.Attribute("ref")!.Value}\"");
-                        builder.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', names)}],");
-                        builder.AppendLine("\t\t\t\t},");
+
+                        var attribute = $"[InformationBinding(\"{association}\",\"{role}\",[{string.Join(',', names)}], lower:{lower}, upper:{upper})]";
+                        builder.AppendLine($"\t\t{attribute}");
                     }
-                    builder.AppendLine("\t\t\t];");
+                    builder.AppendLine($"\t\tpublic ObservableCollection<InformationRefViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
 
-                    builder.AppendLine("\t\t\tpublic override string Serialize() {");
-                    builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");
+                    ////builder.AppendLine();
+                    ////builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
+                    ////builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
 
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t\t[Browsable(false)]");
-                    builder.AppendLine($"\t\t\tpublic informationBinding Model => new informationBinding<{association}> {{");
-                    builder.AppendLine("\t\t\t\treferenceId = this.informationId,");
-                    builder.AppendLine("\t\t\t\tinformationType = this.informationType,");
-                    builder.AppendLine("\t\t\t\trole = this.role,");
-                    builder.AppendLine("\t\t\t\troleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),");
-                    builder.AppendLine($"\t\t\t\t//association = {association},");
-                    builder.AppendLine("\t\t\t};");
-                    builder.AppendLine("\t\t}");
-
+                    ////constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    ////constructorBuilder.AppendLine($"\t\t\t\tOnInformationBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
+                    ////constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
-                foreach (var association in associations) {
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
-                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
-
-                    constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-                    constructorBuilder.AppendLine($"\t\t\t\tOnInformationBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
-                    constructorBuilder.AppendLine($"\t\t\t}};");
-                }
-
-                builder.AppendLine("\t\t[Browsable(false)]");
+                builder.AppendLine();
+                //builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
-                    builder.AppendLine();
-                    var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    builder.AppendLine($"\t\tpublic override informationBinding[] informationBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine($"\t\tpublic override informationBinding[] GetInformationBindings() => [");
+                    foreach (var association in associations) {
+                        builder.AppendLine($"\t\t\t.. {pluralizer.Pluralize(association)}.Select(e => new informationBinding<DomainModel.{productId}.InformationAssociations.{association}> {{");
+                        builder.AppendLine("\t\t\t\tinformationType = e.informationType, referenceId = e.informationId, role = e.role,}),");
+                    }
+                    builder.AppendLine("\t\t];");
+
+                    //builder.AppendLine();
+                    //var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
+                    //builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    //builder.AppendLine();
+                    builder.AppendLine("\t\t#endregion");
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("\t\tpublic override informationBinding[] informationBindings => [];");
+                    builder.AppendLine("\t\tpublic override informationBinding[] GetInformationBindings() => [];");
                     builder.AppendLine();
                 }
-
-                if (associations.Any())
-                    builder.AppendLine("\t\t#endregion");
-
-                if (associations.Any())
-                    builder.AppendLine();
             }
 
             informationBindingExtension.AppendLine("\t\t\t}");
@@ -2453,7 +2385,8 @@ namespace S100Framework.Applications
                         bindings.Add(association, []);
 
                         featureBindingExtension.AppendLine($"\t\t\t\tif(featureBinding is featureBinding<{association}> {CamelCase(association)}) {{");
-                        featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        //featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new FeatureRefViewModel {{");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureId = {CamelCase(association)}.referenceId,");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureType = {CamelCase(association)}.featureType,");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
@@ -2464,137 +2397,66 @@ namespace S100Framework.Applications
                 }
 
                 if (associations.Any())
-                    builder.AppendLine("\t\t#region FeatureBindings");
+                    builder.AppendLine("\t\t#region FeatureBindings");             
 
                 foreach (var association in associations) {
                     builder.AppendLine();
-                    //builder.AppendLine($"\t\tpublic class {association}ViewModel : featureBindingViewModel<{productId}.{association}ViewModel>, IFeatureBindings {{");
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : ViewModelBase, IFeatureBinding {{");
-                    builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
-                    builder.AppendLine("\t\t\t\tif (featureBindings.Length == 1)");
-                    builder.AppendLine("\t\t\t\t\tthis.role = featureBindings[0].role;");
-                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
 
-                    builder.AppendLine();
+                    //if (bindings[association].Distinct().Count() > 1) System.Diagnostics.Debugger.Break();
 
-
-                    //  featureBindingViewModel
-                    builder.AppendLine($"\t\t\tprivate string _role = string.Empty;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]");
-                    builder.AppendLine($"\t\t\tpublic string role {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _role; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _role, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprivate string _referenceId = string.Empty;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]");
-                    builder.AppendLine($"\t\t\tpublic string featureId {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _referenceId; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _referenceId, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprivate string? _featureType = default;");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[ReadOnly(true)]");
-                    builder.AppendLine($"\t\t\tpublic string? featureType {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _featureType; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _featureType, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprivate {productId}.{association}ViewModel _association = new();");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\t[ExpandableObject]");
-                    builder.AppendLine($"\t\t\tpublic {productId}.{association}ViewModel association {{");
-                    builder.AppendLine($"\t\t\t\tget {{ return _association; }}");
-                    builder.AppendLine($"\t\t\t\tset {{");
-                    builder.AppendLine($"\t\t\t\t\tSetValue(ref _association, value);");
-                    builder.AppendLine($"\t\t\t\t}}");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tprotected override void Validate() {{");
-                    builder.AppendLine($"\t\t\t\t//TODO: Validate role and referenceId");
-                    builder.AppendLine($"\t\t\t}}");
-                    builder.AppendLine();
-
-                    builder.AppendLine("\t\t\t[Browsable(false)]");
-                    builder.AppendLine("\t\t\tpublic featureBindingDefinition[] featureBindings => [");
                     foreach (var binding in bindings[association].Distinct()) {
                         var roleType = binding.Attribute("roleType")!.Value;
                         var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
                         var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                         var _ = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                        int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
-
-                        builder.AppendLine("\t\t\t\tnew featureBindingDefinition {");
-                        builder.AppendLine($"\t\t\t\t\tlower = {lower},");
-                        if (upper.HasValue)
-                            builder.AppendLine($"\t\t\t\t\tupper = {upper},");
-                        else
-                            builder.AppendLine($"\t\t\t\t\tupper = default,");
-                        builder.AppendLine($"\t\t\t\t\tassociation = \"{association}\",");
-                        builder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
-                        builder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
+                        int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
 
                         var featureTypes = binding.Elements(XName.Get("featureType", scope_S100));
                         var names = featureTypes.Select(e => $"\"{e.Attribute("ref")!.Value}\"");
-                        builder.AppendLine($"\t\t\t\t\tfeatureTypes = [{string.Join(',', names)}],");
-                        builder.AppendLine("\t\t\t\t},");
+
+                        var attribute = $"[FeatureBinding(\"{association}\",\"{role}\",[{string.Join(',', names)}], lower:{lower}, upper:{upper})]";
+                        builder.AppendLine($"\t\t{attribute}");
                     }
-                    builder.AppendLine("\t\t\t];");
-
-                    builder.AppendLine("\t\t\tpublic override string Serialize() {");
-                    builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");
-
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t\t[Browsable(false)]");
-                    builder.AppendLine($"\t\t\tpublic featureBinding Model => new featureBinding<{association}> {{");
-                    builder.AppendLine("\t\t\t\treferenceId = this.featureId,");
-                    builder.AppendLine("\t\t\t\tfeatureType = this.featureType,");
-                    builder.AppendLine("\t\t\t\trole = this.role,");
-                    builder.AppendLine("\t\t\t\troleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),");
-                    builder.AppendLine($"\t\t\t\t//association = {association},");
-                    builder.AppendLine("\t\t\t};");
-
-                    builder.AppendLine("\t\t}");
-                }
-
-                foreach (var association in associations) {
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
-                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
+                    builder.AppendLine($"\t\tpublic ObservableCollection<FeatureRefViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
 
                     constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
                     constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
+
+
+                    ////builder.AppendLine();
+                    ////builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
+                    ////builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
+
+                    ////constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    ////constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
+                    ////constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
-                builder.AppendLine("\t\t[Browsable(false)]");
+                builder.AppendLine();
+                //builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
-                    builder.AppendLine();
-                    var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine($"\t\tpublic override featureBinding[] GetFeatureBindings() => [");
+                    foreach (var association in associations) {
+                        builder.AppendLine($"\t\t\t.. {pluralizer.Pluralize(association)}.Select(e => new featureBinding<DomainModel.{productId}.FeatureAssociations.{association}> {{");
+                        builder.AppendLine("\t\t\t\tfeatureType = e.featureType, referenceId = e.featureId, role = e.role,}),");
+                    }
+                    builder.AppendLine("\t\t];");
+
+                    //builder.AppendLine();
+                    //var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
+                    //builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    //builder.AppendLine();
+
+                    builder.AppendLine("\t\t#endregion");
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("\t\tpublic override featureBinding[] featureBindings => [];");
+                    builder.AppendLine("\t\tpublic override featureBinding[] GetFeatureBindings() => [];");
                     builder.AppendLine();
                 }
-
-                if (associations.Any())
-                    builder.AppendLine("\t\t#endregion");
-
-                if (associations.Any())
-                    builder.AppendLine();
             }
 
             featureBindingExtension.AppendLine("\t\t\t}");
@@ -2606,7 +2468,7 @@ namespace S100Framework.Applications
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
 
             if (client.IncludeLoad) {
-                builder.AppendLine();
+                //builder.AppendLine();
                 builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load({code} instance) {{");
                 builder.AppendLine(loadBuilder.ToString().TrimEnd([.. Environment.NewLine]));
                 builder.AppendLine("\t\t\treturn this;");
@@ -2740,7 +2602,7 @@ namespace S100Framework.Applications
                         client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }
                     else if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
-                        builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
+                        builder.AppendLine($"\t\t//[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
 
 
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))

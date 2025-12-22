@@ -88,7 +88,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _chartPublicationIdentifier  = default;
 
 		[Description("Identifier for the chart or publication (using the MRN format).")]
-		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? chartPublicationIdentifier {
 			get {
@@ -102,7 +102,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _internationalChartAffected  = default;
 
 		[Description("International paper chart number. (Not used if chartAffected carry an ENC name).")]
-		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? internationalChartAffected {
 			get {
@@ -116,7 +116,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
-		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -130,7 +130,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _publicationAffected  = default;
 
 		[Description("Name of affected publication.")]
-		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? publicationAffected {
 			get {
@@ -140,7 +140,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _publicationAffected, value);
 			}
 		}
-
 
 		public affectedChartPublicationsViewModel Load(affectedChartPublications instance) {
 			chartAffected = new ();
@@ -189,7 +188,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _chartNumber  = string.Empty;
 
 		[Description("Chart number. Note, can be either paper chart number or ENC file name.")]
-		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String chartNumber {
 			get {
@@ -203,7 +202,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _chartPlanNumber  = default;
 
 		[Description("Plan number when a chart has more than one panel.")]
-		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? chartPlanNumber {
 			get {
@@ -217,7 +216,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private DateOnly _editionDate  = default;
 
 		[Description("Date of publishing for example of a publication, chart, or product.")]
-		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly editionDate {
 			get {
@@ -231,7 +230,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private DateOnly? _lastNoticeDate  = default;
 
 		[Description("Date of the last notice to mariner, such as was applied to a chart or publication.")]
-		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? lastNoticeDate {
 			get {
@@ -241,7 +240,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _lastNoticeDate, value);
 			}
 		}
-
 
 		public chartAffectedViewModel Load(chartAffected instance) {
 			chartNumber = instance.chartNumber;
@@ -285,7 +283,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -300,7 +298,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -314,7 +312,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
 		[Description("The time corresponding to the end of an active period.")]
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
 			get {
@@ -328,7 +326,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
 		[Description("The time corresponding to the start of an active period.")]
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
 			get {
@@ -338,7 +336,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _timeOfDayStart, value);
 			}
 		}
-
 
 		public fixedDateRangeViewModel Load(fixedDateRange instance) {
 			dateEnd = instance.dateEnd;
@@ -381,7 +378,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _localityIdentifier  = default;
 
 		[Description("Globally unique identifier for the area or locality in the MRN format.")]
-		[Editor(typeof(Editors.HorizonEditor<generalArea>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<generalArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? localityIdentifier {
 			get {
@@ -395,7 +392,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("Name of an area locality as defined by a competent authority.")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
-
 
 		public generalAreaViewModel Load(generalArea instance) {
 			localityIdentifier = instance.localityIdentifier;
@@ -442,7 +438,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -456,7 +452,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Description("A non-formatted digital text string.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -466,7 +462,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _text, value);
 			}
 		}
-
 
 		public informationViewModel Load(information instance) {
 			language = instance.language;
@@ -503,7 +498,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _localityIdentifier  = default;
 
 		[Description("Globally unique identifier for the area or locality in the MRN format.")]
-		[Editor(typeof(Editors.HorizonEditor<locality>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<locality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? localityIdentifier {
 			get {
@@ -517,7 +512,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("Name of an area locality as defined by a competent authority.")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
-
 
 		public localityViewModel Load(locality instance) {
 			localityIdentifier = instance.localityIdentifier;
@@ -564,7 +558,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
-		[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -578,7 +572,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Description("A non-formatted digital text string.")]
-		[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -588,7 +582,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _text, value);
 			}
 		}
-
 
 		public locationNameViewModel Load(locationName instance) {
 			language = instance.language;
@@ -625,7 +618,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
 		[Description("Identifies the agency which produced the data.")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String agencyResponsibleForProduction {
 			get {
@@ -639,7 +632,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -653,7 +646,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _nameOfSeries  = string.Empty;
 
 		[Description("The NAVAREA or METAREA. Example: NAVAREA IV. Distinction: generalArea, locality")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String nameOfSeries {
 			get {
@@ -667,7 +660,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _nationality  = default;
 
 		[Description("Identifier of membership of a particular nation.")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nationality {
 			get {
@@ -681,7 +674,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _warningNumber  = default;
 
 		[Description("The consecutive number re-starts each calendar year at 1 (Leading zeros are not mandatory).")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int warningNumber {
 			get {
@@ -695,7 +688,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private warningType _warningType  = default;
 
 		[Description("The scope of the MSI warning - NAVAREA, sub-area, etc.")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public warningType warningType {
@@ -710,7 +703,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _year  = default;
 
 		[Description("A period of one revolution of the earth around the sun.")]
-		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int year {
 			get {
@@ -720,7 +713,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _year, value);
 			}
 		}
-
 
 		public messageSeriesIdentifierViewModel Load(messageSeriesIdentifier instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -772,7 +764,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
-		[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -786,7 +778,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Description("A non-formatted digital text string.")]
-		[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -796,7 +788,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _text, value);
 			}
 		}
-
 
 		public navwarnTitleViewModel Load(navwarnTitle instance) {
 			language = instance.language;
@@ -837,7 +828,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Description("Detailed type of a warning or hazard.")]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
-
 
 		public warningInformationViewModel Load(warningInformation instance) {
 			information.Clear();
@@ -896,7 +886,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
-
 		public featureReferenceViewModel Load(featureReference instance) {
 			atoNNumber.Clear();
 			if (instance.atoNNumber is not null) {
@@ -949,7 +938,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
-		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -963,7 +952,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _name  = string.Empty;
 
 		[Description("The individual name of a feature.")]
-		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -977,7 +966,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private nameUsage? _nameUsage  = default;
 
 		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
-		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public nameUsage? nameUsage {
@@ -988,7 +977,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nameUsage, value);
 			}
 		}
-
 
 		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
@@ -1028,7 +1016,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private double _uncertaintyFixed  = default;
 
 		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
-		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -1038,7 +1026,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-
 
 		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
@@ -1082,7 +1069,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
-
 
 		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
 			horizontalPositionUncertainty = new ();
@@ -1210,7 +1196,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("An indication of no active message.")]
 		[Category("References")]
-		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean noMessageOnHand {
 			get {
@@ -1225,7 +1211,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("Category of reference.")]
 		[Category("References")]
-		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public referenceCategory referenceCategory {
@@ -1240,79 +1226,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
-			public navwarnReferencesViewModel() {
-				if (informationBindings.Length == 1)
-					this.role = informationBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
-			public string informationId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _informationType = default;
-
-			[ReadOnly(true)]
-			public string? informationType {
-				get { return _informationType; }
-				set {
-					SetValue(ref _informationType, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public informationBindingDefinition[] informationBindings => [
-				new informationBindingDefinition {
-					lower = 1,
-					upper = 1,
-					association = "navwarnReferences",
-					role = "theWarning",
-					roleType = roleType.association,
-					informationTypes = ["NavwarnPreamble"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public informationBinding Model => new informationBinding<navwarnReferences> {
-				referenceId = this.informationId,
-				informationType = this.informationType,
-				role = this.role,
-				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = navwarnReferences,
-			};
-		}
-
 		[Category("InformationBindings")]
-		public ObservableCollection<ReferencesViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
-		[Browsable(false)]
+		[InformationBinding("navwarnReferences","theWarning",["NavwarnPreamble"], lower:1, upper:1)]
+		public ObservableCollection<InformationRefViewModel> navwarnReferences { get; set; } = new();
 
-		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override informationBinding[] GetInformationBindings() => [
+			.. navwarnReferences.Select(e => new informationBinding<DomainModel.S124.InformationAssociations.navwarnReferences> {
+				informationType = e.informationType, referenceId = e.informationId, role = e.role,}),
+		];
 		#endregion
-
 
 		public ReferencesViewModel Load(References instance) {
 			messageSeriesIdentifier.Clear();
@@ -1353,9 +1275,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ReferencesViewModel() : base() {
 			messageSeriesIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(messageSeriesIdentifier));
-			};
-			navwarnReferences.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnInformationBindingCollectionChanged(nameof(navwarnReferences));
 			};
 		}
 	}
@@ -1409,7 +1328,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("Date and time of cancelling a notice or warning.")]
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateTime? cancellationDate {
 			get {
@@ -1424,7 +1343,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("An indication of an international service, true = yes, false = no.")]
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean intService {
 			get {
@@ -1439,7 +1358,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("General type of a navigational warning or navigational hazard.")]
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])]
 		[Mandatory]
 		public navwarnTypeGeneral navwarnTypeGeneral {
@@ -1455,7 +1374,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("Date and time of publication of the notice or warning.")]
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateTime publicationTime {
 			get {
@@ -1469,79 +1388,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
-			public navwarnReferencesViewModel() {
-				if (informationBindings.Length == 1)
-					this.role = informationBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
-			public string informationId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _informationType = default;
-
-			[ReadOnly(true)]
-			public string? informationType {
-				get { return _informationType; }
-				set {
-					SetValue(ref _informationType, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public informationBindingDefinition[] informationBindings => [
-				new informationBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "navwarnReferences",
-					role = "theReferences",
-					roleType = roleType.association,
-					informationTypes = ["References"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public informationBinding Model => new informationBinding<navwarnReferences> {
-				referenceId = this.informationId,
-				informationType = this.informationType,
-				role = this.role,
-				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = navwarnReferences,
-			};
-		}
-
 		[Category("InformationBindings")]
-		public ObservableCollection<NavwarnPreambleViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
-		[Browsable(false)]
+		[InformationBinding("navwarnReferences","theReferences",["References"], lower:0, upper:2147483647)]
+		public ObservableCollection<InformationRefViewModel> navwarnReferences { get; set; } = new();
 
-		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override informationBinding[] GetInformationBindings() => [
+			.. navwarnReferences.Select(e => new informationBinding<DomainModel.S124.InformationAssociations.navwarnReferences> {
+				informationType = e.informationType, referenceId = e.informationId, role = e.role,}),
+		];
 		#endregion
-
 
 		public NavwarnPreambleViewModel Load(NavwarnPreamble instance) {
 			affectedChartPublications.Clear();
@@ -1625,9 +1480,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			navwarnTitle.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(navwarnTitle));
 			};
-			navwarnReferences.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnInformationBindingCollectionChanged(nameof(navwarnReferences));
-			};
 		}
 	}
 
@@ -1645,7 +1497,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
@@ -1672,9 +1524,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
+		public override informationBinding[] GetInformationBindings() => [];
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
@@ -1723,7 +1574,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("NavwarnPart")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([7,8,14,25,27])]
 		[Optional]
 		public restriction? restriction {
@@ -1768,243 +1619,34 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnPreambleContentViewModel : ViewModelBase, IInformationBinding {
-			public navwarnPreambleContentViewModel() {
-				if (informationBindings.Length == 1)
-					this.role = informationBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
-			public string informationId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _informationType = default;
-
-			[ReadOnly(true)]
-			public string? informationType {
-				get { return _informationType; }
-				set {
-					SetValue(ref _informationType, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public informationBindingDefinition[] informationBindings => [
-				new informationBindingDefinition {
-					lower = 1,
-					upper = 1,
-					association = "navwarnPreambleContent",
-					role = "header",
-					roleType = roleType.association,
-					informationTypes = ["NavwarnPreamble"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public informationBinding Model => new informationBinding<navwarnPreambleContent> {
-				referenceId = this.informationId,
-				informationType = this.informationType,
-				role = this.role,
-				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = navwarnPreambleContent,
-			};
-		}
-
 		[Category("InformationBindings")]
-		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContents { get; set; } = new();
-		[Browsable(false)]
+		[InformationBinding("navwarnPreambleContent","header",["NavwarnPreamble"], lower:1, upper:1)]
+		public ObservableCollection<InformationRefViewModel> navwarnPreambleContents { get; set; } = new();
 
-		public override informationBinding[] informationBindings => [.. navwarnPreambleContents.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override informationBinding[] GetInformationBindings() => [
+			.. navwarnPreambleContents.Select(e => new informationBinding<DomainModel.S124.InformationAssociations.navwarnPreambleContent> {
+				informationType = e.informationType, referenceId = e.informationId, role = e.role,}),
+		];
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
-			public areaAffectedViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S124.areaAffectedViewModel _association = new();
-
-			[ExpandableObject]
-			public S124.areaAffectedViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "areaAffected",
-					role = "affects",
-					roleType = roleType.association,
-					featureTypes = ["NavwarnAreaAffected"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<areaAffected> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = areaAffected,
-			};
-		}
-
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
-			public TextAssociationViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S124.TextAssociationViewModel _association = new();
-
-			[ExpandableObject]
-			public S124.TextAssociationViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "TextAssociation",
-					role = "thePositionProvider",
-					roleType = roleType.association,
-					featureTypes = ["TextPlacement"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<TextAssociation> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = TextAssociation,
-			};
-		}
+		[Category("FeatureBindings")]
+		[FeatureBinding("areaAffected","affects",["NavwarnAreaAffected"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> areaAffecteds { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnPartViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
+		[FeatureBinding("TextAssociation","thePositionProvider",["TextPlacement"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> TextAssociations { get; set; } = new();
 
-		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
-		[Browsable(false)]
-
-		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. areaAffecteds.Select(e => new featureBinding<DomainModel.S124.FeatureAssociations.areaAffected> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+			.. TextAssociations.Select(e => new featureBinding<DomainModel.S124.FeatureAssociations.TextAssociation> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public NavwarnPartViewModel Load(NavwarnPart instance) {
 			restriction = instance.restriction;
@@ -2077,9 +1719,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			featureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureReference));
 			};
-			navwarnPreambleContents.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnInformationBindingCollectionChanged(nameof(navwarnPreambleContents));
-			};
 			areaAffecteds.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnFeatureBindingCollectionChanged(nameof(areaAffecteds));
 			};
@@ -2100,95 +1739,21 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
-			public areaAffectedViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S124.areaAffectedViewModel _association = new();
-
-			[ExpandableObject]
-			public S124.areaAffectedViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 1,
-					upper = 1,
-					association = "areaAffected",
-					role = "impacts",
-					roleType = roleType.association,
-					featureTypes = ["NavwarnPart"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<areaAffected> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = areaAffected,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("areaAffected","impacts",["NavwarnPart"], lower:1, upper:1)]
+		public ObservableCollection<FeatureRefViewModel> areaAffecteds { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. areaAffecteds.Select(e => new featureBinding<DomainModel.S124.FeatureAssociations.areaAffected> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public NavwarnAreaAffectedViewModel Load(NavwarnAreaAffected instance) {
 
@@ -2244,7 +1809,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -2259,7 +1824,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("A non-formatted digital text string.")]
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -2274,7 +1839,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int textOffsetBearing {
 			get {
@@ -2289,7 +1854,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("The distance that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int textOffsetDistance {
 			get {
@@ -2304,7 +1869,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Description("A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.")]
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean textRotation {
 			get {
@@ -2315,95 +1880,21 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
-			public TextAssociationViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S124.TextAssociationViewModel _association = new();
-
-			[ExpandableObject]
-			public S124.TextAssociationViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 1,
-					upper = 1,
-					association = "TextAssociation",
-					role = "theCartographicText",
-					roleType = roleType.association,
-					featureTypes = ["NavwarnPart"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<TextAssociation> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = TextAssociation,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("TextAssociation","theCartographicText",["NavwarnPart"], lower:1, upper:1)]
+		public ObservableCollection<FeatureRefViewModel> TextAssociations { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. TextAssociations.Select(e => new featureBinding<DomainModel.S124.FeatureAssociations.TextAssociation> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public TextPlacementViewModel Load(TextPlacement instance) {
 			scaleMinimum = instance.scaleMinimum;
@@ -2464,7 +1955,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
-					instance.navwarnReferences.Add(new ReferencesViewModel.navwarnReferencesViewModel {
+					instance.navwarnReferences.Add(new InformationRefViewModel {
 						informationId = navwarnReferences.referenceId,
 						informationType = navwarnReferences.informationType,
 						role = navwarnReferences.role,
@@ -2477,7 +1968,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
-					instance.navwarnReferences.Add(new NavwarnPreambleViewModel.navwarnReferencesViewModel {
+					instance.navwarnReferences.Add(new InformationRefViewModel {
 						informationId = navwarnReferences.referenceId,
 						informationType = navwarnReferences.informationType,
 						role = navwarnReferences.role,
@@ -2496,7 +1987,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, informationBinding[] bindings) {
 			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnPreambleContent> navwarnPreambleContent) {
-					instance.navwarnPreambleContents.Add(new NavwarnPartViewModel.navwarnPreambleContentViewModel {
+					instance.navwarnPreambleContents.Add(new InformationRefViewModel {
 						informationId = navwarnPreambleContent.referenceId,
 						informationType = navwarnPreambleContent.informationType,
 						role = navwarnPreambleContent.role,
@@ -2524,14 +2015,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
-					instance.areaAffecteds.Add(new NavwarnPartViewModel.areaAffectedViewModel {
+					instance.areaAffecteds.Add(new FeatureRefViewModel {
 						featureId = areaAffected.referenceId,
 						featureType = areaAffected.featureType,
 						role = areaAffected.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
-					instance.TextAssociations.Add(new NavwarnPartViewModel.TextAssociationViewModel {
+					instance.TextAssociations.Add(new FeatureRefViewModel {
 						featureId = textAssociation.referenceId,
 						featureType = textAssociation.featureType,
 						role = textAssociation.role,
@@ -2544,7 +2035,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
-					instance.areaAffecteds.Add(new NavwarnAreaAffectedViewModel.areaAffectedViewModel {
+					instance.areaAffecteds.Add(new FeatureRefViewModel {
 						featureId = areaAffected.referenceId,
 						featureType = areaAffected.featureType,
 						role = areaAffected.role,
@@ -2557,7 +2048,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
-					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
+					instance.TextAssociations.Add(new FeatureRefViewModel {
 						featureId = textAssociation.referenceId,
 						featureType = textAssociation.featureType,
 						role = textAssociation.role,

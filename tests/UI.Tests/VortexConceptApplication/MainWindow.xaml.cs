@@ -229,7 +229,7 @@ namespace VortexConceptApplication
 
                 var instance = (LightAllAroundViewModel)sender!;
 
-                if (!instance.featureBindings.Any())
+                if (!instance.GetFeatureBindings().Any())
                     return;
 
                 var options = new System.Text.Json.JsonSerializerOptions {
@@ -237,7 +237,7 @@ namespace VortexConceptApplication
                     TypeInfoResolver = S100Framework.DomainModel.S101.Summary.SharedBindingResolver(),
                 };
 
-                var json = System.Text.Json.JsonSerializer.Serialize(instance.featureBindings, options);
+                var json = System.Text.Json.JsonSerializer.Serialize(instance.GetFeatureBindings, options);
 
 
                 System.Diagnostics.Debugger.Break();

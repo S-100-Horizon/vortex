@@ -12,7 +12,13 @@
     <Project Path="src/Application/VortexLoader/VortexLoader.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="src/Application/VortexProAppModule/VortexProAppModule.csproj">
+      <Platform Project="x64" />
+    </Project>
     <Project Path="src/Application/VortexRoslyn/VortexRoslyn.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="tests/UI.Tests/VortexConceptApplication/VortexConceptApplication.csproj">
       <Platform Project="x64" />
     </Project>
   </Folder>
@@ -36,6 +42,7 @@
     <Project Path="src/Core/S100Framework.YAML/S100Framework.YAML.csproj">
       <Build Solution="Release|*" Project="false" />
     </Project>
+    <Project Path="src/UI/S100Framework.WPF.PropertyGrid/S100Framework.WPF.PropertyGrid.csproj" />
     <Project Path="src/UI/S100Framework.WPF/S100Framework.WPF.csproj">
       <Build Solution="Release|*" Project="false" />
     </Project>

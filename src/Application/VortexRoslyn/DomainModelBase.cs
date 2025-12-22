@@ -171,11 +171,33 @@ namespace S100Framework.DomainModel
         public string TextPattern = textPattern;
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class InformationBindingAttribute(string association, string role, string[] informationTypes, int lower, int upper = int.MaxValue) : System.Attribute
+    {
+        public string association = association;
+        public string role = role;
+        public string[] informationTypes = informationTypes;
+        public int lower = lower;
+        public int upper = upper;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class FeatureBindingAttribute(string association, string role, string[] featureTypes, int lower, int upper = int.MaxValue) : System.Attribute
+    {
+        public string association = association;
+        public string role = role;
+        public string[] featureTypes = featureTypes;
+        public int lower = lower;
+        public int upper = upper;
+    }
+
     #endregion
 
     public interface IInformationBindingDefinition
     {
         informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        //informationBinding[] informationBindings { get; }
     }
 
     public interface IFeatureBindingDefinition
@@ -183,6 +205,10 @@ namespace S100Framework.DomainModel
         informationBindingDefinition[] informationBindingDefinitions { get; }
 
         featureBindingDefinition[] featureBindingDefinitions { get; }
+
+        //informationBinding[] informationBindings { get; }
+
+        //featureBinding[] featureBindings { get; }
 
         Primitives[] primitives { get; }
     }
@@ -215,6 +241,7 @@ namespace S100Framework.DomainModel
     public abstract class InformationNode : Node, IInformationBindingDefinition
     {
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+        //public abstract informationBinding[] informationBindings { get; }
     }
 
     [System.SerializableAttribute()]
@@ -223,6 +250,8 @@ namespace S100Framework.DomainModel
         public abstract Primitives[] primitives { get; }
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
+        //public abstract informationBinding[] informationBindings { get; }
+        //public abstract featureBinding[] featureBindings { get; }
     }
 
     [System.SerializableAttribute()]

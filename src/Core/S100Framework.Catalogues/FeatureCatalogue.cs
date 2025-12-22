@@ -67,7 +67,7 @@ namespace S100Framework.Catalogues
 
         public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimivive { get; set; } = (p) => ImmutableArray<FeatureType>.Empty;
 
-        public JsonSerializerOptions DefaultJsonOptions { get; init; }
+        public JsonSerializerOptions DefaultJsonOptions { get; init; } = new JsonSerializerOptions();
 
         public string DefaultNamespace => $"S100Framework.DomainModel.{ProductID.Remove(1, 1)}";
 

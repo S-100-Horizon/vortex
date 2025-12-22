@@ -172,6 +172,27 @@ namespace S100Framework.DomainModel
         public string TextPattern = textPattern;
     }
 
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class InformationBindingAttribute(string association, string role, string[] informationTypes, int lower, int upper = int.MaxValue) : System.Attribute
+    {
+        public string association = association;
+        public string role = role;
+        public string[] informationTypes = informationTypes;
+        public int lower = lower;
+        public int upper = upper;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class FeatureBindingAttribute(string association, string role, string[] featureTypes, int lower, int upper = int.MaxValue) : System.Attribute
+    {
+        public string association = association;
+        public string role = role;
+        public string[] featureTypes = featureTypes;
+        public int lower = lower;
+        public int upper = upper;
+    }
+
     #endregion
 
     public interface IInformationBindingDefinition

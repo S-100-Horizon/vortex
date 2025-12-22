@@ -130,7 +130,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private atonCommissioning? _atonCommissioning  = default;
 
 		[Description("The process of deploying and activating a new Aid to Navigation (AtoN), ensuring that it is properly installed and operational.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public atonCommissioning? atonCommissioning {
@@ -145,7 +145,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private atonRemoval? _atonRemoval  = default;
 
 		[Description("The process of decommissioning and physically removing an AtoN from its designated location, either temporarily or permanently.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27])]
 		[Optional]
 		public atonRemoval? atonRemoval {
@@ -160,7 +160,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private atonReplacement? _atonReplacement  = default;
 
 		[Description("The act of swapping an existing AtoN with a new or upgraded unit, either due to maintenance needs or technological improvements.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 		[Optional]
 		public atonReplacement? atonReplacement {
@@ -175,7 +175,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private fixedAtonChange? _fixedAtonChange  = default;
 
 		[Description("Modifications or updates to fixed AtoNs, such as lighthouses or beacons, which are permanently positioned.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public fixedAtonChange? fixedAtonChange {
@@ -190,7 +190,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private floatingAtonChange? _floatingAtonChange  = default;
 
 		[Description("Adjustments or replacements related to floating AtoNs, such as buoys, which are anchored but can move with water currents.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 		[Optional]
 		public floatingAtonChange? floatingAtonChange {
@@ -205,7 +205,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private audibleSignalAtonChange? _audibleSignalAtonChange  = default;
 
 		[Description("Any modification to an AtoN that uses sound signals, such as foghorns or bells, to assist in navigation under low visibility conditions.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public audibleSignalAtonChange? audibleSignalAtonChange {
@@ -220,7 +220,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private lightedAtonChange? _lightedAtonChange  = default;
 
 		[Description("Updates or modifications to light-emitting AtoNs, including changing light characteristics, intensity, or operational status.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 		[Optional]
 		public lightedAtonChange? lightedAtonChange {
@@ -235,7 +235,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private electronicAtoNChange? _electronicAtoNChange  = default;
 
 		[Description("Modifications to electronic or digital AtoNs, such as AIS (Automatic Identification System) AtoNs, virtual AtoNs, or remote-controlled systems.")]
-		[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<changeDetails>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 		[Optional]
 		public electronicAtoNChange? electronicAtoNChange {
@@ -246,7 +246,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _electronicAtoNChange, value);
 			}
 		}
-
 
 		public changeDetailsViewModel Load(changeDetails instance) {
 			atonCommissioning = instance.atonCommissioning;
@@ -326,7 +325,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-
 		public obscuredSectorViewModel Load(obscuredSector instance) {
 			sectorLimit = new ();
 			if (instance.sectorLimit != default) {
@@ -368,7 +366,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _deliveryPoint  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? deliveryPoint {
 			get {
@@ -382,7 +380,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _cityName  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? cityName {
 			get {
@@ -396,7 +394,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _administrativeDivision  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? administrativeDivision {
 			get {
@@ -410,7 +408,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _countryName  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
 			get {
@@ -424,7 +422,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _postalCode  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? postalCode {
 			get {
@@ -434,7 +432,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _postalCode, value);
 			}
 		}
-
 
 		public contactAddressViewModel Load(contactAddress instance) {
 			deliveryPoint = instance.deliveryPoint;
@@ -480,7 +477,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _Language  = string.Empty;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String Language {
 			get {
@@ -494,7 +491,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _name  = string.Empty;
 
 		[Description("The individual name of a feature.")]
-		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -504,7 +501,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _name, value);
 			}
 		}
-
 
 		public featureNameViewModel Load(featureName instance) {
 			Language = instance.Language;
@@ -542,7 +538,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -557,7 +553,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -567,7 +563,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-
 
 		public fixedDateRangeViewModel Load(fixedDateRange instance) {
 			dateEnd = instance.dateEnd;
@@ -604,7 +599,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _uncertaintyFixed  = default;
 
 		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
-		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -618,7 +613,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
-		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
 			get {
@@ -628,7 +623,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _uncertaintyVariableFactor, value);
 			}
 		}
-
 
 		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
@@ -665,7 +659,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _fileLocator  = default;
 
 		[Description("The location of a fragment of text or other information in a support file.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
 			get {
@@ -679,7 +673,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _fileReference  = default;
 
 		[Description("The file name of an externally referenced text file.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
 			get {
@@ -693,7 +687,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _headline  = default;
 
 		[Description("Words set at the head of a passage or page to introduce or categorize.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
 			get {
@@ -707,7 +701,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _Language  = string.Empty;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String Language {
 			get {
@@ -721,7 +715,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _text  = default;
 
 		[Description("A non-formatted digital text string.")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
 			get {
@@ -731,7 +725,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _text, value);
 			}
 		}
-
 
 		public informationViewModel Load(information instance) {
 			fileLocator = instance.fileLocator;
@@ -777,7 +770,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private Boolean _multiplicityKnown  = false;
 
 		[Description("The number of features of identical character that exist as a co-located group is or is not known.")]
-		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean multiplicityKnown {
 			get {
@@ -791,7 +784,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private int? _numberOfFeatures  = default;
 
 		[Description("The number of features of identical character that exist as a co-located group.")]
-		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? numberOfFeatures {
 			get {
@@ -801,7 +794,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _numberOfFeatures, value);
 			}
 		}
-
 
 		public multiplicityOfFeaturesViewModel Load(multiplicityOfFeatures instance) {
 			multiplicityKnown = instance.multiplicityKnown;
@@ -874,7 +866,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _valueOfNominalRange  = default;
 
 		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
 			get {
@@ -892,7 +884,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private Boolean? _sectorArcExtension  = default;
 
 		[Description("	An indication that the default radius of a sector arc is to be extended by 5mm.")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? sectorArcExtension {
 			get {
@@ -902,7 +894,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _sectorArcExtension, value);
 			}
 		}
-
 
 		public lightSectorViewModel Load(lightSector instance) {
 			colour.Clear();
@@ -984,7 +975,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private Boolean? _moireEffect  = default;
 
 		[Description("A short range (up to 2km) type of directional light. Sodium lighting gives a yellow background to a screen on which a vertical black line will be seen by an observer on the centre line.")]
-		[Editor(typeof(Editors.HorizonEditor<directionalCharacter>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<directionalCharacter>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? moireEffect {
 			get {
@@ -1008,7 +999,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _orientation, value);
 			}
 		}
-
 
 		public directionalCharacterViewModel Load(directionalCharacter instance) {
 			moireEffect = instance.moireEffect;
@@ -1048,7 +1038,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _orientationUncertainty  = default;
 
 		[Description("The best estimate of the accuracy of a bearing.")]
-		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
 			get {
@@ -1062,7 +1052,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _orientationValue  = default;
 
 		[Description("The angular distance measured from true north to the major axis of the feature.")]
-		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double orientationValue {
 			get {
@@ -1072,7 +1062,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _orientationValue, value);
 			}
 		}
-
 
 		public orientationViewModel Load(orientation instance) {
 			orientationUncertainty = instance.orientationUncertainty;
@@ -1110,7 +1099,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1125,7 +1114,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		//[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {
@@ -1135,7 +1124,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _dateStart, value);
 			}
 		}
-
 
 		public periodicDateRangeViewModel Load(periodicDateRange instance) {
 			dateEnd = instance.dateEnd;
@@ -1172,7 +1160,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _radarBand  = string.Empty;
 
 		[Description("The band code character of the electromagnetic spectrum within which radar wave lengths lie.")]
-		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String radarBand {
 			get {
@@ -1186,7 +1174,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _waveLengthValue  = default;
 
 		[Description("The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave.")]
-		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double waveLengthValue {
 			get {
@@ -1196,7 +1184,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _waveLengthValue, value);
 			}
 		}
-
 
 		public radarWaveLengthViewModel Load(radarWaveLength instance) {
 			radarBand = instance.radarBand;
@@ -1233,7 +1220,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
@@ -1256,7 +1243,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _signalPeriod  = default;
 
 		[Description("	The time occupied by an entire cycle of intervals of light and eclipse.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
 			get {
@@ -1270,7 +1257,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
-
 
 		public sectorCharacteristicsViewModel Load(sectorCharacteristics instance) {
 			lightCharacteristic = instance.lightCharacteristic;
@@ -1340,7 +1326,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _Language  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? Language {
 			get {
@@ -1354,7 +1340,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _text  = string.Empty;
 
 		[Description("A non-formatted digital text string.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -1364,7 +1350,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _text, value);
 			}
 		}
-
 
 		public sectorInformationViewModel Load(sectorInformation instance) {
 			Language = instance.Language;
@@ -1426,7 +1411,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-
 		public sectorLimitViewModel Load(sectorLimit instance) {
 			sectorLimitOne = new ();
 			if (instance.sectorLimitOne != default) {
@@ -1468,7 +1452,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _sectorBearing  = default;
 
 		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1482,7 +1466,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private int? _sectorLineLength  = default;
 
 		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? sectorLineLength {
 			get {
@@ -1492,7 +1476,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _sectorLineLength, value);
 			}
 		}
-
 
 		public sectorLimitOneViewModel Load(sectorLimitOne instance) {
 			sectorBearing = instance.sectorBearing;
@@ -1529,7 +1512,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _sectorBearing  = default;
 
 		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1543,7 +1526,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private int? _sectorLineLength  = default;
 
 		[Description("A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? sectorLineLength {
 			get {
@@ -1553,7 +1536,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _sectorLineLength, value);
 			}
 		}
-
 
 		public sectorLimitTwoViewModel Load(sectorLimitTwo instance) {
 			sectorBearing = instance.sectorBearing;
@@ -1590,7 +1572,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _signalDuration  = default;
 
 		[Description("The time occupied by a single instance of light/sound or eclipse/silence in a signal sequence.")]
-		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double signalDuration {
 			get {
@@ -1604,7 +1586,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private signalStatus _signalStatus  = default;
 
 		[Description("The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.")]
-		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2])]
 		[Mandatory]
 		public signalStatus signalStatus {
@@ -1615,7 +1597,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _signalStatus, value);
 			}
 		}
-
 
 		public signalSequenceViewModel Load(signalSequence instance) {
 			signalDuration = instance.signalDuration;
@@ -1691,7 +1672,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-
 		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -1739,7 +1719,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String _fileReference  = string.Empty;
 
 		[Description("The file name of an externally referenced text file.")]
-		[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String fileReference {
 			get {
@@ -1753,7 +1733,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private String? _Language  = default;
 
 		[Description("-")]
-		[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? Language {
 			get {
@@ -1763,7 +1743,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _Language, value);
 			}
 		}
-
 
 		public textualDescriptionViewModel Load(textualDescription instance) {
 			fileReference = instance.fileReference;
@@ -1800,7 +1779,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double _uncertaintyFixed  = default;
 
 		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
-		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -1814,7 +1793,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Description("The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
-		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? uncertaintyVariableFactor {
 			get {
@@ -1824,7 +1803,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _uncertaintyVariableFactor, value);
 			}
 		}
-
 
 		public verticalUncertaintyViewModel Load(verticalUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
@@ -1861,7 +1839,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
-		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29])]
 		[Mandatory]
 		public lightCharacteristic lightCharacteristic {
@@ -1880,7 +1858,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		private double? _signalPeriod  = default;
 
 		[Description("	The time occupied by an entire cycle of intervals of light and eclipse.")]
-		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? signalPeriod {
 			get {
@@ -1894,7 +1872,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Description("The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
-
 
 		public rhythmOfLightViewModel Load(rhythmOfLight instance) {
 			lightCharacteristic = instance.lightCharacteristic;
@@ -2145,7 +2122,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {
@@ -2172,9 +2149,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
+		public override informationBinding[] GetInformationBindings() => [];
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfVerticalMeasurement = instance.qualityOfVerticalMeasurement;
@@ -2238,7 +2214,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Different categories or kinds of modifications that can be made to data, positions, or objects. For example, changes may involve updates to position, orientation, or attributes of an object.")]
 		[Category("AtonStatusInformation")]
-		[Editor(typeof(Editors.HorizonEditor<AtonStatusInformation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AtonStatusInformation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public changeTypes? changeTypes {
@@ -2250,9 +2226,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
+		public override informationBinding[] GetInformationBindings() => [];
 
 		public AtonStatusInformationViewModel Load(AtonStatusInformation instance) {
 			changeDetails = new ();
@@ -2301,7 +2276,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -2326,7 +2301,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -2341,7 +2316,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -2356,7 +2331,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -2371,7 +2346,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -2386,7 +2361,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -2436,7 +2411,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of route guidance given to vessels.")]
 		[Category("NavigationLine")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfNavigationLine categoryOfNavigationLine {
@@ -2468,95 +2443,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
-			public RangeSystemViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.RangeSystemViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.RangeSystemViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "RangeSystem",
-					role = "navigableTrack",
-					roleType = roleType.association,
-					featureTypes = ["RecommendedTrack"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<RangeSystem> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = RangeSystem,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavigationLineViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("RangeSystem","navigableTrack",["RecommendedTrack"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> RangeSystems { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. RangeSystems.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.RangeSystem> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public NavigationLineViewModel Load(NavigationLine instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -2689,7 +2590,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -2714,7 +2615,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -2729,7 +2630,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -2744,7 +2645,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -2759,7 +2660,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -2774,7 +2675,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -2824,7 +2725,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).")]
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean basedOnFixedMarks {
 			get {
@@ -2839,7 +2740,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum (shoalest) value of a depth range.")]
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? depthRangeMinimumValue {
 			get {
@@ -2854,7 +2755,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The maximal permitted draught of a vessel or convoy according to the particular article/clause of the applicable law/regulation.")]
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? maximalPermittedDraught {
 			get {
@@ -2914,7 +2815,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Direction of vessels passing a reference point.")]
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public trafficFlow trafficFlow {
@@ -2930,7 +2831,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
@@ -2942,95 +2843,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : ViewModelBase, IFeatureBinding {
-			public RangeSystemViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.RangeSystemViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.RangeSystemViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 1,
-					upper = default,
-					association = "RangeSystem",
-					role = "navigationLine",
-					roleType = roleType.association,
-					featureTypes = ["NavigationLine"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<RangeSystem> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = RangeSystem,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<RecommendedTrackViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("RangeSystem","navigationLine",["NavigationLine"], lower:1, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> RangeSystems { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. RangeSystems.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.RangeSystem> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public RecommendedTrackViewModel Load(RecommendedTrack instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -3201,7 +3028,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -3226,7 +3053,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -3241,7 +3068,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -3256,7 +3083,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -3271,7 +3098,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -3286,7 +3113,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -3336,7 +3163,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -3381,7 +3208,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -3396,7 +3223,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public visualProminence visualProminence {
@@ -3417,7 +3244,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -3438,12 +3265,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LandmarkViewModel Load(Landmark instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -3632,7 +3458,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -3657,7 +3483,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -3672,7 +3498,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -3687,7 +3513,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -3702,7 +3528,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -3717,7 +3543,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -3768,7 +3594,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 		[Optional]
 		public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {
@@ -3794,7 +3620,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -3819,7 +3645,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 		[Mandatory]
 		public topmarkDaymarkShape topmarkDaymarkShape {
@@ -3835,7 +3661,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A flag or attribute indicating whether an object has slats, which are flat, narrow strips of material, often used for ventilation or design.")]
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean isSlatted {
 			get {
@@ -3846,12 +3672,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public DaymarkViewModel Load(Daymark instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -4014,7 +3839,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -4039,7 +3864,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -4054,7 +3879,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -4069,7 +3894,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -4084,7 +3909,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -4099,7 +3924,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -4150,7 +3975,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of the various means of generating the fog signal.")]
 		[Category("FogSignal")]
-		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Mandatory]
 		public categoryOfFogSignal categoryOfFogSignal {
@@ -4182,12 +4007,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public FogSignalViewModel Load(FogSignal instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -4317,7 +4141,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -4342,7 +4166,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -4357,7 +4181,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -4372,7 +4196,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -4387,7 +4211,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -4402,7 +4226,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -4453,7 +4277,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("RadarReflector")]
-		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -4469,12 +4293,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public RadarReflectorViewModel Load(RadarReflector instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -4598,7 +4421,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -4623,7 +4446,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -4638,7 +4461,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -4653,7 +4476,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -4668,7 +4491,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -4683,7 +4506,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -4734,7 +4557,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of radar transponder beacon based on functionality.")]
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {
@@ -4780,7 +4603,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The number of signals, the combination of signals or the morse character(s) within one period of full sequence.")]
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? signalGroup {
 			get {
@@ -4815,7 +4638,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
 			get {
@@ -4841,12 +4664,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public RadarTransponderBeaconViewModel Load(RadarTransponderBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5000,7 +4822,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5025,7 +4847,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -5040,7 +4862,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -5055,7 +4877,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -5070,7 +4892,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -5085,7 +4907,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -5136,7 +4958,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of radio services offered by a radio station.")]
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([20])]
 		[Mandatory]
 		public categoryOfRadioStation categoryOfRadioStation {
@@ -5152,7 +4974,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The estimated range of a non-optical electromagnetic transmission.")]
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? estimatedRangeOfTransmission {
 			get {
@@ -5168,251 +4990,33 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
-			public PhysicalAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.PhysicalAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.PhysicalAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = 1,
-					association = "PhysicalAIS",
-					role = "physicalAISbroadcastBy",
-					roleType = roleType.association,
-					featureTypes = ["PhysicalAISAidToNavigation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<PhysicalAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = PhysicalAIS,
-			};
-		}
-
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
-			public SyntheticAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.SyntheticAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.SyntheticAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = 1,
-					association = "SyntheticAIS",
-					role = "syntheticAISbroadcastBy",
-					roleType = roleType.association,
-					featureTypes = ["SyntheticAISAidToNavigation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<SyntheticAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = SyntheticAIS,
-			};
-		}
-
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
-			public VirtualAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.VirtualAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.VirtualAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = 1,
-					association = "VirtualAIS",
-					role = "virtualAISbroadcastBy",
-					roleType = roleType.association,
-					featureTypes = ["VirtualAISAidToNavigation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<VirtualAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = VirtualAIS,
-			};
-		}
+		[Category("FeatureBindings")]
+		[FeatureBinding("PhysicalAIS","physicalAISbroadcastBy",["PhysicalAISAidToNavigation"], lower:0, upper:1)]
+		public ObservableCollection<FeatureRefViewModel> PhysicalAIS { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioStationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+		[FeatureBinding("SyntheticAIS","syntheticAISbroadcastBy",["SyntheticAISAidToNavigation"], lower:0, upper:1)]
+		public ObservableCollection<FeatureRefViewModel> SyntheticAIS { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioStationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+		[FeatureBinding("VirtualAIS","virtualAISbroadcastBy",["VirtualAISAidToNavigation"], lower:0, upper:1)]
+		public ObservableCollection<FeatureRefViewModel> VirtualAIS { get; set; } = new();
 
-		[Category("FeatureBindings")]
-		public ObservableCollection<RadioStationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
-		[Browsable(false)]
-
-		public override featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. PhysicalAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.PhysicalAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+			.. SyntheticAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.SyntheticAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+			.. VirtualAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.VirtualAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public RadioStationViewModel Load(RadioStation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5548,7 +5152,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5573,7 +5177,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -5588,7 +5192,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -5603,7 +5207,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -5618,7 +5222,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -5633,7 +5237,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -5694,7 +5298,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("Retroreflector")]
-		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -5711,12 +5315,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public RetroreflectorViewModel Load(Retroreflector instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5860,7 +5463,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5885,7 +5488,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -5900,7 +5503,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -5915,7 +5518,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -5930,7 +5533,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -5945,7 +5548,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -5996,7 +5599,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -6011,7 +5614,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
@@ -6032,7 +5635,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? effectiveIntensity {
 			get {
@@ -6047,7 +5650,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? peakIntensity {
 			get {
@@ -6072,7 +5675,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The outward display of the light.")]
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public exhibitionConditionOfLight? exhibitionConditionOfLight {
@@ -6088,7 +5691,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
 			get {
@@ -6103,7 +5706,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? flareBearing {
 			get {
@@ -6144,12 +5747,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightAirObstructionViewModel Load(LightAirObstruction instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -6323,7 +5925,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6348,7 +5950,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -6363,7 +5965,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -6378,7 +5980,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -6393,7 +5995,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -6408,7 +6010,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -6459,7 +6061,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -6474,7 +6076,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
@@ -6495,7 +6097,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? effectiveIntensity {
 			get {
@@ -6510,7 +6112,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? peakIntensity {
 			get {
@@ -6530,7 +6132,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
@@ -6546,7 +6148,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -6562,7 +6164,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A statement expressing if a light is considered to be a major light in terms of ECDIS display in a particular area.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? majorLight {
 			get {
@@ -6577,7 +6179,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public lightVisibility? lightVisibility {
@@ -6593,7 +6195,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The outward display of the light.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public exhibitionConditionOfLight? exhibitionConditionOfLight {
@@ -6614,7 +6216,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? valueOfNominalRange {
 			get {
@@ -6629,7 +6231,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The bearing about which the light flare symbol is rotated to be displayed in ECDIS.")]
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? flareBearing {
 			get {
@@ -6670,12 +6272,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightAllAroundViewModel Load(LightAllAround instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -6861,7 +6462,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6886,7 +6487,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -6901,7 +6502,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -6916,7 +6517,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -6931,7 +6532,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -6946,7 +6547,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -6997,7 +6598,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -7012,7 +6613,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
@@ -7033,7 +6634,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? effectiveIntensity {
 			get {
@@ -7048,7 +6649,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? peakIntensity {
 			get {
@@ -7068,7 +6669,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightFogDetector")]
-		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
@@ -7095,12 +6696,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightFogDetectorViewModel Load(LightFogDetector instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -7252,7 +6852,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7277,7 +6877,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -7292,7 +6892,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -7307,7 +6907,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -7322,7 +6922,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -7337,7 +6937,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -7388,7 +6988,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -7403,7 +7003,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Optional]
 		public verticalDatum? verticalDatum {
@@ -7424,7 +7024,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The luminous intensity of a fictitious juxtaposed steady-burning point light source that would appear to exhibit a luminosity equal to that of the rhythmic point light source it describes. The apparent reduction in intensity of the rhythmic light is subjective and is due to the nature of the response of the eye of the observer.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? effectiveIntensity {
 			get {
@@ -7439,7 +7039,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The maximum luminous intensity of a light during its flash cycle.")]
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? peakIntensity {
 			get {
@@ -7454,7 +7054,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The mechanism used to generate a fog or light signal.")]
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public signalGeneration? signalGeneration {
@@ -7470,7 +7070,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -7486,7 +7086,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The outward display of the light.")]
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public exhibitionConditionOfLight? exhibitionConditionOfLight {
@@ -7528,12 +7128,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightSectoredViewModel Load(LightSectored instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -7711,7 +7310,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7736,7 +7335,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -7751,7 +7350,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -7766,7 +7365,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -7781,7 +7380,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -7796,7 +7395,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -7846,7 +7445,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -7886,7 +7485,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -7901,7 +7500,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -7923,12 +7522,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightFloatViewModel Load(LightFloat instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -8094,7 +7692,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8119,7 +7717,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -8134,7 +7732,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -8149,7 +7747,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -8164,7 +7762,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -8179,7 +7777,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -8229,7 +7827,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -8269,7 +7867,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -8284,7 +7882,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -8306,12 +7904,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LightVesselViewModel Load(LightVessel instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -8477,7 +8074,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8502,7 +8099,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -8517,7 +8114,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -8532,7 +8129,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -8547,7 +8144,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -8562,7 +8159,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -8612,7 +8209,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -8657,7 +8254,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public condition? condition {
@@ -8673,7 +8270,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -8688,7 +8285,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -8710,12 +8307,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public OffshorePlatformViewModel Load(OffshorePlatform instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -8894,7 +8490,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8919,7 +8515,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -8934,7 +8530,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -8949,7 +8545,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -8964,7 +8560,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -8979,7 +8575,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -9029,7 +8625,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -9059,7 +8655,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of pile, driven into the earth as a foundation or support for a structure.")]
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,3,4,5,6,7,8])]
 		[Optional]
 		public categoryOfPile? categoryOfPile {
@@ -9085,7 +8681,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -9101,7 +8697,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -9112,12 +8708,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public PileViewModel Load(Pile instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -9266,7 +8861,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -9291,7 +8886,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -9306,7 +8901,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -9321,7 +8916,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -9336,7 +8931,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -9351,7 +8946,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -9401,7 +8996,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -9431,7 +9026,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The specific shape of the building.")]
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([5,6,7,8,9])]
 		[Optional]
 		public buildingShape? buildingShape {
@@ -9447,7 +9042,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification based on the product for which a silo or tank is used.")]
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public categoryOfSiloTank? categoryOfSiloTank {
@@ -9473,7 +9068,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -9488,7 +9083,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -9504,7 +9099,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -9525,12 +9120,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SiloTankViewModel Load(SiloTank instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -9705,7 +9299,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -9730,7 +9324,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -9745,7 +9339,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -9760,7 +9354,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -9775,7 +9369,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -9790,7 +9384,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -9840,7 +9434,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -9870,7 +9464,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -9896,7 +9490,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -9911,7 +9505,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -9937,7 +9531,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -9952,7 +9546,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfCardinalMark categoryOfCardinalMark {
@@ -9964,12 +9558,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public CardinalBuoyViewModel Load(CardinalBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -10144,7 +9737,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -10169,7 +9762,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -10184,7 +9777,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -10199,7 +9792,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -10214,7 +9807,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -10229,7 +9822,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -10279,7 +9872,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -10309,7 +9902,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -10335,7 +9928,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -10350,7 +9943,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -10376,7 +9969,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -10388,12 +9981,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public EmergencyWreckMarkingBuoyViewModel Load(EmergencyWreckMarkingBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -10565,7 +10157,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -10590,7 +10182,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -10605,7 +10197,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -10620,7 +10212,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -10635,7 +10227,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -10650,7 +10242,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -10700,7 +10292,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -10730,7 +10322,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -10756,7 +10348,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -10771,7 +10363,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -10797,7 +10389,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -10812,7 +10404,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of fixed installation buoy.")]
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2])]
 		[Mandatory]
 		public categoryOfInstallationBuoy categoryOfInstallationBuoy {
@@ -10824,12 +10416,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public InstallationBuoyViewModel Load(InstallationBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -11004,7 +10595,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -11029,7 +10620,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -11044,7 +10635,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -11059,7 +10650,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -11074,7 +10665,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -11089,7 +10680,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -11139,7 +10730,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -11169,7 +10760,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -11195,7 +10786,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -11210,7 +10801,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -11236,7 +10827,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -11248,12 +10839,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public IsolatedDangerBuoyViewModel Load(IsolatedDangerBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -11425,7 +11015,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -11450,7 +11040,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -11465,7 +11055,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -11480,7 +11070,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -11495,7 +11085,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -11510,7 +11100,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -11560,7 +11150,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -11590,7 +11180,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -11616,7 +11206,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -11631,7 +11221,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -11657,7 +11247,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -11672,7 +11262,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of lateral marks in the IALA Buoyage System.")]
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 		[Mandatory]
 		public categoryOfLateralMark categoryOfLateralMark {
@@ -11684,12 +11274,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LateralBuoyViewModel Load(LateralBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -11864,7 +11453,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -11889,7 +11478,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -11904,7 +11493,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -11919,7 +11508,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -11934,7 +11523,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -11949,7 +11538,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -11999,7 +11588,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -12029,7 +11618,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -12055,7 +11644,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -12070,7 +11659,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -12096,7 +11685,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -12108,12 +11697,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public MooringBuoyViewModel Load(MooringBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -12285,7 +11873,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -12310,7 +11898,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -12325,7 +11913,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -12340,7 +11928,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -12355,7 +11943,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -12370,7 +11958,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -12420,7 +12008,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -12450,7 +12038,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -12476,7 +12064,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -12491,7 +12079,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -12517,7 +12105,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -12529,12 +12117,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SafeWaterBuoyViewModel Load(SafeWaterBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -12706,7 +12293,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -12731,7 +12318,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -12746,7 +12333,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -12761,7 +12348,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -12776,7 +12363,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -12791,7 +12378,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -12841,7 +12428,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -12871,7 +12458,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The principal shape and/or design of a buoy.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Mandatory]
 		public buoyShape buoyShape {
@@ -12897,7 +12484,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -12912,7 +12499,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -12938,7 +12525,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Type Equipment used as a buoy in a particular installation.")]
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? typeOfBuoy {
 			get {
@@ -12954,12 +12541,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SpecialPurposeGeneralBuoyViewModel Load(SpecialPurposeGeneralBuoy instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -13141,7 +12727,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -13166,7 +12752,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -13181,7 +12767,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -13196,7 +12782,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -13211,7 +12797,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -13226,7 +12812,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -13276,7 +12862,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -13306,7 +12892,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
@@ -13332,7 +12918,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -13347,7 +12933,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -13363,7 +12949,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -13378,7 +12964,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -13399,7 +12985,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
 			get {
@@ -13419,7 +13005,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The degree to which a vertical measurement is accurate, typically referring to the accuracy of an object's position in the vertical plane (height or depth)")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalAccuracy {
 			get {
@@ -13434,7 +13020,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.")]
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4])]
 		[Mandatory]
 		public categoryOfCardinalMark categoryOfCardinalMark {
@@ -13446,12 +13032,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public CardinalBeaconViewModel Load(CardinalBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -13635,7 +13220,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -13660,7 +13245,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -13675,7 +13260,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -13690,7 +13275,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -13705,7 +13290,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -13720,7 +13305,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -13770,7 +13355,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -13800,7 +13385,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
@@ -13826,7 +13411,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -13841,7 +13426,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -13857,7 +13442,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -13872,7 +13457,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -13893,7 +13478,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
 			get {
@@ -13913,7 +13498,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The degree to which a vertical measurement is accurate, typically referring to the accuracy of an object's position in the vertical plane (height or depth)")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalAccuracy {
 			get {
@@ -13925,12 +13510,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public IsolatedDangerBeaconViewModel Load(IsolatedDangerBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -14111,7 +13695,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -14136,7 +13720,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -14151,7 +13735,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -14166,7 +13750,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -14181,7 +13765,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -14196,7 +13780,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -14246,7 +13830,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -14276,7 +13860,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
@@ -14302,7 +13886,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -14317,7 +13901,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -14333,7 +13917,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -14348,7 +13932,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -14369,7 +13953,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
 			get {
@@ -14389,7 +13973,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The degree to which a vertical measurement is accurate, typically referring to the accuracy of an object's position in the vertical plane (height or depth)")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalAccuracy {
 			get {
@@ -14401,12 +13985,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SafeWaterBeaconViewModel Load(SafeWaterBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -14587,7 +14170,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -14612,7 +14195,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -14627,7 +14210,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -14642,7 +14225,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -14657,7 +14240,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -14672,7 +14255,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -14722,7 +14305,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -14752,7 +14335,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
@@ -14778,7 +14361,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -14793,7 +14376,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -14809,7 +14392,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -14824,7 +14407,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -14845,7 +14428,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
 			get {
@@ -14865,7 +14448,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The degree to which a vertical measurement is accurate, typically referring to the accuracy of an object's position in the vertical plane (height or depth)")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalAccuracy {
 			get {
@@ -14881,12 +14464,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SpecialPurposeGeneralBeaconViewModel Load(SpecialPurposeGeneralBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -15077,7 +14659,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -15102,7 +14684,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -15117,7 +14699,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -15132,7 +14714,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -15147,7 +14729,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -15162,7 +14744,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -15212,7 +14794,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -15242,7 +14824,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Describes the characteristic geometric form of the beacon.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7])]
 		[Mandatory]
 		public beaconShape beaconShape {
@@ -15268,7 +14850,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A feature which returns a strong radar echo.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? radarConspicuous {
 			get {
@@ -15283,7 +14865,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The extent to which a feature, either natural or artificial, is visible from seaward.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Optional]
 		public visualProminence? visualProminence {
@@ -15299,7 +14881,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -15314,7 +14896,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Optional]
 		public marksNavigationalSystemOf? marksNavigationalSystemOf {
@@ -15335,7 +14917,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The total vertical length of a feature.")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalLength {
 			get {
@@ -15355,7 +14937,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The degree to which a vertical measurement is accurate, typically referring to the accuracy of an object's position in the vertical plane (height or depth)")]
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? verticalAccuracy {
 			get {
@@ -15370,7 +14952,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 		[Mandatory]
 		public categoryOfLandmark categoryOfLandmark {
@@ -15382,12 +14964,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LateralBeaconViewModel Load(LateralBeacon instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -15571,7 +15152,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -15596,7 +15177,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -15611,7 +15192,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -15626,7 +15207,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -15641,7 +15222,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -15656,7 +15237,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -15706,7 +15287,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -15741,7 +15322,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public colourPattern? colourPattern {
@@ -15757,7 +15338,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The various conditions of buildings and other constructions.")]
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public condition? condition {
 			get {
@@ -15772,7 +15353,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The altitude of the ground level of a feature, measured from a specified vertical datum.")]
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? elevation {
 			get {
@@ -15787,7 +15368,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.")]
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? height {
 			get {
@@ -15813,12 +15394,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public WindTurbineViewModel Load(WindTurbine instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -15990,7 +15570,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("VerticalDatumOfData")]
-		[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<VerticalDatumOfData>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
@@ -16002,12 +15582,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public VerticalDatumOfDataViewModel Load(VerticalDatumOfData instance) {
 			verticalDatum = instance.verticalDatum;
@@ -16058,7 +15637,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be “grossly overscaled”.")]
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int maximumDisplayScale {
 			get {
@@ -16073,7 +15652,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The smallest intended viewing scale for the data.")]
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int minimumDisplayScale {
 			get {
@@ -16084,12 +15663,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
 			maximumDisplayScale = instance.maximumDisplayScale;
@@ -16154,12 +15732,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public LocalDirectionOfBuoyageViewModel Load(LocalDirectionOfBuoyage instance) {
 			orientation = new ();
@@ -16213,7 +15790,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The system of navigational buoyage a region complies with.")]
 		[Category("NavigationalSystemOfMarks")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<NavigationalSystemOfMarks>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,9,10,11,12,13,15])]
 		[Mandatory]
 		public marksNavigationalSystemOf marksNavigationalSystemOf {
@@ -16225,12 +15802,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public NavigationalSystemOfMarksViewModel Load(NavigationalSystemOfMarks instance) {
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -16281,7 +15857,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.")]
 		[Category("SoundingDatum")]
-		[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SoundingDatum>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49])]
 		[Mandatory]
 		public verticalDatum verticalDatum {
@@ -16293,12 +15869,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public SoundingDatumViewModel Load(SoundingDatum instance) {
 			verticalDatum = instance.verticalDatum;
@@ -16349,7 +15924,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("An assessment of the likelihood of change over time.")]
 		[Category("QualityOfBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6])]
 		[Mandatory]
 		public categoryOfTemporalVariation categoryOfTemporalVariation {
@@ -16365,7 +15940,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The best estimate of the accuracy of a bearing.")]
 		[Category("QualityOfBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
 			get {
@@ -16380,7 +15955,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The best estimate of the horizontal accuracy of horizontal clearances and distances.")]
 		[Category("QualityOfBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<QualityOfBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalDistanceUncertainty {
 			get {
@@ -16451,12 +16026,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public QualityOfBathymetricDataViewModel Load(QualityOfBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -16537,7 +16111,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("DangerousFeature")]
-		[Editor(typeof(Editors.HorizonEditor<DangerousFeature>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<DangerousFeature>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String interoperabilityIdentifier {
 			get {
@@ -16553,95 +16127,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
-			public DangerousFeatureAssociationViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.DangerousFeatureAssociationViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.DangerousFeatureAssociationViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 1,
-					upper = default,
-					association = "DangerousFeatureAssociation",
-					role = "markingAton",
-					roleType = roleType.association,
-					featureTypes = ["AtonAssociation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = DangerousFeatureAssociation,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<DangerousFeatureViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociations { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("DangerousFeatureAssociation","markingAton",["AtonAssociation"], lower:1, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> DangerousFeatureAssociations { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. DangerousFeatureAssociations.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.DangerousFeatureAssociation> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public DangerousFeatureViewModel Load(DangerousFeature instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -16708,7 +16208,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -16733,7 +16233,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -16748,7 +16248,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -16763,7 +16263,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -16778,7 +16278,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -16793,7 +16293,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -16843,7 +16343,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -16858,7 +16358,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String mMSICode {
 			get {
@@ -16878,7 +16378,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A classification of AIS AtoNs that are transmitted electronically and linked to a real-world object but do not physically exist at the broadcast location.")]
 		[Category("SyntheticAISAidToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<SyntheticAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2])]
 		[Mandatory]
 		public categoryOfSyntheticAISAidtoNavigation categoryOfSyntheticAISAidtoNavigation {
@@ -16890,95 +16390,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class SyntheticAISViewModel : ViewModelBase, IFeatureBinding {
-			public SyntheticAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.SyntheticAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.SyntheticAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "SyntheticAIS",
-					role = "syntheticAISbroadcasts",
-					roleType = roleType.association,
-					featureTypes = ["RadioStation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<SyntheticAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = SyntheticAIS,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("SyntheticAIS","syntheticAISbroadcasts",["RadioStation"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> SyntheticAIS { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. SyntheticAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.SyntheticAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public SyntheticAISAidToNavigationViewModel Load(SyntheticAISAidToNavigation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -17111,7 +16537,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -17136,7 +16562,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -17151,7 +16577,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -17166,7 +16592,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -17181,7 +16607,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -17196,7 +16622,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -17246,7 +16672,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -17261,7 +16687,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String mMSICode {
 			get {
@@ -17281,7 +16707,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A classification of AIS AtoNs that correspond to an actual, physical Aid to Navigation at a real-world location.")]
 		[Category("PhysicalAISAidToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<PhysicalAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3])]
 		[Mandatory]
 		public categoryOfPhysicalAISAidToNavigation categoryOfPhysicalAISAidToNavigation {
@@ -17293,95 +16719,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : ViewModelBase, IFeatureBinding {
-			public PhysicalAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.PhysicalAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.PhysicalAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "PhysicalAIS",
-					role = "physicalAISbroadcasts",
-					roleType = roleType.association,
-					featureTypes = ["RadioStation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<PhysicalAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = PhysicalAIS,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("PhysicalAIS","physicalAISbroadcasts",["RadioStation"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> PhysicalAIS { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. PhysicalAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.PhysicalAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public PhysicalAISAidToNavigationViewModel Load(PhysicalAISAidToNavigation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -17514,7 +16866,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -17539,7 +16891,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -17554,7 +16906,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -17569,7 +16921,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -17584,7 +16936,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -17599,7 +16951,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -17649,7 +17001,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String atoNNumber {
 			get {
@@ -17664,7 +17016,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.")]
 		[Category("ElectronicAtoN")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<ElectronicAtoN>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String mMSICode {
 			get {
@@ -17684,7 +17036,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A purpose of a virtual AIS Aid to Navigation.")]
 		[Category("VirtualAISAidToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<VirtualAISAidToNavigation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12])]
 		[Mandatory]
 		public virtualAISAidToNavigationType virtualAISAidToNavigationType {
@@ -17696,95 +17048,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class VirtualAISViewModel : ViewModelBase, IFeatureBinding {
-			public VirtualAISViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.VirtualAISViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.VirtualAISViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "VirtualAIS",
-					role = "virtualAISbroadcasts",
-					roleType = roleType.association,
-					featureTypes = ["RadioStation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<VirtualAIS> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = VirtualAIS,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<VirtualAISAidToNavigationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("VirtualAIS","virtualAISbroadcasts",["RadioStation"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> VirtualAIS { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. VirtualAIS.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.VirtualAIS> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public VirtualAISAidToNavigationViewModel Load(VirtualAISAidToNavigation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -17917,7 +17195,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -17942,7 +17220,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -17957,7 +17235,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The production date of the source; for example the date of measurement.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -17972,7 +17250,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The publication, document, or reference work from which information comes or is acquired.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -17987,7 +17265,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The file name of an externally referenced picture file.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictorialRepresentation {
 			get {
@@ -18002,7 +17280,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The date when an item was installed.")]
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? installationDate {
 			get {
@@ -18068,7 +17346,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The shape a topmark or daymark exhibits.")]
 		[Category("Topmark")]
-		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 		[Mandatory]
 		public topmarkDaymarkShape topmarkDaymarkShape {
@@ -18080,12 +17358,11 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
 
-		[Browsable(false)]
-		public override featureBinding[] featureBindings => [];
+		public override informationBinding[] GetInformationBindings() => [];
 
+
+		public override featureBinding[] GetFeatureBindings() => [];
 
 		public TopmarkViewModel Load(Topmark instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -18229,7 +17506,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Named aggregations between two or more aids to navigation and/or navigationally relevant features.")]
 		[Category("AtonAggregation")]
-		[Editor(typeof(Editors.HorizonEditor<AtonAggregation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AtonAggregation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,3,2])]
 		[Mandatory]
 		public categoryOfAggregation categoryOfAggregation {
@@ -18241,95 +17518,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class AtonAggregationsViewModel : ViewModelBase, IFeatureBinding {
-			public AtonAggregationsViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.AtonAggregationsViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.AtonAggregationsViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "AtonAggregations",
-					role = "atonAggregationBy",
-					roleType = roleType.association,
-					featureTypes = ["AidsToNavigation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<AtonAggregations> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = AtonAggregations,
-			};
-		}
-
 		[Category("FeatureBindings")]
-		public ObservableCollection<AtonAggregationViewModel.AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
-		[Browsable(false)]
+		[FeatureBinding("AtonAggregations","atonAggregationBy",["AidsToNavigation"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> AtonAggregations { get; set; } = new();
 
-		public override featureBinding[] featureBindings => [.. AtonAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. AtonAggregations.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.AtonAggregations> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public AtonAggregationViewModel Load(AtonAggregation instance) {
 			categoryOfAggregation = instance.categoryOfAggregation;
@@ -18386,7 +17589,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Named associations between two or more aids to navigation and/or navigationally relevant features.")]
 		[Category("AtonAssociation")]
-		[Editor(typeof(Editors.HorizonEditor<AtonAssociation>), typeof(Editors.HorizonEditor))]
+		//[Editor(typeof(Editors.HorizonEditor<AtonAssociation>), typeof(Editors.HorizonEditor))]
 		[PermittedValues([1,2])]
 		[Mandatory]
 		public categoryOfAssociation categoryOfAssociation {
@@ -18398,173 +17601,27 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Browsable(false)]
-		public override informationBinding[] informationBindings => [];
+
+		public override informationBinding[] GetInformationBindings() => [];
 
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : ViewModelBase, IFeatureBinding {
-			public DangerousFeatureAssociationViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.DangerousFeatureAssociationViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.DangerousFeatureAssociationViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "DangerousFeatureAssociation",
-					role = "danger",
-					roleType = roleType.association,
-					featureTypes = ["DangerousFeature"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = DangerousFeatureAssociation,
-			};
-		}
-
-		public class AtonAssociationsViewModel : ViewModelBase, IFeatureBinding {
-			public AtonAssociationsViewModel() {
-				if (featureBindings.Length == 1)
-					this.role = featureBindings[0].role;
-			}
-
-			private string _role = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-			public string role {
-				get { return _role; }
-				set {
-					SetValue(ref _role, value);
-				}
-			}
-
-			private string _referenceId = string.Empty;
-
-			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-			public string featureId {
-				get { return _referenceId; }
-				set {
-					SetValue(ref _referenceId, value);
-				}
-			}
-
-			private string? _featureType = default;
-
-			[ReadOnly(true)]
-			public string? featureType {
-				get { return _featureType; }
-				set {
-					SetValue(ref _featureType, value);
-				}
-			}
-
-			private S125.AtonAssociationsViewModel _association = new();
-
-			[ExpandableObject]
-			public S125.AtonAssociationsViewModel association {
-				get { return _association; }
-				set {
-					SetValue(ref _association, value);
-				}
-			}
-
-			protected override void Validate() {
-				//TODO: Validate role and referenceId
-			}
-
-			[Browsable(false)]
-			public featureBindingDefinition[] featureBindings => [
-				new featureBindingDefinition {
-					lower = 0,
-					upper = default,
-					association = "AtonAssociations",
-					role = "atonAssociationBy",
-					roleType = roleType.association,
-					featureTypes = ["AidsToNavigation"],
-				},
-			];
-			public override string Serialize() {
-				throw new NotImplementedException();
-			}
-
-			[Browsable(false)]
-			public featureBinding Model => new featureBinding<AtonAssociations> {
-				referenceId = this.featureId,
-				featureType = this.featureType,
-				role = this.role,
-				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
-				//association = AtonAssociations,
-			};
-		}
+		[Category("FeatureBindings")]
+		[FeatureBinding("DangerousFeatureAssociation","danger",["DangerousFeature"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> DangerousFeatureAssociations { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AtonAssociationViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociations { get; set; } = new();
+		[FeatureBinding("AtonAssociations","atonAssociationBy",["AidsToNavigation"], lower:0, upper:2147483647)]
+		public ObservableCollection<FeatureRefViewModel> AtonAssociations { get; set; } = new();
 
-		[Category("FeatureBindings")]
-		public ObservableCollection<AtonAssociationViewModel.AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
-		[Browsable(false)]
-
-		public override featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AtonAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
-
+		public override featureBinding[] GetFeatureBindings() => [
+			.. DangerousFeatureAssociations.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.DangerousFeatureAssociation> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+			.. AtonAssociations.Select(e => new featureBinding<DomainModel.S125.FeatureAssociations.AtonAssociations> {
+				featureType = e.featureType, referenceId = e.featureId, role = e.role,}),
+		];
 		#endregion
-
 
 		public AtonAssociationViewModel Load(AtonAssociation instance) {
 			categoryOfAssociation = instance.categoryOfAssociation;
@@ -18901,7 +17958,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static NavigationLineViewModel LoadFeatureBinding(this NavigationLineViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<RangeSystem> rangeSystem) {
-					instance.RangeSystems.Add(new NavigationLineViewModel.RangeSystemViewModel {
+					instance.RangeSystems.Add(new FeatureRefViewModel {
 						featureId = rangeSystem.referenceId,
 						featureType = rangeSystem.featureType,
 						role = rangeSystem.role,
@@ -18914,7 +17971,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static RecommendedTrackViewModel LoadFeatureBinding(this RecommendedTrackViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<RangeSystem> rangeSystem) {
-					instance.RangeSystems.Add(new RecommendedTrackViewModel.RangeSystemViewModel {
+					instance.RangeSystems.Add(new FeatureRefViewModel {
 						featureId = rangeSystem.referenceId,
 						featureType = rangeSystem.featureType,
 						role = rangeSystem.role,
@@ -18957,21 +18014,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<PhysicalAIS> physicalAIS) {
-					instance.PhysicalAIS.Add(new RadioStationViewModel.PhysicalAISViewModel {
+					instance.PhysicalAIS.Add(new FeatureRefViewModel {
 						featureId = physicalAIS.referenceId,
 						featureType = physicalAIS.featureType,
 						role = physicalAIS.role,
 					});
 				}
 				if(featureBinding is featureBinding<SyntheticAIS> syntheticAIS) {
-					instance.SyntheticAIS.Add(new RadioStationViewModel.SyntheticAISViewModel {
+					instance.SyntheticAIS.Add(new FeatureRefViewModel {
 						featureId = syntheticAIS.referenceId,
 						featureType = syntheticAIS.featureType,
 						role = syntheticAIS.role,
 					});
 				}
 				if(featureBinding is featureBinding<VirtualAIS> virtualAIS) {
-					instance.VirtualAIS.Add(new RadioStationViewModel.VirtualAISViewModel {
+					instance.VirtualAIS.Add(new FeatureRefViewModel {
 						featureId = virtualAIS.referenceId,
 						featureType = virtualAIS.featureType,
 						role = virtualAIS.role,
@@ -19164,7 +18221,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static DangerousFeatureViewModel LoadFeatureBinding(this DangerousFeatureViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<DangerousFeatureAssociation> dangerousFeatureAssociation) {
-					instance.DangerousFeatureAssociations.Add(new DangerousFeatureViewModel.DangerousFeatureAssociationViewModel {
+					instance.DangerousFeatureAssociations.Add(new FeatureRefViewModel {
 						featureId = dangerousFeatureAssociation.referenceId,
 						featureType = dangerousFeatureAssociation.featureType,
 						role = dangerousFeatureAssociation.role,
@@ -19177,7 +18234,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static SyntheticAISAidToNavigationViewModel LoadFeatureBinding(this SyntheticAISAidToNavigationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<SyntheticAIS> syntheticAIS) {
-					instance.SyntheticAIS.Add(new SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel {
+					instance.SyntheticAIS.Add(new FeatureRefViewModel {
 						featureId = syntheticAIS.referenceId,
 						featureType = syntheticAIS.featureType,
 						role = syntheticAIS.role,
@@ -19190,7 +18247,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static PhysicalAISAidToNavigationViewModel LoadFeatureBinding(this PhysicalAISAidToNavigationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<PhysicalAIS> physicalAIS) {
-					instance.PhysicalAIS.Add(new PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel {
+					instance.PhysicalAIS.Add(new FeatureRefViewModel {
 						featureId = physicalAIS.referenceId,
 						featureType = physicalAIS.featureType,
 						role = physicalAIS.role,
@@ -19203,7 +18260,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static VirtualAISAidToNavigationViewModel LoadFeatureBinding(this VirtualAISAidToNavigationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<VirtualAIS> virtualAIS) {
-					instance.VirtualAIS.Add(new VirtualAISAidToNavigationViewModel.VirtualAISViewModel {
+					instance.VirtualAIS.Add(new FeatureRefViewModel {
 						featureId = virtualAIS.referenceId,
 						featureType = virtualAIS.featureType,
 						role = virtualAIS.role,
@@ -19222,7 +18279,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static AtonAggregationViewModel LoadFeatureBinding(this AtonAggregationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<AtonAggregations> atonAggregations) {
-					instance.AtonAggregations.Add(new AtonAggregationViewModel.AtonAggregationsViewModel {
+					instance.AtonAggregations.Add(new FeatureRefViewModel {
 						featureId = atonAggregations.referenceId,
 						featureType = atonAggregations.featureType,
 						role = atonAggregations.role,
@@ -19235,14 +18292,14 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public static AtonAssociationViewModel LoadFeatureBinding(this AtonAssociationViewModel instance, featureBinding[] bindings) {
 			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<DangerousFeatureAssociation> dangerousFeatureAssociation) {
-					instance.DangerousFeatureAssociations.Add(new AtonAssociationViewModel.DangerousFeatureAssociationViewModel {
+					instance.DangerousFeatureAssociations.Add(new FeatureRefViewModel {
 						featureId = dangerousFeatureAssociation.referenceId,
 						featureType = dangerousFeatureAssociation.featureType,
 						role = dangerousFeatureAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<AtonAssociations> atonAssociations) {
-					instance.AtonAssociations.Add(new AtonAssociationViewModel.AtonAssociationsViewModel {
+					instance.AtonAssociations.Add(new FeatureRefViewModel {
 						featureId = atonAssociations.referenceId,
 						featureType = atonAssociations.featureType,
 						role = atonAssociations.role,

@@ -468,7 +468,7 @@ namespace VortexProAppModule
                 var updated = false;
 
                 if (sender is FeatureViewModel viewModel) {
-                    var informationBindings = viewModel.informationBindings;
+                    var informationBindings = viewModel.GetInformationBindings();
 
                     var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
                     if (Inspector.IsNull("informationBindings") && informationBindings.Any()) {
@@ -491,7 +491,7 @@ namespace VortexProAppModule
 
                 if (sender is FeatureViewModel viewModel) {                    
                     //var featureBindings = (Collection<featureBindingViewModel>)viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
-                    var featureBindings = viewModel.featureBindings;
+                    var featureBindings = viewModel.GetFeatureBindings();
 
                     var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
                     if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
