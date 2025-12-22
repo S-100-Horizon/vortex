@@ -828,6 +828,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -846,6 +847,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -2783,6 +2785,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -2803,11 +2806,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -3191,16 +3196,19 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -3237,6 +3245,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50])]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
@@ -3257,11 +3266,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -3608,11 +3619,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -3633,11 +3646,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Daymark")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -3989,6 +4004,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FogSignal")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4290,6 +4306,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarReflector")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4631,6 +4648,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarTransponderBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4987,6 +5005,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioStation")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5286,11 +5305,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Retroreflector")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Retroreflector")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -5312,6 +5333,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Retroreflector")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5628,6 +5650,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5663,11 +5686,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAirObstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAirObstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -6090,6 +6115,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6125,6 +6151,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAllAround")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -6209,6 +6236,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of different light types.")]
 		[Category("LightAllAround")]
+		[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -6627,6 +6655,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6662,6 +6691,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFogDetector")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -7017,6 +7047,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericLight")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7100,6 +7131,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of different light types.")]
 		[Category("LightSectored")]
+		[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -7473,11 +7505,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFloat")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightFloat")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -7514,11 +7548,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LightFloat")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFloat")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7855,11 +7891,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightVessel")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("LightVessel")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -7896,11 +7934,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LightVessel")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightVessel")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8237,16 +8277,19 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of an offshore raised structure.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11])]
 		[Optional]
 		public ObservableCollection<categoryOfOffshorePlatform> categoryOfOffshorePlatform  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -8299,11 +8342,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8669,11 +8714,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Pile")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Pile")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9056,11 +9103,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9112,11 +9161,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SiloTank")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9478,11 +9529,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9519,11 +9572,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9916,11 +9971,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9957,11 +10014,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10336,11 +10395,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -10377,11 +10438,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10774,11 +10837,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -10815,11 +10880,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11194,11 +11261,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -11235,11 +11304,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11632,11 +11703,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -11673,11 +11746,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12052,11 +12127,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -12093,11 +12170,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12472,11 +12551,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -12513,11 +12594,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12538,6 +12621,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -12906,11 +12990,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -12978,6 +13064,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -12998,6 +13085,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13399,11 +13487,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -13471,6 +13561,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13491,6 +13582,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13874,11 +13966,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -13946,6 +14040,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13966,6 +14061,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14349,11 +14445,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -14421,6 +14519,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14441,6 +14540,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14461,6 +14561,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -14838,11 +14939,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -14910,6 +15013,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14930,6 +15034,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("GenericBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15315,6 +15420,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("WindTurbine")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -15381,6 +15487,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The building's primary construction material.")]
 		[Category("WindTurbine")]
+		[PermittedValues([6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -15391,6 +15498,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("WindTurbine")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16371,6 +16479,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAtoN")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16700,6 +16809,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAtoN")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17029,6 +17139,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ElectronicAtoN")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17329,11 +17440,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Topmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Description("A regular repeated design containing more than one colour.")]
 		[Category("Topmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 

@@ -134,6 +134,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class areaA3ServiceDescriptionViewModel : ComplexViewModel<areaA3ServiceDescription> {
 		[Description("The Recognized Mobile Satellite Service (RMSS) providing the service through a satellite system that is recognized by the IMO, for use in the GMDSS")]
+		[PermittedValues([1,2])]
 		[Multiplicity(1)]
 		public ObservableCollection<servingMobileSatelliteService> servingMobileSatelliteService  { get; set; } = new ();
 
@@ -211,6 +212,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class broadcastContentViewModel : ComplexViewModel<broadcastContent> {
 		[Description("Categorization of the broadcast content by subject.")]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfBroadcastContent> typeOfBroadcastContent  { get; set; } = new ();
 
@@ -473,6 +475,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Description("The condition of an object at a given instant in time.")]
+		[PermittedValues([1,2,4,5,7,8,14,16,17,24,25,26,27])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -2093,6 +2096,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Description("Any one of seven days in a week.")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2999,6 +3003,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Description("Classification of vessels by function or use.")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<categoryOfVessel> categoryOfVessel  { get; set; } = new ();
 
@@ -3020,11 +3025,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Description("Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -3711,6 +3718,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Description("Categorization of the connectivity resource by Quality o Service (QoS).")]
 		[Category("ConnectivityQualityOfService")]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public ObservableCollection<typeOfConnectivityResource> typeOfConnectivityResource  { get; set; } = new ();
 
@@ -3776,6 +3784,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ConnectivityQualityOfService")]
+		[PermittedValues([1,2,4,5,7,8,14,16,17,25,26,27])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 

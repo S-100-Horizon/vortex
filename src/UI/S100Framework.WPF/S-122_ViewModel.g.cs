@@ -1650,6 +1650,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 
 		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1800,6 +1801,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Description("Any one of seven days in a week.")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2381,11 +2383,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Description("Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -4497,11 +4501,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Description("Classification of marine protected areas based on IUCN (International Union for Conservation of Nature and Natural Resources) categories.")]
 		[Category("MarineProtectedArea")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfMarineProtectedArea> categoryOfMarineProtectedArea  { get; set; } = new ();
 
 		[Description("The official legal status of each kind of restricted area defines the kind of restriction(s), for example the restriction for a 'game reserve' may be 'entering prohibited'.")]
 		[Category("MarineProtectedArea")]
+		[PermittedValues([1,4,5,6,7,10,20,22,23,27,28,31,32,33])]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -4523,11 +4529,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MarineProtectedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,38,39,40,41,42])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("MarineProtectedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,9,18,28,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4763,16 +4771,19 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Description("The official legal status of each kind of restricted area defines the kind of restriction(s), for example the restriction for a 'game reserve' may be 'entering prohibited'.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,4,5,6,7,10,20,22,23,27,28,31,32,33])]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,38,39,40,41,42])]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,9,18,28,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5462,6 +5473,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Description("The attribute from which a text string is derived.")]
 		[Category("TextPlacement")]
+		[PermittedValues([1])]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
 

@@ -169,7 +169,8 @@ namespace S100Framework.WPF.Models
                     Value = item,
                     IsReadOnly = IsReadOnly,
                     CollectionIndex = index,
-                    ParentCollectionItem = this
+                    ParentCollectionItem = this,
+                    Attributes = this.Attributes,
                 };
 
                 // If the item is a complex type, expand its properties

@@ -31,7 +31,7 @@ namespace S100Framework.WPF
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var prop in properties.OrderBy(p => p.Name)) {
+            foreach (var prop in properties/*.OrderBy(p => p.Name)*/) {
                 // Skip indexed properties
                 if (prop.GetIndexParameters().Length > 0)
                     continue;
@@ -51,7 +51,7 @@ namespace S100Framework.WPF
                     // Check if it's a collection
                     if (typeof(System.Collections.IList).IsAssignableFrom(prop.PropertyType) &&
                         prop.PropertyType != typeof(string)) {
-                        var collectionItem = CreateCollectionItem(prop, obj, value as System.Collections.IList, level);
+                        var collectionItem = CreateCollectionItem(prop, obj, value as System.Collections.IList, level, prop.GetCustomAttributes());
                         items.Add(collectionItem);
                     }
                     else if (IsComplexType(prop.PropertyType)) {
@@ -75,7 +75,7 @@ namespace S100Framework.WPF
         /// Creates a collection property item
         /// </summary>
         private static CollectionPropertyItem CreateCollectionItem(PropertyInfo prop, object parentObj,
-            System.Collections.IList? collection, int level) {
+            System.Collections.IList? collection, int level, IEnumerable<Attribute> attributes) {
             Type elementType = typeof(object);
 
             // Try to determine element type
@@ -101,7 +101,8 @@ namespace S100Framework.WPF
                 ElementType = elementType,
                 IsReadOnly = !prop.CanWrite,
                 Category = GetCategory(prop),
-                Description = GetDescription(prop)
+                Description = GetDescription(prop),
+                Attributes = [.. attributes],
             };
 
             // Populate collection items
@@ -117,7 +118,8 @@ namespace S100Framework.WPF
                         Value = element,
                         IsReadOnly = item.IsReadOnly,
                         CollectionIndex = index,
-                        ParentCollectionItem = item
+                        ParentCollectionItem = item,
+                        Attributes = item.Attributes,
                     };
 
                     if (element != null && IsComplexType(element.GetType())) {
@@ -151,7 +153,8 @@ namespace S100Framework.WPF
                 IsReadOnly = !prop.CanWrite,
                 IsComplexType = true,
                 Category = GetCategory(prop),
-                Description = GetDescription(prop)
+                Description = GetDescription(prop),
+                Attributes = [.. prop.GetCustomAttributes()],
             };
 
             // Recursively get properties of complex type

@@ -2271,6 +2271,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -2421,6 +2422,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Description("Any one of seven days in a week.")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -3318,11 +3320,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Applicability")]
+		[PermittedValues([2,5,6,7,8,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Description("Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).")]
 		[Category("Applicability")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -3806,56 +3810,67 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Services for combating fires, provided by different methods.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
 
 		[Description("Services for the prevention or treatment of, or response to injury or illness.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
 
 		[Description("Work or maintenance activities whereby vessels or equipment are restored to working order, renovated, or improved in condition.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Optional]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
 
 		[Description("Services for the adjustment of vessel equipment or for assessments pertaining to cargo, compliance with regulations, safety, or security.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
 
 		[Description("Application of measures to ensure that a vessel is free of disease and disease risks, or issue of completion or exemption certificates for such measures.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
 
 		[Description("Classification of services for the conveyance of persons and/or goods, according to means of transport, nature of path, or representative installation.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([2,3,4,5,6,8,9,11,12,13])]
 		[Optional]
 		public ObservableCollection<transportConnection> transportConnection  { get; set; } = new ();
 
 		[Description("Classification of assistance for mooring or anchoring operations.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5,6])]
 		[Optional]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
 
 		[Description("Classification of services related to the goods or items carried by vessels.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
 
 		[Description("Protective services, law enforcement, or services for responding to sudden danger.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService  { get; set; } = new ();
 
 		[Description("Service for the reception of residues, polluting substances, refuse, oily wastes, and by-products from ships.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 		[Optional]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
 
 		[Description("Classification of services for the provision of materials, goods, utilities, or personal services to vessels, passengers, or crew.")]
 		[Category("AvailablePortServices")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Optional]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
 
@@ -5871,11 +5886,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorBerth")]
+		[PermittedValues([1,2,3,5,6,7,9,10,14])]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorBerth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -6164,6 +6181,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([1,2,3,5,6,7,9,10,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
@@ -6185,6 +6203,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -6981,11 +7000,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The electrical frequency provided by the power supply station.")]
 		[Category("Berth")]
+		[PermittedValues([1,2])]
 		[Optional]
 		public ObservableCollection<categoryOfFrequency> categoryOfFrequency  { get; set; } = new ();
 
 		[Description("The electrical voltage provided by the power supply station.")]
 		[Category("Berth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
 
@@ -6996,6 +7017,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Berth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -8554,6 +8576,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of a post or group of posts, used for mooring or warping a vessel.")]
 		[Category("Dolphin")]
+		[PermittedValues([1,2,3,4])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfDolphin> categoryOfDolphin  { get; set; } = new ();
 
@@ -9920,6 +9943,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaAdministrative")]
+		[PermittedValues([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -10238,6 +10262,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of harbour use.")]
 		[Category("HarbourAreaSection")]
+		[PermittedValues([4,5,6,9,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -12264,6 +12289,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The electrical voltage provided by the power supply station.")]
 		[Category("OnshorePowerFacility")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 		[Optional]
 		public ObservableCollection<categoryOfVoltage> categoryOfVoltage  { get; set; } = new ();
 
@@ -12927,6 +12953,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.")]
 		[Category("PilotBoardingPlace")]
+		[PermittedValues([1,2,3])]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<pilotMovement> pilotMovement  { get; set; } = new ();
 
@@ -14050,11 +14077,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Terminal")]
+		[PermittedValues([2,5,6,7,8,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Terminal")]
+		[PermittedValues([1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -15503,6 +15532,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Description("The attribute from which a text string is derived.")]
 		[Category("TextPlacement")]
+		[PermittedValues([1])]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
 

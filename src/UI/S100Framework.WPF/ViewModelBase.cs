@@ -268,7 +268,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         protected override void Validate() {
-            throw new NotImplementedException();
+            //TODO: Validation
         }
     }
 
@@ -309,7 +309,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         protected override void Validate() {
-            throw new NotImplementedException();
+            //TODO: Validation
         }
     }
 

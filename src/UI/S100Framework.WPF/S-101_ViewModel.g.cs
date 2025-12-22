@@ -940,6 +940,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -958,6 +959,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
+		[PermittedValues([1,2,3,4,5,6,8,9])]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -2269,6 +2271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 		[Description("The nature of various forms of natural surface materials in terms of their size, morphology and consistency.")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -2648,6 +2651,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Description("Any one of seven days in a week.")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2736,6 +2740,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class topmarkViewModel : ComplexViewModel<topmark> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -5707,6 +5712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("QualityOfSurvey")]
+		[PermittedValues([1,2,3,4,6,7,8,9,10,11])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -5772,11 +5778,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of the different survey types.")]
 		[Category("QualityOfSurvey")]
+		[PermittedValues([1,2,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<surveyType> surveyType  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("QualityOfSurvey")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -6520,6 +6528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Coastline")]
+		[PermittedValues([1,2,3,4,6,7,8,11,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -6560,6 +6569,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("Coastline")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17])]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
@@ -8024,6 +8034,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LandRegionViewModel : FeatureViewModel<LandRegion> {
 		[Description("General terms for describing landscapes.")]
 		[Category("LandRegion")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
 		[Optional]
 		public ObservableCollection<categoryOfLandRegion> categoryOfLandRegion  { get; set; } = new ();
 
@@ -8049,6 +8060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("LandRegion")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
@@ -8550,6 +8562,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("IceArea")]
+		[PermittedValues([1,5,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8769,6 +8782,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SlopingGround")]
+		[PermittedValues([1,2,3,4,6,7,8,11,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -8794,6 +8808,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("SlopingGround")]
+		[PermittedValues([4,5,6,7,9,11])]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
@@ -9004,6 +9019,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SlopeTopline")]
+		[PermittedValues([1,2,3,4,6,7,8,11,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -9044,6 +9060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("SlopeTopline")]
+		[PermittedValues([4,5,6,7,9,11])]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
@@ -9703,6 +9720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Building")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -9760,6 +9778,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("A specific role that describes a feature.")]
 		[Category("Building")]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
@@ -9810,6 +9829,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Building")]
+		[PermittedValues([1,2,6,7,8,12])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -9846,6 +9866,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Building")]
+		[PermittedValues([4,7,8,12,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10147,6 +10168,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class AirportAirfieldViewModel : FeatureViewModel<AirportAirfield> {
 		[Description("Classification of airport/airfield based on the primary aircraft and user group.")]
 		[Category("AirportAirfield")]
+		[PermittedValues([1,2,3,4,5,6,8,9])]
 		[Optional]
 		public ObservableCollection<categoryOfAirportAirfield> categoryOfAirportAirfield  { get; set; } = new ();
 
@@ -10204,6 +10226,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("AirportAirfield")]
+		[PermittedValues([1,2,4,5,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10418,6 +10441,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Runway")]
+		[PermittedValues([1,2,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -10444,6 +10468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Runway")]
+		[PermittedValues([1,2,4,5,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10650,6 +10675,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Helipad")]
+		[PermittedValues([1,2,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -10676,6 +10702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Helipad")]
+		[PermittedValues([1,2,4,5,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10871,6 +10898,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("A specific role that describes the purpose of a bridge.")]
 		[Category("Bridge")]
+		[PermittedValues([1,2,3,4])]
 		[Optional]
 		public ObservableCollection<bridgeFunction> bridgeFunction  { get; set; } = new ();
 
@@ -10892,6 +10920,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Bridge")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -10979,6 +11008,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Bridge")]
+		[PermittedValues([1,2,6,7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -11030,6 +11060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Bridge")]
+		[PermittedValues([1,2,4,5,7,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11857,6 +11888,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Conveyor")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -11974,6 +12006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Conveyor")]
+		[PermittedValues([4,5,6,10,11,12,13,14,15,16,17,21,22,25])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -12010,6 +12043,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Conveyor")]
+		[PermittedValues([4,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12448,6 +12482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableOverhead")]
+		[PermittedValues([1,4,5,7,12,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12790,6 +12825,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("PipelineOverhead")]
+		[PermittedValues([1,2,3,7,8,9,18,19,20,22])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -12826,6 +12862,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PipelineOverhead")]
+		[PermittedValues([1,4,7,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13097,6 +13134,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("PylonBridgeSupport")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -13199,6 +13237,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("PylonBridgeSupport")]
+		[PermittedValues([1,2,6,7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13235,6 +13274,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PylonBridgeSupport")]
+		[PermittedValues([4,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13555,6 +13595,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("FenceWall")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -13642,6 +13683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("FenceWall")]
+		[PermittedValues([1,2,3,6,7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13678,6 +13720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FenceWall")]
+		[PermittedValues([1,7,12,13])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13967,6 +14010,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Railway")]
+		[PermittedValues([1,4,6,12,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14172,6 +14216,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Road")]
+		[PermittedValues([4,5])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14193,6 +14238,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Road")]
+		[PermittedValues([1,4,6,7,8,12,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14423,6 +14469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Tunnel")]
+		[PermittedValues([1,3,4,6,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14637,16 +14684,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LandmarkViewModel : FeatureViewModel<Landmark> {
 		[Description("Classification of prominent cultural and natural features in the landscape.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Landmark")]
+		[PermittedValues([16,17,41])]
 		[Optional]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -14704,6 +14754,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("A specific role that describes a feature.")]
 		[Category("Landmark")]
+		[PermittedValues([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48])]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
@@ -14754,6 +14805,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Landmark")]
+		[PermittedValues([1,2,3,6,7,8,11,12])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14790,6 +14842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Landmark")]
+		[PermittedValues([2,4,5,7,8,12,13,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15149,6 +15202,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -15251,11 +15305,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("SiloTank")]
+		[PermittedValues([1,2,3,5,7,8,9,13,14,16,18,19,20,21,22,24])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -15292,6 +15348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SiloTank")]
+		[PermittedValues([4,12,13])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15596,6 +15653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class WindTurbineViewModel : FeatureViewModel<WindTurbine> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("WindTurbine")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -15713,6 +15771,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("WindTurbine")]
+		[PermittedValues([2,6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -15749,6 +15808,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("WindTurbine")]
+		[PermittedValues([1,2,4,5,7,8,12,13,14,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16160,6 +16220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("FortifiedStructure")]
+		[PermittedValues([1,2,3,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -16196,6 +16257,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FortifiedStructure")]
+		[PermittedValues([4,7,8,12,13,14,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16562,6 +16624,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("ProductionStorageArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -16598,6 +16661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ProductionStorageArea")]
+		[PermittedValues([4,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16867,6 +16931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Checkpoint")]
+		[PermittedValues([1,2,5,7,9,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17014,11 +17079,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class HulkViewModel : FeatureViewModel<Hulk> {
 		[Description("Classification of an old or unseaworthy ship used for a new function.")]
 		[Category("Hulk")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<categoryOfHulk> categoryOfHulk  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Hulk")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -17429,6 +17496,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Pile")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -17547,6 +17615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Pile")]
+		[PermittedValues([1,4,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17882,6 +17951,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Dyke")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -18128,6 +18198,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("ShorelineConstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -18260,6 +18331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("ShorelineConstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -18296,6 +18368,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("ShorelineConstruction")]
+		[PermittedValues([1,2,3,4,6,7,8,12,13,14,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -18570,11 +18643,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class StructureOverNavigableWaterViewModel : FeatureViewModel<StructureOverNavigableWater> {
 		[Description("Classification of a covered or partially covered area where different use types of vessel can berth.")]
 		[Category("StructureOverNavigableWater")]
+		[PermittedValues([1,2,3,4,5])]
 		[Optional]
 		public ObservableCollection<categoryOfStructure> categoryOfStructure  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("StructureOverNavigableWater")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -18707,6 +18782,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("StructureOverNavigableWater")]
+		[PermittedValues([1,2,6,7,8,11,12])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -18764,6 +18840,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("StructureOverNavigableWater")]
+		[PermittedValues([1,4,5,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -19142,6 +19219,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Causeway")]
+		[PermittedValues([1,2,3,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -19163,6 +19241,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Causeway")]
+		[PermittedValues([1,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -19455,6 +19534,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Canal")]
+		[PermittedValues([1,3,4,5,6,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -19923,16 +20003,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Gate")]
+		[PermittedValues([1,2,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Gate")]
+		[PermittedValues([2,3,4,6,7])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Gate")]
+		[PermittedValues([1,4,6,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20189,6 +20272,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Dam")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -20276,6 +20360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Dam")]
+		[PermittedValues([1,2,3,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -20296,6 +20381,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Dam")]
+		[PermittedValues([1,2,6,7,8,14,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20553,6 +20639,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Crane")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -20685,6 +20772,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Crane")]
+		[PermittedValues([1,4,6,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20997,6 +21085,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class BerthViewModel : FeatureViewModel<Berth> {
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("Berth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -21102,11 +21191,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Berth")]
+		[PermittedValues([1,2])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Berth")]
+		[PermittedValues([1,2,5,7,9,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21329,11 +21420,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class DolphinViewModel : FeatureViewModel<Dolphin> {
 		[Description("Classification of a post or group of posts, used for mooring or warping a vessel.")]
 		[Category("Dolphin")]
+		[PermittedValues([1,2,3,4])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfDolphin> categoryOfDolphin  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Dolphin")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -21436,6 +21529,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Dolphin")]
+		[PermittedValues([1,2,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -21477,6 +21571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Dolphin")]
+		[PermittedValues([1,2,3,4,5,6,7,8,12,14,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21839,6 +21934,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Bollard")]
+		[PermittedValues([1,3,4,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22188,11 +22284,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("DryDock")]
+		[PermittedValues([2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("DryDock")]
+		[PermittedValues([1,4,6,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22398,6 +22496,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class FloatingDockViewModel : FeatureViewModel<FloatingDock> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("FloatingDock")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -22590,6 +22689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FloatingDock")]
+		[PermittedValues([1,4,6,7,8,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22924,6 +23024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Pontoon")]
+		[PermittedValues([1,2,4,5,6,7,8,12,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23304,6 +23405,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("DockArea")]
+		[PermittedValues([1,4,6,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23535,11 +23637,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Gridiron")]
+		[PermittedValues([1,2,6,7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Gridiron")]
+		[PermittedValues([1,4,6,8,14,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23822,6 +23926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LockBasin")]
+		[PermittedValues([1,4,6,8,13,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -25206,6 +25311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Sounding")]
+		[PermittedValues([1,3,4,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -25243,6 +25349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("Sounding")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -25500,11 +25607,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DredgedArea")]
+		[PermittedValues([1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("DredgedArea")]
+		[PermittedValues([1,2,3,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -26182,6 +26291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("DepthNoBottomFound")]
+		[PermittedValues([1,2,3,5,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -27258,6 +27368,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("UnderwaterAwashRock")]
+		[PermittedValues([1,2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -27295,6 +27406,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("UnderwaterAwashRock")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -27601,6 +27713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Wreck")]
+		[PermittedValues([1,2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -27637,11 +27750,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Wreck")]
+		[PermittedValues([7,13,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("Wreck")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -28038,16 +28153,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The general material which the land surface or the seabed is composed.")]
 		[Category("Obstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,14,17,18])]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("Obstruction")]
+		[PermittedValues([1,2,3,8,23])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Obstruction")]
+		[PermittedValues([1,2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -28069,11 +28187,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Obstruction")]
+		[PermittedValues([1,4,5,7,8,13,18,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("Obstruction")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -28396,6 +28516,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("FoulGround")]
+		[PermittedValues([1,2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -28417,11 +28538,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FoulGround")]
+		[PermittedValues([13,18,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("FoulGround")]
+		[PermittedValues([1,2,3,4,5,8,9,10,11,12,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -28845,6 +28968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FishingFacility")]
+		[PermittedValues([1,4,5,6,7,8,12,18,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -29131,16 +29255,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("MarineFarmCulture")]
+		[PermittedValues([1,2,3,4,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MarineFarmCulture")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("MarineFarmCulture")]
+		[PermittedValues([1,2,4,5,6,7,8,14,16,17,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -29437,6 +29564,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -29539,6 +29667,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,3,18,19,23])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -29575,6 +29704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshorePlatform")]
+		[PermittedValues([1,2,4,7,8,12,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -29921,6 +30051,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableSubmarine")]
+		[PermittedValues([1,4,13,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -30089,6 +30220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class CableAreaViewModel : FeatureViewModel<CableArea> {
 		[Description("Classification of the cable based on the services provided.")]
 		[Category("CableArea")]
+		[PermittedValues([1,7,10])]
 		[Optional]
 		public ObservableCollection<categoryOfCable> categoryOfCable  { get; set; } = new ();
 
@@ -30129,11 +30261,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("CableArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CableArea")]
+		[PermittedValues([1,7,13])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -30334,6 +30468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of a pipe systems use.")]
 		[Category("PipelineSubmarineOnLand")]
+		[PermittedValues([2,3,4,5,6,7])]
 		[Optional]
 		public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe  { get; set; } = new ();
 
@@ -30435,6 +30570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("PipelineSubmarineOnLand")]
+		[PermittedValues([1,2,3,7,8,9,18,19])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -30456,11 +30592,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("PipelineSubmarineOnLand")]
+		[PermittedValues([1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PipelineSubmarineOnLand")]
+		[PermittedValues([1,4,7,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -30680,6 +30818,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class SubmarinePipelineAreaViewModel : FeatureViewModel<SubmarinePipelineArea> {
 		[Description("Classification of a pipe systems use.")]
 		[Category("SubmarinePipelineArea")]
+		[PermittedValues([2,3,4,5,6])]
 		[Optional]
 		public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe  { get; set; } = new ();
 
@@ -30720,16 +30859,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("SubmarinePipelineArea")]
+		[PermittedValues([1,2,3,7,8,18,19])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SubmarinePipelineArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SubmarinePipelineArea")]
+		[PermittedValues([1,4,7])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -31007,6 +31149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("OffshoreProductionArea")]
+		[PermittedValues([1,2,4,6,10,14,23])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -31043,11 +31186,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("OffshoreProductionArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("OffshoreProductionArea")]
+		[PermittedValues([1,4,7,8,12,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -31385,6 +31530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("NavigationLine")]
+		[PermittedValues([1,2,5,7,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -31647,16 +31793,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,6])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,5,6,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedTrack")]
+		[PermittedValues([1,2,3,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -32194,16 +32343,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("Fairway")]
+		[PermittedValues([1,2,6])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("Fairway")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Fairway")]
+		[PermittedValues([1,3,6,7,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -32762,16 +32914,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("RecommendedRouteCentreline")]
+		[PermittedValues([1,2,3,4,6])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedRouteCentreline")]
+		[PermittedValues([1,5,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("RecommendedRouteCentreline")]
+		[PermittedValues([1,3,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -33094,16 +33249,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("TwoWayRoutePart")]
+		[PermittedValues([1,2,3,4,6])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("TwoWayRoutePart")]
+		[PermittedValues([1,3,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("TwoWayRoutePart")]
+		[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -33582,6 +33740,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RecommendedTrafficLanePart")]
+		[PermittedValues([1,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -33811,16 +33970,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("DeepWaterRouteCentreline")]
+		[PermittedValues([1,2,3,4,6,7])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("DeepWaterRouteCentreline")]
+		[PermittedValues([1,3,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("DeepWaterRouteCentreline")]
+		[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -34141,21 +34303,25 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The reliability of the value of a sounding.")]
 		[Category("DeepWaterRoutePart")]
+		[PermittedValues([1,2,3,4,6,7])]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DeepWaterRoutePart")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("DeepWaterRoutePart")]
+		[PermittedValues([1,3,6,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Description("Survey method used to obtain depth information.")]
 		[Category("DeepWaterRoutePart")]
+		[PermittedValues([1,3,5,8,9,13,15,16,17,18])]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -34663,11 +34829,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("InshoreTrafficZone")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("InshoreTrafficZone")]
+		[PermittedValues([1,3,6,9,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -34883,11 +35051,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("PrecautionaryArea")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PrecautionaryArea")]
+		[PermittedValues([1,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -35120,11 +35290,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeLanePart")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeLanePart")]
+		[PermittedValues([1,3,6,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -35323,6 +35495,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SeparationZoneOrLine")]
+		[PermittedValues([1,3,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -35493,6 +35666,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeBoundary")]
+		[PermittedValues([1,3,9,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -35663,11 +35837,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeCrossing")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeCrossing")]
+		[PermittedValues([1,3,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -35863,11 +36039,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("TrafficSeparationSchemeRoundabout")]
+		[PermittedValues([1,3,6,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -36926,6 +37104,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioCallingInPoint")]
+		[PermittedValues([1,3,4,5,6,7,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -37125,6 +37304,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class FerryRouteViewModel : FeatureViewModel<FerryRoute> {
 		[Description("Classification of the manoeuvrability of the ferry vessel, not the various types of ferry vessel.")]
 		[Category("FerryRoute")]
+		[PermittedValues([1,2,3,5])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfFerry> categoryOfFerry  { get; set; } = new ();
 
@@ -37170,6 +37350,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FerryRoute")]
+		[PermittedValues([1,2,4,5,6,7,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -37375,6 +37556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarLine")]
+		[PermittedValues([1,2,3,4,7])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -37562,6 +37744,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarRange")]
+		[PermittedValues([1,2,4,7])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -37737,6 +37920,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of radar station based on the services offered.")]
 		[Category("RadarStation")]
+		[PermittedValues([1,2])]
 		[Optional]
 		public ObservableCollection<categoryOfRadarStation> categoryOfRadarStation  { get; set; } = new ();
 
@@ -37787,6 +37971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarStation")]
+		[PermittedValues([1,2,4,7,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -37985,11 +38170,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
 		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([1,2,3,5,6,7,9,10,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -38035,11 +38222,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("AnchorageArea")]
+		[PermittedValues([1,2,3,5,6,7,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -38245,6 +38434,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class MooringAreaViewModel : FeatureViewModel<MooringArea> {
 		[Description("Classification of an area in which vessels may be secured to mooring buoys.")]
 		[Category("MooringArea")]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public ObservableCollection<categoryOfMooringArea> categoryOfMooringArea  { get; set; } = new ();
 
@@ -38320,11 +38510,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MooringArea")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,25,27,39,42])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("MooringArea")]
+		[PermittedValues([1,2,3,5,6,7,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -38526,11 +38718,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class AnchorBerthViewModel : FeatureViewModel<AnchorBerth> {
 		[Description("Classification of an area where different use types of vessel can remain static.")]
 		[Category("AnchorBerth")]
+		[PermittedValues([1,2,3,5,6,7,9,10,14])]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
 		[Description("Classification of the different types of cargo that a ship may be carrying.")]
 		[Category("AnchorBerth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -38591,6 +38785,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("AnchorBerth")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -38799,11 +38994,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SeaplaneLandingArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SeaplaneLandingArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -38983,6 +39180,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
 		[Description("Classification of an area based on the type of waste being disposed of.")]
 		[Category("DumpingGround")]
+		[PermittedValues([2,3,4,5,6])]
 		[Optional]
 		public ObservableCollection<categoryOfDumpingGround> categoryOfDumpingGround  { get; set; } = new ();
 
@@ -39024,11 +39222,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("DumpingGround")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("DumpingGround")]
+		[PermittedValues([1,2,4,6,7])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -39211,6 +39411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class MilitaryPracticeAreaViewModel : FeatureViewModel<MilitaryPracticeArea> {
 		[Description("Classification of area by military use.")]
 		[Category("MilitaryPracticeArea")]
+		[PermittedValues([2,3,4,5,6])]
 		[Optional]
 		public ObservableCollection<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea  { get; set; } = new ();
 
@@ -39271,11 +39472,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("MilitaryPracticeArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("MilitaryPracticeArea")]
+		[PermittedValues([1,2,5,6,7,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -39733,11 +39936,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("CargoTranshipmentArea")]
+		[PermittedValues([2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,24,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CargoTranshipmentArea")]
+		[PermittedValues([1,2,3,5,6,7,9])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -41078,6 +41283,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FisheryZone")]
+		[PermittedValues([1,5,6,7])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -41250,11 +41456,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("FishingGround")]
+		[PermittedValues([1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FishingGround")]
+		[PermittedValues([1,5,6,7,8,14,16,17,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -41454,6 +41662,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FreePortArea")]
+		[PermittedValues([1,6,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -41618,6 +41827,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("HarbourAreaAdministrative")]
+		[PermittedValues([1,4,6,8,14])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -41787,6 +41997,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LogPond")]
+		[PermittedValues([1,2,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -42024,6 +42235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("OilBarrier")]
+		[PermittedValues([1,2,4,5,7,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -42361,6 +42573,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("TerritorialSeaArea")]
+		[PermittedValues([2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -42549,6 +42762,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("SubmarineTransitLane")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -43254,6 +43468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
 		[Description("The official legal status of each kind of restricted area defines the kind of restriction(s), for example the restriction for a 'game reserve' may be 'entering prohibited'.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32])]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -43299,11 +43514,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42])]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RestrictedArea")]
+		[PermittedValues([1,2,3,4,5,6,7,9,18,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -43517,11 +43734,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightAllAroundViewModel : FeatureViewModel<LightAllAround> {
 		[Description("Classification of different light types.")]
 		[Category("LightAllAround")]
+		[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAllAround")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -43706,6 +43925,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightAllAround")]
+		[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -43993,6 +44213,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
 		[Description("Classification of different light types.")]
 		[Category("LightSectored")]
+		[PermittedValues([4,5,8,9,10,11,12,13,14,15,17,18,19,20])]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -44121,6 +44342,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightSectored")]
+		[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -44357,6 +44579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightFogDetectorViewModel : FeatureViewModel<LightFogDetector> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFogDetector")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -44463,6 +44686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFogDetector")]
+		[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -44694,6 +44918,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightAirObstructionViewModel : FeatureViewModel<LightAirObstruction> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightAirObstruction")]
+		[PermittedValues([1,3,4,5,6,9,10,11])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -44780,6 +45005,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The specific visibility of a light, with respect to the light's intensity and ease of recognition.")]
 		[Category("LightAirObstruction")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9])]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -44820,6 +45046,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightAirObstruction")]
+		[PermittedValues([1,2,4,5,6,7,8,11,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -45099,6 +45326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LateralBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -45171,6 +45399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LateralBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -45196,6 +45425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LateralBuoy")]
+		[PermittedValues([1,2,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -45507,6 +45737,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("CardinalBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -45579,6 +45810,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("CardinalBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -45604,6 +45836,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CardinalBuoy")]
+		[PermittedValues([1,2,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -45899,6 +46132,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("IsolatedDangerBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -45971,6 +46205,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("IsolatedDangerBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -45996,6 +46231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("IsolatedDangerBuoy")]
+		[PermittedValues([1,2,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -46288,6 +46524,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SafeWaterBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -46360,6 +46597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SafeWaterBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -46385,6 +46623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SafeWaterBuoy")]
+		[PermittedValues([1,2,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -46677,11 +46916,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SpecialPurposeGeneralBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -46754,6 +46995,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SpecialPurposeGeneralBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -46779,6 +47021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SpecialPurposeGeneralBuoy")]
+		[PermittedValues([1,2,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -47081,6 +47324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("EmergencyWreckMarkingBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -47153,6 +47397,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("EmergencyWreckMarkingBuoy")]
+		[PermittedValues([6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -47447,6 +47692,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("InstallationBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -47503,6 +47749,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("InstallationBuoy")]
+		[PermittedValues([7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -47513,6 +47760,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The various substances which are transported, stored or exploited.")]
 		[Category("InstallationBuoy")]
+		[PermittedValues([1,2,18,19])]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -47533,6 +47781,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("InstallationBuoy")]
+		[PermittedValues([1,2,4,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -47797,6 +48046,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("MooringBuoy")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -47883,6 +48133,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("MooringBuoy")]
+		[PermittedValues([7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -47893,6 +48144,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("MooringBuoy")]
+		[PermittedValues([1,2,4,5,7,8,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -48198,6 +48450,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LateralBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -48316,6 +48569,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LateralBeacon")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -48357,6 +48611,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LateralBeacon")]
+		[PermittedValues([1,2,4,5,7,8,12,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -48708,6 +48963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("CardinalBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -48826,6 +49082,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("CardinalBeacon")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -48867,6 +49124,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CardinalBeacon")]
+		[PermittedValues([1,2,4,5,7,8,12,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -49202,6 +49460,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("IsolatedDangerBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -49320,6 +49579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("IsolatedDangerBeacon")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -49361,6 +49621,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("IsolatedDangerBeacon")]
+		[PermittedValues([1,2,4,5,7,8,12,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -49693,6 +49954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SafeWaterBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -49811,6 +50073,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SafeWaterBeacon")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -49852,6 +50115,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SafeWaterBeacon")]
+		[PermittedValues([1,2,4,5,7,8,12,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -50184,11 +50448,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("SpecialPurposeGeneralBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("SpecialPurposeGeneralBeacon")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -50307,6 +50573,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("SpecialPurposeGeneralBeacon")]
+		[PermittedValues([1,2,6,7,8])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -50348,6 +50615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SpecialPurposeGeneralBeacon")]
+		[PermittedValues([1,2,4,5,7,8,12,18])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -50674,11 +50942,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class DaymarkViewModel : FeatureViewModel<Daymark> {
 		[Description("Classification of an aid to navigation which signifies some special purpose.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63])]
 		[Optional]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -50765,6 +51035,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("Daymark")]
+		[PermittedValues([1,2,4,6,7,8,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -50790,6 +51061,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Daymark")]
+		[PermittedValues([1,4,5,7,8,12])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -51099,6 +51371,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightFloatViewModel : FeatureViewModel<LightFloat> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightFloat")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -51185,6 +51458,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LightFloat")]
+		[PermittedValues([6,7,11])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -51210,6 +51484,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightFloat")]
+		[PermittedValues([1,2,4,5,7,8,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -51505,6 +51780,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("LightVessel")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -51591,6 +51867,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("LightVessel")]
+		[PermittedValues([6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -51616,6 +51893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("LightVessel")]
+		[PermittedValues([1,2,4,5,7,8,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -51890,6 +52168,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class RetroreflectorViewModel : FeatureViewModel<Retroreflector> {
 		[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
 		[Category("Retroreflector")]
+		[PermittedValues([1,3,4,5,6,7,8,9,10,11,12,13])]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -51961,6 +52240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("Retroreflector")]
+		[PermittedValues([1,4,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -52177,6 +52457,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarReflector")]
+		[PermittedValues([1,4,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -52452,6 +52733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("FogSignal")]
+		[PermittedValues([1,2,4,5,7,8,15])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -53187,6 +53469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of radio services offered by a radio station.")]
 		[Category("RadioStation")]
+		[PermittedValues([5,10,11,14,19,20])]
 		[Optional]
 		public ObservableCollection<categoryOfRadioStation> categoryOfRadioStation  { get; set; } = new ();
 
@@ -53267,6 +53550,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadioStation")]
+		[PermittedValues([1,2,4,5,7,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -53555,6 +53839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RadarTransponderBeacon")]
+		[PermittedValues([1,2,4,5,7,8])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -53865,11 +54150,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.")]
 		[Category("PilotBoardingPlace")]
+		[PermittedValues([1,2,3])]
 		[Optional]
 		public ObservableCollection<pilotMovement> pilotMovement  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("PilotBoardingPlace")]
+		[PermittedValues([1,2,5,6,9,16,17,28])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -54284,6 +54571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("CoastGuardStation")]
+		[PermittedValues([1,4,5,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -54457,6 +54745,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class SignalStationWarningViewModel : FeatureViewModel<SignalStationWarning> {
 		[Description("Classification of station based on the warning service provided.")]
 		[Category("SignalStationWarning")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationWarning> categoryOfSignalStationWarning  { get; set; } = new ();
 
@@ -54507,6 +54796,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SignalStationWarning")]
+		[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -54696,6 +54986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class SignalStationTrafficViewModel : FeatureViewModel<SignalStationTraffic> {
 		[Description("Classification of station based on the traffic service provided.")]
 		[Category("SignalStationTraffic")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic  { get; set; } = new ();
 
@@ -54746,6 +55037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SignalStationTraffic")]
+		[PermittedValues([1,2,4,5,7,8,12,14,15,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -54935,6 +55227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class RescueStationViewModel : FeatureViewModel<RescueStation> {
 		[Description("Classification of aid station based on life saving equipment.")]
 		[Category("RescueStation")]
+		[PermittedValues([1,2,4,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<categoryOfRescueStation> categoryOfRescueStation  { get; set; } = new ();
 
@@ -54985,6 +55278,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("RescueStation")]
+		[PermittedValues([1,2,4,5,7,8,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -55165,6 +55459,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
 		[Description("Classification of harbour use.")]
 		[Category("HarbourFacility")]
+		[PermittedValues([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
@@ -55226,6 +55521,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The building's primary construction material.")]
 		[Category("HarbourFacility")]
+		[PermittedValues([1,2,3,6,7])]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -55268,11 +55564,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("HarbourFacility")]
+		[PermittedValues([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27])]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("HarbourFacility")]
+		[PermittedValues([1,4,5,6,7,8,9,12,13,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -55515,6 +55813,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class SmallCraftFacilityViewModel : FeatureViewModel<SmallCraftFacility> {
 		[Description("Classification of services and facilities for the small craft user.")]
 		[Category("SmallCraftFacility")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33])]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility  { get; set; } = new ();
 
@@ -55545,6 +55844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The condition of an object at a given instant in time.")]
 		[Category("SmallCraftFacility")]
+		[PermittedValues([1,2,3,4,5,6,7,8,9,12,14,16,17])]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -55772,6 +56072,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Description("The attribute from which a text string is derived.")]
 		[Category("TextPlacement")]
+		[PermittedValues([1,2])]
 		[Multiplicity(1, 2)]
 		public ObservableCollection<textType> textType  { get; set; } = new ();
 

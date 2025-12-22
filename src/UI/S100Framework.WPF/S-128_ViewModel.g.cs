@@ -1683,6 +1683,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Description("Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.")]
+		[PermittedValues([1,2,3,4,5,6,7,8])]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1812,6 +1813,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ComplexViewModel<timeIntervalOfCycle> {
 		[Description("The unit of a value indicating a time Time Interval.")]
+		[PermittedValues([1,2,3,4])]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -3050,6 +3052,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("The navigational purpose of the dataset.")]
 		[Category("NavigationalProduct")]
+		[PermittedValues([1,2,3])]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3705,6 +3708,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Description("The navigational purpose of the dataset.")]
 		[Category("NavigationalProduct")]
+		[PermittedValues([1,2,3])]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 

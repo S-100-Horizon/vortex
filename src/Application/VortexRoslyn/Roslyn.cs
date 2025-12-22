@@ -2295,7 +2295,6 @@ namespace S100Framework.Applications
                         bindings.Add(association, []);
 
                         informationBindingExtension.AppendLine($"\t\t\t\tif(informationBinding is informationBinding<{association}> {CamelCase(association)}) {{");
-                        //informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
                         informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new InformationRefViewModel {{");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationId = {CamelCase(association)}.referenceId,");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationType = {CamelCase(association)}.informationType,");
@@ -2328,18 +2327,9 @@ namespace S100Framework.Applications
                         builder.AppendLine($"\t\t{attribute}");
                     }
                     builder.AppendLine($"\t\tpublic ObservableCollection<InformationRefViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
-
-                    ////builder.AppendLine();
-                    ////builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
-                    ////builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
-
-                    ////constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-                    ////constructorBuilder.AppendLine($"\t\t\t\tOnInformationBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
-                    ////constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
                 builder.AppendLine();
-                //builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine($"\t\tpublic override informationBinding[] GetInformationBindings() => [");
                     foreach (var association in associations) {
@@ -2347,11 +2337,6 @@ namespace S100Framework.Applications
                         builder.AppendLine("\t\t\t\tinformationType = e.informationType, referenceId = e.informationId, role = e.role,}),");
                     }
                     builder.AppendLine("\t\t];");
-
-                    //builder.AppendLine();
-                    //var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    //builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
-                    //builder.AppendLine();
                     builder.AppendLine("\t\t#endregion");
                     builder.AppendLine();
                 }
@@ -2385,7 +2370,6 @@ namespace S100Framework.Applications
                         bindings.Add(association, []);
 
                         featureBindingExtension.AppendLine($"\t\t\t\tif(featureBinding is featureBinding<{association}> {CamelCase(association)}) {{");
-                        //featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
                         featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new FeatureRefViewModel {{");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureId = {CamelCase(association)}.referenceId,");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureType = {CamelCase(association)}.featureType,");
@@ -2424,19 +2408,9 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
                     constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
-
-
-                    ////builder.AppendLine();
-                    ////builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
-                    ////builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
-
-                    ////constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-                    ////constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
-                    ////constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
                 builder.AppendLine();
-                //builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine($"\t\tpublic override featureBinding[] GetFeatureBindings() => [");
                     foreach (var association in associations) {
@@ -2444,11 +2418,6 @@ namespace S100Framework.Applications
                         builder.AppendLine("\t\t\t\tfeatureType = e.featureType, referenceId = e.featureId, role = e.role,}),");
                     }
                     builder.AppendLine("\t\t];");
-
-                    //builder.AppendLine();
-                    //var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    //builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
-                    //builder.AppendLine();
 
                     builder.AppendLine("\t\t#endregion");
                     builder.AppendLine();
@@ -2604,13 +2573,11 @@ namespace S100Framework.Applications
                     else if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine($"\t\t//[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
 
-
-                    if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
-                        builder.AppendLine("\t\t[ExpandableObject]");
-
                     if (permittedValues is not null) {
                         builder.AppendLine($"\t\t[PermittedValues([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                     }
+                    if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
+                        builder.AppendLine("\t\t[ExpandableObject]");
 
                     if (upper.HasValue) {
                         if (lower == 0 && upper == 1)
@@ -2669,6 +2636,9 @@ namespace S100Framework.Applications
                     //builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
                         //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
+                    }
+                    if (permittedValues is not null) {
+                        builder.AppendLine($"\t\t[PermittedValues([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                     }
                     if (upper.HasValue) {
                         if (lower == 0 && upper == 1)

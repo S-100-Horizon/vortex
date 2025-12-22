@@ -18,6 +18,7 @@
     <Project Path="src/Application/VortexRoslyn/VortexRoslyn.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="tests/UI.Tests/PropertyGridApplication/PropertyGridApplication.csproj" />
     <Project Path="tests/UI.Tests/VortexConceptApplication/VortexConceptApplication.csproj">
       <Platform Project="x64" />
     </Project>
