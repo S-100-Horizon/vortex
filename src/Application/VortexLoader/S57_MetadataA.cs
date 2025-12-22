@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
 
 namespace S100Framework.Applications
 {
@@ -72,7 +73,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             if (current.PUBREF != default) {
@@ -138,7 +139,7 @@ namespace S100Framework.Applications
                                     string subtype = "";
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                    localDirectionOfBuoyage.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    localDirectionOfBuoyage.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
                                 localDirectionOfBuoyage.SetInformationBindings(AddInformation(localDirectionOfBuoyage.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -435,7 +436,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUAPOS.HasValue) {
-                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<QualityOfSurvey, qualityOfHorizontalMeasurement>(current.QUAPOS);
+                                instance.qualityOfHorizontalMeasurement = current.QUAPOS.Value switch {
+                                    4 => qualityOfHorizontalMeasurement.Approximate,
+                                    _ => default,
+                                };
                             }
 
                             if (current.QUASOU != default) {
@@ -497,7 +501,11 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+                            var verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+
+                            instance.verticalDatum = verticalDatum;
+
+
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
@@ -525,7 +533,11 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            VerticalDatums.Instance.Add(current.SHAPE!.Clone(), instance.verticalDatum!.Value);
+                            if (verticalDatum.HasValue) {
+                                VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.Value);
+                            } else {
+                                Logger.Current.DataError(current.OBJECTID.Value, current.TableName!, current.LNAM!, $"M_VDAT_VerticalDatumOfData has no VERDAT");
+                            }
 
                             // if (current.VERDAT.HasValue) {
                             //var verdat = Convert.ToInt32(current.VERDAT);

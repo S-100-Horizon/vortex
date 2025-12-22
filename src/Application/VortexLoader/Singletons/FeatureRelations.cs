@@ -4,6 +4,8 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 
 namespace S100Framework.Applications.Singletons
@@ -425,8 +427,12 @@ namespace S100Framework.Applications.Singletons
 
         internal IList<PltsSlave> GetRelated(Guid uid) {
             var result = new List<PltsSlave>();
-            if (_srcObjectToSlaves.ContainsKey(uid))
+            if (_srcObjectToSlaves.ContainsKey(uid)) {
+                
+                
                 return _srcObjectToSlaves[uid];
+            }
+                
 
             return result;
         }
@@ -582,8 +588,13 @@ namespace S100Framework.Applications.Singletons
                         _srcObjectToSlaves[uid] = new List<PltsSlave>() { new PltsSlave(plts_frel) };
                     }
                     else {
-                        var pltsSlave = new PltsSlave(plts_frel);
-                        _srcObjectToSlaves[uid].Add(pltsSlave);
+                        // Same relation multiple times are ignored.
+                        if (!_srcObjectToSlaves[uid].Any(o =>
+                            o.PLTS_Frel.SRC_UID!.ToLower() == plts_frel.SRC_UID!.ToLower() && o.PLTS_Frel.DEST_UID!.ToLower() == plts_frel.DEST_UID!.ToLower() && o.PLTS_Frel.DEST_SUB!.ToLower() == plts_frel.DEST_SUB!.ToLower() && o.PLTS_Frel.SRC_SUB!.ToLower() == plts_frel.SRC_SUB!.ToLower()
+                        )) {
+                            var pltsSlave = new PltsSlave(plts_frel);
+                            _srcObjectToSlaves[uid].Add(pltsSlave);
+                        }
                     }
                 }
                 else if (relationshipIndicator == "Rep") {
@@ -596,6 +607,9 @@ namespace S100Framework.Applications.Singletons
                 .SelectMany(group => group.Value)
                 .GroupBy(frel => frel.GlobalId)
                 .ToDictionary(group => group.Key, group => group.First());
+
+
+            
 
             // foreach featureclass represented in plts_rels, load all destination objects
             var destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
@@ -624,124 +638,369 @@ namespace S100Framework.Applications.Singletons
                 while (cursorRelated.MoveNext()) {
                     Guid.TryParse(Convert.ToString(cursorRelated.Current["GLOBALID"]), out var currentGlobalId);
 
+                    if (currentGlobalId == Guid.Parse("10C8B63E-9C6F-4A93-9D63-DA268D263E30")) {
+                        ; // var t = _srcObjectToSlaves[System.Guid.Parse("37F8BF16-D879-4EB7-B6FA-49B143B320E2")];
+                    }
+
                     if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("aidstonavigationp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new AidsToNavigationP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new AidsToNavigationP((Feature)cursorRelated.Current);
+                            
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new AidsToNavigationP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("dangersp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new DangersP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new DangersP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new DangersP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("naturalfeaturesa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new NaturalFeaturesA((Feature)cursorRelated.Current); ;
+                            //idIndex[currentGlobalId].S57Object = new NaturalFeaturesA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new NaturalFeaturesA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("naturalfeaturesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new NaturalFeaturesP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new NaturalFeaturesP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new NaturalFeaturesP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("naturalfeaturesl")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new NaturalFeaturesL((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new NaturalFeaturesL((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new NaturalFeaturesL((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("culturalfeaturesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new CulturalFeaturesP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new CulturalFeaturesP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new CulturalFeaturesP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("culturalfeaturesl")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new CulturalFeaturesL((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new CulturalFeaturesL((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new CulturalFeaturesL((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("culturalfeaturesa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new CulturalFeaturesA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new CulturalFeaturesA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new CulturalFeaturesA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("tracksandroutesa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new TracksAndRoutesA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new TracksAndRoutesA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new TracksAndRoutesA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("tracksandroutesl")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new TracksAndRoutesL((Feature)cursorRelated.Current);
+                            // idIndex[currentGlobalId].S57Object = new TracksAndRoutesL((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new TracksAndRoutesL((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("portsandservicesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new PortsAndServicesP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new PortsAndServicesP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new PortsAndServicesP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("regulatedareasandlimitsp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new RegulatedAreasAndLimitsP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new RegulatedAreasAndLimitsP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new RegulatedAreasAndLimitsP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("userdefinedfeaturesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new UserDefinedFeaturesP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new UserDefinedFeaturesP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new UserDefinedFeaturesP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("tracksandroutesp")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new TracksAndRoutesP((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new TracksAndRoutesP((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new TracksAndRoutesP((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("offshoreinstallationsl")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new OffshoreInstallationsL((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new OffshoreInstallationsL((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new OffshoreInstallationsL((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("depthsa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new DepthsA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new DepthsA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new DepthsA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("portsandservicesl")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new PortsAndServicesL((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new PortsAndServicesL((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new PortsAndServicesL((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("dangersa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new DangersA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new DangersA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new DangersA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("regulatedareasandlimitsa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new RegulatedAreasAndLimitsA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new RegulatedAreasAndLimitsA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new RegulatedAreasAndLimitsA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("offshoreinstallationsa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
-                            idIndex[currentGlobalId].S57Object = new OffshoreInstallationsA((Feature)cursorRelated.Current);
+                            //idIndex[currentGlobalId].S57Object = new OffshoreInstallationsA((Feature)cursorRelated.Current);
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new OffshoreInstallationsA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     else {

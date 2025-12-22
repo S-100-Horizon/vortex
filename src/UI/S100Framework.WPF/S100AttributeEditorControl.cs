@@ -491,6 +491,8 @@ namespace S100Framework.WPF
             var eventArgs = (QueryInformationTypesEventArgs)e.Parameter;
 
             var items = await Host.QueryInformationTypes(eventArgs);
+            var parameter = (QueryInformationTypesEventArgs)e.Parameter;
+            parameter?.callback?.Invoke([.. items]);
         }
 
         #endregion
@@ -509,6 +511,9 @@ namespace S100Framework.WPF
             var eventArgs = (QueryFeatureTypesEventArgs)e.Parameter;
 
             var items = await Host.QueryFeatureTypes(eventArgs);
+
+            var parameter = (QueryFeatureTypesEventArgs)e.Parameter;
+            parameter?.callback?.Invoke([..items]);
         }
 
         #endregion

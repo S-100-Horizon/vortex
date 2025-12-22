@@ -36,6 +36,20 @@ namespace S100Framework.Applications
             if (dataset is null)
                 throw new InvalidProgramException();
 
+            JsonSerializerOptions jsonInformationTypeSerializerOptions = new() {
+                WriteIndented = false,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true,
+                TypeInfoResolver = Summary.InformationBindingResolver(),
+            };
+
+            JsonSerializerOptions jsonFeatureTypeSerializerOptions = new() {
+                WriteIndented = false,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true,
+                TypeInfoResolver = Summary.FeatureBindingResolver(),
+            };
+
             geodatabase.ApplyEdits(() => {
                 using var tableInformationType = geodatabase.OpenDataset<Table>(geodatabase.GetName("informationtype"));
                 using var tableFeatureType = geodatabase.OpenDataset<Table>(geodatabase.GetName("featuretype"));
@@ -116,7 +130,7 @@ namespace S100Framework.Applications
                             featureAssociations.Add(fb);
                         }
 
-                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
+                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations, jsonFeatureTypeSerializerOptions);
                         rowbuffer["featurebindings"] = featureAssociationJSON;
                     }
 
@@ -145,7 +159,7 @@ namespace S100Framework.Applications
                             informationAssociations.Add(ib);
                         }
 
-                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
+                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations, jsonInformationTypeSerializerOptions);
                         rowbuffer["informationbindings"] = informationAssociationJSON;
                     }
 

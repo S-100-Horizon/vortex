@@ -43,6 +43,8 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
+                if (feature.GetShape() is null) continue;
+
                 var current = new DepthsL(feature);
 
                 var spatialQualityHits = SpatialAssociations.Instance.GetSpatialAttributeL(feature.GetShape());
@@ -79,7 +81,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             /*

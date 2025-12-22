@@ -66,12 +66,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Identifies paper charts, ENCs or publications that are affected by the information.
 	/// </summary>
+	[Description("Identifies paper charts, ENCs or publications that are affected by the information.")]
 	[CategoryOrder("affectedChartPublications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class affectedChartPublicationsViewModel : ComplexViewModel<affectedChartPublications> {
 		private chartAffectedViewModel? _chartAffected  = default;
 
+		[Description("Name or number of affected national paper chart or ENC.")]
 		[ExpandableObject]
 		[Optional]
 		public chartAffectedViewModel? chartAffected {
@@ -85,6 +87,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _chartPublicationIdentifier  = default;
 
+		[Description("Identifier for the chart or publication (using the MRN format).")]
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? chartPublicationIdentifier {
@@ -98,6 +101,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _internationalChartAffected  = default;
 
+		[Description("International paper chart number. (Not used if chartAffected carry an ENC name).")]
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? internationalChartAffected {
@@ -111,6 +115,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -124,6 +129,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _publicationAffected  = default;
 
+		[Description("Name of affected publication.")]
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? publicationAffected {
@@ -175,12 +181,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Name or number of affected national paper chart or ENC.
 	/// </summary>
+	[Description("Name or number of affected national paper chart or ENC.")]
 	[CategoryOrder("chartAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class chartAffectedViewModel : ComplexViewModel<chartAffected> {
 		private String _chartNumber  = string.Empty;
 
+		[Description("Chart number. Note, can be either paper chart number or ENC file name.")]
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String chartNumber {
@@ -194,6 +202,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _chartPlanNumber  = default;
 
+		[Description("Plan number when a chart has more than one panel.")]
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? chartPlanNumber {
@@ -207,6 +216,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private DateOnly _editionDate  = default;
 
+		[Description("Date of publishing for example of a publication, chart, or product.")]
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public DateOnly editionDate {
@@ -220,6 +230,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private DateOnly? _lastNoticeDate  = default;
 
+		[Description("Date of the last notice to mariner, such as was applied to a chart or publication.")]
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? lastNoticeDate {
@@ -265,12 +276,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
+	[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
+		[Description("The latest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -285,6 +298,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _dateStart  = default;
 
+		[Description("The earliest date on which an object (for example a buoy) will be present.")]
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
@@ -299,6 +313,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
+		[Description("The time corresponding to the end of an active period.")]
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
@@ -312,6 +327,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
+		[Description("The time corresponding to the start of an active period.")]
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
@@ -357,12 +373,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).
 	/// </summary>
+	[Description("The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).")]
 	[CategoryOrder("generalArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class generalAreaViewModel : ComplexViewModel<generalArea> {
 		private String? _localityIdentifier  = default;
 
+		[Description("Globally unique identifier for the area or locality in the MRN format.")]
 		[Editor(typeof(Editors.HorizonEditor<generalArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? localityIdentifier {
@@ -374,6 +392,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+		[Description("Name of an area locality as defined by a competent authority.")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -415,12 +434,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
+	[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -434,6 +455,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
@@ -473,12 +495,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Name and/or identifier of an area locality.
 	/// </summary>
+	[Description("Name and/or identifier of an area locality.")]
 	[CategoryOrder("locality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class localityViewModel : ComplexViewModel<locality> {
 		private String? _localityIdentifier  = default;
 
+		[Description("Globally unique identifier for the area or locality in the MRN format.")]
 		[Editor(typeof(Editors.HorizonEditor<locality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? localityIdentifier {
@@ -490,6 +514,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+		[Description("Name of an area locality as defined by a competent authority.")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -531,12 +556,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Name of an area locality as defined by a competent authority.
 	/// </summary>
+	[Description("Name of an area locality as defined by a competent authority.")]
 	[CategoryOrder("locationName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class locationNameViewModel : ComplexViewModel<locationName> {
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -550,6 +577,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
@@ -589,12 +617,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Message series identification of the warning or notice.
 	/// </summary>
+	[Description("Message series identification of the warning or notice.")]
 	[CategoryOrder("messageSeriesIdentifier",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class messageSeriesIdentifierViewModel : ComplexViewModel<messageSeriesIdentifier> {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
+		[Description("Identifies the agency which produced the data.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String agencyResponsibleForProduction {
@@ -608,6 +638,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _interoperabilityIdentifier  = default;
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
@@ -621,6 +652,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _nameOfSeries  = string.Empty;
 
+		[Description("The NAVAREA or METAREA. Example: NAVAREA IV. Distinction: generalArea, locality")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String nameOfSeries {
@@ -634,6 +666,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _nationality  = default;
 
+		[Description("Identifier of membership of a particular nation.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nationality {
@@ -647,6 +680,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private int _warningNumber  = default;
 
+		[Description("The consecutive number re-starts each calendar year at 1 (Leading zeros are not mandatory).")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int warningNumber {
@@ -660,6 +694,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private warningType _warningType  = default;
 
+		[Description("The scope of the MSI warning - NAVAREA, sub-area, etc.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public warningType warningType {
@@ -676,6 +711,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private int _year  = default;
 
+		[Description("A period of one revolution of the earth around the sun.")]
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int year {
@@ -730,12 +766,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Title of the navigational warning.
 	/// </summary>
+	[Description("Title of the navigational warning.")]
 	[CategoryOrder("navwarnTitle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class navwarnTitleViewModel : ComplexViewModel<navwarnTitle> {
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -749,6 +787,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String text {
@@ -788,13 +827,16 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Detailed information about a warning.
 	/// </summary>
+	[Description("Detailed information about a warning.")]
 	[CategoryOrder("warningInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class warningInformationViewModel : ComplexViewModel<warningInformation> {
+		[Description("Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+		[Description("Detailed type of a warning or hazard.")]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
@@ -843,13 +885,16 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Reference to an object or feature that is external to the dataset.
 	/// </summary>
+	[Description("Reference to an object or feature that is external to the dataset.")]
 	[CategoryOrder("featureReference",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureReferenceViewModel : ComplexViewModel<featureReference> {
+		[Description("Identifier from a list of Aids to Navigation publication, such as List of Lights.")]
 		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 
+		[Description("A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
@@ -898,12 +943,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
+	[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String _language  = string.Empty;
 
+		[Description("The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String language {
@@ -917,6 +964,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _name  = string.Empty;
 
+		[Description("The individual name of a feature.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
@@ -930,6 +978,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private nameUsage? _nameUsage  = default;
 
+		[Description("Classification of the type and display level of the name of a feature in an end-user system.")]
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public nameUsage? nameUsage {
@@ -975,12 +1024,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
+	[Description("The best estimate of the accuracy of a position.")]
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Description("The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.")]
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
@@ -1017,12 +1068,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
+	[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
+		[Description("The best estimate of the accuracy of a position.")]
 		[ExpandableObject]
 		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
@@ -1063,6 +1116,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The binding between a navigational warning preamble and the body.
 	/// </summary>
+	[Description("The binding between a navigational warning preamble and the body.")]
 	[CategoryOrder("navwarnPreambleContent",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1083,6 +1137,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The relationship between a navigational warning and previous information relevant to its purpose.
 	/// </summary>
+	[Description("The relationship between a navigational warning and previous information relevant to its purpose.")]
 	[CategoryOrder("navwarnReferences",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1103,6 +1158,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// a feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
+	[Description("a feature association for the binding between a geo feature and the cartographically positioned location for text.")]
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1123,6 +1179,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Association between a warning and the area impacted.
 	/// </summary>
+	[Description("Association between a warning and the area impacted.")]
 	[CategoryOrder("areaAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1143,16 +1200,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// References to for example a navigational warning, nautical publication or chart.
 	/// </summary>
+	[Description("References to for example a navigational warning, nautical publication or chart.")]
 	[CategoryOrder("References",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ReferencesViewModel : InformationViewModel<References> {
+		[Description("Message series identification of the warning or notice.")]
 		[Category("References")]
 		[Optional]
 		public ObservableCollection<messageSeriesIdentifierViewModel> messageSeriesIdentifier  { get; set; } = new ();
 
 		private Boolean _noMessageOnHand  = false;
 
+		[Description("An indication of no active message.")]
 		[Category("References")]
 		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1167,6 +1227,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private referenceCategory _referenceCategory  = default;
 
+		[Description("Category of reference.")]
 		[Category("References")]
 		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1185,10 +1246,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
+		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1276,24 +1371,29 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
 	/// </summary>
+	[Description("Preamble information for warnings, notices and other types of messages in a navigational warning scheme.")]
 	[CategoryOrder("NavwarnPreamble",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnPreambleViewModel : InformationViewModel<NavwarnPreamble> {
+		[Description("Identifies paper charts, ENCs or publications that are affected by the information.")]
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
 
+		[Description("The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).")]
 		[Category("NavwarnPreamble")]
 		[Multiplicity(1)]
 		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
 
+		[Description("Name and/or identifier of an area locality.")]
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
 
 		private messageSeriesIdentifierViewModel _messageSeriesIdentifier  = default;
 
+		[Description("Message series identification of the warning or notice.")]
 		[Category("NavwarnPreamble")]
 		[ExpandableObject]
 		[Mandatory]
@@ -1306,12 +1406,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+		[Description("Title of the navigational warning.")]
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<navwarnTitleViewModel> navwarnTitle  { get; set; } = new ();
 
 		private DateTime? _cancellationDate  = default;
 
+		[Description("Date and time of cancelling a notice or warning.")]
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -1326,6 +1428,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private Boolean _intService  = false;
 
+		[Description("An indication of an international service, true = yes, false = no.")]
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1340,6 +1443,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private navwarnTypeGeneral _navwarnTypeGeneral  = default;
 
+		[Description("General type of a navigational warning or navigational hazard.")]
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1357,6 +1461,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private DateTime _publicationTime  = default;
 
+		[Description("Date and time of publication of the notice or warning.")]
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1372,10 +1477,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
+		public class navwarnReferencesViewModel : ViewModelBase, IInformationBinding {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1505,12 +1644,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
+	[Description("The indication of the quality of the locational information for features in a dataset.")]
 	[CategoryOrder("SpatialQuality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
+		[Description("The degree of reliability attributed to a position.")]
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -1528,6 +1669,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
+		[Description("Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.")]
 		[Category("SpatialQuality")]
 		[ExpandableObject]
 		[Optional]
@@ -1582,12 +1724,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// Navigational warning information that may be geo-located.
 	/// </summary>
+	[Description("Navigational warning information that may be geo-located.")]
 	[CategoryOrder("NavwarnPart",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnPartViewModel : FeatureViewModel<NavwarnPart> {
 		private restriction? _restriction  = default;
 
+		[Description("The official legal statute of each kind of restricted area.")]
 		[Category("NavwarnPart")]
 		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -1603,12 +1747,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
 
+		[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
 
 		private warningInformationViewModel _warningInformation  = default;
 
+		[Description("Detailed information about a warning.")]
 		[Category("NavwarnPart")]
 		[ExpandableObject]
 		[Mandatory]
@@ -1621,10 +1767,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+		[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+		[Description("Reference to an object or feature that is external to the dataset.")]
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
@@ -1632,10 +1780,44 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnPreambleContentViewModel : informationBindingViewModel<S124.navwarnPreambleContentViewModel>, IInformationBindings {
+		public class navwarnPreambleContentViewModel : ViewModelBase, IInformationBinding {
 			public navwarnPreambleContentViewModel() {
 				if (informationBindings.Length == 1)
-					base.role = informationBindings[0].role;
+					this.role = informationBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+			public string informationId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _informationType = default;
+
+			[ReadOnly(true)]
+			public string? informationType {
+				get { return _informationType; }
+				set {
+					SetValue(ref _informationType, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1674,10 +1856,54 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : featureBindingViewModel<S124.areaAffectedViewModel>, IFeatureBindings {
+		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S124.areaAffectedViewModel _association = new();
+
+			[ExpandableObject]
+			public S124.areaAffectedViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1705,10 +1931,54 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 
-		public class TextAssociationViewModel : featureBindingViewModel<S124.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S124.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S124.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1836,6 +2106,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// An area affected by some event marked by a navigational warning.
 	/// </summary>
+	[Description("An area affected by some event marked by a navigational warning.")]
 	[CategoryOrder("NavwarnAreaAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
@@ -1847,10 +2118,54 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : featureBindingViewModel<S124.areaAffectedViewModel>, IFeatureBindings {
+		public class areaAffectedViewModel : ViewModelBase, IFeatureBinding {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S124.areaAffectedViewModel _association = new();
+
+			[ExpandableObject]
+			public S124.areaAffectedViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]
@@ -1932,12 +2247,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
+	[Description("The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.")]
 	[CategoryOrder("TextPlacement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
 		private int? _scaleMinimum  = default;
 
+		[Description("The minimum scale at which the feature may be used for example for ECDIS presentation.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
@@ -1952,6 +2269,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String _text  = string.Empty;
 
+		[Description("A non-formatted digital text string.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1966,6 +2284,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private int _textOffsetBearing  = default;
 
+		[Description("The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1980,6 +2299,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private int _textOffsetDistance  = default;
 
+		[Description("The distance that text associated with a feature is positioned from the feature in an end-user system.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -1994,6 +2314,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private Boolean _textRotation  = false;
 
+		[Description("A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.")]
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
@@ -2012,10 +2333,54 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : featureBindingViewModel<S124.TextAssociationViewModel>, IFeatureBindings {
+		public class TextAssociationViewModel : ViewModelBase, IFeatureBinding {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
-					base.role = featureBindings[0].role;
+					this.role = featureBindings[0].role;
+			}
+
+			private string _role = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+			public string role {
+				get { return _role; }
+				set {
+					SetValue(ref _role, value);
+				}
+			}
+
+			private string _referenceId = string.Empty;
+
+			[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+			public string featureId {
+				get { return _referenceId; }
+				set {
+					SetValue(ref _referenceId, value);
+				}
+			}
+
+			private string? _featureType = default;
+
+			[ReadOnly(true)]
+			public string? featureType {
+				get { return _featureType; }
+				set {
+					SetValue(ref _featureType, value);
+				}
+			}
+
+			private S124.TextAssociationViewModel _association = new();
+
+			[ExpandableObject]
+			public S124.TextAssociationViewModel association {
+				get { return _association; }
+				set {
+					SetValue(ref _association, value);
+				}
+			}
+
+			protected override void Validate() {
+				//TODO: Validate role and referenceId
 			}
 
 			[Browsable(false)]

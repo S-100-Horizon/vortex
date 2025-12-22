@@ -242,7 +242,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public interface IInformationBindings
+    public interface IInformationBinding
     {
         abstract informationBindingDefinition[] informationBindings { get; }
     }
@@ -330,7 +330,7 @@ namespace S100Framework.WPF.ViewModel
 
 
 
-    public interface IFeatureBindings
+    public interface IFeatureBinding
     {
         abstract featureBindingDefinition[] featureBindings { get; }
     }
