@@ -29,7 +29,7 @@ namespace PropertyGridApplication
             //var viewModel = new S100Framework.WPF.ViewModel.S101.LightSectoredViewModel {
             //}.Load(feature);
 
-            var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel {
+            var viewModel = new CustomViewModel() {
             };
 
             this.MainPropertyGrid.SelectedObject = viewModel;
