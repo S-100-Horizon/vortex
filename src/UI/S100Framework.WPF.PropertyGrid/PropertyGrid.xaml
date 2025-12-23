@@ -19,6 +19,10 @@
         <converters:EnumValuesConverter x:Key="EnumValuesConverter"/>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
         <converters:CollectionItemVisibilityConverter x:Key="CollectionItemVisibilityConverter"/>
+        <converters:InformationBindingConverter x:Key="InformationBindingConverter"/>
+        <converters:FeatureBindingConverter x:Key="FeatureBindingConverter"/>
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        
 
         <!-- Style for Expander -->
         <Style x:Key="ExpanderToggleButtonStyle" TargetType="ToggleButton">
@@ -143,6 +147,39 @@
             </StackPanel>
         </DataTemplate>
 
+        <!-- InformationBinding Editor -->
+        <DataTemplate x:Key="InformationRoleEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource InformationBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+        <DataTemplate x:Key="InformationTypeEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource InformationBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding ParentObject.role, Converter={StaticResource NullToBoolConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+
+
+        <!-- FeatureBinding Editor -->
+        <DataTemplate x:Key="FeatureRoleEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource FeatureBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+        <DataTemplate x:Key="FeatureTypeEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource FeatureBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource FeatureBindingConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>        
+        
         <!-- Template Selector -->
         <selectors:PropertyEditorTemplateSelector x:Key="PropertyEditorTemplateSelector"
                                                    StringEditorTemplate="{StaticResource StringEditorTemplate}"
@@ -152,7 +189,11 @@
                                                    DateTimeEditorTemplate="{StaticResource DateTimeEditorTemplate}"
                                                    ComplexTypeEditorTemplate="{StaticResource ComplexTypeEditorTemplate}"
                                                    CollectionEditorTemplate="{StaticResource CollectionEditorTemplate}"
-                                                   ReadOnlyEditorTemplate="{StaticResource ReadOnlyEditorTemplate}"/>
+                                                   ReadOnlyEditorTemplate="{StaticResource ReadOnlyEditorTemplate}"
+                                                   InformationRoleEditorTemplate="{StaticResource InformationRoleEditorTemplate}"
+                                                   InformationTypeEditorTemplate="{StaticResource InformationTypeEditorTemplate}"
+                                                   FeatureRoleEditorTemplate="{StaticResource FeatureRoleEditorTemplate}"
+                                                   FeatureTypeEditorTemplate="{StaticResource FeatureTypeEditorTemplate}"/>
 
         <!-- Hierarchical Data Template for TreeView -->
         <HierarchicalDataTemplate x:Key="PropertyItemTemplate" 

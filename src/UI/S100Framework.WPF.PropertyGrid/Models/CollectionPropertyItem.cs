@@ -178,8 +178,9 @@ namespace S100Framework.WPF.Models
                 {
                     childItem.IsComplexType = true;
                     var childProperties = PropertyGridBuilder.GetProperties(item, Level + 2);
-                    foreach (var childProp in childProperties)
-                    {
+                    foreach (var childProp in childProperties) {
+                        childProp.ParentCollectionItem = this;
+                        childProp.Attributes = [.. childProp.Attributes, .. this.Attributes];
                         childItem.Children.Add(childProp);
                     }
                 }

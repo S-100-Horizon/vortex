@@ -1,7 +1,8 @@
+using S100Framework.WPF.Models;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using S100Framework.WPF.Models;
 
 namespace S100Framework.WPF.Selectors
 {
@@ -19,6 +20,14 @@ namespace S100Framework.WPF.Selectors
         public DataTemplate? CollectionEditorTemplate { get; set; }
         public DataTemplate? ReadOnlyEditorTemplate { get; set; }
 
+        public DataTemplate? InformationRoleEditorTemplate { get; set; }
+        public DataTemplate? InformationRefEditorTemplate { get; set; }
+        public DataTemplate? InformationTypeEditorTemplate { get; set; }
+
+        public DataTemplate? FeatureRoleEditorTemplate { get; set; }
+        public DataTemplate? FeatureRefEditorTemplate { get; set; }
+        public DataTemplate? FeatureTypeEditorTemplate { get; set; }
+
         public override DataTemplate? SelectTemplate(object item, DependencyObject container)
         {
             if (item is not PropertyItem propertyItem)
@@ -35,6 +44,23 @@ namespace S100Framework.WPF.Selectors
             // Complex types
             if (propertyItem.IsComplexType)
                 return ComplexTypeEditorTemplate;
+
+            if (propertyItem.ParentObject is InformationRefViewModel informationRefViewModel) {
+                return propertyItem.Name switch {
+                    nameof(InformationRefViewModel.role) => InformationRoleEditorTemplate,
+                    nameof(InformationRefViewModel.informationId)=> InformationRefEditorTemplate,
+                    nameof(InformationRefViewModel.informationType)=> InformationTypeEditorTemplate,
+                    _=>throw new InvalidOperationException(),
+                };
+            }
+            else if (propertyItem.ParentObject is FeatureRefViewModel featureRefViewModel) {
+                return propertyItem.Name switch {
+                    nameof(FeatureRefViewModel.role) => FeatureRoleEditorTemplate,
+                    nameof(FeatureRefViewModel.featureId) => FeatureRefEditorTemplate,
+                    nameof(FeatureRefViewModel.featureType) => FeatureTypeEditorTemplate,
+                    _ => throw new InvalidOperationException(),
+                };
+            }
 
             // Simple types
             Type propertyType = Nullable.GetUnderlyingType(propertyItem.PropertyType) ?? propertyItem.PropertyType;

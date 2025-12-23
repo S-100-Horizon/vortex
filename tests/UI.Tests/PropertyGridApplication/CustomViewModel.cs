@@ -51,96 +51,96 @@ namespace PropertyGridApplication
 
     public class CustomViewModel : FeatureViewModel<LateralBuoy>
     {
-        #region Properties
-        private buoyShape? _buoyShape = default;
+        //#region Properties
+        //private buoyShape? _buoyShape = default;
 
-        [Description("The principal shape and/or design of a buoy.")]
-        [Category("LateralBuoy")]        
-        [PermittedValues([1, 2, 3, 4, 5, 6, 7, 8])]
-        [Mandatory]
-        public buoyShape? buoyShape {
-            get {
-                return _buoyShape;
-            }
-            set {
-                SetValue(ref _buoyShape, value);
-            }
-        }
+        //[Description("The principal shape and/or design of a buoy.")]
+        //[Category("LateralBuoy")]        
+        //[PermittedValues([1, 2, 3, 4, 5, 6, 7, 8])]
+        //[Mandatory]
+        //public buoyShape? buoyShape {
+        //    get {
+        //        return _buoyShape;
+        //    }
+        //    set {
+        //        SetValue(ref _buoyShape, value);
+        //    }
+        //}
 
-        private categoryOfLateralMark? _categoryOfLateralMark = default;
+        //private categoryOfLateralMark? _categoryOfLateralMark = default;
 
-        [Description("Classification of lateral marks in the IALA Buoyage System.")]
-        [Category("LateralBuoy")]        
-        [PermittedValues([1, 2, 3, 4])]
-        [Mandatory]
-        public categoryOfLateralMark? categoryOfLateralMark {
-            get {
-                return _categoryOfLateralMark;
-            }
-            set {
-                SetValue(ref _categoryOfLateralMark, value);
-            }
-        }
+        //[Description("Classification of lateral marks in the IALA Buoyage System.")]
+        //[Category("LateralBuoy")]        
+        //[PermittedValues([1, 2, 3, 4])]
+        //[Mandatory]
+        //public categoryOfLateralMark? categoryOfLateralMark {
+        //    get {
+        //        return _categoryOfLateralMark;
+        //    }
+        //    set {
+        //        SetValue(ref _categoryOfLateralMark, value);
+        //    }
+        //}
 
-        [Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
-        [Category("LateralBuoy")]
-        [PermittedValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])]
-        [Multiplicity(1)]
-        public ObservableCollection<colour> colour { get; set; } = new();
+        //[Description("The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.")]
+        //[Category("LateralBuoy")]
+        //[PermittedValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])]
+        //[Multiplicity(1)]
+        //public ObservableCollection<colour> colour { get; set; } = new();
 
-        private colourPattern? _colourPattern = default;
+        //private colourPattern? _colourPattern = default;
 
-        [Description("A regular repeated design containing more than one colour.")]
-        [Category("LateralBuoy")]
-        [PermittedValues([1, 2, 3, 4, 5, 6])]
-        [Optional]
-        public colourPattern? colourPattern {
-            get {
-                return _colourPattern;
-            }
-            set {
-                SetValue(ref _colourPattern, value);
-            }
-        }
+        //[Description("A regular repeated design containing more than one colour.")]
+        //[Category("LateralBuoy")]
+        //[PermittedValues([1, 2, 3, 4, 5, 6])]
+        //[Optional]
+        //public colourPattern? colourPattern {
+        //    get {
+        //        return _colourPattern;
+        //    }
+        //    set {
+        //        SetValue(ref _colourPattern, value);
+        //    }
+        //}
 
-        [Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
-        [Category("LateralBuoy")]
-        [Optional]
-        public ObservableCollection<featureNameViewModel> featureName { get; set; } = new();
+        //[Description("Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.")]
+        //[Category("LateralBuoy")]
+        //[Optional]
+        //public ObservableCollection<featureNameViewModel> featureName { get; set; } = new();
 
-        private fixedDateRangeViewModel? _fixedDateRange = default;
+        //private fixedDateRangeViewModel? _fixedDateRange = default;
 
-        [Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
-        [Category("LateralBuoy")]
-        [ExpandableObject]
-        [Optional]
-        public fixedDateRangeViewModel? fixedDateRange {
-            get {
-                return _fixedDateRange;
-            }
-            set {
-                SetValue(ref _fixedDateRange, value);
-            }
-        }
+        //[Description("An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.")]
+        //[Category("LateralBuoy")]
+        //[ExpandableObject]
+        //[Optional]
+        //public fixedDateRangeViewModel? fixedDateRange {
+        //    get {
+        //        return _fixedDateRange;
+        //    }
+        //    set {
+        //        SetValue(ref _fixedDateRange, value);
+        //    }
+        //}
 
-        private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        //private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
 
-        [Description("The system of navigational buoyage a region complies with.")]
-        [Category("LateralBuoy")]
-        [PermittedValues([1, 2, 9, 11])]
-        [Optional]
-        public marksNavigationalSystemOf? marksNavigationalSystemOf {
-            get {
-                return _marksNavigationalSystemOf;
-            }
-            set {
-                SetValue(ref _marksNavigationalSystemOf, value);
-            }
-        }
-        #endregion
+        //[Description("The system of navigational buoyage a region complies with.")]
+        //[Category("LateralBuoy")]
+        //[PermittedValues([1, 2, 9, 11])]
+        //[Optional]
+        //public marksNavigationalSystemOf? marksNavigationalSystemOf {
+        //    get {
+        //        return _marksNavigationalSystemOf;
+        //    }
+        //    set {
+        //        SetValue(ref _marksNavigationalSystemOf, value);
+        //    }
+        //}
+        //#endregion
 
 
-        public ObservableCollection<ComplexTestViewModel> ComplexList { get; set; } = new();
+        //public ObservableCollection<ComplexTestViewModel> ComplexList { get; set; } = new();
 
 
         #region Scaffolding
@@ -161,6 +161,7 @@ namespace PropertyGridApplication
 
         [Category("InformationBindings")]
         [InformationBinding("AdditionalInformation", "theInformation", ["ContactDetails", "NauticalInformation"], lower: 0, upper: 1)]
+        [InformationBinding("AdditionalInformation", "theOtherRole", ["ServiceHours", "NonStandardWorkingDay"], lower: 0, upper: 1)]
         public ObservableCollection<InformationRefViewModel> AdditionalInformations { get; set; } = new();
 
         public override informationBinding[] GetInformationBindings() => [
