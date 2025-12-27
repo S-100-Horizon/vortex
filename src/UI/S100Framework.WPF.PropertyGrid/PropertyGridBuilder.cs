@@ -112,6 +112,7 @@ namespace S100Framework.WPF
                     var childItem = new PropertyItem {
                         Name = $"[{index}]",
                         DisplayName = $"[{index}]",
+                        PropertyName =prop.Name,
                         PropertyType = element?.GetType() ?? elementType,
                         ParentObject = collection,
                         Level = level + 1,
@@ -145,6 +146,7 @@ namespace S100Framework.WPF
             var item = new PropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),
+                PropertyName = prop.Name,
                 PropertyType = prop.PropertyType,
                 PropertyInfo = prop,
                 ParentObject = parentObj,
@@ -175,6 +177,7 @@ namespace S100Framework.WPF
             return new PropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),
+                PropertyName = prop.Name,
                 PropertyType = prop.PropertyType,
                 PropertyInfo = prop,
                 ParentObject = parentObj,
