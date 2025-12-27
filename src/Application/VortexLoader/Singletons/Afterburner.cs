@@ -62,7 +62,7 @@ namespace S100Framework.Applications.Singletons
                     var splitResult = SplitAtMidpoint(currentPolyline);
 
                     if (splitResult == null || splitResult.Count != 2) {
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.Crc32(), $"Cannot split closingline in two. Check geometry for this curve.");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.UID(), $"Cannot split closingline in two. Check geometry for this curve.");
                         continue;
                     }
 
@@ -86,7 +86,7 @@ namespace S100Framework.Applications.Singletons
                         }
 
                         newFeature.Store();
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.Crc32(), $"Split this feature in 2. Closing line on input. NewFeature name is {feature.GetGlobalID():N}");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.UID(), $"Split this feature in 2. Closing line on input. NewFeature name is {feature.GetGlobalID():N}");
                     }
                 }
             }

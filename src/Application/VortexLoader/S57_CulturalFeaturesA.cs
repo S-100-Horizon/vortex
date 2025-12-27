@@ -45,7 +45,7 @@ namespace S100Framework.Applications
                     //SetUsageBand(buffer, ImporterNIS._compilationScale);
 
                     var featureN = featureType.CreateRow(bufferFeatureType);
-                    var name = featureN.Crc32();
+                    var name = featureN.UID();
 
                     bridge.Name = name;
 
@@ -149,7 +149,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -318,14 +318,14 @@ namespace S100Framework.Applications
                                 bufferSurface["code"] = instance.GetType().Name;
                                 bufferSurface["edition"] = ImporterNIS.s101version;
                                 bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                bufferSurface["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
 
                                 SetShape(bufferSurface, current.SHAPE);
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = featureN.Crc32();
+                                var name = featureN.UID();
 
 
                                 if (createBridgesAndRelations) {
@@ -417,7 +417,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = featureN.Crc32();
+                                var name = featureN.UID();
 
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
@@ -529,7 +529,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -640,7 +640,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -763,7 +763,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -863,7 +863,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -894,7 +894,7 @@ namespace S100Framework.Applications
                                     relatedEquipment?.CreateRelatedAreaEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, windturbineFeature.Crc32() ?? "Unknown structure name");
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, windturbineFeature.UID() ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(windturbine));
                                 continue;
                             }
@@ -997,13 +997,13 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1102,7 +1102,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1221,7 +1221,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (createBridgesAndRelations) {
 
@@ -1303,7 +1303,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1366,7 +1366,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1475,7 +1475,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1560,7 +1560,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

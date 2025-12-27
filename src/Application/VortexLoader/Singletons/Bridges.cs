@@ -246,12 +246,12 @@ namespace S100Framework.Applications.Singletons
                     //var shape = row.GetShape();
                     Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
 
-                    var bindings = _instance!.GetBindings(row.Crc32());
+                    var bindings = _instance!.GetBindings(row.UID());
 
                     var featureBindings = new List<featureBinding>();
 
                     foreach (var binding in bindings) {
-                        var relatedBridge = row.Crc32();
+                        var relatedBridge = row.UID();
                         var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
                         var featureBinding = new featureBinding<BridgeAggregation> {
                             referenceId = binding.ChildName!,

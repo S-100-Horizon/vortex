@@ -1056,15 +1056,19 @@ namespace S100Framework.Applications.Singletons
             Type TPrimary = relation.Master.S101Type;
             Type TForeign = relation.Slave.S101Type;
 
-            var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
-            var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            //var featureBindingsPrimary = TPrimary?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            //var featureBindingsForeign = TForeign?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+
+            var featureBindingsPrimary = DomainModel.S101.FeatureBindings.featureBindingDefinitions(relation.Master.S101Type!.Name);
+            var featureBindingsForeign = DomainModel.S101.FeatureBindings.featureBindingDefinitions(relation.Slave.S101Type!.Name);
+
 
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
 
             // Create association
             {
-                bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
+                bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
                 if (bindingDefinitionForeign == null) {
 
                     var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
@@ -1085,9 +1089,9 @@ namespace S100Framework.Applications.Singletons
             // Create binding
             {
                 // Create primary end
-                bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign?.Name));
+                bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
                 if (bindingDefinitionPrimary == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
+                    throw new NotSupportedException($"no bindingdefinition on {TPrimary.Name} for {TForeign.Name}");
                 }
 
                 var featureBindingPrimary = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
@@ -1101,9 +1105,9 @@ namespace S100Framework.Applications.Singletons
             {
                 //TODO: Foreign end
                 // Create foreign end
-                bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary?.Name));
+                bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary.Name));
                 if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
+                    throw new NotSupportedException($"no bindingdefinition on {TForeign.Name} for {TPrimary.Name}");
                 }
 
                 var featureBindingForeign = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
@@ -1174,8 +1178,8 @@ namespace S100Framework.Applications.Singletons
             Type TPrimary = relation.Master.S101Type;
             Type TForeign = relation.Slave.S101Type;
 
-            var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
-            var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            var featureBindingsPrimary = TPrimary?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
+            var featureBindingsForeign = TForeign?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
 
             string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;

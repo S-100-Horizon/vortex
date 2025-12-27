@@ -85,14 +85,14 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -154,7 +154,7 @@ namespace S100Framework.Applications
                             LandAreas.Instance.Add(current.SHAPE!.Clone());
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -208,7 +208,7 @@ namespace S100Framework.Applications
 
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -254,7 +254,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -312,7 +312,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -380,7 +380,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);

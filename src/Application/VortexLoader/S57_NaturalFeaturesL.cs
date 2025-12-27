@@ -76,12 +76,12 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -123,12 +123,12 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32() ?? "Unknown name";
+                            var name = featureN.UID() ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -173,12 +173,12 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -235,12 +235,12 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);

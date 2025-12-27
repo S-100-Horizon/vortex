@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = featureN.Crc32();
+                    var name = featureN.UID();
 
                     // TODO: Create relations
                 }
@@ -198,7 +198,7 @@ namespace S100Framework.Applications
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = featureN.Crc32();
+                                var name = featureN.UID();
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -222,7 +222,7 @@ namespace S100Framework.Applications
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = featureN.Crc32();
+                                var name = featureN.UID();
 
                                 // Registering vertical datum information for all areas
                                 VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.Value);
@@ -250,7 +250,7 @@ namespace S100Framework.Applications
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
                     ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = featureN.Crc32();
+                    var name = featureN.UID();
                     // TODO: Create relations
                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                 }

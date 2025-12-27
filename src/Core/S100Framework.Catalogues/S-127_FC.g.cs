@@ -7443,6 +7443,50 @@ namespace S100Framework.DomainModel.S127 {
 			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
+		public static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {
+			"InformationType" => InformationType.informationBindingDefinitions,
+			"AbstractRxN" => AbstractRxN.informationBindingDefinitions,
+			"Applicability" => Applicability.informationBindingDefinitions,
+			"Authority" => Authority.informationBindingDefinitions,
+			"ContactDetails" => ContactDetails.informationBindingDefinitions,
+			"NauticalInformation" => NauticalInformation.informationBindingDefinitions,
+			"NonStandardWorkingDay" => NonStandardWorkingDay.informationBindingDefinitions,
+			"Recommendations" => Recommendations.informationBindingDefinitions,
+			"Regulations" => Regulations.informationBindingDefinitions,
+			"Restrictions" => Restrictions.informationBindingDefinitions,
+			"ServiceHours" => ServiceHours.informationBindingDefinitions,
+			"ShipReport" => ShipReport.informationBindingDefinitions,
+			"SpatialQuality" => SpatialQuality.informationBindingDefinitions,
+			"FeatureType" => FeatureType.informationBindingDefinitions,
+			"OrganizationContactArea" => OrganizationContactArea.informationBindingDefinitions,
+			"SupervisedArea" => SupervisedArea.informationBindingDefinitions,
+			"ReportableServiceArea" => ReportableServiceArea.informationBindingDefinitions,
+			"CautionArea" => CautionArea.informationBindingDefinitions,
+			"ConcentrationOfShippingHazardArea" => ConcentrationOfShippingHazardArea.informationBindingDefinitions,
+			"ISPSCodeSecurityLevel" => ISPSCodeSecurityLevel.informationBindingDefinitions,
+			"LocalPortBroadcastServiceArea" => LocalPortBroadcastServiceArea.informationBindingDefinitions,
+			"MilitaryPracticeArea" => MilitaryPracticeArea.informationBindingDefinitions,
+			"PilotBoardingPlace" => PilotBoardingPlace.informationBindingDefinitions,
+			"PilotService" => PilotService.informationBindingDefinitions,
+			"PilotageDistrict" => PilotageDistrict.informationBindingDefinitions,
+			"PiracyRiskArea" => PiracyRiskArea.informationBindingDefinitions,
+			"PlaceOfRefuge" => PlaceOfRefuge.informationBindingDefinitions,
+			"RadarRange" => RadarRange.informationBindingDefinitions,
+			"RadioCallingInPoint" => RadioCallingInPoint.informationBindingDefinitions,
+			"RestrictedArea" => RestrictedArea.informationBindingDefinitions,
+			"RouteingMeasure" => RouteingMeasure.informationBindingDefinitions,
+			"ShipReportingServiceArea" => ShipReportingServiceArea.informationBindingDefinitions,
+			"SignalStationWarning" => SignalStationWarning.informationBindingDefinitions,
+			"SignalStationTraffic" => SignalStationTraffic.informationBindingDefinitions,
+			"UnderKeelClearanceAllowanceArea" => UnderKeelClearanceAllowanceArea.informationBindingDefinitions,
+			"UnderKeelClearanceManagementArea" => UnderKeelClearanceManagementArea.informationBindingDefinitions,
+			"VesselTrafficServiceArea" => VesselTrafficServiceArea.informationBindingDefinitions,
+			"WaterwayArea" => WaterwayArea.informationBindingDefinitions,
+			"DataCoverage" => DataCoverage.informationBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.informationBindingDefinitions,
+			"TextPlacement" => TextPlacement.informationBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion
@@ -7682,6 +7726,37 @@ namespace S100Framework.DomainModel.S127 {
 				},
 			];
 		}
+		public static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {
+			"FeatureType" => FeatureType.featureBindingDefinitions,
+			"OrganizationContactArea" => OrganizationContactArea.featureBindingDefinitions,
+			"SupervisedArea" => SupervisedArea.featureBindingDefinitions,
+			"ReportableServiceArea" => ReportableServiceArea.featureBindingDefinitions,
+			"CautionArea" => CautionArea.featureBindingDefinitions,
+			"ConcentrationOfShippingHazardArea" => ConcentrationOfShippingHazardArea.featureBindingDefinitions,
+			"ISPSCodeSecurityLevel" => ISPSCodeSecurityLevel.featureBindingDefinitions,
+			"LocalPortBroadcastServiceArea" => LocalPortBroadcastServiceArea.featureBindingDefinitions,
+			"MilitaryPracticeArea" => MilitaryPracticeArea.featureBindingDefinitions,
+			"PilotBoardingPlace" => PilotBoardingPlace.featureBindingDefinitions,
+			"PilotService" => PilotService.featureBindingDefinitions,
+			"PilotageDistrict" => PilotageDistrict.featureBindingDefinitions,
+			"PiracyRiskArea" => PiracyRiskArea.featureBindingDefinitions,
+			"PlaceOfRefuge" => PlaceOfRefuge.featureBindingDefinitions,
+			"RadarRange" => RadarRange.featureBindingDefinitions,
+			"RadioCallingInPoint" => RadioCallingInPoint.featureBindingDefinitions,
+			"RestrictedArea" => RestrictedArea.featureBindingDefinitions,
+			"RouteingMeasure" => RouteingMeasure.featureBindingDefinitions,
+			"ShipReportingServiceArea" => ShipReportingServiceArea.featureBindingDefinitions,
+			"SignalStationWarning" => SignalStationWarning.featureBindingDefinitions,
+			"SignalStationTraffic" => SignalStationTraffic.featureBindingDefinitions,
+			"UnderKeelClearanceAllowanceArea" => UnderKeelClearanceAllowanceArea.featureBindingDefinitions,
+			"UnderKeelClearanceManagementArea" => UnderKeelClearanceManagementArea.featureBindingDefinitions,
+			"VesselTrafficServiceArea" => VesselTrafficServiceArea.featureBindingDefinitions,
+			"WaterwayArea" => WaterwayArea.featureBindingDefinitions,
+			"DataCoverage" => DataCoverage.featureBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.featureBindingDefinitions,
+			"TextPlacement" => TextPlacement.featureBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion

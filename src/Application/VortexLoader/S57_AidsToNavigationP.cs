@@ -64,13 +64,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -185,13 +185,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
@@ -317,13 +317,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -442,13 +442,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -571,13 +571,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -673,13 +673,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -769,13 +769,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -866,13 +866,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -968,13 +968,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1065,13 +1065,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1157,13 +1157,13 @@ namespace S100Framework.Applications
                                         buffer["code"] = instance.GetType().Name;
                                         buffer["edition"] = ImporterNIS.s101version;
                                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                        buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                         SetShape(buffer, current.SHAPE);
                                         SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                         var featureN = featureClass.CreateRow(buffer);
-                                        var name = featureN.Crc32();
+                                        var name = featureN.UID();
 
                                         ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                                         Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1267,13 +1267,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = featureN.Crc32();
+                                var name = featureN.UID();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                                 Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1294,13 +1294,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
 
@@ -1324,13 +1324,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1356,13 +1356,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = featureN.Crc32();
+                                var structureName = featureN.UID();
                                 if (structureName == null) {
                                     throw new NotSupportedException("empty structure name");
                                 }
@@ -1378,13 +1378,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = featureN.Crc32();
+                                var structureName = featureN.UID();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1396,13 +1396,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = featureN.Crc32();
+                                var structureName = featureN.UID();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1414,13 +1414,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = featureN.Crc32();
+                                var structureName = featureN.UID();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1511,13 +1511,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1605,13 +1605,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1667,13 +1667,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1693,13 +1693,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1717,13 +1717,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1742,13 +1742,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1766,13 +1766,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));

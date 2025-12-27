@@ -110,7 +110,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
@@ -169,7 +169,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = featureN.Crc32();
+                            var name = featureN.UID();
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }

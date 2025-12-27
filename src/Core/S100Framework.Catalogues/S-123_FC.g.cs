@@ -6338,6 +6338,41 @@ namespace S100Framework.DomainModel.S123 {
 			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
+		public static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {
+			"InformationType" => InformationType.informationBindingDefinitions,
+			"AbstractRxN" => AbstractRxN.informationBindingDefinitions,
+			"Applicability" => Applicability.informationBindingDefinitions,
+			"Authority" => Authority.informationBindingDefinitions,
+			"BroadcastDetails" => BroadcastDetails.informationBindingDefinitions,
+			"ConnectivityQualityOfService" => ConnectivityQualityOfService.informationBindingDefinitions,
+			"ContactDetails" => ContactDetails.informationBindingDefinitions,
+			"NauticalInformation" => NauticalInformation.informationBindingDefinitions,
+			"NonStandardWorkingDay" => NonStandardWorkingDay.informationBindingDefinitions,
+			"RadioControlCentre" => RadioControlCentre.informationBindingDefinitions,
+			"Recommendations" => Recommendations.informationBindingDefinitions,
+			"Regulations" => Regulations.informationBindingDefinitions,
+			"Restrictions" => Restrictions.informationBindingDefinitions,
+			"ServiceHours" => ServiceHours.informationBindingDefinitions,
+			"SpatialQuality" => SpatialQuality.informationBindingDefinitions,
+			"TelemedicalAssistanceService" => TelemedicalAssistanceService.informationBindingDefinitions,
+			"TransmissionDetails" => TransmissionDetails.informationBindingDefinitions,
+			"FeatureType" => FeatureType.informationBindingDefinitions,
+			"ConnectivitySubscriptionArea" => ConnectivitySubscriptionArea.informationBindingDefinitions,
+			"GMDSSArea" => GMDSSArea.informationBindingDefinitions,
+			"IndeterminateZone" => IndeterminateZone.informationBindingDefinitions,
+			"METAREA" => METAREA.informationBindingDefinitions,
+			"NAVAREA" => NAVAREA.informationBindingDefinitions,
+			"NAVTEXServiceArea" => NAVTEXServiceArea.informationBindingDefinitions,
+			"RadioServiceArea" => RadioServiceArea.informationBindingDefinitions,
+			"RadioStation" => RadioStation.informationBindingDefinitions,
+			"SearchAndRescueRegion" => SearchAndRescueRegion.informationBindingDefinitions,
+			"WeatherForecastAndWarningArea" => WeatherForecastAndWarningArea.informationBindingDefinitions,
+			"FuzzyAreaAggregate" => FuzzyAreaAggregate.informationBindingDefinitions,
+			"RadioServiceAreaAggregate" => RadioServiceAreaAggregate.informationBindingDefinitions,
+			"DataCoverage" => DataCoverage.informationBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.informationBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion
@@ -6501,6 +6536,24 @@ namespace S100Framework.DomainModel.S123 {
 			public static featureBindingDefinition[] featureBindingDefinitions => [
 			];
 		}
+		public static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {
+			"FeatureType" => FeatureType.featureBindingDefinitions,
+			"ConnectivitySubscriptionArea" => ConnectivitySubscriptionArea.featureBindingDefinitions,
+			"GMDSSArea" => GMDSSArea.featureBindingDefinitions,
+			"IndeterminateZone" => IndeterminateZone.featureBindingDefinitions,
+			"METAREA" => METAREA.featureBindingDefinitions,
+			"NAVAREA" => NAVAREA.featureBindingDefinitions,
+			"NAVTEXServiceArea" => NAVTEXServiceArea.featureBindingDefinitions,
+			"RadioServiceArea" => RadioServiceArea.featureBindingDefinitions,
+			"RadioStation" => RadioStation.featureBindingDefinitions,
+			"SearchAndRescueRegion" => SearchAndRescueRegion.featureBindingDefinitions,
+			"WeatherForecastAndWarningArea" => WeatherForecastAndWarningArea.featureBindingDefinitions,
+			"FuzzyAreaAggregate" => FuzzyAreaAggregate.featureBindingDefinitions,
+			"RadioServiceAreaAggregate" => RadioServiceAreaAggregate.featureBindingDefinitions,
+			"DataCoverage" => DataCoverage.featureBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.featureBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion

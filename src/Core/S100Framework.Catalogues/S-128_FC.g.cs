@@ -3461,6 +3461,20 @@ namespace S100Framework.DomainModel.S128 {
 			public static informationBindingDefinition[] informationBindingDefinitions => [.. CatalogueElement.informationBindingDefinitions
 			];
 		}
+		public static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {
+			"CatalogueSectionHeader" => CatalogueSectionHeader.informationBindingDefinitions,
+			"ContactDetails" => ContactDetails.informationBindingDefinitions,
+			"IndicationOfCarriageRequirement" => IndicationOfCarriageRequirement.informationBindingDefinitions,
+			"PriceInformation" => PriceInformation.informationBindingDefinitions,
+			"ProducerInformation" => ProducerInformation.informationBindingDefinitions,
+			"DistributorInformation" => DistributorInformation.informationBindingDefinitions,
+			"CatalogueElement" => CatalogueElement.informationBindingDefinitions,
+			"NavigationalProduct" => NavigationalProduct.informationBindingDefinitions,
+			"ElectronicProduct" => ElectronicProduct.informationBindingDefinitions,
+			"PhysicalProduct" => PhysicalProduct.informationBindingDefinitions,
+			"S100Service" => S100Service.informationBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion
@@ -3512,6 +3526,14 @@ namespace S100Framework.DomainModel.S128 {
 			public static featureBindingDefinition[] featureBindingDefinitions => [.. CatalogueElement.featureBindingDefinitions
 			];
 		}
+		public static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {
+			"CatalogueElement" => CatalogueElement.featureBindingDefinitions,
+			"NavigationalProduct" => NavigationalProduct.featureBindingDefinitions,
+			"ElectronicProduct" => ElectronicProduct.featureBindingDefinitions,
+			"PhysicalProduct" => PhysicalProduct.featureBindingDefinitions,
+			"S100Service" => S100Service.featureBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion

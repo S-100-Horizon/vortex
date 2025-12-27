@@ -4764,6 +4764,29 @@ namespace S100Framework.DomainModel.S122 {
 			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
+		public static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {
+			"InformationType" => InformationType.informationBindingDefinitions,
+			"AbstractRxN" => AbstractRxN.informationBindingDefinitions,
+			"Applicability" => Applicability.informationBindingDefinitions,
+			"Authority" => Authority.informationBindingDefinitions,
+			"ContactDetails" => ContactDetails.informationBindingDefinitions,
+			"NauticalInformation" => NauticalInformation.informationBindingDefinitions,
+			"NonStandardWorkingDay" => NonStandardWorkingDay.informationBindingDefinitions,
+			"Recommendations" => Recommendations.informationBindingDefinitions,
+			"Regulations" => Regulations.informationBindingDefinitions,
+			"Restrictions" => Restrictions.informationBindingDefinitions,
+			"ServiceHours" => ServiceHours.informationBindingDefinitions,
+			"SpatialQuality" => SpatialQuality.informationBindingDefinitions,
+			"FeatureType" => FeatureType.informationBindingDefinitions,
+			"InformationArea" => InformationArea.informationBindingDefinitions,
+			"MarineProtectedArea" => MarineProtectedArea.informationBindingDefinitions,
+			"RestrictedArea" => RestrictedArea.informationBindingDefinitions,
+			"VesselTrafficServiceArea" => VesselTrafficServiceArea.informationBindingDefinitions,
+			"DataCoverage" => DataCoverage.informationBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.informationBindingDefinitions,
+			"TextPlacement" => TextPlacement.informationBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion
@@ -4819,6 +4842,17 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 		}
+		public static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {
+			"FeatureType" => FeatureType.featureBindingDefinitions,
+			"InformationArea" => InformationArea.featureBindingDefinitions,
+			"MarineProtectedArea" => MarineProtectedArea.featureBindingDefinitions,
+			"RestrictedArea" => RestrictedArea.featureBindingDefinitions,
+			"VesselTrafficServiceArea" => VesselTrafficServiceArea.featureBindingDefinitions,
+			"DataCoverage" => DataCoverage.featureBindingDefinitions,
+			"QualityOfNonBathymetricData" => QualityOfNonBathymetricData.featureBindingDefinitions,
+			"TextPlacement" => TextPlacement.featureBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion

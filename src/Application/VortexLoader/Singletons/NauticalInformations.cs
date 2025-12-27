@@ -92,7 +92,7 @@ namespace S100Framework.Applications.Singletons
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-            var informationName = informationTypeRow.Crc32();
+            var informationName = informationTypeRow.UID();
 
             // create binding
             var informationBinding = new informationBinding<AdditionalInformation> {

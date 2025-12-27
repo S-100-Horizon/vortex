@@ -645,7 +645,7 @@ namespace Test100Topology
 
                     var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
-                    var name = f.Crc32();
+                    var name = f.UID();
                     if (string.IsNullOrEmpty(name))
                         name = string.Empty;
 
@@ -687,7 +687,7 @@ namespace Test100Topology
 
                     var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
-                    var name = f.Crc32();
+                    var name = f.UID();
                     if (string.IsNullOrEmpty(name))
                         name = string.Empty;
 

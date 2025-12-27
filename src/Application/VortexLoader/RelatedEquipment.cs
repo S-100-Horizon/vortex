@@ -185,13 +185,13 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
-                    buffer["informationbindings"] = lightSectored.GetInformationBindings() == null ? DBNull.Value : lightSectored.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                     ImporterNIS.SetShape(buffer, shape);
                     ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var equipmentName = featureN.Crc32();
+                    var equipmentName = featureN.UID();
 
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");
@@ -209,7 +209,7 @@ namespace S100Framework.Applications
                     // Add relation between s57master polygon and slave equipment
 
                     // TODO: ENABLE THIS 
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature);
 
                 }
                 // 
@@ -229,7 +229,7 @@ namespace S100Framework.Applications
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         if (instance is FeatureNode) {
-                            buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                         } else {
                             ;
                         }
@@ -238,12 +238,12 @@ namespace S100Framework.Applications
                         ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object!.PLTS_COMP_SCALE!.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
-                        var equipmentName = featureN.Crc32();
+                        var equipmentName = featureN.UID();
                         if (equipmentName == null) {
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature);
+                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature);
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -297,7 +297,7 @@ namespace S100Framework.Applications
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 if (instance is FeatureNode) {
-                    buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                 }
                 else {
                     ;
@@ -308,7 +308,7 @@ namespace S100Framework.Applications
                 ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
                 var featureN = featureClass.CreateRow(buffer);
-                var equipmentName = featureN.Crc32();
+                var equipmentName = featureN.UID();
                 if (equipmentName == null) {
                     throw new NotSupportedException("empty equipment name");
                 }
@@ -322,7 +322,7 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
+                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
 
                 // return;
             }
@@ -350,7 +350,7 @@ namespace S100Framework.Applications
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
 
                     if (instance is FeatureNode) {
-                        buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                     }
                     else {
                         ;
@@ -360,7 +360,7 @@ namespace S100Framework.Applications
                     ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE!.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var equipmentName = featureN.Crc32();
+                    var equipmentName = featureN.UID();
                     if (equipmentName == null) {
                         throw new NotSupportedException("empty equipment name");
                     }
@@ -374,7 +374,7 @@ namespace S100Framework.Applications
                     }
 
                     //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure);
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
                     featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));

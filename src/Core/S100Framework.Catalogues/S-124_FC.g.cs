@@ -3078,6 +3078,15 @@ namespace S100Framework.DomainModel.S124 {
 			public static informationBindingDefinition[] informationBindingDefinitions => [
 			];
 		}
+		public static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {
+			"References" => References.informationBindingDefinitions,
+			"NavwarnPreamble" => NavwarnPreamble.informationBindingDefinitions,
+			"SpatialQuality" => SpatialQuality.informationBindingDefinitions,
+			"NavwarnPart" => NavwarnPart.informationBindingDefinitions,
+			"NavwarnAreaAffected" => NavwarnAreaAffected.informationBindingDefinitions,
+			"TextPlacement" => TextPlacement.informationBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion
@@ -3129,6 +3138,12 @@ namespace S100Framework.DomainModel.S124 {
 				},
 			];
 		}
+		public static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {
+			"NavwarnPart" => NavwarnPart.featureBindingDefinitions,
+			"NavwarnAreaAffected" => NavwarnAreaAffected.featureBindingDefinitions,
+			"TextPlacement" => TextPlacement.featureBindingDefinitions,
+			_ => throw new KeyNotFoundException(),
+		};
 	}
 
 	#endregion

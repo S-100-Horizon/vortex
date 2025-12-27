@@ -134,9 +134,15 @@ namespace S100Framework.Applications
             builderInformationBindings.AppendLine("\tpublic static class InformationBindings");
             builderInformationBindings.AppendLine("\t{");
 
+            var builderInformationBindingsList = new StringBuilder();
+            builderInformationBindingsList.AppendLine("\t\tpublic static informationBindingDefinition[] informationBindingDefinitions(string informationType) => informationType switch {");
+
             var builderFeatureBindings = new StringBuilder();
             builderFeatureBindings.AppendLine("\tpublic static class FeatureBindings");
             builderFeatureBindings.AppendLine("\t{");
+
+            var builderFeatureBindingsList = new StringBuilder();
+            builderFeatureBindingsList.AppendLine("\t\tpublic static featureBindingDefinition[] featureBindingDefinitions(string featureType) => featureType switch {");
 
             var definitions = new Dictionary<string, string>();
 
@@ -1081,6 +1087,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
+                            builderInformationBindingsList.AppendLine($"\t\t\t\"{code}\" => {code}.informationBindingDefinitions,");
                             builderInformationBindings.AppendLine($"\t\tpublic static class {code} {{");
                             builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
@@ -1250,6 +1257,7 @@ namespace S100Framework.Applications
                             //}
 
                             builderInformationBindings.AppendLine($"\t\tpublic static class {code} {{");
+                            builderInformationBindingsList.AppendLine($"\t\t\t\"{code}\" => {code}.informationBindingDefinitions,");
                             if (superType is not null) {
                                 if (e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Any())
                                     builderInformationBindings.AppendLine($"\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [.. {superType.Value}.informationBindingDefinitions,");
@@ -1284,6 +1292,7 @@ namespace S100Framework.Applications
                             builderInformationBindings.AppendLine("\t\t}");
 
                             builderFeatureBindings.AppendLine($"\t\tpublic static class {code} {{");
+                            builderFeatureBindingsList.AppendLine($"\t\t\t\"{code}\" => {code}.featureBindingDefinitions,");
                             if (superType is not null) {
                                 if (e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager).Any())
                                     builderFeatureBindings.AppendLine($"\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [.. {superType.Value}.featureBindingDefinitions,");
@@ -1325,13 +1334,21 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine("\t}");
             }
 
+            builderInformationBindingsList.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+            builderInformationBindingsList.AppendLine("\t\t};");
+            builderInformationBindings.Append(builderInformationBindingsList.ToString());
             builderInformationBindings.AppendLine("\t}");
+
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine("\t#region InformationBindings");
             builderDomainModel.AppendLine(builderInformationBindings.ToString());
             builderDomainModel.AppendLine("\t#endregion");
 
+            builderFeatureBindingsList.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+            builderFeatureBindingsList.AppendLine("\t\t};");
+            builderFeatureBindings.Append(builderFeatureBindingsList.ToString());
             builderFeatureBindings.AppendLine("\t}");
+
             builderDomainModel.AppendLine();
             builderDomainModel.AppendLine("\t#region FeatureBindings");
             builderDomainModel.AppendLine(builderFeatureBindings.ToString());
@@ -2306,7 +2323,7 @@ namespace S100Framework.Applications
                 }
 
                 if (associations.Any())
-                    builder.AppendLine("\t\t#region InformationBindings");               
+                    builder.AppendLine("\t\t#region InformationBindings");
 
                 foreach (var association in associations) {
                     builder.AppendLine();
@@ -2381,7 +2398,7 @@ namespace S100Framework.Applications
                 }
 
                 if (associations.Any())
-                    builder.AppendLine("\t\t#region FeatureBindings");             
+                    builder.AppendLine("\t\t#region FeatureBindings");
 
                 foreach (var association in associations) {
                     builder.AppendLine();
