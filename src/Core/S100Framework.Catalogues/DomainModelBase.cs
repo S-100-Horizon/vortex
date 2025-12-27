@@ -46,15 +46,19 @@ namespace S100Framework.DomainModel
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class PermittedValuesAttribute : System.Attribute
     {
-        private int[] _propertyValues;
-        public int[] PropertyValues => _propertyValues;
+        private int[] _values;
+        public int[] Values => _values;
 
-        public PermittedValuesAttribute(int propertyValue) {
-            _propertyValues = [propertyValue];
+        protected PermittedValuesAttribute() { 
+            _values = [];
         }
 
-        public PermittedValuesAttribute(int[] propertyValues) {
-            _propertyValues = propertyValues;
+        public PermittedValuesAttribute(int value) {
+            _values = [value];
+        }
+
+        public PermittedValuesAttribute(int[] values) {
+            _values = values;
         }
     }
 

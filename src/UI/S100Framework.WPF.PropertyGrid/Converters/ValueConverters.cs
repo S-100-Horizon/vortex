@@ -114,7 +114,7 @@ namespace S100Framework.WPF.Converters
                 var permittedValues = propertyItem.Attributes.SingleOrDefault(e => e.GetType().Equals(typeof(PermittedValuesAttribute))) as PermittedValuesAttribute;
                 if (permittedValues is not null) {
                     var underlyingType = Nullable.GetUnderlyingType(propertyItem.PropertyType);
-                    return permittedValues.PropertyValues.Select(e => Enum.GetName(underlyingType, e));
+                    return permittedValues.Values.Select(e => Enum.ToObject(underlyingType, e));                    
                 }
             }
 

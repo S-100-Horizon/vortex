@@ -29,7 +29,7 @@ namespace S100Framework.Catalogues
             var attribute = (PermittedValuesAttribute?)property!.GetCustomAttribute(typeof(PermittedValuesAttribute));
             if (attribute == null) return ((int[])Enum.GetValues(property.PropertyType)).Select(e => (int)e).ToArray();
 
-            return attribute.PropertyValues;
+            return attribute.Values;
         }
     }
 }

@@ -46,15 +46,15 @@ namespace S100Framework.DomainModel
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class PermittedValuesAttribute : System.Attribute
     {
-        private int[] _propertyValues;
-        public int[] PropertyValues => _propertyValues;
+        private int[] _values;
+        public int[] Values => _values;
 
-        public PermittedValuesAttribute(int propertyValue) {
-            _propertyValues = [propertyValue];
+        public PermittedValuesAttribute(int value) {
+            _values = [value];
         }
 
-        public PermittedValuesAttribute(int[] propertyValues) {
-            _propertyValues = propertyValues;
+        public PermittedValuesAttribute(int[] values) {
+            _values = values;
         }
     }
 
@@ -167,9 +167,11 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class TextPatternConstraint(string textPattern) : ConstraintAttribute {
+    public class TextPatternConstraint(string textPattern) : ConstraintAttribute
+    {
         public string TextPattern = textPattern;
     }
+
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class InformationBindingAttribute(string association, string role, string[] informationTypes, int lower, int upper = int.MaxValue) : System.Attribute
@@ -196,8 +198,6 @@ namespace S100Framework.DomainModel
     public interface IInformationBindingDefinition
     {
         informationBindingDefinition[] informationBindingDefinitions { get; }
-
-        //informationBinding[] informationBindings { get; }
     }
 
     public interface IFeatureBindingDefinition
@@ -205,10 +205,6 @@ namespace S100Framework.DomainModel
         informationBindingDefinition[] informationBindingDefinitions { get; }
 
         featureBindingDefinition[] featureBindingDefinitions { get; }
-
-        //informationBinding[] informationBindings { get; }
-
-        //featureBinding[] featureBindings { get; }
 
         Primitives[] primitives { get; }
     }
@@ -241,7 +237,6 @@ namespace S100Framework.DomainModel
     public abstract class InformationNode : Node, IInformationBindingDefinition
     {
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
-        //public abstract informationBinding[] informationBindings { get; }
     }
 
     [System.SerializableAttribute()]
@@ -250,8 +245,6 @@ namespace S100Framework.DomainModel
         public abstract Primitives[] primitives { get; }
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
-        //public abstract informationBinding[] informationBindings { get; }
-        //public abstract featureBinding[] featureBindings { get; }
     }
 
     [System.SerializableAttribute()]

@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using S100Framework.DomainModel.S101;
 
 namespace PropertyGridApplication
 {
@@ -29,8 +30,15 @@ namespace PropertyGridApplication
             //var viewModel = new S100Framework.WPF.ViewModel.S101.LightSectoredViewModel {
             //}.Load(feature);
 
-            var viewModel = new CustomViewModel() {
+            var viewModel = new CustomViewModel() {   
+                buoyShape = buoyShape.Barrel,
             };
+            viewModel.colour.Add((colour)3);
+            viewModel.featureName.Add(new S100Framework.WPF.ViewModel.S101.featureNameViewModel {
+                language = "eng",
+                name = "Hello World",
+                nameUsage = nameUsage.DefaultNameDisplay,
+            });
 
             this.MainPropertyGrid.SelectedObject = viewModel;
 
