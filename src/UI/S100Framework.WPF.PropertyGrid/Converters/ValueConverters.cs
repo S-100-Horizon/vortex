@@ -99,7 +99,7 @@ namespace S100Framework.WPF.Converters
                 return $"{genericTypeName}<{genericArgs}>";
             }
 
-            return type.Name;
+            return type.Name.EndsWith("ViewModel") ? type.Name[..^9] : type.Name;
         }
     }
 
