@@ -18,7 +18,6 @@ namespace S100Framework.WPF.Models
 
         public string Name { get; set; }
         public string DisplayName { get; set; }
-        public string PropertyName { get; set; }
         public Type PropertyType { get; set; }
         public PropertyInfo PropertyInfo { get; set; }
         public object? ParentObject { get; set; }
@@ -34,7 +33,7 @@ namespace S100Framework.WPF.Models
         public Attribute[] Attributes { get; set; } = Array.Empty<Attribute>();
 
         public PropertyItem() {
-            Name = PropertyName = string.Empty;
+            Name = string.Empty;
             DisplayName = string.Empty;
             PropertyType = typeof(object);
             PropertyInfo = null!;
@@ -46,7 +45,7 @@ namespace S100Framework.WPF.Models
             set {
                 if (_value != value) {
                     _value = value;
-                    OnPropertyChanged(this.PropertyName);
+                    OnPropertyChanged(nameof(Value));
 
                     // Update the actual property on the parent object
                     if (ParentObject != null && PropertyInfo != null && PropertyInfo.CanWrite && !IsReadOnly) {
