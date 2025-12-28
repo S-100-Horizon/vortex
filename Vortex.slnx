@@ -3,6 +3,7 @@
     <Platform Name="x64" />
   </Configurations>
   <Folder Name="/Applications/">
+    <Project Path="src/Application/SelectorUI/SelectorUI.csproj" Id="6c603cd0-ec93-4276-bcfd-1548b399bd55" />
     <Project Path="src/Application/VortexDCEGBuilder/VortexDCEGBuilder.csproj">
       <Platform Project="x64" />
     </Project>

@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="S100Framework.WPF.S100AttributeEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S100Framework.WPF"
+             xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
+        <converters:S100AttributeEditorSourceConverter x:Key="S100AttributeEditorSourceConverter"/>
+
+        <!-- Template for Strings -->
+        <DataTemplate x:Key="StringEditorTemplate">
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+        </DataTemplate>
+
+        <!-- Template for Integers -->
+        <DataTemplate x:Key="IntegerEditorTemplate">
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+        </DataTemplate>
+
+        <!-- Template for Decimals -->
+        <DataTemplate x:Key="DecimalEditorTemplate">
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+        </DataTemplate>
+
+        <!-- Template for Booleans -->
+        <DataTemplate x:Key="BooleanEditorTemplate">
+            <CheckBox IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5,2"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EnumEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComplexEditorTemplate">
+            <local:S100AttributeEditor SelectedObject="{Binding {}, Converter={StaticResource S100AttributeEditorSourceConverter}}" />
+        </DataTemplate>
+
+
+        <!-- The Selector -->
+        <local:PropertyTemplateSelector x:Key="PropSelector" 
+                                        StringEditorTemplate="{StaticResource StringEditorTemplate}"
+                                        BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
+                                        IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
+                                        EnumEditorTemplate="{StaticResource EnumEditorTemplate}"
+                                        ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" LastChildFill="True">
+            <ComboBox DockPanel.Dock="Right" 
+                      ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
+                      DisplayMemberPath="Name"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+        </DockPanel>
+
+        <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding PropertyValues, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                      Grid.IsSharedSizeScope="True"
+                      ItemTemplateSelector="{StaticResource PropSelector}">
+            <ItemsControl.ItemTemplate>
+                <!-- This is the wrapper for every row -->
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- SharedSizeGroup="LabelColumn" is the magic part -->
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center" FontWeight="Bold"/>
+
+                        <ContentPresenter Grid.Column="1" 
+                                      Content="{Binding}" 
+                                      ContentTemplateSelector="{StaticResource PropSelector}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

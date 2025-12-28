@@ -19,7 +19,7 @@ namespace TestS100Framework.Roslyn
 
         [Fact]
         public void Export_S125() {
-            var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\1.0.0\4. S-125 Feature Catalogue - Annex C.1 (XML).xml"));
+            var s100 = XDocument.Load(this.Path(ps: @"S-125 Marine Aids to Navigation\1.0.0\4. S-125 Feature Catalogue - Annex C.1 (XML).xml"));
 
             Export(s100, "S125");
         }
