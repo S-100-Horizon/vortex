@@ -1,0 +1,341 @@
+<UserControl x:Class="S100Framework.WPF.PropertyGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S100Framework.WPF"
+             xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
+             xmlns:selectors="clr-namespace:S100Framework.WPF.Selectors"
+             xmlns:models="clr-namespace:S100Framework.WPF.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <!-- Converters -->
+        <converters:LevelToIndentConverter x:Key="LevelToIndentConverter" IndentSize="20"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" Inverted="True"/>
+        <converters:TypeToStringConverter x:Key="TypeToStringConverter"/>
+        <converters:EnumValuesConverter x:Key="EnumValuesConverter"/>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <converters:CollectionItemVisibilityConverter x:Key="CollectionItemVisibilityConverter"/>
+        <converters:InformationBindingConverter x:Key="InformationBindingConverter"/>
+        <converters:FeatureBindingConverter x:Key="FeatureBindingConverter"/>
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        
+
+        <!-- Style for Expander -->
+        <Style x:Key="ExpanderToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="Transparent" Padding="2">
+                            <Path x:Name="Arrow" 
+                                  Fill="#666" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 0 8 Z"
+                                  RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <RotateTransform Angle="0"/>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Arrow"
+                                                           Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                           To="90" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Arrow"
+                                                           Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                           To="0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Data Templates for Different Property Types -->
+        
+        <!-- String Editor -->
+        <DataTemplate x:Key="StringEditorTemplate">
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
+                     IsReadOnly="{Binding IsReadOnly}"
+                     Margin="2" 
+                     Padding="2"
+                     VerticalContentAlignment="Center"/>
+        </DataTemplate>
+
+        <!-- Number Editor -->
+        <DataTemplate x:Key="NumberEditorTemplate">
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
+                     IsReadOnly="{Binding IsReadOnly}"
+                     Margin="2" 
+                     Padding="2"
+                     VerticalContentAlignment="Center"
+                     PreviewTextInput="NumberTextBox_PreviewTextInput"/>
+        </DataTemplate>
+
+        <!-- Boolean Editor -->
+        <DataTemplate x:Key="BoolEditorTemplate">
+            <CheckBox IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"/>
+        </DataTemplate>
+
+        <!-- Enum Editor -->
+        <DataTemplate x:Key="EnumEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumValuesConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+
+        <!-- DateTime Editor -->
+        <DataTemplate x:Key="DateTimeEditorTemplate">
+            <DatePicker SelectedDate="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                        IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                        Margin="2"/>
+        </DataTemplate>
+
+        <!-- Read-Only Editor -->
+        <DataTemplate x:Key="ReadOnlyEditorTemplate">
+            <TextBlock Text="{Binding Value}" 
+                       Margin="2,4" 
+                       Foreground="#666"
+                       VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <!-- Complex Type Editor (shows type name, expandable) -->
+        <DataTemplate x:Key="ComplexTypeEditorTemplate">
+            <TextBlock Margin="2,4" VerticalAlignment="Center">
+                <Run Text="{Binding PropertyType, Converter={StaticResource TypeToStringConverter}}" 
+                     Foreground="#0066CC" FontStyle="Italic"/>
+            </TextBlock>
+        </DataTemplate>
+
+        <!-- Collection Editor (shows count, has add/remove buttons) -->
+        <DataTemplate x:Key="CollectionEditorTemplate" DataType="{x:Type models:CollectionPropertyItem}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="2,4" VerticalAlignment="Center" Foreground="#666">
+                    <Run Text="Count: "/>
+                    <Run Text="{Binding Children.Count, Mode=OneWay}"/>
+                </TextBlock>
+                <Button Content="+" 
+                        Command="{Binding AddCollectionItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                        CommandParameter="{Binding}"
+                        Margin="5,0,0,0"
+                        Padding="5,0"
+                        MinWidth="20"
+                        Visibility="{Binding CanAddItems, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- InformationBinding Editor -->
+        <DataTemplate x:Key="InformationRoleEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource InformationBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+        <DataTemplate x:Key="InformationTypeEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource InformationBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding ParentObject.role, Converter={StaticResource NullToBoolConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+
+
+        <!-- FeatureBinding Editor -->
+        <DataTemplate x:Key="FeatureRoleEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource FeatureBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>
+        <DataTemplate x:Key="FeatureTypeEditorTemplate">
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource FeatureBindingConverter}}"
+                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource FeatureBindingConverter}}"
+                      Margin="2"
+                      Padding="2"/>
+        </DataTemplate>        
+        
+        <!-- Template Selector -->
+        <selectors:PropertyEditorTemplateSelector x:Key="PropertyEditorTemplateSelector"
+                                                   StringEditorTemplate="{StaticResource StringEditorTemplate}"
+                                                   NumberEditorTemplate="{StaticResource NumberEditorTemplate}"
+                                                   BoolEditorTemplate="{StaticResource BoolEditorTemplate}"
+                                                   EnumEditorTemplate="{StaticResource EnumEditorTemplate}"
+                                                   DateTimeEditorTemplate="{StaticResource DateTimeEditorTemplate}"
+                                                   ComplexTypeEditorTemplate="{StaticResource ComplexTypeEditorTemplate}"
+                                                   CollectionEditorTemplate="{StaticResource CollectionEditorTemplate}"
+                                                   ReadOnlyEditorTemplate="{StaticResource ReadOnlyEditorTemplate}"
+                                                   InformationRoleEditorTemplate="{StaticResource InformationRoleEditorTemplate}"
+                                                   InformationTypeEditorTemplate="{StaticResource InformationTypeEditorTemplate}"
+                                                   FeatureRoleEditorTemplate="{StaticResource FeatureRoleEditorTemplate}"
+                                                   FeatureTypeEditorTemplate="{StaticResource FeatureTypeEditorTemplate}"/>
+
+        <!-- Hierarchical Data Template for TreeView -->
+        <HierarchicalDataTemplate x:Key="PropertyItemTemplate" 
+                                  DataType="{x:Type models:PropertyItem}"
+                                  ItemsSource="{Binding Children}">
+            <Grid Margin="0,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="150"/>
+                    <ColumnDefinition Width="2*" MinWidth="200"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Property Name Column -->
+                <Border Grid.Column="0" 
+                        Background="#F5F5F5" 
+                        BorderBrush="#DDD" 
+                        BorderThickness="0,0,1,1"
+                        Padding="5,2">
+                    <TextBlock Text="{Binding DisplayName}" 
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               ToolTip="{Binding Description}"/>
+                </Border>
+
+                <!-- Property Value Column -->
+                <Border Grid.Column="1" 
+                        Background="White" 
+                        BorderBrush="#DDD" 
+                        BorderThickness="0,0,0,1"
+                        Padding="2">
+                    <ContentPresenter Content="{Binding}" 
+                                    ContentTemplateSelector="{StaticResource PropertyEditorTemplateSelector}"
+                                    VerticalAlignment="Center"/>
+                </Border>
+
+                <!-- Inline remove button for collection items -->
+                <Border Grid.Column="2"
+                        Background="White"
+                        BorderBrush="#DDD"
+                        BorderThickness="0,0,0,1"
+                        Padding="2,0,2,0">
+                    <Button Content="-"
+                            Width="22" Height="22"
+                            Margin="6,0,0,0"
+                            ToolTip="Remove from collection"
+                            Visibility="{Binding Name, Converter={StaticResource CollectionItemVisibilityConverter}}"
+                            Command="{Binding RemoveCollectionItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                            CommandParameter="{Binding}"/>
+                </Border>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <!-- TreeView Style -->
+        <Style TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*" MinHeight="60"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="#E0E0E0" 
+                BorderBrush="#999" 
+                BorderThickness="0,0,0,2"
+                Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="150"/>
+                    <ColumnDefinition Width="2*" MinWidth="200"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Property" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Value" FontWeight="Bold" Margin="5,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Property TreeView -->
+        <TreeView Grid.Row="1" 
+                  x:Name="PropertyTreeView"
+                  ItemsSource="{Binding Properties, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                  ItemTemplate="{StaticResource PropertyItemTemplate}"
+                  BorderThickness="0"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  SelectedItemChanged="PropertyTreeView_SelectedItemChanged">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+
+        <!-- GridSplitter -->
+        <GridSplitter Grid.Row="2" 
+                      Height="5" 
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center"
+                      Background="#DDD"
+                      ResizeDirection="Rows"
+                      ResizeBehavior="PreviousAndNext"/>
+
+        <!-- Description Panel -->
+        <Border Grid.Row="3" 
+                Background="#F9F9F9" 
+                BorderBrush="#999" 
+                BorderThickness="0,1,0,0"
+                Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Description Header -->
+                <TextBlock Grid.Row="0" 
+                           Text="Description" 
+                           FontWeight="Bold" 
+                           FontSize="11"
+                           Margin="0,0,0,4"/>
+
+                <!-- Description Content -->
+                <ScrollViewer Grid.Row="1" 
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <TextBlock Text="{Binding SelectedDescription, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                               TextWrapping="Wrap"
+                               FontSize="11"
+                               Foreground="#333"
+                               Padding="2"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
