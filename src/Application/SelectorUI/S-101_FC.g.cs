@@ -3996,9 +3996,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "featureName";
-		public override Attribute[] subAttributes { get; set; } = [
-				new language(),
-				new name(),
+		public language language { get; init; } = new language();
+		public name name { get; init; } = new name();
+		public override Attribute[] subAttributes => [
+				language,
+				name,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4027,9 +4030,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "featuresDetected";
-		public override Attribute[] subAttributes { get; set; } = [
-				new leastDepthOfDetectedFeaturesMeasured(),
-				new significantFeaturesDetected(),
+		public leastDepthOfDetectedFeaturesMeasured leastDepthOfDetectedFeaturesMeasured { get; init; } = new leastDepthOfDetectedFeaturesMeasured();
+		public significantFeaturesDetected significantFeaturesDetected { get; init; } = new significantFeaturesDetected();
+		public override Attribute[] subAttributes => [
+				leastDepthOfDetectedFeaturesMeasured,
+				significantFeaturesDetected,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4057,7 +4063,8 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "fixedDateRange";
-		public override Attribute[] subAttributes { get; set; } = [
+		public override Attribute[] subAttributes => [
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4080,8 +4087,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "frequencyPair";
-		public override Attribute[] subAttributes { get; set; } = [
-				new frequencyShoreStationTransmits(),
+		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
+		public override Attribute[] subAttributes => [
+				frequencyShoreStationTransmits,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4104,8 +4113,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "horizontalClearanceFixed";
-		public override Attribute[] subAttributes { get; set; } = [
-				new horizontalClearanceValue(),
+		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
+		public override Attribute[] subAttributes => [
+				horizontalClearanceValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4128,8 +4139,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "horizontalClearanceOpen";
-		public override Attribute[] subAttributes { get; set; } = [
-				new horizontalClearanceValue(),
+		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
+		public override Attribute[] subAttributes => [
+				horizontalClearanceValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4152,8 +4165,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "horizontalPositionUncertainty";
-		public override Attribute[] subAttributes { get; set; } = [
-				new uncertaintyFixed(),
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] subAttributes => [
+				uncertaintyFixed,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4176,8 +4191,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "information";
-		public override Attribute[] subAttributes { get; set; } = [
-				new language(),
+		public language language { get; init; } = new language();
+		public override Attribute[] subAttributes => [
+				language,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4215,9 +4232,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "measuredDistanceValue";
-		public override Attribute[] subAttributes { get; set; } = [
-				new distanceUnitOfMeasurement(),
-				new waterwayDistance(),
+		public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; init; } = new distanceUnitOfMeasurement();
+		public waterwayDistance waterwayDistance { get; init; } = new waterwayDistance();
+		public override Attribute[] subAttributes => [
+				distanceUnitOfMeasurement,
+				waterwayDistance,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4246,8 +4266,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "multiplicityOfFeatures";
-		public override Attribute[] subAttributes { get; set; } = [
-				new multiplicityKnown(),
+		public multiplicityKnown multiplicityKnown { get; init; } = new multiplicityKnown();
+		public override Attribute[] subAttributes => [
+				multiplicityKnown,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4270,8 +4292,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "onlineResource";
-		public override Attribute[] subAttributes { get; set; } = [
-				new linkage(),
+		public linkage linkage { get; init; } = new linkage();
+		public override Attribute[] subAttributes => [
+				linkage,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4299,8 +4323,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "orientation";
-		public override Attribute[] subAttributes { get; set; } = [
-				new orientationValue(),
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public override Attribute[] subAttributes => [
+				orientationValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4323,9 +4349,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "periodicDateRange";
-		public override Attribute[] subAttributes { get; set; } = [
-				new dateEnd(),
-				new dateStart(),
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public dateStart dateStart { get; init; } = new dateStart();
+		public override Attribute[] subAttributes => [
+				dateEnd,
+				dateStart,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4348,9 +4377,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "radarWaveLength";
-		public override Attribute[] subAttributes { get; set; } = [
-				new radarBand(),
-				new waveLengthValue(),
+		public radarBand radarBand { get; init; } = new radarBand();
+		public waveLengthValue waveLengthValue { get; init; } = new waveLengthValue();
+		public override Attribute[] subAttributes => [
+				radarBand,
+				waveLengthValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4373,8 +4405,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "sectorInformation";
-		public override Attribute[] subAttributes { get; set; } = [
-				new text(),
+		public text text { get; init; } = new text();
+		public override Attribute[] subAttributes => [
+				text,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4397,8 +4431,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "sectorLimitOne";
-		public override Attribute[] subAttributes { get; set; } = [
-				new sectorBearing(),
+		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public override Attribute[] subAttributes => [
+				sectorBearing,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4421,8 +4457,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "sectorLimitTwo";
-		public override Attribute[] subAttributes { get; set; } = [
-				new sectorBearing(),
+		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public override Attribute[] subAttributes => [
+				sectorBearing,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4445,8 +4483,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "shapeInformation";
-		public override Attribute[] subAttributes { get; set; } = [
-				new text(),
+		public text text { get; init; } = new text();
+		public override Attribute[] subAttributes => [
+				text,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4469,9 +4509,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "signalSequence";
-		public override Attribute[] subAttributes { get; set; } = [
-				new signalDuration(),
-				new signalStatus(),
+		public signalDuration signalDuration { get; init; } = new signalDuration();
+		public signalStatus signalStatus { get; init; } = new signalStatus();
+		public override Attribute[] subAttributes => [
+				signalDuration,
+				signalStatus,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4495,8 +4538,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "speed";
-		public override Attribute[] subAttributes { get; set; } = [
-				new speedMaximum(),
+		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
+		public override Attribute[] subAttributes => [
+				speedMaximum,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4519,7 +4564,8 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "surfaceCharacteristics";
-		public override Attribute[] subAttributes { get; set; } = [
+		public override Attribute[] subAttributes => [
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4549,8 +4595,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "surveyDateRange";
-		public override Attribute[] subAttributes { get; set; } = [
-				new dateEnd(),
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public override Attribute[] subAttributes => [
+				dateEnd,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4573,8 +4621,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "telecommunications";
-		public override Attribute[] subAttributes { get; set; } = [
-				new telecommunicationIdentifier(),
+		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public override Attribute[] subAttributes => [
+				telecommunicationIdentifier,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4603,10 +4653,14 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "tidalStreamValue";
-		public override Attribute[] subAttributes { get; set; } = [
-				new orientation(),
-				new speedMaximum(),
-				new timeRelativeToTide(),
+		public orientation orientation { get; init; } = new orientation();
+		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
+		public timeRelativeToTide timeRelativeToTide { get; init; } = new timeRelativeToTide();
+		public override Attribute[] subAttributes => [
+				orientation,
+				speedMaximum,
+				timeRelativeToTide,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4634,7 +4688,8 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "timeIntervalsByDayOfWeek";
-		public override Attribute[] subAttributes { get; set; } = [
+		public override Attribute[] subAttributes => [
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4668,8 +4723,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "topmark";
-		public override Attribute[] subAttributes { get; set; } = [
-				new topmarkDaymarkShape(),
+		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
+		public override Attribute[] subAttributes => [
+				topmarkDaymarkShape,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4705,8 +4762,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "valueOfLocalMagneticAnomaly";
-		public override Attribute[] subAttributes { get; set; } = [
-				new magneticAnomalyValue(),
+		public magneticAnomalyValue magneticAnomalyValue { get; init; } = new magneticAnomalyValue();
+		public override Attribute[] subAttributes => [
+				magneticAnomalyValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4730,8 +4789,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "verticalUncertainty";
-		public override Attribute[] subAttributes { get; set; } = [
-				new uncertaintyFixed(),
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] subAttributes => [
+				uncertaintyFixed,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4754,9 +4815,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "vesselSpeedLimit";
-		public override Attribute[] subAttributes { get; set; } = [
-				new speedLimit(),
-				new speedUnits(),
+		public speedLimit speedLimit { get; init; } = new speedLimit();
+		public speedUnits speedUnits { get; init; } = new speedUnits();
+		public override Attribute[] subAttributes => [
+				speedLimit,
+				speedUnits,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4785,8 +4849,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "zoneOfConfidence";
-		public override Attribute[] subAttributes { get; set; } = [
-				new categoryOfZoneOfConfidenceInData(),
+		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; init; } = new categoryOfZoneOfConfidenceInData();
+		public override Attribute[] subAttributes => [
+				categoryOfZoneOfConfidenceInData,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4820,8 +4886,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "directionalCharacter";
-		public override Attribute[] subAttributes { get; set; } = [
-				new orientation(),
+		public orientation orientation { get; init; } = new orientation();
+		public override Attribute[] subAttributes => [
+				orientation,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4844,8 +4912,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "rhythmOfLight";
-		public override Attribute[] subAttributes { get; set; } = [
-				new lightCharacteristic(),
+		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
+		public override Attribute[] subAttributes => [
+				lightCharacteristic,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4879,8 +4949,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "scheduleByDayOfWeek";
-		public override Attribute[] subAttributes { get; set; } = [
-				new timeIntervalsByDayOfWeek(),
+		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek();
+		public override Attribute[] subAttributes => [
+				timeIntervalsByDayOfWeek,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4904,9 +4976,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "sectorLimit";
-		public override Attribute[] subAttributes { get; set; } = [
-				new sectorLimitOne(),
-				new sectorLimitTwo(),
+		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
+		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
+		public override Attribute[] subAttributes => [
+				sectorLimitOne,
+				sectorLimitTwo,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4929,7 +5004,8 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "spatialAccuracy";
-		public override Attribute[] subAttributes { get; set; } = [
+		public override Attribute[] subAttributes => [
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4957,10 +5033,14 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "tidalStreamPanelValues";
-		public override Attribute[] subAttributes { get; set; } = [
-				new referenceTide(),
-				new referenceTideType(),
-				new tidalStreamValue(),
+		public referenceTide referenceTide { get; init; } = new referenceTide();
+		public referenceTideType referenceTideType { get; init; } = new referenceTideType();
+		public tidalStreamValue tidalStreamValue { get; init; } = new tidalStreamValue();
+		public override Attribute[] subAttributes => [
+				referenceTide,
+				referenceTideType,
+				tidalStreamValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -4995,8 +5075,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "verticalClearanceClosed";
-		public override Attribute[] subAttributes { get; set; } = [
-				new verticalClearanceValue(),
+		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
+		public override Attribute[] subAttributes => [
+				verticalClearanceValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5019,8 +5101,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "verticalClearanceFixed";
-		public override Attribute[] subAttributes { get; set; } = [
-				new verticalClearanceValue(),
+		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
+		public override Attribute[] subAttributes => [
+				verticalClearanceValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5043,8 +5127,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "verticalClearanceOpen";
-		public override Attribute[] subAttributes { get; set; } = [
-				new verticalClearanceUnlimited(),
+		public verticalClearanceUnlimited verticalClearanceUnlimited { get; init; } = new verticalClearanceUnlimited();
+		public override Attribute[] subAttributes => [
+				verticalClearanceUnlimited,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5072,8 +5158,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "verticalClearanceSafe";
-		public override Attribute[] subAttributes { get; set; } = [
-				new verticalClearanceValue(),
+		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
+		public override Attribute[] subAttributes => [
+				verticalClearanceValue,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5096,8 +5184,10 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "lightSector";
-		public override Attribute[] subAttributes { get; set; } = [
-				new colour(),
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] subAttributes => [
+				colour,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5147,9 +5237,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	{
 		[JsonIgnore]
 		public override string code => "sectorCharacteristics";
-		public override Attribute[] subAttributes { get; set; } = [
-				new lightCharacteristic(),
-				new lightSector(),
+		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
+		public lightSector lightSector { get; init; } = new lightSector();
+		public override Attribute[] subAttributes => [
+				lightCharacteristic,
+				lightSector,
+				.. base.subAttributesOptional,
 			];
 		public override AttributeBinding[] subAttributeBindings() => [
 				new AttributeBinding {
@@ -5195,8 +5288,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "QualityOfNonBathymetricData";
-		public override Attribute[] attributes { get; set; } = [
-				new horizontalPositionUncertainty(),
+		public horizontalPositionUncertainty horizontalPositionUncertainty { get; init; } = new horizontalPositionUncertainty();
+		public override Attribute[] attributes => [
+				horizontalPositionUncertainty,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5250,10 +5345,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DataCoverage";
-		public override Attribute[] attributes { get; set; } = [
-				new maximumDisplayScale(),
-				new minimumDisplayScale(),
-				new optimumDisplayScale(),
+		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
+		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public optimumDisplayScale optimumDisplayScale { get; init; } = new optimumDisplayScale();
+		public override Attribute[] attributes => [
+				maximumDisplayScale,
+				minimumDisplayScale,
+				optimumDisplayScale,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5296,8 +5395,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "NavigationalSystemOfMarks";
-		public override Attribute[] attributes { get; set; } = [
-				new marksNavigationalSystemOf(),
+		public marksNavigationalSystemOf marksNavigationalSystemOf { get; init; } = new marksNavigationalSystemOf();
+		public override Attribute[] attributes => [
+				marksNavigationalSystemOf,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5326,9 +5427,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LocalDirectionOfBuoyage";
-		public override Attribute[] attributes { get; set; } = [
-				new marksNavigationalSystemOf(),
-				new orientationValue(),
+		public marksNavigationalSystemOf marksNavigationalSystemOf { get; init; } = new marksNavigationalSystemOf();
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public override Attribute[] attributes => [
+				marksNavigationalSystemOf,
+				orientationValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5367,12 +5471,18 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "QualityOfBathymetricData";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfTemporalVariation(),
-				new dataAssessment(),
-				new featuresDetected(),
-				new fullSeafloorCoverageAchieved(),
-				new zoneOfConfidence(),
+		public categoryOfTemporalVariation categoryOfTemporalVariation { get; init; } = new categoryOfTemporalVariation();
+		public dataAssessment dataAssessment { get; init; } = new dataAssessment();
+		public featuresDetected featuresDetected { get; init; } = new featuresDetected();
+		public fullSeafloorCoverageAchieved fullSeafloorCoverageAchieved { get; init; } = new fullSeafloorCoverageAchieved();
+		public zoneOfConfidence zoneOfConfidence { get; init; } = new zoneOfConfidence();
+		public override Attribute[] attributes => [
+				categoryOfTemporalVariation,
+				dataAssessment,
+				featuresDetected,
+				fullSeafloorCoverageAchieved,
+				zoneOfConfidence,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5437,8 +5547,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SoundingDatum";
-		public override Attribute[] attributes { get; set; } = [
-				new verticalDatum(),
+		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public override Attribute[] attributes => [
+				verticalDatum,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5467,8 +5579,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "VerticalDatumOfData";
-		public override Attribute[] attributes { get; set; } = [
-				new verticalDatum(),
+		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public override Attribute[] attributes => [
+				verticalDatum,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5497,10 +5611,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "QualityOfSurvey";
-		public override Attribute[] attributes { get; set; } = [
-				new surveyAuthority(),
-				new surveyDateRange(),
-				new surveyType(),
+		public surveyAuthority surveyAuthority { get; init; } = new surveyAuthority();
+		public surveyDateRange surveyDateRange { get; init; } = new surveyDateRange();
+		public surveyType surveyType { get; init; } = new surveyType();
+		public override Attribute[] attributes => [
+				surveyAuthority,
+				surveyDateRange,
+				surveyType,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5607,9 +5725,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "UpdateInformation";
-		public override Attribute[] attributes { get; set; } = [
-				new updateNumber(),
-				new updateType(),
+		public updateNumber updateNumber { get; init; } = new updateNumber();
+		public updateType updateType { get; init; } = new updateType();
+		public override Attribute[] attributes => [
+				updateNumber,
+				updateType,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5658,10 +5779,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MagneticVariation";
-		public override Attribute[] attributes { get; set; } = [
-				new referenceYearForMagneticVariation(),
-				new valueOfAnnualChangeInMagneticVariation(),
-				new valueOfMagneticVariation(),
+		public referenceYearForMagneticVariation referenceYearForMagneticVariation { get; init; } = new referenceYearForMagneticVariation();
+		public valueOfAnnualChangeInMagneticVariation valueOfAnnualChangeInMagneticVariation { get; init; } = new valueOfAnnualChangeInMagneticVariation();
+		public valueOfMagneticVariation valueOfMagneticVariation { get; init; } = new valueOfMagneticVariation();
+		public override Attribute[] attributes => [
+				referenceYearForMagneticVariation,
+				valueOfAnnualChangeInMagneticVariation,
+				valueOfMagneticVariation,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5704,8 +5829,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LocalMagneticAnomaly";
-		public override Attribute[] attributes { get; set; } = [
-				new valueOfLocalMagneticAnomaly(),
+		public valueOfLocalMagneticAnomaly valueOfLocalMagneticAnomaly { get; init; } = new valueOfLocalMagneticAnomaly();
+		public override Attribute[] attributes => [
+				valueOfLocalMagneticAnomaly,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5748,7 +5875,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Coastline";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5815,7 +5943,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LandArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5865,8 +5994,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "IslandGroup";
-		public override Attribute[] attributes { get; set; } = [
-				new featureName(),
+		public featureName featureName { get; init; } = new featureName();
+		public override Attribute[] attributes => [
+				featureName,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5899,8 +6030,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LandElevation";
-		public override Attribute[] attributes { get; set; } = [
-				new elevation(),
+		public elevation elevation { get; init; } = new elevation();
+		public override Attribute[] attributes => [
+				elevation,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5944,7 +6077,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "River";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -5983,7 +6117,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Rapids";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6021,7 +6156,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Waterfall";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6065,7 +6201,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Lake";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6109,7 +6246,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LandRegion";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6160,8 +6298,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Vegetation";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfVegetation(),
+		public categoryOfVegetation categoryOfVegetation { get; init; } = new categoryOfVegetation();
+		public override Attribute[] attributes => [
+				categoryOfVegetation,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6221,8 +6361,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "IceArea";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfIce(),
+		public categoryOfIce categoryOfIce { get; init; } = new categoryOfIce();
+		public override Attribute[] attributes => [
+				categoryOfIce,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6298,7 +6440,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SlopingGround";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6360,7 +6503,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SlopeTopline";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6427,7 +6571,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Tideway";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6460,7 +6605,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "BuiltUpArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6536,7 +6682,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Building";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6657,7 +6804,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "AirportAirfield";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6718,7 +6866,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Runway";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6779,7 +6928,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Helipad";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6840,7 +6990,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Bridge";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -6957,8 +7108,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SpanFixed";
-		public override Attribute[] attributes { get; set; } = [
-				new verticalClearanceFixed(),
+		public verticalClearanceFixed verticalClearanceFixed { get; init; } = new verticalClearanceFixed();
+		public override Attribute[] attributes => [
+				verticalClearanceFixed,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7012,9 +7165,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SpanOpening";
-		public override Attribute[] attributes { get; set; } = [
-				new verticalClearanceClosed(),
-				new verticalClearanceOpen(),
+		public verticalClearanceClosed verticalClearanceClosed { get; init; } = new verticalClearanceClosed();
+		public verticalClearanceOpen verticalClearanceOpen { get; init; } = new verticalClearanceOpen();
+		public override Attribute[] attributes => [
+				verticalClearanceClosed,
+				verticalClearanceOpen,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7073,7 +7229,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Conveyor";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7199,7 +7356,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CableOverhead";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7297,7 +7455,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PipelineOverhead";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7391,8 +7550,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PylonBridgeSupport";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfPylon(),
+		public categoryOfPylon categoryOfPylon { get; init; } = new categoryOfPylon();
+		public override Attribute[] attributes => [
+				categoryOfPylon,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7508,7 +7669,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FenceWall";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7608,7 +7770,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Railway";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7663,7 +7826,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Road";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7725,7 +7889,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Tunnel";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7796,9 +7961,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Landmark";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfLandmark(),
-				new visualProminence(),
+		public categoryOfLandmark categoryOfLandmark { get; init; } = new categoryOfLandmark();
+		public visualProminence visualProminence { get; init; } = new visualProminence();
+		public override Attribute[] attributes => [
+				categoryOfLandmark,
+				visualProminence,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -7925,7 +8093,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SiloTank";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8052,7 +8221,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "WindTurbine";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8183,7 +8353,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FortifiedStructure";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8276,8 +8447,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ProductionStorageArea";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfProductionArea(),
+		public categoryOfProductionArea categoryOfProductionArea { get; init; } = new categoryOfProductionArea();
+		public override Attribute[] attributes => [
+				categoryOfProductionArea,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8375,7 +8548,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Checkpoint";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8420,7 +8594,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Hulk";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8523,7 +8698,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Pile";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8622,7 +8798,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Dyke";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8698,7 +8875,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ShorelineConstruction";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8819,9 +8997,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "StructureOverNavigableWater";
-		public override Attribute[] attributes { get; set; } = [
-				new horizontalClearanceFixed(),
-				new verticalClearanceFixed(),
+		public horizontalClearanceFixed horizontalClearanceFixed { get; init; } = new horizontalClearanceFixed();
+		public verticalClearanceFixed verticalClearanceFixed { get; init; } = new verticalClearanceFixed();
+		public override Attribute[] attributes => [
+				horizontalClearanceFixed,
+				verticalClearanceFixed,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -8963,7 +9144,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Causeway";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9025,7 +9207,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Canal";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9096,9 +9279,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DistanceMark";
-		public override Attribute[] attributes { get; set; } = [
-				new distanceMarkVisible(),
-				new measuredDistanceValue(),
+		public distanceMarkVisible distanceMarkVisible { get; init; } = new distanceMarkVisible();
+		public measuredDistanceValue measuredDistanceValue { get; init; } = new measuredDistanceValue();
+		public override Attribute[] attributes => [
+				distanceMarkVisible,
+				measuredDistanceValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9146,7 +9332,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Gate";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9235,7 +9422,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Dam";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9336,7 +9524,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Crane";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9456,8 +9645,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Berth";
-		public override Attribute[] attributes { get; set; } = [
-				new featureName(),
+		public featureName featureName { get; init; } = new featureName();
+		public override Attribute[] attributes => [
+				featureName,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9543,8 +9734,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Dolphin";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfDolphin(),
+		public categoryOfDolphin categoryOfDolphin { get; init; } = new categoryOfDolphin();
+		public override Attribute[] attributes => [
+				categoryOfDolphin,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9659,7 +9852,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Bollard";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9724,7 +9918,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DryDock";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9820,7 +10015,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FloatingDock";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -9938,7 +10134,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Pontoon";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10014,7 +10211,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DockArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10095,7 +10293,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Gridiron";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10161,7 +10360,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LockBasin";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10225,7 +10425,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MooringTrot";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10263,7 +10464,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SeaAreaNamedWaterArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10302,10 +10504,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TidalStreamFloodEbb";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfTidalStream(),
-				new orientation(),
-				new speed(),
+		public categoryOfTidalStream categoryOfTidalStream { get; init; } = new categoryOfTidalStream();
+		public orientation orientation { get; init; } = new orientation();
+		public speed speed { get; init; } = new speed();
+		public override Attribute[] attributes => [
+				categoryOfTidalStream,
+				orientation,
+				speed,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10359,9 +10565,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CurrentNonGravitational";
-		public override Attribute[] attributes { get; set; } = [
-				new orientation(),
-				new speed(),
+		public orientation orientation { get; init; } = new orientation();
+		public speed speed { get; init; } = new speed();
+		public override Attribute[] attributes => [
+				orientation,
+				speed,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10420,8 +10629,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "WaterTurbulence";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfWaterTurbulence(),
+		public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; init; } = new categoryOfWaterTurbulence();
+		public override Attribute[] attributes => [
+				categoryOfWaterTurbulence,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10460,9 +10671,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TidalStreamPanelData";
-		public override Attribute[] attributes { get; set; } = [
-				new stationName(),
-				new tidalStreamPanelValues(),
+		public stationName stationName { get; init; } = new stationName();
+		public tidalStreamPanelValues tidalStreamPanelValues { get; init; } = new tidalStreamPanelValues();
+		public override Attribute[] attributes => [
+				stationName,
+				tidalStreamPanelValues,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10510,7 +10724,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Sounding";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10566,8 +10781,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DredgedArea";
-		public override Attribute[] attributes { get; set; } = [
-				new depthRangeMinimumValue(),
+		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		public override Attribute[] attributes => [
+				depthRangeMinimumValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10643,8 +10860,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SweptArea";
-		public override Attribute[] attributes { get; set; } = [
-				new depthRangeMinimumValue(),
+		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		public override Attribute[] attributes => [
+				depthRangeMinimumValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10682,8 +10901,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DepthContour";
-		public override Attribute[] attributes { get; set; } = [
-				new valueOfDepthContour(),
+		public valueOfDepthContour valueOfDepthContour { get; init; } = new valueOfDepthContour();
+		public override Attribute[] attributes => [
+				valueOfDepthContour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10716,9 +10937,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DepthArea";
-		public override Attribute[] attributes { get; set; } = [
-				new depthRangeMinimumValue(),
-				new depthRangeMaximumValue(),
+		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		public depthRangeMaximumValue depthRangeMaximumValue { get; init; } = new depthRangeMaximumValue();
+		public override Attribute[] attributes => [
+				depthRangeMinimumValue,
+				depthRangeMaximumValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10751,7 +10975,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DepthNoBottomFound";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10785,7 +11010,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "UnsurveyedArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10808,8 +11034,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SeabedArea";
-		public override Attribute[] attributes { get; set; } = [
-				new surfaceCharacteristics(),
+		public surfaceCharacteristics surfaceCharacteristics { get; init; } = new surfaceCharacteristics();
+		public override Attribute[] attributes => [
+				surfaceCharacteristics,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10853,7 +11081,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "WeedKelp";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10892,7 +11121,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Seagrass";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10925,7 +11155,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Sandwave";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10958,7 +11189,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Spring";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -10991,10 +11223,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "UnderwaterAwashRock";
-		public override Attribute[] attributes { get; set; } = [
-				new valueOfSounding(),
-				new waterLevelEffect(),
-				new surroundingDepth(),
+		public valueOfSounding valueOfSounding { get; init; } = new valueOfSounding();
+		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
+		public override Attribute[] attributes => [
+				valueOfSounding,
+				waterLevelEffect,
+				surroundingDepth,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11083,9 +11319,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Wreck";
-		public override Attribute[] attributes { get; set; } = [
-				new waterLevelEffect(),
-				new surroundingDepth(),
+		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
+		public override Attribute[] attributes => [
+				waterLevelEffect,
+				surroundingDepth,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11195,9 +11434,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Obstruction";
-		public override Attribute[] attributes { get; set; } = [
-				new waterLevelEffect(),
-				new surroundingDepth(),
+		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
+		public override Attribute[] attributes => [
+				waterLevelEffect,
+				surroundingDepth,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11319,7 +11561,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FoulGround";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11385,7 +11628,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DiscolouredWater";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11418,7 +11662,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FishingFacility";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11484,8 +11729,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MarineFarmCulture";
-		public override Attribute[] attributes { get; set; } = [
-				new waterLevelEffect(),
+		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		public override Attribute[] attributes => [
+				waterLevelEffect,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11589,7 +11836,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "OffshorePlatform";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11699,7 +11947,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CableSubmarine";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11760,7 +12009,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CableArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11821,7 +12071,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PipelineSubmarineOnLand";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11919,7 +12170,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SubmarinePipelineArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -11986,7 +12238,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "OffshoreProductionArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12091,9 +12344,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "NavigationLine";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfNavigationLine(),
-				new orientation(),
+		public categoryOfNavigationLine categoryOfNavigationLine { get; init; } = new categoryOfNavigationLine();
+		public orientation orientation { get; init; } = new orientation();
+		public override Attribute[] attributes => [
+				categoryOfNavigationLine,
+				orientation,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12153,10 +12409,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RecommendedTrack";
-		public override Attribute[] attributes { get; set; } = [
-				new basedOnFixedMarks(),
-				new orientationValue(),
-				new trafficFlow(),
+		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public override Attribute[] attributes => [
+				basedOnFixedMarks,
+				orientationValue,
+				trafficFlow,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12248,7 +12508,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RangeSystem";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12291,7 +12552,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Fairway";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12378,7 +12640,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FairwaySystem";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12426,8 +12689,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RecommendedRouteCentreline";
-		public override Attribute[] attributes { get; set; } = [
-				new basedOnFixedMarks(),
+		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
+		public override Attribute[] attributes => [
+				basedOnFixedMarks,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12514,9 +12779,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TwoWayRoutePart";
-		public override Attribute[] attributes { get; set; } = [
-				new orientationValue(),
-				new trafficFlow(),
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public override Attribute[] attributes => [
+				orientationValue,
+				trafficFlow,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12593,7 +12861,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TwoWayRoute";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12636,8 +12905,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RecommendedTrafficLanePart";
-		public override Attribute[] attributes { get; set; } = [
-				new orientationValue(),
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public override Attribute[] attributes => [
+				orientationValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12681,10 +12952,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DeepWaterRouteCentreline";
-		public override Attribute[] attributes { get; set; } = [
-				new basedOnFixedMarks(),
-				new orientationValue(),
-				new trafficFlow(),
+		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public override Attribute[] attributes => [
+				basedOnFixedMarks,
+				orientationValue,
+				trafficFlow,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12771,10 +13046,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DeepWaterRoutePart";
-		public override Attribute[] attributes { get; set; } = [
-				new depthRangeMinimumValue(),
-				new orientationValue(),
-				new trafficFlow(),
+		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public override Attribute[] attributes => [
+				depthRangeMinimumValue,
+				orientationValue,
+				trafficFlow,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12867,7 +13146,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DeepWaterRoute";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12910,7 +13190,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "InshoreTrafficZone";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -12960,8 +13241,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PrecautionaryArea";
-		public override Attribute[] attributes { get; set; } = [
-				new information(),
+		public information information { get; init; } = new information();
+		public override Attribute[] attributes => [
+				information,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13021,7 +13304,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TrafficSeparationSchemeLanePart";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13076,7 +13360,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SeparationZoneOrLine";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13115,7 +13400,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TrafficSeparationSchemeBoundary";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13154,7 +13440,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TrafficSeparationSchemeCrossing";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13204,7 +13491,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TrafficSeparationSchemeRoundabout";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13254,7 +13542,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TrafficSeparationScheme";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13302,7 +13591,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ArchipelagicSeaLaneArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13345,7 +13635,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ArchipelagicSeaLaneAxis";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13388,8 +13679,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ArchipelagicSeaLane";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13432,8 +13725,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadioCallingInPoint";
-		public override Attribute[] attributes { get; set; } = [
-				new trafficFlow(),
+		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public override Attribute[] attributes => [
+				trafficFlow,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13498,8 +13793,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FerryRoute";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfFerry(),
+		public categoryOfFerry categoryOfFerry { get; init; } = new categoryOfFerry();
+		public override Attribute[] attributes => [
+				categoryOfFerry,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13554,8 +13851,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadarLine";
-		public override Attribute[] attributes { get; set; } = [
-				new orientationValue(),
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public override Attribute[] attributes => [
+				orientationValue,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13599,7 +13898,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadarRange";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13648,7 +13948,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadarStation";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13718,7 +14019,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "AnchorageArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13790,7 +14092,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MooringArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13866,7 +14169,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "AnchorBerth";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13932,7 +14236,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SeaplaneLandingArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -13987,7 +14292,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "DumpingGround";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14048,7 +14354,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MilitaryPracticeArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14119,8 +14426,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "AdministrationArea";
-		public override Attribute[] attributes { get; set; } = [
-				new jurisdiction(),
+		public jurisdiction jurisdiction { get; init; } = new jurisdiction();
+		public override Attribute[] attributes => [
+				jurisdiction,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14174,7 +14483,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CargoTranshipmentArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14234,7 +14544,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CautionArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14294,7 +14605,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "InformationArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14347,8 +14659,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ContiguousZone";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14391,8 +14705,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ContinentalShelfArea";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14430,8 +14746,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CustomZone";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14464,8 +14782,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "ExclusiveEconomicZone";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14503,8 +14823,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FisheryZone";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14548,7 +14870,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FishingGround";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14603,7 +14926,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FreePortArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14642,7 +14966,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "HarbourAreaAdministrative";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14681,7 +15006,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LogPond";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14725,7 +15051,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "OilBarrier";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14786,8 +15113,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "StraightTerritorialSeaBaseline";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14820,8 +15149,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TerritorialSeaArea";
-		public override Attribute[] attributes { get; set; } = [
-				new nationality(),
+		public nationality nationality { get; init; } = new nationality();
+		public override Attribute[] attributes => [
+				nationality,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14870,7 +15201,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SubmarineTransitLane";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14919,7 +15251,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PilotageDistrict";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -14957,7 +15290,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CollisionRegulationsLimit";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15005,7 +15339,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MarinePollutionRegulationsArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15043,8 +15378,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RestrictedArea";
-		public override Attribute[] attributes { get; set; } = [
-				new restriction(),
+		public restriction restriction { get; init; } = new restriction();
+		public override Attribute[] attributes => [
+				restriction,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15110,9 +15447,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightAllAround";
-		public override Attribute[] attributes { get; set; } = [
-				new colour(),
-				new rhythmOfLight(),
+		public colour colour { get; init; } = new colour();
+		public rhythmOfLight rhythmOfLight { get; init; } = new rhythmOfLight();
+		public override Attribute[] attributes => [
+				colour,
+				rhythmOfLight,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15238,8 +15578,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightSectored";
-		public override Attribute[] attributes { get; set; } = [
-				new sectorCharacteristics(),
+		public sectorCharacteristics sectorCharacteristics { get; init; } = new sectorCharacteristics();
+		public override Attribute[] attributes => [
+				sectorCharacteristics,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15333,7 +15675,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightFogDetector";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15420,7 +15763,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightAirObstruction";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15518,10 +15862,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LateralBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new categoryOfLateralMark(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public categoryOfLateralMark categoryOfLateralMark { get; init; } = new categoryOfLateralMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				categoryOfLateralMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15626,10 +15974,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CardinalBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new categoryOfCardinalMark(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				categoryOfCardinalMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15734,9 +16086,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "IsolatedDangerBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15835,9 +16190,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SafeWaterBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -15936,10 +16294,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SpecialPurposeGeneralBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new categoryOfSpecialPurposeMark(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				categoryOfSpecialPurposeMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16044,9 +16406,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "EmergencyWreckMarkingBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16134,9 +16499,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "InstallationBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
-				new colour(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				buoyShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16237,8 +16605,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "MooringBuoy";
-		public override Attribute[] attributes { get; set; } = [
-				new buoyShape(),
+		public buoyShape buoyShape { get; init; } = new buoyShape();
+		public override Attribute[] attributes => [
+				buoyShape,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16336,10 +16706,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LateralBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new beaconShape(),
-				new categoryOfLateralMark(),
-				new colour(),
+		public beaconShape beaconShape { get; init; } = new beaconShape();
+		public categoryOfLateralMark categoryOfLateralMark { get; init; } = new categoryOfLateralMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				beaconShape,
+				categoryOfLateralMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16471,10 +16845,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CardinalBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new beaconShape(),
-				new categoryOfCardinalMark(),
-				new colour(),
+		public beaconShape beaconShape { get; init; } = new beaconShape();
+		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				beaconShape,
+				categoryOfCardinalMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16606,9 +16984,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "IsolatedDangerBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new beaconShape(),
-				new colour(),
+		public beaconShape beaconShape { get; init; } = new beaconShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				beaconShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16734,9 +17115,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SafeWaterBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new beaconShape(),
-				new colour(),
+		public beaconShape beaconShape { get; init; } = new beaconShape();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				beaconShape,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16862,10 +17246,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SpecialPurposeGeneralBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new beaconShape(),
-				new categoryOfSpecialPurposeMark(),
-				new colour(),
+		public beaconShape beaconShape { get; init; } = new beaconShape();
+		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark();
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				beaconShape,
+				categoryOfSpecialPurposeMark,
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -16997,9 +17385,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Daymark";
-		public override Attribute[] attributes { get; set; } = [
-				new colour(),
-				new topmarkDaymarkShape(),
+		public colour colour { get; init; } = new colour();
+		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
+		public override Attribute[] attributes => [
+				colour,
+				topmarkDaymarkShape,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17108,8 +17499,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightFloat";
-		public override Attribute[] attributes { get; set; } = [
-				new colour(),
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17212,8 +17605,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "LightVessel";
-		public override Attribute[] attributes { get; set; } = [
-				new colour(),
+		public colour colour { get; init; } = new colour();
+		public override Attribute[] attributes => [
+				colour,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17311,7 +17706,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Retroreflector";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17372,7 +17768,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadarReflector";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17421,8 +17818,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "FogSignal";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfFogSignal(),
+		public categoryOfFogSignal categoryOfFogSignal { get; init; } = new categoryOfFogSignal();
+		public override Attribute[] attributes => [
+				categoryOfFogSignal,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17508,7 +17907,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PhysicalAISAidToNavigation";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17567,8 +17967,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "VirtualAISAidToNavigation";
-		public override Attribute[] attributes { get; set; } = [
-				new virtualAISAidToNavigationType(),
+		public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; init; } = new virtualAISAidToNavigationType();
+		public override Attribute[] attributes => [
+				virtualAISAidToNavigationType,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17633,7 +18035,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadioStation";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17708,8 +18111,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RadarTransponderBeacon";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfRadarTransponderBeacon(),
+		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; init; } = new categoryOfRadarTransponderBeacon();
+		public override Attribute[] attributes => [
+				categoryOfRadarTransponderBeacon,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17789,7 +18194,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "PilotBoardingPlace";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17866,7 +18272,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "VesselTrafficServiceArea";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17899,7 +18306,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "CoastGuardStation";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -17958,8 +18366,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SignalStationWarning";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfSignalStationWarning(),
+		public categoryOfSignalStationWarning categoryOfSignalStationWarning { get; init; } = new categoryOfSignalStationWarning();
+		public override Attribute[] attributes => [
+				categoryOfSignalStationWarning,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18019,8 +18429,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SignalStationTraffic";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfSignalStationTraffic(),
+		public categoryOfSignalStationTraffic categoryOfSignalStationTraffic { get; init; } = new categoryOfSignalStationTraffic();
+		public override Attribute[] attributes => [
+				categoryOfSignalStationTraffic,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18080,7 +18492,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "RescueStation";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18140,8 +18553,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "HarbourFacility";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfHarbourFacility(),
+		public categoryOfHarbourFacility categoryOfHarbourFacility { get; init; } = new categoryOfHarbourFacility();
+		public override Attribute[] attributes => [
+				categoryOfHarbourFacility,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18240,8 +18655,10 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "SmallCraftFacility";
-		public override Attribute[] attributes { get; set; } = [
-				new categoryOfSmallCraftFacility(),
+		public categoryOfSmallCraftFacility categoryOfSmallCraftFacility { get; init; } = new categoryOfSmallCraftFacility();
+		public override Attribute[] attributes => [
+				categoryOfSmallCraftFacility,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18296,10 +18713,14 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "TextPlacement";
-		public override Attribute[] attributes { get; set; } = [
-				new textOffsetBearing(),
-				new textOffsetDistance(),
-				new textType(),
+		public textOffsetBearing textOffsetBearing { get; init; } = new textOffsetBearing();
+		public textOffsetDistance textOffsetDistance { get; init; } = new textOffsetDistance();
+		public textType textType { get; init; } = new textType();
+		public override Attribute[] attributes => [
+				textOffsetBearing,
+				textOffsetDistance,
+				textType,
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
@@ -18338,7 +18759,8 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	{
 		[JsonIgnore]
 		public override string code => "Chart1Feature";
-		public override Attribute[] attributes { get; set; } = [
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {

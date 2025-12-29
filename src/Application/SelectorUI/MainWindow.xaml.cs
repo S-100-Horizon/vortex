@@ -55,7 +55,11 @@ namespace SelectorUI
             var featureType = new QualityOfBathymetricData {
 
             };
-
+            featureType.categoryOfTemporalVariation.value = 1;
+            featureType.dataAssessment.value = 1;
+            featureType.featuresDetected.significantFeaturesDetected.value = true;
+            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured.value = false;           
+            featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData.value = 1;
 
             var selectedObject = new SelectedObject {
                 code = nameof(QualityOfBathymetricData),

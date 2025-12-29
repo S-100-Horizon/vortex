@@ -122,7 +122,9 @@ namespace S100Framework.DomainModel
 
     public abstract class ComplexAttribute : Attribute
     {
-        public abstract Attribute[] subAttributes { get; set; }
+        public abstract Attribute[] subAttributes { get; }
+
+        public Attribute[] subAttributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] subAttributeBindings();
 
@@ -142,7 +144,9 @@ namespace S100Framework.DomainModel
     {
         public abstract string code { get; }
 
-        public abstract Attribute[] attributes { get; set; }
+        public abstract Attribute[] attributes { get; }
+
+        public Attribute[] attributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] attributeBindings();
 

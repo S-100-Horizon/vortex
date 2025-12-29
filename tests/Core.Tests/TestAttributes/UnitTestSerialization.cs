@@ -29,35 +29,7 @@ namespace TestAttributes
         }
 
         [Fact]
-        public void Test_Serialization() {
-            //var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
-            //resolver.Modifiers.Add(typeInfo => {
-            //    System.Diagnostics.Debug.WriteLine($"typeinfo: {typeInfo.Type.FullName}");
-            //    //if (typeInfo.Type.IsSubclassOf(typeof(S100Framework.DomainModel.ComplexAttribute))) {
-            //    //    System.Diagnostics.Debug.WriteLine($"ComplexAttribute: {typeInfo.Type.FullName}");
-
-            //    //    typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-            //    //        TypeDiscriminatorPropertyName = "code",
-            //    //        IgnoreUnrecognizedTypeDiscriminators = true,
-            //    //    };
-            //    //    typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorCharacteristics), typeDiscriminator: "sectorCharacteristics"));
-            //    //    typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(lightSector), typeDiscriminator: "lightSector"));
-            //    //}
-            //    if (typeInfo.Type == typeof(S100Framework.DomainModel.Attribute)) {
-            //        System.Diagnostics.Debug.WriteLine($"SimpleAttribute: {typeInfo.Type.FullName}");
-            //        typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-            //            TypeDiscriminatorPropertyName = "code",
-            //            IgnoreUnrecognizedTypeDiscriminators = true,
-            //        };
-            //        typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(colour), typeDiscriminator: "colour"));
-            //        typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(lightCharacteristic), typeDiscriminator: "lightCharacteristic"));
-            //        typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorCharacteristics), typeDiscriminator: "sectorCharacteristics"));
-            //        typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(lightSector), typeDiscriminator: "lightSector"));
-
-            //    }
-            //});
-            //jsonSerializerOptions.TypeInfoResolver = resolver;
-
+        public void Test_Serialization() {            
             var complexAttribute = new sectorCharacteristics {
             };
 
