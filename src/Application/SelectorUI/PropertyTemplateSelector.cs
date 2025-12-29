@@ -1,11 +1,11 @@
-﻿using System;
+﻿using S100Framework.DomainModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace S100Framework.WPF
 {
@@ -18,22 +18,17 @@ namespace S100Framework.WPF
         public DataTemplate ComplexEditorTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
-            if (item is SimpleAttributeValue simpleAttributeValue) {
-
-                if (simpleAttributeValue.attributeBinding!.attribute is SimpleAttribute simpleAttribute) {
-                    if (simpleAttribute.valueType.Equals("booloean"))
-                        return BooleanEditorTemplate;
-                    if (simpleAttribute.valueType.Equals("integer"))
-                        return IntegerEditorTemplate;
-                    if (simpleAttribute.valueType.Equals("enumeration"))
-                        return EnumEditorTemplate;
-                }
+            if (item is SimpleAttribute simpleAttribute) {
+                if (simpleAttribute.valueType.Equals("boolean"))
+                    return BooleanEditorTemplate;
+                if (simpleAttribute.valueType.Equals("integer"))
+                    return IntegerEditorTemplate;
+                if (simpleAttribute.valueType.Equals("enumeration"))
+                    return EnumEditorTemplate;
             }
 
-            if (item is ComplextAttributeValue complextAttributeValue) {
-                if (complextAttributeValue.attributeBinding.attribute is ComplextAttribute complextAttribute) {
-                    return ComplexEditorTemplate;
-                }
+            if (item is ComplexAttribute complextAttribute) {
+                return ComplexEditorTemplate;
             }
 
             return StringEditorTemplate; // Default

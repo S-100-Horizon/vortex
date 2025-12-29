@@ -37,14 +37,8 @@ namespace S100Framework.WPF.Converters
     public class EnumSourceConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (value is SimpleAttributeValue propertyValue) {
-                if (propertyValue.attributeBinding!.attribute is SimpleEnumerationAttribute simpleEnumerationAttribute) {
-                    return simpleEnumerationAttribute.listedValues;
-                    var underlyingType = typeof(S100Framework.DomainModel.S101.categoryOfLight);
-
-                    //var underlyingType = Type.GetType($"S100Framework.DomainModel.S101.{simpleAttribute.Code}", true)!;
-                    return propertyValue.attributeBinding.permitedValues!.Select(e => Enum.ToObject(underlyingType, e));
-                }
+            if (value is SimpleEnumerationAttribute propertyValue) {
+                return propertyValue.listedValues;
             }
             if (value is Type type && type.IsEnum) {
                 return Enum.GetValues(type);
@@ -60,19 +54,14 @@ namespace S100Framework.WPF.Converters
     public class S100AttributeEditorSourceConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if(value is ComplextAttributeValue complextAttributeValue) {
+            if (value is ComplexAttribute complexAttribute) {
                 var selectedObject = new SelectedObject {
-                    code = complextAttributeValue.code,                    
+                    code = complexAttribute.GetType().Name,
                 };
 
-                if (complextAttributeValue.attributeBinding!.attribute is SimpleAttribute simpleAttribute) {
-                    selectedObject.attributeBindings = [complextAttributeValue.attributeBinding];
-                }
-                if (complextAttributeValue.attributeBinding!.attribute is ComplextAttribute complextAttribute) {
-                    selectedObject.attributeBindings = complextAttribute.subAttributeBindings;
-                }
+                selectedObject.attributeBindings = complexAttribute.subAttributeBindings();
 
-                selectedObject.AttributeValues= [.. complextAttributeValue.attributeValues];
+                selectedObject.attributeValues = [.. complexAttribute.subAttributes];
 
                 return selectedObject;
             }

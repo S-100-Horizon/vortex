@@ -1,22 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using S100Framework.DomainModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace S100Framework.WPF
@@ -34,7 +21,7 @@ namespace S100Framework.WPF
 
         public AttributeBinding[] attributeBindings { get; set; } = [];
 
-        public Collection<AttributeValue> AttributeValues { get; set; } = [];
+        public Collection<DomainModel.Attribute> attributeValues { get; set; } = [];
     }
 
     public class SelectedType
@@ -85,7 +72,7 @@ namespace S100Framework.WPF
         #region Properties
         public ObservableCollection<AttributeBinding> AttributeBindings { get; set; } = new ObservableCollection<AttributeBinding>();
 
-        public ObservableCollection<AttributeValue> PropertyValues { get; set; } = new ObservableCollection<AttributeValue>();
+        public ObservableCollection<DomainModel.Attribute> PropertyValues { get; set; } = new ObservableCollection<DomainModel.Attribute>();
 
         private string _title;
 
@@ -115,7 +102,7 @@ namespace S100Framework.WPF
                     grid.AttributeBindings.Add(p);
 
                 grid.PropertyValues.Clear();
-                foreach (var p in grid._selectedObject!.AttributeValues)
+                foreach (var p in grid._selectedObject!.attributeValues)
                     grid.PropertyValues.Add(p);
             }
         }

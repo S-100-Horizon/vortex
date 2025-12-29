@@ -14,28 +14,28 @@
 
         <!-- Template for Strings -->
         <DataTemplate x:Key="StringEditorTemplate">
-            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+            <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
         </DataTemplate>
 
         <!-- Template for Integers -->
         <DataTemplate x:Key="IntegerEditorTemplate">
-            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+            <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
         </DataTemplate>
 
         <!-- Template for Decimals -->
         <DataTemplate x:Key="DecimalEditorTemplate">
-            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+            <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
         </DataTemplate>
 
         <!-- Template for Booleans -->
         <DataTemplate x:Key="BooleanEditorTemplate">
-            <CheckBox IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5,2"/>
+            <CheckBox IsChecked="{Binding value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5,2" IsThreeState="True"/>
         </DataTemplate>
 
         <DataTemplate x:Key="EnumEditorTemplate">
             <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}" 
                       DisplayMemberPath="label"
-                      SelectedValue="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValue="{Binding value, UpdateSourceTrigger=PropertyChanged}"
                       SelectedValuePath="code"
                       IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
                       Margin="2"
@@ -64,7 +64,7 @@
         <DockPanel Grid.Row="0" LastChildFill="True">
             <ComboBox DockPanel.Dock="Right" 
                       ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
-                      DisplayMemberPath="Name"/>
+                      DisplayMemberPath="attribute"/>
             <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" />
         </DockPanel>
 

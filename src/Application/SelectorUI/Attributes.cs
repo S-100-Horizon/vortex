@@ -1,5 +1,4 @@
-﻿using S100Framework.DomainModel.S101;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace S100Framework.WPF
+namespace S100Framework.DomainModel
 {
     public record listedValue(string label, string defintion, int code);
 
