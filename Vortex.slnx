@@ -54,6 +54,7 @@
     <Project Path="tests/Core.Tests/Test100Topology/Test100Topology.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="tests/Core.Tests/TestAttributes/TestAttributes.csproj" Id="21f3f794-46ed-4bf7-8342-8b34bc9b22c3" />
     <Project Path="tests/Core.Tests/TestLua/TestLua.csproj">
       <Platform Project="x64" />
     </Project>
