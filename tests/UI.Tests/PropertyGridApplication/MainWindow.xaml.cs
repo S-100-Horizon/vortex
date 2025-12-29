@@ -32,6 +32,9 @@ namespace PropertyGridApplication
 
             var viewModel = new CustomViewModel() {   
                 buoyShape = buoyShape.Barrel,
+                fixedDateRange= new S100Framework.WPF.ViewModel.S101.fixedDateRangeViewModel {
+
+                },
             };
             viewModel.colour.Add((colour)3);
             viewModel.featureName.Add(new S100Framework.WPF.ViewModel.S101.featureNameViewModel {
