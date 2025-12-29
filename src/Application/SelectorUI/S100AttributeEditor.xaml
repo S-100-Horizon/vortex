@@ -33,8 +33,10 @@
         </DataTemplate>
 
         <DataTemplate x:Key="EnumEditorTemplate">
-            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}"
-                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}" 
+                      DisplayMemberPath="label"
+                      SelectedValue="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValuePath="code"
                       IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
                       Margin="2"
                       Padding="2"/>
@@ -63,7 +65,7 @@
             <ComboBox DockPanel.Dock="Right" 
                       ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
                       DisplayMemberPath="Name"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" />
         </DockPanel>
 
         <ItemsControl Grid.Row="1"

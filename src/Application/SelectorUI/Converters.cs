@@ -38,7 +38,8 @@ namespace S100Framework.WPF.Converters
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is SimpleAttributeValue propertyValue) {
-                if (propertyValue.attributeBinding!.attribute is SimpleAttribute simpleAttribute) {
+                if (propertyValue.attributeBinding!.attribute is SimpleEnumerationAttribute simpleEnumerationAttribute) {
+                    return simpleEnumerationAttribute.listedValues;
                     var underlyingType = typeof(S100Framework.DomainModel.S101.categoryOfLight);
 
                     //var underlyingType = Type.GetType($"S100Framework.DomainModel.S101.{simpleAttribute.Code}", true)!;

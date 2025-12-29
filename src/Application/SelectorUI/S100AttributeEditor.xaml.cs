@@ -108,7 +108,7 @@ namespace S100Framework.WPF
             if (d is S100AttributeEditor grid) {
                 grid._selectedObject = e.NewValue as SelectedObject;
 
-                //grid.Title = grid._selectedObject!.Code;
+                grid.Title = grid._selectedObject!.code;
 
                 grid.AttributeBindings.Clear();
                 foreach (var p in grid._selectedObject!.attributeBindings)

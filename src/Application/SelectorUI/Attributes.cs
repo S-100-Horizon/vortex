@@ -6,9 +6,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace S100Framework.WPF
 {
+    public record listedValue(string label, string defintion, int code);
+
     public abstract class Attribute
     {
         public string name { get; init; } = string.Empty;
@@ -18,6 +21,16 @@ namespace S100Framework.WPF
     public class SimpleAttribute : Attribute
     {
         public string valueType { get; init; } = string.Empty;
+    }
+
+    public class SimpleEnumerationAttribute : SimpleAttribute
+    {        
+        public listedValue[] listedValues { get; set; } = [];
+    }
+
+    public class SimpleCodeListAttribute : SimpleAttribute
+    {
+        public listedValue[] listedValues { get; set; } = [];
     }
 
     public class ComplextAttribute : Attribute

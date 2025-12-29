@@ -61,11 +61,47 @@ namespace SelectorUI
             var attributes = new List<S100Framework.WPF.Attribute>();
 
             foreach (var element in s100.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager)) {
-                attributes.Add(new SimpleAttribute {
-                    code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value,
-                    name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value,
-                    valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value,
-                });
+                var valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value;
+
+                if (valueType.Equals("enumeration")) {
+                    var enumeration = new SimpleEnumerationAttribute {
+                        code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value,
+                        name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value,
+                        valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value,
+                    };
+
+                    foreach (var listedValue in element.Element(XName.Get("listedValues", scopes["S100FC"]))!.Elements()) {
+                        var listedValueLabel = listedValue.Element(XName.Get("label", scopes["S100FC"]))!.Value!;
+                        var listedValueDefinition = listedValue.Element(XName.Get("definition", scopes["S100FC"]))!.Value!;
+                        var listedValueCode = listedValue.Element(XName.Get("code", scopes["S100FC"]))!.Value!;
+
+                        enumeration.listedValues = [.. enumeration.listedValues, new listedValue(listedValueLabel,listedValueDefinition,int.Parse(listedValueCode))];
+                    }
+                    attributes.Add(enumeration);
+                }
+                else if (valueType.Equals("S100_CodeList")) {
+                    var codelist = new SimpleCodeListAttribute {
+                        code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value,
+                        name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value,
+                        valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value,
+                    };
+
+                    foreach (var listedValue in element.Element(XName.Get("listedValues", scopes["S100FC"]))!.Elements()) {
+                        var listedValueLabel = listedValue.Element(XName.Get("label", scopes["S100FC"]))!.Value!;
+                        var listedValueDefinition = listedValue.Element(XName.Get("definition", scopes["S100FC"]))!.Value!;
+                        var listedValueCode = listedValue.Element(XName.Get("code", scopes["S100FC"]))!.Value!;
+
+                        codelist.listedValues = [.. codelist.listedValues, new listedValue(listedValueLabel, listedValueDefinition, int.Parse(listedValueCode))];
+                    }
+                    attributes.Add(codelist);
+                }
+                else {
+                    attributes.Add(new SimpleAttribute {
+                        code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value,
+                        name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value,
+                        valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value,
+                    });
+                }
             }
 
             var notFinished = false;
@@ -149,12 +185,12 @@ namespace SelectorUI
             selectedObject.AttributeValues = [
                     new SimpleAttributeValue{
                         code = "categoryOfLight",
-                        Value = categoryOfLight.SubsidiaryLight,
+                        Value = (int)categoryOfLight.SubsidiaryLight,
                         attributeBinding = selectedObject.attributeBindings.Single(e=>e.Name.Equals("categoryOfLight")),
                     },
                     new SimpleAttributeValue{
                         code = "categoryOfLight",
-                        Value = categoryOfLight.AeroLight,
+                        Value = (int)categoryOfLight.AeroLight,
                         attributeBinding = selectedObject.attributeBindings.Single(e=>e.Name.Equals("categoryOfLight")),
                     },
                     new SimpleAttributeValue{
@@ -178,7 +214,7 @@ namespace SelectorUI
                                 },
                                 new SimpleAttributeValue{
                                     code = "nameUsage",
-                                    Value = nameUsage.DefaultNameDisplay,
+                                    Value = (int)nameUsage.DefaultNameDisplay,
                                     attributeBinding = featureName.subAttributeBindings.Single(e=>e.Name.Equals("nameUsage")),
                                 }
                             ]
