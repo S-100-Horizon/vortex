@@ -407,3 +407,4 @@ FodyWeavers.xsd
 /tests/Core.Tests/TestS100Framework.Roslyn/*_FC.cs
 /tests/Core.Tests/TestS100Framework.Roslyn/*_ViewModel.cs
 /src/Application/ProductCatalogueService/exports
+/tests/Core.Tests/TestAttributes/S-101_FC.g.cs
