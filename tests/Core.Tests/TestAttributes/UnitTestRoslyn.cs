@@ -31,6 +31,9 @@ namespace TestAttributes
         public void Test_Build() {
             Test_S101_Build();
             Test_S122_Build();
+            Test_S123_Build();
+            Test_S127_Build();
+            Test_S128_Build();
         }
 
         [Fact]
@@ -53,6 +56,39 @@ namespace TestAttributes
             var output = roslyn.ToString();
 
             File.WriteAllText(@".\..\..\..\S-122_FC.attribute.g.cs", output, Encoding.UTF8);
+        }
+
+        [Fact]
+        public void Test_S123_Build() {
+            var s122 = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-123-Product-Specification-Development\FC\S-123_FC_Ed.2.0.0_20251210.xml"));
+
+            var roslyn = RoslynBuilder(s122);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-123_FC.attribute.g.cs", output, Encoding.UTF8);
+        }
+
+        [Fact]
+        public void Test_S127_Build() {
+            var s122 = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-127-Product-Specification-Development\FC\127_FC_2.0.0.20251207.xml"));
+
+            var roslyn = RoslynBuilder(s122);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-127_FC.attribute.g.cs", output, Encoding.UTF8);
+        }
+
+        [Fact]
+        public void Test_S128_Build() {
+            var s122 = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-128-Product-Specification-Development\FC\128_FC.xml"));
+
+            var roslyn = RoslynBuilder(s122);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-128_FC.attribute.g.cs", output, Encoding.UTF8);
         }
 
         private StringBuilder RoslynBuilder(XDocument ps) {
