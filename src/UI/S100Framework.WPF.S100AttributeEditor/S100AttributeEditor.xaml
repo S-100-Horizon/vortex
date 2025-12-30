@@ -62,7 +62,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding S100FC_code}" Margin="5" VerticalAlignment="Center"/>
 
                     <ContentPresenter Grid.Column="1" 
                                       Content="{Binding}" 
@@ -73,7 +73,7 @@
 
         <DataTemplate x:Key="ComplexItemControlTemplate">
             <Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">
-                <ContentPresenter Grid.Row="1" Margin="5,0,0,0"
+                <ContentPresenter Grid.Row="0" Margin="5,0,0,0"
                        Content="{Binding}" 
                        ContentTemplateSelector="{StaticResource PropSelector}"/>
             </Border>

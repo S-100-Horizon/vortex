@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
+#nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-namespace S100Framework.DomainModel.S101.SimpleAttributes
+namespace S100Framework.AttributeModel.S101.SimpleAttributes
 {
 	/// <summary>
 	/// A straight route (known as a recommended track, range or leading line), which comprises: a. at least two structures (usually beacons or daymarks) and/or natural features, which may carry lights and/or top-marks. The structures/features are positioned so that when observed to be in line, a vessel can follow a known bearing with safety. (Adapted from International Association of Lighthouse Authorities - IALA Aids to Navigation Guide, 1990); or b. a single structure or natural feature, which may carry lights and/or a topmark, and a specified bearing which can be followed with safety. (S-57 Edition 3.1, Appendix A Chapter 2, Page 2.72, November 2000, as amended).
 	/// </summary>
-	public class basedOnFixedMarks : SimpleAttribute
+	public class basedOnFixedMarks : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "basedOnFixedMarks";
+		public override string S100FC_code => nameof(basedOnFixedMarks);
+		[JsonIgnore]
+		public override string S100FC_name => "Based On Fixed Marks";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -20,10 +23,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Describes the characteristic geometric form of the beacon.
 	/// </summary>
-	public class beaconShape : SimpleEnumerationAttribute
+	public class beaconShape : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "beaconShape";
+		public override string S100FC_code => nameof(beaconShape);
+		[JsonIgnore]
+		public override string S100FC_name => "Beacon Shape";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Stake, Pole, Perch, Post", "An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.",1),
@@ -40,10 +45,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The bridge’s primary shape and/or construction material.
 	/// </summary>
-	public class bridgeConstruction : SimpleEnumerationAttribute
+	public class bridgeConstruction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "bridgeConstruction";
+		public override string S100FC_code => nameof(bridgeConstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Bridge Construction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Arch", "A typically curved structural member spanning an opening and serving as a support (as for the wall or other weight above the opening).",1),
@@ -58,10 +65,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A specific role that describes the purpose of a bridge.
 	/// </summary>
-	public class bridgeFunction : SimpleEnumerationAttribute
+	public class bridgeFunction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "bridgeFunction";
+		public override string S100FC_code => nameof(bridgeFunction);
+		[JsonIgnore]
+		public override string S100FC_name => "Bridge Function";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Vehicular", "Of, relating to, or designed for vehicles and especially motor vehicles.",1),
@@ -75,10 +84,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The specific shape of the building.
 	/// </summary>
-	public class buildingShape : SimpleEnumerationAttribute
+	public class buildingShape : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "buildingShape";
+		public override string S100FC_code => nameof(buildingShape);
+		[JsonIgnore]
+		public override string S100FC_name => "Building Shape";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("High-Rise Building", "A building having many storeys.",5),
@@ -93,10 +104,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The principal shape and/or design of a buoy.
 	/// </summary>
-	public class buoyShape : SimpleEnumerationAttribute
+	public class buoyShape : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "buoyShape";
+		public override string S100FC_code => nameof(buoyShape);
+		[JsonIgnore]
+		public override string S100FC_name => "Buoy Shape";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Conical", "The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.",1),
@@ -114,10 +127,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The depth below the seabed to which an object is buried.
 	/// </summary>
-	public class buriedDepth : SimpleAttribute
+	public class buriedDepth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "buriedDepth";
+		public override string S100FC_code => nameof(buriedDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Buried Depth";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -126,10 +141,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The designated call-sign of a station (radio station, radar station, pilot, ...).
 	/// </summary>
-	public class callSign : SimpleAttribute
+	public class callSign : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "callSign";
+		public override string S100FC_code => nameof(callSign);
+		[JsonIgnore]
+		public override string S100FC_name => "Call Sign";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -138,10 +155,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of airport/airfield based on the primary aircraft and user group.
 	/// </summary>
-	public class categoryOfAirportAirfield : SimpleEnumerationAttribute
+	public class categoryOfAirportAirfield : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfAirportAirfield";
+		public override string S100FC_code => nameof(categoryOfAirportAirfield);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Airport/Airfield";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Military Aeroplane Airport", "A large military airfield usually equipped with a control tower, hangars and accommodation for the receiving and discharging of passengers or cargo.",1),
@@ -159,10 +178,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area where different use types of vessel can remain static.
 	/// </summary>
-	public class categoryOfAnchorage : SimpleEnumerationAttribute
+	public class categoryOfAnchorage : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfAnchorage";
+		public override string S100FC_code => nameof(categoryOfAnchorage);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Anchorage";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Unrestricted Anchorage", "An area in which vessels anchor or may anchor.",1),
@@ -182,10 +203,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Human settlement classification.
 	/// </summary>
-	public class categoryOfBuiltUpArea : SimpleEnumerationAttribute
+	public class categoryOfBuiltUpArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfBuiltUpArea";
+		public override string S100FC_code => nameof(categoryOfBuiltUpArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Built-Up Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Urban Area", "An area predominantly occupied by man-made structures used for residential, commercial, and industrial purposes.",1),
@@ -201,10 +224,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the cable based on the services provided.
 	/// </summary>
-	public class categoryOfCable : SimpleEnumerationAttribute
+	public class categoryOfCable : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCable";
+		public override string S100FC_code => nameof(categoryOfCable);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Cable";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Power Line", "A cable that transmits or distributes electrical power.",1),
@@ -220,10 +245,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an artificial waterway used for travel, drainage, or irrigation.
 	/// </summary>
-	public class categoryOfCanal : SimpleEnumerationAttribute
+	public class categoryOfCanal : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCanal";
+		public override string S100FC_code => nameof(categoryOfCanal);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Canal";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Transportation", "A canal used for navigation as part of a transport system.",1),
@@ -236,10 +263,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The four quadrants (north, east, south and west) are bounded by the true bearings NW-NE, NE-SE, SE-SW and SW-NW taken from the point of interest. A cardinal mark is named after the quadrant in which it is placed. The name of the cardinal mark indicates that it should be passed to the named side of the mark.
 	/// </summary>
-	public class categoryOfCardinalMark : SimpleEnumerationAttribute
+	public class categoryOfCardinalMark : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCardinalMark";
+		public override string S100FC_code => nameof(categoryOfCardinalMark);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Cardinal Mark";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("North Cardinal Mark", "Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.",1),
@@ -253,10 +282,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a place where vehicles or travellers are stopped for identification or inspection.
 	/// </summary>
-	public class categoryOfCheckpoint : SimpleEnumerationAttribute
+	public class categoryOfCheckpoint : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCheckpoint";
+		public override string S100FC_code => nameof(categoryOfCheckpoint);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Checkpoint";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Custom", "Serves as a government checkpoint where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.",1),
@@ -267,10 +298,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Physical condition of the coastline.
 	/// </summary>
-	public class categoryOfCoastline : SimpleEnumerationAttribute
+	public class categoryOfCoastline : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCoastline";
+		public override string S100FC_code => nameof(categoryOfCoastline);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Coastline";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Steep Coast", "A coast backed by rock or earth cliffs, gives a good radar return and is useful for visual identification from a considerable distance off, where cliffs alternate with low lying coast along the shoreline.",1),
@@ -286,10 +319,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of conveyor used for moving goods from one location to another.
 	/// </summary>
-	public class categoryOfConveyor : SimpleEnumerationAttribute
+	public class categoryOfConveyor : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfConveyor";
+		public override string S100FC_code => nameof(categoryOfConveyor);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Conveyor";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Aerial Cableway", "A transportation system consisting of load cables strung between pylons on which carrier units (for example: cars or buckets intended to transport people, material, and/or equipment) are suspended.",1),
@@ -303,10 +338,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of machines used for hoisting and moving heavy objects.
 	/// </summary>
-	public class categoryOfCrane : SimpleEnumerationAttribute
+	public class categoryOfCrane : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCrane";
+		public override string S100FC_code => nameof(categoryOfCrane);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Crane";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Container Crane/Gantry", "A high speed, shore-based crane used in the lift-on/lift-off operation of specially constructed containers.",2),
@@ -321,10 +358,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a structure acting as barrier to water flow.
 	/// </summary>
-	public class categoryOfDam : SimpleEnumerationAttribute
+	public class categoryOfDam : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfDam";
+		public override string S100FC_code => nameof(categoryOfDam);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Dam";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Weir", "A dam erected across a river to raise the level of the water. A fence of stakes set in a river or along the shore as a trap for fish. The word is now restricted to smaller works, the larger are called dams.",1),
@@ -337,10 +376,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of vessel dock.
 	/// </summary>
-	public class categoryOfDock : SimpleEnumerationAttribute
+	public class categoryOfDock : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfDock";
+		public override string S100FC_code => nameof(categoryOfDock);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Dock";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Tidal", "A dock which is open to the sea and in which the water level is affected by tides.",1),
@@ -352,10 +393,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a post or group of posts, used for mooring or warping a vessel.
 	/// </summary>
-	public class categoryOfDolphin : SimpleEnumerationAttribute
+	public class categoryOfDolphin : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfDolphin";
+		public override string S100FC_code => nameof(categoryOfDolphin);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Dolphin";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Mooring Dolphin", "A post or group of posts driven into the seabed or riverbed, used as a mooring point for vessels.",1),
@@ -369,10 +412,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area based on the type of waste being disposed of.
 	/// </summary>
-	public class categoryOfDumpingGround : SimpleEnumerationAttribute
+	public class categoryOfDumpingGround : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfDumpingGround";
+		public override string S100FC_code => nameof(categoryOfDumpingGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Dumping Ground";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Chemical Waste Dumping Ground", "An area at sea where chemical waste is dumped.",2),
@@ -387,10 +432,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a physical boundary.
 	/// </summary>
-	public class categoryOfFence : SimpleEnumerationAttribute
+	public class categoryOfFence : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfFence";
+		public override string S100FC_code => nameof(categoryOfFence);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Fence";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fence", "A man-made barrier of relatively light structure used as an enclosure or boundary.",1),
@@ -403,10 +450,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the manoeuvrability of the ferry vessel, not the various types of ferry vessel.
 	/// </summary>
-	public class categoryOfFerry : SimpleEnumerationAttribute
+	public class categoryOfFerry : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfFerry";
+		public override string S100FC_code => nameof(categoryOfFerry);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Ferry";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Free Moving Ferry", "A ferry which may have routes that vary with weather, tide and traffic.",1),
@@ -420,10 +469,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of fishing facility provided based on different fishing methods.
 	/// </summary>
-	public class categoryOfFishingFacility : SimpleEnumerationAttribute
+	public class categoryOfFishingFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfFishingFacility";
+		public override string S100FC_code => nameof(categoryOfFishingFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Fishing Facility";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fishing Stake", "Poles or stakes placed in shallow water to outline a fishing ground or to catch fish.",1),
@@ -437,10 +488,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the various means of generating the fog signal.
 	/// </summary>
-	public class categoryOfFogSignal : SimpleEnumerationAttribute
+	public class categoryOfFogSignal : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfFogSignal";
+		public override string S100FC_code => nameof(categoryOfFogSignal);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Fog Signal";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Explosive", "A signal produced by the firing of explosive charges.",1),
@@ -460,10 +513,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the different types of fortified structure.
 	/// </summary>
-	public class categoryOfFortifiedStructure : SimpleEnumerationAttribute
+	public class categoryOfFortifiedStructure : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfFortifiedStructure";
+		public override string S100FC_code => nameof(categoryOfFortifiedStructure);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Fortified Structure";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Castle", "A large fortified building or structure.",1),
@@ -481,10 +536,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a structure that can be swung, drawn, or lowered to block an entrance or a passageway.
 	/// </summary>
-	public class categoryOfGate : SimpleEnumerationAttribute
+	public class categoryOfGate : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfGate";
+		public override string S100FC_code => nameof(categoryOfGate);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Gate";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Flood Barrage Gate", "An opening gate used to control flood water.",2),
@@ -499,10 +556,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of harbour use.
 	/// </summary>
-	public class categoryOfHarbourFacility : SimpleEnumerationAttribute
+	public class categoryOfHarbourFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfHarbourFacility";
+		public override string S100FC_code => nameof(categoryOfHarbourFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Harbour Facility";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("RoRo Terminal", "A terminal for roll-on roll-off ferries.",1),
@@ -526,10 +585,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an old or unseaworthy ship used for a new function.
 	/// </summary>
-	public class categoryOfHulk : SimpleEnumerationAttribute
+	public class categoryOfHulk : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfHulk";
+		public override string S100FC_code => nameof(categoryOfHulk);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Hulk";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Floating Restaurant", "A permanently moored floating structure (for example: an old ship) that is used as a restaurant.",1),
@@ -546,10 +607,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of ice.
 	/// </summary>
-	public class categoryOfIce : SimpleEnumerationAttribute
+	public class categoryOfIce : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfIce";
+		public override string S100FC_code => nameof(categoryOfIce);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Ice";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fast Ice", "Sea ice which remains fast, generally in the position where originally formed, and which may attain a considerable thickness. It is found along coasts, where it is attached to the shore, or over shoals, where it may be held in position by islands, grounded icebergs or grounded polar ice.",1),
@@ -562,10 +625,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of fixed installation buoy.
 	/// </summary>
-	public class categoryOfInstallationBuoy : SimpleEnumerationAttribute
+	public class categoryOfInstallationBuoy : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfInstallationBuoy";
+		public override string S100FC_code => nameof(categoryOfInstallationBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Installation Buoy";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Catenary Anchor Leg Mooring", "Incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.",1),
@@ -577,10 +642,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// General terms for describing landscapes.
 	/// </summary>
-	public class categoryOfLandRegion : SimpleEnumerationAttribute
+	public class categoryOfLandRegion : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfLandRegion";
+		public override string S100FC_code => nameof(categoryOfLandRegion);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Land Region";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fen", "A type of bog, especially a low-lying area, wholly or partly covered with water and dominated by grass-like plants, grasses, sedges and reeds.",1),
@@ -611,10 +678,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of prominent cultural and natural features in the landscape.
 	/// </summary>
-	public class categoryOfLandmark : SimpleEnumerationAttribute
+	public class categoryOfLandmark : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfLandmark";
+		public override string S100FC_code => nameof(categoryOfLandmark);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Landmark";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Cairn", "A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.",1),
@@ -650,10 +719,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of lateral marks in the IALA Buoyage System.
 	/// </summary>
-	public class categoryOfLateralMark : SimpleEnumerationAttribute
+	public class categoryOfLateralMark : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfLateralMark";
+		public override string S100FC_code => nameof(categoryOfLateralMark);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Lateral Mark";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Port-Hand Lateral Mark", "Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".",1),
@@ -667,10 +738,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of different light types.
 	/// </summary>
-	public class categoryOfLight : SimpleEnumerationAttribute
+	public class categoryOfLight : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfLight";
+		public override string S100FC_code => nameof(categoryOfLight);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Light";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Leading Light", "A light associated with other lights so as to form a leading line to be followed.",4),
@@ -694,10 +767,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area of water devoted to the raising, breeding, or production of a specific aquatic animal.
 	/// </summary>
-	public class categoryOfMarineFarmCulture : SimpleEnumerationAttribute
+	public class categoryOfMarineFarmCulture : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfMarineFarmCulture";
+		public override string S100FC_code => nameof(categoryOfMarineFarmCulture);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Marine Farm/Culture";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Crustaceans", "Hard shelled animals, for example crabs or lobsters.",1),
@@ -712,10 +787,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of area by military use.
 	/// </summary>
-	public class categoryOfMilitaryPracticeArea : SimpleEnumerationAttribute
+	public class categoryOfMilitaryPracticeArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfMilitaryPracticeArea";
+		public override string S100FC_code => nameof(categoryOfMilitaryPracticeArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Military Practice Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Torpedo Exercise Area", "An area within which exercises are carried out with torpedoes.",2),
@@ -730,10 +807,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area in which vessels may be secured to mooring buoys.
 	/// </summary>
-	public class categoryOfMooringArea : SimpleEnumerationAttribute
+	public class categoryOfMooringArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfMooringArea";
+		public override string S100FC_code => nameof(categoryOfMooringArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Mooring Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Small Craft Mooring Area", "An area in which yachts and small boats moor.",1),
@@ -746,10 +825,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of route guidance given to vessels.
 	/// </summary>
-	public class categoryOfNavigationLine : SimpleEnumerationAttribute
+	public class categoryOfNavigationLine : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfNavigationLine";
+		public override string S100FC_code => nameof(categoryOfNavigationLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Navigation Line";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Clearing Line", "A straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.",1),
@@ -762,10 +843,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of objects that impede movement.
 	/// </summary>
-	public class categoryOfObstruction : SimpleEnumerationAttribute
+	public class categoryOfObstruction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfObstruction";
+		public override string S100FC_code => nameof(categoryOfObstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Obstruction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Snag/Stump", "A tree, branch or broken pile embedded in the ocean floor, river or lake bottom and not visible on the surface, forming thereby a hazard to vessels.",1),
@@ -796,10 +879,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an offshore raised structure.
 	/// </summary>
-	public class categoryOfOffshorePlatform : SimpleEnumerationAttribute
+	public class categoryOfOffshorePlatform : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfOffshorePlatform";
+		public override string S100FC_code => nameof(categoryOfOffshorePlatform);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Offshore Platform";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Oil Rig", "A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.",1),
@@ -820,10 +905,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area at sea within which there are production facilities.
 	/// </summary>
-	public class categoryOfOffshoreProductionArea : SimpleEnumerationAttribute
+	public class categoryOfOffshoreProductionArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfOffshoreProductionArea";
+		public override string S100FC_code => nameof(categoryOfOffshoreProductionArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Offshore Production Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Wind Farm", "A collection of wind turbines that are collocated and are organized as a single power generation unit.",1),
@@ -839,10 +926,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of barriers used to prevent the unwanted spread of oil across the sea surface.
 	/// </summary>
-	public class categoryOfOilBarrier : SimpleEnumerationAttribute
+	public class categoryOfOilBarrier : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfOilBarrier";
+		public override string S100FC_code => nameof(categoryOfOilBarrier);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Oil Barrier";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Oil Retention (High Pressure Pipe)", "A pipe with holes from which air blows. When the air bubbles reach the surface they form a barrier which prevents the spread of oil.",1),
@@ -854,10 +943,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of opening structures spanning and providing passage over a gap or barrier, such as a river or roadway.
 	/// </summary>
-	public class categoryOfOpeningBridge : SimpleEnumerationAttribute
+	public class categoryOfOpeningBridge : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfOpeningBridge";
+		public override string S100FC_code => nameof(categoryOfOpeningBridge);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Opening Bridge";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Swing Bridge", "A movable bridge (or span thereof) which rotates in a horizontal plane about a vertical pivot to allow the passage of vessels.",3),
@@ -871,10 +962,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of pile, driven into the earth as a foundation or support for a structure.
 	/// </summary>
-	public class categoryOfPile : SimpleEnumerationAttribute
+	public class categoryOfPile : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfPile";
+		public override string S100FC_code => nameof(categoryOfPile);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Pile";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Stake", "An elongated wood or metal pole embedded in the seabed to serve as a marker or support.",1),
@@ -891,10 +984,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of pilot boarding method.
 	/// </summary>
-	public class categoryOfPilotBoardingPlace : SimpleEnumerationAttribute
+	public class categoryOfPilotBoardingPlace : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfPilotBoardingPlace";
+		public override string S100FC_code => nameof(categoryOfPilotBoardingPlace);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Pilot Boarding Place";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Boarding by Pilot-Cruising Vessel", "Pilot boards from a cruising vessel.",1),
@@ -907,10 +1002,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a pipe systems use.
 	/// </summary>
-	public class categoryOfPipelinePipe : SimpleEnumerationAttribute
+	public class categoryOfPipelinePipe : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfPipelinePipe";
+		public override string S100FC_code => nameof(categoryOfPipelinePipe);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Pipeline/Pipe";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Outfall Pipe", "A pipe (generally a sewer or drainage pipe) discharging into the sea or a river.",2),
@@ -926,10 +1023,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The selection of a first choice compared to other options.
 	/// </summary>
-	public class categoryOfPreference : SimpleEnumerationAttribute
+	public class categoryOfPreference : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfPreference";
+		public override string S100FC_code => nameof(categoryOfPreference);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Preference";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Primary", "The preferred first choice used in normal conditions.",1),
@@ -941,10 +1040,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area set aside for heavy industry.
 	/// </summary>
-	public class categoryOfProductionArea : SimpleEnumerationAttribute
+	public class categoryOfProductionArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfProductionArea";
+		public override string S100FC_code => nameof(categoryOfProductionArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Production Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Quarry", "An open-air excavation for the extraction of stone intended principally for use in construction.",1),
@@ -966,10 +1067,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the pylon based on the service it is supporting.
 	/// </summary>
-	public class categoryOfPylon : SimpleEnumerationAttribute
+	public class categoryOfPylon : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfPylon";
+		public override string S100FC_code => nameof(categoryOfPylon);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Pylon";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Power Transmission Pylon/Pole", "A pylon or pole that supports one or more power lines.",1),
@@ -985,10 +1088,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of radar station based on the services offered.
 	/// </summary>
-	public class categoryOfRadarStation : SimpleEnumerationAttribute
+	public class categoryOfRadarStation : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRadarStation";
+		public override string S100FC_code => nameof(categoryOfRadarStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Radar Station";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Radar Surveillance Station", "A radar station established for traffic surveillance.",1),
@@ -1000,10 +1105,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of radar transponder beacon based on functionality.
 	/// </summary>
-	public class categoryOfRadarTransponderBeacon : SimpleEnumerationAttribute
+	public class categoryOfRadarTransponderBeacon : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRadarTransponderBeacon";
+		public override string S100FC_code => nameof(categoryOfRadarTransponderBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Radar Transponder Beacon";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Ramark, Radar Beacon Transmitting Continuously", "A radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.",1),
@@ -1016,10 +1123,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of radio services offered by a radio station.
 	/// </summary>
-	public class categoryOfRadioStation : SimpleEnumerationAttribute
+	public class categoryOfRadioStation : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRadioStation";
+		public override string S100FC_code => nameof(categoryOfRadioStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Radio Station";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Radio Direction-Finding Station", "A radio station intended to determine only the direction of other stations by means of transmission from the latter.",5),
@@ -1035,10 +1144,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of aid station based on life saving equipment.
 	/// </summary>
-	public class categoryOfRescueStation : SimpleEnumerationAttribute
+	public class categoryOfRescueStation : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRescueStation";
+		public override string S100FC_code => nameof(categoryOfRescueStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Rescue Station";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Rescue Station with Lifeboat", "A place where equipment for saving life at sea is maintained; the type of lifeboat may vary from fast, long distance boats to inflatable inshore boats.",1),
@@ -1055,10 +1166,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The official legal status of each kind of restricted area defines the kind of restriction(s), for example the restriction for a 'game reserve' may be 'entering prohibited'.
 	/// </summary>
-	public class categoryOfRestrictedArea : SimpleEnumerationAttribute
+	public class categoryOfRestrictedArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRestrictedArea";
+		public override string S100FC_code => nameof(categoryOfRestrictedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Restricted Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Offshore Safety Zone", "The area around an offshore installation within which vessels are prohibited from entering without permission. Special regulations protect installations within a safety zone and vessels of all nationalities are required to respect the zone.",1),
@@ -1092,10 +1205,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a road based on size.
 	/// </summary>
-	public class categoryOfRoad : SimpleEnumerationAttribute
+	public class categoryOfRoad : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfRoad";
+		public override string S100FC_code => nameof(categoryOfRoad);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Road";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Motorway", "A limited access dual carriageway road specially designed for fast long-distance traffic and subject to special regulations concerning its use. It may have more than two lanes.",1),
@@ -1111,10 +1226,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The type of schedule, for instance opening, closure, etc.
 	/// </summary>
-	public class categoryOfSchedule : SimpleEnumerationAttribute
+	public class categoryOfSchedule : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSchedule";
+		public override string S100FC_code => nameof(categoryOfSchedule);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Schedule";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Normal Operation", "The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.",1),
@@ -1127,10 +1244,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an area based on its physical characteristics.
 	/// </summary>
-	public class categoryOfSeaArea : SimpleEnumerationAttribute
+	public class categoryOfSeaArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSeaArea";
+		public override string S100FC_code => nameof(categoryOfSeaArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Sea Area";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Gat", "A natural or artificial passage or channel through shoals or steep banks, or across a line of banks lying between two channels.",2),
@@ -1195,10 +1314,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of shoreline construction based on use.
 	/// </summary>
-	public class categoryOfShorelineConstruction : SimpleEnumerationAttribute
+	public class categoryOfShorelineConstruction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfShorelineConstruction";
+		public override string S100FC_code => nameof(categoryOfShorelineConstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Shoreline Construction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Breakwater", "A structure protecting a shore area, harbour, anchorage, or basin from waves.",1),
@@ -1228,10 +1349,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of station based on the traffic service provided.
 	/// </summary>
-	public class categoryOfSignalStationTraffic : SimpleEnumerationAttribute
+	public class categoryOfSignalStationTraffic : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSignalStationTraffic";
+		public override string S100FC_code => nameof(categoryOfSignalStationTraffic);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Signal Station, Traffic";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Port Control", "A signal station for the control of vessels within a port.",1),
@@ -1251,10 +1374,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of station based on the warning service provided.
 	/// </summary>
-	public class categoryOfSignalStationWarning : SimpleEnumerationAttribute
+	public class categoryOfSignalStationWarning : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSignalStationWarning";
+		public override string S100FC_code => nameof(categoryOfSignalStationWarning);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Signal Station, Warning";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Danger", "A signal or message warning of the presence of a danger to navigation.",1),
@@ -1279,10 +1404,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification based on the product for which a silo or tank is used.
 	/// </summary>
-	public class categoryOfSiloTank : SimpleEnumerationAttribute
+	public class categoryOfSiloTank : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSiloTank";
+		public override string S100FC_code => nameof(categoryOfSiloTank);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Silo/Tank";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Silo in General", "A large storage structure used for storing loose materials.",1),
@@ -1296,10 +1423,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a stretch of ground forming a natural or artificial incline.
 	/// </summary>
-	public class categoryOfSlope : SimpleEnumerationAttribute
+	public class categoryOfSlope : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSlope";
+		public override string S100FC_code => nameof(categoryOfSlope);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Slope";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Cutting", "An excavation through high ground for a road, canal, etc.",1),
@@ -1316,10 +1445,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of services and facilities for the small craft user.
 	/// </summary>
-	public class categoryOfSmallCraftFacility : SimpleEnumerationAttribute
+	public class categoryOfSmallCraftFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSmallCraftFacility";
+		public override string S100FC_code => nameof(categoryOfSmallCraftFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Small Craft Facility";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Visitors Berth", "A berth set aside for the use of visiting vessels.",1),
@@ -1361,10 +1492,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an aid to navigation which signifies some special purpose.
 	/// </summary>
-	public class categoryOfSpecialPurposeMark : SimpleEnumerationAttribute
+	public class categoryOfSpecialPurposeMark : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfSpecialPurposeMark";
+		public override string S100FC_code => nameof(categoryOfSpecialPurposeMark);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Special Purpose Mark";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Firing Danger Mark", "A mark used to indicate a firing danger area, usually at sea.",1),
@@ -1435,10 +1568,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// An assessment of the likelihood of change over time.
 	/// </summary>
-	public class categoryOfTemporalVariation : SimpleEnumerationAttribute
+	public class categoryOfTemporalVariation : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfTemporalVariation";
+		public override string S100FC_code => nameof(categoryOfTemporalVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Temporal Variation";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Extreme Event", "Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.",1),
@@ -1454,10 +1589,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a covered or partially covered area where different use types of vessel can berth.
 	/// </summary>
-	public class categoryOfStructure : SimpleEnumerationAttribute
+	public class categoryOfStructure : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfStructure";
+		public override string S100FC_code => nameof(categoryOfStructure);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Structure";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Boathouse", "A building or shed, usually built partly over water, for sheltering a boat or boats.",1),
@@ -1472,10 +1609,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the alternating horizontal movement of water associated with the rise and fall of the tide caused by tide producing forces.
 	/// </summary>
-	public class categoryOfTidalStream : SimpleEnumerationAttribute
+	public class categoryOfTidalStream : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfTidalStream";
+		public override string S100FC_code => nameof(categoryOfTidalStream);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Tidal Stream";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Flood Stream", "The horizontal movement of water associated with the rising tide. Flood streams generally set towards the shore, or in the direction of the tide progression.",1),
@@ -1488,10 +1627,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the plant life of an area or region.
 	/// </summary>
-	public class categoryOfVegetation : SimpleEnumerationAttribute
+	public class categoryOfVegetation : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfVegetation";
+		public override string S100FC_code => nameof(categoryOfVegetation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Vegetation";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Bush", "A shrub or clump of shrubs with stems of moderate length.",3),
@@ -1515,10 +1656,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of an unstable sea state.
 	/// </summary>
-	public class categoryOfWaterTurbulence : SimpleEnumerationAttribute
+	public class categoryOfWaterTurbulence : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfWaterTurbulence";
+		public override string S100FC_code => nameof(categoryOfWaterTurbulence);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Water Turbulence";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Breakers", "A wave breaking on the shore, over a reef, etc. Breakers may be roughly classified into three kinds, although the categories may overlap: spilling breakers break gradually over a considerable distance; plunging breakers tend to curl over and break with a crash; and surging breakers peak up, but then instead of spilling or plunging they surge up on the beach face. The French word 'brisant' is also used for the obstacle causing the breaking of the wave.",1),
@@ -1533,10 +1676,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of marine vegetation of the algae class.
 	/// </summary>
-	public class categoryOfWeedKelp : SimpleEnumerationAttribute
+	public class categoryOfWeedKelp : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfWeedKelp";
+		public override string S100FC_code => nameof(categoryOfWeedKelp);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Weed/Kelp";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Kelp", "A giant plant sometimes 60 metres long with no roots, it is anchored by hold-fasts or tendrils up to 10 metres long, that cling to rock. Gas filled bubbles on fronds act as floats keeping the kelp just below the surface.",1),
@@ -1549,10 +1694,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of a wrecked or ruined ship.
 	/// </summary>
-	public class categoryOfWreck : SimpleEnumerationAttribute
+	public class categoryOfWreck : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfWreck";
+		public override string S100FC_code => nameof(categoryOfWreck);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Wreck";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Non-Dangerous Wreck", "A wreck which is not considered to be dangerous to surface navigation.",1),
@@ -1567,10 +1714,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the zone of confidence in data within an area based on the positional accuracy, survey equipment and coverage.
 	/// </summary>
-	public class categoryOfZoneOfConfidenceInData : SimpleEnumerationAttribute
+	public class categoryOfZoneOfConfidenceInData : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfZoneOfConfidenceInData";
+		public override string S100FC_code => nameof(categoryOfZoneOfConfidenceInData);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Zone of Confidence In Data";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Zone of Confidence A1", "Positional Accuracy +/- 5 metres + 5% depth; Depth Accuracy 0.5 metre + 1% depth; Full area search undertaken. Significant seafloor features detected and depths measured; Controlled, systematic survey, high position and depth accuracy achieved using DGPS or a minimum three high quality lines of position (LOP) and a multibeam, channel or mechanical sweep system.",1),
@@ -1586,10 +1735,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light.
 	/// </summary>
-	public class colour : SimpleEnumerationAttribute
+	public class colour : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "colour";
+		public override string S100FC_code => nameof(colour);
+		[JsonIgnore]
+		public override string S100FC_name => "Colour";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("White", "",1),
@@ -1612,10 +1763,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A regular repeated design containing more than one colour.
 	/// </summary>
-	public class colourPattern : SimpleEnumerationAttribute
+	public class colourPattern : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "colourPattern";
+		public override string S100FC_code => nameof(colourPattern);
+		[JsonIgnore]
+		public override string S100FC_name => "Colour Pattern";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Horizontal Stripes", "Straight bands or stripes of differing colours oriented horizontally.",1),
@@ -1631,10 +1784,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A channel number assigned to a specific radio frequency, frequencies or frequency band.
 	/// </summary>
-	public class communicationChannel : SimpleAttribute
+	public class communicationChannel : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "communicationChannel";
+		public override string S100FC_code => nameof(communicationChannel);
+		[JsonIgnore]
+		public override string S100FC_name => "Communication Channel";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1643,10 +1798,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The various conditions of buildings and other constructions.
 	/// </summary>
-	public class condition : SimpleEnumerationAttribute
+	public class condition : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "condition";
+		public override string S100FC_code => nameof(condition);
+		[JsonIgnore]
+		public override string S100FC_name => "Condition";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Under Construction", "Being built but not yet capable of function.",1),
@@ -1661,10 +1818,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Instructions provided on how to contact a particular person, organisation or service.
 	/// </summary>
-	public class contactInstructions : SimpleAttribute
+	public class contactInstructions : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "contactInstructions";
+		public override string S100FC_code => nameof(contactInstructions);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Instructions";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1673,10 +1832,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The categorization of the assessment level of bathymetric data for an area.
 	/// </summary>
-	public class dataAssessment : SimpleEnumerationAttribute
+	public class dataAssessment : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dataAssessment";
+		public override string S100FC_code => nameof(dataAssessment);
+		[JsonIgnore]
+		public override string S100FC_name => "Data Assessment";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Assessed", "The quality of the bathymetric data has been assessed.",1),
@@ -1689,10 +1850,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The date that an entity ceases to be used.
 	/// </summary>
-	public class dateDisused : SimpleAttribute
+	public class dateDisused : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dateDisused";
+		public override string S100FC_code => nameof(dateDisused);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Disused";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -1701,10 +1864,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The latest date on which an object (for example a buoy) will be present.
 	/// </summary>
-	public class dateEnd : SimpleAttribute
+	public class dateEnd : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dateEnd";
+		public override string S100FC_code => nameof(dateEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Date End";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -1713,10 +1878,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The date of an event.
 	/// </summary>
-	public class dateFixed : SimpleAttribute
+	public class dateFixed : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dateFixed";
+		public override string S100FC_code => nameof(dateFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Fixed";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -1725,10 +1892,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The earliest date on which an object (for example a buoy) will be present.
 	/// </summary>
-	public class dateStart : SimpleAttribute
+	public class dateStart : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dateStart";
+		public override string S100FC_code => nameof(dateStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Start";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -1737,10 +1906,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A day which is not fixed in the Gregorian calendar.
 	/// </summary>
-	public class dateVariable : SimpleAttribute
+	public class dateVariable : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dateVariable";
+		public override string S100FC_code => nameof(dateVariable);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Variable";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1749,10 +1920,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Any one of seven days in a week.
 	/// </summary>
-	public class dayOfWeek : SimpleEnumerationAttribute
+	public class dayOfWeek : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dayOfWeek";
+		public override string S100FC_code => nameof(dayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Sunday", "The day of the week following Saturday and preceding Monday.",1),
@@ -1769,10 +1942,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement expressing if the days of the week identified define a range or not.
 	/// </summary>
-	public class dayOfWeekIsRange : SimpleAttribute
+	public class dayOfWeekIsRange : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dayOfWeekIsRange";
+		public override string S100FC_code => nameof(dayOfWeekIsRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week is Range";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -1781,10 +1956,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.
 	/// </summary>
-	public class defaultClearanceDepth : SimpleAttribute
+	public class defaultClearanceDepth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "defaultClearanceDepth";
+		public override string S100FC_code => nameof(defaultClearanceDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Default Clearance Depth";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -1793,10 +1970,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum (deepest) value of a depth range.
 	/// </summary>
-	public class depthRangeMaximumValue : SimpleAttribute
+	public class depthRangeMaximumValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "depthRangeMaximumValue";
+		public override string S100FC_code => nameof(depthRangeMaximumValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Depth Range Maximum Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -1805,10 +1984,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum (shoalest) value of a depth range.
 	/// </summary>
-	public class depthRangeMinimumValue : SimpleAttribute
+	public class depthRangeMinimumValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "depthRangeMinimumValue";
+		public override string S100FC_code => nameof(depthRangeMinimumValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Depth Range Minimum Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -1817,10 +1998,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The place or general direction to which a vessel is going or directed.
 	/// </summary>
-	public class destination : SimpleAttribute
+	public class destination : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "destination";
+		public override string S100FC_code => nameof(destination);
+		[JsonIgnore]
+		public override string S100FC_name => "Destination";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1829,10 +2012,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement indicating whether a distance mark is visible or not.
 	/// </summary>
-	public class distanceMarkVisible : SimpleAttribute
+	public class distanceMarkVisible : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "distanceMarkVisible";
+		public override string S100FC_code => nameof(distanceMarkVisible);
+		[JsonIgnore]
+		public override string S100FC_name => "Distance Mark Visible";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -1841,10 +2026,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A specified amount of a quantity, as of length, by comparison with which any other quantity of the same kind is measured or estimated.
 	/// </summary>
-	public class distanceUnitOfMeasurement : SimpleEnumerationAttribute
+	public class distanceUnitOfMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "distanceUnitOfMeasurement";
+		public override string S100FC_code => nameof(distanceUnitOfMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Distance Unit of Measurement";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Metres", "The basic unit of length in the International System of Units (SI) system.",1),
@@ -1859,10 +2046,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The date that dredging occurred.
 	/// </summary>
-	public class dredgedDate : SimpleAttribute
+	public class dredgedDate : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "dredgedDate";
+		public override string S100FC_code => nameof(dredgedDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Dredged Date";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -1871,10 +2060,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The altitude of the ground level of a feature, measured from a specified vertical datum.
 	/// </summary>
-	public class elevation : SimpleAttribute
+	public class elevation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "elevation";
+		public override string S100FC_code => nameof(elevation);
+		[JsonIgnore]
+		public override string S100FC_name => "Elevation";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -1883,10 +2074,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The estimated range of a non-optical electromagnetic transmission.
 	/// </summary>
-	public class estimatedRangeOfTransmission : SimpleAttribute
+	public class estimatedRangeOfTransmission : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "estimatedRangeOfTransmission";
+		public override string S100FC_code => nameof(estimatedRangeOfTransmission);
+		[JsonIgnore]
+		public override string S100FC_name => "Estimated Range of Transmission";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -1895,10 +2088,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The outward display of the light.
 	/// </summary>
-	public class exhibitionConditionOfLight : SimpleEnumerationAttribute
+	public class exhibitionConditionOfLight : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "exhibitionConditionOfLight";
+		public override string S100FC_code => nameof(exhibitionConditionOfLight);
+		[JsonIgnore]
+		public override string S100FC_name => "Exhibition Condition of Light";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Light Shown Without Change of Character", "A light shown throughout the 24 hours without change of character.",1),
@@ -1912,10 +2107,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Indicates the relationship of the depth of a feature to the range of depth of the surrounding depth area.
 	/// </summary>
-	public class expositionOfSounding : SimpleEnumerationAttribute
+	public class expositionOfSounding : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "expositionOfSounding";
+		public override string S100FC_code => nameof(expositionOfSounding);
+		[JsonIgnore]
+		public override string S100FC_name => "Exposition of Sounding";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Within the Range of Depth of the Surrounding Depth Area", "The depth corresponds to the depth range of the surrounding depth area; that is, the depth is not shoaler than the minimum depth of the surrounding depth area or deeper than the maximum depth of the surrounding depth area.",1),
@@ -1928,10 +2125,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The location of a fragment of text or other information in a support file.
 	/// </summary>
-	public class fileLocator : SimpleAttribute
+	public class fileLocator : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "fileLocator";
+		public override string S100FC_code => nameof(fileLocator);
+		[JsonIgnore]
+		public override string S100FC_name => "File Locator";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1940,10 +2139,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The file name of an externally referenced text file.
 	/// </summary>
-	public class fileReference : SimpleAttribute
+	public class fileReference : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "fileReference";
+		public override string S100FC_code => nameof(fileReference);
+		[JsonIgnore]
+		public override string S100FC_name => "File Reference";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -1952,10 +2153,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The bearing about which the light flare symbol is rotated to be displayed in ECDIS.
 	/// </summary>
-	public class flareBearing : SimpleAttribute
+	public class flareBearing : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "flareBearing";
+		public override string S100FC_code => nameof(flareBearing);
+		[JsonIgnore]
+		public override string S100FC_name => "Flare Bearing";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -1964,10 +2167,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A tall structure used for burning-off waste oil or gas.
 	/// </summary>
-	public class flareStack : SimpleAttribute
+	public class flareStack : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "flareStack";
+		public override string S100FC_code => nameof(flareStack);
+		[JsonIgnore]
+		public override string S100FC_name => "Flare Stack";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -1976,10 +2181,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
-	public class frequencyShoreStationReceives : SimpleAttribute
+	public class frequencyShoreStationReceives : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "frequencyShoreStationReceives";
+		public override string S100FC_code => nameof(frequencyShoreStationReceives);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Receives";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -1988,10 +2195,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
-	public class frequencyShoreStationTransmits : SimpleAttribute
+	public class frequencyShoreStationTransmits : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "frequencyShoreStationTransmits";
+		public override string S100FC_code => nameof(frequencyShoreStationTransmits);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Transmits";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2000,10 +2209,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A numeric value used to indicate that datasets are intended to form a seamless presentation.
 	/// </summary>
-	public class drawingIndex : SimpleAttribute
+	public class drawingIndex : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "drawingIndex";
+		public override string S100FC_code => nameof(drawingIndex);
+		[JsonIgnore]
+		public override string S100FC_name => "Drawing Index";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2012,10 +2223,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Expression stating if full seafloor coverage has been achieved in the area covered by hydrographic surveys.
 	/// </summary>
-	public class fullSeafloorCoverageAchieved : SimpleAttribute
+	public class fullSeafloorCoverageAchieved : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "fullSeafloorCoverageAchieved";
+		public override string S100FC_code => nameof(fullSeafloorCoverageAchieved);
+		[JsonIgnore]
+		public override string S100FC_name => "Full Seafloor Coverage Achieved";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2024,10 +2237,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A specific role that describes a feature.
 	/// </summary>
-	public class function : SimpleEnumerationAttribute
+	public class function : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "function";
+		public override string S100FC_code => nameof(function);
+		[JsonIgnore]
+		public override string S100FC_name => "Function";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Harbour-Masters Office", "A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.",2),
@@ -2083,10 +2298,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Words set at the head of a passage or page to introduce or categorize.
 	/// </summary>
-	public class headline : SimpleAttribute
+	public class headline : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "headline";
+		public override string S100FC_code => nameof(headline);
+		[JsonIgnore]
+		public override string S100FC_name => "Headline";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2095,10 +2312,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.
 	/// </summary>
-	public class height : SimpleAttribute
+	public class height : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "height";
+		public override string S100FC_code => nameof(height);
+		[JsonIgnore]
+		public override string S100FC_name => "Height";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2107,10 +2326,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The length of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical length of the feature.
 	/// </summary>
-	public class horizontalClearanceLength : SimpleAttribute
+	public class horizontalClearanceLength : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalClearanceLength";
+		public override string S100FC_code => nameof(horizontalClearanceLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Clearance Length";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2119,10 +2340,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The physical horizontal clearance distance between two points on a feature, such as a bridge span, dock, gate, lock or tunnel.
 	/// </summary>
-	public class horizontalClearanceValue : SimpleAttribute
+	public class horizontalClearanceValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalClearanceValue";
+		public override string S100FC_code => nameof(horizontalClearanceValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Clearance Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2131,10 +2354,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The width of a feature, such as a lock or basin, which is available for safe navigation. This may, or may not, be the same as the total physical width of the feature.
 	/// </summary>
-	public class horizontalClearanceWidth : SimpleAttribute
+	public class horizontalClearanceWidth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalClearanceWidth";
+		public override string S100FC_code => nameof(horizontalClearanceWidth);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Clearance Width";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2143,10 +2368,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
 	/// </summary>
-	public class horizontalDistanceUncertainty : SimpleAttribute
+	public class horizontalDistanceUncertainty : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalDistanceUncertainty";
+		public override string S100FC_code => nameof(horizontalDistanceUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Distance Uncertainty";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2155,10 +2382,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A measurement of the longer of two linear axis.
 	/// </summary>
-	public class horizontalLength : SimpleAttribute
+	public class horizontalLength : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalLength";
+		public override string S100FC_code => nameof(horizontalLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Length";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2167,10 +2396,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A measurement of the shorter of two linear axis.
 	/// </summary>
-	public class horizontalWidth : SimpleAttribute
+	public class horizontalWidth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalWidth";
+		public override string S100FC_code => nameof(horizontalWidth);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Width";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2179,10 +2410,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the maximum variation in the vertical clearance of an overhead cable due to an accumulation of ice.
 	/// </summary>
-	public class iceFactor : SimpleAttribute
+	public class iceFactor : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "iceFactor";
+		public override string S100FC_code => nameof(iceFactor);
+		[JsonIgnore]
+		public override string S100FC_name => "Ice Factor";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2191,10 +2424,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A defined maritime traffic route that has been adopted as an IMO routeing measure.
 	/// </summary>
-	public class iMOAdopted : SimpleAttribute
+	public class iMOAdopted : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "iMOAdopted";
+		public override string S100FC_code => nameof(iMOAdopted);
+		[JsonIgnore]
+		public override string S100FC_name => "IMO Adopted";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2203,10 +2438,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement that expresses if an area is in a jurisdictional dispute.
 	/// </summary>
-	public class inDispute : SimpleAttribute
+	public class inDispute : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "inDispute";
+		public override string S100FC_code => nameof(inDispute);
+		[JsonIgnore]
+		public override string S100FC_name => "In Dispute";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2215,10 +2452,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.
 	/// </summary>
-	public class interoperabilityIdentifier : SimpleAttribute
+	public class interoperabilityIdentifier : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "interoperabilityIdentifier";
+		public override string S100FC_code => nameof(interoperabilityIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Interoperability Identifier";
 		[JsonIgnore]
 		public override string valueType => "URN";
 		public String? value { get; set; } = default;
@@ -2227,10 +2466,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// An indication if the feature is located in or over navigable water.
 	/// </summary>
-	public class inTheWater : SimpleAttribute
+	public class inTheWater : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "inTheWater";
+		public override string S100FC_code => nameof(inTheWater);
+		[JsonIgnore]
+		public override string S100FC_name => "In the Water";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2239,10 +2480,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement that expresses if a Coast Guard station performs the function of a Maritime Rescue and Coordination Centre.
 	/// </summary>
-	public class isMRCC : SimpleAttribute
+	public class isMRCC : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "isMRCC";
+		public override string S100FC_code => nameof(isMRCC);
+		[JsonIgnore]
+		public override string S100FC_name => "Is MRCC";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2251,10 +2494,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The jurisdiction applicable to an administrative area.
 	/// </summary>
-	public class jurisdiction : SimpleEnumerationAttribute
+	public class jurisdiction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "jurisdiction";
+		public override string S100FC_code => nameof(jurisdiction);
+		[JsonIgnore]
+		public override string S100FC_name => "Jurisdiction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("International", "Involving more than one country; covering more than one national area.",1),
@@ -2267,10 +2512,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.
 	/// </summary>
-	public class language : SimpleAttribute
+	public class language : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "language";
+		public override string S100FC_code => nameof(language);
+		[JsonIgnore]
+		public override string S100FC_name => "Language";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2279,10 +2526,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Expression stating if the least depth of detected features in an area was measured.
 	/// </summary>
-	public class leastDepthOfDetectedFeaturesMeasured : SimpleAttribute
+	public class leastDepthOfDetectedFeaturesMeasured : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "leastDepthOfDetectedFeaturesMeasured";
+		public override string S100FC_code => nameof(leastDepthOfDetectedFeaturesMeasured);
+		[JsonIgnore]
+		public override string S100FC_name => "Least Depth of Detected Features Measured";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2291,10 +2540,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The specific safe lifting capacity of a feature.
 	/// </summary>
-	public class liftingCapacity : SimpleAttribute
+	public class liftingCapacity : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "liftingCapacity";
+		public override string S100FC_code => nameof(liftingCapacity);
+		[JsonIgnore]
+		public override string S100FC_name => "Lifting Capacity";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2303,10 +2554,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.
 	/// </summary>
-	public class lightCharacteristic : SimpleEnumerationAttribute
+	public class lightCharacteristic : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "lightCharacteristic";
+		public override string S100FC_code => nameof(lightCharacteristic);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Characteristic";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fixed", "A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.",1),
@@ -2338,10 +2591,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The specific visibility of a light, with respect to the light's intensity and ease of recognition.
 	/// </summary>
-	public class lightVisibility : SimpleEnumerationAttribute
+	public class lightVisibility : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "lightVisibility";
+		public override string S100FC_code => nameof(lightVisibility);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Visibility";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("High Intensity", "Non-marine lights with a higher power than marine lights and visible from well off shore (often 'Aero' lights).",1),
@@ -2360,10 +2615,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum distance between hydrographic survey lines.
 	/// </summary>
-	public class lineSpacingMaximum : SimpleAttribute
+	public class lineSpacingMaximum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "lineSpacingMaximum";
+		public override string S100FC_code => nameof(lineSpacingMaximum);
+		[JsonIgnore]
+		public override string S100FC_name => "Line Spacing Maximum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2372,10 +2629,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum distance between hydrographic survey lines.
 	/// </summary>
-	public class lineSpacingMinimum : SimpleAttribute
+	public class lineSpacingMinimum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "lineSpacingMinimum";
+		public override string S100FC_code => nameof(lineSpacingMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Line Spacing Minimum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2384,10 +2643,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Location (address) for online access using a URL/URI address or similar addressing scheme.
 	/// </summary>
-	public class linkage : SimpleAttribute
+	public class linkage : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "linkage";
+		public override string S100FC_code => nameof(linkage);
+		[JsonIgnore]
+		public override string S100FC_name => "Linkage";
 		[JsonIgnore]
 		public override string valueType => "URI";
 		public String? value { get; set; } = default;
@@ -2396,10 +2657,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation.
 	/// </summary>
-	public class magneticAnomalyValue : SimpleAttribute
+	public class magneticAnomalyValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "magneticAnomalyValue";
+		public override string S100FC_code => nameof(magneticAnomalyValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Magnetic Anomaly Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2408,10 +2671,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A direction used as a basis for comparison of other directions.
 	/// </summary>
-	public class referenceDirection : SimpleEnumerationAttribute
+	public class referenceDirection : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "referenceDirection";
+		public override string S100FC_code => nameof(referenceDirection);
+		[JsonIgnore]
+		public override string S100FC_name => "Reference Direction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("East", "",5),
@@ -2423,10 +2688,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement expressing if a light is considered to be a major light in terms of ECDIS display in a particular area.
 	/// </summary>
-	public class majorLight : SimpleAttribute
+	public class majorLight : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "majorLight";
+		public override string S100FC_code => nameof(majorLight);
+		[JsonIgnore]
+		public override string S100FC_name => "Major Light";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2435,10 +2702,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The system of navigational buoyage a region complies with.
 	/// </summary>
-	public class marksNavigationalSystemOf : SimpleEnumerationAttribute
+	public class marksNavigationalSystemOf : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "marksNavigationalSystemOf";
+		public override string S100FC_code => nameof(marksNavigationalSystemOf);
+		[JsonIgnore]
+		public override string S100FC_name => "Marks Navigational - System Of";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("IALA A", "Navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.",1),
@@ -2452,10 +2721,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be "grossly overscaled".
 	/// </summary>
-	public class maximumDisplayScale : SimpleAttribute
+	public class maximumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "maximumDisplayScale";
+		public override string S100FC_code => nameof(maximumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Display Scale";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2464,10 +2735,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.
 	/// </summary>
-	public class maximumPermittedDraught : SimpleAttribute
+	public class maximumPermittedDraught : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "maximumPermittedDraught";
+		public override string S100FC_code => nameof(maximumPermittedDraught);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Permitted Draught";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2476,10 +2749,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.
 	/// </summary>
-	public class maximumPermittedVesselLength : SimpleAttribute
+	public class maximumPermittedVesselLength : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "maximumPermittedVesselLength";
+		public override string S100FC_code => nameof(maximumPermittedVesselLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Permitted Vessel Length";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2488,10 +2763,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A course at sea, whose ends are indicated by ranges ashore, and whose length has been accurately measured for determining the speed of vessels.
 	/// </summary>
-	public class measuredDistance : SimpleAttribute
+	public class measuredDistance : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "measuredDistance";
+		public override string S100FC_code => nameof(measuredDistance);
+		[JsonIgnore]
+		public override string S100FC_name => "Measured Distance";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2500,10 +2777,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum spacing of the principal measurement lines of a hydrographic survey.
 	/// </summary>
-	public class measurementDistanceMaximum : SimpleAttribute
+	public class measurementDistanceMaximum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "measurementDistanceMaximum";
+		public override string S100FC_code => nameof(measurementDistanceMaximum);
+		[JsonIgnore]
+		public override string S100FC_name => "Measurement Distance Maximum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2512,10 +2791,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum spacing of the principal measurement lines of a hydrographic survey.
 	/// </summary>
-	public class measurementDistanceMinimum : SimpleAttribute
+	public class measurementDistanceMinimum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "measurementDistanceMinimum";
+		public override string S100FC_code => nameof(measurementDistanceMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Measurement Distance Minimum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2524,10 +2805,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
-	public class minimumDisplayScale : SimpleAttribute
+	public class minimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "minimumDisplayScale";
+		public override string S100FC_code => nameof(minimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Display Scale";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2536,10 +2819,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
 	/// </summary>
-	public class mMSICode : SimpleAttribute
+	public class mMSICode : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "mMSICode";
+		public override string S100FC_code => nameof(mMSICode);
+		[JsonIgnore]
+		public override string S100FC_name => "MMSI Code";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2548,10 +2833,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A short range (up to 2km) type of directional light. Sodium lighting gives a yellow background to a screen on which a vertical black line will be seen by an observer on the centre line.
 	/// </summary>
-	public class moireEffect : SimpleAttribute
+	public class moireEffect : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "moireEffect";
+		public override string S100FC_code => nameof(moireEffect);
+		[JsonIgnore]
+		public override string S100FC_name => "Moire Effect";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2560,10 +2847,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group is or is not known.
 	/// </summary>
-	public class multiplicityKnown : SimpleAttribute
+	public class multiplicityKnown : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "multiplicityKnown";
+		public override string S100FC_code => nameof(multiplicityKnown);
+		[JsonIgnore]
+		public override string S100FC_name => "Multiplicity Known";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2572,10 +2861,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The individual name of a feature.
 	/// </summary>
-	public class name : SimpleAttribute
+	public class name : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "name";
+		public override string S100FC_code => nameof(name);
+		[JsonIgnore]
+		public override string S100FC_name => "Name";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2584,10 +2875,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Name of the online resource.
 	/// </summary>
-	public class nameOfResource : SimpleAttribute
+	public class nameOfResource : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "nameOfResource";
+		public override string S100FC_code => nameof(nameOfResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Name of Resource";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2596,10 +2889,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the type and display level of the name of a feature in an end-user system.
 	/// </summary>
-	public class nameUsage : SimpleEnumerationAttribute
+	public class nameUsage : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "nameUsage";
+		public override string S100FC_code => nameof(nameUsage);
+		[JsonIgnore]
+		public override string S100FC_name => "Name Usage";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Default Name Display", "The name is intended to be displayed when the end-user system is set to the default name/text display setting.",1),
@@ -2611,10 +2906,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Identifier of membership of a particular nation.
 	/// </summary>
-	public class nationality : SimpleAttribute
+	public class nationality : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "nationality";
+		public override string S100FC_code => nameof(nationality);
+		[JsonIgnore]
+		public override string S100FC_name => "Nationality";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2623,10 +2920,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The building's primary construction material.
 	/// </summary>
-	public class natureOfConstruction : SimpleEnumerationAttribute
+	public class natureOfConstruction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "natureOfConstruction";
+		public override string S100FC_code => nameof(natureOfConstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Nature of Construction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Masonry", "Constructed of stones or bricks, usually quarried, shaped, and mortared.",1),
@@ -2646,10 +2945,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The general material which the land surface or the seabed is composed.
 	/// </summary>
-	public class natureOfSurface : SimpleEnumerationAttribute
+	public class natureOfSurface : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "natureOfSurface";
+		public override string S100FC_code => nameof(natureOfSurface);
+		[JsonIgnore]
+		public override string S100FC_name => "Nature of Surface";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Mud", "Soft, wet earth.",1),
@@ -2672,10 +2973,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The nature of various forms of natural surface materials in terms of their size, morphology and consistency.
 	/// </summary>
-	public class natureOfSurfaceQualifyingTerms : SimpleEnumerationAttribute
+	public class natureOfSurfaceQualifyingTerms : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "natureOfSurfaceQualifyingTerms";
+		public override string S100FC_code => nameof(natureOfSurfaceQualifyingTerms);
+		[JsonIgnore]
+		public override string S100FC_name => "Nature of Surface - Qualifying Terms";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Fine", "Falls within the smallest size continuum for a particular nature of surface term.",1),
@@ -2695,10 +2998,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group.
 	/// </summary>
-	public class numberOfFeatures : SimpleAttribute
+	public class numberOfFeatures : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "numberOfFeatures";
+		public override string S100FC_code => nameof(numberOfFeatures);
+		[JsonIgnore]
+		public override string S100FC_name => "Number of Features";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -2707,10 +3012,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A bridge that is closed when set for carrying road traffic and open when set to permit marine traffic to pass through the waterway it crosses. Modern opening (movable) bridges are either bascule, vertical lift or swing.
 	/// </summary>
-	public class openingBridge : SimpleAttribute
+	public class openingBridge : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "openingBridge";
+		public override string S100FC_code => nameof(openingBridge);
+		[JsonIgnore]
+		public override string S100FC_name => "Opening Bridge";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2719,10 +3026,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the accuracy of a bearing.
 	/// </summary>
-	public class orientationUncertainty : SimpleAttribute
+	public class orientationUncertainty : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "orientationUncertainty";
+		public override string S100FC_code => nameof(orientationUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation Uncertainty";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2731,10 +3040,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
-	public class orientationValue : SimpleAttribute
+	public class orientationValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "orientationValue";
+		public override string S100FC_code => nameof(orientationValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2743,10 +3054,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The file name of an externally referenced picture file.
 	/// </summary>
-	public class pictorialRepresentation : SimpleAttribute
+	public class pictorialRepresentation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "pictorialRepresentation";
+		public override string S100FC_code => nameof(pictorialRepresentation);
+		[JsonIgnore]
+		public override string S100FC_name => "Pictorial Representation";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2755,10 +3068,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.
 	/// </summary>
-	public class pilotMovement : SimpleEnumerationAttribute
+	public class pilotMovement : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "pilotMovement";
+		public override string S100FC_code => nameof(pilotMovement);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilot Movement";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Embarkation", "The place where vessels not being navigated according to a pilot's instructions pick up a pilot while in transit from sea to a port or constricted waters for future navigation under pilot instructions.",1),
@@ -2771,10 +3086,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The various substances which are transported, stored or exploited.
 	/// </summary>
-	public class product : SimpleEnumerationAttribute
+	public class product : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "product";
+		public override string S100FC_code => nameof(product);
+		[JsonIgnore]
+		public override string S100FC_name => "Product";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Oil", "A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.",1),
@@ -2809,10 +3126,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The degree of reliability attributed to a position.
 	/// </summary>
-	public class qualityOfHorizontalMeasurement : SimpleEnumerationAttribute
+	public class qualityOfHorizontalMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "qualityOfHorizontalMeasurement";
+		public override string S100FC_code => nameof(qualityOfHorizontalMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Horizontal Measurement";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Approximate", "A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.",4),
@@ -2823,10 +3142,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The reliability of the value of a sounding.
 	/// </summary>
-	public class qualityOfVerticalMeasurement : SimpleEnumerationAttribute
+	public class qualityOfVerticalMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "qualityOfVerticalMeasurement";
+		public override string S100FC_code => nameof(qualityOfVerticalMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Vertical Measurement";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Depth Known", "The depth from the chart datum to the seabed (or to the top of a drying feature) is known.",1),
@@ -2846,10 +3167,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The band code character of the electromagnetic spectrum within which radar wave lengths lie.
 	/// </summary>
-	public class radarBand : SimpleAttribute
+	public class radarBand : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "radarBand";
+		public override string S100FC_code => nameof(radarBand);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Band";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2858,10 +3181,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A feature which returns a strong radar echo.
 	/// </summary>
-	public class radarConspicuous : SimpleAttribute
+	public class radarConspicuous : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "radarConspicuous";
+		public override string S100FC_code => nameof(radarConspicuous);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Conspicuous";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -2870,10 +3195,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The vector extending from the centre to the periphery of a circular or spherical feature.
 	/// </summary>
-	public class radius : SimpleAttribute
+	public class radius : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "radius";
+		public override string S100FC_code => nameof(radius);
+		[JsonIgnore]
+		public override string S100FC_name => "Radius";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -2882,10 +3209,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Information relating to the point of origin for a measured distance as indicated on a distance mark.
 	/// </summary>
-	public class referenceLocation : SimpleAttribute
+	public class referenceLocation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "referenceLocation";
+		public override string S100FC_code => nameof(referenceLocation);
+		[JsonIgnore]
+		public override string S100FC_name => "Reference Location";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2894,10 +3223,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The reference tide to which the series of tidal stream values apply.
 	/// </summary>
-	public class referenceTide : SimpleEnumerationAttribute
+	public class referenceTide : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "referenceTide";
+		public override string S100FC_code => nameof(referenceTide);
+		[JsonIgnore]
+		public override string S100FC_name => "Reference Tide";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("High Water", "The highest level reached at a place by the water surface in one oscillation.",1),
@@ -2909,10 +3240,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The type of tide range (that is, mean spring tide, mean neap tide or mean tide) for which a set of tidal stream rates and directions apply.
 	/// </summary>
-	public class referenceTideType : SimpleEnumerationAttribute
+	public class referenceTideType : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "referenceTideType";
+		public override string S100FC_code => nameof(referenceTideType);
+		[JsonIgnore]
+		public override string S100FC_name => "Reference Tide Type";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Springs", "The tides of increased range occurring near the times of full moon and new moon.",1),
@@ -2925,10 +3258,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The reference calendar year for magnetic variation values.
 	/// </summary>
-	public class referenceYearForMagneticVariation : SimpleAttribute
+	public class referenceYearForMagneticVariation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "referenceYearForMagneticVariation";
+		public override string S100FC_code => nameof(referenceYearForMagneticVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Reference Year for Magnetic Variation";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -2937,10 +3272,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The regulation citation for a feature.
 	/// </summary>
-	public class regulationCitation : SimpleAttribute
+	public class regulationCitation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "regulationCitation";
+		public override string S100FC_code => nameof(regulationCitation);
+		[JsonIgnore]
+		public override string S100FC_name => "Regulation Citation";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -2949,10 +3286,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The date that the item was observed, done, or investigated.
 	/// </summary>
-	public class reportedDate : SimpleAttribute
+	public class reportedDate : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "reportedDate";
+		public override string S100FC_code => nameof(reportedDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Reported Date";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -2961,10 +3300,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The official legal statute of each kind of restricted area.
 	/// </summary>
-	public class restriction : SimpleEnumerationAttribute
+	public class restriction : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "restriction";
+		public override string S100FC_code => nameof(restriction);
+		[JsonIgnore]
+		public override string S100FC_name => "Restriction";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Anchoring Prohibited", "An area within which anchoring is not permitted.",1),
@@ -3003,10 +3344,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum scale at which the feature may be used for example for ECDIS presentation.
 	/// </summary>
-	public class scaleMinimum : SimpleAttribute
+	public class scaleMinimum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "scaleMinimum";
+		public override string S100FC_code => nameof(scaleMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Scale Minimum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3015,10 +3358,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The largest scale for the range of survey scale.
 	/// </summary>
-	public class scaleValueMaximum : SimpleAttribute
+	public class scaleValueMaximum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "scaleValueMaximum";
+		public override string S100FC_code => nameof(scaleValueMaximum);
+		[JsonIgnore]
+		public override string S100FC_name => "Scale Value Maximum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3027,10 +3372,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The smallest scale for the range of survey scale.
 	/// </summary>
-	public class scaleValueMinimum : SimpleAttribute
+	public class scaleValueMinimum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "scaleValueMinimum";
+		public override string S100FC_code => nameof(scaleValueMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Scale Value Minimum";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3039,10 +3386,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.
 	/// </summary>
-	public class sectorBearing : SimpleAttribute
+	public class sectorBearing : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorBearing";
+		public override string S100FC_code => nameof(sectorBearing);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Bearing";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3051,10 +3400,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// An indication that the default radius of a sector arc is to be extended by 5mm.
 	/// </summary>
-	public class sectorArcExtension : SimpleAttribute
+	public class sectorArcExtension : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorArcExtension";
+		public override string S100FC_code => nameof(sectorArcExtension);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Arc Extension";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -3063,10 +3414,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.
 	/// </summary>
-	public class sectorLineLength : SimpleAttribute
+	public class sectorLineLength : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorLineLength";
+		public override string S100FC_code => nameof(sectorLineLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Line Length";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3075,10 +3428,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The time occupied by a single instance of light/sound or eclipse/silence in a signal sequence.
 	/// </summary>
-	public class signalDuration : SimpleAttribute
+	public class signalDuration : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalDuration";
+		public override string S100FC_code => nameof(signalDuration);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Duration";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3087,10 +3442,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The frequency of a signal.
 	/// </summary>
-	public class signalFrequency : SimpleAttribute
+	public class signalFrequency : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalFrequency";
+		public override string S100FC_code => nameof(signalFrequency);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Frequency";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3099,10 +3456,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The mechanism used to generate a fog or light signal.
 	/// </summary>
-	public class signalGeneration : SimpleEnumerationAttribute
+	public class signalGeneration : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalGeneration";
+		public override string S100FC_code => nameof(signalGeneration);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Generation";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Automatically", "Signal generation is initiated by a self regulating mechanism such as a timer or light sensor.",1),
@@ -3118,10 +3477,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The number of signals, the combination of signals or the morse character(s) within one period of full sequence.
 	/// </summary>
-	public class signalGroup : SimpleAttribute
+	public class signalGroup : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalGroup";
+		public override string S100FC_code => nameof(signalGroup);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Group";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3130,10 +3491,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The time occupied by an entire cycle of intervals of light and eclipse.
 	/// </summary>
-	public class signalPeriod : SimpleAttribute
+	public class signalPeriod : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalPeriod";
+		public override string S100FC_code => nameof(signalPeriod);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Period";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3142,10 +3505,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The indication of an element of a signal sequence being a period of light/sound or eclipse/silence.
 	/// </summary>
-	public class signalStatus : SimpleEnumerationAttribute
+	public class signalStatus : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalStatus";
+		public override string S100FC_code => nameof(signalStatus);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Status";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Lit/Sound", "The indication of an element of a signal sequence being a period of light or sound.",1),
@@ -3157,10 +3522,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement expressing if significant features have or have not been detected in the course of a survey.
 	/// </summary>
-	public class significantFeaturesDetected : SimpleAttribute
+	public class significantFeaturesDetected : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "significantFeaturesDetected";
+		public override string S100FC_code => nameof(significantFeaturesDetected);
+		[JsonIgnore]
+		public override string S100FC_name => "Significant Features Detected";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -3169,10 +3536,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The size of detected bathymetric features in an area.
 	/// </summary>
-	public class sizeOfFeaturesDetected : SimpleAttribute
+	public class sizeOfFeaturesDetected : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sizeOfFeaturesDetected";
+		public override string S100FC_code => nameof(sizeOfFeaturesDetected);
+		[JsonIgnore]
+		public override string S100FC_name => "Size of Features Detected";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3181,10 +3550,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The publication, document, or reference work from which information comes or is acquired.
 	/// </summary>
-	public class source : SimpleAttribute
+	public class source : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "source";
+		public override string S100FC_code => nameof(source);
+		[JsonIgnore]
+		public override string S100FC_name => "Source";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3193,10 +3564,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum allowed rate of travel in an area.
 	/// </summary>
-	public class speedLimit : SimpleAttribute
+	public class speedLimit : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "speedLimit";
+		public override string S100FC_code => nameof(speedLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Speed Limit";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3205,10 +3578,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction. Speed maximum is the maximum rate of travel that can occur.
 	/// </summary>
-	public class speedMaximum : SimpleAttribute
+	public class speedMaximum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "speedMaximum";
+		public override string S100FC_code => nameof(speedMaximum);
+		[JsonIgnore]
+		public override string S100FC_name => "Speed Maximum";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3217,10 +3592,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction. Speed minimum is the minimum rate of travel that can occur.
 	/// </summary>
-	public class speedMinimum : SimpleAttribute
+	public class speedMinimum : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "speedMinimum";
+		public override string S100FC_code => nameof(speedMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Speed Minimum";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3229,10 +3606,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The units for description of speed.
 	/// </summary>
-	public class speedUnits : SimpleEnumerationAttribute
+	public class speedUnits : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "speedUnits";
+		public override string S100FC_code => nameof(speedUnits);
+		[JsonIgnore]
+		public override string S100FC_name => "Speed Units";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Kilometres Per Hour", "A unit of speed, expressing the number of kilometres travelled in one hour.",2),
@@ -3245,10 +3624,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The name of the reference tide station with reference water level for tidal stream panel observations.
 	/// </summary>
-	public class stationName : SimpleAttribute
+	public class stationName : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "stationName";
+		public override string S100FC_code => nameof(stationName);
+		[JsonIgnore]
+		public override string S100FC_name => "Station Name";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3257,10 +3638,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The identification number of the reference tide station with reference water level for tidal stream panel observations.
 	/// </summary>
-	public class stationNumber : SimpleAttribute
+	public class stationNumber : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "stationNumber";
+		public override string S100FC_code => nameof(stationNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Station Number";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3269,10 +3652,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The condition of an object at a given instant in time.
 	/// </summary>
-	public class status : SimpleEnumerationAttribute
+	public class status : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "status";
+		public override string S100FC_code => nameof(status);
+		[JsonIgnore]
+		public override string S100FC_name => "Status";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Permanent", "Intended to last or function indefinitely.",1),
@@ -3300,10 +3685,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The depth below the sea surface to which the tidal stream data refers relative to the sounding datum.
 	/// </summary>
-	public class streamDepth : SimpleAttribute
+	public class streamDepth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "streamDepth";
+		public override string S100FC_code => nameof(streamDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Stream Depth";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3312,10 +3699,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The depth value determined for seabed around an underwater hazard, based on the depth of the surrounding area.
 	/// </summary>
-	public class surroundingDepth : SimpleAttribute
+	public class surroundingDepth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "surroundingDepth";
+		public override string S100FC_code => nameof(surroundingDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Surrounding Depth";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3324,10 +3713,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The authority which was responsible for the survey.
 	/// </summary>
-	public class surveyAuthority : SimpleAttribute
+	public class surveyAuthority : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "surveyAuthority";
+		public override string S100FC_code => nameof(surveyAuthority);
+		[JsonIgnore]
+		public override string S100FC_name => "Survey Authority";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3336,10 +3727,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the different survey types.
 	/// </summary>
-	public class surveyType : SimpleEnumerationAttribute
+	public class surveyType : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "surveyType";
+		public override string S100FC_code => nameof(surveyType);
+		[JsonIgnore]
+		public override string S100FC_name => "Survey Type";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Reconnaissance/Sketch Survey", "A survey made (due to lack of time or facilities) to a lower degree of accuracy and detail than the chosen scale would normally indicate.",1),
@@ -3361,10 +3754,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Update number of the ENC being referenced.
 	/// </summary>
-	public class updateNumber : SimpleAttribute
+	public class updateNumber : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "updateNumber";
+		public override string S100FC_code => nameof(updateNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Update Number";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3373,10 +3768,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// An action performed when the contents of a dataset are changed.
 	/// </summary>
-	public class updateType : SimpleEnumerationAttribute
+	public class updateType : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "updateType";
+		public override string S100FC_code => nameof(updateType);
+		[JsonIgnore]
+		public override string S100FC_name => "Update Type";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Insert", "To put or introduce into the body of something.",1),
@@ -3390,10 +3787,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The date that the area was swept by a survey.
 	/// </summary>
-	public class sweptDate : SimpleAttribute
+	public class sweptDate : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sweptDate";
+		public override string S100FC_code => nameof(sweptDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Swept Date";
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
@@ -3402,10 +3801,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Survey method used to obtain depth information.
 	/// </summary>
-	public class techniqueOfVerticalMeasurement : SimpleEnumerationAttribute
+	public class techniqueOfVerticalMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "techniqueOfVerticalMeasurement";
+		public override string S100FC_code => nameof(techniqueOfVerticalMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Technique of Vertical Measurement";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Found by Echo Sounder", "The depth was measured by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.",1),
@@ -3430,10 +3831,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.
 	/// </summary>
-	public class telecommunicationIdentifier : SimpleAttribute
+	public class telecommunicationIdentifier : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "telecommunicationIdentifier";
+		public override string S100FC_code => nameof(telecommunicationIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Identifier";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3442,10 +3845,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.
 	/// </summary>
-	public class telecommunicationService : SimpleEnumerationAttribute
+	public class telecommunicationService : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "telecommunicationService";
+		public override string S100FC_code => nameof(telecommunicationService);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Service";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Voice", "The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.",1),
@@ -3463,10 +3868,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A non-formatted digital text string.
 	/// </summary>
-	public class text : SimpleAttribute
+	public class text : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "text";
+		public override string S100FC_code => nameof(text);
+		[JsonIgnore]
+		public override string S100FC_name => "Text";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3475,10 +3882,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	public class textOffsetBearing : SimpleAttribute
+	public class textOffsetBearing : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "textOffsetBearing";
+		public override string S100FC_code => nameof(textOffsetBearing);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Offset Bearing";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3487,10 +3896,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	public class textOffsetDistance : SimpleAttribute
+	public class textOffsetDistance : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "textOffsetDistance";
+		public override string S100FC_code => nameof(textOffsetDistance);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Offset Distance";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3499,10 +3910,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.
 	/// </summary>
-	public class textRotation : SimpleAttribute
+	public class textRotation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "textRotation";
+		public override string S100FC_code => nameof(textRotation);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Rotation";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -3511,10 +3924,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The attribute from which a text string is derived.
 	/// </summary>
-	public class textType : SimpleEnumerationAttribute
+	public class textType : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "textType";
+		public override string S100FC_code => nameof(textType);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Type";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Name", "The individual name of a feature.",1),
@@ -3526,10 +3941,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The time corresponding to the end of an active period.
 	/// </summary>
-	public class timeOfDayEnd : SimpleAttribute
+	public class timeOfDayEnd : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "timeOfDayEnd";
+		public override string S100FC_code => nameof(timeOfDayEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day End";
 		[JsonIgnore]
 		public override string valueType => "time";
 		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
@@ -3538,10 +3955,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The time corresponding to the start of an active period.
 	/// </summary>
-	public class timeOfDayStart : SimpleAttribute
+	public class timeOfDayStart : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "timeOfDayStart";
+		public override string S100FC_code => nameof(timeOfDayStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day Start";
 		[JsonIgnore]
 		public override string valueType => "time";
 		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
@@ -3550,10 +3969,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The time difference relative to the reference tide.
 	/// </summary>
-	public class timeRelativeToTide : SimpleAttribute
+	public class timeRelativeToTide : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "timeRelativeToTide";
+		public override string S100FC_code => nameof(timeRelativeToTide);
+		[JsonIgnore]
+		public override string S100FC_name => "Time Relative to Tide";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3562,10 +3983,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The shape a topmark or daymark exhibits.
 	/// </summary>
-	public class topmarkDaymarkShape : SimpleEnumerationAttribute
+	public class topmarkDaymarkShape : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "topmarkDaymarkShape";
+		public override string S100FC_code => nameof(topmarkDaymarkShape);
+		[JsonIgnore]
+		public override string S100FC_name => "Topmark/Daymark Shape";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Cone (Point Up)", "Is where the vertex points up.",1),
@@ -3608,10 +4031,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Direction of vessels passing a reference point.
 	/// </summary>
-	public class trafficFlow : SimpleEnumerationAttribute
+	public class trafficFlow : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "trafficFlow";
+		public override string S100FC_code => nameof(trafficFlow);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Flow";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Inbound", "Traffic flow in a general direction toward a port or similar destination.",1),
@@ -3625,10 +4050,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
 	/// </summary>
-	public class uncertaintyFixed : SimpleAttribute
+	public class uncertaintyFixed : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "uncertaintyFixed";
+		public override string S100FC_code => nameof(uncertaintyFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Fixed";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3637,10 +4064,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
 	/// </summary>
-	public class uncertaintyVariableFactor : SimpleAttribute
+	public class uncertaintyVariableFactor : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "uncertaintyVariableFactor";
+		public override string S100FC_code => nameof(uncertaintyVariableFactor);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Variable Factor";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3649,10 +4078,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The position of the seabed type within the layers of the seabed.
 	/// </summary>
-	public class underlyingLayer : SimpleAttribute
+	public class underlyingLayer : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "underlyingLayer";
+		public override string S100FC_code => nameof(underlyingLayer);
+		[JsonIgnore]
+		public override string S100FC_name => "Underlying Layer";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3661,10 +4092,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The annual change in magnetic variation values.
 	/// </summary>
-	public class valueOfAnnualChangeInMagneticVariation : SimpleAttribute
+	public class valueOfAnnualChangeInMagneticVariation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfAnnualChangeInMagneticVariation";
+		public override string S100FC_code => nameof(valueOfAnnualChangeInMagneticVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Annual Change in Magnetic Variation";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3673,10 +4106,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The depth of a sea bottom contour.
 	/// </summary>
-	public class valueOfDepthContour : SimpleAttribute
+	public class valueOfDepthContour : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfDepthContour";
+		public override string S100FC_code => nameof(valueOfDepthContour);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Depth Contour";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3685,10 +4120,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The angle between the magnetic and geographical meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north.
 	/// </summary>
-	public class valueOfMagneticVariation : SimpleAttribute
+	public class valueOfMagneticVariation : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfMagneticVariation";
+		public override string S100FC_code => nameof(valueOfMagneticVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Magnetic Variation";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3697,10 +4134,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The extreme distance at which a feature can be seen or a signal detected.
 	/// </summary>
-	public class valueOfMaximumRange : SimpleAttribute
+	public class valueOfMaximumRange : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfMaximumRange";
+		public override string S100FC_code => nameof(valueOfMaximumRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Maximum Range";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3709,10 +4148,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The luminous range of a light in a homogenous atmosphere in which the meteorological visibility is 10 sea miles.
 	/// </summary>
-	public class valueOfNominalRange : SimpleAttribute
+	public class valueOfNominalRange : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfNominalRange";
+		public override string S100FC_code => nameof(valueOfNominalRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Nominal Range";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3721,10 +4162,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the measurement of a sounding relative to the chart datum.
 	/// </summary>
-	public class valueOfSounding : SimpleAttribute
+	public class valueOfSounding : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfSounding";
+		public override string S100FC_code => nameof(valueOfSounding);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Sounding";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3733,10 +4176,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A statement that expresses if the vertical clearance for a feature in the open position, such as a bridge span, is unlimited.
 	/// </summary>
-	public class verticalClearanceUnlimited : SimpleAttribute
+	public class verticalClearanceUnlimited : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceUnlimited";
+		public override string S100FC_code => nameof(verticalClearanceUnlimited);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Unlimited";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -3745,10 +4190,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards the feature overhead.
 	/// </summary>
-	public class verticalClearanceValue : SimpleAttribute
+	public class verticalClearanceValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceValue";
+		public override string S100FC_code => nameof(verticalClearanceValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3757,10 +4204,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.
 	/// </summary>
-	public class verticalDatum : SimpleEnumerationAttribute
+	public class verticalDatum : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalDatum";
+		public override string S100FC_code => nameof(verticalDatum);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Datum";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Mean Low Water Springs", "The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.",1),
@@ -3801,10 +4250,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The total vertical length of a feature.
 	/// </summary>
-	public class verticalLength : SimpleAttribute
+	public class verticalLength : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalLength";
+		public override string S100FC_code => nameof(verticalLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Length";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3813,10 +4264,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The classification of a vessel, normally as defined by length or gross tonnage.
 	/// </summary>
-	public class vesselClass : SimpleAttribute
+	public class vesselClass : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "vesselClass";
+		public override string S100FC_code => nameof(vesselClass);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Class";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3825,10 +4278,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A purpose of a virtual AIS Aid to Navigation.
 	/// </summary>
-	public class virtualAISAidToNavigationType : SimpleEnumerationAttribute
+	public class virtualAISAidToNavigationType : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "virtualAISAidToNavigationType";
+		public override string S100FC_code => nameof(virtualAISAidToNavigationType);
+		[JsonIgnore]
+		public override string S100FC_name => "Virtual AIS Aid to Navigation Type";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("North Cardinal", "Indicates that it should be passed to the north side of the aid.",1),
@@ -3850,10 +4305,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// A mooring set aside for the use of visiting vessels.
 	/// </summary>
-	public class visitorsMooring : SimpleAttribute
+	public class visitorsMooring : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "visitorsMooring";
+		public override string S100FC_code => nameof(visitorsMooring);
+		[JsonIgnore]
+		public override string S100FC_name => "Visitors Mooring";
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
@@ -3862,10 +4319,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The extent to which a feature, either natural or artificial, is visible from seaward.
 	/// </summary>
-	public class visualProminence : SimpleEnumerationAttribute
+	public class visualProminence : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "visualProminence";
+		public override string S100FC_code => nameof(visualProminence);
+		[JsonIgnore]
+		public override string S100FC_name => "Visual Prominence";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Visually Conspicuous", "Term applied to an object either natural or artificial which is distinctly and notably visible from seaward.",1),
@@ -3878,10 +4337,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The effect of the surrounding water on an object.
 	/// </summary>
-	public class waterLevelEffect : SimpleEnumerationAttribute
+	public class waterLevelEffect : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "waterLevelEffect";
+		public override string S100FC_code => nameof(waterLevelEffect);
+		[JsonIgnore]
+		public override string S100FC_name => "Water Level Effect";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Partly Submerged at High Water", "Partially covered and partially dry at high water.",1),
@@ -3898,10 +4359,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The length of the space between two points along a waterway.
 	/// </summary>
-	public class waterwayDistance : SimpleAttribute
+	public class waterwayDistance : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "waterwayDistance";
+		public override string S100FC_code => nameof(waterwayDistance);
+		[JsonIgnore]
+		public override string S100FC_name => "Waterway Distance";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3910,10 +4373,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave.
 	/// </summary>
-	public class waveLengthValue : SimpleAttribute
+	public class waveLengthValue : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "waveLengthValue";
+		public override string S100FC_code => nameof(waveLengthValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Wave Length Value";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3922,10 +4387,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Classification of the different types of cargo that a ship may be carrying.
 	/// </summary>
-	public class categoryOfCargo : SimpleEnumerationAttribute
+	public class categoryOfCargo : S100Framework.AttributeModel.SimpleEnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string code => "categoryOfCargo";
+		public override string S100FC_code => nameof(categoryOfCargo);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Cargo";
 		[JsonIgnore]
 		public override listedValue[] listedValues => [
 				new listedValue("Bulk", "Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.",1),
@@ -3950,10 +4417,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.
 	/// </summary>
-	public class minimumBerthDepth : SimpleAttribute
+	public class minimumBerthDepth : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "minimumBerthDepth";
+		public override string S100FC_code => nameof(minimumBerthDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Berth Depth";
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
@@ -3962,10 +4431,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
-	public class optimumDisplayScale : SimpleAttribute
+	public class optimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "optimumDisplayScale";
+		public override string S100FC_code => nameof(optimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Optimum Display Scale";
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
@@ -3974,10 +4445,12 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 	/// <summary>
 	/// Text describing one or more graphic elements that must be rendered in an end-user system.
 	/// </summary>
-	public class drawingInstruction : SimpleAttribute
+	public class drawingInstruction : S100Framework.AttributeModel.SimpleAttribute
 	{
 		[JsonIgnore]
-		public override string code => "drawingInstruction";
+		public override string S100FC_code => nameof(drawingInstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Drawing Instruction";
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
@@ -3985,18 +4458,22 @@ namespace S100Framework.DomainModel.S101.SimpleAttributes
 
 }
 
-namespace S100Framework.DomainModel.S101.ComplexAttributes
+namespace S100Framework.AttributeModel.S101.ComplexAttributes
 {
-	using S100Framework.DomainModel.S101.SimpleAttributes;
+	using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
-	public class featureName : ComplexAttribute
+	public class featureName : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "featureName";
+		public override string S100FC_code => nameof(featureName);
+		[JsonIgnore]
+		public override string S100FC_name => "Feature Name";
+		[JsonIgnore]
 		public language language { get; init; } = new language();
+		[JsonIgnore]
 		public name name { get; init; } = new name();
 		public override Attribute[] subAttributes => [
 				language,
@@ -4026,11 +4503,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The uniform assessment of detected features.
 	/// </summary>
-	public class featuresDetected : ComplexAttribute
+	public class featuresDetected : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "featuresDetected";
+		public override string S100FC_code => nameof(featuresDetected);
+		[JsonIgnore]
+		public override string S100FC_name => "Features Detected";
+		[JsonIgnore]
 		public leastDepthOfDetectedFeaturesMeasured leastDepthOfDetectedFeaturesMeasured { get; init; } = new leastDepthOfDetectedFeaturesMeasured();
+		[JsonIgnore]
 		public significantFeaturesDetected significantFeaturesDetected { get; init; } = new significantFeaturesDetected();
 		public override Attribute[] subAttributes => [
 				leastDepthOfDetectedFeaturesMeasured,
@@ -4059,10 +4540,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
-	public class fixedDateRange : ComplexAttribute
+	public class fixedDateRange : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "fixedDateRange";
+		public override string S100FC_code => nameof(fixedDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Fixed Date Range";
 		public override Attribute[] subAttributes => [
 				.. base.subAttributesOptional,
 			];
@@ -4083,10 +4566,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
-	public class frequencyPair : ComplexAttribute
+	public class frequencyPair : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "frequencyPair";
+		public override string S100FC_code => nameof(frequencyPair);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Pair";
+		[JsonIgnore]
 		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
 		public override Attribute[] subAttributes => [
 				frequencyShoreStationTransmits,
@@ -4109,10 +4595,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The horizontal clearance measured between two points for a fixed span.
 	/// </summary>
-	public class horizontalClearanceFixed : ComplexAttribute
+	public class horizontalClearanceFixed : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalClearanceFixed";
+		public override string S100FC_code => nameof(horizontalClearanceFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Clearance Fixed";
+		[JsonIgnore]
 		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
 		public override Attribute[] subAttributes => [
 				horizontalClearanceValue,
@@ -4135,10 +4624,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The horizontal clearance measured between two points for an opening span.
 	/// </summary>
-	public class horizontalClearanceOpen : ComplexAttribute
+	public class horizontalClearanceOpen : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalClearanceOpen";
+		public override string S100FC_code => nameof(horizontalClearanceOpen);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Clearance Open";
+		[JsonIgnore]
 		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
 		public override Attribute[] subAttributes => [
 				horizontalClearanceValue,
@@ -4161,10 +4653,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
-	public class horizontalPositionUncertainty : ComplexAttribute
+	public class horizontalPositionUncertainty : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "horizontalPositionUncertainty";
+		public override string S100FC_code => nameof(horizontalPositionUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Position Uncertainty";
+		[JsonIgnore]
 		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
 		public override Attribute[] subAttributes => [
 				uncertaintyFixed,
@@ -4187,10 +4682,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
-	public class information : ComplexAttribute
+	public class information : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "information";
+		public override string S100FC_code => nameof(information);
+		[JsonIgnore]
+		public override string S100FC_name => "Information";
+		[JsonIgnore]
 		public language language { get; init; } = new language();
 		public override Attribute[] subAttributes => [
 				language,
@@ -4228,11 +4726,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The distance value indicated on a distance mark, or the distance between two measured distance marks.
 	/// </summary>
-	public class measuredDistanceValue : ComplexAttribute
+	public class measuredDistanceValue : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "measuredDistanceValue";
+		public override string S100FC_code => nameof(measuredDistanceValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Measured Distance Value";
+		[JsonIgnore]
 		public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; init; } = new distanceUnitOfMeasurement();
+		[JsonIgnore]
 		public waterwayDistance waterwayDistance { get; init; } = new waterwayDistance();
 		public override Attribute[] subAttributes => [
 				distanceUnitOfMeasurement,
@@ -4262,10 +4764,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group.
 	/// </summary>
-	public class multiplicityOfFeatures : ComplexAttribute
+	public class multiplicityOfFeatures : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "multiplicityOfFeatures";
+		public override string S100FC_code => nameof(multiplicityOfFeatures);
+		[JsonIgnore]
+		public override string S100FC_name => "Multiplicity of Features";
+		[JsonIgnore]
 		public multiplicityKnown multiplicityKnown { get; init; } = new multiplicityKnown();
 		public override Attribute[] subAttributes => [
 				multiplicityKnown,
@@ -4288,10 +4793,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
-	public class onlineResource : ComplexAttribute
+	public class onlineResource : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "onlineResource";
+		public override string S100FC_code => nameof(onlineResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Online Resource";
+		[JsonIgnore]
 		public linkage linkage { get; init; } = new linkage();
 		public override Attribute[] subAttributes => [
 				linkage,
@@ -4319,10 +4827,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
-	public class orientation : ComplexAttribute
+	public class orientation : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "orientation";
+		public override string S100FC_code => nameof(orientation);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation";
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
 		public override Attribute[] subAttributes => [
 				orientationValue,
@@ -4345,11 +4856,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
-	public class periodicDateRange : ComplexAttribute
+	public class periodicDateRange : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "periodicDateRange";
+		public override string S100FC_code => nameof(periodicDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Periodic Date Range";
+		[JsonIgnore]
 		public dateEnd dateEnd { get; init; } = new dateEnd();
+		[JsonIgnore]
 		public dateStart dateStart { get; init; } = new dateStart();
 		public override Attribute[] subAttributes => [
 				dateEnd,
@@ -4373,11 +4888,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
-	public class radarWaveLength : ComplexAttribute
+	public class radarWaveLength : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "radarWaveLength";
+		public override string S100FC_code => nameof(radarWaveLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Wave Length";
+		[JsonIgnore]
 		public radarBand radarBand { get; init; } = new radarBand();
+		[JsonIgnore]
 		public waveLengthValue waveLengthValue { get; init; } = new waveLengthValue();
 		public override Attribute[] subAttributes => [
 				radarBand,
@@ -4401,10 +4920,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
-	public class sectorInformation : ComplexAttribute
+	public class sectorInformation : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorInformation";
+		public override string S100FC_code => nameof(sectorInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Information";
+		[JsonIgnore]
 		public text text { get; init; } = new text();
 		public override Attribute[] subAttributes => [
 				text,
@@ -4427,10 +4949,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
-	public class sectorLimitOne : ComplexAttribute
+	public class sectorLimitOne : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorLimitOne";
+		public override string S100FC_code => nameof(sectorLimitOne);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit One";
+		[JsonIgnore]
 		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
 		public override Attribute[] subAttributes => [
 				sectorBearing,
@@ -4453,10 +4978,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
-	public class sectorLimitTwo : ComplexAttribute
+	public class sectorLimitTwo : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorLimitTwo";
+		public override string S100FC_code => nameof(sectorLimitTwo);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit Two";
+		[JsonIgnore]
 		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
 		public override Attribute[] subAttributes => [
 				sectorBearing,
@@ -4479,10 +5007,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
-	public class shapeInformation : ComplexAttribute
+	public class shapeInformation : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "shapeInformation";
+		public override string S100FC_code => nameof(shapeInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Shape Information";
+		[JsonIgnore]
 		public text text { get; init; } = new text();
 		public override Attribute[] subAttributes => [
 				text,
@@ -4505,11 +5036,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.
 	/// </summary>
-	public class signalSequence : ComplexAttribute
+	public class signalSequence : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "signalSequence";
+		public override string S100FC_code => nameof(signalSequence);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Sequence";
+		[JsonIgnore]
 		public signalDuration signalDuration { get; init; } = new signalDuration();
+		[JsonIgnore]
 		public signalStatus signalStatus { get; init; } = new signalStatus();
 		public override Attribute[] subAttributes => [
 				signalDuration,
@@ -4534,10 +5069,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.
 	/// </summary>
-	public class speed : ComplexAttribute
+	public class speed : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "speed";
+		public override string S100FC_code => nameof(speed);
+		[JsonIgnore]
+		public override string S100FC_name => "Speed";
+		[JsonIgnore]
 		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
 		public override Attribute[] subAttributes => [
 				speedMaximum,
@@ -4560,10 +5098,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The general nature of the material of which the land surface or the seabed is composed.
 	/// </summary>
-	public class surfaceCharacteristics : ComplexAttribute
+	public class surfaceCharacteristics : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "surfaceCharacteristics";
+		public override string S100FC_code => nameof(surfaceCharacteristics);
+		[JsonIgnore]
+		public override string S100FC_name => "Surface Characteristics";
 		public override Attribute[] subAttributes => [
 				.. base.subAttributesOptional,
 			];
@@ -4591,10 +5131,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
-	public class surveyDateRange : ComplexAttribute
+	public class surveyDateRange : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "surveyDateRange";
+		public override string S100FC_code => nameof(surveyDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Survey Date Range";
+		[JsonIgnore]
 		public dateEnd dateEnd { get; init; } = new dateEnd();
 		public override Attribute[] subAttributes => [
 				dateEnd,
@@ -4617,10 +5160,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
-	public class telecommunications : ComplexAttribute
+	public class telecommunications : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "telecommunications";
+		public override string S100FC_code => nameof(telecommunications);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunications";
+		[JsonIgnore]
 		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
 		public override Attribute[] subAttributes => [
 				telecommunicationIdentifier,
@@ -4649,12 +5195,17 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.
 	/// </summary>
-	public class tidalStreamValue : ComplexAttribute
+	public class tidalStreamValue : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "tidalStreamValue";
+		public override string S100FC_code => nameof(tidalStreamValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Tidal Stream Value";
+		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
+		[JsonIgnore]
 		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
+		[JsonIgnore]
 		public timeRelativeToTide timeRelativeToTide { get; init; } = new timeRelativeToTide();
 		public override Attribute[] subAttributes => [
 				orientation,
@@ -4684,10 +5235,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
-	public class timeIntervalsByDayOfWeek : ComplexAttribute
+	public class timeIntervalsByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "timeIntervalsByDayOfWeek";
+		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Time Intervals by Day of Week";
 		public override Attribute[] subAttributes => [
 				.. base.subAttributesOptional,
 			];
@@ -4719,10 +5272,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
 	/// </summary>
-	public class topmark : ComplexAttribute
+	public class topmark : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "topmark";
+		public override string S100FC_code => nameof(topmark);
+		[JsonIgnore]
+		public override string S100FC_name => "Topmark";
+		[JsonIgnore]
 		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
 		public override Attribute[] subAttributes => [
 				topmarkDaymarkShape,
@@ -4758,10 +5314,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation and where required its direction.
 	/// </summary>
-	public class valueOfLocalMagneticAnomaly : ComplexAttribute
+	public class valueOfLocalMagneticAnomaly : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "valueOfLocalMagneticAnomaly";
+		public override string S100FC_code => nameof(valueOfLocalMagneticAnomaly);
+		[JsonIgnore]
+		public override string S100FC_name => "Value of Local Magnetic Anomaly";
+		[JsonIgnore]
 		public magneticAnomalyValue magneticAnomalyValue { get; init; } = new magneticAnomalyValue();
 		public override Attribute[] subAttributes => [
 				magneticAnomalyValue,
@@ -4785,10 +5344,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
-	public class verticalUncertainty : ComplexAttribute
+	public class verticalUncertainty : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalUncertainty";
+		public override string S100FC_code => nameof(verticalUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Uncertainty";
+		[JsonIgnore]
 		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
 		public override Attribute[] subAttributes => [
 				uncertaintyFixed,
@@ -4811,11 +5373,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The maximum allowed rate of travel for a vessel in an area in knots.
 	/// </summary>
-	public class vesselSpeedLimit : ComplexAttribute
+	public class vesselSpeedLimit : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "vesselSpeedLimit";
+		public override string S100FC_code => nameof(vesselSpeedLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Speed Limit";
+		[JsonIgnore]
 		public speedLimit speedLimit { get; init; } = new speedLimit();
+		[JsonIgnore]
 		public speedUnits speedUnits { get; init; } = new speedUnits();
 		public override Attribute[] subAttributes => [
 				speedLimit,
@@ -4845,10 +5411,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.
 	/// </summary>
-	public class zoneOfConfidence : ComplexAttribute
+	public class zoneOfConfidence : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "zoneOfConfidence";
+		public override string S100FC_code => nameof(zoneOfConfidence);
+		[JsonIgnore]
+		public override string S100FC_name => "Zone of Confidence";
+		[JsonIgnore]
 		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; init; } = new categoryOfZoneOfConfidenceInData();
 		public override Attribute[] subAttributes => [
 				categoryOfZoneOfConfidenceInData,
@@ -4882,10 +5451,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.
 	/// </summary>
-	public class directionalCharacter : ComplexAttribute
+	public class directionalCharacter : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "directionalCharacter";
+		public override string S100FC_code => nameof(directionalCharacter);
+		[JsonIgnore]
+		public override string S100FC_name => "Directional Character";
+		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
 		public override Attribute[] subAttributes => [
 				orientation,
@@ -4908,10 +5480,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
-	public class rhythmOfLight : ComplexAttribute
+	public class rhythmOfLight : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "rhythmOfLight";
+		public override string S100FC_code => nameof(rhythmOfLight);
+		[JsonIgnore]
+		public override string S100FC_name => "Rhythm of Light";
+		[JsonIgnore]
 		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
 		public override Attribute[] subAttributes => [
 				lightCharacteristic,
@@ -4945,10 +5520,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
-	public class scheduleByDayOfWeek : ComplexAttribute
+	public class scheduleByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "scheduleByDayOfWeek";
+		public override string S100FC_code => nameof(scheduleByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Schedule by Day of Week";
+		[JsonIgnore]
 		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek();
 		public override Attribute[] subAttributes => [
 				timeIntervalsByDayOfWeek,
@@ -4972,11 +5550,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
-	public class sectorLimit : ComplexAttribute
+	public class sectorLimit : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorLimit";
+		public override string S100FC_code => nameof(sectorLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit";
+		[JsonIgnore]
 		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
+		[JsonIgnore]
 		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
 		public override Attribute[] subAttributes => [
 				sectorLimitOne,
@@ -5000,10 +5582,12 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
-	public class spatialAccuracy : ComplexAttribute
+	public class spatialAccuracy : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "spatialAccuracy";
+		public override string S100FC_code => nameof(spatialAccuracy);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Accuracy";
 		public override Attribute[] subAttributes => [
 				.. base.subAttributesOptional,
 			];
@@ -5029,12 +5613,17 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.
 	/// </summary>
-	public class tidalStreamPanelValues : ComplexAttribute
+	public class tidalStreamPanelValues : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "tidalStreamPanelValues";
+		public override string S100FC_code => nameof(tidalStreamPanelValues);
+		[JsonIgnore]
+		public override string S100FC_name => "Tidal Stream Panel Values";
+		[JsonIgnore]
 		public referenceTide referenceTide { get; init; } = new referenceTide();
+		[JsonIgnore]
 		public referenceTideType referenceTideType { get; init; } = new referenceTideType();
+		[JsonIgnore]
 		public tidalStreamValue tidalStreamValue { get; init; } = new tidalStreamValue();
 		public override Attribute[] subAttributes => [
 				referenceTide,
@@ -5071,10 +5660,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
-	public class verticalClearanceClosed : ComplexAttribute
+	public class verticalClearanceClosed : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceClosed";
+		public override string S100FC_code => nameof(verticalClearanceClosed);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Closed";
+		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
 		public override Attribute[] subAttributes => [
 				verticalClearanceValue,
@@ -5097,10 +5689,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.
 	/// </summary>
-	public class verticalClearanceFixed : ComplexAttribute
+	public class verticalClearanceFixed : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceFixed";
+		public override string S100FC_code => nameof(verticalClearanceFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Fixed";
+		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
 		public override Attribute[] subAttributes => [
 				verticalClearanceValue,
@@ -5123,10 +5718,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
-	public class verticalClearanceOpen : ComplexAttribute
+	public class verticalClearanceOpen : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceOpen";
+		public override string S100FC_code => nameof(verticalClearanceOpen);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Open";
+		[JsonIgnore]
 		public verticalClearanceUnlimited verticalClearanceUnlimited { get; init; } = new verticalClearanceUnlimited();
 		public override Attribute[] subAttributes => [
 				verticalClearanceUnlimited,
@@ -5154,10 +5752,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.
 	/// </summary>
-	public class verticalClearanceSafe : ComplexAttribute
+	public class verticalClearanceSafe : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "verticalClearanceSafe";
+		public override string S100FC_code => nameof(verticalClearanceSafe);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Safe";
+		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
 		public override Attribute[] subAttributes => [
 				verticalClearanceValue,
@@ -5180,10 +5781,13 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
-	public class lightSector : ComplexAttribute
+	public class lightSector : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "lightSector";
+		public override string S100FC_code => nameof(lightSector);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Sector";
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] subAttributes => [
 				colour,
@@ -5233,11 +5837,15 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
-	public class sectorCharacteristics : ComplexAttribute
+	public class sectorCharacteristics : S100Framework.AttributeModel.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string code => "sectorCharacteristics";
+		public override string S100FC_code => nameof(sectorCharacteristics);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Characteristics";
+		[JsonIgnore]
 		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
+		[JsonIgnore]
 		public lightSector lightSector { get; init; } = new lightSector();
 		public override Attribute[] subAttributes => [
 				lightCharacteristic,
@@ -5276,18 +5884,21 @@ namespace S100Framework.DomainModel.S101.ComplexAttributes
 
 }
 
-namespace S100Framework.DomainModel.S101.FeatureTypes
+namespace S100Framework.AttributeModel.S101.FeatureTypes
 {
-	using S100Framework.DomainModel.S101.SimpleAttributes;
-	using S100Framework.DomainModel.S101.ComplexAttributes;
+	using S100Framework.AttributeModel.S101.SimpleAttributes;
+	using S100Framework.AttributeModel.S101.ComplexAttributes;
 
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
-	public class QualityOfNonBathymetricData : FeatureType
+	public class QualityOfNonBathymetricData : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "QualityOfNonBathymetricData";
+		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Non-Bathymetric Data";
+		[JsonIgnore]
 		public horizontalPositionUncertainty horizontalPositionUncertainty { get; init; } = new horizontalPositionUncertainty();
 		public override Attribute[] attributes => [
 				horizontalPositionUncertainty,
@@ -5341,12 +5952,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
-	public class DataCoverage : FeatureType
+	public class DataCoverage : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DataCoverage";
+		public override string S100FC_code => nameof(DataCoverage);
+		[JsonIgnore]
+		public override string S100FC_name => "Data Coverage";
+		[JsonIgnore]
 		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
+		[JsonIgnore]
 		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		[JsonIgnore]
 		public optimumDisplayScale optimumDisplayScale { get; init; } = new optimumDisplayScale();
 		public override Attribute[] attributes => [
 				maximumDisplayScale,
@@ -5391,10 +6007,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
-	public class NavigationalSystemOfMarks : FeatureType
+	public class NavigationalSystemOfMarks : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "NavigationalSystemOfMarks";
+		public override string S100FC_code => nameof(NavigationalSystemOfMarks);
+		[JsonIgnore]
+		public override string S100FC_name => "Navigational System of Marks";
+		[JsonIgnore]
 		public marksNavigationalSystemOf marksNavigationalSystemOf { get; init; } = new marksNavigationalSystemOf();
 		public override Attribute[] attributes => [
 				marksNavigationalSystemOf,
@@ -5423,11 +6042,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
-	public class LocalDirectionOfBuoyage : FeatureType
+	public class LocalDirectionOfBuoyage : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LocalDirectionOfBuoyage";
+		public override string S100FC_code => nameof(LocalDirectionOfBuoyage);
+		[JsonIgnore]
+		public override string S100FC_name => "Local Direction of Buoyage";
+		[JsonIgnore]
 		public marksNavigationalSystemOf marksNavigationalSystemOf { get; init; } = new marksNavigationalSystemOf();
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
 		public override Attribute[] attributes => [
 				marksNavigationalSystemOf,
@@ -5467,14 +6090,21 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the bathymetric data exists.
 	/// </summary>
-	public class QualityOfBathymetricData : FeatureType
+	public class QualityOfBathymetricData : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "QualityOfBathymetricData";
+		public override string S100FC_code => nameof(QualityOfBathymetricData);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Bathymetric Data";
+		[JsonIgnore]
 		public categoryOfTemporalVariation categoryOfTemporalVariation { get; init; } = new categoryOfTemporalVariation();
+		[JsonIgnore]
 		public dataAssessment dataAssessment { get; init; } = new dataAssessment();
+		[JsonIgnore]
 		public featuresDetected featuresDetected { get; init; } = new featuresDetected();
+		[JsonIgnore]
 		public fullSeafloorCoverageAchieved fullSeafloorCoverageAchieved { get; init; } = new fullSeafloorCoverageAchieved();
+		[JsonIgnore]
 		public zoneOfConfidence zoneOfConfidence { get; init; } = new zoneOfConfidence();
 		public override Attribute[] attributes => [
 				categoryOfTemporalVariation,
@@ -5543,10 +6173,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
-	public class SoundingDatum : FeatureType
+	public class SoundingDatum : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SoundingDatum";
+		public override string S100FC_code => nameof(SoundingDatum);
+		[JsonIgnore]
+		public override string S100FC_name => "Sounding Datum";
+		[JsonIgnore]
 		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
 		public override Attribute[] attributes => [
 				verticalDatum,
@@ -5575,10 +6208,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
-	public class VerticalDatumOfData : FeatureType
+	public class VerticalDatumOfData : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "VerticalDatumOfData";
+		public override string S100FC_code => nameof(VerticalDatumOfData);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Datum of Data";
+		[JsonIgnore]
 		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
 		public override Attribute[] attributes => [
 				verticalDatum,
@@ -5607,12 +6243,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the reliability of source survey information exists.
 	/// </summary>
-	public class QualityOfSurvey : FeatureType
+	public class QualityOfSurvey : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "QualityOfSurvey";
+		public override string S100FC_code => nameof(QualityOfSurvey);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Survey";
+		[JsonIgnore]
 		public surveyAuthority surveyAuthority { get; init; } = new surveyAuthority();
+		[JsonIgnore]
 		public surveyDateRange surveyDateRange { get; init; } = new surveyDateRange();
+		[JsonIgnore]
 		public surveyType surveyType { get; init; } = new surveyType();
 		public override Attribute[] attributes => [
 				surveyAuthority,
@@ -5721,11 +6362,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The Update Information metadata feature is used to represent a change to the information shown.
 	/// </summary>
-	public class UpdateInformation : FeatureType
+	public class UpdateInformation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "UpdateInformation";
+		public override string S100FC_code => nameof(UpdateInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Update Information";
+		[JsonIgnore]
 		public updateNumber updateNumber { get; init; } = new updateNumber();
+		[JsonIgnore]
 		public updateType updateType { get; init; } = new updateType();
 		public override Attribute[] attributes => [
 				updateNumber,
@@ -5775,12 +6420,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.
 	/// </summary>
-	public class MagneticVariation : FeatureType
+	public class MagneticVariation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MagneticVariation";
+		public override string S100FC_code => nameof(MagneticVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Magnetic Variation";
+		[JsonIgnore]
 		public referenceYearForMagneticVariation referenceYearForMagneticVariation { get; init; } = new referenceYearForMagneticVariation();
+		[JsonIgnore]
 		public valueOfAnnualChangeInMagneticVariation valueOfAnnualChangeInMagneticVariation { get; init; } = new valueOfAnnualChangeInMagneticVariation();
+		[JsonIgnore]
 		public valueOfMagneticVariation valueOfMagneticVariation { get; init; } = new valueOfMagneticVariation();
 		public override Attribute[] attributes => [
 				referenceYearForMagneticVariation,
@@ -5825,10 +6475,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.
 	/// </summary>
-	public class LocalMagneticAnomaly : FeatureType
+	public class LocalMagneticAnomaly : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LocalMagneticAnomaly";
+		public override string S100FC_code => nameof(LocalMagneticAnomaly);
+		[JsonIgnore]
+		public override string S100FC_name => "Local Magnetic Anomaly";
+		[JsonIgnore]
 		public valueOfLocalMagneticAnomaly valueOfLocalMagneticAnomaly { get; init; } = new valueOfLocalMagneticAnomaly();
 		public override Attribute[] attributes => [
 				valueOfLocalMagneticAnomaly,
@@ -5871,10 +6524,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
 	/// </summary>
-	public class Coastline : FeatureType
+	public class Coastline : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Coastline";
+		public override string S100FC_code => nameof(Coastline);
+		[JsonIgnore]
+		public override string S100FC_name => "Coastline";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -5939,10 +6594,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The solid portion of the Earth's surface, as opposed to sea, water.
 	/// </summary>
-	public class LandArea : FeatureType
+	public class LandArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LandArea";
+		public override string S100FC_code => nameof(LandArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Land Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -5990,10 +6647,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A named group of islands, including archipelagos.
 	/// </summary>
-	public class IslandGroup : FeatureType
+	public class IslandGroup : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "IslandGroup";
+		public override string S100FC_code => nameof(IslandGroup);
+		[JsonIgnore]
+		public override string S100FC_name => "Island Group";
+		[JsonIgnore]
 		public featureName featureName { get; init; } = new featureName();
 		public override Attribute[] attributes => [
 				featureName,
@@ -6026,10 +6686,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.
 	/// </summary>
-	public class LandElevation : FeatureType
+	public class LandElevation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LandElevation";
+		public override string S100FC_code => nameof(LandElevation);
+		[JsonIgnore]
+		public override string S100FC_name => "Land Elevation";
+		[JsonIgnore]
 		public elevation elevation { get; init; } = new elevation();
 		public override Attribute[] attributes => [
 				elevation,
@@ -6073,10 +6736,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A relatively large natural stream of water.
 	/// </summary>
-	public class River : FeatureType
+	public class River : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "River";
+		public override string S100FC_code => nameof(River);
+		[JsonIgnore]
+		public override string S100FC_name => "River";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6113,10 +6778,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.
 	/// </summary>
-	public class Rapids : FeatureType
+	public class Rapids : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Rapids";
+		public override string S100FC_code => nameof(Rapids);
+		[JsonIgnore]
+		public override string S100FC_name => "Rapids";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6152,10 +6819,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.
 	/// </summary>
-	public class Waterfall : FeatureType
+	public class Waterfall : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Waterfall";
+		public override string S100FC_code => nameof(Waterfall);
+		[JsonIgnore]
+		public override string S100FC_name => "Waterfall";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6197,10 +6866,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A large body of water entirely surrounded by land.
 	/// </summary>
-	public class Lake : FeatureType
+	public class Lake : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Lake";
+		public override string S100FC_code => nameof(Lake);
+		[JsonIgnore]
+		public override string S100FC_name => "Lake";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6242,10 +6913,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.
 	/// </summary>
-	public class LandRegion : FeatureType
+	public class LandRegion : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LandRegion";
+		public override string S100FC_code => nameof(LandRegion);
+		[JsonIgnore]
+		public override string S100FC_name => "Land Region";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6294,10 +6967,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Plants collectively or individually, especially those dominating a particular area or habitat.
 	/// </summary>
-	public class Vegetation : FeatureType
+	public class Vegetation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Vegetation";
+		public override string S100FC_code => nameof(Vegetation);
+		[JsonIgnore]
+		public override string S100FC_name => "Vegetation";
+		[JsonIgnore]
 		public categoryOfVegetation categoryOfVegetation { get; init; } = new categoryOfVegetation();
 		public override Attribute[] attributes => [
 				categoryOfVegetation,
@@ -6357,10 +7033,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of ice over land or water.
 	/// </summary>
-	public class IceArea : FeatureType
+	public class IceArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "IceArea";
+		public override string S100FC_code => nameof(IceArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Ice Area";
+		[JsonIgnore]
 		public categoryOfIce categoryOfIce { get; init; } = new categoryOfIce();
 		public override Attribute[] attributes => [
 				categoryOfIce,
@@ -6436,10 +7115,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An inclined surface.
 	/// </summary>
-	public class SlopingGround : FeatureType
+	public class SlopingGround : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SlopingGround";
+		public override string S100FC_code => nameof(SlopingGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Sloping Ground";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6499,10 +7180,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The upper marking of a slope, for example the ridge line or the separation line between two different gradients.
 	/// </summary>
-	public class SlopeTopline : FeatureType
+	public class SlopeTopline : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SlopeTopline";
+		public override string S100FC_code => nameof(SlopeTopline);
+		[JsonIgnore]
+		public override string S100FC_name => "Slope Topline";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6567,10 +7250,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A channel through which a tidal current runs.
 	/// </summary>
-	public class Tideway : FeatureType
+	public class Tideway : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Tideway";
+		public override string S100FC_code => nameof(Tideway);
+		[JsonIgnore]
+		public override string S100FC_name => "Tideway";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6601,10 +7286,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of land or construction over the water containing a concentration of buildings and/or other structures.
 	/// </summary>
-	public class BuiltUpArea : FeatureType
+	public class BuiltUpArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "BuiltUpArea";
+		public override string S100FC_code => nameof(BuiltUpArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Built-Up Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6678,10 +7365,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
 	/// </summary>
-	public class Building : FeatureType
+	public class Building : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Building";
+		public override string S100FC_code => nameof(Building);
+		[JsonIgnore]
+		public override string S100FC_name => "Building";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6800,10 +7489,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
 	/// </summary>
-	public class AirportAirfield : FeatureType
+	public class AirportAirfield : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "AirportAirfield";
+		public override string S100FC_code => nameof(AirportAirfield);
+		[JsonIgnore]
+		public override string S100FC_name => "Airport/Airfield";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6862,10 +7553,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.
 	/// </summary>
-	public class Runway : FeatureType
+	public class Runway : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Runway";
+		public override string S100FC_code => nameof(Runway);
+		[JsonIgnore]
+		public override string S100FC_name => "Runway";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6924,10 +7617,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A site on which helicopters may land and take off.
 	/// </summary>
-	public class Helipad : FeatureType
+	public class Helipad : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Helipad";
+		public override string S100FC_code => nameof(Helipad);
+		[JsonIgnore]
+		public override string S100FC_name => "Helipad";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -6986,10 +7681,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
-	public class Bridge : FeatureType
+	public class Bridge : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Bridge";
+		public override string S100FC_code => nameof(Bridge);
+		[JsonIgnore]
+		public override string S100FC_name => "Bridge";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7104,10 +7801,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A fixed component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
-	public class SpanFixed : FeatureType
+	public class SpanFixed : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SpanFixed";
+		public override string S100FC_code => nameof(SpanFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Span Fixed";
+		[JsonIgnore]
 		public verticalClearanceFixed verticalClearanceFixed { get; init; } = new verticalClearanceFixed();
 		public override Attribute[] attributes => [
 				verticalClearanceFixed,
@@ -7161,11 +7861,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An opening component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
-	public class SpanOpening : FeatureType
+	public class SpanOpening : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SpanOpening";
+		public override string S100FC_code => nameof(SpanOpening);
+		[JsonIgnore]
+		public override string S100FC_name => "Span Opening";
+		[JsonIgnore]
 		public verticalClearanceClosed verticalClearanceClosed { get; init; } = new verticalClearanceClosed();
+		[JsonIgnore]
 		public verticalClearanceOpen verticalClearanceOpen { get; init; } = new verticalClearanceOpen();
 		public override Attribute[] attributes => [
 				verticalClearanceClosed,
@@ -7225,10 +7929,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
 	/// </summary>
-	public class Conveyor : FeatureType
+	public class Conveyor : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Conveyor";
+		public override string S100FC_code => nameof(Conveyor);
+		[JsonIgnore]
+		public override string S100FC_name => "Conveyor";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7352,10 +8058,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
 	/// </summary>
-	public class CableOverhead : FeatureType
+	public class CableOverhead : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CableOverhead";
+		public override string S100FC_code => nameof(CableOverhead);
+		[JsonIgnore]
+		public override string S100FC_name => "Cable Overhead";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7451,10 +8159,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.
 	/// </summary>
-	public class PipelineOverhead : FeatureType
+	public class PipelineOverhead : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PipelineOverhead";
+		public override string S100FC_code => nameof(PipelineOverhead);
+		[JsonIgnore]
+		public override string S100FC_name => "Pipeline Overhead";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7546,10 +8256,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.
 	/// </summary>
-	public class PylonBridgeSupport : FeatureType
+	public class PylonBridgeSupport : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PylonBridgeSupport";
+		public override string S100FC_code => nameof(PylonBridgeSupport);
+		[JsonIgnore]
+		public override string S100FC_name => "Pylon/Bridge Support";
+		[JsonIgnore]
 		public categoryOfPylon categoryOfPylon { get; init; } = new categoryOfPylon();
 		public override Attribute[] attributes => [
 				categoryOfPylon,
@@ -7665,10 +8378,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A man-made barrier used as an enclosure or boundary or for protection.
 	/// </summary>
-	public class FenceWall : FeatureType
+	public class FenceWall : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FenceWall";
+		public override string S100FC_code => nameof(FenceWall);
+		[JsonIgnore]
+		public override string S100FC_name => "Fence/Wall";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7766,10 +8481,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A rail or set of parallel rails on which a train, tram, or rail wagon runs.
 	/// </summary>
-	public class Railway : FeatureType
+	public class Railway : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Railway";
+		public override string S100FC_code => nameof(Railway);
+		[JsonIgnore]
+		public override string S100FC_name => "Railway";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7822,10 +8539,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
 	/// </summary>
-	public class Road : FeatureType
+	public class Road : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Road";
+		public override string S100FC_code => nameof(Road);
+		[JsonIgnore]
+		public override string S100FC_name => "Road";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7885,10 +8604,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.
 	/// </summary>
-	public class Tunnel : FeatureType
+	public class Tunnel : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Tunnel";
+		public override string S100FC_code => nameof(Tunnel);
+		[JsonIgnore]
+		public override string S100FC_name => "Tunnel";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -7957,11 +8678,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
 	/// </summary>
-	public class Landmark : FeatureType
+	public class Landmark : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Landmark";
+		public override string S100FC_code => nameof(Landmark);
+		[JsonIgnore]
+		public override string S100FC_name => "Landmark";
+		[JsonIgnore]
 		public categoryOfLandmark categoryOfLandmark { get; init; } = new categoryOfLandmark();
+		[JsonIgnore]
 		public visualProminence visualProminence { get; init; } = new visualProminence();
 		public override Attribute[] attributes => [
 				categoryOfLandmark,
@@ -8089,10 +8814,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
 	/// </summary>
-	public class SiloTank : FeatureType
+	public class SiloTank : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SiloTank";
+		public override string S100FC_code => nameof(SiloTank);
+		[JsonIgnore]
+		public override string S100FC_name => "Silo/Tank";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8217,10 +8944,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
 	/// </summary>
-	public class WindTurbine : FeatureType
+	public class WindTurbine : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "WindTurbine";
+		public override string S100FC_code => nameof(WindTurbine);
+		[JsonIgnore]
+		public override string S100FC_name => "Wind Turbine";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8349,10 +9078,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A structure that is specifically designed or reinforced to provide for defence from armed attack.
 	/// </summary>
-	public class FortifiedStructure : FeatureType
+	public class FortifiedStructure : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FortifiedStructure";
+		public override string S100FC_code => nameof(FortifiedStructure);
+		[JsonIgnore]
+		public override string S100FC_name => "Fortified Structure";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8443,10 +9174,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area on land for the exploitation or storage of natural resources.
 	/// </summary>
-	public class ProductionStorageArea : FeatureType
+	public class ProductionStorageArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ProductionStorageArea";
+		public override string S100FC_code => nameof(ProductionStorageArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Production/Storage Area";
+		[JsonIgnore]
 		public categoryOfProductionArea categoryOfProductionArea { get; init; } = new categoryOfProductionArea();
 		public override Attribute[] attributes => [
 				categoryOfProductionArea,
@@ -8544,10 +9278,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An official location at which to register, declare and/or inspect goods and/or people.
 	/// </summary>
-	public class Checkpoint : FeatureType
+	public class Checkpoint : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Checkpoint";
+		public override string S100FC_code => nameof(Checkpoint);
+		[JsonIgnore]
+		public override string S100FC_name => "Checkpoint";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8590,10 +9326,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.
 	/// </summary>
-	public class Hulk : FeatureType
+	public class Hulk : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Hulk";
+		public override string S100FC_code => nameof(Hulk);
+		[JsonIgnore]
+		public override string S100FC_name => "Hulk";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8694,10 +9432,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 	/// </summary>
-	public class Pile : FeatureType
+	public class Pile : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Pile";
+		public override string S100FC_code => nameof(Pile);
+		[JsonIgnore]
+		public override string S100FC_name => "Pile";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8794,10 +9534,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A dyke (or dike) is an artificial embankment to contain or hold back water.
 	/// </summary>
-	public class Dyke : FeatureType
+	public class Dyke : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Dyke";
+		public override string S100FC_code => nameof(Dyke);
+		[JsonIgnore]
+		public override string S100FC_name => "Dyke";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8871,10 +9613,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
 	/// </summary>
-	public class ShorelineConstruction : FeatureType
+	public class ShorelineConstruction : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ShorelineConstruction";
+		public override string S100FC_code => nameof(ShorelineConstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Shoreline Construction";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -8993,11 +9737,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.
 	/// </summary>
-	public class StructureOverNavigableWater : FeatureType
+	public class StructureOverNavigableWater : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "StructureOverNavigableWater";
+		public override string S100FC_code => nameof(StructureOverNavigableWater);
+		[JsonIgnore]
+		public override string S100FC_name => "Structure Over Navigable Water";
+		[JsonIgnore]
 		public horizontalClearanceFixed horizontalClearanceFixed { get; init; } = new horizontalClearanceFixed();
+		[JsonIgnore]
 		public verticalClearanceFixed verticalClearanceFixed { get; init; } = new verticalClearanceFixed();
 		public override Attribute[] attributes => [
 				horizontalClearanceFixed,
@@ -9140,10 +9888,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A raised way across low or wet ground or water.
 	/// </summary>
-	public class Causeway : FeatureType
+	public class Causeway : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Causeway";
+		public override string S100FC_code => nameof(Causeway);
+		[JsonIgnore]
+		public override string S100FC_name => "Causeway";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9203,10 +9953,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).
 	/// </summary>
-	public class Canal : FeatureType
+	public class Canal : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Canal";
+		public override string S100FC_code => nameof(Canal);
+		[JsonIgnore]
+		public override string S100FC_name => "Canal";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9275,11 +10027,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.
 	/// </summary>
-	public class DistanceMark : FeatureType
+	public class DistanceMark : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DistanceMark";
+		public override string S100FC_code => nameof(DistanceMark);
+		[JsonIgnore]
+		public override string S100FC_name => "Distance Mark";
+		[JsonIgnore]
 		public distanceMarkVisible distanceMarkVisible { get; init; } = new distanceMarkVisible();
+		[JsonIgnore]
 		public measuredDistanceValue measuredDistanceValue { get; init; } = new measuredDistanceValue();
 		public override Attribute[] attributes => [
 				distanceMarkVisible,
@@ -9328,10 +10084,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.
 	/// </summary>
-	public class Gate : FeatureType
+	public class Gate : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Gate";
+		public override string S100FC_code => nameof(Gate);
+		[JsonIgnore]
+		public override string S100FC_name => "Gate";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9418,10 +10176,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.
 	/// </summary>
-	public class Dam : FeatureType
+	public class Dam : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Dam";
+		public override string S100FC_code => nameof(Dam);
+		[JsonIgnore]
+		public override string S100FC_name => "Dam";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9520,10 +10280,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.
 	/// </summary>
-	public class Crane : FeatureType
+	public class Crane : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Crane";
+		public override string S100FC_code => nameof(Crane);
+		[JsonIgnore]
+		public override string S100FC_name => "Crane";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9641,10 +10403,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
-	public class Berth : FeatureType
+	public class Berth : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Berth";
+		public override string S100FC_code => nameof(Berth);
+		[JsonIgnore]
+		public override string S100FC_name => "Berth";
+		[JsonIgnore]
 		public featureName featureName { get; init; } = new featureName();
 		public override Attribute[] attributes => [
 				featureName,
@@ -9730,10 +10495,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
-	public class Dolphin : FeatureType
+	public class Dolphin : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Dolphin";
+		public override string S100FC_code => nameof(Dolphin);
+		[JsonIgnore]
+		public override string S100FC_name => "Dolphin";
+		[JsonIgnore]
 		public categoryOfDolphin categoryOfDolphin { get; init; } = new categoryOfDolphin();
 		public override Attribute[] attributes => [
 				categoryOfDolphin,
@@ -9848,10 +10616,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
-	public class Bollard : FeatureType
+	public class Bollard : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Bollard";
+		public override string S100FC_code => nameof(Bollard);
+		[JsonIgnore]
+		public override string S100FC_name => "Bollard";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -9914,10 +10684,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
-	public class DryDock : FeatureType
+	public class DryDock : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DryDock";
+		public override string S100FC_code => nameof(DryDock);
+		[JsonIgnore]
+		public override string S100FC_name => "Dry Dock";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10011,10 +10783,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
-	public class FloatingDock : FeatureType
+	public class FloatingDock : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FloatingDock";
+		public override string S100FC_code => nameof(FloatingDock);
+		[JsonIgnore]
+		public override string S100FC_name => "Floating Dock";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10130,10 +10904,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.
 	/// </summary>
-	public class Pontoon : FeatureType
+	public class Pontoon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Pontoon";
+		public override string S100FC_code => nameof(Pontoon);
+		[JsonIgnore]
+		public override string S100FC_name => "Pontoon";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10207,10 +10983,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
-	public class DockArea : FeatureType
+	public class DockArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DockArea";
+		public override string S100FC_code => nameof(DockArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Dock Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10289,10 +11067,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
-	public class Gridiron : FeatureType
+	public class Gridiron : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Gridiron";
+		public override string S100FC_code => nameof(Gridiron);
+		[JsonIgnore]
+		public override string S100FC_name => "Gridiron";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10356,10 +11136,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 	/// </summary>
-	public class LockBasin : FeatureType
+	public class LockBasin : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LockBasin";
+		public override string S100FC_code => nameof(LockBasin);
+		[JsonIgnore]
+		public override string S100FC_name => "Lock Basin";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10421,10 +11203,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.
 	/// </summary>
-	public class MooringTrot : FeatureType
+	public class MooringTrot : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MooringTrot";
+		public override string S100FC_code => nameof(MooringTrot);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring Trot";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10460,10 +11244,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
 	/// </summary>
-	public class SeaAreaNamedWaterArea : FeatureType
+	public class SeaAreaNamedWaterArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SeaAreaNamedWaterArea";
+		public override string S100FC_code => nameof(SeaAreaNamedWaterArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Sea Area/Named Water Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10500,12 +11286,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.
 	/// </summary>
-	public class TidalStreamFloodEbb : FeatureType
+	public class TidalStreamFloodEbb : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TidalStreamFloodEbb";
+		public override string S100FC_code => nameof(TidalStreamFloodEbb);
+		[JsonIgnore]
+		public override string S100FC_name => "Tidal Stream - Flood/Ebb";
+		[JsonIgnore]
 		public categoryOfTidalStream categoryOfTidalStream { get; init; } = new categoryOfTidalStream();
+		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
+		[JsonIgnore]
 		public speed speed { get; init; } = new speed();
 		public override Attribute[] attributes => [
 				categoryOfTidalStream,
@@ -10561,11 +11352,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Any current that is caused by other than tide producing forces.
 	/// </summary>
-	public class CurrentNonGravitational : FeatureType
+	public class CurrentNonGravitational : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CurrentNonGravitational";
+		public override string S100FC_code => nameof(CurrentNonGravitational);
+		[JsonIgnore]
+		public override string S100FC_name => "Current - Non-Gravitational";
+		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
+		[JsonIgnore]
 		public speed speed { get; init; } = new speed();
 		public override Attribute[] attributes => [
 				orientation,
@@ -10625,10 +11420,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.
 	/// </summary>
-	public class WaterTurbulence : FeatureType
+	public class WaterTurbulence : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "WaterTurbulence";
+		public override string S100FC_code => nameof(WaterTurbulence);
+		[JsonIgnore]
+		public override string S100FC_name => "Water Turbulence";
+		[JsonIgnore]
 		public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; init; } = new categoryOfWaterTurbulence();
 		public override Attribute[] attributes => [
 				categoryOfWaterTurbulence,
@@ -10667,11 +11465,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.
 	/// </summary>
-	public class TidalStreamPanelData : FeatureType
+	public class TidalStreamPanelData : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TidalStreamPanelData";
+		public override string S100FC_code => nameof(TidalStreamPanelData);
+		[JsonIgnore]
+		public override string S100FC_name => "Tidal Stream Panel Data";
+		[JsonIgnore]
 		public stationName stationName { get; init; } = new stationName();
+		[JsonIgnore]
 		public tidalStreamPanelValues tidalStreamPanelValues { get; init; } = new tidalStreamPanelValues();
 		public override Attribute[] attributes => [
 				stationName,
@@ -10720,10 +11522,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
 	/// </summary>
-	public class Sounding : FeatureType
+	public class Sounding : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Sounding";
+		public override string S100FC_code => nameof(Sounding);
+		[JsonIgnore]
+		public override string S100FC_name => "Sounding";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -10777,10 +11581,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of the bottom of a body of water which has been deepened by dredging.
 	/// </summary>
-	public class DredgedArea : FeatureType
+	public class DredgedArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DredgedArea";
+		public override string S100FC_code => nameof(DredgedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Dredged Area";
+		[JsonIgnore]
 		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
 		public override Attribute[] attributes => [
 				depthRangeMinimumValue,
@@ -10856,10 +11663,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area that has been determined to be clear of navigational dangers to a specified depth.
 	/// </summary>
-	public class SweptArea : FeatureType
+	public class SweptArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SweptArea";
+		public override string S100FC_code => nameof(SweptArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Swept Area";
+		[JsonIgnore]
 		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
 		public override Attribute[] attributes => [
 				depthRangeMinimumValue,
@@ -10897,10 +11707,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
 	/// </summary>
-	public class DepthContour : FeatureType
+	public class DepthContour : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DepthContour";
+		public override string S100FC_code => nameof(DepthContour);
+		[JsonIgnore]
+		public override string S100FC_name => "Depth Contour";
+		[JsonIgnore]
 		public valueOfDepthContour valueOfDepthContour { get; init; } = new valueOfDepthContour();
 		public override Attribute[] attributes => [
 				valueOfDepthContour,
@@ -10933,11 +11746,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A water area whose depth is within a defined range of values.
 	/// </summary>
-	public class DepthArea : FeatureType
+	public class DepthArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DepthArea";
+		public override string S100FC_code => nameof(DepthArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Depth Area";
+		[JsonIgnore]
 		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		[JsonIgnore]
 		public depthRangeMaximumValue depthRangeMaximumValue { get; init; } = new depthRangeMaximumValue();
 		public override Attribute[] attributes => [
 				depthRangeMinimumValue,
@@ -10971,10 +11788,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Upon investigation the bottom was not found at this depth.
 	/// </summary>
-	public class DepthNoBottomFound : FeatureType
+	public class DepthNoBottomFound : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DepthNoBottomFound";
+		public override string S100FC_code => nameof(DepthNoBottomFound);
+		[JsonIgnore]
+		public override string S100FC_name => "Depth - No Bottom Found";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11006,10 +11825,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area where hydrographic survey data is non-existent.
 	/// </summary>
-	public class UnsurveyedArea : FeatureType
+	public class UnsurveyedArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "UnsurveyedArea";
+		public override string S100FC_code => nameof(UnsurveyedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Unsurveyed Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11030,10 +11851,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
 	/// </summary>
-	public class SeabedArea : FeatureType
+	public class SeabedArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SeabedArea";
+		public override string S100FC_code => nameof(SeabedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Seabed Area";
+		[JsonIgnore]
 		public surfaceCharacteristics surfaceCharacteristics { get; init; } = new surfaceCharacteristics();
 		public override Attribute[] attributes => [
 				surfaceCharacteristics,
@@ -11077,10 +11901,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Any macroscopic marine alga.
 	/// </summary>
-	public class WeedKelp : FeatureType
+	public class WeedKelp : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "WeedKelp";
+		public override string S100FC_code => nameof(WeedKelp);
+		[JsonIgnore]
+		public override string S100FC_name => "Weed/Kelp";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11117,10 +11943,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.
 	/// </summary>
-	public class Seagrass : FeatureType
+	public class Seagrass : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Seagrass";
+		public override string S100FC_code => nameof(Seagrass);
+		[JsonIgnore]
+		public override string S100FC_name => "Seagrass";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11151,10 +11979,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.
 	/// </summary>
-	public class Sandwave : FeatureType
+	public class Sandwave : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Sandwave";
+		public override string S100FC_code => nameof(Sandwave);
+		[JsonIgnore]
+		public override string S100FC_name => "Sandwave";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11185,10 +12015,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.
 	/// </summary>
-	public class Spring : FeatureType
+	public class Spring : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Spring";
+		public override string S100FC_code => nameof(Spring);
+		[JsonIgnore]
+		public override string S100FC_name => "Spring";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11219,12 +12051,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
 	/// </summary>
-	public class UnderwaterAwashRock : FeatureType
+	public class UnderwaterAwashRock : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "UnderwaterAwashRock";
+		public override string S100FC_code => nameof(UnderwaterAwashRock);
+		[JsonIgnore]
+		public override string S100FC_name => "Underwater/Awash Rock";
+		[JsonIgnore]
 		public valueOfSounding valueOfSounding { get; init; } = new valueOfSounding();
+		[JsonIgnore]
 		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		[JsonIgnore]
 		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
 		public override Attribute[] attributes => [
 				valueOfSounding,
@@ -11315,11 +12152,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
 	/// </summary>
-	public class Wreck : FeatureType
+	public class Wreck : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Wreck";
+		public override string S100FC_code => nameof(Wreck);
+		[JsonIgnore]
+		public override string S100FC_name => "Wreck";
+		[JsonIgnore]
 		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		[JsonIgnore]
 		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
 		public override Attribute[] attributes => [
 				waterLevelEffect,
@@ -11430,11 +12271,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
 	/// </summary>
-	public class Obstruction : FeatureType
+	public class Obstruction : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Obstruction";
+		public override string S100FC_code => nameof(Obstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Obstruction";
+		[JsonIgnore]
 		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
+		[JsonIgnore]
 		public surroundingDepth surroundingDepth { get; init; } = new surroundingDepth();
 		public override Attribute[] attributes => [
 				waterLevelEffect,
@@ -11557,10 +12402,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
 	/// </summary>
-	public class FoulGround : FeatureType
+	public class FoulGround : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FoulGround";
+		public override string S100FC_code => nameof(FoulGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Foul Ground";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11624,10 +12471,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
 	/// </summary>
-	public class DiscolouredWater : FeatureType
+	public class DiscolouredWater : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DiscolouredWater";
+		public override string S100FC_code => nameof(DiscolouredWater);
+		[JsonIgnore]
+		public override string S100FC_name => "Discoloured Water";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11658,10 +12507,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
 	/// </summary>
-	public class FishingFacility : FeatureType
+	public class FishingFacility : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FishingFacility";
+		public override string S100FC_code => nameof(FishingFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Fishing Facility";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11725,10 +12576,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.
 	/// </summary>
-	public class MarineFarmCulture : FeatureType
+	public class MarineFarmCulture : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MarineFarmCulture";
+		public override string S100FC_code => nameof(MarineFarmCulture);
+		[JsonIgnore]
+		public override string S100FC_name => "Marine Farm/Culture";
+		[JsonIgnore]
 		public waterLevelEffect waterLevelEffect { get; init; } = new waterLevelEffect();
 		public override Attribute[] attributes => [
 				waterLevelEffect,
@@ -11832,10 +12686,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
 	/// </summary>
-	public class OffshorePlatform : FeatureType
+	public class OffshorePlatform : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "OffshorePlatform";
+		public override string S100FC_code => nameof(OffshorePlatform);
+		[JsonIgnore]
+		public override string S100FC_name => "Offshore Platform";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -11943,10 +12799,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
 	/// </summary>
-	public class CableSubmarine : FeatureType
+	public class CableSubmarine : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CableSubmarine";
+		public override string S100FC_code => nameof(CableSubmarine);
+		[JsonIgnore]
+		public override string S100FC_name => "Cable Submarine";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12005,10 +12863,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area which contains one or more submarine cables.
 	/// </summary>
-	public class CableArea : FeatureType
+	public class CableArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CableArea";
+		public override string S100FC_code => nameof(CableArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Cable Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12067,10 +12927,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A connected set of pipes for conveying liquids, slurries, or gases.
 	/// </summary>
-	public class PipelineSubmarineOnLand : FeatureType
+	public class PipelineSubmarineOnLand : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PipelineSubmarineOnLand";
+		public override string S100FC_code => nameof(PipelineSubmarineOnLand);
+		[JsonIgnore]
+		public override string S100FC_name => "Pipeline Submarine/On Land";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12166,10 +13028,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area containing one or more submarine pipelines.
 	/// </summary>
-	public class SubmarinePipelineArea : FeatureType
+	public class SubmarinePipelineArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SubmarinePipelineArea";
+		public override string S100FC_code => nameof(SubmarinePipelineArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Submarine Pipeline Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12234,10 +13098,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area at sea within which there are production facilities.
 	/// </summary>
-	public class OffshoreProductionArea : FeatureType
+	public class OffshoreProductionArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "OffshoreProductionArea";
+		public override string S100FC_code => nameof(OffshoreProductionArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Offshore Production Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12340,11 +13206,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 	/// </summary>
-	public class NavigationLine : FeatureType
+	public class NavigationLine : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "NavigationLine";
+		public override string S100FC_code => nameof(NavigationLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Navigation Line";
+		[JsonIgnore]
 		public categoryOfNavigationLine categoryOfNavigationLine { get; init; } = new categoryOfNavigationLine();
+		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
 		public override Attribute[] attributes => [
 				categoryOfNavigationLine,
@@ -12405,12 +13275,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
-	public class RecommendedTrack : FeatureType
+	public class RecommendedTrack : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RecommendedTrack";
+		public override string S100FC_code => nameof(RecommendedTrack);
+		[JsonIgnore]
+		public override string S100FC_name => "Recommended Track";
+		[JsonIgnore]
 		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
+		[JsonIgnore]
 		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
 		public override Attribute[] attributes => [
 				basedOnFixedMarks,
@@ -12504,10 +13379,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
 	/// </summary>
-	public class RangeSystem : FeatureType
+	public class RangeSystem : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RangeSystem";
+		public override string S100FC_code => nameof(RangeSystem);
+		[JsonIgnore]
+		public override string S100FC_name => "Range System";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12548,10 +13425,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.
 	/// </summary>
-	public class Fairway : FeatureType
+	public class Fairway : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Fairway";
+		public override string S100FC_code => nameof(Fairway);
+		[JsonIgnore]
+		public override string S100FC_name => "Fairway";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12636,10 +13515,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.
 	/// </summary>
-	public class FairwaySystem : FeatureType
+	public class FairwaySystem : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FairwaySystem";
+		public override string S100FC_code => nameof(FairwaySystem);
+		[JsonIgnore]
+		public override string S100FC_name => "Fairway System";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12685,10 +13566,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The recommended route centreline indicates the 'centreline' of a recommended route.
 	/// </summary>
-	public class RecommendedRouteCentreline : FeatureType
+	public class RecommendedRouteCentreline : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RecommendedRouteCentreline";
+		public override string S100FC_code => nameof(RecommendedRouteCentreline);
+		[JsonIgnore]
+		public override string S100FC_name => "Recommended Route Centreline";
+		[JsonIgnore]
 		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
 		public override Attribute[] attributes => [
 				basedOnFixedMarks,
@@ -12775,11 +13659,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).
 	/// </summary>
-	public class TwoWayRoutePart : FeatureType
+	public class TwoWayRoutePart : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TwoWayRoutePart";
+		public override string S100FC_code => nameof(TwoWayRoutePart);
+		[JsonIgnore]
+		public override string S100FC_name => "Two-Way Route Part";
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
+		[JsonIgnore]
 		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
 		public override Attribute[] attributes => [
 				orientationValue,
@@ -12857,10 +13745,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.
 	/// </summary>
-	public class TwoWayRoute : FeatureType
+	public class TwoWayRoute : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TwoWayRoute";
+		public override string S100FC_code => nameof(TwoWayRoute);
+		[JsonIgnore]
+		public override string S100FC_name => "Two-Way Route";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -12901,10 +13791,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.
 	/// </summary>
-	public class RecommendedTrafficLanePart : FeatureType
+	public class RecommendedTrafficLanePart : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RecommendedTrafficLanePart";
+		public override string S100FC_code => nameof(RecommendedTrafficLanePart);
+		[JsonIgnore]
+		public override string S100FC_name => "Recommended Traffic Lane Part";
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
 		public override Attribute[] attributes => [
 				orientationValue,
@@ -12948,12 +13841,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
 	/// </summary>
-	public class DeepWaterRouteCentreline : FeatureType
+	public class DeepWaterRouteCentreline : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DeepWaterRouteCentreline";
+		public override string S100FC_code => nameof(DeepWaterRouteCentreline);
+		[JsonIgnore]
+		public override string S100FC_name => "Deep Water Route Centreline";
+		[JsonIgnore]
 		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
+		[JsonIgnore]
 		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
 		public override Attribute[] attributes => [
 				basedOnFixedMarks,
@@ -13042,12 +13940,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area of a deep water route within which ships proceed in the same direction.
 	/// </summary>
-	public class DeepWaterRoutePart : FeatureType
+	public class DeepWaterRoutePart : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DeepWaterRoutePart";
+		public override string S100FC_code => nameof(DeepWaterRoutePart);
+		[JsonIgnore]
+		public override string S100FC_name => "Deep Water Route Part";
+		[JsonIgnore]
 		public depthRangeMinimumValue depthRangeMinimumValue { get; init; } = new depthRangeMinimumValue();
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
+		[JsonIgnore]
 		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
 		public override Attribute[] attributes => [
 				depthRangeMinimumValue,
@@ -13142,10 +14045,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.
 	/// </summary>
-	public class DeepWaterRoute : FeatureType
+	public class DeepWaterRoute : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DeepWaterRoute";
+		public override string S100FC_code => nameof(DeepWaterRoute);
+		[JsonIgnore]
+		public override string S100FC_name => "Deep Water Route";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13186,10 +14091,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.
 	/// </summary>
-	public class InshoreTrafficZone : FeatureType
+	public class InshoreTrafficZone : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "InshoreTrafficZone";
+		public override string S100FC_code => nameof(InshoreTrafficZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Inshore Traffic Zone";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13237,10 +14144,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.
 	/// </summary>
-	public class PrecautionaryArea : FeatureType
+	public class PrecautionaryArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PrecautionaryArea";
+		public override string S100FC_code => nameof(PrecautionaryArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Precautionary Area";
+		[JsonIgnore]
 		public information information { get; init; } = new information();
 		public override Attribute[] attributes => [
 				information,
@@ -13300,10 +14210,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
 	/// </summary>
-	public class TrafficSeparationSchemeLanePart : FeatureType
+	public class TrafficSeparationSchemeLanePart : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TrafficSeparationSchemeLanePart";
+		public override string S100FC_code => nameof(TrafficSeparationSchemeLanePart);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme Lane Part";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13356,10 +14268,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
 	/// </summary>
-	public class SeparationZoneOrLine : FeatureType
+	public class SeparationZoneOrLine : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SeparationZoneOrLine";
+		public override string S100FC_code => nameof(SeparationZoneOrLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Separation Zone or Line";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13396,10 +14310,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
 	/// </summary>
-	public class TrafficSeparationSchemeBoundary : FeatureType
+	public class TrafficSeparationSchemeBoundary : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TrafficSeparationSchemeBoundary";
+		public override string S100FC_code => nameof(TrafficSeparationSchemeBoundary);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme Boundary";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13436,10 +14352,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A defined area where traffic lanes cross.
 	/// </summary>
-	public class TrafficSeparationSchemeCrossing : FeatureType
+	public class TrafficSeparationSchemeCrossing : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TrafficSeparationSchemeCrossing";
+		public override string S100FC_code => nameof(TrafficSeparationSchemeCrossing);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme Crossing";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13487,10 +14405,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
 	/// </summary>
-	public class TrafficSeparationSchemeRoundabout : FeatureType
+	public class TrafficSeparationSchemeRoundabout : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TrafficSeparationSchemeRoundabout";
+		public override string S100FC_code => nameof(TrafficSeparationSchemeRoundabout);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme Roundabout";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13538,10 +14458,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.
 	/// </summary>
-	public class TrafficSeparationScheme : FeatureType
+	public class TrafficSeparationScheme : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TrafficSeparationScheme";
+		public override string S100FC_code => nameof(TrafficSeparationScheme);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13587,10 +14509,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft.
 	/// </summary>
-	public class ArchipelagicSeaLaneArea : FeatureType
+	public class ArchipelagicSeaLaneArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ArchipelagicSeaLaneArea";
+		public override string S100FC_code => nameof(ArchipelagicSeaLaneArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Archipelagic Sea Lane Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13631,10 +14555,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.
 	/// </summary>
-	public class ArchipelagicSeaLaneAxis : FeatureType
+	public class ArchipelagicSeaLaneAxis : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ArchipelagicSeaLaneAxis";
+		public override string S100FC_code => nameof(ArchipelagicSeaLaneAxis);
+		[JsonIgnore]
+		public override string S100FC_name => "Archipelagic Sea Lane Axis";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13675,10 +14601,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.
 	/// </summary>
-	public class ArchipelagicSeaLane : FeatureType
+	public class ArchipelagicSeaLane : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ArchipelagicSeaLane";
+		public override string S100FC_code => nameof(ArchipelagicSeaLane);
+		[JsonIgnore]
+		public override string S100FC_name => "Archipelagic Sea Lane";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -13721,10 +14650,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
 	/// </summary>
-	public class RadioCallingInPoint : FeatureType
+	public class RadioCallingInPoint : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadioCallingInPoint";
+		public override string S100FC_code => nameof(RadioCallingInPoint);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Calling-In Point";
+		[JsonIgnore]
 		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
 		public override Attribute[] attributes => [
 				trafficFlow,
@@ -13789,10 +14721,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A route in a body of water where a ferry crosses from one shoreline to another.
 	/// </summary>
-	public class FerryRoute : FeatureType
+	public class FerryRoute : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FerryRoute";
+		public override string S100FC_code => nameof(FerryRoute);
+		[JsonIgnore]
+		public override string S100FC_name => "Ferry Route";
+		[JsonIgnore]
 		public categoryOfFerry categoryOfFerry { get; init; } = new categoryOfFerry();
 		public override Attribute[] attributes => [
 				categoryOfFerry,
@@ -13847,10 +14782,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.
 	/// </summary>
-	public class RadarLine : FeatureType
+	public class RadarLine : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadarLine";
+		public override string S100FC_code => nameof(RadarLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Line";
+		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
 		public override Attribute[] attributes => [
 				orientationValue,
@@ -13894,10 +14832,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
 	/// </summary>
-	public class RadarRange : FeatureType
+	public class RadarRange : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadarRange";
+		public override string S100FC_code => nameof(RadarRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Range";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -13944,10 +14884,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
 	/// </summary>
-	public class RadarStation : FeatureType
+	public class RadarStation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadarStation";
+		public override string S100FC_code => nameof(RadarStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Station";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14015,10 +14957,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
 	/// </summary>
-	public class AnchorageArea : FeatureType
+	public class AnchorageArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "AnchorageArea";
+		public override string S100FC_code => nameof(AnchorageArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Anchorage Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14088,10 +15032,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area in which vessels may be secured to mooring buoys
 	/// </summary>
-	public class MooringArea : FeatureType
+	public class MooringArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MooringArea";
+		public override string S100FC_code => nameof(MooringArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14165,10 +15111,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A designated area of water where a vessel, seaplane, etc., may anchor.
 	/// </summary>
-	public class AnchorBerth : FeatureType
+	public class AnchorBerth : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "AnchorBerth";
+		public override string S100FC_code => nameof(AnchorBerth);
+		[JsonIgnore]
+		public override string S100FC_name => "Anchor Berth";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14232,10 +15180,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
-	public class SeaplaneLandingArea : FeatureType
+	public class SeaplaneLandingArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SeaplaneLandingArea";
+		public override string S100FC_code => nameof(SeaplaneLandingArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Seaplane Landing Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14288,10 +15238,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
 	/// </summary>
-	public class DumpingGround : FeatureType
+	public class DumpingGround : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "DumpingGround";
+		public override string S100FC_code => nameof(DumpingGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Dumping Ground";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14350,10 +15302,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out.
 	/// </summary>
-	public class MilitaryPracticeArea : FeatureType
+	public class MilitaryPracticeArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MilitaryPracticeArea";
+		public override string S100FC_code => nameof(MilitaryPracticeArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Military Practice Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14422,10 +15376,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A defined area within which a jurisdiction applies. It may or may not be named.
 	/// </summary>
-	public class AdministrationArea : FeatureType
+	public class AdministrationArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "AdministrationArea";
+		public override string S100FC_code => nameof(AdministrationArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Administration Area";
+		[JsonIgnore]
 		public jurisdiction jurisdiction { get; init; } = new jurisdiction();
 		public override Attribute[] attributes => [
 				jurisdiction,
@@ -14479,10 +15436,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.
 	/// </summary>
-	public class CargoTranshipmentArea : FeatureType
+	public class CargoTranshipmentArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CargoTranshipmentArea";
+		public override string S100FC_code => nameof(CargoTranshipmentArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Cargo Transhipment Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14540,10 +15499,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
 	/// </summary>
-	public class CautionArea : FeatureType
+	public class CautionArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CautionArea";
+		public override string S100FC_code => nameof(CautionArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Caution Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14601,10 +15562,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
 	/// </summary>
-	public class InformationArea : FeatureType
+	public class InformationArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "InformationArea";
+		public override string S100FC_code => nameof(InformationArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Information Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14655,10 +15618,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
 	/// </summary>
-	public class ContiguousZone : FeatureType
+	public class ContiguousZone : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ContiguousZone";
+		public override string S100FC_code => nameof(ContiguousZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Contiguous Zone";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -14701,10 +15667,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
 	/// </summary>
-	public class ContinentalShelfArea : FeatureType
+	public class ContinentalShelfArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ContinentalShelfArea";
+		public override string S100FC_code => nameof(ContinentalShelfArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Continental Shelf Area";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -14742,10 +15711,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The area within which national custom regulations are in force.
 	/// </summary>
-	public class CustomZone : FeatureType
+	public class CustomZone : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CustomZone";
+		public override string S100FC_code => nameof(CustomZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Custom Zone";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -14778,10 +15750,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
 	/// </summary>
-	public class ExclusiveEconomicZone : FeatureType
+	public class ExclusiveEconomicZone : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "ExclusiveEconomicZone";
+		public override string S100FC_code => nameof(ExclusiveEconomicZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Exclusive Economic Zone";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -14819,10 +15794,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
 	/// </summary>
-	public class FisheryZone : FeatureType
+	public class FisheryZone : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FisheryZone";
+		public override string S100FC_code => nameof(FisheryZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Fishery Zone";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -14866,10 +15844,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A water area in which fishing is frequently carried on.
 	/// </summary>
-	public class FishingGround : FeatureType
+	public class FishingGround : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FishingGround";
+		public override string S100FC_code => nameof(FishingGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Fishing Ground";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14922,10 +15902,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.
 	/// </summary>
-	public class FreePortArea : FeatureType
+	public class FreePortArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FreePortArea";
+		public override string S100FC_code => nameof(FreePortArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Free Port Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -14962,10 +15944,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
-	public class HarbourAreaAdministrative : FeatureType
+	public class HarbourAreaAdministrative : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "HarbourAreaAdministrative";
+		public override string S100FC_code => nameof(HarbourAreaAdministrative);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Area (Administrative)";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15002,10 +15986,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.
 	/// </summary>
-	public class LogPond : FeatureType
+	public class LogPond : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LogPond";
+		public override string S100FC_code => nameof(LogPond);
+		[JsonIgnore]
+		public override string S100FC_name => "Log Pond";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15047,10 +16033,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A floating barrier to stop and contain the spread of oil on a water body surface.
 	/// </summary>
-	public class OilBarrier : FeatureType
+	public class OilBarrier : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "OilBarrier";
+		public override string S100FC_code => nameof(OilBarrier);
+		[JsonIgnore]
+		public override string S100FC_name => "Oil Barrier";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15109,10 +16097,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
 	/// </summary>
-	public class StraightTerritorialSeaBaseline : FeatureType
+	public class StraightTerritorialSeaBaseline : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "StraightTerritorialSeaBaseline";
+		public override string S100FC_code => nameof(StraightTerritorialSeaBaseline);
+		[JsonIgnore]
+		public override string S100FC_name => "Straight Territorial Sea Baseline";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -15145,10 +16136,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
 	/// </summary>
-	public class TerritorialSeaArea : FeatureType
+	public class TerritorialSeaArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TerritorialSeaArea";
+		public override string S100FC_code => nameof(TerritorialSeaArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Territorial Sea Area";
+		[JsonIgnore]
 		public nationality nationality { get; init; } = new nationality();
 		public override Attribute[] attributes => [
 				nationality,
@@ -15197,10 +16191,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A lane where submarines may navigate under water or at the surface.
 	/// </summary>
-	public class SubmarineTransitLane : FeatureType
+	public class SubmarineTransitLane : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SubmarineTransitLane";
+		public override string S100FC_code => nameof(SubmarineTransitLane);
+		[JsonIgnore]
+		public override string S100FC_name => "Submarine Transit Lane";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15247,10 +16243,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
-	public class PilotageDistrict : FeatureType
+	public class PilotageDistrict : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PilotageDistrict";
+		public override string S100FC_code => nameof(PilotageDistrict);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilotage District";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15286,10 +16284,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.
 	/// </summary>
-	public class CollisionRegulationsLimit : FeatureType
+	public class CollisionRegulationsLimit : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CollisionRegulationsLimit";
+		public override string S100FC_code => nameof(CollisionRegulationsLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Collision Regulations Limit";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15335,10 +16335,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.
 	/// </summary>
-	public class MarinePollutionRegulationsArea : FeatureType
+	public class MarinePollutionRegulationsArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MarinePollutionRegulationsArea";
+		public override string S100FC_code => nameof(MarinePollutionRegulationsArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Marine Pollution Regulations Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15374,10 +16376,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
-	public class RestrictedArea : FeatureType
+	public class RestrictedArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RestrictedArea";
+		public override string S100FC_code => nameof(RestrictedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Restricted Area";
+		[JsonIgnore]
 		public restriction restriction { get; init; } = new restriction();
 		public override Attribute[] attributes => [
 				restriction,
@@ -15443,11 +16448,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
-	public class LightAllAround : FeatureType
+	public class LightAllAround : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightAllAround";
+		public override string S100FC_code => nameof(LightAllAround);
+		[JsonIgnore]
+		public override string S100FC_name => "Light All Around";
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
+		[JsonIgnore]
 		public rhythmOfLight rhythmOfLight { get; init; } = new rhythmOfLight();
 		public override Attribute[] attributes => [
 				colour,
@@ -15574,10 +16583,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
-	public class LightSectored : FeatureType
+	public class LightSectored : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightSectored";
+		public override string S100FC_code => nameof(LightSectored);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Sectored";
+		[JsonIgnore]
 		public sectorCharacteristics sectorCharacteristics { get; init; } = new sectorCharacteristics();
 		public override Attribute[] attributes => [
 				sectorCharacteristics,
@@ -15671,10 +16683,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
-	public class LightFogDetector : FeatureType
+	public class LightFogDetector : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightFogDetector";
+		public override string S100FC_code => nameof(LightFogDetector);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Fog Detector";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15759,10 +16773,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
-	public class LightAirObstruction : FeatureType
+	public class LightAirObstruction : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightAirObstruction";
+		public override string S100FC_code => nameof(LightAirObstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Air Obstruction";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -15858,12 +16874,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
-	public class LateralBuoy : FeatureType
+	public class LateralBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LateralBuoy";
+		public override string S100FC_code => nameof(LateralBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Lateral Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public categoryOfLateralMark categoryOfLateralMark { get; init; } = new categoryOfLateralMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -15970,12 +16991,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
-	public class CardinalBuoy : FeatureType
+	public class CardinalBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CardinalBuoy";
+		public override string S100FC_code => nameof(CardinalBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Cardinal Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16082,11 +17108,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
-	public class IsolatedDangerBuoy : FeatureType
+	public class IsolatedDangerBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "IsolatedDangerBuoy";
+		public override string S100FC_code => nameof(IsolatedDangerBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Isolated Danger Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16186,11 +17216,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
-	public class SafeWaterBuoy : FeatureType
+	public class SafeWaterBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SafeWaterBuoy";
+		public override string S100FC_code => nameof(SafeWaterBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Safe Water Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16290,12 +17324,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
-	public class SpecialPurposeGeneralBuoy : FeatureType
+	public class SpecialPurposeGeneralBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SpecialPurposeGeneralBuoy";
+		public override string S100FC_code => nameof(SpecialPurposeGeneralBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Special Purpose/General Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16402,11 +17441,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.
 	/// </summary>
-	public class EmergencyWreckMarkingBuoy : FeatureType
+	public class EmergencyWreckMarkingBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "EmergencyWreckMarkingBuoy";
+		public override string S100FC_code => nameof(EmergencyWreckMarkingBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Emergency Wreck Marking Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16495,11 +17538,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An installation buoy is a buoy used for loading tankers with gas or oil.
 	/// </summary>
-	public class InstallationBuoy : FeatureType
+	public class InstallationBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "InstallationBuoy";
+		public override string S100FC_code => nameof(InstallationBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Installation Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16601,10 +17648,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
-	public class MooringBuoy : FeatureType
+	public class MooringBuoy : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "MooringBuoy";
+		public override string S100FC_code => nameof(MooringBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring Buoy";
+		[JsonIgnore]
 		public buoyShape buoyShape { get; init; } = new buoyShape();
 		public override Attribute[] attributes => [
 				buoyShape,
@@ -16702,12 +17752,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
-	public class LateralBeacon : FeatureType
+	public class LateralBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LateralBeacon";
+		public override string S100FC_code => nameof(LateralBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Lateral Beacon";
+		[JsonIgnore]
 		public beaconShape beaconShape { get; init; } = new beaconShape();
+		[JsonIgnore]
 		public categoryOfLateralMark categoryOfLateralMark { get; init; } = new categoryOfLateralMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				beaconShape,
@@ -16841,12 +17896,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
-	public class CardinalBeacon : FeatureType
+	public class CardinalBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CardinalBeacon";
+		public override string S100FC_code => nameof(CardinalBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Cardinal Beacon";
+		[JsonIgnore]
 		public beaconShape beaconShape { get; init; } = new beaconShape();
+		[JsonIgnore]
 		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				beaconShape,
@@ -16980,11 +18040,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
-	public class IsolatedDangerBeacon : FeatureType
+	public class IsolatedDangerBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "IsolatedDangerBeacon";
+		public override string S100FC_code => nameof(IsolatedDangerBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Isolated Danger Beacon";
+		[JsonIgnore]
 		public beaconShape beaconShape { get; init; } = new beaconShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				beaconShape,
@@ -17111,11 +18175,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
-	public class SafeWaterBeacon : FeatureType
+	public class SafeWaterBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SafeWaterBeacon";
+		public override string S100FC_code => nameof(SafeWaterBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Safe Water Beacon";
+		[JsonIgnore]
 		public beaconShape beaconShape { get; init; } = new beaconShape();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				beaconShape,
@@ -17242,12 +18310,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
-	public class SpecialPurposeGeneralBeacon : FeatureType
+	public class SpecialPurposeGeneralBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SpecialPurposeGeneralBeacon";
+		public override string S100FC_code => nameof(SpecialPurposeGeneralBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Special Purpose/General Beacon";
+		[JsonIgnore]
 		public beaconShape beaconShape { get; init; } = new beaconShape();
+		[JsonIgnore]
 		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark();
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				beaconShape,
@@ -17381,11 +18454,15 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
 	/// </summary>
-	public class Daymark : FeatureType
+	public class Daymark : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Daymark";
+		public override string S100FC_code => nameof(Daymark);
+		[JsonIgnore]
+		public override string S100FC_name => "Daymark";
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
+		[JsonIgnore]
 		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
 		public override Attribute[] attributes => [
 				colour,
@@ -17495,10 +18572,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 	/// </summary>
-	public class LightFloat : FeatureType
+	public class LightFloat : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightFloat";
+		public override string S100FC_code => nameof(LightFloat);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Float";
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				colour,
@@ -17601,10 +18681,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 	/// </summary>
-	public class LightVessel : FeatureType
+	public class LightVessel : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "LightVessel";
+		public override string S100FC_code => nameof(LightVessel);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Vessel";
+		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
 		public override Attribute[] attributes => [
 				colour,
@@ -17702,10 +18785,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
-	public class Retroreflector : FeatureType
+	public class Retroreflector : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Retroreflector";
+		public override string S100FC_code => nameof(Retroreflector);
+		[JsonIgnore]
+		public override string S100FC_name => "Retroreflector";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -17764,10 +18849,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
-	public class RadarReflector : FeatureType
+	public class RadarReflector : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadarReflector";
+		public override string S100FC_code => nameof(RadarReflector);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Reflector";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -17814,10 +18901,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
 	/// </summary>
-	public class FogSignal : FeatureType
+	public class FogSignal : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "FogSignal";
+		public override string S100FC_code => nameof(FogSignal);
+		[JsonIgnore]
+		public override string S100FC_name => "Fog Signal";
+		[JsonIgnore]
 		public categoryOfFogSignal categoryOfFogSignal { get; init; } = new categoryOfFogSignal();
 		public override Attribute[] attributes => [
 				categoryOfFogSignal,
@@ -17903,10 +18993,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
-	public class PhysicalAISAidToNavigation : FeatureType
+	public class PhysicalAISAidToNavigation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PhysicalAISAidToNavigation";
+		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
+		[JsonIgnore]
+		public override string S100FC_name => "Physical AIS Aid to Navigation";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -17963,10 +19055,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
 	/// </summary>
-	public class VirtualAISAidToNavigation : FeatureType
+	public class VirtualAISAidToNavigation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "VirtualAISAidToNavigation";
+		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
+		[JsonIgnore]
+		public override string S100FC_name => "Virtual AIS Aid to Navigation";
+		[JsonIgnore]
 		public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; init; } = new virtualAISAidToNavigationType();
 		public override Attribute[] attributes => [
 				virtualAISAidToNavigationType,
@@ -18031,10 +19126,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
-	public class RadioStation : FeatureType
+	public class RadioStation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadioStation";
+		public override string S100FC_code => nameof(RadioStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Station";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18107,10 +19204,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
 	/// </summary>
-	public class RadarTransponderBeacon : FeatureType
+	public class RadarTransponderBeacon : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RadarTransponderBeacon";
+		public override string S100FC_code => nameof(RadarTransponderBeacon);
+		[JsonIgnore]
+		public override string S100FC_name => "Radar Transponder Beacon";
+		[JsonIgnore]
 		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; init; } = new categoryOfRadarTransponderBeacon();
 		public override Attribute[] attributes => [
 				categoryOfRadarTransponderBeacon,
@@ -18190,10 +19290,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
-	public class PilotBoardingPlace : FeatureType
+	public class PilotBoardingPlace : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "PilotBoardingPlace";
+		public override string S100FC_code => nameof(PilotBoardingPlace);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilot Boarding Place";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18268,10 +19370,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
-	public class VesselTrafficServiceArea : FeatureType
+	public class VesselTrafficServiceArea : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "VesselTrafficServiceArea";
+		public override string S100FC_code => nameof(VesselTrafficServiceArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Traffic Service Area";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18302,10 +19406,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
 	/// </summary>
-	public class CoastGuardStation : FeatureType
+	public class CoastGuardStation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "CoastGuardStation";
+		public override string S100FC_code => nameof(CoastGuardStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Coast Guard Station";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18362,10 +19468,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
 	/// </summary>
-	public class SignalStationWarning : FeatureType
+	public class SignalStationWarning : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SignalStationWarning";
+		public override string S100FC_code => nameof(SignalStationWarning);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Station Warning";
+		[JsonIgnore]
 		public categoryOfSignalStationWarning categoryOfSignalStationWarning { get; init; } = new categoryOfSignalStationWarning();
 		public override Attribute[] attributes => [
 				categoryOfSignalStationWarning,
@@ -18425,10 +19534,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
 	/// </summary>
-	public class SignalStationTraffic : FeatureType
+	public class SignalStationTraffic : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SignalStationTraffic";
+		public override string S100FC_code => nameof(SignalStationTraffic);
+		[JsonIgnore]
+		public override string S100FC_name => "Signal Station Traffic";
+		[JsonIgnore]
 		public categoryOfSignalStationTraffic categoryOfSignalStationTraffic { get; init; } = new categoryOfSignalStationTraffic();
 		public override Attribute[] attributes => [
 				categoryOfSignalStationTraffic,
@@ -18488,10 +19600,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A place where equipment for saving life at sea is maintained.
 	/// </summary>
-	public class RescueStation : FeatureType
+	public class RescueStation : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "RescueStation";
+		public override string S100FC_code => nameof(RescueStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Rescue Station";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18549,10 +19663,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
-	public class HarbourFacility : FeatureType
+	public class HarbourFacility : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "HarbourFacility";
+		public override string S100FC_code => nameof(HarbourFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Facility";
+		[JsonIgnore]
 		public categoryOfHarbourFacility categoryOfHarbourFacility { get; init; } = new categoryOfHarbourFacility();
 		public override Attribute[] attributes => [
 				categoryOfHarbourFacility,
@@ -18651,10 +19768,13 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A place at which a service generally of interest to small craft or pleasure boats is available.
 	/// </summary>
-	public class SmallCraftFacility : FeatureType
+	public class SmallCraftFacility : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "SmallCraftFacility";
+		public override string S100FC_code => nameof(SmallCraftFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Small Craft Facility";
+		[JsonIgnore]
 		public categoryOfSmallCraftFacility categoryOfSmallCraftFacility { get; init; } = new categoryOfSmallCraftFacility();
 		public override Attribute[] attributes => [
 				categoryOfSmallCraftFacility,
@@ -18709,12 +19829,17 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
-	public class TextPlacement : FeatureType
+	public class TextPlacement : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "TextPlacement";
+		public override string S100FC_code => nameof(TextPlacement);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Placement";
+		[JsonIgnore]
 		public textOffsetBearing textOffsetBearing { get; init; } = new textOffsetBearing();
+		[JsonIgnore]
 		public textOffsetDistance textOffsetDistance { get; init; } = new textOffsetDistance();
+		[JsonIgnore]
 		public textType textType { get; init; } = new textType();
 		public override Attribute[] attributes => [
 				textOffsetBearing,
@@ -18755,10 +19880,12 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 	/// <summary>
 	/// A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.
 	/// </summary>
-	public class Chart1Feature : FeatureType
+	public class Chart1Feature : S100Framework.AttributeModel.FeatureType
 	{
 		[JsonIgnore]
-		public override string code => "Chart1Feature";
+		public override string S100FC_code => nameof(Chart1Feature);
+		[JsonIgnore]
+		public override string S100FC_name => "Chart 1 Feature";
 		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
@@ -18778,18 +19905,18 @@ namespace S100Framework.DomainModel.S101.FeatureTypes
 
 }
 
-namespace S100Framework.DomainModel.S101
+namespace S100Framework.AttributeModel.S101
 {
 	using System.Text.Json;
-	using S100Framework.DomainModel.S101.SimpleAttributes;
-	using S100Framework.DomainModel.S101.ComplexAttributes;
-	using S100Framework.DomainModel.S101.FeatureTypes;
+	using S100Framework.AttributeModel.S101.SimpleAttributes;
+	using S100Framework.AttributeModel.S101.ComplexAttributes;
+	using S100Framework.AttributeModel.S101.FeatureTypes;
 
 	public static class Extensions {
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {
-				if (typeInfo.Type == typeof(S100Framework.DomainModel.Attribute)) {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
 						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,

@@ -1,27 +1,8 @@
-﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.SimpleAttributes;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
+﻿using S100Framework.AttributeModel.S101;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.WPF;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.Json;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using Windows.Media.Protection.PlayReady;
-using Windows.System;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace SelectorUI
 {
@@ -62,7 +43,7 @@ namespace SelectorUI
             featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData.value = 1;
 
             var selectedObject = new SelectedObject {
-                code = nameof(QualityOfBathymetricData),
+                code = featureType.S100FC_name,
                 attributeBindings = featureType.attributeBindings(),
                 attributeValues = [.. featureType.attributes],
             };            

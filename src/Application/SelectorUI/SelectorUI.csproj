@@ -11,7 +11,19 @@
 
   <ItemGroup>
     <Compile Remove="Attributes.cs" />
+    <Compile Remove="Converters.cs" />
     <Compile Remove="CustomViewModel.cs" />
+    <Compile Remove="ItemsControlTemplateSelector.cs.cs" />
+    <Compile Remove="PropertyTemplateSelector.cs" />
+    <Compile Remove="S100AttributeEditor.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="S100AttributeEditor.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\UI\S100Framework.WPF.S100AttributeEditor\S100Framework.WPF.S100AttributeEditor.csproj" />
   </ItemGroup>
 
 </Project>
