@@ -44,7 +44,7 @@ namespace S100Framework.WPF.Converters
         }
     }
 
-    public class S100AttributeEditorSourceConverter : IValueConverter
+    public class SelectedObjectSourceConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is ComplexAttribute complexAttribute) {
