@@ -270,7 +270,7 @@ namespace TestAttributes
                             }
                         }
 
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] subAttributes => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var lower = int.Parse(subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
@@ -283,10 +283,10 @@ namespace TestAttributes
                                 roslyn.AppendLine($"\t\t\t\t{referenceCode},");
                             }
                         }
-                        roslyn.AppendLine("\t\t\t\t.. base.subAttributesOptional,");
+                        roslyn.AppendLine("\t\t\t\t.. base.attributesOptional,");
                         roslyn.AppendLine($"\t\t\t];");
 
-                        roslyn.AppendLine($"\t\tpublic override AttributeBinding[] subAttributeBindings() => [");
+                        roslyn.AppendLine($"\t\tpublic override AttributeBinding[] attributeBindings() => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var permittedValues = subAttributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);

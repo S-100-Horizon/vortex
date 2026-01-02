@@ -12,7 +12,6 @@
   <ItemGroup>
     <Compile Remove="Attributes.cs" />
     <Compile Remove="Converters.cs" />
-    <Compile Remove="CustomViewModel.cs" />
     <Compile Remove="ItemsControlTemplateSelector.cs.cs" />
     <Compile Remove="PropertyTemplateSelector.cs" />
     <Compile Remove="S100AttributeEditor.xaml.cs" />

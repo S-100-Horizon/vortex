@@ -4475,12 +4475,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public language language { get; init; } = new language();
 		[JsonIgnore]
 		public name name { get; init; } = new name();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				language,
 				name,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 1,
@@ -4513,12 +4513,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public leastDepthOfDetectedFeaturesMeasured leastDepthOfDetectedFeaturesMeasured { get; init; } = new leastDepthOfDetectedFeaturesMeasured();
 		[JsonIgnore]
 		public significantFeaturesDetected significantFeaturesDetected { get; init; } = new significantFeaturesDetected();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				leastDepthOfDetectedFeaturesMeasured,
 				significantFeaturesDetected,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(leastDepthOfDetectedFeaturesMeasured),
 					lower = 1,
@@ -4546,10 +4546,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(fixedDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Fixed Date Range";
-		public override Attribute[] subAttributes => [
-				.. base.subAttributesOptional,
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 0,
@@ -4574,11 +4574,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Frequency Pair";
 		[JsonIgnore]
 		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				frequencyShoreStationTransmits,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(frequencyShoreStationReceives),
 					lower = 0,
@@ -4603,11 +4603,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Horizontal Clearance Fixed";
 		[JsonIgnore]
 		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				horizontalClearanceValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(horizontalClearanceValue),
 					lower = 1,
@@ -4632,11 +4632,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Horizontal Clearance Open";
 		[JsonIgnore]
 		public horizontalClearanceValue horizontalClearanceValue { get; init; } = new horizontalClearanceValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				horizontalClearanceValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(horizontalClearanceValue),
 					lower = 1,
@@ -4661,11 +4661,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Horizontal Position Uncertainty";
 		[JsonIgnore]
 		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				uncertaintyFixed,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
@@ -4690,11 +4690,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Information";
 		[JsonIgnore]
 		public language language { get; init; } = new language();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				language,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fileLocator),
 					lower = 0,
@@ -4736,12 +4736,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; init; } = new distanceUnitOfMeasurement();
 		[JsonIgnore]
 		public waterwayDistance waterwayDistance { get; init; } = new waterwayDistance();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				distanceUnitOfMeasurement,
 				waterwayDistance,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(distanceUnitOfMeasurement),
 					lower = 1,
@@ -4772,11 +4772,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Multiplicity of Features";
 		[JsonIgnore]
 		public multiplicityKnown multiplicityKnown { get; init; } = new multiplicityKnown();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				multiplicityKnown,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(multiplicityKnown),
 					lower = 1,
@@ -4801,11 +4801,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Online Resource";
 		[JsonIgnore]
 		public linkage linkage { get; init; } = new linkage();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				linkage,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(headline),
 					lower = 0,
@@ -4835,11 +4835,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Orientation";
 		[JsonIgnore]
 		public orientationValue orientationValue { get; init; } = new orientationValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				orientationValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
@@ -4866,12 +4866,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public dateEnd dateEnd { get; init; } = new dateEnd();
 		[JsonIgnore]
 		public dateStart dateStart { get; init; } = new dateStart();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				dateEnd,
 				dateStart,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 1,
@@ -4898,12 +4898,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public radarBand radarBand { get; init; } = new radarBand();
 		[JsonIgnore]
 		public waveLengthValue waveLengthValue { get; init; } = new waveLengthValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				radarBand,
 				waveLengthValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(radarBand),
 					lower = 1,
@@ -4928,11 +4928,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Sector Information";
 		[JsonIgnore]
 		public text text { get; init; } = new text();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				text,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
@@ -4957,11 +4957,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Sector Limit One";
 		[JsonIgnore]
 		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				sectorBearing,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
 					lower = 1,
@@ -4986,11 +4986,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Sector Limit Two";
 		[JsonIgnore]
 		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				sectorBearing,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
 					lower = 1,
@@ -5015,11 +5015,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Shape Information";
 		[JsonIgnore]
 		public text text { get; init; } = new text();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				text,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
@@ -5046,12 +5046,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public signalDuration signalDuration { get; init; } = new signalDuration();
 		[JsonIgnore]
 		public signalStatus signalStatus { get; init; } = new signalStatus();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				signalDuration,
 				signalStatus,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(signalDuration),
 					lower = 1,
@@ -5077,11 +5077,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Speed";
 		[JsonIgnore]
 		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				speedMaximum,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(speedMaximum),
 					lower = 1,
@@ -5104,10 +5104,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(surfaceCharacteristics);
 		[JsonIgnore]
 		public override string S100FC_name => "Surface Characteristics";
-		public override Attribute[] subAttributes => [
-				.. base.subAttributesOptional,
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
@@ -5139,11 +5139,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Survey Date Range";
 		[JsonIgnore]
 		public dateEnd dateEnd { get; init; } = new dateEnd();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				dateEnd,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 1,
@@ -5168,11 +5168,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Telecommunications";
 		[JsonIgnore]
 		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				telecommunicationIdentifier,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
 					lower = 0,
@@ -5207,13 +5207,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public speedMaximum speedMaximum { get; init; } = new speedMaximum();
 		[JsonIgnore]
 		public timeRelativeToTide timeRelativeToTide { get; init; } = new timeRelativeToTide();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				orientation,
 				speedMaximum,
 				timeRelativeToTide,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(orientation),
 					lower = 1,
@@ -5241,10 +5241,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Intervals by Day of Week";
-		public override Attribute[] subAttributes => [
-				.. base.subAttributesOptional,
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dayOfWeek),
 					lower = 0,
@@ -5280,11 +5280,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Topmark";
 		[JsonIgnore]
 		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				topmarkDaymarkShape,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
 					lower = 0,
@@ -5322,11 +5322,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Value of Local Magnetic Anomaly";
 		[JsonIgnore]
 		public magneticAnomalyValue magneticAnomalyValue { get; init; } = new magneticAnomalyValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				magneticAnomalyValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(magneticAnomalyValue),
 					lower = 1,
@@ -5352,11 +5352,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Vertical Uncertainty";
 		[JsonIgnore]
 		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				uncertaintyFixed,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
@@ -5383,12 +5383,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public speedLimit speedLimit { get; init; } = new speedLimit();
 		[JsonIgnore]
 		public speedUnits speedUnits { get; init; } = new speedUnits();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				speedLimit,
 				speedUnits,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(speedLimit),
 					lower = 1,
@@ -5419,11 +5419,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Zone of Confidence";
 		[JsonIgnore]
 		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; init; } = new categoryOfZoneOfConfidenceInData();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				categoryOfZoneOfConfidenceInData,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfZoneOfConfidenceInData),
 					lower = 1,
@@ -5459,11 +5459,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Directional Character";
 		[JsonIgnore]
 		public orientation orientation { get; init; } = new orientation();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				orientation,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(moireEffect),
 					lower = 0,
@@ -5488,11 +5488,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Rhythm of Light";
 		[JsonIgnore]
 		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				lightCharacteristic,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(lightCharacteristic),
 					lower = 1,
@@ -5528,11 +5528,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Schedule by Day of Week";
 		[JsonIgnore]
 		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				timeIntervalsByDayOfWeek,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSchedule),
 					lower = 0,
@@ -5560,12 +5560,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
 		[JsonIgnore]
 		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				sectorLimitOne,
 				sectorLimitTwo,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorLimitOne),
 					lower = 1,
@@ -5588,10 +5588,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(spatialAccuracy);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Accuracy";
-		public override Attribute[] subAttributes => [
-				.. base.subAttributesOptional,
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
@@ -5625,13 +5625,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public referenceTideType referenceTideType { get; init; } = new referenceTideType();
 		[JsonIgnore]
 		public tidalStreamValue tidalStreamValue { get; init; } = new tidalStreamValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				referenceTide,
 				referenceTideType,
 				tidalStreamValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(referenceTide),
 					lower = 1,
@@ -5668,11 +5668,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Vertical Clearance Closed";
 		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				verticalClearanceValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
@@ -5697,11 +5697,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Vertical Clearance Fixed";
 		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				verticalClearanceValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
@@ -5726,11 +5726,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Vertical Clearance Open";
 		[JsonIgnore]
 		public verticalClearanceUnlimited verticalClearanceUnlimited { get; init; } = new verticalClearanceUnlimited();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				verticalClearanceUnlimited,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceUnlimited),
 					lower = 1,
@@ -5760,11 +5760,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Vertical Clearance Safe";
 		[JsonIgnore]
 		public verticalClearanceValue verticalClearanceValue { get; init; } = new verticalClearanceValue();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				verticalClearanceValue,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
@@ -5789,11 +5789,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_name => "Light Sector";
 		[JsonIgnore]
 		public colour colour { get; init; } = new colour();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				colour,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
 					lower = 1,
@@ -5847,12 +5847,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
 		[JsonIgnore]
 		public lightSector lightSector { get; init; } = new lightSector();
-		public override Attribute[] subAttributes => [
+		public override Attribute[] attributes => [
 				lightCharacteristic,
 				lightSector,
-				.. base.subAttributesOptional,
+				.. base.attributesOptional,
 			];
-		public override AttributeBinding[] subAttributeBindings() => [
+		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(lightCharacteristic),
 					lower = 1,

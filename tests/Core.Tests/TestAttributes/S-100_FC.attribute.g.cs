@@ -39,22 +39,22 @@ namespace S100Framework.AttributeModel
 
     public abstract class ComplexAttribute : Attribute
     {
-        public abstract Attribute[] subAttributes { get; }
+        public abstract Attribute[] attributes { get; }
 
         [JsonIgnore]
-        public Attribute[] subAttributesOptional { get; set; } = [];
+        public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract AttributeBinding[] subAttributeBindings();
+        public abstract AttributeBinding[] attributeBindings();
         
         public AttributeBinding[] mandatoryBindings() {
-            return [.. this.subAttributeBindings().Where(e => e.lower > 0)];
+            return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
         public int? FreeSeats(string code) {
-            var binding = this.subAttributeBindings().SingleOrDefault(e => e.attribute.Equals(code));
+            var binding = this.attributeBindings().SingleOrDefault(e => e.attribute.Equals(code));
             if (binding == null)
                 return null;
-            return (binding.upper - this.subAttributes.Where(e => e.GetType().Name.Equals(code)).Count());
+            return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
         }
     }
 

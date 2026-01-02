@@ -49,12 +49,12 @@ namespace S100Framework.WPF.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is ComplexAttribute complexAttribute) {
                 var selectedObject = new SelectedObject {
-                    code = complexAttribute.S100FC_name,
+                    code = complexAttribute.S100FC_name,                    
                 };
 
-                selectedObject.attributeBindings = complexAttribute.subAttributeBindings();
+                selectedObject.attributeBindings = complexAttribute.attributeBindings();
 
-                selectedObject.attributeValues = [.. complexAttribute.subAttributes];
+                selectedObject.attributeValues = [.. complexAttribute.attributes];
 
                 return selectedObject;
             }

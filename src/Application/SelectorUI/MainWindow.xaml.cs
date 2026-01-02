@@ -1,4 +1,5 @@
-﻿using S100Framework.AttributeModel.S101;
+﻿using PropertyGridApplication;
+using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.WPF;
 using System.Text.Json;
@@ -33,13 +34,16 @@ namespace SelectorUI
             //    nameUsage = nameUsage.DefaultNameDisplay,
             //});
 
-            var featureType = new QualityOfBathymetricData {
+            var featureType = new TestFeature {
 
             };
+            featureType.featuresDetectedNested.featureName.name.value = "Nested";
+            featureType.featuresDetectedNested.featureName.language.value = "eng";
+
             featureType.categoryOfTemporalVariation.value = 1;
             featureType.dataAssessment.value = 1;
             featureType.featuresDetected.significantFeaturesDetected.value = true;
-            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured.value = false;           
+            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured.value = false;
             featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData.value = 1;
 
             var selectedObject = new SelectedObject {

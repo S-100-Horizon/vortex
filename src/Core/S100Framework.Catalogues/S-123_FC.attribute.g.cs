@@ -1,0 +1,3699 @@
+﻿using System;
+using System.Text.Json.Serialization;
+
+#nullable enable
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+namespace S100Framework.AttributeModel.S123.SimpleAttributes
+{
+	/// <summary>
+	/// A statement that expresses if it accepts AMVER(Automated Mutual-Assistance Vessel Rescue system) reports
+	/// </summary>
+	public class acceptAMVER : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(acceptAMVER);
+		[JsonIgnore]
+		public override string S100FC_name => "Accept AMVER";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The action or activity of a vessel.
+	/// </summary>
+	public class actionOrActivity : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(actionOrActivity);
+		[JsonIgnore]
+		public override string S100FC_name => "Action or Activity";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Navigating With a Pilot", "Carrying a qualified pilot as part of the vessel navigation team.",1),
+				new listedValue("Entering Port", "Navigating a vessel into a port.",2),
+				new listedValue("Leaving Port", "Navigating a vessel out of a port.",3),
+				new listedValue("Berthing", "Attaching a vessel to a wharf or jetty.",4),
+				new listedValue("Slipping", "Detaching a vessel from a wharf or jetty.",5),
+				new listedValue("Anchoring", "Attaching a vessel to the seabed by means of an anchor and cable.",6),
+				new listedValue("Weighing Anchor", "Detaching a vessel from the seabed by recovering an anchor and cable.",7),
+				new listedValue("Transiting", "Navigating a vessel along a route or through a narrow gap, such as under a bridge or through a lock.",8),
+				new listedValue("Overtaking", "Navigating a vessel past another traveling broadly in the same direction.",9),
+				new listedValue("Reporting", "Providing details such as the name, location or intentions of a vessel.",10),
+				new listedValue("Working Cargo", "Loading or unloading cargo.",11),
+				new listedValue("Landing", "Placing crew or passengers on shore.",12),
+				new listedValue("Diving", "A signal or message warning of diving activity.",13),
+				new listedValue("Fishing", "Hunting or catching fish.",14),
+				new listedValue("Discharging Overboard", "Releasing anything into the sea; often ballast water; or spoil from dredging elsewhere.",15),
+				new listedValue("Passing", "Navigating a vessel past another travelling broadly in the opposite direction.",16),
+			];
+	}
+
+	/// <summary>
+	/// A generic term for an administrative region within a country at a level below that of the sovereign state.
+	/// </summary>
+	public class administrativeDivision : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(administrativeDivision);
+		[JsonIgnore]
+		public override string S100FC_name => "Administrative Division";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Antenna height of the base station in metres.
+	/// </summary>
+	public class baseStationAntennaHeight : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(baseStationAntennaHeight);
+		[JsonIgnore]
+		public override string S100FC_name => "Base Station Antenna Height";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The designated call name of a station; for example, radio station, radar station, pilot.
+	/// </summary>
+	public class callName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(callName);
+		[JsonIgnore]
+		public override string S100FC_name => "Call Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The designated call-sign of a station (radio station, radar station, pilot, ...).
+	/// </summary>
+	public class callSign : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(callSign);
+		[JsonIgnore]
+		public override string S100FC_name => "Call Sign";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Instructions provided on how to contact a particular person, organisation or service.
+	/// </summary>
+	public class contactInstructions : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(contactInstructions);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Instructions";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.
+	/// </summary>
+	public class categoryOfAuthority : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfAuthority);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Authority";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Border Control", "The administration to prevent or detect and prosecute violations of rules and regulations at international boundaries.",2),
+				new listedValue("Police", "The department of government, or civil force, charged with maintaining public order.",3),
+				new listedValue("Port", "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.",4),
+				new listedValue("Immigration", "The authority controlling people entering a country.",5),
+				new listedValue("Health", "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.",6),
+				new listedValue("Coast Guard", "Organization keeping watch on shipping and coastal waters according to governmental law; normally the authority with responsibility for search and rescue.",7),
+				new listedValue("Agricultural", "The authority with responsibility for preventing infection of the agriculture of a country and for the protection of the agricultural interests of a country.",8),
+				new listedValue("Military", "A military authority which provides control of access to or approval for transit through designated areas or airspace.",9),
+				new listedValue("Private Company", "A private or publicly owned company or commercial enterprise which exercises control of facilities, for example a calibration area.",10),
+				new listedValue("Maritime Police", "A governmental or military force with jurisdiction in territorial waters. Examples could include Gendarmerie Maritime, Carabinierie, and Guardia Civil.",11),
+				new listedValue("Environmental", "An authority with responsibility for the protection of the environment.",12),
+				new listedValue("Fishery", "An authority with responsibility for the control of fisheries.",13),
+				new listedValue("Finance", "An authority with responsibility for the control and movement of money.",14),
+				new listedValue("Maritime", "A national or regional authority charged with administration of maritime affairs.",15),
+				new listedValue("Customs", "The agency or establishment for collecting duties, tolls.",16),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of broadcast or communications based on public availability and commercial/non-commercial nature.
+	/// </summary>
+	public class categoryOfBroadcastCommunication : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfBroadcastCommunication);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Broadcast/Communication";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Commercial", "A service operated with the intention of earning money.",1),
+				new listedValue("Non-Commercial", "A service without any financial interest.",2),
+				new listedValue("Public", "Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.",3),
+				new listedValue("Non-Public", "A service available for limited and predefined customers.",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of the different types of cargo that a ship may be carrying.
+	/// </summary>
+	public class categoryOfCargo : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfCargo);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Cargo";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Bulk", "Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.",1),
+				new listedValue("Container", "One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.",2),
+				new listedValue("General", "Break bulk cargo normally loaded by crane.",3),
+				new listedValue("Liquid", "Any cargo loaded by pipeline.",4),
+				new listedValue("Passenger", "A fee paying traveller.",5),
+				new listedValue("Livestock", "Live animals carried in bulk.",6),
+				new listedValue("Dangerous or Hazardous", "Dangerous or hazardous cargo as described by the IMO International Maritime Dangerous Goods code.",7),
+				new listedValue("Heavy Lift", "Indivisible heavy items of weight generally over 100 tons, and width or height greater than 100 metres.",8),
+				new listedValue("Ballast", "Material carried by a ship to ensure its stability.",9),
+				new listedValue("Dry Bulk Cargo", "Commodity cargo that is transported unpackaged in large quantities. These types of goods usually need to be kept dry during the whole transportation period.",10),
+				new listedValue("Liquid Bulk Cargo", "Liquids or gases that are transported in bulk and carried unpackaged.",11),
+				new listedValue("Reefer Container Cargo", "Cargo transported in refrigerated containers, generally perishable commodities which require temperature-controlled transportation, such as fruit, meat, fish, vegetables, dairy products and other foods.",12),
+				new listedValue("Ro-Ro Cargo", "Wheeled cargo, such as cars, busses, trucks, agricultural vehicles and cranes, that are driven on and off the ship on their own wheels or using a platform vehicle, such as a self-propelled modular transporter.",13),
+				new listedValue("Project Cargo", "Project cargo is a term used to broadly describe the national or international transportation of large, heavy, high value, or critical (to the project they are intended for) pieces of equipment. Also commonly referred to as heavy lift, this includes shipments made of various components which need disassembly for shipment and reassembly after delivery.",14),
+				new listedValue("Break Bulk Cargo", "Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.",15),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).
+	/// </summary>
+	public class categoryOfDangerousOrHazardousCargo : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfDangerousOrHazardousCargo);
+		[JsonIgnore]
+		public override string S100FC_name => "Category Of Dangerous Or Hazardous Cargo";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("IMDG Code Class 1 Div. 1.1", "Explosives, Division 1: Substances and articles which have a mass explosion hazard.",1),
+				new listedValue("IMDG Code Class 1 Div. 1.2", "Explosives, Division 2: Substances and articles which have a projection hazard but not a mass explosion hazard.",2),
+				new listedValue("IMDG Code Class 1 Div. 1.3", "Explosives, Division 3: Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard or both, but not a mass explosion hazard.",3),
+				new listedValue("IMDG Code Class 1 Div. 1.4", "Explosives, Division 4: Substances and articles which present no significant hazard.",4),
+				new listedValue("IMDG Code Class 1 Div. 1.5", "Explosives, Division 5: Very insensitive substances which have a mass explosion hazard.",5),
+				new listedValue("IMDG Code Class 1 Div. 1.6", "Explosives, Division 6: Extremely insensitive articles which do not have a mass explosion hazard.",6),
+				new listedValue("IMDG Code Class 2 Div. 2.1", "Gases, flammable gases.",7),
+				new listedValue("IMDG Code Class 2 Div. 2.2", "Gases, non-flammable, non-toxic gases.",8),
+				new listedValue("IMDG Code Class 2 Div. 2.3", "Gases, toxic gases.",9),
+				new listedValue("IMDG Code Class 3", "Flammable liquids.",10),
+				new listedValue("IMDG Code Class 4 Div. 4.1", "Flammable solids, self-reactive substances and desensitized explosives.",11),
+				new listedValue("IMDG Code Class 4 Div. 4.2", "Substances liable to spontaneous combustion.",12),
+				new listedValue("IMDG Code Class 4 Div. 4.3", "Substances which, in contact with water, emit flammable gases.",13),
+				new listedValue("IMDG Code Class 5 Div. 5.1", "Oxidizing substances.",14),
+				new listedValue("IMDG Code Class 5 Div. 5.2", "Organic peroxides.",15),
+				new listedValue("IMDG Code Class 6 Div. 6.1", "Toxic substances.",16),
+				new listedValue("IMDG Code Class 6 Div. 6.2", "Infectious substances.",17),
+				new listedValue("IMDG Code Class 7", "Radioactive material.",18),
+				new listedValue("IMDG Code Class 8", "Corrosive substances.",19),
+				new listedValue("IMDG Code Class 9", "Miscellaneous dangerous substances and articles.",20),
+				new listedValue("Harmful Substances in Packaged Form", "Harmful substances are those substances which are identified as marine pollutants in the International Maritime Dangerous Goods Code (IMDG Code). Packaged form is defined as the forms of containment specified for harmful substances in the IMDG Code.",21),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of weather forecast and weather warning areas based on source of warnings and forecasts.
+	/// </summary>
+	public class categoryOfForecastOrWarningArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfForecastOrWarningArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Forecast or Warning Area";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("World Meteorological Organization (WMO)", "The forecast and warning area defined by WMO.",1),
+				new listedValue("National High Seas", "The forecast and warning area defined by national authorities covering High Seas.",2),
+				new listedValue("National Offshore", "The forecast and warning area defined by national authorities covering offshore waters.",3),
+				new listedValue("National Coastal", "The forecast and warning area defined by national authorities covering coastal waters.",4),
+				new listedValue("National Inshore", "The forecast and warning area defined by national authorities covering inshore waters.",5),
+				new listedValue("National Local", "The forecast and warning area defined by national authorities covering local waters.",6),
+				new listedValue("Ice", "The solid form of water.",7),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of GMDSS areas based on availability of GMDSS services and GMDSS equipment requirements.
+	/// </summary>
+	public class categoryOfGMDSSArea : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfGMDSSArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of GMDSS Area";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Area A1", "Within range of VHF coast stations with continuous DSC alerting available (about 20 30 miles).",1),
+				new listedValue("Area A2", "Beyond area A1, but within range of MF coastal stations with continuous DSC alerting available (about l00 miles).",2),
+				new listedValue("Area A3", "An area, excluding sea areas A1 and A2, within the coverage of a recognized mobile satellite service supported by the ship earth station carried on board, in which continuous alerting is available.",3),
+				new listedValue("Area A4", "The sea areas beyond Area 3. The most important of these is the sea around the North Pole (the area around the South Pole is mostly land). Geostationary satellites, which are positioned above the equator, cannot reach this far.",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of radio services offered by a radio station.
+	/// </summary>
+	public class categoryOfRadioStation : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfRadioStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Radio Station";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Radio Direction-Finding Station", "A radio station intended to determine only the direction of other stations by means of transmission from the latter.",5),
+				new listedValue("Loran C", "A low frequency electronic position fixing system using pulsed transmissions at 100 Khz.",9),
+				new listedValue("Differential GNSS", "Differential GNSS is implemented by placing a GNSS monitor receiver at a precisely known location. Instead of computing a navigation fix, the monitor determines the range error to every GNSS satellite it can track. These ranging errors are then transmitted to local users where they are applied as corrections before computing the navigation result.",10),
+				new listedValue("Radio Telephone Station", "The equipment needed at one station to carry on two way voice communication by radio waves only.",19),
+				new listedValue("AIS Base Station", "An AIS shore station for use by competent authorities to provide AIS service, manage the data link and enable effective ship to shore / shore to ship transmission of information.",20),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Expresses constraints or requirements on vessel actions or activities in relation to a geographic feature, facility, or service.
+	/// </summary>
+	public class categoryOfRelationship : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfRelationship);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Relationship";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Prohibited", "Use of facility, waterway or service is forbidden.",1),
+				new listedValue("Not Recommended", "Use of facility, waterway or service is not recommended.",2),
+				new listedValue("Permitted", "Use of facility, waterway, or service is permitted but not required.",3),
+				new listedValue("Recommended", "Use of facility, waterway, or service is recommended.",4),
+				new listedValue("Required", "Use of facility, waterway, or service is required.",5),
+				new listedValue("Not Required", "Use of facility, waterway, or service is not required.",6),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The principal subject matter of regulations, restrictions, recommendations or nautical information.
+	/// </summary>
+	public class categoryOfRxN : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfRxN);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of RxN";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Navigation", "The process of directing the movement of a craft from one point to another.",1),
+				new listedValue("Communication", "Transmitting and/or receiving electronic communication signals.",2),
+				new listedValue("Environmental Protection", "Pertaining to environmental protection.",3),
+				new listedValue("Wildlife Protection", "Pertaining to wildlife protection.",4),
+				new listedValue("Security", "Pertaining to security.",5),
+				new listedValue("Customs", "The agency or establishment for collecting duties, tolls.",6),
+				new listedValue("Cargo Operation", "Pertaining to cargo operations.",7),
+				new listedValue("Refuge", "Pertaining to a place of safety or refuge.",8),
+				new listedValue("Health", "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.",9),
+				new listedValue("Natural Resources or Exploitation", "Pertaining to natural resources or exploitation.",10),
+				new listedValue("Port", "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.",11),
+				new listedValue("Finance", "An authority with responsibility for the control and movement of money.",12),
+				new listedValue("Agriculture", "The science, art, or practice of cultivating the soil, producing crops, and raising livestock and in varying degrees the preparation and marketing of the resulting products.",13),
+			];
+	}
+
+	/// <summary>
+	/// The type of schedule, for instance opening, closure, etc.
+	/// </summary>
+	public class categoryOfSchedule : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfSchedule);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Schedule";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Normal Operation", "The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.",1),
+				new listedValue("Closure", "The service, office, or area is closed.",2),
+				new listedValue("Unmanned Operation", "The service is available but not manned.",3),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// An assessment of the likelihood of change over time.
+	/// </summary>
+	public class categoryOfTemporalVariation : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfTemporalVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Temporal Variation";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Extreme Event", "Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.",1),
+				new listedValue("Likely to Change", "Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).",4),
+				new listedValue("Unlikely to Change", "Significant change to the seafloor is not expected.",5),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of completeness of textual information in relation to the source material from which it is derived.
+	/// </summary>
+	public class categoryOfText : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfText);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Text";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Abstract or Summary", "A statement summarizing the important points of a text.",1),
+				new listedValue("Extract", "An excerpt or excerpts from a text.",2),
+				new listedValue("Full Text", "The whole text.",3),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of vessels by function or use.
+	/// </summary>
+	public class categoryOfVessel : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfVessel);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Vessel";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("General Cargo Vessel", "A vessel which is designed for carrying general cargo, e.g. boxes, sacks.",1),
+				new listedValue("Container Carrier", "A vessel designed to carry ISO containers.",2),
+				new listedValue("Tanker", "A vessel which is designed for carrying liquid goods, for example oil or water.",3),
+				new listedValue("Bulk Carrier", "A vessel which is designed for carrying bulk goods, e.g. coal, ore or grain.",4),
+				new listedValue("Passenger Vessel", "A day trip or cabin vessel constructed and equipped to carry more than 12 passengers.",5),
+				new listedValue("Roll-On Roll-Off", "A vessel designed to allow road vehicles to be driven on and off; often a ferry.",6),
+				new listedValue("Refrigerated Cargo Vessel", "A vessel designed to carry refrigerated cargo.",7),
+				new listedValue("Fishing Vessel", "A vessel that is used and equipped for the fishing of living aquatic resources.",8),
+				new listedValue("Service", "A vessel which provides a service such as a tug, anchor handler, survey or supply vessel.",9),
+				new listedValue("Warship", "A vessel designed for the conduct of military operations.",10),
+				new listedValue("Towed or Pushed Composite Unit", "Either a tug and tow, or any combination of a tug providing propulsion to barges or vessels secured ahead or alongside.",11),
+				new listedValue("Tug and Tow", "A combination of tug(s) and non-powered tow(s).",12),
+				new listedValue("Light Recreational", "A pleasure boat or watercraft, or an excursion vessel used for short cruises such as whale watching.",13),
+				new listedValue("Semi-Submersible Offshore Installation", "An installation which is designed to float at all times and which is normally anchored in position when deployed in the offshore gas and oil industry.",14),
+				new listedValue("Jack-Up Exploration or Project Installation", "An exploration or project installation with legs which can be raised and lowered. The legs are raised when the installation is re-positioned. When stationary the legs are lowered to the sea floor and the working platform is raised clear of the sea surface.",15),
+				new listedValue("Livestock Carrier", "A vessel designed to carry large quantities of live animals.",16),
+				new listedValue("Sport Fishing", "A vessel used in fishing for pleasure or competition.",17),
+			];
+	}
+
+	/// <summary>
+	/// The locality of vessel registration or enrolment relative to the nationality of a port, territorial sea, administrative area, exclusive zone or other location.
+	/// </summary>
+	public class categoryOfVesselRegistry : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfVesselRegistry);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Vessel Registry";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Domestic", "The vessel is registered or enrolled under the same national flag as the port, harbour, territorial sea, exclusive economic zone, or administrative area in which the object that possesses this attribute applies or is located.",1),
+				new listedValue("Foreign", "The vessel is registered or enrolled under a national flag different from the port, harbour, territorial sea, exclusive economic zone, or other administrative area in which the object that possesses this attribute applies or is located.",2),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Category of the communication system providing the connectivity coverage for subscription.
+	/// </summary>
+	public class categoryOfConnectivitySubscription : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfConnectivitySubscription);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Connectivity Subscription";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Satellite Communication GEO", "Communication using GEO (Geosynchronous Earth Orbit) satellites",1),
+				new listedValue("Satellite Communication LEO", "Communication using LEO (Low Earth Orbit) satellites",2),
+				new listedValue("Cellular Communication", "Communication using cellular network. Cellular network or mobile network enables wireless communication between mobile devices. The final stage of connectivity is achieved by segmenting the comprehensive service area into several compact zones, each called a cell. A stationary transceiver, known as a cell site or base station, provides service in each cell. The cell site links to the primary network infrastructure, employing either a wireless or wired connection.",3),
+				new listedValue("Terrestrial Ad-Hoc Communication", "Communication using ad-hoc networking, which uses whatever resources available to create communication paths from an end-user device to its desired destination, independent from central network infrastructure or administration.",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The set of characteristics of an emission, designated by standard symbols, e.g. type of modulation of the main carrier, modulating signal, type of information to be transmitted, and also, if appropriate, any additional signal characteristics.
+	/// </summary>
+	public class classOfEmission : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(classOfEmission);
+		[JsonIgnore]
+		public override string S100FC_name => "Class of Emission";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A code, issued according to a standard and coordination procedure, to identify the transmission of a coast radio station.
+	/// </summary>
+	public class coastStationIdentificationCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(coastStationIdentificationCode);
+		[JsonIgnore]
+		public override string S100FC_name => "Coast Station Identification Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A channel number assigned to a specific radio frequency, frequencies or frequency band.
+	/// </summary>
+	public class communicationChannel : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(communicationChannel);
+		[JsonIgnore]
+		public override string S100FC_name => "Communication Channel";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The communications standard applicable to accessing the radio service.
+	/// </summary>
+	public class communicationStandard : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(communicationStandard);
+		[JsonIgnore]
+		public override string S100FC_name => "Communication Standard";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Numerical comparison.
+	/// </summary>
+	public class comparisonOperator : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(comparisonOperator);
+		[JsonIgnore]
+		public override string S100FC_name => "Comparison Operator";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Greater Than", "The value of the left value is greater than that of the right.",1),
+				new listedValue("Greater Than or Equal To", "The value of the left expression is greater than or equal to that of the right.",2),
+				new listedValue("Less Than", "The value of the left expression is less than that of the right.",3),
+				new listedValue("Less Than or Equal To", "The value of the left expression is less than or equal to that of the right.",4),
+				new listedValue("Equal To", "The two values are equivalent.",5),
+				new listedValue("Not Equal To", "The two values are not equivalent.",6),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The name of a nation.
+	/// </summary>
+	public class countryName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(countryName);
+		[JsonIgnore]
+		public override string S100FC_name => "Country Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The name of a town or city.
+	/// </summary>
+	public class cityName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cityName);
+		[JsonIgnore]
+		public override string S100FC_name => "City Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The average number of bits communicated (transmitted) in 1 second. (ITU Terms and Definitions)
+	/// </summary>
+	public class dataTransmissionRate : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dataTransmissionRate);
+		[JsonIgnore]
+		public override string S100FC_name => "Data Transmission Rate";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The latest date on which an object (for example a buoy) will be present.
+	/// </summary>
+	public class dateEnd : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Date End";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The date of an event.
+	/// </summary>
+	public class dateFixed : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Fixed";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The earliest date on which an object (for example a buoy) will be present.
+	/// </summary>
+	public class dateStart : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Start";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A day which is not fixed in the Gregorian calendar.
+	/// </summary>
+	public class dateVariable : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateVariable);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Variable";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Any one of seven days in a week.
+	/// </summary>
+	public class dayOfWeek : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Sunday", "The day of the week following Saturday and preceding Monday.",1),
+				new listedValue("Monday", "The day of the week following Sunday and preceding Tuesday.",2),
+				new listedValue("Tuesday", "The day of the week following Monday and preceding Wednesday.",3),
+				new listedValue("Wednesday", "The day of the week following Tuesday and preceding Thursday.",4),
+				new listedValue("Thursday", "The day of the week following Wednesday and preceding Friday.",5),
+				new listedValue("Friday", "The day of the week following Thursday and preceding Saturday.",6),
+				new listedValue("Saturday", "The day of the week following Friday and preceding Sunday.",7),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A statement expressing if the days of the week identified define a range or not.
+	/// </summary>
+	public class dayOfWeekIsRange : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dayOfWeekIsRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week is Range";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.
+	/// </summary>
+	public class deliveryPoint : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(deliveryPoint);
+		[JsonIgnore]
+		public override string S100FC_name => "Delivery Point";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Downlink bandwidth in Mbps
+	/// </summary>
+	public class downlinkBandwidth : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(downlinkBandwidth);
+		[JsonIgnore]
+		public override string S100FC_name => "Downlink Bandwidth";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The estimated range of a non-optical electromagnetic transmission.
+	/// </summary>
+	public class estimatedRangeOfTransmission : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(estimatedRangeOfTransmission);
+		[JsonIgnore]
+		public override string S100FC_name => "Estimated Range of Transmission";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The location of a fragment of text or other information in a support file.
+	/// </summary>
+	public class fileLocator : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fileLocator);
+		[JsonIgnore]
+		public override string S100FC_name => "File Locator";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The file name of an externally referenced text file.
+	/// </summary>
+	public class fileReference : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fileReference);
+		[JsonIgnore]
+		public override string S100FC_name => "File Reference";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A continuous set of frequencies lying between two specified limiting frequencies. (Rec. ITU-R V.662-3)
+	/// </summary>
+	public class frequencyBand : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyBand);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Band";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("LF", "Radio frequencies between 30 kHz and 300 kHz",1),
+				new listedValue("MF", "Radio frequencies between 300 kHz and 3000 kHz",2),
+				new listedValue("MF/HF", "Radio frequencies between 300 kHz and 30 MHz",3),
+				new listedValue("HF", "Radio frequencies between 3 MHz and 30 MHz",4),
+				new listedValue("VHF", "Radio frequencies between 30 MHz and 300 MHz",5),
+				new listedValue("UHF", "Radio frequencies between 300 MHz and 3 GHz",6),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The shore station receiver frequency.
+	/// </summary>
+	public class frequencyShoreStationReceives : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyShoreStationReceives);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Receives";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The shore station transmitter frequency.
+	/// </summary>
+	public class frequencyShoreStationTransmits : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyShoreStationTransmits);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Transmits";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Lower limit of the frequency range in Hz.
+	/// </summary>
+	public class frequencyLimitLower : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyLimitLower);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Limit Lower";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Upper limit of the frequency range in Hz.
+	/// </summary>
+	public class frequencyLimitUpper : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyLimitUpper);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Limit Upper";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Words set at the head of a passage or page to introduce or categorize.
+	/// </summary>
+	public class headline : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(headline);
+		[JsonIgnore]
+		public override string S100FC_name => "Headline";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The hours during which the watch on the radio channel is maintained. Hours are given in UTC, such as 0930-1000, or by using a service symbol such as "H24" for a 24 hour service.
+	/// </summary>
+	public class hoursOfWatch : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(hoursOfWatch);
+		[JsonIgnore]
+		public override string S100FC_name => "Hours of Watch";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
+	/// </summary>
+	public class horizontalDistanceUncertainty : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(horizontalDistanceUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Distance Uncertainty";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The identifier for a METAREA.
+	/// </summary>
+	public class idMETAREA : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(idMETAREA);
+		[JsonIgnore]
+		public override string S100FC_name => "Id METAREA";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The identifier for a NAVAREA.
+	/// </summary>
+	public class idNAVAREA : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(idNAVAREA);
+		[JsonIgnore]
+		public override string S100FC_name => "Id NAVAREA";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Whether the vessel is in ballast.
+	/// </summary>
+	public class inBallast : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(inBallast);
+		[JsonIgnore]
+		public override string S100FC_name => "In Ballast";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The likelihood that a vessel will experience the phenomenon described by a feature, or that the service described by the feature will be available.
+	/// </summary>
+	public class informationConfidence : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(informationConfidence);
+		[JsonIgnore]
+		public override string S100FC_name => "Information Confidence";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Virtually Certain", "Virtually certain to be experienced by (or available to) an individual vessel; will be experienced by nearly all vessels.",1),
+				new listedValue("High Likelihood", "Frequently experienced by (or available to) an individual vessel; experienced by a majority of vessels.",2),
+				new listedValue("Medium Likelihood", "Occasionally experienced by (or available to) an individual vessel; experienced by (or available to) about half of all vessels.",3),
+				new listedValue("Low Likelihood", "Unlikely, but sometimes (rarely) experienced by (or available to) an individual vessel; experienced by (or available to) a minority of vessels.",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.
+	/// </summary>
+	public class interoperabilityIdentifier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(interoperabilityIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Interoperability Identifier";
+		[JsonIgnore]
+		public override string valueType => "URN";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A statement that expresses if a Coast Guard station performs the function of a Maritime Rescue and Coordination Centre.
+	/// </summary>
+	public class isMRCC : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(isMRCC);
+		[JsonIgnore]
+		public override string S100FC_name => "Is MRCC";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.
+	/// </summary>
+	public class language : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(language);
+		[JsonIgnore]
+		public override string S100FC_name => "Language";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A description of the languages, alphabets and scripts in use.
+	/// </summary>
+	public class languageInformation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(languageInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Language Information";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Location (address) for online access using a URL/URI address or similar addressing scheme.
+	/// </summary>
+	public class linkage : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(linkage);
+		[JsonIgnore]
+		public override string S100FC_name => "Linkage";
+		[JsonIgnore]
+		public override string valueType => "URI";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Expresses whether all the constraints described by its co-attributes must be satisfied, or only one such constraint need be satisfied.
+	/// </summary>
+	public class logicalConnectives : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(logicalConnectives);
+		[JsonIgnore]
+		public override string S100FC_name => "Logical Connectives";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Logical Conjunction", "All the conditions described by the other attributes of the object, or sub-attributes of the same complex attribute, are true.",1),
+				new listedValue("Logical Disjunction", "At least one of the conditions described by the other attributes of the object, or sub-attributes of the same complex attributes, is true.",2),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Maximum data burst volume in bytes
+	/// </summary>
+	public class maximumDataBurstVolume : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(maximumDataBurstVolume);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Data Burst Volume";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be "grossly overscaled".
+	/// </summary>
+	public class maximumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(maximumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Indicates whether a vessel is included or excluded from the regulation/restriction/recommendation/nautical information.
+	/// </summary>
+	public class membership : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(membership);
+		[JsonIgnore]
+		public override string S100FC_name => "Membership";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Included", "Vessels with these characteristics are included in the regulation/restriction/recommendation/nautical information.",1),
+				new listedValue("Excluded", "Vessels with these characteristics are excluded from the regulation/restriction/recommendation/nautical information.",2),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The smallest intended viewing scale for the data.
+	/// </summary>
+	public class minimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Minimum received power in dBm.
+	/// </summary>
+	public class minimumReceivedPower : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minimumReceivedPower);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Received Power";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The minimum value of Signal to Interference plus Noise Ratio (SINR) in dB.
+	/// </summary>
+	public class minimumSignalToInterferenceNoiseRatio : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minimumSignalToInterferenceNoiseRatio);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Signal to Interference Noise Ratio";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The minute past even hours when a routine transmission starts.
+	/// </summary>
+	public class minutePastEvenHours : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minutePastEvenHours);
+		[JsonIgnore]
+		public override string S100FC_name => "Minute Past Even Hours";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The minute past every hour when a routine transmission starts.
+	/// </summary>
+	public class minutePastEveryHour : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minutePastEveryHour);
+		[JsonIgnore]
+		public override string S100FC_name => "Minute Past Every Hour";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The minute past odd hours when a routine transmission starts.
+	/// </summary>
+	public class minutePastOddHours : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minutePastOddHours);
+		[JsonIgnore]
+		public override string S100FC_name => "Minute Past Odd Hours";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
+	/// </summary>
+	public class mMSICode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(mMSICode);
+		[JsonIgnore]
+		public override string S100FC_name => "MMSI Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The coastal warning area identification letter(s) to be selected to receive the Maritime Safety Information (MSI) for the corresponding coastal warning area(s).
+	/// </summary>
+	public class mSICoastalWarningArea : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(mSICoastalWarningArea);
+		[JsonIgnore]
+		public override string S100FC_name => "MSI Coastal Warning Area";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The individual name of a feature.
+	/// </summary>
+	public class name : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(name);
+		[JsonIgnore]
+		public override string S100FC_name => "Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Name of the online resource.
+	/// </summary>
+	public class nameOfResource : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nameOfResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Name of Resource";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of the type and display level of the name of a feature in an end-user system.
+	/// </summary>
+	public class nameUsage : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nameUsage);
+		[JsonIgnore]
+		public override string S100FC_name => "Name Usage";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Default Name Display", "The name is intended to be displayed when the end-user system is set to the default name/text display setting.",1),
+				new listedValue("Alternate Name Display", "The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.",2),
+				new listedValue("No Chart Display", "The name or text is not intended to be displayed.",3),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Identifier of membership of a particular nation.
+	/// </summary>
+	public class nationality : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nationality);
+		[JsonIgnore]
+		public override string S100FC_name => "Nationality";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The time on each day when observations are made.
+	/// </summary>
+	public class observationTime : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(observationTime);
+		[JsonIgnore]
+		public override string S100FC_name => "Observation Time";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The largest intended viewing scale for the data.
+	/// </summary>
+	public class optimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(optimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Optimum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The best estimate of the accuracy of a bearing.
+	/// </summary>
+	public class orientationUncertainty : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(orientationUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation Uncertainty";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Packet delay in ms
+	/// </summary>
+	public class packetDelay : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(packetDelay);
+		[JsonIgnore]
+		public override string S100FC_name => "Packet Delay";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The file name of an externally referenced picture file.
+	/// </summary>
+	public class pictorialRepresentation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictorialRepresentation);
+		[JsonIgnore]
+		public override string S100FC_name => "Pictorial Representation";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Short description of the purpose of the image.
+	/// </summary>
+	public class pictureCaption : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictureCaption);
+		[JsonIgnore]
+		public override string S100FC_name => "Picture Caption";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A set of information to provide credits to picture creator, copyright owner etc.
+	/// </summary>
+	public class pictureInformation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictureInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Picture Information";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.
+	/// </summary>
+	public class postalCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(postalCode);
+		[JsonIgnore]
+		public override string S100FC_name => "Postal Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Presumed receiver antenna height for the calculation of radio coverage.
+	/// </summary>
+	public class presumedReceiverAntennaHeight : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(presumedReceiverAntennaHeight);
+		[JsonIgnore]
+		public override string S100FC_name => "Presumed Receiver Antenna Height";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The degree of reliability attributed to a position.
+	/// </summary>
+	public class qualityOfHorizontalMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(qualityOfHorizontalMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Horizontal Measurement";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Approximate", "A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A statement that expresses if it is remote controlled.
+	/// </summary>
+	public class remoteControlled : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(remoteControlled);
+		[JsonIgnore]
+		public override string S100FC_name => "Remote Controlled";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The date that the item was observed, done, or investigated.
+	/// </summary>
+	public class reportedDate : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(reportedDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Reported Date";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The identifier of the ocean region area, within which a station can obtain line-of-sight communication, with an Inmarsat satellite.
+	/// </summary>
+	public class satelliteOceanRegion : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(satelliteOceanRegion);
+		[JsonIgnore]
+		public override string S100FC_name => "Satellite Ocean Region";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.
+	/// </summary>
+	public class sectorBearing : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sectorBearing);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Bearing";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector line length specifies the displayed length of the line, in ground units, defining the limit of the sector.
+	/// </summary>
+	public class sectorLineLength : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sectorLineLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Line Length";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// When stations of the maritime mobile service (direct printing telegraphy) use selective calling devices, their Selective Call numbers (SELCAL) are formed of four digits (coast stations).
+	/// </summary>
+	public class selectiveCallNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(selectiveCallNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Selective Call Number";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The Recognized Mobile Satellite Service (RMSS) providing the service through a satellite system that is recognized by the IMO, for use in the GMDSS
+	/// </summary>
+	public class servingMobileSatelliteService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(servingMobileSatelliteService);
+		[JsonIgnore]
+		public override string S100FC_name => "Serving Mobile Satellite Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Inmarsat SafetyNET", "An international automatic direct-printing satellite-based service using Inmarsat C Enhanced Group Call (EGC) system for the promulgation of Maritime Safety Information (MSI), navigational and meteorological warnings, meteorological forecasts, Search and Rescue (SAR) related information and other urgent safety-related messages to ships.",1),
+				new listedValue("Iridium SafetyCast", "A service based on Iridium mobile-satellite system for the promulgation of Maritime Safety Information (MSI), navigational and meteorological warnings, meteorological forecasts, SAR-related information and other urgent safety-related messages to ships.",2),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The production date of the source; for example the date of measurement.
+	/// </summary>
+	public class sourceDate : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sourceDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Source Date";
+		[JsonIgnore]
+		public override string valueType => "date";
+		public DateOnly? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The publication, document, or reference work from which information comes or is acquired.
+	/// </summary>
+	public class source : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(source);
+		[JsonIgnore]
+		public override string S100FC_name => "Source";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The condition of an object at a given instant in time.
+	/// </summary>
+	public class status : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(status);
+		[JsonIgnore]
+		public override string S100FC_name => "Status";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Permanent", "Intended to last or function indefinitely.",1),
+				new listedValue("Occasional", "Acting on special occasions; happening irregularly.",2),
+				new listedValue("Not in Use", "Use has ceased, but the facility still exists intact; disused.",4),
+				new listedValue("Periodic/Intermittent", "Recurring at intervals.",5),
+				new listedValue("Temporary", "Meant to last only for a time.",7),
+				new listedValue("Private", "Administered by an individual or corporation, rather than a State or a public body.",8),
+				new listedValue("Public", "Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.",14),
+				new listedValue("Watched", "Looked at or observed over a period of time especially so as to be aware of any movement or change.",16),
+				new listedValue("Unwatched", "Usually automatic in operation, without any permanently-stationed personnel to superintend it.",17),
+				new listedValue("Strong", "Not easily broken or destroyed.",24),
+				new listedValue("Good", "In a satisfactory condition to use.",25),
+				new listedValue("Moderately", "Fairly but not very.",26),
+				new listedValue("Poor", "Not as good as it could be or should.",27),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Descriptions of the subject of the transmitted message.
+	/// </summary>
+	public class subjectDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(subjectDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Subject Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A code specified for a communication system to indicate the subject group or message type of the transmitted content, e.g., message type of DGNSS, subject code for NAVDAT, or subject indicator character for NAVTEX. 
+	/// </summary>
+	public class subjectOrMessageTypeCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(subjectOrMessageTypeCode);
+		[JsonIgnore]
+		public override string S100FC_name => "Subject or Message Type Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.
+	/// </summary>
+	public class telecommunicationIdentifier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunicationIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Identifier";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.
+	/// </summary>
+	public class telecommunicationService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunicationService);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Voice", "The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.",1),
+				new listedValue("Facsimile", "A system of transmitting and reproducing graphic matter (as printing or still pictures) by means of signals sent over telephone lines.",2),
+				new listedValue("SMS", "Short Message Service is a form of text messaging communication on phones and mobile phones.",3),
+				new listedValue("Data", "A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.",4),
+				new listedValue("Streamed Data", "Data that is constantly received by and presented to an end-user while being delivered by a provider.",5),
+				new listedValue("Telex", "A system of communication in which messages are sent over long distances by using a telephone system and are printed by using a special machine (called a teletypewriter).",6),
+				new listedValue("Telegraph", "An apparatus, system or process for communication at a distance by electric transmission over wire.",7),
+				new listedValue("Email", "Messages and other data exchanged between individuals using computers in a network.",8),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A non-formatted digital text string.
+	/// </summary>
+	public class text : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(text);
+		[JsonIgnore]
+		public override string S100FC_name => "Text";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The thickness of ice that the ship can safely transit.
+	/// </summary>
+	public class thicknessOfIceCapability : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(thicknessOfIceCapability);
+		[JsonIgnore]
+		public override string S100FC_name => "Thickness of Ice Capability";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The time corresponding to the end of an active period.
+	/// </summary>
+	public class timeOfDayEnd : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeOfDayEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day End";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The time corresponding to the start of an active period.
+	/// </summary>
+	public class timeOfDayStart : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeOfDayStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day Start";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Content of transmission.
+	/// </summary>
+	public class transmissionContent : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmissionContent);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmission Content";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The NAVTEX transmitter identification character is a single unique letter, which is allocated to each transmitter. It is used to identify the broadcasts, which are to be accepted by the receiver, those which are to be rejected, and the time slot for the transmission.
+	/// </summary>
+	public class transmitterIdentificationCharacter : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmitterIdentificationCharacter);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmitter Identification Character";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Describes whether a station transmits traffic lists.
+	/// </summary>
+	public class transmissionOfTrafficLists : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmissionOfTrafficLists);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmission of Traffic Lists";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The maximum power the radio service uses (or is authorized to use) for radio transmission.
+	/// </summary>
+	public class transmissionPower : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmissionPower);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmission Power";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of regularity or conditions for transmission.
+	/// </summary>
+	public class transmissionRegularity : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmissionRegularity);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmission Regularity";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Continuous", "Transmission is made continuously.",1),
+				new listedValue("Regular", "Transmission is made regularly according to a schedule.",2),
+				new listedValue("On Receipt", "Transmission is made when warning or information is received from another authority.",3),
+				new listedValue("As Required", "Transmission is made under specified conditions or when needed.",4),
+				new listedValue("On Request", "When you ask for it.",5),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The time in the day when scheduled transmissions start.
+	/// </summary>
+	public class transmissionTime : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transmissionTime);
+		[JsonIgnore]
+		public override string S100FC_name => "Transmission Time";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Categorization of the broadcast content by subject.
+	/// </summary>
+	public class typeOfBroadcastContent : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(typeOfBroadcastContent);
+		[JsonIgnore]
+		public override string S100FC_name => "Type of Broadcast Content";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Navigational Warning", "A message containing urgent information relevant to safe navigation broadcast to ships in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.",1),
+				new listedValue("Meteorological Warnings and Forecasts", "Marine meteorological warning and forecast information in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974",2),
+				new listedValue("SAR Information", "Broadcast message with information about an ongoing Search and Rescue operation.",3),
+				new listedValue("Marine Security or Piracy Warnings", "Security-related requirements in accordance to International Ship and Port Facility Security (ISPS) Code, or warnings related to acts of piracy and armed robbery against ships",4),
+				new listedValue("Tsunamis or Natural Phenomena Warnings", "Warnings related to tsunamis and other natural phenomena, such as abnormal changes to sea level",5),
+				new listedValue("Pilot and VTS Service Messages", "Messages related to pilot and VTS service, such as temporary alterations, movement or suspension to pilot or VTS services",6),
+				new listedValue("Military Information", "Information concerning military events, such as military exercises, missile firings.",7),
+				new listedValue("Special Service or Application Specific Messages", "Broadcast for special services or other application specific messages",8),
+				new listedValue("Ice Report", "Report of the ice situation and restrictions to shipping.",9),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Categorization of the connectivity resource by Quality o Service (QoS).
+	/// </summary>
+	public class typeOfConnectivityResource : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(typeOfConnectivityResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Type of Connectivity Resource";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Guaranteed Bit Rate", "The type of Quality of Service (QoS) Flow or a QoS parameter that defines the minimum data rate that must be guaranteed for a specific service or traffic flow.",1),
+				new listedValue("Non-Guaranteed Bit Rate", "The type of Quality of Service (QoS) Flow that does not provide the end-user a guaranteed flow bit rate,  typically used for non-time-sensitive applications, e.g., web browsing, buffered streaming, and instant messenger applications",2),
+				new listedValue("Delay Critical Guaranteed Bit Rate", "The type of Quality of Service (QoS) Flow that provides latencies significantly lower than guaranteed flow bit rate. Typically used in mission critical application like automation or intelligent transportation systems",3),
+				new listedValue("Best Effort", "The network or service that does not support quality of service, does its best to deliver packets, but does not guarantee delivery or control delay",4),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Type of service of the NAVTEX, an international one or a national one.
+	/// </summary>
+	public class typeOfNAVTEXService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(typeOfNAVTEXService);
+		[JsonIgnore]
+		public override string S100FC_name => "Type of NAVTEX Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("International NAVTEX", "The coordinated broadcast and automatic reception on 518 kHz of maritime safety information by means of narrow-band direct-printing telegraphy using the English language.",1),
+				new listedValue("National NAVTEX", "The broadcast and automatic reception of maritime safety information by means of narrow-band direct-printing telegraphy using frequencies other than 518 kHz and languages as decided by the Administration concerned.",2),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Categorization of the radio service by the technology or system
+	/// </summary>
+	public class typeOfRadioService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(typeOfRadioService);
+		[JsonIgnore]
+		public override string S100FC_name => "Type of Radio Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Digital Selective Calling", "Radio service using Digital Selective Calling (DSC) techniques.",1),
+				new listedValue("Radio Telephony", "Radio service using Radio Telephony (RT).",2),
+				new listedValue("Public Correspondence Service", "Radio service with the coast station providing a public correspondence service.",3),
+				new listedValue("Radio Telegraphy", "Radio service using Radio Telegraphy (WT)",4),
+				new listedValue("NBDP Telegraphy (Narrow Band Direct Printing Telegraphy)", "A communications system consisting of teletypewriters connected to a telephonic network to send and receive Narrow Band Direct Printing.",5),
+				new listedValue("Radio Facsimile", "Radio service using radio facsimile",6),
+				new listedValue("Digital", "A method of representing information by combinations of discrete and discontinuous data.",7),
+				new listedValue("Data", "A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.",8),
+				new listedValue("NAVTEX", "The system for the broadcast and automatic reception of maritime safety information by means of narrow-band direct-printing telegraphy.",9),
+				new listedValue("Enhanced Group Call", "The broadcast of coordinated maritime safety information and search and rescue related information, to a defined geographical area using a recognized mobile satellite service.",10),
+				new listedValue("Automatic Identification System", "An automatic communication and identification system intended to improve the safety of navigation by assisting the efficient operation of Vessel Traffic Services (VTS), ship reporting, and ship-to-ship and ship-to-shore operations.",11),
+				new listedValue("Special Service or Application Specific Messages", "Broadcast for special services or other application specific messages.",12),
+				new listedValue("Satellite Communication", "Communication using a satellite system",13),
+				new listedValue("Navigational Data System", "A digital system referred to as navigational data for broadcasting maritime safety and security related information from shore-to-ship.",14),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class uncertaintyFixed : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uncertaintyFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Fixed";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class uncertaintyVariableFactor : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uncertaintyVariableFactor);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Variable Factor";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Uplink bandwith in Mbps
+	/// </summary>
+	public class uplinkBandwidth : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uplinkBandwidth);
+		[JsonIgnore]
+		public override string S100FC_name => "Uplink Bandwidth";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Characteristics of vessels.
+	/// </summary>
+	public class vesselsCharacteristics : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristics);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Length Overall", "The maximum length of the ship.",1),
+				new listedValue("Length at Waterline", "The ship's length measured at the waterline.",2),
+				new listedValue("Breadth", "The width or beam of the vessel.",3),
+				new listedValue("Draught", "The depth of water necessary to float a vessel fully loaded.",4),
+				new listedValue("Displacement Tonnage", "A measurement of the weight of the vessel, usually used for warships. (Merchant ships are usually measured based on the volume of cargo space; see tonnage). Displacement is expressed either in long tons of 2,240 pounds or metric tonnes of 1,000 kg. Since the two units are very close in size (2,240 pounds = 1,016 kg and 1,000 kg = 2,205 pounds), it is common not to distinguish between them. To preserve secrecy, nations sometimes misstate a warship's displacement.",6),
+				new listedValue("Displacement Tonnage, Light", "The weight of the ship excluding cargo, fuel, ballast, stores, passengers, and crew, but with water in the boilers to steaming level.",7),
+				new listedValue("Displacement Tonnage, Loaded", "The weight of the ship including cargo, passengers, fuel, water, stores, dunnage and such other items necessary for use on a voyage, which brings the vessel down to her load draft.",8),
+				new listedValue("Deadweight Tonnage", "The difference between displacement, light and displacement, loaded. A measure of the ship's total carrying capacity.",9),
+				new listedValue("Gross Tonnage", "The entire internal cubic capacity of the ship expressed in tons of 100 cubic feet to the ton, except certain spaces with are exempted such as: peak and other tanks for water ballast, open forecastle bridge and poop, access of hatchways, certain light and air spaces, domes of skylights, condenser, anchor gear, steering gear, wheel house, galley and cabin for passengers.",10),
+				new listedValue("Net Tonnage", "Obtained from the gross tonnage by deducting crew and navigating spaces and allowances for propulsion machinery.",11),
+				new listedValue("Panama Canal/Universal Measurement System Net Tonnage", "The Panama Canal/Universal Measurement System (PC/UMS) is based on net tonnage, modified for Panama Canal purposes. PC/UMS is based on a mathematical formula to calculate a vessel's total volume; a PC/UMS net ton is equivalent to 100 cubic feet of capacity.",12),
+				new listedValue("Suez Canal Net Tonnage", "The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.",13),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The unit used for vessel characteristics attribute.
+	/// </summary>
+	public class vesselsCharacteristicsUnit : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristicsUnit);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics Unit";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Metres", "The basic unit of length in the International System of Units (SI) system.",1),
+				new listedValue("Metric Ton", "The tonne or metric ton (U.S.), often redundantly referred to as a metric tonne, is a unit of mass equal to 1,000 kg (2,205 lb) or approximately the mass of one cubic metre of water at four degrees Celsius. It is sometimes abbreviated as mt in the United States, but this conflicts with other SI symbols. The tonne is not a unit in the International System of Units (SI), but is accepted for use with the SI. In SI units and prefixes, the tonne is a megagram (Mg). The Imperial and US customary units comparable to the tonne are both spelled ton in English, though they differ in mass. Pronunciation of tonne (the word used in the UK) and ton is usually identical, but is not too confusing unless accuracy is important as the tonne and UK long ton differ by only 1.6.",3),
+				new listedValue("Ton", "Long ton (weight ton or imperial ton) is the name for the unit called the \"ton\" in the avoirdupois or Imperial system of measurements, as used in the United Kingdom and several other Commonwealth countries. It has been mostly replaced by the tonne, and in the United States by the short ton. One long ton is equal to 2,240 pounds (1,016 kg) or 35 cubic feet (0.9911 m) of salt water with a density of 64 lb/ft (1.025 g/ml). It has some limited use in the United States, most commonly in measuring the displacement of ships, and was the unit prescribed for warships by the Washington Naval Treaty for example battleships were limited to a mass of 35,000 long tons (36,000 t; 39,000 ST).",4),
+				new listedValue("Short Ton", "A unit of weight equal to 2,000 pounds (907.18474 kg). In the United States it is often called simply ton without distinguishing it from the metric ton (tonne, 1,000 kilograms) or the long ton (2,240 pounds / 1,016.0469088 kilograms); rather, the other two are specifically noted. There are, however, some US applications for which unspecified tons normally means long tons (for example, Navy ships) or metric tons (world grain production figures). Both the long and short ton are defined as 20 hundredweights, but a hundredweight is 100 pounds (45.359237 kg) in the US system (short or net hundredweight) and 112 pounds (50.80234544 kg) in the Imperial system (long or gross hundredweight).",5),
+				new listedValue("Gross Ton", "Gross tonnage (GT) is a function of the volume of all ship's enclosed spaces (from keel to funnel) measured to the outside of the hull framing. There is a sliding scale factor. So GT is a kind of capacity-derived index that is used to rank a ship for purposes of determining manning, safety and other statutory requirements and is expressed simply as GT, which is a unitless entity, even though its derivation is tied to the cubic meter unit of volumetric capacity.Tonnage measurements are now governed by an IMO Convention (International Convention on Tonnage Measurement of Ships, 1969 (London-Rules)), which applies to all ships built after July 1982. In accordance with the Convention, the correct term to use now is GT, which is a function of the moulded volume of all enclosed spaces of the ship.",6),
+				new listedValue("Net Ton", "Net tonnage (NT) is based on a calculation of the volume of all cargo spaces of the ship. It indicates a vessels earning space and is a function of the moulded volume of all cargo spaces of the ship.",7),
+				new listedValue("Suez Canal Net Tonnage", "The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.",9),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The value of a particular characteristic such as a dimension or tonnage of a vessel.
+	/// </summary>
+	public class vesselsCharacteristicsValue : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristicsValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics Value";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// A description of the required handling characteristics of a vessel including hull design, main and auxiliary machinery, cargo handling equipment, navigation equipment and manoeuvring behaviour.
+	/// </summary>
+	public class vesselPerformance : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselPerformance);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Performance";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S123.ComplexAttributes
+{
+	using S100Framework.AttributeModel.S123.SimpleAttributes;
+
+	/// <summary>
+	/// Description of the radio service for area A3 of the Global Maritime Distress and Safety System (GMDSS).
+	/// </summary>
+	public class areaA3ServiceDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(areaA3ServiceDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Area A3 Service Description";
+		[JsonIgnore]
+		public servingMobileSatelliteService servingMobileSatelliteService { get; init; } = new servingMobileSatelliteService();
+		public override Attribute[] attributes => [
+				servingMobileSatelliteService,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(servingMobileSatelliteService),
+					lower = 1,
+					upper = 2147483647,
+					permitedValues = [1,2],
+				},
+				new AttributeBinding {
+					attribute = nameof(satelliteOceanRegion),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(mSICoastalWarningArea),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Details related to the content of the broadcast.
+	/// </summary>
+	public class broadcastContent : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(broadcastContent);
+		[JsonIgnore]
+		public override string S100FC_name => "Broadcast Content";
+		[JsonIgnore]
+		public typeOfBroadcastContent typeOfBroadcastContent { get; init; } = new typeOfBroadcastContent();
+		public override Attribute[] attributes => [
+				typeOfBroadcastContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(typeOfBroadcastContent),
+					lower = 1,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8],
+				},
+				new AttributeBinding {
+					attribute = nameof(subjectOrMessageTypeCode),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(subjectDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(observationTime),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionRegularity),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5],
+				},
+			];
+	}
+
+	/// <summary>
+	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
+	/// </summary>
+	public class contactAddress : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(contactAddress);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Address";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(deliveryPoint),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(cityName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(administrativeDivision),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(countryName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(postalCode),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Details related to the indication of the radio coverage.
+	/// </summary>
+	public class coverageIndication : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(coverageIndication);
+		[JsonIgnore]
+		public override string S100FC_name => "Coverage Indication";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(minimumReceivedPower),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(presumedReceiverAntennaHeight),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minimumSignalToInterferenceNoiseRatio),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,4,5,7,8,14,16,17,24,25,26,27],
+				},
+				new AttributeBinding {
+					attribute = nameof(text),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+	/// </summary>
+	public class featureName : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(featureName);
+		[JsonIgnore]
+		public override string S100FC_name => "Feature Name";
+		[JsonIgnore]
+		public language language { get; init; } = new language();
+		[JsonIgnore]
+		public name name { get; init; } = new name();
+		public override Attribute[] attributes => [
+				language,
+				name,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(language),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(name),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nameUsage),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+	}
+
+	/// <summary>
+	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
+	/// </summary>
+	public class fixedDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fixedDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Fixed Date Range";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayStart),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayEnd),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
+	/// </summary>
+	public class frequencyPair : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyPair);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Pair";
+		[JsonIgnore]
+		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
+		public override Attribute[] attributes => [
+				frequencyShoreStationTransmits,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(frequencyShoreStationReceives),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyShoreStationTransmits),
+					lower = 1,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Frequency range of the electromagnetic spectrum in which the transmission is provided.
+	/// </summary>
+	public class frequencyRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Range";
+		[JsonIgnore]
+		public frequencyLimitLower frequencyLimitLower { get; init; } = new frequencyLimitLower();
+		[JsonIgnore]
+		public frequencyLimitUpper frequencyLimitUpper { get; init; } = new frequencyLimitUpper();
+		public override Attribute[] attributes => [
+				frequencyLimitLower,
+				frequencyLimitUpper,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(frequencyLimitLower),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyLimitUpper),
+					lower = 1,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
+	/// </summary>
+	public class graphic : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(graphic);
+		[JsonIgnore]
+		public override string S100FC_name => "Graphic";
+		[JsonIgnore]
+		public pictorialRepresentation pictorialRepresentation { get; init; } = new pictorialRepresentation();
+		public override Attribute[] attributes => [
+				pictorialRepresentation,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(pictorialRepresentation),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(pictureCaption),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceDate),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(pictureInformation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The best estimate of the accuracy of a position.
+	/// </summary>
+	public class horizontalPositionUncertainty : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(horizontalPositionUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Position Uncertainty";
+		[JsonIgnore]
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] attributes => [
+				uncertaintyFixed,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(uncertaintyFixed),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(uncertaintyVariableFactor),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
+	/// </summary>
+	public class information : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(information);
+		[JsonIgnore]
+		public override string S100FC_name => "Information";
+		[JsonIgnore]
+		public language language { get; init; } = new language();
+		public override Attribute[] attributes => [
+				language,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fileLocator),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(fileReference),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(headline),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(language),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(text),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Information about online sources from which a resource or data can be obtained.
+	/// </summary>
+	public class onlineResource : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(onlineResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Online Resource";
+		[JsonIgnore]
+		public linkage linkage { get; init; } = new linkage();
+		public override Attribute[] attributes => [
+				linkage,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(headline),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(linkage),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nameOfResource),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The active period of a recurring event or occurrence.
+	/// </summary>
+	public class periodicDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(periodicDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Periodic Date Range";
+		[JsonIgnore]
+		public dateStart dateStart { get; init; } = new dateStart();
+		[JsonIgnore]
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public override Attribute[] attributes => [
+				dateStart,
+				dateEnd,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 1,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Details related to the radio channel used in the radio service.
+	/// </summary>
+	public class radioChannelDetails : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(radioChannelDetails);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Channel Details";
+		[JsonIgnore]
+		public transmissionOfTrafficLists transmissionOfTrafficLists { get; init; } = new transmissionOfTrafficLists();
+		public override Attribute[] attributes => [
+				transmissionOfTrafficLists,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(communicationChannel),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyPair),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(dataTransmissionRate),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionOfTrafficLists),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(hoursOfWatch),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Identifiers of the radio station in various maritime radiocommunication services.
+	/// </summary>
+	public class radiocommunicationIdentifier : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(radiocommunicationIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Radiocommunication Identifier";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(callSign),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(mMSICode),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(selectiveCallNumber),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(coastStationIdentificationCode),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
+	/// </summary>
+	public class rxNCode : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(rxNCode);
+		[JsonIgnore]
+		public override string S100FC_name => "RxN Code";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(headline),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfRxN),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(actionOrActivity),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
+	/// </summary>
+	public class sectorLimitOne : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sectorLimitOne);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit One";
+		[JsonIgnore]
+		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public override Attribute[] attributes => [
+				sectorBearing,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sectorBearing),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sectorLineLength),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
+	/// </summary>
+	public class sectorLimitTwo : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sectorLimitTwo);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit Two";
+		[JsonIgnore]
+		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public override Attribute[] attributes => [
+				sectorBearing,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sectorBearing),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sectorLineLength),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
+	/// </summary>
+	public class surveyDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(surveyDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Survey Date Range";
+		[JsonIgnore]
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public override Attribute[] attributes => [
+				dateEnd,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 1,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
+	/// </summary>
+	public class telecommunications : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunications);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunications";
+		[JsonIgnore]
+		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public override Attribute[] attributes => [
+				telecommunicationIdentifier,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(contactInstructions),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunicationIdentifier),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunicationService),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8],
+				},
+			];
+	}
+
+	/// <summary>
+	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
+	/// </summary>
+	public class textContent : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textContent);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Content";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfText),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(source),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(reportedDate),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The regular weekly operation times of a service or schedule.
+	/// </summary>
+	public class timeIntervalsByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Time Intervals by Day of Week";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dayOfWeek),
+					lower = 0,
+					upper = 7,
+					permitedValues = [1,2,3,4,5,6,7],
+				},
+				new AttributeBinding {
+					attribute = nameof(dayOfWeekIsRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayStart),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayEnd),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// One or more times in the day when the radio station starts a routine transmission, normally expressed in UTC or local time.
+	/// </summary>
+	public class timesOfTransmission : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timesOfTransmission);
+		[JsonIgnore]
+		public override string S100FC_name => "Times of Transmission";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(minutePastEvenHours),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minutePastOddHours),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minutePastEveryHour),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionTime),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class verticalUncertainty : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(verticalUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Uncertainty";
+		[JsonIgnore]
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] attributes => [
+				uncertaintyFixed,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(uncertaintyFixed),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(uncertaintyVariableFactor),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.
+	/// </summary>
+	public class vesselMeasurementsSpecification : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Measurements Specification";
+		[JsonIgnore]
+		public vesselsCharacteristics vesselsCharacteristics { get; init; } = new vesselsCharacteristics();
+		[JsonIgnore]
+		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; init; } = new vesselsCharacteristicsValue();
+		[JsonIgnore]
+		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; init; } = new vesselsCharacteristicsUnit();
+		[JsonIgnore]
+		public comparisonOperator comparisonOperator { get; init; } = new comparisonOperator();
+		public override Attribute[] attributes => [
+				vesselsCharacteristics,
+				vesselsCharacteristicsValue,
+				vesselsCharacteristicsUnit,
+				comparisonOperator,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristics),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,6,7,8,9,10,11,12,13],
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristicsValue),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristicsUnit),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,3,4,5,6,7,9],
+				},
+				new AttributeBinding {
+					attribute = nameof(comparisonOperator),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6],
+				},
+			];
+	}
+
+	/// <summary>
+	/// The nature and timings of a daily schedule by days of the week.
+	/// </summary>
+	public class scheduleByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(scheduleByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Schedule by Day of Week";
+		[JsonIgnore]
+		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek();
+		public override Attribute[] attributes => [
+				timeIntervalsByDayOfWeek,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfSchedule),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(timeIntervalsByDayOfWeek),
+					lower = 1,
+					upper = 10,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
+	/// </summary>
+	public class sectorLimit : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sectorLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Sector Limit";
+		[JsonIgnore]
+		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
+		[JsonIgnore]
+		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
+		public override Attribute[] attributes => [
+				sectorLimitOne,
+				sectorLimitTwo,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sectorLimitOne),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sectorLimitTwo),
+					lower = 1,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+	/// </summary>
+	public class spatialAccuracy : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(spatialAccuracy);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Accuracy";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalPositionUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S123.FeatureTypes
+{
+	using S100Framework.AttributeModel.S123.SimpleAttributes;
+	using S100Framework.AttributeModel.S123.ComplexAttributes;
+
+	/// <summary>
+	/// Generalized feature type which carries all the common attributes.
+	/// </summary>
+	public class FeatureType : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(FeatureType);
+		[JsonIgnore]
+		public override string S100FC_name => "Feature Type";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(featureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(source),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(reportedDate),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(interoperabilityIdentifier),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// An area of connectivity coverage available for the subscription of connectivity service.
+	/// </summary>
+	public class ConnectivitySubscriptionArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ConnectivitySubscriptionArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Connectivity Subscription Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfConnectivitySubscription),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(communicationStandard),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(estimatedRangeOfTransmission),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(baseStationAntennaHeight),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sectorLimit),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(coverageIndication),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// An area defined for a global communications service based upon automated systems, both satellite based and terrestrial, to provide distress alerting and promulgation of maritime safety information for mariners.
+	/// </summary>
+	public class GMDSSArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(GMDSSArea);
+		[JsonIgnore]
+		public override string S100FC_name => "GMDSS Area";
+		[JsonIgnore]
+		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
+		[JsonIgnore]
+		public categoryOfGMDSSArea categoryOfGMDSSArea { get; init; } = new categoryOfGMDSSArea();
+		public override Attribute[] attributes => [
+				idNAVAREA,
+				categoryOfGMDSSArea,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(idNAVAREA),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nationality),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfGMDSSArea),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(areaA3ServiceDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A region in which the perception of a phenomenon or the availability of a service is known only to a specified level of confidence.
+	/// </summary>
+	public class IndeterminateZone : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(IndeterminateZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Indeterminate Zone";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(informationConfidence),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+			];
+	}
+
+	/// <summary>
+	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of marine meteorological information.
+	/// </summary>
+	public class METAREA : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(METAREA);
+		[JsonIgnore]
+		public override string S100FC_name => "METAREA";
+		[JsonIgnore]
+		public idMETAREA idMETAREA { get; init; } = new idMETAREA();
+		public override Attribute[] attributes => [
+				idMETAREA,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(idMETAREA),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// The short title for a geographical sea area (may include inland seas, lakes and waterways navigable by sea-going ships) established for the purpose of coordinating the broadcast of navigational warnings. The term NAVAREA followed by a roman numeral may be used to identify a particular sea area. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States.
+	/// </summary>
+	public class NAVAREA : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NAVAREA);
+		[JsonIgnore]
+		public override string S100FC_name => "NAVAREA";
+		[JsonIgnore]
+		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
+		public override Attribute[] attributes => [
+				idNAVAREA,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(idNAVAREA),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A unique and precisely defined sea area, wholly contained within the NAVTEX coverage area, for which maritime safety information is provided from a particular NAVTEX transmitter.
+	/// </summary>
+	public class NAVTEXServiceArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NAVTEXServiceArea);
+		[JsonIgnore]
+		public override string S100FC_name => "NAVTEX Service Area";
+		[JsonIgnore]
+		public typeOfNAVTEXService typeOfNAVTEXService { get; init; } = new typeOfNAVTEXService();
+		[JsonIgnore]
+		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
+		[JsonIgnore]
+		public transmitterIdentificationCharacter transmitterIdentificationCharacter { get; init; } = new transmitterIdentificationCharacter();
+		public override Attribute[] attributes => [
+				typeOfNAVTEXService,
+				idNAVAREA,
+				transmitterIdentificationCharacter,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(typeOfNAVTEXService),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2],
+				},
+				new AttributeBinding {
+					attribute = nameof(idNAVAREA),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmitterIdentificationCharacter),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nationality),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,4,7],
+				},
+			];
+	}
+
+	/// <summary>
+	/// The area where a radio service can be obtained and the characteristics of the radio transmission.
+	/// </summary>
+	public class RadioServiceArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(RadioServiceArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Service Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(languageInformation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionPower),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionOfTrafficLists),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,4,5,7,8,14,16,17],
+				},
+				new AttributeBinding {
+					attribute = nameof(hoursOfWatch),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
+	/// </summary>
+	public class RadioStation : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(RadioStation);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Station";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfRadioStation),
+					lower = 0,
+					upper = 1,
+					permitedValues = [5,9,10,19,20],
+				},
+				new AttributeBinding {
+					attribute = nameof(estimatedRangeOfTransmission),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(transmissionContent),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(remoteControlled),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,4,5,7,8,16,17],
+				},
+				new AttributeBinding {
+					attribute = nameof(radiocommunicationIdentifier),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sectorLimit),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(hoursOfWatch),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// A defined geographical area where a specific country or organization is designated to coordinate and provide search and rescue services.
+	/// </summary>
+	public class SearchAndRescueRegion : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SearchAndRescueRegion);
+		[JsonIgnore]
+		public override string S100FC_name => "Search and Rescue Region";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(nationality),
+					lower = 0,
+					upper = 1,
+				},
+			];
+	}
+
+	/// <summary>
+	/// An area for which weather forecasts and warnings are provided for specified periods.
+	/// </summary>
+	public class WeatherForecastAndWarningArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(WeatherForecastAndWarningArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Weather Forecast and Warning Area";
+		[JsonIgnore]
+		public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea { get; init; } = new categoryOfForecastOrWarningArea();
+		public override Attribute[] attributes => [
+				categoryOfForecastOrWarningArea,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfForecastOrWarningArea),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7],
+				},
+				new AttributeBinding {
+					attribute = nameof(idMETAREA),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nationality),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,4,5,7,8,14],
+				},
+			];
+	}
+
+	/// <summary>
+	/// Aggregation of a geographic feature describing a service or phenomenon with zones of different confidence about the availability of the service, occurrence of the phenomenon, or applicability of the information described by the geographic feature.
+	/// </summary>
+	public class FuzzyAreaAggregate : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(FuzzyAreaAggregate);
+		[JsonIgnore]
+		public override string S100FC_name => "Fuzzy Area Aggregate";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+	}
+
+	/// <summary>
+	/// Aggregation of areas where radio services from a single radio service are available to different levels of reliability.
+	/// </summary>
+	public class RadioServiceAreaAggregate : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(RadioServiceAreaAggregate);
+		[JsonIgnore]
+		public override string S100FC_name => "Radio Service Area Aggregate";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+	}
+
+	/// <summary>
+	/// A geographical area that describes the coverage and extent of spatial objects.
+	/// </summary>
+	public class DataCoverage : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DataCoverage);
+		[JsonIgnore]
+		public override string S100FC_name => "Data Coverage";
+		[JsonIgnore]
+		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
+		[JsonIgnore]
+		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public override Attribute[] attributes => [
+				maximumDisplayScale,
+				minimumDisplayScale,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(maximumDisplayScale),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minimumDisplayScale),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(optimumDisplayScale),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+	/// <summary>
+	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
+	/// </summary>
+	public class QualityOfNonBathymetricData : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Non-Bathymetric Data";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfTemporalVariation),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,4,5],
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalDistanceUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalPositionUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(orientationUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(surveyDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S123
+{
+	using System.Text.Json;
+	using S100Framework.AttributeModel.S123.SimpleAttributes;
+	using S100Framework.AttributeModel.S123.ComplexAttributes;
+	using S100Framework.AttributeModel.S123.FeatureTypes;
+
+	public static class Extensions {
+		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
+			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "code",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(acceptAMVER), typeDiscriminator: "acceptAMVER"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(actionOrActivity), typeDiscriminator: "actionOrActivity"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(administrativeDivision), typeDiscriminator: "administrativeDivision"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(baseStationAntennaHeight), typeDiscriminator: "baseStationAntennaHeight"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(callName), typeDiscriminator: "callName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(callSign), typeDiscriminator: "callSign"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(contactInstructions), typeDiscriminator: "contactInstructions"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfAuthority), typeDiscriminator: "categoryOfAuthority"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfBroadcastCommunication), typeDiscriminator: "categoryOfBroadcastCommunication"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfCargo), typeDiscriminator: "categoryOfCargo"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfDangerousOrHazardousCargo), typeDiscriminator: "categoryOfDangerousOrHazardousCargo"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfForecastOrWarningArea), typeDiscriminator: "categoryOfForecastOrWarningArea"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfGMDSSArea), typeDiscriminator: "categoryOfGMDSSArea"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfRadioStation), typeDiscriminator: "categoryOfRadioStation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfRelationship), typeDiscriminator: "categoryOfRelationship"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfRxN), typeDiscriminator: "categoryOfRxN"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfSchedule), typeDiscriminator: "categoryOfSchedule"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfTemporalVariation), typeDiscriminator: "categoryOfTemporalVariation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfText), typeDiscriminator: "categoryOfText"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfVessel), typeDiscriminator: "categoryOfVessel"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfVesselRegistry), typeDiscriminator: "categoryOfVesselRegistry"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfConnectivitySubscription), typeDiscriminator: "categoryOfConnectivitySubscription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(classOfEmission), typeDiscriminator: "classOfEmission"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(coastStationIdentificationCode), typeDiscriminator: "coastStationIdentificationCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(communicationChannel), typeDiscriminator: "communicationChannel"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(communicationStandard), typeDiscriminator: "communicationStandard"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(comparisonOperator), typeDiscriminator: "comparisonOperator"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(countryName), typeDiscriminator: "countryName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cityName), typeDiscriminator: "cityName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dataTransmissionRate), typeDiscriminator: "dataTransmissionRate"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateEnd), typeDiscriminator: "dateEnd"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateFixed), typeDiscriminator: "dateFixed"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateStart), typeDiscriminator: "dateStart"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateVariable), typeDiscriminator: "dateVariable"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dayOfWeek), typeDiscriminator: "dayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dayOfWeekIsRange), typeDiscriminator: "dayOfWeekIsRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(deliveryPoint), typeDiscriminator: "deliveryPoint"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(downlinkBandwidth), typeDiscriminator: "downlinkBandwidth"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(estimatedRangeOfTransmission), typeDiscriminator: "estimatedRangeOfTransmission"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fileLocator), typeDiscriminator: "fileLocator"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fileReference), typeDiscriminator: "fileReference"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyBand), typeDiscriminator: "frequencyBand"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyShoreStationReceives), typeDiscriminator: "frequencyShoreStationReceives"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyShoreStationTransmits), typeDiscriminator: "frequencyShoreStationTransmits"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyLimitLower), typeDiscriminator: "frequencyLimitLower"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyLimitUpper), typeDiscriminator: "frequencyLimitUpper"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(headline), typeDiscriminator: "headline"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(hoursOfWatch), typeDiscriminator: "hoursOfWatch"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(horizontalDistanceUncertainty), typeDiscriminator: "horizontalDistanceUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(idMETAREA), typeDiscriminator: "idMETAREA"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(idNAVAREA), typeDiscriminator: "idNAVAREA"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(inBallast), typeDiscriminator: "inBallast"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationConfidence), typeDiscriminator: "informationConfidence"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(interoperabilityIdentifier), typeDiscriminator: "interoperabilityIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(isMRCC), typeDiscriminator: "isMRCC"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(language), typeDiscriminator: "language"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(languageInformation), typeDiscriminator: "languageInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(linkage), typeDiscriminator: "linkage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(logicalConnectives), typeDiscriminator: "logicalConnectives"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(maximumDataBurstVolume), typeDiscriminator: "maximumDataBurstVolume"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(maximumDisplayScale), typeDiscriminator: "maximumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(membership), typeDiscriminator: "membership"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minimumDisplayScale), typeDiscriminator: "minimumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minimumReceivedPower), typeDiscriminator: "minimumReceivedPower"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minimumSignalToInterferenceNoiseRatio), typeDiscriminator: "minimumSignalToInterferenceNoiseRatio"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minutePastEvenHours), typeDiscriminator: "minutePastEvenHours"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minutePastEveryHour), typeDiscriminator: "minutePastEveryHour"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minutePastOddHours), typeDiscriminator: "minutePastOddHours"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(mMSICode), typeDiscriminator: "mMSICode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(mSICoastalWarningArea), typeDiscriminator: "mSICoastalWarningArea"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(name), typeDiscriminator: "name"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nameOfResource), typeDiscriminator: "nameOfResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nameUsage), typeDiscriminator: "nameUsage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nationality), typeDiscriminator: "nationality"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(observationTime), typeDiscriminator: "observationTime"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(optimumDisplayScale), typeDiscriminator: "optimumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(orientationUncertainty), typeDiscriminator: "orientationUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(packetDelay), typeDiscriminator: "packetDelay"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictorialRepresentation), typeDiscriminator: "pictorialRepresentation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictureCaption), typeDiscriminator: "pictureCaption"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictureInformation), typeDiscriminator: "pictureInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(postalCode), typeDiscriminator: "postalCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(presumedReceiverAntennaHeight), typeDiscriminator: "presumedReceiverAntennaHeight"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(qualityOfHorizontalMeasurement), typeDiscriminator: "qualityOfHorizontalMeasurement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(remoteControlled), typeDiscriminator: "remoteControlled"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(reportedDate), typeDiscriminator: "reportedDate"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(satelliteOceanRegion), typeDiscriminator: "satelliteOceanRegion"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorBearing), typeDiscriminator: "sectorBearing"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorLineLength), typeDiscriminator: "sectorLineLength"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(selectiveCallNumber), typeDiscriminator: "selectiveCallNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(servingMobileSatelliteService), typeDiscriminator: "servingMobileSatelliteService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sourceDate), typeDiscriminator: "sourceDate"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(source), typeDiscriminator: "source"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(status), typeDiscriminator: "status"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(subjectDescription), typeDiscriminator: "subjectDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(subjectOrMessageTypeCode), typeDiscriminator: "subjectOrMessageTypeCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunicationIdentifier), typeDiscriminator: "telecommunicationIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunicationService), typeDiscriminator: "telecommunicationService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(text), typeDiscriminator: "text"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(thicknessOfIceCapability), typeDiscriminator: "thicknessOfIceCapability"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeOfDayEnd), typeDiscriminator: "timeOfDayEnd"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeOfDayStart), typeDiscriminator: "timeOfDayStart"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmissionContent), typeDiscriminator: "transmissionContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmitterIdentificationCharacter), typeDiscriminator: "transmitterIdentificationCharacter"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmissionOfTrafficLists), typeDiscriminator: "transmissionOfTrafficLists"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmissionPower), typeDiscriminator: "transmissionPower"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmissionRegularity), typeDiscriminator: "transmissionRegularity"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transmissionTime), typeDiscriminator: "transmissionTime"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(typeOfBroadcastContent), typeDiscriminator: "typeOfBroadcastContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(typeOfConnectivityResource), typeDiscriminator: "typeOfConnectivityResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(typeOfNAVTEXService), typeDiscriminator: "typeOfNAVTEXService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(typeOfRadioService), typeDiscriminator: "typeOfRadioService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uncertaintyFixed), typeDiscriminator: "uncertaintyFixed"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uncertaintyVariableFactor), typeDiscriminator: "uncertaintyVariableFactor"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uplinkBandwidth), typeDiscriminator: "uplinkBandwidth"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristics), typeDiscriminator: "vesselsCharacteristics"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristicsUnit), typeDiscriminator: "vesselsCharacteristicsUnit"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristicsValue), typeDiscriminator: "vesselsCharacteristicsValue"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselPerformance), typeDiscriminator: "vesselPerformance"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(areaA3ServiceDescription), typeDiscriminator: "areaA3ServiceDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(broadcastContent), typeDiscriminator: "broadcastContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(contactAddress), typeDiscriminator: "contactAddress"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(coverageIndication), typeDiscriminator: "coverageIndication"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureName), typeDiscriminator: "featureName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fixedDateRange), typeDiscriminator: "fixedDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyPair), typeDiscriminator: "frequencyPair"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyRange), typeDiscriminator: "frequencyRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(graphic), typeDiscriminator: "graphic"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(horizontalPositionUncertainty), typeDiscriminator: "horizontalPositionUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(information), typeDiscriminator: "information"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(onlineResource), typeDiscriminator: "onlineResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(periodicDateRange), typeDiscriminator: "periodicDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(radioChannelDetails), typeDiscriminator: "radioChannelDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(radiocommunicationIdentifier), typeDiscriminator: "radiocommunicationIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(rxNCode), typeDiscriminator: "rxNCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorLimitOne), typeDiscriminator: "sectorLimitOne"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorLimitTwo), typeDiscriminator: "sectorLimitTwo"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(surveyDateRange), typeDiscriminator: "surveyDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunications), typeDiscriminator: "telecommunications"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textContent), typeDiscriminator: "textContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeIntervalsByDayOfWeek), typeDiscriminator: "timeIntervalsByDayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timesOfTransmission), typeDiscriminator: "timesOfTransmission"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalUncertainty), typeDiscriminator: "verticalUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselMeasurementsSpecification), typeDiscriminator: "vesselMeasurementsSpecification"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(scheduleByDayOfWeek), typeDiscriminator: "scheduleByDayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sectorLimit), typeDiscriminator: "sectorLimit"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(spatialAccuracy), typeDiscriminator: "spatialAccuracy"));
+				}
+			});
+			jsonSerializerOptions.TypeInfoResolver = resolver;
+			return jsonSerializerOptions;
+		}
+	}
+}
