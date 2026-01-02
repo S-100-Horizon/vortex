@@ -8,9 +8,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <local:ItemsControlTemplateSelector x:Key="ItemControlSelector"/>
     </UserControl.Resources>
 
     <StackPanel Grid.IsSharedSizeScope="True">
-        <local:PropertyGrid SelectedObject="{Binding SelectedObject, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Row="0" LastChildFill="True" Background="#FFA58DB1">
+                <ComboBox DockPanel.Dock="Right" 
+                          ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
+                          DisplayMemberPath="attribute"/>
+                <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" />
+            </DockPanel>
+
+            <ItemsControl Grid.Row="1"
+                   ItemsSource="{Binding PropertyValues, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                   ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
+        </Grid>
     </StackPanel>
 </UserControl>

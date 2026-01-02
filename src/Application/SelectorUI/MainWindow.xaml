@@ -6,6 +6,13 @@
         xmlns:s100attributeeditor="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF.S100AttributeEditor"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/S100Framework.WPF.S100AttributeEditor;component/Themes/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>    
     <Grid>
         <s100attributeeditor:S100AttributeEditor x:Name="PropertyGrid" />
     </Grid>

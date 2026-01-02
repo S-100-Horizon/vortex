@@ -1,4 +1,5 @@
-﻿using S100Framework.AttributeModel;
+﻿using ABI.System;
+using S100Framework.AttributeModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,25 @@ namespace S100Framework.WPF
 {
     public class ItemsControlTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate? DefaultItemControlTemplate { get; set; } = default;
-        public DataTemplate? ComplexItemControlTemplate { get; set; } = default;
+        //public DataTemplate? DefaultItemControlTemplate { get; set; } = default;
+        //public DataTemplate? ComplexItemControlTemplate { get; set; } = default;
 
-        public DataTemplate? FeatureTypeControlTemplate { get; set; } = default;
+        //public DataTemplate? FeatureTypeControlTemplate { get; set; } = default;
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
-            if (item is ComplexAttribute complextAttribute) {
-                return ComplexItemControlTemplate!;
-            }
-            if (item is FeatureType featureType) {
-                return FeatureTypeControlTemplate!;
+
+            if (container is FrameworkElement fe) {
+                if (item is ComplexAttribute complexAttribute) {
+                    return (DataTemplate)fe.TryFindResource("ComplexItemControlTemplate");
+                }
+                if (item is FeatureType featureType) {
+                    throw new NotImplementedException();
+                }
+
+                return (DataTemplate)fe.TryFindResource("DefaultItemControlTemplate");
             }
 
-            return DefaultItemControlTemplate!; // Default
+            throw new NotImplementedException();
         }
     }
 }
