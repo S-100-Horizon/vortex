@@ -22,6 +22,22 @@
                 <ComboBox DockPanel.Dock="Right" 
                           ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
                           DisplayMemberPath="attribute"/>
+
+                <!--<ToggleButton x:Name="PART_Button" DockPanel.Dock="Right" Width="16"/>
+                <Popup PlacementTarget="{Binding ElementName=PART_Button}"
+                           Placement="Bottom"
+                           StaysOpen="False"
+                           IsOpen="{Binding IsChecked, ElementName=PART_Button}">
+                    <Border BorderBrush="Gray" Background="White" BorderThickness="1" Padding="4" CornerRadius="2" SnapsToDevicePixels="True">
+                        <ItemsControl ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding attribute}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </Popup>-->
                 <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" />
             </DockPanel>
 
