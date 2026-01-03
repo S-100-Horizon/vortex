@@ -1,14 +1,18 @@
-﻿using S100Framework.AttributeModel;
+﻿using Microsoft.Xaml.Behaviors;
+using S100Framework.AttributeModel;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace S100Framework.WPF
 {
-    public class FeatureType {
+    public class FeatureType
+    {
         public string Code { get; set; } = "UNKNOWN";
 
         public AttributeBinding[] attributeBindings { get; set; } = [];
@@ -48,10 +52,18 @@ namespace S100Framework.WPF
     /// </summary>
     public partial class S100AttributeEditor : UserControl, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged = default;
+
+        public ICommand CreateAttributeCommand { get; }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        protected void OnCreateAttributeCommand(object? parameter) {            
+            if(parameter is AttributeBinding attributeBinding) {
+                this.SelectedObject?.attributeValues.Add(new featureName());
+            }
         }
 
         /// <summary>
@@ -74,7 +86,7 @@ namespace S100Framework.WPF
 
         public ObservableCollection<AttributeModel.Attribute> PropertyValues { get; set; } = new ObservableCollection<AttributeModel.Attribute>();
 
-        private string _title;
+        private string _title = string.Empty;
 
         public string Title {
             get => _title;
@@ -89,6 +101,8 @@ namespace S100Framework.WPF
 
         public S100AttributeEditor() {
             InitializeComponent();
+
+            this.CreateAttributeCommand = new RelayCommand(this.OnCreateAttributeCommand);
         }
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
