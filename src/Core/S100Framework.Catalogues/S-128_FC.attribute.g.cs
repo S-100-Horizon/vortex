@@ -18,6 +18,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator administrativeDivision(String value) => new administrativeDivision { value = value };
 	}
 
 	/// <summary>
@@ -32,6 +34,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator agencyName(String value) => new agencyName { value = value };
 	}
 
 	/// <summary>
@@ -46,6 +50,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator agencyResponsibleForProduction(String value) => new agencyResponsibleForProduction { value = value };
 	}
 
 	/// <summary>
@@ -60,6 +66,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator applicationProfile(String value) => new applicationProfile { value = value };
 	}
 
 	/// <summary>
@@ -74,6 +82,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator approximateGridResolution(double value) => new approximateGridResolution { value = value };
 	}
 
 	/// <summary>
@@ -102,6 +112,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Printed Nautical Chart", "A printed nautical chart is a \"a special-purpose map , that is issued officially by or on the authority of a Government, authorized Hydrographic Office or other relevant government institution and is designed to meet the requirements of marine navigation\".",13),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator catalogueElementClassification(int? value) => new catalogueElementClassification { value = value };
 	}
 
 	/// <summary>
@@ -116,6 +128,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "URN";
 		public String? value { get; set; } = default;
+
+		public static implicit operator catalogueElementIdentifier(String value) => new catalogueElementIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -130,6 +144,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator catalogueSectionNumber(int value) => new catalogueSectionNumber { value = value };
 	}
 
 	/// <summary>
@@ -144,6 +160,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator catalogueSectionTitle(String value) => new catalogueSectionTitle { value = value };
 	}
 
 	/// <summary>
@@ -177,6 +195,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("VARs", "Value Added Resellers (VARs), who are able to offer comprehensive end-use services that bring together various navigational products into one package.",19),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfAuthority(int? value) => new categoryOfAuthority { value = value };
 	}
 
 	/// <summary>
@@ -191,6 +211,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator characterEncoding(String value) => new characterEncoding { value = value };
 	}
 
 	/// <summary>
@@ -205,6 +227,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator cityName(String value) => new cityName { value = value };
 	}
 
 	/// <summary>
@@ -219,6 +243,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator classification(String value) => new classification { value = value };
 	}
 
 	/// <summary>
@@ -233,6 +259,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator comment(String value) => new comment { value = value };
 	}
 
 	/// <summary>
@@ -247,6 +275,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator compilationScale(int value) => new compilationScale { value = value };
 	}
 
 	/// <summary>
@@ -261,6 +291,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator compressionFlag(Boolean value) => new compressionFlag { value = value };
 	}
 
 	/// <summary>
@@ -275,6 +307,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator contactInstructions(String value) => new contactInstructions { value = value };
 	}
 
 	/// <summary>
@@ -289,6 +323,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator contractPeriod(String value) => new contractPeriod { value = value };
 	}
 
 	/// <summary>
@@ -303,6 +339,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator countryName(String value) => new countryName { value = value };
 	}
 
 	/// <summary>
@@ -317,6 +355,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator currency(String value) => new currency { value = value };
 	}
 
 	/// <summary>
@@ -331,6 +371,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator datasetName(String value) => new datasetName { value = value };
 	}
 
 	/// <summary>
@@ -345,6 +387,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateEnd(String value) => new dateEnd { value = value };
 	}
 
 	/// <summary>
@@ -359,6 +403,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateStart(String value) => new dateStart { value = value };
 	}
 
 	/// <summary>
@@ -373,6 +419,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator deliveryPoint(String value) => new deliveryPoint { value = value };
 	}
 
 	/// <summary>
@@ -390,6 +438,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Digital Signature Reference", "Specifies the algorithm used to compute digital signature value.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator digitalSignatureValue(int? value) => new digitalSignatureValue { value = value };
 	}
 
 	/// <summary>
@@ -408,6 +458,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("No Chart Display", "The name or text is not intended to be displayed.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator nameUsage(int? value) => new nameUsage { value = value };
 	}
 
 	/// <summary>
@@ -425,6 +477,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Withdrawn", "A product or service that has been withdrawn.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator distributionStatus(int? value) => new distributionStatus { value = value };
 	}
 
 	/// <summary>
@@ -439,6 +493,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator distributorName(String value) => new distributorName { value = value };
 	}
 
 	/// <summary>
@@ -453,6 +509,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator domesticCarriageRequirements(String value) => new domesticCarriageRequirements { value = value };
 	}
 
 	/// <summary>
@@ -467,6 +525,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator editionDate(DateOnly value) => new editionDate { value = value };
 	}
 
 	/// <summary>
@@ -481,6 +541,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator editionNumber(int value) => new editionNumber { value = value };
 	}
 
 	/// <summary>
@@ -495,6 +557,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator expirationDate(DateOnly value) => new expirationDate { value = value };
 	}
 
 	/// <summary>
@@ -509,6 +573,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator fileLocator(String value) => new fileLocator { value = value };
 	}
 
 	/// <summary>
@@ -523,6 +589,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator fileName(String value) => new fileName { value = value };
 	}
 
 	/// <summary>
@@ -537,6 +605,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator fileReference(String value) => new fileReference { value = value };
 	}
 
 	/// <summary>
@@ -551,6 +621,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator headline(String value) => new headline { value = value };
 	}
 
 	/// <summary>
@@ -582,6 +654,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Search and Rescue Service", "A service aimed at providing information about and assist with Search and Rescue functions.",16),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator iMOMaritimeService(int? value) => new iMOMaritimeService { value = value };
 	}
 
 	/// <summary>
@@ -596,6 +670,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator internationalCarriageRequirements(String value) => new internationalCarriageRequirements { value = value };
 	}
 
 	/// <summary>
@@ -610,6 +686,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator iSBN(String value) => new iSBN { value = value };
 	}
 
 	/// <summary>
@@ -633,6 +711,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("A7", "The eighth size as output size on nautical paper chart. Referring to ISO 216.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator iSO216(int? value) => new iSO216 { value = value };
 	}
 
 	/// <summary>
@@ -647,6 +727,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator iSSN(String value) => new iSSN { value = value };
 	}
 
 	/// <summary>
@@ -661,6 +743,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator issueDate(DateOnly value) => new issueDate { value = value };
 	}
 
 	/// <summary>
@@ -675,6 +759,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "time";
 		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+
+		public static implicit operator issueTime(S100Framework.DomainModel.S100.Time value) => new issueTime { value = value };
 	}
 
 	/// <summary>
@@ -689,6 +775,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator language(String value) => new language { value = value };
 	}
 
 	/// <summary>
@@ -703,6 +791,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator linkage(String value) => new linkage { value = value };
 	}
 
 	/// <summary>
@@ -722,6 +812,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Recommended Enhancement User", "A product or service, that is recommended to make use of added value provided by another product or service.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfProductMapping(int? value) => new categoryOfProductMapping { value = value };
 	}
 
 	/// <summary>
@@ -736,6 +828,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator maximumDisplayScale(int value) => new maximumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -750,6 +844,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator minimumDisplayScale(int value) => new minimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -764,6 +860,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator name(String value) => new name { value = value };
 	}
 
 	/// <summary>
@@ -778,6 +876,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator nameOfResource(String value) => new nameOfResource { value = value };
 	}
 
 	/// <summary>
@@ -792,6 +892,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator notForNavigation(Boolean value) => new notForNavigation { value = value };
 	}
 
 	/// <summary>
@@ -806,6 +908,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator onlineDescription(String value) => new onlineDescription { value = value };
 	}
 
 	/// <summary>
@@ -820,6 +924,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator optimumDisplayScale(int value) => new optimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -834,6 +940,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator originalProductNumber(String value) => new originalProductNumber { value = value };
 	}
 
 	/// <summary>
@@ -848,6 +956,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator otherDataTypeDescription(String value) => new otherDataTypeDescription { value = value };
 	}
 
 	/// <summary>
@@ -862,6 +972,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator postalCode(String value) => new postalCode { value = value };
 	}
 
 	/// <summary>
@@ -876,6 +988,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator price(double value) => new price { value = value };
 	}
 
 	/// <summary>
@@ -890,6 +1004,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator printAgency(String value) => new printAgency { value = value };
 	}
 
 	/// <summary>
@@ -904,6 +1020,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator printNation(String value) => new printNation { value = value };
 	}
 
 	/// <summary>
@@ -918,6 +1036,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "URN";
 		public String? value { get; set; } = default;
+
+		public static implicit operator producerNation(String value) => new producerNation { value = value };
 	}
 
 	/// <summary>
@@ -932,6 +1052,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator productNumber(String value) => new productNumber { value = value };
 	}
 
 	/// <summary>
@@ -946,6 +1068,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator productReference(String value) => new productReference { value = value };
 	}
 
 	/// <summary>
@@ -960,6 +1084,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator protocol(String value) => new protocol { value = value };
 	}
 
 	/// <summary>
@@ -974,6 +1100,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator protocolRequest(String value) => new protocolRequest { value = value };
 	}
 
 	/// <summary>
@@ -988,6 +1116,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator publicationNumber(String value) => new publicationNumber { value = value };
 	}
 
 	/// <summary>
@@ -1002,6 +1132,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator reprintEdition(String value) => new reprintEdition { value = value };
 	}
 
 	/// <summary>
@@ -1016,6 +1148,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator reprintNation(String value) => new reprintNation { value = value };
 	}
 
 	/// <summary>
@@ -1030,6 +1164,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator reportedDate(DateOnly value) => new reportedDate { value = value };
 	}
 
 	/// <summary>
@@ -1046,6 +1182,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("ECDSA-384-SHA2", "Elliptic Curve Digital Signature Algorithm (ECDSA) that uses signatures based on the issuing certificate and generated using the issuer’s P-384 elliptic curve key.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator digitalSignatureReference(int? value) => new digitalSignatureReference { value = value };
 	}
 
 	/// <summary>
@@ -1064,6 +1202,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Overview", "For ocean crossing and planning purposes.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator navigationPurpose(int? value) => new navigationPurpose { value = value };
 	}
 
 	/// <summary>
@@ -1089,6 +1229,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Other", "Being the one or ones distinct from that or those first mentioned or implied.",100),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator supportFileFormat(int? value) => new supportFileFormat { value = value };
 	}
 
 	/// <summary>
@@ -1107,6 +1249,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Deletion", "Deletes an existing file.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator supportFilePurpose(int? value) => new supportFilePurpose { value = value };
 	}
 
 	/// <summary>
@@ -1121,6 +1265,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator serviceName(String value) => new serviceName { value = value };
 	}
 
 	/// <summary>
@@ -1140,6 +1286,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Deleted", "Indicates that a feature, method, product, or component is no longer available or has been permanently removed.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator serviceStatus(int? value) => new serviceStatus { value = value };
 	}
 
 	/// <summary>
@@ -1154,6 +1302,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator source(String value) => new source { value = value };
 	}
 
 	/// <summary>
@@ -1168,6 +1318,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator sourceDate(DateOnly value) => new sourceDate { value = value };
 	}
 
 	/// <summary>
@@ -1194,6 +1346,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Maritime", "A national or regional authority charged with administration of maritime affairs.",15),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator sourceType(int? value) => new sourceType { value = value };
 	}
 
 	/// <summary>
@@ -1215,6 +1369,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Navigational Purpose Berthing", "For ships berthing.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator specificUsage(int? value) => new specificUsage { value = value };
 	}
 
 	/// <summary>
@@ -1229,6 +1385,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator telecommunicationIdentifier(String value) => new telecommunicationIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -1252,6 +1410,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Email", "Messages and other data exchanged between individuals using computers in a network.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator telecommunicationService(int? value) => new telecommunicationService { value = value };
 	}
 
 	/// <summary>
@@ -1266,6 +1426,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator text(String value) => new text { value = value };
 	}
 
 	/// <summary>
@@ -1280,6 +1442,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator typeOfPhysicalProduct(String value) => new typeOfPhysicalProduct { value = value };
 	}
 
 	/// <summary>
@@ -1307,6 +1471,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("PNG", "Portable Network Graphics format.",12),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator typeOfProductFormat(int? value) => new typeOfProductFormat { value = value };
 	}
 
 	/// <summary>
@@ -1326,6 +1492,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Year", "A period of one revolution of the earth around the sun.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator typeOfTimeIntervalUnit(int? value) => new typeOfTimeIntervalUnit { value = value };
 	}
 
 	/// <summary>
@@ -1340,6 +1508,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator updateDate(DateOnly value) => new updateDate { value = value };
 	}
 
 	/// <summary>
@@ -1354,6 +1524,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator updateNumber(int value) => new updateNumber { value = value };
 	}
 
 	/// <summary>
@@ -1368,6 +1540,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator valueOfTime(int value) => new valueOfTime { value = value };
 	}
 
 	/// <summary>
@@ -1382,6 +1556,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator version(String value) => new version { value = value };
 	}
 
 	/// <summary>
@@ -1396,6 +1572,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator paperWidth(double value) => new paperWidth { value = value };
 	}
 
 	/// <summary>
@@ -1410,6 +1588,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator paperLength(double value) => new paperLength { value = value };
 	}
 
 	/// <summary>
@@ -1424,6 +1604,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "date";
 		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator publicationDate(DateOnly value) => new publicationDate { value = value };
 	}
 
 	/// <summary>
@@ -1438,6 +1620,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator weekNumber(int value) => new weekNumber { value = value };
 	}
 
 	/// <summary>
@@ -1452,6 +1636,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator yearNumber(int value) => new yearNumber { value = value };
 	}
 
 	/// <summary>
@@ -1469,6 +1655,7 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("EPSG3857 (Pseudo-Mercator)", "A popular web mapping projection used by Google Maps, OpenStreetMap, and Bing Maps. Distorts at the poles but is widely used in online maps.",3857),
 				new listedValue("EPSG4326 (WGS84)", "World Geodetic System 1984, used globally for GPS and geographic coordinates. Specifies coordinates in latitude and longitude degrees.",4326),
 			];
+		public int? value { get; set; } = default;
 	}
 
 	/// <summary>
@@ -1532,6 +1719,8 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Hydrographic Zero", "A vertical reference near the lowest astronomical tide (LAT), below which the sea level falls only very exceptionally.",49),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator verticalDatum(int? value) => new verticalDatum { value = value };
 	}
 
 }
@@ -1579,6 +1768,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? administrativeDivision { set { base.AddAttributeValue(new administrativeDivision { value = value }); } }
+		public String? cityName { set { base.AddAttributeValue(new cityName { value = value }); } }
+		public String? countryName { set { base.AddAttributeValue(new countryName { value = value }); } }
+		public String? postalCode { set { base.AddAttributeValue(new postalCode { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1611,6 +1807,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -1648,6 +1847,10 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1682,6 +1885,11 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		public int? nameUsage { set { base.AddAttributeValue(new nameUsage { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1723,6 +1931,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? fileLocator { set { base.AddAttributeValue(new fileLocator { value = value }); } }
+		public String? fileReference { set { base.AddAttributeValue(new fileReference { value = value }); } }
+		public String? headline { set { base.AddAttributeValue(new headline { value = value }); } }
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1772,6 +1987,14 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? applicationProfile { set { base.AddAttributeValue(new applicationProfile { value = value }); } }
+		public String? nameOfResource { set { base.AddAttributeValue(new nameOfResource { value = value }); } }
+		public String? onlineDescription { set { base.AddAttributeValue(new onlineDescription { value = value }); } }
+		public String? protocol { set { base.AddAttributeValue(new protocol { value = value }); } }
+		public String? protocolRequest { set { base.AddAttributeValue(new protocolRequest { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1804,6 +2027,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -1841,6 +2067,10 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? contractPeriod { set { base.AddAttributeValue(new contractPeriod { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1868,6 +2098,11 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? iSO216 { set { base.AddAttributeValue(new iSO216 { value = value }); } }
+		public customPaperSize? customPaperSize { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1913,6 +2148,10 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? iSSN { set { base.AddAttributeValue(new iSSN { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -1953,6 +2192,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -1993,6 +2235,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -2041,6 +2286,14 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfAuthority { set { base.AddAttributeValue(new categoryOfAuthority { value = value }); } }
+		public String? countryName { set { base.AddAttributeValue(new countryName { value = value }); } }
+		public DateOnly? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public String? source { set { base.AddAttributeValue(new source { value = value }); } }
+		public int? sourceType { set { base.AddAttributeValue(new sourceType { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2079,6 +2332,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					permitedValues = [1,2,3,4,5,6,7,8],
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -2112,6 +2368,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -2144,6 +2403,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -2170,6 +2432,11 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public periodicDateRange? periodicDateRange { set { base.AddAttributeValue(value); } }
+		public timeIntervalOfCycle? timeIntervalOfCycle { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2214,6 +2481,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? printAgency { set { base.AddAttributeValue(new printAgency { value = value }); } }
+		public String? printNation { set { base.AddAttributeValue(new printNation { value = value }); } }
+		public String? reprintEdition { set { base.AddAttributeValue(new reprintEdition { value = value }); } }
+		public String? reprintNation { set { base.AddAttributeValue(new reprintNation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2315,6 +2589,14 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? comment { set { base.AddAttributeValue(new comment { value = value }); } }
+		public int? digitalSignatureValue { set { base.AddAttributeValue(new digitalSignatureValue { value = value }); } }
+		public int? editionNumber { set { base.AddAttributeValue(new editionNumber { value = value }); } }
+		public DateOnly? issueDate { set { base.AddAttributeValue(new issueDate { value = value }); } }
+		public String? otherDataTypeDescription { set { base.AddAttributeValue(new otherDataTypeDescription { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2349,6 +2631,11 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public DateOnly? expirationDate { set { base.AddAttributeValue(new expirationDate { value = value }); } }
+		public issuanceCycle? issuanceCycle { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2378,6 +2665,10 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public weekOfYear? weekOfYear { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 }
@@ -2467,6 +2758,15 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? agencyResponsibleForProduction { set { base.AddAttributeValue(new agencyResponsibleForProduction { value = value }); } }
+		public String? catalogueElementIdentifier { set { base.AddAttributeValue(new catalogueElementIdentifier { value = value }); } }
+		public String? classification { set { base.AddAttributeValue(new classification { value = value }); } }
+		public onlineResource? onlineResource { set { base.AddAttributeValue(value); } }
+		public sourceIndication? sourceIndication { set { base.AddAttributeValue(value); } }
+		public timeIntervalOfProduct? timeIntervalOfProduct { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2567,6 +2867,22 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
 				},
 			];
+
+		#region Optional Attributes
+		public int? distributionStatus { set { base.AddAttributeValue(new distributionStatus { value = value }); } }
+		public int? editionNumber { set { base.AddAttributeValue(new editionNumber { value = value }); } }
+		public int? maximumDisplayScale { set { base.AddAttributeValue(new maximumDisplayScale { value = value }); } }
+		public int? minimumDisplayScale { set { base.AddAttributeValue(new minimumDisplayScale { value = value }); } }
+		public int? optimumDisplayScale { set { base.AddAttributeValue(new optimumDisplayScale { value = value }); } }
+		public String? originalProductNumber { set { base.AddAttributeValue(new originalProductNumber { value = value }); } }
+		public String? producerNation { set { base.AddAttributeValue(new producerNation { value = value }); } }
+		public String? productNumber { set { base.AddAttributeValue(new productNumber { value = value }); } }
+		public int? specificUsage { set { base.AddAttributeValue(new specificUsage { value = value }); } }
+		public DateOnly? updateDate { set { base.AddAttributeValue(new updateDate { value = value }); } }
+		public int? updateNumber { set { base.AddAttributeValue(new updateNumber { value = value }); } }
+		public int? horizontalDatumEPSGCode { set { base.AddAttributeValue(new horizontalDatumEPSGCode { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2620,6 +2936,13 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? compressionFlag { set { base.AddAttributeValue(new compressionFlag { value = value }); } }
+		public String? datasetName { set { base.AddAttributeValue(new datasetName { value = value }); } }
+		public S100Framework.DomainModel.S100.Time? issueTime { set { base.AddAttributeValue(new issueTime { value = value }); } }
+		public productSpecification? productSpecification { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2669,6 +2992,14 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? iSBN { set { base.AddAttributeValue(new iSBN { value = value }); } }
+		public String? publicationNumber { set { base.AddAttributeValue(new publicationNumber { value = value }); } }
+		public String? typeOfPhysicalProduct { set { base.AddAttributeValue(new typeOfPhysicalProduct { value = value }); } }
+		public printInformation? printInformation { set { base.AddAttributeValue(value); } }
+		public referenceToNM? referenceToNM { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -2720,6 +3051,14 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? compressionFlag { set { base.AddAttributeValue(new compressionFlag { value = value }); } }
+		public String? serviceName { set { base.AddAttributeValue(new serviceName { value = value }); } }
+		public int? serviceStatus { set { base.AddAttributeValue(new serviceStatus { value = value }); } }
+		public serviceSpecification? serviceSpecification { set { base.AddAttributeValue(value); } }
+		public productSpecification? productSpecification { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 }

@@ -18,6 +18,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator basedOnFixedMarks(Boolean value) => new basedOnFixedMarks { value = value };
 	}
 
 	/// <summary>
@@ -40,6 +42,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Buoyant Beacon", "A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator beaconShape(int? value) => new beaconShape { value = value };
 	}
 
 	/// <summary>
@@ -60,6 +64,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Transporter Bridge", "Consists of towers on each side of the watercourse connected by a system of girders on which a carriage runs.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator bridgeConstruction(int? value) => new bridgeConstruction { value = value };
 	}
 
 	/// <summary>
@@ -79,6 +85,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Aqueduct", "A bridge supporting an artificially elevated channel, for the conveyance of water.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator bridgeFunction(int? value) => new bridgeFunction { value = value };
 	}
 
 	/// <summary>
@@ -99,6 +107,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Cubic", "A shape the sides of which are six equal squares; a regular hexahedron.",9),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator buildingShape(int? value) => new buildingShape { value = value };
 	}
 
 	/// <summary>
@@ -122,6 +132,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Ice Buoy", "A specially constructed shuttle shaped buoy which is used in ice conditions.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator buoyShape(int? value) => new buoyShape { value = value };
 	}
 
 	/// <summary>
@@ -136,6 +148,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator buriedDepth(double value) => new buriedDepth { value = value };
 	}
 
 	/// <summary>
@@ -150,6 +164,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator callSign(String value) => new callSign { value = value };
 	}
 
 	/// <summary>
@@ -173,6 +189,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Search and Rescue Airfield", "An area of land set aside for the take-off and landing of aeroplanes or helicopters in times of search and rescue.",9),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfAirportAirfield(int? value) => new categoryOfAirportAirfield { value = value };
 	}
 
 	/// <summary>
@@ -198,6 +216,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Reported Anchorage", "A location not defined by a regulatory authority that has been reported to be suitable and safe for anchoring.",15),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfAnchorage(int? value) => new categoryOfAnchorage { value = value };
 	}
 
 	/// <summary>
@@ -219,6 +239,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Holiday Village", "A complex for holiday-makers with cottages, shops, and entertainment, on site, which is mainly populated on a seasonal basis.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfBuiltUpArea(int? value) => new categoryOfBuiltUpArea { value = value };
 	}
 
 	/// <summary>
@@ -240,6 +262,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Telecommunications Cable", "A cable used for the transmission and reception of modulated communication waves/signals.",10),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCable(int? value) => new categoryOfCable { value = value };
 	}
 
 	/// <summary>
@@ -258,6 +282,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Irrigation", "A canal used to supply water for the purpose of irrigation.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCanal(int? value) => new categoryOfCanal { value = value };
 	}
 
 	/// <summary>
@@ -277,6 +303,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("West Cardinal Mark", "Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCardinalMark(int? value) => new categoryOfCardinalMark { value = value };
 	}
 
 	/// <summary>
@@ -293,6 +321,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Custom", "Serves as a government checkpoint where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.",1),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCheckpoint(int? value) => new categoryOfCheckpoint { value = value };
 	}
 
 	/// <summary>
@@ -314,6 +344,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Ice Coast", "A vertical cliff forming the seaward edge of an ice shelf, ranging in height from 2 metres to 50 metres or more above sea level.",10),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCoastline(int? value) => new categoryOfCoastline { value = value };
 	}
 
 	/// <summary>
@@ -333,6 +365,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Lift/Elevator", "Any of various mechanical devices for raising objects or materials.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfConveyor(int? value) => new categoryOfConveyor { value = value };
 	}
 
 	/// <summary>
@@ -353,6 +387,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Goliath Crane", "A powerful travelling crane mounted on a movable gantry of large span.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCrane(int? value) => new categoryOfCrane { value = value };
 	}
 
 	/// <summary>
@@ -371,6 +407,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Flood Barrage", "An opening dam across a channel which, when required, is closed to control flood waters.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDam(int? value) => new categoryOfDam { value = value };
 	}
 
 	/// <summary>
@@ -388,6 +426,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Wet Dock", "A dock in which water can be maintained at any level by closing a gate when the water is at the desired level.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDock(int? value) => new categoryOfDock { value = value };
 	}
 
 	/// <summary>
@@ -407,6 +447,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Fender or Breasting Dolphin", "A post or group of posts driven into the seabed or riverbed, used to assist in berthing of vessels by taking up some berthing loads; keep vessels from pressing against the pier structure; or to protect structures from possible impact by ships.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDolphin(int? value) => new categoryOfDolphin { value = value };
 	}
 
 	/// <summary>
@@ -427,6 +469,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Vessel Dumping Ground", "An area at sea where disused vessels are scuttled.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDumpingGround(int? value) => new categoryOfDumpingGround { value = value };
 	}
 
 	/// <summary>
@@ -445,6 +489,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Wall", "A solid man-made barrier of generally heavy material used as an enclosure, boundary, or for protection.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFence(int? value) => new categoryOfFence { value = value };
 	}
 
 	/// <summary>
@@ -464,6 +510,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("High Speed Ferry", "A high speed water vessel for civilian use.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFerry(int? value) => new categoryOfFerry { value = value };
 	}
 
 	/// <summary>
@@ -483,6 +531,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Tunny Net", "A net built at sea for catching tunny.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFishingFacility(int? value) => new categoryOfFishingFacility { value = value };
 	}
 
 	/// <summary>
@@ -508,6 +558,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Horn", "A horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.",10),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFogSignal(int? value) => new categoryOfFogSignal { value = value };
 	}
 
 	/// <summary>
@@ -531,6 +583,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Rampart", "Anything serving as a bulwark or defence.",9),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFortifiedStructure(int? value) => new categoryOfFortifiedStructure { value = value };
 	}
 
 	/// <summary>
@@ -551,6 +605,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Sluice", "A sliding gate or other contrivance for changing the level of a body of water by controlling the flow into or out of it.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfGate(int? value) => new categoryOfGate { value = value };
 	}
 
 	/// <summary>
@@ -580,6 +636,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pilotage Service", "The services of a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area, are available.",15),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfHarbourFacility(int? value) => new categoryOfHarbourFacility { value = value };
 	}
 
 	/// <summary>
@@ -602,6 +660,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Training Vessel", "A permanently moored floating structure, often constructed from old ships, used for training purposes.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfHulk(int? value) => new categoryOfHulk { value = value };
 	}
 
 	/// <summary>
@@ -620,6 +680,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Polar Ice", "Sea ice that is more than one year old (in contrast to winter ice). The WMO code defines polar ice as any sea ice more than one year old and more than 3 metres thick.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfIce(int? value) => new categoryOfIce { value = value };
 	}
 
 	/// <summary>
@@ -637,6 +699,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Single Buoy Mooring", "A large mooring buoy used by tankers to load and unload in port approaches or in offshore oil and gas fields.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfInstallationBuoy(int? value) => new categoryOfInstallationBuoy { value = value };
 	}
 
 	/// <summary>
@@ -673,6 +737,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Wadi", "A watercourse that is permanently dry or dry except for the rainy season.",21),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfLandRegion(int? value) => new categoryOfLandRegion { value = value };
 	}
 
 	/// <summary>
@@ -714,6 +780,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Dam", "A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.",27),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfLandmark(int? value) => new categoryOfLandmark { value = value };
 	}
 
 	/// <summary>
@@ -733,6 +801,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Preferred Channel to Port Lateral Mark", "At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfLateralMark(int? value) => new categoryOfLateralMark { value = value };
 	}
 
 	/// <summary>
@@ -762,6 +832,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Vertically Disposed", "A group of lights of identical character and almost identical position, that are disposed vertically.",20),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfLight(int? value) => new categoryOfLight { value = value };
 	}
 
 	/// <summary>
@@ -782,6 +854,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pearl Culture Farm", "An area where pearls are artificially cultivated.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfMarineFarmCulture(int? value) => new categoryOfMarineFarmCulture { value = value };
 	}
 
 	/// <summary>
@@ -802,6 +876,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Small Arms Firing Range", "An area for shooting pistols, rifles and machine guns etc. at a target.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfMilitaryPracticeArea(int? value) => new categoryOfMilitaryPracticeArea { value = value };
 	}
 
 	/// <summary>
@@ -820,6 +896,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mooring Area for Tankers", "An area set aside for the mooring of tankers.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfMooringArea(int? value) => new categoryOfMooringArea { value = value };
 	}
 
 	/// <summary>
@@ -838,6 +916,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Leading Line Bearing a Recommended Track", "A line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfNavigationLine(int? value) => new categoryOfNavigationLine { value = value };
 	}
 
 	/// <summary>
@@ -874,6 +954,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mangrove", "One of several genera of tropical trees or shrubs which produce many prop roots and grow along low-lying coasts into shallow water.",23),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfObstruction(int? value) => new categoryOfObstruction { value = value };
 	}
 
 	/// <summary>
@@ -900,6 +982,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Floating Oil Tank", "A floating structure, anchored to the seabed, for storing oil.",11),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfOffshorePlatform(int? value) => new categoryOfOffshorePlatform { value = value };
 	}
 
 	/// <summary>
@@ -921,6 +1005,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Solar Farm", "A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfOffshoreProductionArea(int? value) => new categoryOfOffshoreProductionArea { value = value };
 	}
 
 	/// <summary>
@@ -938,6 +1024,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Floating Oil Barrier", "A floating tube shaped structure, with a curtain (2 metre) hanging under it, below the surface, which prevents the spread of oil.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfOilBarrier(int? value) => new categoryOfOilBarrier { value = value };
 	}
 
 	/// <summary>
@@ -957,6 +1045,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Drawbridge", "A general name for bridges of which part or the entire span of the bridge may be raised or drawn aside to allow ships to pass through.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfOpeningBridge(int? value) => new categoryOfOpeningBridge { value = value };
 	}
 
 	/// <summary>
@@ -979,6 +1069,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mooring Post", "A post where to which something (such as a craft) can be moored.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPile(int? value) => new categoryOfPile { value = value };
 	}
 
 	/// <summary>
@@ -997,6 +1089,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pilot Comes Out from Shore", "Pilot embarks from a vessel or disembarks to a vessel which comes out from the shore on request.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPilotBoardingPlace(int? value) => new categoryOfPilotBoardingPlace { value = value };
 	}
 
 	/// <summary>
@@ -1018,6 +1112,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Bubble Curtain", "A high pressure sub-surface pipeline (usually on the seafloor) with holes emitting a curtain of air bubbles. Its uses include: the prevention of acoustic transmission through the water; preventing the spread of surface debris or floating liquids; controlling the movement of fish.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPipelinePipe(int? value) => new categoryOfPipelinePipe { value = value };
 	}
 
 	/// <summary>
@@ -1035,6 +1131,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Alternate", "The preferred choice in extraordinary conditions.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPreference(int? value) => new categoryOfPreference { value = value };
 	}
 
 	/// <summary>
@@ -1062,6 +1160,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Solar Farm", "A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.",12),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfProductionArea(int? value) => new categoryOfProductionArea { value = value };
 	}
 
 	/// <summary>
@@ -1083,6 +1183,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pipeline Pylon", "A tower or pylon supporting a suspended pipeline or pipelines.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPylon(int? value) => new categoryOfPylon { value = value };
 	}
 
 	/// <summary>
@@ -1100,6 +1202,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Coast Radar Station", "A shore-based station which the mariner can contact by radio to obtain a position.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRadarStation(int? value) => new categoryOfRadarStation { value = value };
 	}
 
 	/// <summary>
@@ -1118,6 +1222,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Leading Racon/Radar Transponder Beacon", "A radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRadarTransponderBeacon(int? value) => new categoryOfRadarTransponderBeacon { value = value };
 	}
 
 	/// <summary>
@@ -1139,6 +1245,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("AIS Base Station", "An AIS shore station for use by competent authorities to provide AIS service, manage the data link and enable effective ship to shore / shore to ship transmission of information.",20),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRadioStation(int? value) => new categoryOfRadioStation { value = value };
 	}
 
 	/// <summary>
@@ -1161,6 +1269,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("First Aid Equipment", "A place where first aid equipment is available.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRescueStation(int? value) => new categoryOfRescueStation { value = value };
 	}
 
 	/// <summary>
@@ -1200,6 +1310,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Recreation Area", "An area within which recreational activities regularly take place and therefore vessel movement may be restricted.",32),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRestrictedArea(int? value) => new categoryOfRestrictedArea { value = value };
 	}
 
 	/// <summary>
@@ -1221,6 +1333,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Minor Street", "A secondary road, in an urban area, for local traffic.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRoad(int? value) => new categoryOfRoad { value = value };
 	}
 
 	/// <summary>
@@ -1239,6 +1353,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Unmanned Operation", "The service is available but not manned.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSchedule(int? value) => new categoryOfSchedule { value = value };
 	}
 
 	/// <summary>
@@ -1309,6 +1425,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Submarine Volcano", "A seabed volcano, submerged at the chart sounding datum, which may or may not be active.",56),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSeaArea(int? value) => new categoryOfSeaArea { value = value };
 	}
 
 	/// <summary>
@@ -1344,6 +1462,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Tie-Up Wall", "A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.",23),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfShorelineConstruction(int? value) => new categoryOfShorelineConstruction { value = value };
 	}
 
 	/// <summary>
@@ -1369,6 +1489,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Traffic Control Light", "Visual signal lights placed in a waterway to indicate to shipping the movements authorized at the time at which they are shown.",10),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSignalStationTraffic(int? value) => new categoryOfSignalStationTraffic { value = value };
 	}
 
 	/// <summary>
@@ -1399,6 +1521,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Water Level Gauge", "A device for measuring and conveying information about the water level (non-tidal) in the area in question.",15),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSignalStationWarning(int? value) => new categoryOfSignalStationWarning { value = value };
 	}
 
 	/// <summary>
@@ -1418,6 +1542,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Water Tower", "A tower supporting an elevated storage tank of water.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSiloTank(int? value) => new categoryOfSiloTank { value = value };
 	}
 
 	/// <summary>
@@ -1440,6 +1566,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Scree", "A mass of detritus, forming a precipitous, strong slope upon a mountain-side. Also the material composing such a slope.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSlope(int? value) => new categoryOfSlope { value = value };
 	}
 
 	/// <summary>
@@ -1487,6 +1615,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Guard and/or Security Service", "A place where a vessel is patrolled by a security service or stored in a secure lockup.",33),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSmallCraftFacility(int? value) => new categoryOfSmallCraftFacility { value = value };
 	}
 
 	/// <summary>
@@ -1563,6 +1693,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Wave Recorder", "A surface following buoy used to measure wave activity.",63),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSpecialPurposeMark(int? value) => new categoryOfSpecialPurposeMark { value = value };
 	}
 
 	/// <summary>
@@ -1584,6 +1716,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Unassessed", "Not having been assessed.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfTemporalVariation(int? value) => new categoryOfTemporalVariation { value = value };
 	}
 
 	/// <summary>
@@ -1604,6 +1738,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Covered Passenger Terminal", "A covered or partially covered terminal for the loading and unloading of passengers.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfStructure(int? value) => new categoryOfStructure { value = value };
 	}
 
 	/// <summary>
@@ -1622,6 +1758,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Other Tidal Flow", "Any other horizontal movement of water associated with tides, for example rotary flow.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfTidalStream(int? value) => new categoryOfTidalStream { value = value };
 	}
 
 	/// <summary>
@@ -1651,6 +1789,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Filao Tree", "Casuarina equisetifolia, the most widespread and well-known member of the family Casuarinaceae.",22),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfVegetation(int? value) => new categoryOfVegetation { value = value };
 	}
 
 	/// <summary>
@@ -1671,6 +1811,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Bombora", "A wave that forms over a submerged offshore reef or rock, sometimes (in very calm weather or at high tide) nearly swelling but in other conditions breaking heavily and producing a dangerous stretch of broken water; the reef or rock itself.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfWaterTurbulence(int? value) => new categoryOfWaterTurbulence { value = value };
 	}
 
 	/// <summary>
@@ -1689,6 +1831,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Sargasso", "A certain type of seaweed, or more generally, a large floating mass of this seaweed.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfWeedKelp(int? value) => new categoryOfWeedKelp { value = value };
 	}
 
 	/// <summary>
@@ -1709,6 +1853,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Wreck Showing Any Portion of Hull or Superstructure", "Wreck of which any portion of the hull or superstructure is visible at the sounding datum indicated.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfWreck(int? value) => new categoryOfWreck { value = value };
 	}
 
 	/// <summary>
@@ -1730,6 +1876,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Zone of Confidence U", "The quality of the bathymetric data has yet to be assessed.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfZoneOfConfidenceInData(int? value) => new categoryOfZoneOfConfidenceInData { value = value };
 	}
 
 	/// <summary>
@@ -1758,6 +1906,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pink", "",13),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator colour(int? value) => new colour { value = value };
 	}
 
 	/// <summary>
@@ -1779,6 +1929,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Border Stripe", "A band or stripe of colour which is displayed around the outer edge of the feature, which may also form a border to an inner pattern or plain colour.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator colourPattern(int? value) => new colourPattern { value = value };
 	}
 
 	/// <summary>
@@ -1793,6 +1945,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator communicationChannel(String value) => new communicationChannel { value = value };
 	}
 
 	/// <summary>
@@ -1813,6 +1967,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Planned Construction", "Detailed planning has been completed but construction has not been initiated.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator condition(int? value) => new condition { value = value };
 	}
 
 	/// <summary>
@@ -1827,6 +1983,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator contactInstructions(String value) => new contactInstructions { value = value };
 	}
 
 	/// <summary>
@@ -1845,6 +2003,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Unassessed", "Not having been assessed.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator dataAssessment(int? value) => new dataAssessment { value = value };
 	}
 
 	/// <summary>
@@ -1859,6 +2019,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateDisused(String value) => new dateDisused { value = value };
 	}
 
 	/// <summary>
@@ -1873,6 +2035,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateEnd(String value) => new dateEnd { value = value };
 	}
 
 	/// <summary>
@@ -1887,6 +2051,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateFixed(String value) => new dateFixed { value = value };
 	}
 
 	/// <summary>
@@ -1901,6 +2067,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateStart(String value) => new dateStart { value = value };
 	}
 
 	/// <summary>
@@ -1915,6 +2083,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dateVariable(String value) => new dateVariable { value = value };
 	}
 
 	/// <summary>
@@ -1937,6 +2107,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Saturday", "The day of the week following Friday and preceding Sunday.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator dayOfWeek(int? value) => new dayOfWeek { value = value };
 	}
 
 	/// <summary>
@@ -1951,6 +2123,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator dayOfWeekIsRange(Boolean value) => new dayOfWeekIsRange { value = value };
 	}
 
 	/// <summary>
@@ -1965,6 +2139,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator defaultClearanceDepth(double value) => new defaultClearanceDepth { value = value };
 	}
 
 	/// <summary>
@@ -1979,6 +2155,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator depthRangeMaximumValue(double value) => new depthRangeMaximumValue { value = value };
 	}
 
 	/// <summary>
@@ -1993,6 +2171,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator depthRangeMinimumValue(double value) => new depthRangeMinimumValue { value = value };
 	}
 
 	/// <summary>
@@ -2007,6 +2187,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator destination(String value) => new destination { value = value };
 	}
 
 	/// <summary>
@@ -2021,6 +2203,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator distanceMarkVisible(Boolean value) => new distanceMarkVisible { value = value };
 	}
 
 	/// <summary>
@@ -2041,6 +2225,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Nautical Miles", "A unit of length equal to 1,852 metres. This value was approved by the International Hydrographic Conference of 1929 and has been adopted by nearly all maritime states.",5),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator distanceUnitOfMeasurement(int? value) => new distanceUnitOfMeasurement { value = value };
 	}
 
 	/// <summary>
@@ -2055,6 +2241,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator dredgedDate(String value) => new dredgedDate { value = value };
 	}
 
 	/// <summary>
@@ -2069,6 +2257,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator elevation(double value) => new elevation { value = value };
 	}
 
 	/// <summary>
@@ -2083,6 +2273,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator estimatedRangeOfTransmission(double value) => new estimatedRangeOfTransmission { value = value };
 	}
 
 	/// <summary>
@@ -2102,6 +2294,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Night Light", "A light which is only exhibited at night.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator exhibitionConditionOfLight(int? value) => new exhibitionConditionOfLight { value = value };
 	}
 
 	/// <summary>
@@ -2120,6 +2314,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Deeper Than the Range of Depth of the Surrounding Depth Area", "The depth is deeper than the maximum depth of the surrounding depth area.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator expositionOfSounding(int? value) => new expositionOfSounding { value = value };
 	}
 
 	/// <summary>
@@ -2134,6 +2330,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator fileLocator(String value) => new fileLocator { value = value };
 	}
 
 	/// <summary>
@@ -2148,6 +2346,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator fileReference(String value) => new fileReference { value = value };
 	}
 
 	/// <summary>
@@ -2162,6 +2362,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator flareBearing(int value) => new flareBearing { value = value };
 	}
 
 	/// <summary>
@@ -2176,6 +2378,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator flareStack(Boolean value) => new flareStack { value = value };
 	}
 
 	/// <summary>
@@ -2190,6 +2394,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator frequencyShoreStationReceives(int value) => new frequencyShoreStationReceives { value = value };
 	}
 
 	/// <summary>
@@ -2204,6 +2410,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator frequencyShoreStationTransmits(int value) => new frequencyShoreStationTransmits { value = value };
 	}
 
 	/// <summary>
@@ -2218,6 +2426,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator drawingIndex(int value) => new drawingIndex { value = value };
 	}
 
 	/// <summary>
@@ -2232,6 +2442,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator fullSeafloorCoverageAchieved(Boolean value) => new fullSeafloorCoverageAchieved { value = value };
 	}
 
 	/// <summary>
@@ -2293,6 +2505,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pumping Station", "A facility to move solids, liquids or gases by means of pressure or suction.",48),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator function(int? value) => new function { value = value };
 	}
 
 	/// <summary>
@@ -2307,6 +2521,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator headline(String value) => new headline { value = value };
 	}
 
 	/// <summary>
@@ -2321,6 +2537,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator height(double value) => new height { value = value };
 	}
 
 	/// <summary>
@@ -2335,6 +2553,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalClearanceLength(double value) => new horizontalClearanceLength { value = value };
 	}
 
 	/// <summary>
@@ -2349,6 +2569,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalClearanceValue(double value) => new horizontalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -2363,6 +2585,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalClearanceWidth(double value) => new horizontalClearanceWidth { value = value };
 	}
 
 	/// <summary>
@@ -2377,6 +2601,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalDistanceUncertainty(double value) => new horizontalDistanceUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -2391,6 +2617,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalLength(double value) => new horizontalLength { value = value };
 	}
 
 	/// <summary>
@@ -2405,6 +2633,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalWidth(double value) => new horizontalWidth { value = value };
 	}
 
 	/// <summary>
@@ -2419,6 +2649,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator iceFactor(double value) => new iceFactor { value = value };
 	}
 
 	/// <summary>
@@ -2433,6 +2665,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator iMOAdopted(Boolean value) => new iMOAdopted { value = value };
 	}
 
 	/// <summary>
@@ -2447,6 +2681,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator inDispute(Boolean value) => new inDispute { value = value };
 	}
 
 	/// <summary>
@@ -2461,6 +2697,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "URN";
 		public String? value { get; set; } = default;
+
+		public static implicit operator interoperabilityIdentifier(String value) => new interoperabilityIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -2475,6 +2713,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator inTheWater(Boolean value) => new inTheWater { value = value };
 	}
 
 	/// <summary>
@@ -2489,6 +2729,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator isMRCC(Boolean value) => new isMRCC { value = value };
 	}
 
 	/// <summary>
@@ -2507,6 +2749,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("National Sub-Division", "An area smaller than the nation in which it lies.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator jurisdiction(int? value) => new jurisdiction { value = value };
 	}
 
 	/// <summary>
@@ -2521,6 +2765,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator language(String value) => new language { value = value };
 	}
 
 	/// <summary>
@@ -2535,6 +2781,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator leastDepthOfDetectedFeaturesMeasured(Boolean value) => new leastDepthOfDetectedFeaturesMeasured { value = value };
 	}
 
 	/// <summary>
@@ -2549,6 +2797,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator liftingCapacity(double value) => new liftingCapacity { value = value };
 	}
 
 	/// <summary>
@@ -2586,6 +2836,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Fixed and Alternating Flashing", "A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.",29),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator lightCharacteristic(int? value) => new lightCharacteristic { value = value };
 	}
 
 	/// <summary>
@@ -2610,6 +2862,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Visible in Line of Range", "Lights that must be in line to be visible.",9),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator lightVisibility(int? value) => new lightVisibility { value = value };
 	}
 
 	/// <summary>
@@ -2624,6 +2878,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator lineSpacingMaximum(int value) => new lineSpacingMaximum { value = value };
 	}
 
 	/// <summary>
@@ -2638,6 +2894,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator lineSpacingMinimum(int value) => new lineSpacingMinimum { value = value };
 	}
 
 	/// <summary>
@@ -2652,6 +2910,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "URI";
 		public String? value { get; set; } = default;
+
+		public static implicit operator linkage(String value) => new linkage { value = value };
 	}
 
 	/// <summary>
@@ -2666,6 +2926,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator magneticAnomalyValue(double value) => new magneticAnomalyValue { value = value };
 	}
 
 	/// <summary>
@@ -2683,6 +2945,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("West", "",13),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator referenceDirection(int? value) => new referenceDirection { value = value };
 	}
 
 	/// <summary>
@@ -2697,6 +2961,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator majorLight(Boolean value) => new majorLight { value = value };
 	}
 
 	/// <summary>
@@ -2716,6 +2982,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("main European inland waterway marking system", "Navigational aids as required in international, national or regional regulations that contain the same navigational aids as the European Code for Inland Waterways of UNECE, or if there is no regulation for a waterway, navigational aids as recommended in the European Code for Inland Waterways of UNECE.",11),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator marksNavigationalSystemOf(int? value) => new marksNavigationalSystemOf { value = value };
 	}
 
 	/// <summary>
@@ -2730,6 +2998,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator maximumDisplayScale(int value) => new maximumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -2744,6 +3014,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator maximumPermittedDraught(double value) => new maximumPermittedDraught { value = value };
 	}
 
 	/// <summary>
@@ -2758,6 +3030,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator maximumPermittedVesselLength(double value) => new maximumPermittedVesselLength { value = value };
 	}
 
 	/// <summary>
@@ -2772,6 +3046,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator measuredDistance(int value) => new measuredDistance { value = value };
 	}
 
 	/// <summary>
@@ -2786,6 +3062,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator measurementDistanceMaximum(int value) => new measurementDistanceMaximum { value = value };
 	}
 
 	/// <summary>
@@ -2800,6 +3078,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator measurementDistanceMinimum(int value) => new measurementDistanceMinimum { value = value };
 	}
 
 	/// <summary>
@@ -2814,6 +3094,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator minimumDisplayScale(int value) => new minimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -2828,6 +3110,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator mMSICode(String value) => new mMSICode { value = value };
 	}
 
 	/// <summary>
@@ -2842,6 +3126,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator moireEffect(Boolean value) => new moireEffect { value = value };
 	}
 
 	/// <summary>
@@ -2856,6 +3142,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator multiplicityKnown(Boolean value) => new multiplicityKnown { value = value };
 	}
 
 	/// <summary>
@@ -2870,6 +3158,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator name(String value) => new name { value = value };
 	}
 
 	/// <summary>
@@ -2884,6 +3174,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator nameOfResource(String value) => new nameOfResource { value = value };
 	}
 
 	/// <summary>
@@ -2901,6 +3193,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Alternate Name Display", "The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator nameUsage(int? value) => new nameUsage { value = value };
 	}
 
 	/// <summary>
@@ -2915,6 +3209,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator nationality(String value) => new nationality { value = value };
 	}
 
 	/// <summary>
@@ -2940,6 +3236,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Glass", "[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.",12),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator natureOfConstruction(int? value) => new natureOfConstruction { value = value };
 	}
 
 	/// <summary>
@@ -2968,6 +3266,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Boulder", "A rounded rock with diameter of 256 millimetres or larger.",18),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator natureOfSurface(int? value) => new natureOfSurface { value = value };
 	}
 
 	/// <summary>
@@ -2993,6 +3293,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Hard", "Firm; usually refers to an area of the seafloor not covered by unconsolidated sediment.",10),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator natureOfSurfaceQualifyingTerms(int? value) => new natureOfSurfaceQualifyingTerms { value = value };
 	}
 
 	/// <summary>
@@ -3007,6 +3309,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator numberOfFeatures(int value) => new numberOfFeatures { value = value };
 	}
 
 	/// <summary>
@@ -3021,6 +3325,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator openingBridge(Boolean value) => new openingBridge { value = value };
 	}
 
 	/// <summary>
@@ -3035,6 +3341,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator orientationUncertainty(double value) => new orientationUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -3049,6 +3357,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator orientationValue(double value) => new orientationValue { value = value };
 	}
 
 	/// <summary>
@@ -3063,6 +3373,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator pictorialRepresentation(String value) => new pictorialRepresentation { value = value };
 	}
 
 	/// <summary>
@@ -3081,6 +3393,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Pilot Change", "The place where vessels being navigated under a pilot's instructions drop off the pilot and pick up a different pilot for future navigation under pilot's instructions.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator pilotMovement(int? value) => new pilotMovement { value = value };
 	}
 
 	/// <summary>
@@ -3121,6 +3435,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Clay", "(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.",25),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator product(int? value) => new product { value = value };
 	}
 
 	/// <summary>
@@ -3137,6 +3453,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Approximate", "A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator qualityOfHorizontalMeasurement(int? value) => new qualityOfHorizontalMeasurement { value = value };
 	}
 
 	/// <summary>
@@ -3162,6 +3480,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Not Regularly Maintained", "Depths may be altered by human influence, but will not be routinely maintained.",11),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator qualityOfVerticalMeasurement(int? value) => new qualityOfVerticalMeasurement { value = value };
 	}
 
 	/// <summary>
@@ -3176,6 +3496,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator radarBand(String value) => new radarBand { value = value };
 	}
 
 	/// <summary>
@@ -3190,6 +3512,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator radarConspicuous(Boolean value) => new radarConspicuous { value = value };
 	}
 
 	/// <summary>
@@ -3204,6 +3528,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator radius(double value) => new radius { value = value };
 	}
 
 	/// <summary>
@@ -3218,6 +3544,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator referenceLocation(String value) => new referenceLocation { value = value };
 	}
 
 	/// <summary>
@@ -3235,6 +3563,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Low Water", "The lowest level reached at a place by the water surface in one oscillation.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator referenceTide(int? value) => new referenceTide { value = value };
 	}
 
 	/// <summary>
@@ -3253,6 +3583,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mean", "The tides of mean range occurring between spring and neap tides.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator referenceTideType(int? value) => new referenceTideType { value = value };
 	}
 
 	/// <summary>
@@ -3267,6 +3599,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator referenceYearForMagneticVariation(String value) => new referenceYearForMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -3281,6 +3615,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator regulationCitation(String value) => new regulationCitation { value = value };
 	}
 
 	/// <summary>
@@ -3295,6 +3631,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator reportedDate(String value) => new reportedDate { value = value };
 	}
 
 	/// <summary>
@@ -3339,6 +3677,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Power-Driven Vessels Prohibited", "An area within which any vessel propelled by machinery is prohibited.",42),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator restriction(int? value) => new restriction { value = value };
 	}
 
 	/// <summary>
@@ -3353,6 +3693,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator scaleMinimum(int value) => new scaleMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3367,6 +3709,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator scaleValueMaximum(int value) => new scaleValueMaximum { value = value };
 	}
 
 	/// <summary>
@@ -3381,6 +3725,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator scaleValueMinimum(int value) => new scaleValueMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3395,6 +3741,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator sectorBearing(double value) => new sectorBearing { value = value };
 	}
 
 	/// <summary>
@@ -3409,6 +3757,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator sectorArcExtension(Boolean value) => new sectorArcExtension { value = value };
 	}
 
 	/// <summary>
@@ -3423,6 +3773,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator sectorLineLength(double value) => new sectorLineLength { value = value };
 	}
 
 	/// <summary>
@@ -3437,6 +3789,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator signalDuration(double value) => new signalDuration { value = value };
 	}
 
 	/// <summary>
@@ -3451,6 +3805,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator signalFrequency(int value) => new signalFrequency { value = value };
 	}
 
 	/// <summary>
@@ -3472,6 +3828,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Call Activated", "Activated by making a call to a manned station.",6),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator signalGeneration(int? value) => new signalGeneration { value = value };
 	}
 
 	/// <summary>
@@ -3486,6 +3844,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator signalGroup(String value) => new signalGroup { value = value };
 	}
 
 	/// <summary>
@@ -3500,6 +3860,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator signalPeriod(double value) => new signalPeriod { value = value };
 	}
 
 	/// <summary>
@@ -3517,6 +3879,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Eclipsed/Silent", "The indication of an element of a signal sequence being a period of eclipse or silence.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator signalStatus(int? value) => new signalStatus { value = value };
 	}
 
 	/// <summary>
@@ -3531,6 +3895,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator significantFeaturesDetected(Boolean value) => new significantFeaturesDetected { value = value };
 	}
 
 	/// <summary>
@@ -3545,6 +3911,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator sizeOfFeaturesDetected(double value) => new sizeOfFeaturesDetected { value = value };
 	}
 
 	/// <summary>
@@ -3559,6 +3927,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator source(String value) => new source { value = value };
 	}
 
 	/// <summary>
@@ -3573,6 +3943,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator speedLimit(double value) => new speedLimit { value = value };
 	}
 
 	/// <summary>
@@ -3587,6 +3959,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator speedMaximum(double value) => new speedMaximum { value = value };
 	}
 
 	/// <summary>
@@ -3601,6 +3975,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator speedMinimum(double value) => new speedMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3619,6 +3995,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Knots", "A nautical unit of speed. One knot is one nautical mile per hour. The name is derived from the knots in the log line.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator speedUnits(int? value) => new speedUnits { value = value };
 	}
 
 	/// <summary>
@@ -3633,6 +4011,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator stationName(String value) => new stationName { value = value };
 	}
 
 	/// <summary>
@@ -3647,6 +4027,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator stationNumber(String value) => new stationNumber { value = value };
 	}
 
 	/// <summary>
@@ -3680,6 +4062,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Buoyed", "Marked by buoys.",28),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator status(int? value) => new status { value = value };
 	}
 
 	/// <summary>
@@ -3694,6 +4078,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator streamDepth(double value) => new streamDepth { value = value };
 	}
 
 	/// <summary>
@@ -3708,6 +4094,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator surroundingDepth(double value) => new surroundingDepth { value = value };
 	}
 
 	/// <summary>
@@ -3722,6 +4110,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator surveyAuthority(String value) => new surveyAuthority { value = value };
 	}
 
 	/// <summary>
@@ -3749,6 +4139,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mechanically Swept Survey", "Swept areas where the clearance depth is accurately known but the actual seabed depth is not accurately known.",13),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator surveyType(int? value) => new surveyType { value = value };
 	}
 
 	/// <summary>
@@ -3763,6 +4155,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator updateNumber(int value) => new updateNumber { value = value };
 	}
 
 	/// <summary>
@@ -3782,6 +4176,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Move", "To change the place or position of something.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator updateType(int? value) => new updateType { value = value };
 	}
 
 	/// <summary>
@@ -3796,6 +4192,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "S100_TruncatedDate";
 		public String? value { get; set; } = default;
+
+		public static implicit operator sweptDate(String value) => new sweptDate { value = value };
 	}
 
 	/// <summary>
@@ -3826,6 +4224,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Mechanically Swept", "The given area was determined to be free from navigational dangers to a certain depth by towing a line or object below the surface at the desired depth; or least depth(s) and position(s) within an area was identified using the same technique.",18),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator techniqueOfVerticalMeasurement(int? value) => new techniqueOfVerticalMeasurement { value = value };
 	}
 
 	/// <summary>
@@ -3840,6 +4240,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator telecommunicationIdentifier(String value) => new telecommunicationIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -3863,6 +4265,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Email", "Messages and other data exchanged between individuals using computers in a network.",8),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator telecommunicationService(int? value) => new telecommunicationService { value = value };
 	}
 
 	/// <summary>
@@ -3877,6 +4281,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator text(String value) => new text { value = value };
 	}
 
 	/// <summary>
@@ -3891,6 +4297,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator textOffsetBearing(int value) => new textOffsetBearing { value = value };
 	}
 
 	/// <summary>
@@ -3905,6 +4313,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator textOffsetDistance(int value) => new textOffsetDistance { value = value };
 	}
 
 	/// <summary>
@@ -3919,6 +4329,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator textRotation(Boolean value) => new textRotation { value = value };
 	}
 
 	/// <summary>
@@ -3936,6 +4348,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Feature Characteristic", "A distinguishing trait, quality, or property of a feature class.",2),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator textType(int? value) => new textType { value = value };
 	}
 
 	/// <summary>
@@ -3950,6 +4364,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "time";
 		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+
+		public static implicit operator timeOfDayEnd(S100Framework.DomainModel.S100.Time value) => new timeOfDayEnd { value = value };
 	}
 
 	/// <summary>
@@ -3964,6 +4380,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "time";
 		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+
+		public static implicit operator timeOfDayStart(S100Framework.DomainModel.S100.Time value) => new timeOfDayStart { value = value };
 	}
 
 	/// <summary>
@@ -3978,6 +4396,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator timeRelativeToTide(double value) => new timeRelativeToTide { value = value };
 	}
 
 	/// <summary>
@@ -4026,6 +4446,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Other Shape (See Shape Information)", "An uncommon and/or non-standardized shape as textually described using an associated attribute.",33),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator topmarkDaymarkShape(int? value) => new topmarkDaymarkShape { value = value };
 	}
 
 	/// <summary>
@@ -4045,6 +4467,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Two-Way", "Traffic flow in two generally opposite directions.",4),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator trafficFlow(int? value) => new trafficFlow { value = value };
 	}
 
 	/// <summary>
@@ -4059,6 +4483,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator uncertaintyFixed(double value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -4073,6 +4499,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator uncertaintyVariableFactor(double value) => new uncertaintyVariableFactor { value = value };
 	}
 
 	/// <summary>
@@ -4087,6 +4515,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator underlyingLayer(int value) => new underlyingLayer { value = value };
 	}
 
 	/// <summary>
@@ -4101,6 +4531,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfAnnualChangeInMagneticVariation(double value) => new valueOfAnnualChangeInMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4115,6 +4547,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfDepthContour(double value) => new valueOfDepthContour { value = value };
 	}
 
 	/// <summary>
@@ -4129,6 +4563,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfMagneticVariation(double value) => new valueOfMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4143,6 +4579,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfMaximumRange(double value) => new valueOfMaximumRange { value = value };
 	}
 
 	/// <summary>
@@ -4157,6 +4595,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfNominalRange(double value) => new valueOfNominalRange { value = value };
 	}
 
 	/// <summary>
@@ -4171,6 +4611,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator valueOfSounding(double value) => new valueOfSounding { value = value };
 	}
 
 	/// <summary>
@@ -4185,6 +4627,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator verticalClearanceUnlimited(Boolean value) => new verticalClearanceUnlimited { value = value };
 	}
 
 	/// <summary>
@@ -4199,6 +4643,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator verticalClearanceValue(double value) => new verticalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -4245,6 +4691,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Baltic Sea Chart Datum 2000", "The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).",44),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator verticalDatum(int? value) => new verticalDatum { value = value };
 	}
 
 	/// <summary>
@@ -4259,6 +4707,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator verticalLength(double value) => new verticalLength { value = value };
 	}
 
 	/// <summary>
@@ -4273,6 +4723,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator vesselClass(String value) => new vesselClass { value = value };
 	}
 
 	/// <summary>
@@ -4300,6 +4752,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Emergency Wreck Marking", "A mark used to indicate the existence of a recent wreck.",12),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator virtualAISAidToNavigationType(int? value) => new virtualAISAidToNavigationType { value = value };
 	}
 
 	/// <summary>
@@ -4314,6 +4768,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "boolean";
 		public Boolean? value { get; set; } = default;
+
+		public static implicit operator visitorsMooring(Boolean value) => new visitorsMooring { value = value };
 	}
 
 	/// <summary>
@@ -4332,6 +4788,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Prominent", "Objects which are easily identifiable, but do not justify being classed as conspicuous.",3),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator visualProminence(int? value) => new visualProminence { value = value };
 	}
 
 	/// <summary>
@@ -4354,6 +4812,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Floating", "Resting or moving on the surface of a liquid without sinking.",7),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator waterLevelEffect(int? value) => new waterLevelEffect { value = value };
 	}
 
 	/// <summary>
@@ -4368,6 +4828,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator waterwayDistance(double value) => new waterwayDistance { value = value };
 	}
 
 	/// <summary>
@@ -4382,6 +4844,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator waveLengthValue(double value) => new waveLengthValue { value = value };
 	}
 
 	/// <summary>
@@ -4412,6 +4876,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 				new listedValue("Break Bulk Cargo", "Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.",15),
 			];
 		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCargo(int? value) => new categoryOfCargo { value = value };
 	}
 
 	/// <summary>
@@ -4426,6 +4892,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "real";
 		public double? value { get; set; } = default;
+
+		public static implicit operator minimumBerthDepth(double value) => new minimumBerthDepth { value = value };
 	}
 
 	/// <summary>
@@ -4440,6 +4908,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "integer";
 		public int? value { get; set; } = default;
+
+		public static implicit operator optimumDisplayScale(int value) => new optimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -4454,6 +4924,8 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string valueType => "text";
 		public String? value { get; set; } = default;
+
+		public static implicit operator drawingInstruction(String value) => new drawingInstruction { value = value };
 	}
 
 }
@@ -4498,6 +4970,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					permitedValues = [1,2],
 				},
 			];
+
+		#region Optional Attributes
+		public int? nameUsage { set { base.AddAttributeValue(new nameUsage { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4535,6 +5011,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? sizeOfFeaturesDetected { set { base.AddAttributeValue(new sizeOfFeaturesDetected { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4561,6 +5041,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? dateEnd { set { base.AddAttributeValue(new dateEnd { value = value }); } }
+		public String? dateStart { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4590,6 +5075,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? frequencyShoreStationReceives { set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4619,6 +5108,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? horizontalDistanceUncertainty { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4648,6 +5141,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? horizontalDistanceUncertainty { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4677,6 +5174,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? uncertaintyVariableFactor { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4721,6 +5222,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? fileLocator { set { base.AddAttributeValue(new fileLocator { value = value }); } }
+		public String? fileReference { set { base.AddAttributeValue(new fileReference { value = value }); } }
+		public String? headline { set { base.AddAttributeValue(new headline { value = value }); } }
+		public String? text { set { base.AddAttributeValue(new text { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4759,6 +5267,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? referenceLocation { set { base.AddAttributeValue(new referenceLocation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4788,6 +5300,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? numberOfFeatures { set { base.AddAttributeValue(new numberOfFeatures { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4822,6 +5338,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? headline { set { base.AddAttributeValue(new headline { value = value }); } }
+		public String? nameOfResource { set { base.AddAttributeValue(new nameOfResource { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4851,6 +5372,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? orientationUncertainty { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4883,6 +5408,9 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -4915,6 +5443,9 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -4944,6 +5475,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -4973,6 +5508,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? sectorLineLength { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5002,6 +5541,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? sectorLineLength { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5031,6 +5574,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5064,6 +5611,9 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					permitedValues = [1,2],
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -5093,6 +5643,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? speedMinimum { set { base.AddAttributeValue(new speedMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5126,6 +5680,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? natureOfSurface { set { base.AddAttributeValue(new natureOfSurface { value = value }); } }
+		public int? underlyingLayer { set { base.AddAttributeValue(new underlyingLayer { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5155,6 +5714,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? dateStart { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5190,6 +5753,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					permitedValues = [1,2,3,4,5,6,7,8],
 				},
 			];
+
+		#region Optional Attributes
+		public String? contactInstructions { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
+		public int? telecommunicationService { set { base.AddAttributeValue(new telecommunicationService { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5230,6 +5798,9 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -5267,6 +5838,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? dayOfWeekIsRange { set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5309,6 +5884,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5339,6 +5918,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					permitedValues = [5,13],
 				},
 			];
+
+		#region Optional Attributes
+		public int? referenceDirection { set { base.AddAttributeValue(new referenceDirection { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5368,6 +5951,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? uncertaintyVariableFactor { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5406,6 +5993,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? vesselClass { set { base.AddAttributeValue(new vesselClass { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5446,6 +6037,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalPositionUncertainty? horizontalPositionUncertainty { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5475,6 +6072,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? moireEffect { set { base.AddAttributeValue(new moireEffect { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5515,6 +6116,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? signalPeriod { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5545,6 +6150,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfSchedule { set { base.AddAttributeValue(new categoryOfSchedule { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5577,6 +6186,9 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 	/// <summary>
@@ -5608,6 +6220,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalPositionUncertainty? horizontalPositionUncertainty { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5655,6 +6273,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? streamDepth { set { base.AddAttributeValue(new streamDepth { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5684,6 +6306,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5713,6 +6339,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5747,6 +6377,11 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? verticalClearanceValue { set { base.AddAttributeValue(new verticalClearanceValue { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5776,6 +6411,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5832,6 +6471,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public directionalCharacter? directionalCharacter { set { base.AddAttributeValue(value); } }
+		public sectorLimit? sectorLimit { set { base.AddAttributeValue(value); } }
+		public double? valueOfNominalRange { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
+		public Boolean? sectorArcExtension { set { base.AddAttributeValue(new sectorArcExtension { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -5880,6 +6526,10 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? signalPeriod { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
+		#endregion
 	}
 
 }
@@ -5947,6 +6597,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfTemporalVariation { set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); } }
+		public double? horizontalDistanceUncertainty { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? orientationUncertainty { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
+		public surveyDateRange? surveyDateRange { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6002,6 +6661,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? drawingIndex { set { base.AddAttributeValue(new drawingIndex { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6037,6 +6701,10 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6085,6 +6753,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6168,6 +6841,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMaximumValue { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public surveyDateRange? surveyDateRange { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6203,6 +6883,10 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6238,6 +6922,10 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6357,6 +7045,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMaximumValue { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public featuresDetected? featuresDetected { set { base.AddAttributeValue(value); } }
+		public Boolean? fullSeafloorCoverageAchieved { set { base.AddAttributeValue(new fullSeafloorCoverageAchieved { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? lineSpacingMaximum { set { base.AddAttributeValue(new lineSpacingMaximum { value = value }); } }
+		public int? lineSpacingMinimum { set { base.AddAttributeValue(new lineSpacingMinimum { value = value }); } }
+		public int? measurementDistanceMaximum { set { base.AddAttributeValue(new measurementDistanceMaximum { value = value }); } }
+		public int? measurementDistanceMinimum { set { base.AddAttributeValue(new measurementDistanceMinimum { value = value }); } }
+		public int? qualityOfHorizontalMeasurement { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
+		public int? scaleValueMaximum { set { base.AddAttributeValue(new scaleValueMaximum { value = value }); } }
+		public int? scaleValueMinimum { set { base.AddAttributeValue(new scaleValueMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6415,6 +7118,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? source { set { base.AddAttributeValue(new source { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6470,6 +7180,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6519,6 +7234,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6589,6 +7310,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfCoastline { set { base.AddAttributeValue(new categoryOfCoastline { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6642,6 +7372,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6681,6 +7419,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6731,6 +7474,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6773,6 +7522,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6814,6 +7569,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6861,6 +7622,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6908,6 +7676,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -6962,6 +7737,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7028,6 +7809,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7110,6 +7900,16 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7175,6 +7975,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfSlope { set { base.AddAttributeValue(new categoryOfSlope { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7245,6 +8053,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfSlope { set { base.AddAttributeValue(new categoryOfSlope { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7281,6 +8098,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7360,6 +8182,19 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfBuiltUpArea { set { base.AddAttributeValue(new categoryOfBuiltUpArea { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7484,6 +8319,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? buildingShape { set { base.AddAttributeValue(new buildingShape { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7548,6 +8400,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7612,6 +8472,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7676,6 +8543,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7796,6 +8670,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? bridgeConstruction { set { base.AddAttributeValue(new bridgeConstruction { value = value }); } }
+		public int? categoryOfOpeningBridge { set { base.AddAttributeValue(new categoryOfOpeningBridge { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? openingBridge { set { base.AddAttributeValue(new openingBridge { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7856,6 +8746,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -7924,6 +8823,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8053,6 +8961,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfConveyor { set { base.AddAttributeValue(new categoryOfConveyor { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? liftingCapacity { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8154,6 +9081,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfCable { set { base.AddAttributeValue(new categoryOfCable { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? iceFactor { set { base.AddAttributeValue(new iceFactor { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public verticalClearanceSafe? verticalClearanceSafe { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8251,6 +9194,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfPipelinePipe { set { base.AddAttributeValue(new categoryOfPipelinePipe { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8373,6 +9330,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8476,6 +9449,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfFence { set { base.AddAttributeValue(new categoryOfFence { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8534,6 +9521,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8599,6 +9594,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfRoad { set { base.AddAttributeValue(new categoryOfRoad { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8673,6 +9676,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8809,6 +9823,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -8939,6 +9968,24 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? buildingShape { set { base.AddAttributeValue(new buildingShape { value = value }); } }
+		public int? categoryOfSiloTank { set { base.AddAttributeValue(new categoryOfSiloTank { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9073,6 +10120,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9169,6 +10236,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfFortifiedStructure { set { base.AddAttributeValue(new categoryOfFortifiedStructure { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9273,6 +10354,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9321,6 +10416,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfCheckpoint { set { base.AddAttributeValue(new categoryOfCheckpoint { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9427,6 +10528,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9529,6 +10645,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfPile { set { base.AddAttributeValue(new categoryOfPile { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9608,6 +10739,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9732,6 +10875,24 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfShorelineConstruction { set { base.AddAttributeValue(new categoryOfShorelineConstruction { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9883,6 +11044,24 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? product { set { base.AddAttributeValue(new product { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -9948,6 +11127,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10022,6 +11209,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfCanal { set { base.AddAttributeValue(new categoryOfCanal { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10079,6 +11277,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10171,6 +11375,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfGate { set { base.AddAttributeValue(new categoryOfGate { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public horizontalClearanceOpen? horizontalClearanceOpen { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public verticalClearanceOpen? verticalClearanceOpen { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10275,6 +11491,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfDam { set { base.AddAttributeValue(new categoryOfDam { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10398,6 +11628,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfCrane { set { base.AddAttributeValue(new categoryOfCrane { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? liftingCapacity { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
+		public orientation? orientation { set { base.AddAttributeValue(value); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? radius { set { base.AddAttributeValue(new radius { value = value }); } }
+		public verticalClearanceFixed? verticalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inTheWater { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10490,6 +11739,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalClearanceLength { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
+		public double? horizontalClearanceWidth { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public double? minimumBerthDepth { set { base.AddAttributeValue(new minimumBerthDepth { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10611,6 +11871,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10679,6 +11954,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10778,6 +12062,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalClearanceLength { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
+		public double? horizontalClearanceWidth { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10899,6 +12198,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalClearanceLength { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
+		public double? horizontalClearanceWidth { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? liftingCapacity { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -10978,6 +12296,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11062,6 +12391,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfDock { set { base.AddAttributeValue(new categoryOfDock { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public double? horizontalClearanceLength { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
+		public double? horizontalClearanceWidth { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11131,6 +12472,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11198,6 +12548,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalClearanceFixed? horizontalClearanceFixed { set { base.AddAttributeValue(value); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11239,6 +12598,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11281,6 +12646,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfSeaArea { set { base.AddAttributeValue(new categoryOfSeaArea { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11347,6 +12718,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11415,6 +12792,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11460,6 +12844,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11517,6 +12906,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? stationNumber { set { base.AddAttributeValue(new stationNumber { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11576,6 +12971,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11658,6 +13060,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMaximumValue { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
+		public String? dredgedDate { set { base.AddAttributeValue(new dredgedDate { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? qualityOfVerticalMeasurement { set { base.AddAttributeValue(new qualityOfVerticalMeasurement { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11702,6 +13113,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? sweptDate { set { base.AddAttributeValue(new sweptDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11741,6 +13158,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11783,6 +13205,10 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11820,6 +13246,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11846,6 +13277,10 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11896,6 +13331,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11938,6 +13379,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfWeedKelp { set { base.AddAttributeValue(new categoryOfWeedKelp { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -11974,6 +13421,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12010,6 +13462,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12046,6 +13504,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12147,6 +13610,16 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? expositionOfSounding { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? natureOfSurface { set { base.AddAttributeValue(new natureOfSurface { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public double? defaultClearanceDepth { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12266,6 +13739,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfWreck { set { base.AddAttributeValue(new categoryOfWreck { value = value }); } }
+		public int? expositionOfSounding { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? valueOfSounding { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public double? defaultClearanceDepth { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12397,6 +13884,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfObstruction { set { base.AddAttributeValue(new categoryOfObstruction { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public int? expositionOfSounding { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? valueOfSounding { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public double? defaultClearanceDepth { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12466,6 +13967,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? valueOfSounding { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12502,6 +14011,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12571,6 +14086,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfFishingFacility { set { base.AddAttributeValue(new categoryOfFishingFacility { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12681,6 +14205,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfMarineFarmCulture { set { base.AddAttributeValue(new categoryOfMarineFarmCulture { value = value }); } }
+		public int? expositionOfSounding { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? valueOfSounding { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12794,6 +14330,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfOffshorePlatform { set { base.AddAttributeValue(new categoryOfOffshorePlatform { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? flareStack { set { base.AddAttributeValue(new flareStack { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12858,6 +14410,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? buriedDepth { set { base.AddAttributeValue(new buriedDepth { value = value }); } }
+		public int? categoryOfCable { set { base.AddAttributeValue(new categoryOfCable { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -12922,6 +14483,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13023,6 +14590,19 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public double? buriedDepth { set { base.AddAttributeValue(new buriedDepth { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public double? depthRangeMaximumValue { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13093,6 +14673,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13201,6 +14787,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfOffshoreProductionArea { set { base.AddAttributeValue(new categoryOfOffshoreProductionArea { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? waterLevelEffect { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13270,6 +14870,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? measuredDistance { set { base.AddAttributeValue(new measuredDistance { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13374,6 +14981,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13420,6 +15036,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13510,6 +15133,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public double? orientationValue { set { base.AddAttributeValue(new orientationValue { value = value }); } }
+		public int? trafficFlow { set { base.AddAttributeValue(new trafficFlow { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13561,6 +15195,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13654,6 +15295,16 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? orientationValue { set { base.AddAttributeValue(new orientationValue { value = value }); } }
+		public int? trafficFlow { set { base.AddAttributeValue(new trafficFlow { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13740,6 +15391,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? basedOnFixedMarks { set { base.AddAttributeValue(new basedOnFixedMarks { value = value }); } }
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13786,6 +15446,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13836,6 +15503,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -13935,6 +15608,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? depthRangeMinimumValue { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? iMOAdopted { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14040,6 +15722,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? iMOAdopted { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14086,6 +15776,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? iMOAdopted { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14139,6 +15836,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14205,6 +15908,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? iMOAdopted { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14263,6 +15973,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? orientationValue { set { base.AddAttributeValue(new orientationValue { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14305,6 +16022,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14347,6 +16070,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14400,6 +16129,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14453,6 +16188,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14504,6 +16245,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? iMOAdopted { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14550,6 +16299,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? nationality { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14596,6 +16352,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? nationality { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14645,6 +16408,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14716,6 +16485,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14777,6 +16552,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14827,6 +16608,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14879,6 +16665,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -14952,6 +16744,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? callSign { set { base.AddAttributeValue(new callSign { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? valueOfMaximumRange { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15027,6 +16827,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15106,6 +16912,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public double? maximumPermittedVesselLength { set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15175,6 +16989,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? radius { set { base.AddAttributeValue(new radius { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15233,6 +17054,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15297,6 +17123,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? dateDisused { set { base.AddAttributeValue(new dateDisused { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15371,6 +17203,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? nationality { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15431,6 +17270,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? inDispute { set { base.AddAttributeValue(new inDispute { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15494,6 +17340,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15557,6 +17409,16 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15613,6 +17475,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15662,6 +17532,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public Boolean? inDispute { set { base.AddAttributeValue(new inDispute { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15706,6 +17583,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15745,6 +17627,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15789,6 +17676,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? inDispute { set { base.AddAttributeValue(new inDispute { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15839,6 +17732,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15897,6 +17795,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15939,6 +17842,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -15981,6 +17889,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16028,6 +17941,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16092,6 +18010,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfOilBarrier { set { base.AddAttributeValue(new categoryOfOilBarrier { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16131,6 +18058,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16186,6 +18118,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? inDispute { set { base.AddAttributeValue(new inDispute { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16238,6 +18176,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? nationality { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16279,6 +18223,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16330,6 +18279,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? regulationCitation { set { base.AddAttributeValue(new regulationCitation { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16371,6 +18327,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? regulationCitation { set { base.AddAttributeValue(new regulationCitation { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16443,6 +18405,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16578,6 +18546,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? exhibitionConditionOfLight { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public int? flareBearing { set { base.AddAttributeValue(new flareBearing { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? lightVisibility { set { base.AddAttributeValue(new lightVisibility { value = value }); } }
+		public Boolean? majorLight { set { base.AddAttributeValue(new majorLight { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public int? signalGeneration { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
+		public double? valueOfNominalRange { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16678,6 +18663,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? exhibitionConditionOfLight { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public int? signalGeneration { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16768,6 +18765,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public int? flareBearing { set { base.AddAttributeValue(new flareBearing { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public rhythmOfLight? rhythmOfLight { set { base.AddAttributeValue(value); } }
+		public int? signalGeneration { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16869,6 +18878,19 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? exhibitionConditionOfLight { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public int? flareBearing { set { base.AddAttributeValue(new flareBearing { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public multiplicityOfFeatures? multiplicityOfFeatures { set { base.AddAttributeValue(value); } }
+		public rhythmOfLight? rhythmOfLight { set { base.AddAttributeValue(value); } }
+		public double? valueOfNominalRange { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
+		public int? verticalDatum { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -16986,6 +19008,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17103,6 +19137,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17211,6 +19257,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17319,6 +19377,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17436,6 +19506,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17533,6 +19615,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17643,6 +19737,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfInstallationBuoy { set { base.AddAttributeValue(new categoryOfInstallationBuoy { value = value }); } }
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17747,6 +19852,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public double? maximumPermittedVesselLength { set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public Boolean? visitorsMooring { set { base.AddAttributeValue(new visitorsMooring { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -17891,6 +20008,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18035,6 +20169,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18170,6 +20321,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18305,6 +20473,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18449,6 +20634,23 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? marksNavigationalSystemOf { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18567,6 +20769,18 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18676,6 +20890,20 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public topmark? topmark { set { base.AddAttributeValue(value); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18780,6 +21008,19 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? horizontalLength { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
+		public double? horizontalWidth { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? radarConspicuous { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public int? visualProminence { set { base.AddAttributeValue(new visualProminence { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18844,6 +21085,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? colourPattern { set { base.AddAttributeValue(new colourPattern { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18896,6 +21145,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -18988,6 +21244,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? signalFrequency { set { base.AddAttributeValue(new signalFrequency { value = value }); } }
+		public int? signalGeneration { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
+		public String? signalGroup { set { base.AddAttributeValue(new signalGroup { value = value }); } }
+		public double? signalPeriod { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
+		public double? valueOfMaximumRange { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19050,6 +21317,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? estimatedRangeOfTransmission { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? mMSICode { set { base.AddAttributeValue(new mMSICode { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19121,6 +21397,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public double? estimatedRangeOfTransmission { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public String? mMSICode { set { base.AddAttributeValue(new mMSICode { value = value }); } }
+		public int? status { set { base.AddAttributeValue(new status { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19199,6 +21484,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? callSign { set { base.AddAttributeValue(new callSign { value = value }); } }
+		public double? estimatedRangeOfTransmission { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public frequencyPair? frequencyPair { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19285,6 +21579,15 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public sectorLimit? sectorLimit { set { base.AddAttributeValue(value); } }
+		public String? signalGroup { set { base.AddAttributeValue(new signalGroup { value = value }); } }
+		public double? valueOfMaximumRange { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19365,6 +21668,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public int? categoryOfPilotBoardingPlace { set { base.AddAttributeValue(new categoryOfPilotBoardingPlace { value = value }); } }
+		public int? categoryOfPreference { set { base.AddAttributeValue(new categoryOfPreference { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19401,6 +21712,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19463,6 +21779,13 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public Boolean? isMRCC { set { base.AddAttributeValue(new isMRCC { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19529,6 +21852,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19595,6 +21924,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19658,6 +21993,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19763,6 +22104,16 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? product { set { base.AddAttributeValue(new product { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19824,6 +22175,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public String? interoperabilityIdentifier { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19875,6 +22232,11 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 1,
 				},
 			];
+
+		#region Optional Attributes
+		public Boolean? textRotation { set { base.AddAttributeValue(new textRotation { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
 	}
 
 	/// <summary>
@@ -19901,6 +22263,9 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					upper = 2147483647,
 				},
 			];
+
+		#region Optional Attributes
+		#endregion
 	}
 
 }

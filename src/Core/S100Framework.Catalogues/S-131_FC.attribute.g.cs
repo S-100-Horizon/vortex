@@ -1,0 +1,6133 @@
+﻿using System;
+using System.Text.Json.Serialization;
+
+#nullable enable
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+namespace S100Framework.AttributeModel.S131.SimpleAttributes
+{
+	/// <summary>
+	/// A generic term for an administrative region within a country at a level below that of the sovereign state.
+	/// </summary>
+	public class administrativeDivision : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(administrativeDivision);
+		[JsonIgnore]
+		public override string S100FC_name => "Administrative Division";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator administrativeDivision(String value) => new administrativeDivision { value = value };
+	}
+
+	/// <summary>
+	/// The load line zone in which the port is located. Defined by the International Convention on Load Lines.
+	/// </summary>
+	public class applicableLoadLineZone : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(applicableLoadLineZone);
+		[JsonIgnore]
+		public override string S100FC_name => "Applicable Load Line Zone";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator applicableLoadLineZone(String value) => new applicableLoadLineZone { value = value };
+	}
+
+	/// <summary>
+	/// Name of an application profile that can be used with the online resource.
+	/// </summary>
+	public class applicationProfile : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(applicationProfile);
+		[JsonIgnore]
+		public override string S100FC_name => "Application Profile";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator applicationProfile(String value) => new applicationProfile { value = value };
+	}
+
+	/// <summary>
+	/// Description of the approach to a location.
+	/// </summary>
+	public class approachDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(approachDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Approach Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator approachDescription(String value) => new approachDescription { value = value };
+	}
+
+	/// <summary>
+	/// The name of an associated feature.
+	/// </summary>
+	public class associatedFeatureName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(associatedFeatureName);
+		[JsonIgnore]
+		public override string S100FC_name => "Associated Feature Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator associatedFeatureName(String value) => new associatedFeatureName { value = value };
+	}
+
+	/// <summary>
+	/// The length of a berth or dock which is available for use.
+	/// </summary>
+	public class availableBerthingLength : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(availableBerthingLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Available Berthing Length";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator availableBerthingLength(double value) => new availableBerthingLength { value = value };
+	}
+
+	/// <summary>
+	/// Classification of assistance for mooring or anchoring operations.
+	/// </summary>
+	public class berthingAssistance : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(berthingAssistance);
+		[JsonIgnore]
+		public override string S100FC_name => "Berthing Assistance";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Berthing Information", "Information about assistance or arrangements for a service related to berthing operations.",1),
+				new listedValue("Line Personnel", "Personnel specializing in the mooring and unmooring of vessels.",2),
+				new listedValue("Mooring Boat", "A boat which assists the securement of a vessel to a berth or mooring with ropes or anchor.",3),
+				new listedValue("Mule", "A locomotive for moving vessels.",4),
+				new listedValue("Tugboat", "A powerful small boat designed to pull or push larger ships or powerless barges.",5),
+				new listedValue("Icebreaking Ship", "A ship equipped to make and maintain a channel through ice.",6),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator berthingAssistance(int? value) => new berthingAssistance { value = value };
+	}
+
+	/// <summary>
+	/// A textual description of the type of bollard at a berth or mooring facility.
+	/// </summary>
+	public class bollardDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(bollardDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Bollard Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator bollardDescription(String value) => new bollardDescription { value = value };
+	}
+
+	/// <summary>
+	/// An identifier used to locate a specific bollard.
+	/// </summary>
+	public class bollardNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(bollardNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Bollard Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator bollardNumber(String value) => new bollardNumber { value = value };
+	}
+
+	/// <summary>
+	/// The designated call name of a station; for example, radio station, radar station, pilot.
+	/// </summary>
+	public class callName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(callName);
+		[JsonIgnore]
+		public override string S100FC_name => "Call Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator callName(String value) => new callName { value = value };
+	}
+
+	/// <summary>
+	/// The designated call-sign of a station (radio station, radar station, pilot, ...).
+	/// </summary>
+	public class callSign : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(callSign);
+		[JsonIgnore]
+		public override string S100FC_name => "Call Sign";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator callSign(String value) => new callSign { value = value };
+	}
+
+	/// <summary>
+	/// Principal and intermediate compass points.
+	/// </summary>
+	public class cardinalDirection : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cardinalDirection);
+		[JsonIgnore]
+		public override string S100FC_name => "Cardinal Direction";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("North", "348.75-011.25 degrees (true north).",1),
+				new listedValue("North Northeast", "011.25 - 033.75 degrees.",2),
+				new listedValue("Northeast", "033.75 - 056.25 degrees.",3),
+				new listedValue("East Northeast", "056.25-078.75 degrees.",4),
+				new listedValue("East", "078.75-101.25 degrees.",5),
+				new listedValue("East Southeast", "101.25-123.75 degrees.",6),
+				new listedValue("Southeast", "123.75-146.25 degrees.",7),
+				new listedValue("South Southeast", "146.25-168.75 degrees.",8),
+				new listedValue("South", "168.75-191.25 degrees.",9),
+				new listedValue("South Southwest", "191.25-213.75 degrees.",10),
+				new listedValue("Southwest", "213.75-236.25 degrees.",11),
+				new listedValue("West Southwest", "236.25-258.75 degrees.",12),
+				new listedValue("West", "258.75-281.25 degrees.",13),
+				new listedValue("West Northwest", "281.25-303.75 degrees.",14),
+				new listedValue("Northwest", "303.75 - 326.25 degrees.",15),
+				new listedValue("North Northwest", "326.25 - 348.75 degrees.",16),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator cardinalDirection(int? value) => new cardinalDirection { value = value };
+	}
+
+	/// <summary>
+	/// Classification of services related to the goods or items carried by vessels.
+	/// </summary>
+	public class cargoService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cargoService);
+		[JsonIgnore]
+		public override string S100FC_name => "Cargo Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Stevedoring", "The loading, unloading, moving or handling of cargo, ship's stores, gear, or other materials, into, in, on, or out of any vessel.",1),
+				new listedValue("Cargo Surveying", "Inspection, evaluation or monitoring of the quantity, stowage, loading and unloading, and condition of cargo, and the effects of cargoes on vessel stability and safety.",2),
+				new listedValue("Cargo Lashing", "The securement of cargo to the ship's structure and/or other cargo.",3),
+				new listedValue("Draught Survey", "Determination of the quantity of certain types of bulk cargo by assessment of its effect on displacement when loaded in a vessel.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator cargoService(int? value) => new cargoService { value = value };
+	}
+
+	/// <summary>
+	/// Classification of an area where different use types of vessel can remain static.
+	/// </summary>
+	public class categoryOfAnchorage : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfAnchorage);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Anchorage";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Unrestricted Anchorage", "An area in which vessels anchor or may anchor.",1),
+				new listedValue("Deep Water Anchorage", "An area in which vessels of deep draught anchor or may anchor.",2),
+				new listedValue("Tanker Anchorage", "An area in which tankers anchor or may anchor.",3),
+				new listedValue("Quarantine Anchorage", "An area where a vessel anchors when satisfying quarantine regulations.",5),
+				new listedValue("Seaplane Anchorage", "An area in which seaplanes anchor or may anchor.",6),
+				new listedValue("Small Craft Anchorage", "An area in which yachts and small boats anchor or may anchor.",7),
+				new listedValue("Anchorage for Periods Up To 24 Hours", "An area in which vessels anchor or may anchor for periods of up to 24 hours.",9),
+				new listedValue("Anchorage for a Limited Period of Time", "An area in which vessels may anchor for a period of time not to exceed a specific limit.",10),
+				new listedValue("Waiting Anchorage", "An area in which vessels anchor or may anchor while waiting, for example, for access to a port or berth.",14),
+				new listedValue("Reported Anchorage", "A location not defined by a regulatory authority that has been reported to be suitable and safe for anchoring.",15),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfAnchorage(int? value) => new categoryOfAnchorage { value = value };
+	}
+
+	/// <summary>
+	/// The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.
+	/// </summary>
+	public class categoryOfAuthority : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfAuthority);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Authority";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Border Control", "The administration to prevent or detect and prosecute violations of rules and regulations at international boundaries.",2),
+				new listedValue("Police", "The department of government, or civil force, charged with maintaining public order.",3),
+				new listedValue("Port", "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.",4),
+				new listedValue("Immigration", "The authority controlling people entering a country.",5),
+				new listedValue("Health", "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.",6),
+				new listedValue("Coast Guard", "Organization keeping watch on shipping and coastal waters according to governmental law; normally the authority with responsibility for search and rescue.",7),
+				new listedValue("Agricultural", "The authority with responsibility for preventing infection of the agriculture of a country and for the protection of the agricultural interests of a country.",8),
+				new listedValue("Military", "A military authority which provides control of access to or approval for transit through designated areas or airspace.",9),
+				new listedValue("Private Company", "A private or publicly owned company or commercial enterprise which exercises control of facilities, for example a calibration area.",10),
+				new listedValue("Maritime Police", "A governmental or military force with jurisdiction in territorial waters. Examples could include Gendarmerie Maritime, Carabinierie, and Guardia Civil.",11),
+				new listedValue("Environmental", "An authority with responsibility for the protection of the environment.",12),
+				new listedValue("Fishery", "An authority with responsibility for the control of fisheries.",13),
+				new listedValue("Finance", "An authority with responsibility for the control and movement of money.",14),
+				new listedValue("Maritime", "A national or regional authority charged with administration of maritime affairs.",15),
+				new listedValue("Customs", "The agency or establishment for collecting duties, tolls.",16),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfAuthority(int? value) => new categoryOfAuthority { value = value };
+	}
+
+	/// <summary>
+	/// Classification of a berth according to the method of describing its location or extent.
+	/// </summary>
+	public class categoryOfBerthLocation : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfBerthLocation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Berth Location";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Wharf Reference Metre Mark", "A wharf or quay with reference position(s) given by one or more metre marks.",1),
+				new listedValue("Wharf Reference Position", "A wharf or quay with reference position(s) given by one or more point or points in geographic coordinates.",2),
+				new listedValue("Pier (Jetty)", "A long, narrow structure extending into the water to afford a berthing place for vessels, to serve as a promenade, etc.",3),
+				new listedValue("Multi-Buoy Mooring Berth", "A designated facility where a vessel may moor, usually by a combination of the mooring buoys and the ship’s anchors.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfBerthLocation(int? value) => new categoryOfBerthLocation { value = value };
+	}
+
+	/// <summary>
+	/// Classification of the different types of cargo that a ship may be carrying.
+	/// </summary>
+	public class categoryOfCargo : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfCargo);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Cargo";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Bulk", "Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.",1),
+				new listedValue("Container", "One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.",2),
+				new listedValue("General", "Break bulk cargo normally loaded by crane.",3),
+				new listedValue("Liquid", "Any cargo loaded by pipeline.",4),
+				new listedValue("Passenger", "A fee paying traveller.",5),
+				new listedValue("Livestock", "Live animals carried in bulk.",6),
+				new listedValue("Dangerous or Hazardous", "Dangerous or hazardous cargo as described by the IMO International Maritime Dangerous Goods code.",7),
+				new listedValue("Heavy Lift", "Indivisible heavy items of weight generally over 100 tons, and width or height greater than 100 metres.",8),
+				new listedValue("Ballast", "Material carried by a ship to ensure its stability.",9),
+				new listedValue("Dry Bulk Cargo", "Commodity cargo that is transported unpackaged in large quantities. These types of goods usually need to be kept dry during the whole transportation period.",10),
+				new listedValue("Liquid Bulk Cargo", "Liquids or gases that are transported in bulk and carried unpackaged.",11),
+				new listedValue("Reefer Container Cargo", "Cargo transported in refrigerated containers, generally perishable commodities which require temperature-controlled transportation, such as fruit, meat, fish, vegetables, dairy products and other foods.",12),
+				new listedValue("Ro-Ro Cargo", "Wheeled cargo, such as cars, busses, trucks, agricultural vehicles and cranes, that are driven on and off the ship on their own wheels or using a platform vehicle, such as a self-propelled modular transporter.",13),
+				new listedValue("Project Cargo", "Project cargo is a term used to broadly describe the national or international transportation of large, heavy, high value, or critical (to the project they are intended for) pieces of equipment. Also commonly referred to as heavy lift, this includes shipments made of various components which need disassembly for shipment and reassembly after delivery.",14),
+				new listedValue("Break Bulk Cargo", "Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.",15),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCargo(int? value) => new categoryOfCargo { value = value };
+	}
+
+	/// <summary>
+	/// Classification of frequencies, VHF channels, telephone numbers, or other means of communication based on preference.
+	/// </summary>
+	public class categoryOfCommunicationPreference : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfCommunicationPreference);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Communication Preference";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Preferred Calling", "The first choice channel or frequency to be used when calling a radio station.",1),
+				new listedValue("Alternate Calling", "A channel or frequency to be used for calling a radio station when the preferred channel or frequency is busy or is suffering from interference.",2),
+				new listedValue("Preferred Working", "The first choice channel or frequency to be used when working with a radio station.",3),
+				new listedValue("Alternate Working", "A channel or frequency to be used for working with a radio station when the preferred working channel or frequency is busy or is suffering from interference.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfCommunicationPreference(int? value) => new categoryOfCommunicationPreference { value = value };
+	}
+
+	/// <summary>
+	/// Classification of dangerous goods or hazardous materials based on the International Maritime Dangerous Goods Code (IMDG Code).
+	/// </summary>
+	public class categoryOfDangerousOrHazardousCargo : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfDangerousOrHazardousCargo);
+		[JsonIgnore]
+		public override string S100FC_name => "Category Of Dangerous Or Hazardous Cargo";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("IMDG Code Class 1 Div. 1.1", "Explosives, Division 1: Substances and articles which have a mass explosion hazard.",1),
+				new listedValue("IMDG Code Class 1 Div. 1.2", "Explosives, Division 2: Substances and articles which have a projection hazard but not a mass explosion hazard.",2),
+				new listedValue("IMDG Code Class 1 Div. 1.3", "Explosives, Division 3: Substances and articles which have a fire hazard and either a minor blast hazard or a minor projection hazard or both, but not a mass explosion hazard.",3),
+				new listedValue("IMDG Code Class 1 Div. 1.4", "Explosives, Division 4: Substances and articles which present no significant hazard.",4),
+				new listedValue("IMDG Code Class 1 Div. 1.5", "Explosives, Division 5: Very insensitive substances which have a mass explosion hazard.",5),
+				new listedValue("IMDG Code Class 1 Div. 1.6", "Explosives, Division 6: Extremely insensitive articles which do not have a mass explosion hazard.",6),
+				new listedValue("IMDG Code Class 2 Div. 2.1", "Gases, flammable gases.",7),
+				new listedValue("IMDG Code Class 2 Div. 2.2", "Gases, non-flammable, non-toxic gases.",8),
+				new listedValue("IMDG Code Class 2 Div. 2.3", "Gases, toxic gases.",9),
+				new listedValue("IMDG Code Class 3", "Flammable liquids.",10),
+				new listedValue("IMDG Code Class 4 Div. 4.1", "Flammable solids, self-reactive substances and desensitized explosives.",11),
+				new listedValue("IMDG Code Class 4 Div. 4.2", "Substances liable to spontaneous combustion.",12),
+				new listedValue("IMDG Code Class 4 Div. 4.3", "Substances which, in contact with water, emit flammable gases.",13),
+				new listedValue("IMDG Code Class 5 Div. 5.1", "Oxidizing substances.",14),
+				new listedValue("IMDG Code Class 5 Div. 5.2", "Organic peroxides.",15),
+				new listedValue("IMDG Code Class 6 Div. 6.1", "Toxic substances.",16),
+				new listedValue("IMDG Code Class 6 Div. 6.2", "Infectious substances.",17),
+				new listedValue("IMDG Code Class 7", "Radioactive material.",18),
+				new listedValue("IMDG Code Class 8", "Corrosive substances.",19),
+				new listedValue("IMDG Code Class 9", "Miscellaneous dangerous substances and articles.",20),
+				new listedValue("Harmful Substances in Packaged Form", "Harmful substances are those substances which are identified as marine pollutants in the International Maritime Dangerous Goods Code (IMDG Code). Packaged form is defined as the forms of containment specified for harmful substances in the IMDG Code.",21),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDangerousOrHazardousCargo(int? value) => new categoryOfDangerousOrHazardousCargo { value = value };
+	}
+
+	/// <summary>
+	/// Classification of significant aspects of depths about which information is provided.
+	/// </summary>
+	public class categoryOfDepthsDescription : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfDepthsDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Depths Description";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Shoal", "A shallow elevation composed of unconsolidated material that may constitute a hazard to surface navigation.",1),
+				new listedValue("General Depth", "General information about the vertical distance from the water surface to the bottom.",2),
+				new listedValue("Controlling Depth", "The least depth in the approach or channel to an area, such as a port or anchorage, governing the maximum draft of vessels that can enter.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDepthsDescription(int? value) => new categoryOfDepthsDescription { value = value };
+	}
+
+	/// <summary>
+	/// Classification of a post or group of posts, used for mooring or warping a vessel.
+	/// </summary>
+	public class categoryOfDolphin : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfDolphin);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Dolphin";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Mooring Dolphin", "A post or group of posts driven into the seabed or riverbed, used as a mooring point for vessels.",1),
+				new listedValue("Deviation Dolphin", "A post or group of posts, which a vessel may swing around for compass adjustment.",2),
+				new listedValue("Berthing Dolphin", "A post or group of posts driven into the seabed or riverbed, used to extend the berth of a vessel by providing extra mooring points.",3),
+				new listedValue("Fender or Breasting Dolphin", "A post or group of posts driven into the seabed or riverbed, used to assist in berthing of vessels by taking up some berthing loads; keep vessels from pressing against the pier structure; or to protect structures from possible impact by ships.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfDolphin(int? value) => new categoryOfDolphin { value = value };
+	}
+
+	/// <summary>
+	/// The electrical frequency provided by the power supply station.
+	/// </summary>
+	public class categoryOfFrequency : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfFrequency);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Frequency";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("50Hz", "50 Hertz",1),
+				new listedValue("60Hz", "60 Hertz",2),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfFrequency(int? value) => new categoryOfFrequency { value = value };
+	}
+
+	/// <summary>
+	/// Classification of harbour use.
+	/// </summary>
+	public class categoryOfHarbourFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfHarbourFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Harbour Facility";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("RoRo Terminal", "A terminal for roll-on roll-off ferries.",1),
+				new listedValue("Ferry Terminal", "A terminal for passenger and vehicle ferries.",3),
+				new listedValue("Fishing Harbour", "A harbour with facilities for fishing boats.",4),
+				new listedValue("Yacht Harbour/Marina", "A harbour facility for small boats, yachts, etc., where supplies, repairs, and various services are available.",5),
+				new listedValue("Naval Base", "A centre of operations for naval vessels.",6),
+				new listedValue("Tanker Terminal", "A terminal for the bulk handling of liquid cargoes.",7),
+				new listedValue("Passenger Terminal", "A terminal for the loading and unloading of passengers.",8),
+				new listedValue("Shipyard", "A place where ships are built or repaired.",9),
+				new listedValue("Container Terminal", "A terminal with facilities to load/unload or store shipping containers.",10),
+				new listedValue("Bulk Terminal", "A terminal for the handling of bulk materials such as iron ore, coal, etc.",11),
+				new listedValue("Ship Lift", "A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.",12),
+				new listedValue("Straddle Carrier", "A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.",13),
+				new listedValue("Service Harbour", "A harbour within which the floating equipment (dredges, tugs ...) of harbour services are stationed.",14),
+				new listedValue("Pilotage Service", "The services of a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area, are available.",15),
+				new listedValue("Service and Repair", "A place where mechanical services or repairs can be undertaken to engines or other vessel equipment.",16),
+				new listedValue("Quarantine Station", "A medical control center located in an isolated spot ashore where patients with contagious diseases from vessel in quarantine are taken.",17),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfHarbourFacility(int? value) => new categoryOfHarbourFacility { value = value };
+	}
+
+	/// <summary>
+	/// A place or structure to which a vessel can be secured.
+	/// </summary>
+	public class categoryOfMooringWarpingFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfMooringWarpingFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Mooring/Warping Facility";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Tie-Up Wall", "A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.",4),
+				new listedValue("Post or Pile", "A long heavy timber or section of steel, wood, concrete, etc., forced into the seabed to serve as a mooring facility.",5),
+				new listedValue("Mooring Cable", "A chain or very strong fibre or wire rope used to anchor or moor vessels or buoys.",6),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfMooringWarpingFacility(int? value) => new categoryOfMooringWarpingFacility { value = value };
+	}
+
+	/// <summary>
+	/// The type of plug(s) available at the power supply station.
+	/// </summary>
+	public class categoryOfPlug : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfPlug);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Plug";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator categoryOfPlug(String value) => new categoryOfPlug { value = value };
+	}
+
+	/// <summary>
+	/// Classification of subdivisions of a port or harbour area by usage.
+	/// </summary>
+	public class categoryOfPortSection : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfPortSection);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Port Section";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Port Fairway", "The main navigable channel in a harbour or its approaches, for vessels of larger size.",1),
+				new listedValue("Berth Pocket", "A body of water at a berth or anchor berth, of adequate dimensions to allow a vessel to make fast to the shore, mooring buoys, berthing dolphins or to anchor.",3),
+				new listedValue("Seaplane Anchorage", "An area in which sea-planes anchor or may anchor.",8),
+				new listedValue("Dredged Basin", "An area of water or channel enlargement of increased depth compared to adjacent areas, where the depth is maintained by dredging operations.",9),
+				new listedValue("Port Safety Zone", "The area around a port facility or harbour installation within which vessels are prohibited from entering without permission.",11),
+				new listedValue("Lay-by Berth", "A general berth for use by vessels for short term waiting until a loading or discharging berth is available.",12),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfPortSection(int? value) => new categoryOfPortSection { value = value };
+	}
+
+	/// <summary>
+	/// Expresses constraints or requirements on vessel actions or activities in relation to a geographic feature, facility, or service.
+	/// </summary>
+	public class categoryOfRelationship : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfRelationship);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Relationship";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Prohibited", "Use of facility, waterway or service is forbidden.",1),
+				new listedValue("Not Recommended", "Use of facility, waterway or service is not recommended.",2),
+				new listedValue("Permitted", "Use of facility, waterway, or service is permitted but not required.",3),
+				new listedValue("Recommended", "Use of facility, waterway, or service is recommended.",4),
+				new listedValue("Required", "Use of facility, waterway, or service is required.",5),
+				new listedValue("Not Required", "Use of facility, waterway, or service is not required.",6),
+				new listedValue("Exclusively Permitted", "Only vessels of the specified characteristics may use the facility, waterway, or service.",7),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfRelationship(int? value) => new categoryOfRelationship { value = value };
+	}
+
+	/// <summary>
+	/// The type of schedule, for instance opening, closure, etc.
+	/// </summary>
+	public class categoryOfSchedule : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfSchedule);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Schedule";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Normal Operation", "The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.",1),
+				new listedValue("Closure", "The service, office, or area is closed.",2),
+				new listedValue("Unmanned Operation", "The service is available but not manned.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfSchedule(int? value) => new categoryOfSchedule { value = value };
+	}
+
+	/// <summary>
+	/// Classification of equipment or installations that are used for providing shoreside electrical power to a vessel at berth.
+	/// </summary>
+	public class categoryOfShorePowerFacility : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfShorePowerFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Shore Power Facility";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("High-Voltage Shore Power System", "Delivers power to vessels using higher voltage (for example, 10 kV or above), suitable for large ports and large vessels. such as tankers, cargo ships, etc.",1),
+				new listedValue("Low-Voltage Shore Power System", "Delivers power to vessels using lower voltage, designed for small to medium-sized coastal or riverine terminals and smaller vessels.",2),
+				new listedValue("Hybrid Shore Power System", "Delivers power to vessels using high-voltage (for example, 10kV and above) and low-voltage outputs or simultaneous provision of dual-voltage power.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfShorePowerFacility(int? value) => new categoryOfShorePowerFacility { value = value };
+	}
+
+	/// <summary>
+	/// An assessment of the likelihood of change over time.
+	/// </summary>
+	public class categoryOfTemporalVariation : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfTemporalVariation);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Temporal Variation";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Extreme Event", "Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.",1),
+				new listedValue("Likely to Change and Significant Shoaling Expected", "Continuous or frequent change (for example river siltation, sand waves, seasonal storms, ice bergs, etc) that is likely to result in new significant shoaling.",2),
+				new listedValue("Likely to Change But Significant Shoaling Not Expected", "Continuous or frequent change (for example sand wave shift, seasonal storms, ice bergs, etc) that is not likely to result in new significant shoaling.",3),
+				new listedValue("Likely to Change", "Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).",4),
+				new listedValue("Unlikely to Change", "Significant change to the seafloor is not expected.",5),
+				new listedValue("Unassessed", "Not having been assessed.",6),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfTemporalVariation(int? value) => new categoryOfTemporalVariation { value = value };
+	}
+
+	/// <summary>
+	/// Classification of terminals according to type of use, purpose, or type of cargo loaded or unloaded.
+	/// </summary>
+	public class categoryOfTerminal : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfTerminal);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Terminal";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("RoRo Terminal", "A terminal for roll-on roll-off ferries.",1),
+				new listedValue("Ferry Terminal", "A terminal for passenger and vehicle ferries.",3),
+				new listedValue("Tanker Terminal", "A terminal for the bulk handling of liquid cargoes.",7),
+				new listedValue("Passenger Terminal", "A terminal for the loading and unloading of passengers.",8),
+				new listedValue("Container Terminal", "A terminal with facilities to load/unload or store shipping containers.",10),
+				new listedValue("Bulk Terminal", "A terminal for the handling of bulk materials such as iron ore, coal, etc.",11),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfTerminal(int? value) => new categoryOfTerminal { value = value };
+	}
+
+	/// <summary>
+	/// Classification of completeness of textual information in relation to the source material from which it is derived.
+	/// </summary>
+	public class categoryOfText : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfText);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Text";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Abstract or Summary", "A statement summarizing the important points of a text.",1),
+				new listedValue("Extract", "An excerpt or excerpts from a text.",2),
+				new listedValue("Full Text", "The whole text.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfText(int? value) => new categoryOfText { value = value };
+	}
+
+	/// <summary>
+	/// The locality of vessel registration or enrolment relative to the nationality of a port, territorial sea, administrative area, exclusive zone or other location.
+	/// </summary>
+	public class categoryOfVesselRegistry : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfVesselRegistry);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Vessel Registry";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Domestic", "The vessel is registered or enrolled under the same national flag as the port, harbour, territorial sea, exclusive economic zone, or administrative area in which the object that possesses this attribute applies or is located.",1),
+				new listedValue("Foreign", "The vessel is registered or enrolled under a national flag different from the port, harbour, territorial sea, exclusive economic zone, or other administrative area in which the object that possesses this attribute applies or is located.",2),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfVesselRegistry(int? value) => new categoryOfVesselRegistry { value = value };
+	}
+
+	/// <summary>
+	/// The electrical voltage provided by the power supply station.
+	/// </summary>
+	public class categoryOfVoltage : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfVoltage);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Voltage";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("230V", "230 Volts",1),
+				new listedValue("400V", "400 Volts.",2),
+				new listedValue("120V", "120 Volts",3),
+				new listedValue("120V or 240V", "120/240 Volts",4),
+				new listedValue("208V", "208 Volts",5),
+				new listedValue("440V", "440 Volts",6),
+				new listedValue("440V or 690V", "440/690 Volts",7),
+				new listedValue("480V", "480 Volts",8),
+				new listedValue("690V", "690 Volts",9),
+				new listedValue("6600V", "6.6 kiloVolts",10),
+				new listedValue("6600V or 11000V", "6.6/11 kiloVolts",11),
+				new listedValue("11000V", "11 kiloVolts",12),
+				new listedValue("22000V", "22 kiloVolts",13),
+				new listedValue("380V", "380 Volts",14),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator categoryOfVoltage(int? value) => new categoryOfVoltage { value = value };
+	}
+
+	/// <summary>
+	/// A system used to protect metal structures against corrosion by supplying direct current to the immersed external surface of the structure.
+	/// </summary>
+	public class cathodicProtectionSystem : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cathodicProtectionSystem);
+		[JsonIgnore]
+		public override string S100FC_name => "Cathodic Protection System";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator cathodicProtectionSystem(Boolean value) => new cathodicProtectionSystem { value = value };
+	}
+
+	/// <summary>
+	/// The name of a town or city.
+	/// </summary>
+	public class cityName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cityName);
+		[JsonIgnore]
+		public override string S100FC_name => "City Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator cityName(String value) => new cityName { value = value };
+	}
+
+	/// <summary>
+	/// A channel number assigned to a specific radio frequency, frequencies or frequency band.
+	/// </summary>
+	public class communicationChannel : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(communicationChannel);
+		[JsonIgnore]
+		public override string S100FC_name => "Communication Channel";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator communicationChannel(String value) => new communicationChannel { value = value };
+	}
+
+	/// <summary>
+	/// Numerical comparison.
+	/// </summary>
+	public class comparisonOperator : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(comparisonOperator);
+		[JsonIgnore]
+		public override string S100FC_name => "Comparison Operator";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Greater Than", "The value of the left value is greater than that of the right.",1),
+				new listedValue("Greater Than or Equal To", "The value of the left expression is greater than or equal to that of the right.",2),
+				new listedValue("Less Than", "The value of the left expression is less than that of the right.",3),
+				new listedValue("Less Than or Equal To", "The value of the left expression is less than or equal to that of the right.",4),
+				new listedValue("Equal To", "The two values are equivalent.",5),
+				new listedValue("Not Equal To", "The two values are not equivalent.",6),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator comparisonOperator(int? value) => new comparisonOperator { value = value };
+	}
+
+	/// <summary>
+	/// The various conditions of buildings and other constructions.
+	/// </summary>
+	public class condition : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(condition);
+		[JsonIgnore]
+		public override string S100FC_name => "Condition";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Under Construction", "Being built but not yet capable of function.",1),
+				new listedValue("Ruined", "A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.",2),
+				new listedValue("Under Reclamation", "An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.",3),
+				new listedValue("Planned Construction", "Detailed planning has been completed but construction has not been initiated.",5),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator condition(int? value) => new condition { value = value };
+	}
+
+	/// <summary>
+	/// Instructions provided on how to contact a particular person, organisation or service.
+	/// </summary>
+	public class contactInstructions : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(contactInstructions);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Instructions";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator contactInstructions(String value) => new contactInstructions { value = value };
+	}
+
+	/// <summary>
+	/// The name of a nation.
+	/// </summary>
+	public class countryName : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(countryName);
+		[JsonIgnore]
+		public override string S100FC_name => "Country Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator countryName(String value) => new countryName { value = value };
+	}
+
+	/// <summary>
+	/// The latest date on which an object (for example a buoy) will be present.
+	/// </summary>
+	public class dateEnd : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Date End";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+
+		public static implicit operator dateEnd(String value) => new dateEnd { value = value };
+	}
+
+	/// <summary>
+	/// The date of an event.
+	/// </summary>
+	public class dateFixed : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Fixed";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+
+		public static implicit operator dateFixed(String value) => new dateFixed { value = value };
+	}
+
+	/// <summary>
+	/// The earliest date on which an object (for example a buoy) will be present.
+	/// </summary>
+	public class dateStart : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Start";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+
+		public static implicit operator dateStart(String value) => new dateStart { value = value };
+	}
+
+	/// <summary>
+	/// A day which is not fixed in the Gregorian calendar.
+	/// </summary>
+	public class dateVariable : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dateVariable);
+		[JsonIgnore]
+		public override string S100FC_name => "Date Variable";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator dateVariable(String value) => new dateVariable { value = value };
+	}
+
+	/// <summary>
+	/// Any one of seven days in a week.
+	/// </summary>
+	public class dayOfWeek : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Sunday", "The day of the week following Saturday and preceding Monday.",1),
+				new listedValue("Monday", "The day of the week following Sunday and preceding Tuesday.",2),
+				new listedValue("Tuesday", "The day of the week following Monday and preceding Wednesday.",3),
+				new listedValue("Wednesday", "The day of the week following Tuesday and preceding Thursday.",4),
+				new listedValue("Thursday", "The day of the week following Wednesday and preceding Friday.",5),
+				new listedValue("Friday", "The day of the week following Thursday and preceding Saturday.",6),
+				new listedValue("Saturday", "The day of the week following Friday and preceding Sunday.",7),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator dayOfWeek(int? value) => new dayOfWeek { value = value };
+	}
+
+	/// <summary>
+	/// A statement expressing if the days of the week identified define a range or not.
+	/// </summary>
+	public class dayOfWeekIsRange : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dayOfWeekIsRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Day of Week is Range";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator dayOfWeekIsRange(Boolean value) => new dayOfWeekIsRange { value = value };
+	}
+
+	/// <summary>
+	/// Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.
+	/// </summary>
+	public class deliveryPoint : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(deliveryPoint);
+		[JsonIgnore]
+		public override string S100FC_name => "Delivery Point";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator deliveryPoint(String value) => new deliveryPoint { value = value };
+	}
+
+	/// <summary>
+	/// The place or general direction to which a vessel is going or directed.
+	/// </summary>
+	public class destination : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(destination);
+		[JsonIgnore]
+		public override string S100FC_name => "Destination";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator destination(String value) => new destination { value = value };
+	}
+
+	/// <summary>
+	/// Describes a feature that is in development.
+	/// </summary>
+	public class development : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(development);
+		[JsonIgnore]
+		public override string S100FC_name => "Development";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator development(String value) => new development { value = value };
+	}
+
+	/// <summary>
+	/// A numeric measure of the spatial separation between two locations.
+	/// </summary>
+	public class distance : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(distance);
+		[JsonIgnore]
+		public override string S100FC_name => "Distance";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator distance(double value) => new distance { value = value };
+	}
+
+	/// <summary>
+	/// Whether a vessel must use a shore-based or other resource to obtain up-to-date information.
+	/// </summary>
+	public class dynamicResource : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(dynamicResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Dynamic Resource";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Static", "The information is static, or a source of up-to-date information is unavailable or unknown.",1),
+				new listedValue("Mandatory External Dynamic", "An external source of up-to-date information is available and interaction with it to obtain up-to-date information is required.",2),
+				new listedValue("Optional External Dynamic", "An external source of up-to-date information is available but interaction with it to obtain up-to-date information is not required.",3),
+				new listedValue("Onboard Dynamic", "Up-to-date information may be computed using only onboard resources.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator dynamicResource(int? value) => new dynamicResource { value = value };
+	}
+
+	/// <summary>
+	/// The altitude of the ground level of an object, measured from a specified vertical datum.
+	/// </summary>
+	public class elevation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(elevation);
+		[JsonIgnore]
+		public override string S100FC_name => "Elevation";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator elevation(double value) => new elevation { value = value };
+	}
+
+	/// <summary>
+	/// Description of the seaward end of a channel, harbour, dock, etc.
+	/// </summary>
+	public class entranceDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(entranceDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Entrance Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator entranceDescription(String value) => new entranceDescription { value = value };
+	}
+
+	/// <summary>
+	/// The location of a fragment of text or other information in a support file.
+	/// </summary>
+	public class fileLocator : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fileLocator);
+		[JsonIgnore]
+		public override string S100FC_name => "File Locator";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator fileLocator(String value) => new fileLocator { value = value };
+	}
+
+	/// <summary>
+	/// The file name of an externally referenced text file.
+	/// </summary>
+	public class fileReference : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fileReference);
+		[JsonIgnore]
+		public override string S100FC_name => "File Reference";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator fileReference(String value) => new fileReference { value = value };
+	}
+
+	/// <summary>
+	/// Services for combating fires, provided by different methods.
+	/// </summary>
+	public class firefightingService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(firefightingService);
+		[JsonIgnore]
+		public override string S100FC_name => "Firefighting Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Shore-Based Firefighting", "Personnel and equipment that are capable of combating a fire from ashore.",1),
+				new listedValue("Onboard Firefighting", "Trained firefighting personnel with the capability of boarding and combating a fire on a vessel.",2),
+				new listedValue("Firefighting Boat", "Specialised watercraft with firefighting apparatus designed for fighting shoreline and shipboard fires",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator firefightingService(int? value) => new firefightingService { value = value };
+	}
+
+	/// <summary>
+	/// The shore station receiver frequency.
+	/// </summary>
+	public class frequencyShoreStationReceives : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyShoreStationReceives);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Receives";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator frequencyShoreStationReceives(int value) => new frequencyShoreStationReceives { value = value };
+	}
+
+	/// <summary>
+	/// The shore station transmitter frequency.
+	/// </summary>
+	public class frequencyShoreStationTransmits : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyShoreStationTransmits);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Shore Station Transmits";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator frequencyShoreStationTransmits(int value) => new frequencyShoreStationTransmits { value = value };
+	}
+
+	/// <summary>
+	/// The GLN extension component is used to identify internal physical locations within a location which is identified with a GLN. Must conform to the rules for GLN extension. (GS1 specification).
+	/// </summary>
+	public class gLNExtension : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(gLNExtension);
+		[JsonIgnore]
+		public override string S100FC_name => "GLN Extension";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator gLNExtension(String value) => new gLNExtension { value = value };
+	}
+
+	/// <summary>
+	/// A globally unique, standardised identifier for parties and locations in business processes or supply chains.
+	/// </summary>
+	public class globalLocationNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(globalLocationNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Global Location Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator globalLocationNumber(String value) => new globalLocationNumber { value = value };
+	}
+
+	/// <summary>
+	/// Words set at the head of a passage or page to introduce or categorize.
+	/// </summary>
+	public class headline : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(headline);
+		[JsonIgnore]
+		public override string S100FC_name => "Headline";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator headline(String value) => new headline { value = value };
+	}
+
+	/// <summary>
+	/// Ships must take heaving lines thrown from the shore.
+	/// </summary>
+	public class heavingLinesFromShore : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(heavingLinesFromShore);
+		[JsonIgnore]
+		public override string S100FC_name => "Heaving Lines From Shore";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator heavingLinesFromShore(Boolean value) => new heavingLinesFromShore { value = value };
+	}
+
+	/// <summary>
+	/// The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.
+	/// </summary>
+	public class height : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(height);
+		[JsonIgnore]
+		public override string S100FC_name => "Height";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator height(double value) => new height { value = value };
+	}
+
+	/// <summary>
+	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
+	/// </summary>
+	public class horizontalDistanceUncertainty : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(horizontalDistanceUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Distance Uncertainty";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator horizontalDistanceUncertainty(double value) => new horizontalDistanceUncertainty { value = value };
+	}
+
+	/// <summary>
+	/// Identification code as specified in predefined system. Also called identification number.
+	/// </summary>
+	public class iDCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(iDCode);
+		[JsonIgnore]
+		public override string S100FC_name => "ID Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator iDCode(String value) => new iDCode { value = value };
+	}
+
+	/// <summary>
+	/// Whether the vessel is in ballast.
+	/// </summary>
+	public class inBallast : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(inBallast);
+		[JsonIgnore]
+		public override string S100FC_name => "In Ballast";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator inBallast(Boolean value) => new inBallast { value = value };
+	}
+
+	/// <summary>
+	/// A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.
+	/// </summary>
+	public class interoperabilityIdentifier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(interoperabilityIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Interoperability Identifier";
+		[JsonIgnore]
+		public override string valueType => "URN";
+		public String? value { get; set; } = default;
+
+		public static implicit operator interoperabilityIdentifier(String value) => new interoperabilityIdentifier { value = value };
+	}
+
+	/// <summary>
+	/// Classification of ISPS security levels according to the ISPS Code.
+	/// </summary>
+	public class iSPSLevel : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(iSPSLevel);
+		[JsonIgnore]
+		public override string S100FC_name => "ISPS Level";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("ISPS Level 1", "The level for which minimum appropriate protective security measures shall be maintained at all times.",1),
+				new listedValue("ISPS Level 2", "The level for which appropriate additional protective security measures shall be maintained for a period of time as a result of heightened risk of a security incident.",2),
+				new listedValue("ISPS Level 3", "The level for which further specific protective security measures shall be maintained for a limited period of time when a security incident is probable or imminent, although it may not be possible to identify the specific target.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator iSPSLevel(int? value) => new iSPSLevel { value = value };
+	}
+
+	/// <summary>
+	/// The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.
+	/// </summary>
+	public class language : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(language);
+		[JsonIgnore]
+		public override string S100FC_name => "Language";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator language(String value) => new language { value = value };
+	}
+
+	/// <summary>
+	/// Location (address) for online access using a URL/URI address or similar addressing scheme.
+	/// </summary>
+	public class linkage : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(linkage);
+		[JsonIgnore]
+		public override string S100FC_name => "Linkage";
+		[JsonIgnore]
+		public override string valueType => "URI";
+		public String? value { get; set; } = default;
+
+		public static implicit operator linkage(String value) => new linkage { value = value };
+	}
+
+	/// <summary>
+	/// Description of local knowledge that may be needed, for example to traverse a location.
+	/// </summary>
+	public class localKnowledgeDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(localKnowledgeDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Local Knowledge Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator localKnowledgeDescription(String value) => new localKnowledgeDescription { value = value };
+	}
+
+	/// <summary>
+	/// A textual rendering of a geographic location.
+	/// </summary>
+	public class locationByText : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(locationByText);
+		[JsonIgnore]
+		public override string S100FC_name => "Location by Text";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator locationByText(String value) => new locationByText { value = value };
+	}
+
+	/// <summary>
+	/// Location identifier, based on MRN. This can be either a specific identifier for an identified physical location or a type-only identifier for a logical location, such as BERTH.
+	/// </summary>
+	public class locationMRN : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(locationMRN);
+		[JsonIgnore]
+		public override string S100FC_name => "Location Maritime Resource Name";
+		[JsonIgnore]
+		public override string valueType => "URN";
+		public String? value { get; set; } = default;
+
+		public static implicit operator locationMRN(String value) => new locationMRN { value = value };
+	}
+
+	/// <summary>
+	/// Expresses whether all the constraints described by its co-attributes must be satisfied, or only one such constraint need be satisfied.
+	/// </summary>
+	public class logicalConnectives : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(logicalConnectives);
+		[JsonIgnore]
+		public override string S100FC_name => "Logical Connectives";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Logical Conjunction", "All the conditions described by the other attributes of the object, or sub-attributes of the same complex attribute, are true.",1),
+				new listedValue("Logical Disjunction", "At least one of the conditions described by the other attributes of the object, or sub-attributes of the same complex attributes, is true.",2),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator logicalConnectives(int? value) => new logicalConnectives { value = value };
+	}
+
+	/// <summary>
+	/// An identifier for a specific location on a manifold (a pipe or chamber with several openings).
+	/// </summary>
+	public class manifoldNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(manifoldNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Manifold Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator manifoldNumber(String value) => new manifoldNumber { value = value };
+	}
+
+	/// <summary>
+	/// The largest intended viewing scale for the data.
+	/// </summary>
+	public class maximumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(maximumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator maximumDisplayScale(int value) => new maximumDisplayScale { value = value };
+	}
+
+	/// <summary>
+	/// The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.
+	/// </summary>
+	public class maximumPermittedDraught : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(maximumPermittedDraught);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Permitted Draught";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator maximumPermittedDraught(double value) => new maximumPermittedDraught { value = value };
+	}
+
+	/// <summary>
+	/// The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.
+	/// </summary>
+	public class maximumPermittedVesselLength : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(maximumPermittedVesselLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Maximum Permitted Vessel Length";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator maximumPermittedVesselLength(double value) => new maximumPermittedVesselLength { value = value };
+	}
+
+	/// <summary>
+	/// Services for the prevention or treatment of, or response to injury or illness.
+	/// </summary>
+	public class medicalService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(medicalService);
+		[JsonIgnore]
+		public override string S100FC_name => "Medical Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Ambulance", "A vehicle for conveying the sick or injured to or from a hospital.",1),
+				new listedValue("Fumigation", "Disinfection or purification with fumes.",2),
+				new listedValue("Doctor", "A place where a doctor is available to provide medical attention.",3),
+				new listedValue("Quarantine", "The isolation of patients with contagious diseases.",4),
+				new listedValue("Vaccination Centre", "A place where substances intended to procure immunity against one or several diseases are administered.",5),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator medicalService(int? value) => new medicalService { value = value };
+	}
+
+	/// <summary>
+	/// Indicates whether a vessel is included or excluded from the regulation/restriction/recommendation/nautical information.
+	/// </summary>
+	public class membership : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(membership);
+		[JsonIgnore]
+		public override string S100FC_name => "Membership";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Included", "Vessels with these characteristics are included in the regulation/restriction/recommendation/nautical information.",1),
+				new listedValue("Excluded", "Vessels with these characteristics are excluded from the regulation/restriction/recommendation/nautical information.",2),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator membership(int? value) => new membership { value = value };
+	}
+
+	/// <summary>
+	/// The process, arrangement or scheme of attachment used to secure a vessel to a berth.
+	/// </summary>
+	public class methodOfSecuring : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(methodOfSecuring);
+		[JsonIgnore]
+		public override string S100FC_name => "Method of Securing";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Bow to Seaward", "Vessel is secured perpendicular to the wharf with bow to seaward.",1),
+				new listedValue("Stern to Seaward", "Vessel is secured perpendicular to the wharf with stern to the seaward.",2),
+				new listedValue("Mediterranean Mooring", "The vessel is secured perpendicular to the wharf.",3),
+				new listedValue("Baltic Mooring", "Mooring method/procedure used during onshore wind conditions without a tug.",4),
+				new listedValue("Running Mooring", "Mooring by maneuvering ahead and astern while dropping anchors to secure the vessel with reduced swinging room.",5),
+				new listedValue("Standing Mooring", "Mooring by using mainly wind and tide to position the vessel while dropping anchors to secure the vessel with reduced swinging room. Makes limited use of the engine to position the vessel.",6),
+				new listedValue("Single Point Mooring", "A mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure.",7),
+				new listedValue("Multi-Buoy Mooring", "A facility where a vessel is usually moored by a combination of the ship’s anchors forward and mooring buoys aft and held on a fixed heading. Also called Conventional Buoy Mooring (CBM).",8),
+				new listedValue("Ship-to-Ship Mooring", "Mooring alongside another vessel.",9),
+				new listedValue("Spider Buoy Mooring", "Mooring system supported by a spider buoy.",10),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator methodOfSecuring(int? value) => new methodOfSecuring { value = value };
+	}
+
+	/// <summary>
+	/// An identifier for a specific position along a linear or curvilinear extent of a wharf, quay, or jetty. Numbering may be continued over multiple segments.
+	/// </summary>
+	public class metreMarkNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(metreMarkNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Metre Mark Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator metreMarkNumber(String value) => new metreMarkNumber { value = value };
+	}
+
+	/// <summary>
+	/// The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.
+	/// </summary>
+	public class minimumBerthDepth : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minimumBerthDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Berth Depth";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator minimumBerthDepth(double value) => new minimumBerthDepth { value = value };
+	}
+
+	/// <summary>
+	/// The smallest intended viewing scale for the data.
+	/// </summary>
+	public class minimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(minimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Minimum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator minimumDisplayScale(int value) => new minimumDisplayScale { value = value };
+	}
+
+	/// <summary>
+	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
+	/// </summary>
+	public class mMSICode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(mMSICode);
+		[JsonIgnore]
+		public override string S100FC_name => "MMSI Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator mMSICode(String value) => new mMSICode { value = value };
+	}
+
+	/// <summary>
+	/// The individual name of a feature.
+	/// </summary>
+	public class name : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(name);
+		[JsonIgnore]
+		public override string S100FC_name => "Name";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator name(String value) => new name { value = value };
+	}
+
+	/// <summary>
+	/// Name of the online resource.
+	/// </summary>
+	public class nameOfResource : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nameOfResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Name of Resource";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator nameOfResource(String value) => new nameOfResource { value = value };
+	}
+
+	/// <summary>
+	/// Classification of the type and display level of the name of a feature in an end-user system.
+	/// </summary>
+	public class nameUsage : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nameUsage);
+		[JsonIgnore]
+		public override string S100FC_name => "Name Usage";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Default Name Display", "The name is intended to be displayed when the end-user system is set to the default name/text display setting.",1),
+				new listedValue("Alternate Name Display", "The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.",2),
+				new listedValue("No Chart Display", "The name or text is not intended to be displayed.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator nameUsage(int? value) => new nameUsage { value = value };
+	}
+
+	/// <summary>
+	/// Identifier of membership of a particular nation.
+	/// </summary>
+	public class nationality : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(nationality);
+		[JsonIgnore]
+		public override string S100FC_name => "Nationality";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator nationality(String value) => new nationality { value = value };
+	}
+
+	/// <summary>
+	/// Code for function performed by the online resource.
+	/// </summary>
+	public class onlineFunction : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(onlineFunction);
+		[JsonIgnore]
+		public override string S100FC_name => "Online Function";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Download", "Online instructions for transferring data from one storage device or system to another.",1),
+				new listedValue("Offline Access", "Online instructions for requesting the resource from the provider.",3),
+				new listedValue("Order", "Online order process for obtaining the resource.",4),
+				new listedValue("Search", "To make painstaking investigation or examination.",5),
+				new listedValue("Complete Metadata", "Complete metadata provided.",6),
+				new listedValue("Browse Graphic", "Browse graphic provided.",7),
+				new listedValue("Upload", "Online resource upload capability provided.",8),
+				new listedValue("Email Service", "Online email service provided.",9),
+				new listedValue("Browsing", "Online browsing provided.",10),
+				new listedValue("File Access", "Online file access provided.",11),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator onlineFunction(int? value) => new onlineFunction { value = value };
+	}
+
+	/// <summary>
+	/// Detailed text description of what the online resource is/does.
+	/// </summary>
+	public class onlineResourceDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(onlineResourceDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Online Resource Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator onlineResourceDescription(String value) => new onlineResourceDescription { value = value };
+	}
+
+	/// <summary>
+	/// The largest intended viewing scale for the data.
+	/// </summary>
+	public class optimumDisplayScale : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(optimumDisplayScale);
+		[JsonIgnore]
+		public override string S100FC_name => "Optimum Display Scale";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator optimumDisplayScale(int value) => new optimumDisplayScale { value = value };
+	}
+
+	/// <summary>
+	/// The best estimate of the accuracy of a bearing.
+	/// </summary>
+	public class orientationUncertainty : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(orientationUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation Uncertainty";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator orientationUncertainty(double value) => new orientationUncertainty { value = value };
+	}
+
+	/// <summary>
+	/// The angular distance measured from true north to the major axis of the feature.
+	/// </summary>
+	public class orientationValue : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(orientationValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation Value";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator orientationValue(double value) => new orientationValue { value = value };
+	}
+
+	/// <summary>
+	/// Indicates whether a pictorial representation of the feature is available.
+	/// </summary>
+	public class pictorialRepresentation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictorialRepresentation);
+		[JsonIgnore]
+		public override string S100FC_name => "Pictorial Representation";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator pictorialRepresentation(String value) => new pictorialRepresentation { value = value };
+	}
+
+	/// <summary>
+	/// Short description of the purpose of the image.
+	/// </summary>
+	public class pictureCaption : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictureCaption);
+		[JsonIgnore]
+		public override string S100FC_name => "Picture Caption";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator pictureCaption(String value) => new pictureCaption { value = value };
+	}
+
+	/// <summary>
+	/// A set of information to provide credits to picture creator, copyright owner etc.
+	/// </summary>
+	public class pictureInformation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pictureInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Picture Information";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator pictureInformation(String value) => new pictureInformation { value = value };
+	}
+
+	/// <summary>
+	/// Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.
+	/// </summary>
+	public class pilotMovement : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(pilotMovement);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilot Movement";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Embarkation", "The place where vessels not being navigated according to a pilot's instructions pick up a pilot while in transit from sea to a port or constricted waters for future navigation under pilot instructions.",1),
+				new listedValue("Disembarkation", "The place where vessels being navigated under a pilot's instructions in transit from sea to a port or constricted waters drop the pilot and proceed without being subject to pilot instructions.",2),
+				new listedValue("Pilot Change", "The place where vessels being navigated under a pilot's instructions drop off the pilot and pick up a different pilot for future navigation under pilot's instructions.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator pilotMovement(int? value) => new pilotMovement { value = value };
+	}
+
+	/// <summary>
+	/// Number assigned to the port facility in the IMO port facility database.
+	/// </summary>
+	public class portFacilityNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(portFacilityNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Port Facility Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator portFacilityNumber(String value) => new portFacilityNumber { value = value };
+	}
+
+	/// <summary>
+	/// Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.
+	/// </summary>
+	public class postalCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(postalCode);
+		[JsonIgnore]
+		public override string S100FC_name => "Postal Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator postalCode(String value) => new postalCode { value = value };
+	}
+
+	/// <summary>
+	/// The various substances which are transported, stored or exploited.
+	/// </summary>
+	public class product : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(product);
+		[JsonIgnore]
+		public override string S100FC_name => "Product";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Oil", "A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.",1),
+				new listedValue("Gas", "A substance with particles that can move freely, usually a fuel substance in the context of storage tanks.",2),
+				new listedValue("Stone", "A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.",4),
+				new listedValue("Coal", "A hard black mineral that is burned as fuel.",5),
+				new listedValue("Ore", "A solid rock or mineral from which metal is obtained.",6),
+				new listedValue("Chemicals", "Any substance obtained by or used in a chemical process.",7),
+				new listedValue("Milk", "A white fluid secreted by female mammals as food for their young.",9),
+				new listedValue("Bauxite", "A mineral from which aluminum is obtained.",10),
+				new listedValue("Coke", "A solid substance obtained after gas and tar have been extracted from coal, used as a fuel.",11),
+				new listedValue("Iron Ingots", "An oblong lump of cast iron metal.",12),
+				new listedValue("Salt", "Sodium chloride obtained from mines or by the evaporation of sea water.",13),
+				new listedValue("Sand", "Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.",14),
+				new listedValue("Timber", "Wood prepared for use in building or carpentry.",15),
+				new listedValue("Sawdust/Wood Chips", "Powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.",16),
+				new listedValue("Scrap Metal", "Discarded metal suitable for being reprocessed.",17),
+				new listedValue("Liquefied Natural Gas", "Natural gas that has been liquefied for ease of transport by cooling the gas to -162 Celsius.",18),
+				new listedValue("Liquefied Petroleum Gas", "A compressed gas consisting of flammable light hydrocarbons and derived from petroleum.",19),
+				new listedValue("Wine", "The fermented juice of grapes.",20),
+				new listedValue("Cement", "A substance made of powdered lime and clay, mixed with water.",21),
+				new listedValue("Grain", "A small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.",22),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator product(int? value) => new product { value = value };
+	}
+
+	/// <summary>
+	/// Connection protocol to be used. Example: ftp, http get KVP, http POST, etc.
+	/// </summary>
+	public class protocol : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(protocol);
+		[JsonIgnore]
+		public override string S100FC_name => "Protocol";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator protocol(String value) => new protocol { value = value };
+	}
+
+	/// <summary>
+	/// Request used to access the resource. Structure and content depend on the protocol and standard used by the online resource, such as Web Feature Service standard.
+	/// </summary>
+	public class protocolRequest : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(protocolRequest);
+		[JsonIgnore]
+		public override string S100FC_name => "Protocol Request";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator protocolRequest(String value) => new protocolRequest { value = value };
+	}
+
+	/// <summary>
+	/// The degree of reliability attributed to a position.
+	/// </summary>
+	public class qualityOfHorizontalMeasurement : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(qualityOfHorizontalMeasurement);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Horizontal Measurement";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Surveyed", "The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.",1),
+				new listedValue("Unsurveyed", "Survey data is does not exist or is very poor.",2),
+				new listedValue("Inadequately Surveyed", "Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.",3),
+				new listedValue("Approximate", "A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to an object whose position does not remain fixed.",4),
+				new listedValue("Position Doubtful", "Of uncertain position. The expression is used principally on charts to indicate that a wreck, shoal, etc., has been reported in various positions and not definitely determined in any.",5),
+				new listedValue("Unreliable", "A feature's position has been obtained from questionable or unreliable data.",6),
+				new listedValue("Reported (Not Surveyed)", "An object whose position has been reported and its position confirmed by some means other than a formal survey such as an independent report of the same object.",7),
+				new listedValue("Reported (Not Confirmed)", "An object whose position has been reported and its position has not been confirmed.",8),
+				new listedValue("Estimated", "The most probable position of an object determined from incomplete data or data of questionable accuracy.",9),
+				new listedValue("Precisely Known", "A position that is of a known value, such as the position of an anchor berth or other defined object.",10),
+				new listedValue("Calculated", "A position that is computed from data.",11),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator qualityOfHorizontalMeasurement(int? value) => new qualityOfHorizontalMeasurement { value = value };
+	}
+
+	/// <summary>
+	/// The vector extending from the centre to the periphery of a circular or spherical feature.
+	/// </summary>
+	public class radius : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(radius);
+		[JsonIgnore]
+		public override string S100FC_name => "Radius";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator radius(double value) => new radius { value = value };
+	}
+
+	/// <summary>
+	/// An identifier for a specific ramp (a sloping structure that can be used as a landing place for small vessels, landing ships, or a ferry boat, or for hauling a cradle carrying a vessel, or for the transfer of rolling cargo).
+	/// </summary>
+	public class rampNumber : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(rampNumber);
+		[JsonIgnore]
+		public override string S100FC_name => "Ramp Number";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator rampNumber(String value) => new rampNumber { value = value };
+	}
+
+	/// <summary>
+	/// Work or maintenance activities whereby vessels or equipment are restored to working order, renovated, or improved in condition.
+	/// </summary>
+	public class repairService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(repairService);
+		[JsonIgnore]
+		public override string S100FC_name => "Repair Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Compensation of Magnetic Compass", "The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.",1),
+				new listedValue("Diver Service", "Underwater inspection and repair performed by divers.",2),
+				new listedValue("Bridge Equipment Repair", "Repairs to eqipment installed on the ship's bridge.",3),
+				new listedValue("Engine Repair", "Repair of an engine or machine parts.",4),
+				new listedValue("Electronic Equipment Repair", "Repair of marine electronic instruments.",5),
+				new listedValue("Hull Repair", "Repairs to the ship's body, frame, or superstructure.",6),
+				new listedValue("Navigational Equipment Repair", "Repairs to equipment used in the act of navigating a ship.",7),
+				new listedValue("Propeller Repair", "Repairs to propeller hub and blades.",8),
+				new listedValue("Salvage Gear Repair", "Repairs to equipment used in salvage operations.",9),
+				new listedValue("Shaft Repair", "Repairs to drive shafts used for transmitting mechanical power and torque to a propeller.",10),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator repairService(int? value) => new repairService { value = value };
+	}
+
+	/// <summary>
+	/// The date that the item was observed, done, or investigated.
+	/// </summary>
+	public class reportedDate : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(reportedDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Reported Date";
+		[JsonIgnore]
+		public override string valueType => "S100_TruncatedDate";
+		public String? value { get; set; } = default;
+
+		public static implicit operator reportedDate(String value) => new reportedDate { value = value };
+	}
+
+	/// <summary>
+	/// The maximum safe force or load that a piece of equipment, device, or accessory can handle without breaking or failing under normal conditions.
+	/// </summary>
+	public class safeWorkingLoad : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(safeWorkingLoad);
+		[JsonIgnore]
+		public override string S100FC_name => "Safe Working Load";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator safeWorkingLoad(double value) => new safeWorkingLoad { value = value };
+	}
+
+	/// <summary>
+	/// The minimum scale at which the feature may be used for example for ECDIS presentation.
+	/// </summary>
+	public class scaleMinimum : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(scaleMinimum);
+		[JsonIgnore]
+		public override string S100FC_name => "Scale Minimum";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator scaleMinimum(int value) => new scaleMinimum { value = value };
+	}
+
+	/// <summary>
+	/// Application of measures to ensure that a vessel is free of disease and disease risks, or issue of completion or exemption certificates for such measures.
+	/// </summary>
+	public class shipSanitationControl : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(shipSanitationControl);
+		[JsonIgnore]
+		public override string S100FC_name => "Ship Sanitation Control";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Sanitation Measures Only", "Capable of applying measures to ensure that a vessel is free of disease and disease risks, but cannot issue a certificate.",1),
+				new listedValue("Issue SSCC", "The competent authority can issue a Ship Sanitation Control Certificate after satisfactorily completing or supervising the completion of ship sanitation control measures.",2),
+				new listedValue("Issue SSCEC", "The competent authority may issue a Ship Sanitation Control Exemption Certificate if it is satisfied that the ship is free of infection and contamination, including vectors and reservoirs.",3),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator shipSanitationControl(int? value) => new shipSanitationControl { value = value };
+	}
+
+	/// <summary>
+	/// A textual description of precautions for shore power usage.
+	/// </summary>
+	public class shorePowerDescription : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(shorePowerDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Shore Power Description";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator shorePowerDescription(String value) => new shorePowerDescription { value = value };
+	}
+
+	/// <summary>
+	/// An entity that generates, sells, or is responsible for supplying shore power to vessels.
+	/// </summary>
+	public class shorePowerServiceProvider : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(shorePowerServiceProvider);
+		[JsonIgnore]
+		public override string S100FC_name => "Shore Power Service Provider";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator shorePowerServiceProvider(String value) => new shorePowerServiceProvider { value = value };
+	}
+
+	/// <summary>
+	/// The greatest depth over a sill.
+	/// </summary>
+	public class sillDepth : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sillDepth);
+		[JsonIgnore]
+		public override string S100FC_name => "Sill Depth";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator sillDepth(double value) => new sillDepth { value = value };
+	}
+
+	/// <summary>
+	/// A code from the SMDG (Ship Message Design Group) Terminal Code List.
+	/// </summary>
+	public class sMDGTerminalCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sMDGTerminalCode);
+		[JsonIgnore]
+		public override string S100FC_name => "SMDG Terminal Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator sMDGTerminalCode(String value) => new sMDGTerminalCode { value = value };
+	}
+
+	/// <summary>
+	/// The publication, document, or reference work from which information comes or is acquired.
+	/// </summary>
+	public class source : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(source);
+		[JsonIgnore]
+		public override string S100FC_name => "Source";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator source(String value) => new source { value = value };
+	}
+
+	/// <summary>
+	/// The production date of the source; for example the date of measurement.
+	/// </summary>
+	public class sourceDate : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sourceDate);
+		[JsonIgnore]
+		public override string S100FC_name => "Source Date";
+		[JsonIgnore]
+		public override string valueType => "date";
+		public DateOnly? value { get; set; } = default;
+
+		public static implicit operator sourceDate(DateOnly value) => new sourceDate { value = value };
+	}
+
+	/// <summary>
+	/// Type of the source.
+	/// </summary>
+	public class sourceType : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sourceType);
+		[JsonIgnore]
+		public override string S100FC_name => "Source Type";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Law or Regulation", "Treaty, convention, or international agreement; law or regulation issued by a national or other authority.",1),
+				new listedValue("Official Publication", "Publication not having the force of law, issued by an international organisation or a national or local administration.",2),
+				new listedValue("Mariner Report, Confirmed", "Reported by mariner(s) and confirmed by another source.",7),
+				new listedValue("Mariner Report, Not Confirmed", "Reported by mariner(s) but not confirmed.",8),
+				new listedValue("Industry Publications and Reports", "Shipping and other industry publications, including graphics, charts and web sites.",9),
+				new listedValue("Remotely Sensed Images", "Information obtained from satellite images.",10),
+				new listedValue("Photographs", "Information obtained from photographs.",11),
+				new listedValue("Products Issued by HO Services", "Information obtained from products issued by Hydrographic Offices.",12),
+				new listedValue("News Media", "Information obtained from news media.",13),
+				new listedValue("Traffic Data", "Information obtained from the analysis of traffic data.",14),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator sourceType(int? value) => new sourceType { value = value };
+	}
+
+	/// <summary>
+	/// Classification of services for the provision of materials, goods, utilities, or personal services to vessels, passengers, or crew.
+	/// </summary>
+	public class supplyService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(supplyService);
+		[JsonIgnore]
+		public override string S100FC_name => "Supply Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Shore Power", "The provision of shoreside electrical power to a ship at berth while its main and auxiliary engines are shut down.",1),
+				new listedValue("Fuel Oil Bunkering", "Transfer of fuel oil to the fuel compartments of a ship.",2),
+				new listedValue("LNG Bunkering", "Transfer of liquefied natural gas to the fuel compartments of a ship.",3),
+				new listedValue("Lubricants", "Substances capable of reducing friction, heat, and wear when introduced as a film between solid surfaces.",4),
+				new listedValue("Steam", "The gas into which water is changed by boiling.",5),
+				new listedValue("Potable Water", "Water which can be used for drinking and food preparation.",6),
+				new listedValue("International Shore Connection", "A universal hose connection for the supply of water for fighting fires.",7),
+				new listedValue("Provisions", "A place where food and other such supplies are available.",8),
+				new listedValue("Chandler", "A dealer in ships' supplies.",9),
+				new listedValue("Mechanics Workshop", "A place where mechanical repairs can be undertaken to engines or other vessel equipment.",10),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator supplyService(int? value) => new supplyService { value = value };
+	}
+
+	/// <summary>
+	/// Services for the adjustment of vessel equipment or for assessments pertaining to cargo, compliance with regulations, safety, or security.
+	/// </summary>
+	public class technicalPortService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(technicalPortService);
+		[JsonIgnore]
+		public override string S100FC_name => "Technical Port Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Compensation of Magnetic Compass", "The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.",1),
+				new listedValue("Degaussing", "Neutralization of the strength of the magnetic field of a vessel, by means of suitably arranged electric coils permanently installed in the vessel. See also Degaussing Cable.",2),
+				new listedValue("Cargo Surveying", "Inspection, evaluation or monitoring of the quantity, stowage, loading and unloading, and condition of cargo, and the effects of cargoes on vessel stability and safety.",3),
+				new listedValue("Vetting", "Assessment of quality and compliance with applicable law, regulations, and safety standards.",4),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator technicalPortService(int? value) => new technicalPortService { value = value };
+	}
+
+	/// <summary>
+	/// The name of a provider or type of carrier for a telecommunication service. This service may include land line based, shore based or satellite based radio connections.
+	/// </summary>
+	public class telecommunicationCarrier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunicationCarrier);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Carrier";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator telecommunicationCarrier(String value) => new telecommunicationCarrier { value = value };
+	}
+
+	/// <summary>
+	/// An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.
+	/// </summary>
+	public class telecommunicationIdentifier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunicationIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Identifier";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator telecommunicationIdentifier(String value) => new telecommunicationIdentifier { value = value };
+	}
+
+	/// <summary>
+	/// Classification of methods of communication over a distance by electrical, electronic, or electromagnetic means.
+	/// </summary>
+	public class telecommunicationService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunicationService);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunication Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Voice", "The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.",1),
+				new listedValue("Facsimile", "A system of transmitting and reproducing graphic matter (as printing or still pictures) by means of signals sent over telephone lines.",2),
+				new listedValue("SMS", "Short Message Service is a form of text messaging communication on phones and mobile phones.",3),
+				new listedValue("Data", "A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.",4),
+				new listedValue("Streamed Data", "Data that is constantly received by and presented to an end-user while being delivered by a provider.",5),
+				new listedValue("Telex", "A system of communication in which messages are sent over long distances by using a telephone system and are printed by using a special machine (called a teletypewriter).",6),
+				new listedValue("Telegraph", "An apparatus, system or process for communication at a distance by electric transmission over wire.",7),
+				new listedValue("Email", "Messages and other data exchanged between individuals using computers in a network.",8),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator telecommunicationService(int? value) => new telecommunicationService { value = value };
+	}
+
+	/// <summary>
+	/// The unique identifier for a given terminal.
+	/// </summary>
+	public class terminalIdentifier : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(terminalIdentifier);
+		[JsonIgnore]
+		public override string S100FC_name => "Terminal Identifier";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator terminalIdentifier(String value) => new terminalIdentifier { value = value };
+	}
+
+	/// <summary>
+	/// A non-formatted digital text string.
+	/// </summary>
+	public class text : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(text);
+		[JsonIgnore]
+		public override string S100FC_name => "Text";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator text(String value) => new text { value = value };
+	}
+
+	/// <summary>
+	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
+	/// </summary>
+	public class textOffsetBearing : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textOffsetBearing);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Offset Bearing";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator textOffsetBearing(int value) => new textOffsetBearing { value = value };
+	}
+
+	/// <summary>
+	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
+	/// </summary>
+	public class textOffsetDistance : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textOffsetDistance);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Offset Distance";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator textOffsetDistance(int value) => new textOffsetDistance { value = value };
+	}
+
+	/// <summary>
+	/// A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.
+	/// </summary>
+	public class textRotation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textRotation);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Rotation";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator textRotation(Boolean value) => new textRotation { value = value };
+	}
+
+	/// <summary>
+	/// The attribute from which a text string is derived.
+	/// </summary>
+	public class textType : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textType);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Type";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Name", "The individual name of a feature.",1),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator textType(int? value) => new textType { value = value };
+	}
+
+	/// <summary>
+	/// The thickness of ice that the ship can safely transit.
+	/// </summary>
+	public class thicknessOfIceCapability : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(thicknessOfIceCapability);
+		[JsonIgnore]
+		public override string S100FC_name => "Thickness of Ice Capability";
+		[JsonIgnore]
+		public override string valueType => "integer";
+		public int? value { get; set; } = default;
+
+		public static implicit operator thicknessOfIceCapability(int value) => new thicknessOfIceCapability { value = value };
+	}
+
+	/// <summary>
+	/// The time corresponding to the end of an active period.
+	/// </summary>
+	public class timeOfDayEnd : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeOfDayEnd);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day End";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+
+		public static implicit operator timeOfDayEnd(S100Framework.DomainModel.S100.Time value) => new timeOfDayEnd { value = value };
+	}
+
+	/// <summary>
+	/// The time corresponding to the start of an active period.
+	/// </summary>
+	public class timeOfDayStart : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeOfDayStart);
+		[JsonIgnore]
+		public override string S100FC_name => "Time of Day Start";
+		[JsonIgnore]
+		public override string valueType => "time";
+		public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+
+		public static implicit operator timeOfDayStart(S100Framework.DomainModel.S100.Time value) => new timeOfDayStart { value = value };
+	}
+
+	/// <summary>
+	/// Textual description of the types and capacities of available tugs.
+	/// </summary>
+	public class tugInformation : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(tugInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Tug Information";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator tugInformation(String value) => new tugInformation { value = value };
+	}
+
+	/// <summary>
+	/// Used to encode the UN Location Code (http://www.unece.org/cefact/locode/service/location.html) or - in Europe - the Inland Ship Reporting Standard (ISRS) Code.
+	/// </summary>
+	public class uNLocationCode : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uNLocationCode);
+		[JsonIgnore]
+		public override string S100FC_name => "UN Location Code";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator uNLocationCode(String value) => new uNLocationCode { value = value };
+	}
+
+	/// <summary>
+	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class uncertaintyFixed : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uncertaintyFixed);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Fixed";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator uncertaintyFixed(double value) => new uncertaintyFixed { value = value };
+	}
+
+	/// <summary>
+	/// The factor to be applied to the variable component of an uncertainty equation so as to provide the best estimate of the variable horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class uncertaintyVariableFactor : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(uncertaintyVariableFactor);
+		[JsonIgnore]
+		public override string S100FC_name => "Uncertainty Variable Factor";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator uncertaintyVariableFactor(double value) => new uncertaintyVariableFactor { value = value };
+	}
+
+	/// <summary>
+	/// The vertical clearance measured from the horizontal plane towards the feature overhead.
+	/// </summary>
+	public class verticalClearanceValue : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(verticalClearanceValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Clearance Value";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator verticalClearanceValue(double value) => new verticalClearanceValue { value = value };
+	}
+
+	/// <summary>
+	/// The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.
+	/// </summary>
+	public class verticalDatum : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(verticalDatum);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Datum";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Mean Low Water Springs", "The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.",1),
+				new listedValue("Mean Lower Low Water Springs", "The average height of lower low water springs at a place.",2),
+				new listedValue("Mean Sea Level", "The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.",3),
+				new listedValue("Lowest Low Water", "An arbitrary level conforming to the lowest tide observed at a place, or some what lower.",4),
+				new listedValue("Mean Low Water", "The average height of all low waters at a place over a 19-year period.",5),
+				new listedValue("Lowest Low Water Springs", "An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.",6),
+				new listedValue("Approximate Mean Low Water Springs", "An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).",7),
+				new listedValue("Indian Spring Low Water", "An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.",8),
+				new listedValue("Low Water Springs", "An arbitrary level, approximating that of mean low water springs (MLWS).",9),
+				new listedValue("Approximate Lowest Astronomical Tide", "An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).",10),
+				new listedValue("Nearly Lowest Low Water", "An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).",11),
+				new listedValue("Mean Lower Low Water", "The average height of the lower low waters at a place over a 19-year period.",12),
+				new listedValue("Low Water", "The lowest level reached at a place by the water surface in one oscillation. Also called low tide.",13),
+				new listedValue("Approximate Mean Low Water", "An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).",14),
+				new listedValue("Approximate Mean Lower Low Water", "An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).",15),
+				new listedValue("Mean High Water", "The average height of all high waters at a place over a 19-year period.",16),
+				new listedValue("Mean High Water Springs", "The average height of the high waters of spring tides. Also called spring high water.",17),
+				new listedValue("High Water", "The highest level reached at a place by the water surface in one oscillation.",18),
+				new listedValue("Approximate Mean Sea Level", "An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).",19),
+				new listedValue("High Water Springs", "An arbitrary level, approximating that of mean high water springs (MHWS).",20),
+				new listedValue("Mean Higher High Water", "The average height of higher high waters at a place over a 19-year period.",21),
+				new listedValue("Equinoctial Spring Low Water", "The level of low water springs near the time of an equinox.",22),
+				new listedValue("Lowest Astronomical Tide", "The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.",23),
+				new listedValue("Local Datum", "An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.",24),
+				new listedValue("International Great Lakes Datum 1985", "A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.",25),
+				new listedValue("Mean Water Level", "The average of all hourly water levels over the available period of record.",26),
+				new listedValue("Lower Low Water Large Tide", "The average of the lowest low waters, one from each of 19 years of observations.",27),
+				new listedValue("Higher High Water Large Tide", "The average of the highest high waters, one from each of 19 years of observations.",28),
+				new listedValue("Nearly Highest High Water", "An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.",29),
+				new listedValue("Highest Astronomical Tide", "The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.",30),
+				new listedValue("Baltic Sea Chart Datum 2000", "The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).",44),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator verticalDatum(int? value) => new verticalDatum { value = value };
+	}
+
+	/// <summary>
+	/// The total vertical length of a feature.
+	/// </summary>
+	public class verticalLength : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(verticalLength);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Length";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator verticalLength(double value) => new verticalLength { value = value };
+	}
+
+	/// <summary>
+	/// A description of the required handling characteristics of a vessel including hull design, main and auxiliary machinery, cargo handling equipment, navigation equipment and manoeuvring behaviour.
+	/// </summary>
+	public class vesselPerformance : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselPerformance);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Performance";
+		[JsonIgnore]
+		public override string valueType => "text";
+		public String? value { get; set; } = default;
+
+		public static implicit operator vesselPerformance(String value) => new vesselPerformance { value = value };
+	}
+
+	/// <summary>
+	/// Characteristics of vessels.
+	/// </summary>
+	public class vesselsCharacteristics : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristics);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Length Overall", "The maximum length of the ship.",1),
+				new listedValue("Length at Waterline", "The ship's length measured at the waterline.",2),
+				new listedValue("Breadth", "The width or beam of the vessel.",3),
+				new listedValue("Draught", "The depth of water necessary to float a vessel fully loaded.",4),
+				new listedValue("Displacement Tonnage", "A measurement of the weight of the vessel, usually used for warships. (Merchant ships are usually measured based on the volume of cargo space; see tonnage). Displacement is expressed either in long tons of 2,240 pounds or metric tonnes of 1,000 kg. Since the two units are very close in size (2,240 pounds = 1,016 kg and 1,000 kg = 2,205 pounds), it is common not to distinguish between them. To preserve secrecy, nations sometimes misstate a warship's displacement.",6),
+				new listedValue("Displacement Tonnage, Light", "The weight of the ship excluding cargo, fuel, ballast, stores, passengers, and crew, but with water in the boilers to steaming level.",7),
+				new listedValue("Displacement Tonnage, Loaded", "The weight of the ship including cargo, passengers, fuel, water, stores, dunnage and such other items necessary for use on a voyage, which brings the vessel down to her load draft.",8),
+				new listedValue("Deadweight Tonnage", "The difference between displacement, light and displacement, loaded. A measure of the ship's total carrying capacity.",9),
+				new listedValue("Gross Tonnage", "The entire internal cubic capacity of the ship expressed in tons of 100 cubic feet to the ton, except certain spaces with are exempted such as: peak and other tanks for water ballast, open forecastle bridge and poop, access of hatchways, certain light and air spaces, domes of skylights, condenser, anchor gear, steering gear, wheel house, galley and cabin for passengers.",10),
+				new listedValue("Net Tonnage", "Obtained from the gross tonnage by deducting crew and navigating spaces and allowances for propulsion machinery.",11),
+				new listedValue("Panama Canal/Universal Measurement System Net Tonnage", "The Panama Canal/Universal Measurement System (PC/UMS) is based on net tonnage, modified for Panama Canal purposes. PC/UMS is based on a mathematical formula to calculate a vessel's total volume; a PC/UMS net ton is equivalent to 100 cubic feet of capacity.",12),
+				new listedValue("Suez Canal Net Tonnage", "The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.",13),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator vesselsCharacteristics(int? value) => new vesselsCharacteristics { value = value };
+	}
+
+	/// <summary>
+	/// The unit used for vessel characteristics attribute.
+	/// </summary>
+	public class vesselsCharacteristicsUnit : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristicsUnit);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics Unit";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Metres", "The basic unit of length in the International System of Units (SI) system.",1),
+				new listedValue("Metric Ton", "The tonne or metric ton (U.S.), often redundantly referred to as a metric tonne, is a unit of mass equal to 1,000 kg (2,205 lb) or approximately the mass of one cubic metre of water at four degrees Celsius. It is sometimes abbreviated as mt in the United States, but this conflicts with other SI symbols. The tonne is not a unit in the International System of Units (SI), but is accepted for use with the SI. In SI units and prefixes, the tonne is a megagram (Mg). The Imperial and US customary units comparable to the tonne are both spelled ton in English, though they differ in mass. Pronunciation of tonne (the word used in the UK) and ton is usually identical, but is not too confusing unless accuracy is important as the tonne and UK long ton differ by only 1.6.",3),
+				new listedValue("Ton", "Long ton (weight ton or imperial ton) is the name for the unit called the \"ton\" in the avoirdupois or Imperial system of measurements, as used in the United Kingdom and several other Commonwealth countries. It has been mostly replaced by the tonne, and in the United States by the short ton. One long ton is equal to 2,240 pounds (1,016 kg) or 35 cubic feet (0.9911 m) of salt water with a density of 64 lb/ft (1.025 g/ml). It has some limited use in the United States, most commonly in measuring the displacement of ships, and was the unit prescribed for warships by the Washington Naval Treaty for example battleships were limited to a mass of 35,000 long tons (36,000 t; 39,000 ST).",4),
+				new listedValue("Short Ton", "A unit of weight equal to 2,000 pounds (907.18474 kg). In the United States it is often called simply ton without distinguishing it from the metric ton (tonne, 1,000 kilograms) or the long ton (2,240 pounds / 1,016.0469088 kilograms); rather, the other two are specifically noted. There are, however, some US applications for which unspecified tons normally means long tons (for example, Navy ships) or metric tons (world grain production figures). Both the long and short ton are defined as 20 hundredweights, but a hundredweight is 100 pounds (45.359237 kg) in the US system (short or net hundredweight) and 112 pounds (50.80234544 kg) in the Imperial system (long or gross hundredweight).",5),
+				new listedValue("Gross Ton", "Gross tonnage (GT) is a function of the volume of all ship's enclosed spaces (from keel to funnel) measured to the outside of the hull framing. There is a sliding scale factor. So GT is a kind of capacity-derived index that is used to rank a ship for purposes of determining manning, safety and other statutory requirements and is expressed simply as GT, which is a unitless entity, even though its derivation is tied to the cubic meter unit of volumetric capacity.Tonnage measurements are now governed by an IMO Convention (International Convention on Tonnage Measurement of Ships, 1969 (London-Rules)), which applies to all ships built after July 1982. In accordance with the Convention, the correct term to use now is GT, which is a function of the moulded volume of all enclosed spaces of the ship.",6),
+				new listedValue("Net Ton", "Net tonnage (NT) is based on a calculation of the volume of all cargo spaces of the ship. It indicates a vessels earning space and is a function of the moulded volume of all cargo spaces of the ship.",7),
+				new listedValue("Suez Canal Net Tonnage", "The Suez Canal Net Tonnage (SCNT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.",9),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator vesselsCharacteristicsUnit(int? value) => new vesselsCharacteristicsUnit { value = value };
+	}
+
+	/// <summary>
+	/// The value of a particular characteristic such as a dimension or tonnage of a vessel.
+	/// </summary>
+	public class vesselsCharacteristicsValue : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselsCharacteristicsValue);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessels Characteristics Value";
+		[JsonIgnore]
+		public override string valueType => "real";
+		public double? value { get; set; } = default;
+
+		public static implicit operator vesselsCharacteristicsValue(double value) => new vesselsCharacteristicsValue { value = value };
+	}
+
+	/// <summary>
+	/// A mooring set aside for the use of visiting vessels.
+	/// </summary>
+	public class visitorsMooring : S100Framework.AttributeModel.SimpleAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(visitorsMooring);
+		[JsonIgnore]
+		public override string S100FC_name => "Visitors Mooring";
+		[JsonIgnore]
+		public override string valueType => "boolean";
+		public Boolean? value { get; set; } = default;
+
+		public static implicit operator visitorsMooring(Boolean value) => new visitorsMooring { value = value };
+	}
+
+	/// <summary>
+	/// Service for the reception of residues, polluting substances, refuse, oily wastes, and by-products from ships.
+	/// </summary>
+	public class wasteDisposalService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(wasteDisposalService);
+		[JsonIgnore]
+		public override string S100FC_name => "Waste Disposal Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("MARPOL Annex I Oily Bilge Water", "The service with facility to receive oil related waste/residue of the type \"Oily bilge water\" as specified in MARPOL Annex I.",1),
+				new listedValue("MARPOL Annex I Oily Residues", "The service with facility to receive oil related waste/residue of the type \"Oily Residues (sludge)\" as specified in MARPOL Annex I.",2),
+				new listedValue("MARPOL Annex I Oily Tank Washings", "The service with facility to receive oil related waste/residue of the type \"Oily tank washings (slops)\" as specified in MARPOL Annex I.",3),
+				new listedValue("MARPOL Annex I Dirty Ballast Water", "The service with facility to receive oil related waste/residue of the type \"Dirty ballast water\" as specified in MARPOL Annex I.",4),
+				new listedValue("MARPOL Annex I Scale and Sludge from Tank Cleaning", "The service with facility to receive oil related waste/residue of the type \"Scale and sludge from tank cleaning\" as specified in MARPOL Annex I.",5),
+				new listedValue("MARPOL Annex I Other Oily Waste", "The service with facility to receive oil related waste/residue of the type \"Other\" as specified in MARPOL Annex I.",6),
+				new listedValue("MARPOL Annex II Category X", "The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category X\" as specified in MARPOL Annex II.",7),
+				new listedValue("MARPOL Annex II Category Y", "The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category Y\" as specified in MARPOL Annex II.",8),
+				new listedValue("MARPOL Annex II Category Z", "The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Category Z\" as specified in MARPOL Annex II.",9),
+				new listedValue("MARPOL Annex II Category OS", "The service with facility to receive chemical/Noxious liquid substances related waste/residue of the type \"Other substance\" as specified in MARPOL Annex II.",10),
+				new listedValue("MARPOL Annex IV Sewage", "The service with facility to receive waste/residue of the type \"Sewage\" as specified in MARPOL Annex IV.",11),
+				new listedValue("MARPOL Annex V Plastics", "The service with facility to receive garbage related waste/residue of the type \"Plastics\", as specified in MARPOL Annex V",12),
+				new listedValue("MARPOL Annex V Food Wastes", "The service with facility to receive garbage related waste/residue of the type \"Food wastes\", as specified in MARPOL Annex V",13),
+				new listedValue("MARPOL Annex V Domestic Wastes", "The service with facility to receive garbage related waste/residue of the type \"Domestic wastes\", as specified in MARPOL Annex V",14),
+				new listedValue("MARPOL Annex V Cooking Oil", "The service with facility to receive garbage related waste/residue of the type \"Cooking oil\", as specified in MARPOL Annex V",15),
+				new listedValue("MARPOL Annex V Incinerator Ashes", "The service with facility to receive garbage related waste/residue of the type \"Incinerator ashes\", as specified in MARPOL Annex V",16),
+				new listedValue("MARPOL Annex V Operational Wastes", "The service with facility to receive garbage related waste/residue of the type \"Operational wastes\", as specified in MARPOL Annex V",17),
+				new listedValue("MARPOL Annex V Animal Carcasses", "The service with facility to receive garbage related waste/residue of the type \"Animal carcasses\", as specified in MARPOL Annex V",18),
+				new listedValue("MARPOL Annex V Fishing Gear", "The service with facility to receive garbage related waste/residue of the type \"Fishing gear\", as specified in MARPOL Annex V",19),
+				new listedValue("MARPOL Annex V E-Waste", "The service with facility to receive garbage related waste/residue of the type \"E-waste\", as specified in MARPOL Annex V",20),
+				new listedValue("MARPOL Annex V Cargo Residues - non-HME", "The service with facility to receive garbage related waste/residue of the type \"Cargo residues not determined to be harmful to the marine environment\", as specified in MARPOL Annex V",21),
+				new listedValue("MARPOL Annex V Cargo Residues - HME", "The service with facility to receive garbage related waste/residue of the type \"Cargo residues harmful to the marine environment\", as specified in MARPOL Annex V",22),
+				new listedValue("MARPOL Annex VI Ozone-Depleting Substances", "The service with facility to receive air pollution related waste/residue of the type \"Ozone-depleting substances\" as specified in MARPOL Annex VI.",23),
+				new listedValue("MARPOL Annex VI Exhaust Gas-Cleaning Residues", "The service with facility to receive air pollution related waste/residue of the type \"Exhaust gas-cleaning residues\" as specified in MARPOL Annex VI.",24),
+			];
+		public int? value { get; set; } = default;
+
+		public static implicit operator wasteDisposalService(int? value) => new wasteDisposalService { value = value };
+	}
+
+	/// <summary>
+	/// The action or activity of a vessel.
+	/// </summary>
+	public class actionOrActivity : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(actionOrActivity);
+		[JsonIgnore]
+		public override string S100FC_name => "Action or Activity";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Navigating With a Pilot", "Carrying a qualified pilot as part of the vessel navigation team.",1),
+				new listedValue("Entering Port", "Navigating a vessel into a port.",2),
+				new listedValue("Leaving Port", "Navigating a vessel out of a port.",3),
+				new listedValue("Berthing", "Attaching a vessel to a wharf or jetty.",4),
+				new listedValue("Slipping", "Detaching a vessel from a wharf or jetty.",5),
+				new listedValue("Anchoring", "Attaching a vessel to the seabed by means of an anchor and cable.",6),
+				new listedValue("Weighing Anchor", "Detaching a vessel from the seabed by recovering an anchor and cable.",7),
+				new listedValue("Transiting", "Navigating a vessel along a route or through a narrow gap, such as under a bridge or through a lock.",8),
+				new listedValue("Overtaking", "Navigating a vessel past another traveling broadly in the same direction.",9),
+				new listedValue("Reporting", "Providing details such as the name, location or intentions of a vessel.",10),
+				new listedValue("Working Cargo", "Loading or unloading cargo.",11),
+				new listedValue("Landing", "Placing crew or passengers on shore.",12),
+				new listedValue("Diving", "A signal or message warning of diving activity.",13),
+				new listedValue("Fishing", "Hunting or catching fish.",14),
+				new listedValue("Discharging Overboard", "Releasing anything into the sea; often ballast water; or spoil from dredging elsewhere.",15),
+				new listedValue("Passing", "Navigating a vessel past another travelling broadly in the opposite direction.",16),
+				new listedValue("Ballast Water Exchange", "Discharge and uptake of ballast water.",17),
+				new listedValue("Hull Cleaning", "The removal or treatment of biofouling (accumulation of aquatic organisms including microfouling and macrofouling) from a ship's submerged surfaces, including hull and niche areas, conducted either in-water or during dry-docking. The process includes both proactive cleaning (periodic removal of microfouling) and reactive cleaning (removal of micro- and macrofouling as corrective action).",18),
+				new listedValue("Scientific Research", "The conduct of observational, sampling, or experimental activities by authorised personnel to collect scientific or environmental data, which may involve the deployment of scientific instruments, collection of biological or geological samples, or in-water survey operations.",19),
+				new listedValue("Tourism", "Organised recreational visitation and leisure activities in marine areas, including sight-seeing, wildlife observation, glass-bottom vessel tours, and guided nature excursions conducted by commercial or permitted operators.",20),
+				new listedValue("Education", "Structured activities conducted for training, awareness, or interpretive purposes involving groups or individuals learning about the marine environment, including guided educational programs, school activities, and field instruction conducted within designated marine areas.",21),
+				new listedValue("Infrastructure Maintenance", "Inspection, repair, or upkeep of existing marine or coastal infrastructure such as wharves, piers, pipelines, moorings, subsea cables, navigational aids, or coastal protection structures, including minor works that do not expand the original footprint.",22),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// The principal subject matter of regulations, restrictions, recommendations or nautical information.
+	/// </summary>
+	public class categoryOfRxN : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfRxN);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of RxN";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Navigation", "The process of directing the movement of a craft from one point to another.",1),
+				new listedValue("Communication", "Transmitting and/or receiving electronic communication signals.",2),
+				new listedValue("Environmental Protection", "Pertaining to environmental protection.",3),
+				new listedValue("Wildlife Protection", "Pertaining to wildlife protection.",4),
+				new listedValue("Security", "Pertaining to security.",5),
+				new listedValue("Customs", "The agency or establishment for collecting duties, tolls.",6),
+				new listedValue("Cargo Operation", "Pertaining to cargo operations.",7),
+				new listedValue("Refuge", "Pertaining to a place of safety or refuge.",8),
+				new listedValue("Health", "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.",9),
+				new listedValue("Natural Resources or Exploitation", "Pertaining to natural resources or exploitation.",10),
+				new listedValue("Port", "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.",11),
+				new listedValue("Finance", "An authority with responsibility for the control and movement of money.",12),
+				new listedValue("Agriculture", "The science, art, or practice of cultivating the soil, producing crops, and raising livestock and in varying degrees the preparation and marketing of the resulting products.",13),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of vessels by function or use.
+	/// </summary>
+	public class categoryOfVessel : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(categoryOfVessel);
+		[JsonIgnore]
+		public override string S100FC_name => "Category of Vessel";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("General Cargo Vessel", "A vessel which is designed for carrying general cargo, e.g. boxes, sacks.",1),
+				new listedValue("Container Carrier", "A vessel designed to carry ISO containers.",2),
+				new listedValue("Tanker", "A vessel which is designed for carrying liquid goods, for example oil or water.",3),
+				new listedValue("Bulk Carrier", "A vessel which is designed for carrying bulk goods, e.g. coal, ore or grain.",4),
+				new listedValue("Passenger Vessel", "A day trip or cabin vessel constructed and equipped to carry more than 12 passengers.",5),
+				new listedValue("Roll-On Roll-Off", "A vessel designed to allow road vehicles to be driven on and off; often a ferry.",6),
+				new listedValue("Refrigerated Cargo Vessel", "A vessel designed to carry refrigerated cargo.",7),
+				new listedValue("Fishing Vessel", "A vessel that is used and equipped for the fishing of living aquatic resources.",8),
+				new listedValue("Service", "A vessel which provides a service such as a tug, anchor handler, survey or supply vessel.",9),
+				new listedValue("Warship", "A vessel designed for the conduct of military operations.",10),
+				new listedValue("Towed or Pushed Composite Unit", "Either a tug and tow, or any combination of a tug providing propulsion to barges or vessels secured ahead or alongside.",11),
+				new listedValue("Tug and Tow", "A combination of tug(s) and non-powered tow(s).",12),
+				new listedValue("Light Recreational", "A pleasure boat or watercraft, or an excursion vessel used for short cruises such as whale watching.",13),
+				new listedValue("Semi-Submersible Offshore Installation", "An installation which is designed to float at all times and which is normally anchored in position when deployed in the offshore gas and oil industry.",14),
+				new listedValue("Jack-Up Exploration or Project Installation", "An exploration or project installation with legs which can be raised and lowered. The legs are raised when the installation is re-positioned. When stationary the legs are lowered to the sea floor and the working platform is raised clear of the sea surface.",15),
+				new listedValue("Livestock Carrier", "A vessel designed to carry large quantities of live animals.",16),
+				new listedValue("Sport Fishing", "A vessel used in fishing for pleasure or competition.",17),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Protective services, law enforcement, or services for responding to sudden danger.
+	/// </summary>
+	public class securitySafetyEmergencyService : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(securitySafetyEmergencyService);
+		[JsonIgnore]
+		public override string S100FC_name => "Security-Safety-Emergency Service";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Coast Guard", "Organization keeping watch on shipping and coastal waters according to governmental law; normally the authority with responsibility for search and rescue.",1),
+				new listedValue("Customs", "The agency or establishment for collecting duties, tolls.",2),
+				new listedValue("Environmental Emergency Information Centre", "Office for reporting or obtaining information about sudden dangers to the environment such as spillage of polluting or hazardous substances.",3),
+				new listedValue("Emergency Coordination Centre", "An office or organisation for reporting or coordinating response to emergencies.",4),
+				new listedValue("Guard and/or Security Service", "A place where a vessel is patrolled by a security service or stored in a secure lockup.",5),
+				new listedValue("Immigration", "The authority controlling people entering a country.",6),
+				new listedValue("Police", "The department of government, or civil force, charged with maintaining public order.",7),
+				new listedValue("Sea Rescue Control", "A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.",8),
+			];
+		public int? value { get; set; } = default;
+	}
+
+	/// <summary>
+	/// Classification of services for the conveyance of persons and/or goods, according to means of transport, nature of path, or representative installation.
+	/// </summary>
+	public class transportConnection : S100Framework.AttributeModel.SimpleEnumerationAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(transportConnection);
+		[JsonIgnore]
+		public override string S100FC_name => "Transport Connection";
+		[JsonIgnore]
+		public override listedValue[] listedValues => [
+				new listedValue("Heliport", "A small airport for the use of helicopters and some other vertical lift aircraft. Heliports typically contain one or more touchdown and liftoff areas and also have facilities such as fuel or hangars. In some larger towns and cities, customs facilities may also be available.",2),
+				new listedValue("Helipad", "A small landing surface for helicopters, with minimal or no supporting installations or facilities.",3),
+				new listedValue("Hired Boat", "Small boat with crew that may be hired for single journeys.",4),
+				new listedValue("Bus Station", "A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.",5),
+				new listedValue("Ferry", "A vessel for transporting passengers, vehicles, and/or goods across a stretch of water, especially as a regular service.",6),
+				new listedValue("Motorway", "A limited access dual carriageway road specially designed for fast long-distance traffic and subject to special regulations concerning its use. It may have more than two lanes.",8),
+				new listedValue("Launch", "Large open or half decked boat.",9),
+				new listedValue("Inland Waterway Transport", "The carriage of goods or passengers using navigable waterways such as canals, rivers, lakes, or other stretch of water that is not part of the sea.",11),
+				new listedValue("Short Sea Transportation", "The carriage of specified types of cargo between qualifying ports. The types of cargo and/or qualifying ports are generally specified by law or government regulation.",12),
+				new listedValue("Marine Highway", "Specially designated commercially navigable routes in coastal, inland, and intracoastal waters, frequently as waterborne relievers to congested landside routes.",13),
+			];
+		public int? value { get; set; } = default;
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S131.ComplexAttributes
+{
+	using S100Framework.AttributeModel.S131.SimpleAttributes;
+
+	/// <summary>
+	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
+	/// </summary>
+	public class contactAddress : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(contactAddress);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Address";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(deliveryPoint),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(cityName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(administrativeDivision),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(countryName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(postalCode),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? cityName { set { base.AddAttributeValue(new cityName { value = value }); } }
+		public String? administrativeDivision { set { base.AddAttributeValue(new administrativeDivision { value = value }); } }
+		public String? countryName { set { base.AddAttributeValue(new countryName { value = value }); } }
+		public String? postalCode { set { base.AddAttributeValue(new postalCode { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
+	/// </summary>
+	public class featureName : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(featureName);
+		[JsonIgnore]
+		public override string S100FC_name => "Feature Name";
+		[JsonIgnore]
+		public language language { get; init; } = new language();
+		[JsonIgnore]
+		public name name { get; init; } = new name();
+		public override Attribute[] attributes => [
+				language,
+				name,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(language),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(name),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nameUsage),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public int? nameUsage { set { base.AddAttributeValue(new nameUsage { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
+	/// </summary>
+	public class fixedDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(fixedDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Fixed Date Range";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? dateStart { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		public String? dateEnd { set { base.AddAttributeValue(new dateEnd { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
+	/// </summary>
+	public class frequencyPair : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(frequencyPair);
+		[JsonIgnore]
+		public override string S100FC_name => "Frequency Pair";
+		[JsonIgnore]
+		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
+		public override Attribute[] attributes => [
+				frequencyShoreStationTransmits,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(frequencyShoreStationReceives),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyShoreStationTransmits),
+					lower = 1,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public int? frequencyShoreStationReceives { set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The best estimate of the accuracy of a position.
+	/// </summary>
+	public class horizontalPositionUncertainty : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(horizontalPositionUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Horizontal Position Uncertainty";
+		[JsonIgnore]
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] attributes => [
+				uncertaintyFixed,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(uncertaintyFixed),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(uncertaintyVariableFactor),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? uncertaintyVariableFactor { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
+	/// </summary>
+	public class information : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(information);
+		[JsonIgnore]
+		public override string S100FC_name => "Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fileLocator),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(fileReference),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(headline),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(language),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(text),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? fileLocator { set { base.AddAttributeValue(new fileLocator { value = value }); } }
+		public String? fileReference { set { base.AddAttributeValue(new fileReference { value = value }); } }
+		public String? language { set { base.AddAttributeValue(new language { value = value }); } }
+		public String? text { set { base.AddAttributeValue(new text { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Information about online sources from which a resource or data can be obtained.
+	/// </summary>
+	public class onlineResource : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(onlineResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Online Resource";
+		[JsonIgnore]
+		public linkage linkage { get; init; } = new linkage();
+		public override Attribute[] attributes => [
+				linkage,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(linkage),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(protocol),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(applicationProfile),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nameOfResource),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResourceDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineFunction),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,3,4,5,6,7,8,9,10,11],
+				},
+				new AttributeBinding {
+					attribute = nameof(protocolRequest),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? protocol { set { base.AddAttributeValue(new protocol { value = value }); } }
+		public String? applicationProfile { set { base.AddAttributeValue(new applicationProfile { value = value }); } }
+		public String? nameOfResource { set { base.AddAttributeValue(new nameOfResource { value = value }); } }
+		public String? onlineResourceDescription { set { base.AddAttributeValue(new onlineResourceDescription { value = value }); } }
+		public int? onlineFunction { set { base.AddAttributeValue(new onlineFunction { value = value }); } }
+		public String? protocolRequest { set { base.AddAttributeValue(new protocolRequest { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
+	/// </summary>
+	public class orientation : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(orientation);
+		[JsonIgnore]
+		public override string S100FC_name => "Orientation";
+		[JsonIgnore]
+		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public override Attribute[] attributes => [
+				orientationValue,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(orientationUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(orientationValue),
+					lower = 1,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? orientationUncertainty { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The active period of a recurring event or occurrence.
+	/// </summary>
+	public class periodicDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(periodicDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Periodic Date Range";
+		[JsonIgnore]
+		public dateStart dateStart { get; init; } = new dateStart();
+		[JsonIgnore]
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public override Attribute[] attributes => [
+				dateStart,
+				dateEnd,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 1,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
+	/// </summary>
+	public class rxNCode : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(rxNCode);
+		[JsonIgnore]
+		public override string S100FC_name => "RxN Code";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfRxN),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
+				},
+				new AttributeBinding {
+					attribute = nameof(actionOrActivity),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+				},
+				new AttributeBinding {
+					attribute = nameof(headline),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfRxN { set { base.AddAttributeValue(new categoryOfRxN { value = value }); } }
+		public int? actionOrActivity { set { base.AddAttributeValue(new actionOrActivity { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
+	/// </summary>
+	public class sourceIndication : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(sourceIndication);
+		[JsonIgnore]
+		public override string S100FC_name => "Source Indication";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfAuthority),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(countryName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(source),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceType),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,7,8,9,10,11,12,13,14],
+				},
+				new AttributeBinding {
+					attribute = nameof(reportedDate),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(featureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfAuthority { set { base.AddAttributeValue(new categoryOfAuthority { value = value }); } }
+		public String? countryName { set { base.AddAttributeValue(new countryName { value = value }); } }
+		public String? source { set { base.AddAttributeValue(new source { value = value }); } }
+		public int? sourceType { set { base.AddAttributeValue(new sourceType { value = value }); } }
+		public String? reportedDate { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
+	/// </summary>
+	public class surveyDateRange : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(surveyDateRange);
+		[JsonIgnore]
+		public override string S100FC_name => "Survey Date Range";
+		[JsonIgnore]
+		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public override Attribute[] attributes => [
+				dateEnd,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateStart),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateEnd),
+					lower = 1,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? dateStart { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
+	/// </summary>
+	public class telecommunications : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(telecommunications);
+		[JsonIgnore]
+		public override string S100FC_name => "Telecommunications";
+		[JsonIgnore]
+		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public override Attribute[] attributes => [
+				telecommunicationIdentifier,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfCommunicationPreference),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunicationIdentifier),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunicationCarrier),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(contactInstructions),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunicationService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8],
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfCommunicationPreference { set { base.AddAttributeValue(new categoryOfCommunicationPreference { value = value }); } }
+		public String? telecommunicationCarrier { set { base.AddAttributeValue(new telecommunicationCarrier { value = value }); } }
+		public String? contactInstructions { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
+	/// </summary>
+	public class textContent : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(textContent);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Content";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfText),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfText { set { base.AddAttributeValue(new categoryOfText { value = value }); } }
+		public onlineResource? onlineResource { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The regular weekly operation times of a service or schedule.
+	/// </summary>
+	public class timeIntervalsByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Time Intervals by Day of Week";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dayOfWeek),
+					lower = 0,
+					upper = 7,
+					permitedValues = [1,2,3,4,5,6,7],
+				},
+				new AttributeBinding {
+					attribute = nameof(dayOfWeekIsRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayStart),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeOfDayEnd),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public Boolean? dayOfWeekIsRange { set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.
+	/// </summary>
+	public class usefulMarkDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(usefulMarkDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Useful Mark Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
+	/// </summary>
+	public class verticalUncertainty : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(verticalUncertainty);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Uncertainty";
+		[JsonIgnore]
+		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public override Attribute[] attributes => [
+				uncertaintyFixed,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(uncertaintyFixed),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(uncertaintyVariableFactor),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? uncertaintyVariableFactor { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.
+	/// </summary>
+	public class vesselMeasurementsSpecification : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
+		[JsonIgnore]
+		public override string S100FC_name => "Vessel Measurements Specification";
+		[JsonIgnore]
+		public comparisonOperator comparisonOperator { get; init; } = new comparisonOperator();
+		[JsonIgnore]
+		public vesselsCharacteristics vesselsCharacteristics { get; init; } = new vesselsCharacteristics();
+		[JsonIgnore]
+		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; init; } = new vesselsCharacteristicsValue();
+		[JsonIgnore]
+		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; init; } = new vesselsCharacteristicsUnit();
+		public override Attribute[] attributes => [
+				comparisonOperator,
+				vesselsCharacteristics,
+				vesselsCharacteristicsValue,
+				vesselsCharacteristicsUnit,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(comparisonOperator),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6],
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristics),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,6,7,8,9,10,11,12,13],
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristicsValue),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselsCharacteristicsUnit),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,3,4,5,6,7,9],
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Links for relevant weather related information.
+	/// </summary>
+	public class weatherResource : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(weatherResource);
+		[JsonIgnore]
+		public override string S100FC_name => "Weather Resource";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(dynamicResource),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public onlineResource? onlineResource { set { base.AddAttributeValue(value); } }
+		public int? dynamicResource { set { base.AddAttributeValue(new dynamicResource { value = value }); } }
+		public textContent? textContent { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A bearing is the direction one object is from another object.
+	/// </summary>
+	public class bearingInformation : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(bearingInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Bearing Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(cardinalDirection),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+				},
+				new AttributeBinding {
+					attribute = nameof(distance),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(orientation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public int? cardinalDirection { set { base.AddAttributeValue(new cardinalDirection { value = value }); } }
+		public double? distance { set { base.AddAttributeValue(new distance { value = value }); } }
+		public orientation? orientation { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Description of services related to the goods or items carried by vessels.
+	/// </summary>
+	public class cargoServicesDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(cargoServicesDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Cargo Services Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.
+	/// </summary>
+	public class constructionInformation : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(constructionInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Construction Information";
+		[JsonIgnore]
+		public development development { get; init; } = new development();
+		public override Attribute[] attributes => [
+				development,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(condition),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,5],
+				},
+				new AttributeBinding {
+					attribute = nameof(development),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public int? condition { set { base.AddAttributeValue(new condition { value = value }); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Textual description of the characteristics and notable matters pertaining to depths in an area.
+	/// </summary>
+	public class depthsDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(depthsDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Depths Description";
+		[JsonIgnore]
+		public categoryOfDepthsDescription categoryOfDepthsDescription { get; init; } = new categoryOfDepthsDescription();
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				categoryOfDepthsDescription,
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfDepthsDescription),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Textual description of the layout of port facilities.
+	/// </summary>
+	public class facilitiesLayoutDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(facilitiesLayoutDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Facilities Layout Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// General, introductory information about the port.
+	/// </summary>
+	public class generalPortDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(generalPortDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "General Port Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
+	/// </summary>
+	public class graphic : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(graphic);
+		[JsonIgnore]
+		public override string S100FC_name => "Graphic";
+		[JsonIgnore]
+		public pictorialRepresentation pictorialRepresentation { get; init; } = new pictorialRepresentation();
+		public override Attribute[] attributes => [
+				pictorialRepresentation,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(pictorialRepresentation),
+					lower = 1,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(pictureCaption),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceDate),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(pictureInformation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(bearingInformation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? pictureCaption { set { base.AddAttributeValue(new pictureCaption { value = value }); } }
+		public DateOnly? sourceDate { set { base.AddAttributeValue(new sourceDate { value = value }); } }
+		public String? pictureInformation { set { base.AddAttributeValue(new pictureInformation { value = value }); } }
+		public bearingInformation? bearingInformation { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Textual description of selected landmarks that have significance in an area.
+	/// </summary>
+	public class landmarkDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(landmarkDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Landmark Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Description of the area covered by the information specified.
+	/// </summary>
+	public class limitsDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(limitsDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Limits Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.
+	/// </summary>
+	public class majorLightDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(majorLightDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Major Light Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Description of the aids to navigation used to mark an area or object.
+	/// </summary>
+	public class markedBy : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(markedBy);
+		[JsonIgnore]
+		public override string S100FC_name => "Marked By";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Description of aids to navigation or prominent marks located away from the shore.
+	/// </summary>
+	public class offshoreMarkDescription : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(offshoreMarkDescription);
+		[JsonIgnore]
+		public override string S100FC_name => "Offshore Mark Description";
+		[JsonIgnore]
+		public textContent textContent { get; init; } = new textContent();
+		public override Attribute[] attributes => [
+				textContent,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The nature and timings of a daily schedule by days of the week.
+	/// </summary>
+	public class scheduleByDayOfWeek : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(scheduleByDayOfWeek);
+		[JsonIgnore]
+		public override string S100FC_name => "Schedule by Day of Week";
+		[JsonIgnore]
+		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek();
+		public override Attribute[] attributes => [
+				timeIntervalsByDayOfWeek,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfSchedule),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(text),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(timeIntervalsByDayOfWeek),
+					lower = 1,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfSchedule { set { base.AddAttributeValue(new categoryOfSchedule { value = value }); } }
+		public String? text { set { base.AddAttributeValue(new text { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
+	/// </summary>
+	public class spatialAccuracy : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(spatialAccuracy);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Accuracy";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalPositionUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public horizontalPositionUncertainty? horizontalPositionUncertainty { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// General information about the port or harbour area.
+	/// </summary>
+	public class generalHarbourInformation : S100Framework.AttributeModel.ComplexAttribute
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(generalHarbourInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "General Harbour Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(generalPortDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(facilitiesLayoutDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(limitsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(constructionInformation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(cargoServicesDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(weatherResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public generalPortDescription? generalPortDescription { set { base.AddAttributeValue(value); } }
+		public facilitiesLayoutDescription? facilitiesLayoutDescription { set { base.AddAttributeValue(value); } }
+		public limitsDescription? limitsDescription { set { base.AddAttributeValue(value); } }
+		public constructionInformation? constructionInformation { set { base.AddAttributeValue(value); } }
+		public cargoServicesDescription? cargoServicesDescription { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S131.FeatureTypes
+{
+	using S100Framework.AttributeModel.S131.SimpleAttributes;
+	using S100Framework.AttributeModel.S131.ComplexAttributes;
+
+	/// <summary>
+	/// Generalized feature type which carries all the common attributes.
+	/// </summary>
+	public class FeatureType : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(FeatureType);
+		[JsonIgnore]
+		public override string S100FC_name => "Feature Type";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(locationMRN),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(globalLocationNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(interoperabilityIdentifier),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(featureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(rxNCode),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(graphic),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? locationMRN { set { base.AddAttributeValue(new locationMRN { value = value }); } }
+		public String? globalLocationNumber { set { base.AddAttributeValue(new globalLocationNumber { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
+	/// </summary>
+	public class OrganizationContactArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(OrganizationContactArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Organization Contact Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A location which may be supervised by a responsible or controlling authority.
+	/// </summary>
+	public class SupervisedArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SupervisedArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Supervised Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The physical installations and facilities that support operations in a port or harbour.
+	/// </summary>
+	public class HarbourPhysicalInfrastructure : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(HarbourPhysicalInfrastructure);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Physical Infrastructure";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The spatial arrangement of areas and other types of locations that are designated for specified purposes or otherwise distinguished from other areas and locations.
+	/// </summary>
+	public class Layout : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Layout);
+		[JsonIgnore]
+		public override string S100FC_name => "Layout";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A designated area of water where a vessel, sea plane, etc., may anchor.
+	/// </summary>
+	public class AnchorBerth : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(AnchorBerth);
+		[JsonIgnore]
+		public override string S100FC_name => "Anchor Berth";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfAnchorage),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,5,6,7,9,10,14],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(radius),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? radius { set { base.AddAttributeValue(new radius { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An area in which vessels or seaplanes anchor or may anchor.
+	/// </summary>
+	public class AnchorageArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(AnchorageArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Anchorage Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfAnchorage),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,5,6,7,9,10,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Equipment with material handling or operational capabilities, characterised by wheeled (including tracked) mobility, and which autonomously moves along a preset route based on environmental markers or external guidance signals.
+	/// </summary>
+	public class AutomatedGuidedVehicle : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(AutomatedGuidedVehicle);
+		[JsonIgnore]
+		public override string S100FC_name => "Automated Guided Vehicle";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A place, generally named or numbered, where a vessel may moor or anchor.
+	/// </summary>
+	public class Berth : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Berth);
+		[JsonIgnore]
+		public override string S100FC_name => "Berth";
+		[JsonIgnore]
+		public uNLocationCode uNLocationCode { get; init; } = new uNLocationCode();
+		public override Attribute[] attributes => [
+				uNLocationCode,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(availableBerthingLength),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(bollardDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(safeWorkingLoad),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minimumBerthDepth),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(elevation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(cathodicProtectionSystem),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfBerthLocation),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(portFacilityNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(bollardNumber),
+					lower = 0,
+					upper = 2,
+				},
+				new AttributeBinding {
+					attribute = nameof(gLNExtension),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(metreMarkNumber),
+					lower = 0,
+					upper = 2,
+				},
+				new AttributeBinding {
+					attribute = nameof(manifoldNumber),
+					lower = 0,
+					upper = 2,
+				},
+				new AttributeBinding {
+					attribute = nameof(rampNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(methodOfSecuring),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+				},
+				new AttributeBinding {
+					attribute = nameof(uNLocationCode),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(terminalIdentifier),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(shorePowerDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfFrequency),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfVoltage),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfPlug),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+				},
+			];
+
+		#region Optional Attributes
+		public double? availableBerthingLength { set { base.AddAttributeValue(new availableBerthingLength { value = value }); } }
+		public String? bollardDescription { set { base.AddAttributeValue(new bollardDescription { value = value }); } }
+		public double? safeWorkingLoad { set { base.AddAttributeValue(new safeWorkingLoad { value = value }); } }
+		public double? minimumBerthDepth { set { base.AddAttributeValue(new minimumBerthDepth { value = value }); } }
+		public double? elevation { set { base.AddAttributeValue(new elevation { value = value }); } }
+		public Boolean? cathodicProtectionSystem { set { base.AddAttributeValue(new cathodicProtectionSystem { value = value }); } }
+		public int? categoryOfBerthLocation { set { base.AddAttributeValue(new categoryOfBerthLocation { value = value }); } }
+		public String? portFacilityNumber { set { base.AddAttributeValue(new portFacilityNumber { value = value }); } }
+		public String? gLNExtension { set { base.AddAttributeValue(new gLNExtension { value = value }); } }
+		public String? rampNumber { set { base.AddAttributeValue(new rampNumber { value = value }); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public int? methodOfSecuring { set { base.AddAttributeValue(new methodOfSecuring { value = value }); } }
+		public String? terminalIdentifier { set { base.AddAttributeValue(new terminalIdentifier { value = value }); } }
+		public String? shorePowerDescription { set { base.AddAttributeValue(new shorePowerDescription { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A specific position within a berth where a vessel may be moored or anchored.
+	/// </summary>
+	public class BerthPosition : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(BerthPosition);
+		[JsonIgnore]
+		public override string S100FC_name => "Berth Position";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(bollardNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(gLNExtension),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(metreMarkNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(manifoldNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(rampNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? bollardNumber { set { base.AddAttributeValue(new bollardNumber { value = value }); } }
+		public String? gLNExtension { set { base.AddAttributeValue(new gLNExtension { value = value }); } }
+		public String? metreMarkNumber { set { base.AddAttributeValue(new metreMarkNumber { value = value }); } }
+		public String? manifoldNumber { set { base.AddAttributeValue(new manifoldNumber { value = value }); } }
+		public String? rampNumber { set { base.AddAttributeValue(new rampNumber { value = value }); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
+	/// </summary>
+	public class Bollard : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Bollard);
+		[JsonIgnore]
+		public override string S100FC_name => "Bollard";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(height),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalLength),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? height { set { base.AddAttributeValue(new height { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
+	/// </summary>
+	public class DockArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DockArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Dock Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
+	/// </summary>
+	public class DryDock : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DryDock);
+		[JsonIgnore]
+		public override string S100FC_name => "Dry Dock";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sillDepth),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalClearanceValue),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? sillDepth { set { base.AddAttributeValue(new sillDepth { value = value }); } }
+		public double? verticalClearanceValue { set { base.AddAttributeValue(new verticalClearanceValue { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
+	/// </summary>
+	public class Dolphin : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Dolphin);
+		[JsonIgnore]
+		public override string S100FC_name => "Dolphin";
+		[JsonIgnore]
+		public categoryOfDolphin categoryOfDolphin { get; init; } = new categoryOfDolphin();
+		public override Attribute[] attributes => [
+				categoryOfDolphin,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfDolphin),
+					lower = 1,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4],
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
+	/// </summary>
+	public class DumpingGround : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DumpingGround);
+		[JsonIgnore]
+		public override string S100FC_name => "Dumping Ground";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An imaginary line parallel to a face of a berth or quay which touches the seaward face of the fenders.
+	/// </summary>
+	public class FenderLine : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(FenderLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Fender Line";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(orientation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public orientation? orientation { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
+	/// </summary>
+	public class FloatingDock : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(FloatingDock);
+		[JsonIgnore]
+		public override string S100FC_name => "Floating Dock";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sillDepth),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? sillDepth { set { base.AddAttributeValue(new sillDepth { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
+	/// </summary>
+	public class Gridiron : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Gridiron);
+		[JsonIgnore]
+		public override string S100FC_name => "Gridiron";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sillDepth),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalClearanceValue),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? sillDepth { set { base.AddAttributeValue(new sillDepth { value = value }); } }
+		public double? verticalClearanceValue { set { base.AddAttributeValue(new verticalClearanceValue { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The area over which a harbour authority has jurisdiction.
+	/// </summary>
+	public class HarbourAreaAdministrative : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(HarbourAreaAdministrative);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Area (Administrative)";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(uNLocationCode),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(nationality),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(applicableLoadLineZone),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfHarbourFacility),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,3,4,5,6,7,8,9,10,11,12,13,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(generalHarbourInformation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? uNLocationCode { set { base.AddAttributeValue(new uNLocationCode { value = value }); } }
+		public String? nationality { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public String? applicableLoadLineZone { set { base.AddAttributeValue(new applicableLoadLineZone { value = value }); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		public generalHarbourInformation? generalHarbourInformation { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
+	/// </summary>
+	public class HarbourAreaSection : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(HarbourAreaSection);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Area Section";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfPortSection),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,3,8,9,11,12],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfHarbourFacility),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [4,5,6,9,14,15,16,17],
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(facilitiesLayoutDescription),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfPortSection { set { base.AddAttributeValue(new categoryOfPortSection { value = value }); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		public facilitiesLayoutDescription? facilitiesLayoutDescription { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
+	/// </summary>
+	public class HarbourBasin : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(HarbourBasin);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Basin";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A harbour installation with a service or commercial operation of public interest.
+	/// </summary>
+	public class HarbourFacility : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(HarbourFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Harbour Facility";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
+	/// </summary>
+	public class LockBasin : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LockBasin);
+		[JsonIgnore]
+		public override string S100FC_name => "Lock Basin";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sillDepth),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? sillDepth { set { base.AddAttributeValue(new sillDepth { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A lock basin is divided into several lock basin parts, if this lock basin has one ground level but several gates.
+	/// </summary>
+	public class LockBasinPart : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LockBasinPart);
+		[JsonIgnore]
+		public override string S100FC_name => "Lock Basin Part";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(sillDepth),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? sillDepth { set { base.AddAttributeValue(new sillDepth { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
+	/// </summary>
+	public class MooringBuoy : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(MooringBuoy);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring Buoy";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(maximumPermittedDraught),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(maximumPermittedVesselLength),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalLength),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(visitorsMooring),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? maximumPermittedDraught { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
+		public double? maximumPermittedVesselLength { set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); } }
+		public double? verticalLength { set { base.AddAttributeValue(new verticalLength { value = value }); } }
+		public Boolean? visitorsMooring { set { base.AddAttributeValue(new visitorsMooring { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The equipment or structure used to secure a vessel.
+	/// </summary>
+	public class MooringWarpingFacility : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(MooringWarpingFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring/Warping Facility";
+		[JsonIgnore]
+		public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility { get; init; } = new categoryOfMooringWarpingFacility();
+		[JsonIgnore]
+		public iDCode iDCode { get; init; } = new iDCode();
+		public override Attribute[] attributes => [
+				categoryOfMooringWarpingFacility,
+				iDCode,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfMooringWarpingFacility),
+					lower = 1,
+					upper = 1,
+					permitedValues = [4,5,6],
+				},
+				new AttributeBinding {
+					attribute = nameof(iDCode),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(bollardDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(safeWorkingLoad),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(heavingLinesFromShore),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? bollardDescription { set { base.AddAttributeValue(new bollardDescription { value = value }); } }
+		public double? safeWorkingLoad { set { base.AddAttributeValue(new safeWorkingLoad { value = value }); } }
+		public Boolean? heavingLinesFromShore { set { base.AddAttributeValue(new heavingLinesFromShore { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Facilities or infrastructure providing shore power to berthed vessels.
+	/// </summary>
+	public class OnshorePowerFacility : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(OnshorePowerFacility);
+		[JsonIgnore]
+		public override string S100FC_name => "Onshore Power Facility";
+		[JsonIgnore]
+		public iDCode iDCode { get; init; } = new iDCode();
+		public override Attribute[] attributes => [
+				iDCode,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfShorePowerFacility),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(iDCode),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(shorePowerDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfVoltage),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfFrequency),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfPlug),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(shorePowerServiceProvider),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfShorePowerFacility { set { base.AddAttributeValue(new categoryOfShorePowerFacility { value = value }); } }
+		public String? shorePowerDescription { set { base.AddAttributeValue(new shorePowerDescription { value = value }); } }
+		public String? shorePowerServiceProvider { set { base.AddAttributeValue(new shorePowerServiceProvider { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
+	/// </summary>
+	public class OuterLimit : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(OuterLimit);
+		[JsonIgnore]
+		public override string S100FC_name => "Outer Limit";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(limitsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(landmarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(offshoreMarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(majorLightDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(usefulMarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public limitsDescription? limitsDescription { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
+	/// </summary>
+	public class PilotBoardingPlace : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(PilotBoardingPlace);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilot Boarding Place";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(pilotMovement),
+					lower = 0,
+					upper = 3,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A designated portion of water for the landing and take-off of seaplanes.
+	/// </summary>
+	public class SeaplaneLandingArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SeaplaneLandingArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Seaplane Landing Area";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.
+	/// </summary>
+	public class ShipLift : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ShipLift);
+		[JsonIgnore]
+		public override string S100FC_name => "Ship Lift";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(verticalClearanceValue),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public double? verticalClearanceValue { set { base.AddAttributeValue(new verticalClearanceValue { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.
+	/// </summary>
+	public class StraddleCarrier : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(StraddleCarrier);
+		[JsonIgnore]
+		public override string S100FC_name => "Straddle Carrier";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
+	/// </summary>
+	public class Terminal : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Terminal);
+		[JsonIgnore]
+		public override string S100FC_name => "Terminal";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(portFacilityNumber),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfTerminal),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,3,7,8,10,11],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [2,5,6,7,8,10,11,12,13,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(product),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+				},
+				new AttributeBinding {
+					attribute = nameof(terminalIdentifier),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(sMDGTerminalCode),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(uNLocationCode),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? portFacilityNumber { set { base.AddAttributeValue(new portFacilityNumber { value = value }); } }
+		public int? categoryOfTerminal { set { base.AddAttributeValue(new categoryOfTerminal { value = value }); } }
+		public String? terminalIdentifier { set { base.AddAttributeValue(new terminalIdentifier { value = value }); } }
+		public String? sMDGTerminalCode { set { base.AddAttributeValue(new sMDGTerminalCode { value = value }); } }
+		public String? uNLocationCode { set { base.AddAttributeValue(new uNLocationCode { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An area of water or enlargement of a channel used for turning vessels.
+	/// </summary>
+	public class TurningBasin : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(TurningBasin);
+		[JsonIgnore]
+		public override string S100FC_name => "Turning Basin";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(iSPSLevel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3],
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		public int? iSPSLevel { set { base.AddAttributeValue(new iSPSLevel { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An area in which uniform general information of the waterway exists.
+	/// </summary>
+	public class WaterwayArea : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(WaterwayArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Waterway Area";
+		[JsonIgnore]
+		public categoryOfPortSection categoryOfPortSection { get; init; } = new categoryOfPortSection();
+		public override Attribute[] attributes => [
+				categoryOfPortSection,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfPortSection),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,3,8,9,11,12],
+				},
+				new AttributeBinding {
+					attribute = nameof(depthsDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(locationByText),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public depthsDescription? depthsDescription { set { base.AddAttributeValue(value); } }
+		public String? locationByText { set { base.AddAttributeValue(new locationByText { value = value }); } }
+		public markedBy? markedBy { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A geographical area that describes the coverage and extent of spatial objects.
+	/// </summary>
+	public class DataCoverage : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DataCoverage);
+		[JsonIgnore]
+		public override string S100FC_name => "Data Coverage";
+		[JsonIgnore]
+		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
+		[JsonIgnore]
+		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public override Attribute[] attributes => [
+				maximumDisplayScale,
+				minimumDisplayScale,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(maximumDisplayScale),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(minimumDisplayScale),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(optimumDisplayScale),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(interoperabilityIdentifier),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? optimumDisplayScale { set { base.AddAttributeValue(new optimumDisplayScale { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
+	/// </summary>
+	public class QualityOfNonBathymetricData : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of Non-Bathymetric Data";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfTemporalVariation),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6],
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalDistanceUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(horizontalPositionUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(orientationUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(interoperabilityIdentifier),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(surveyDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(verticalUncertainty),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfTemporalVariation { set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); } }
+		public double? horizontalDistanceUncertainty { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		public horizontalPositionUncertainty? horizontalPositionUncertainty { set { base.AddAttributeValue(value); } }
+		public double? orientationUncertainty { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
+		public sourceIndication? sourceIndication { set { base.AddAttributeValue(value); } }
+		public surveyDateRange? surveyDateRange { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
+	/// </summary>
+	public class SoundingDatum : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SoundingDatum);
+		[JsonIgnore]
+		public override string S100FC_name => "Sounding Datum";
+		[JsonIgnore]
+		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public override Attribute[] attributes => [
+				verticalDatum,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(verticalDatum),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44],
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
+	/// </summary>
+	public class VerticalDatumOfData : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(VerticalDatumOfData);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Datum of Data";
+		[JsonIgnore]
+		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public override Attribute[] attributes => [
+				verticalDatum,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(verticalDatum),
+					lower = 1,
+					upper = 1,
+					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
+	/// </summary>
+	public class TextPlacement : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(TextPlacement);
+		[JsonIgnore]
+		public override string S100FC_name => "Text Placement";
+		[JsonIgnore]
+		public textOffsetBearing textOffsetBearing { get; init; } = new textOffsetBearing();
+		[JsonIgnore]
+		public textOffsetDistance textOffsetDistance { get; init; } = new textOffsetDistance();
+		[JsonIgnore]
+		public textType textType { get; init; } = new textType();
+		public override Attribute[] attributes => [
+				textOffsetBearing,
+				textOffsetDistance,
+				textType,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(textOffsetBearing),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(textOffsetDistance),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(textRotation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(textType),
+					lower = 1,
+					upper = 2,
+					permitedValues = [1],
+				},
+				new AttributeBinding {
+					attribute = nameof(scaleMinimum),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public Boolean? textRotation { set { base.AddAttributeValue(new textRotation { value = value }); } }
+		public int? scaleMinimum { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		#endregion
+	}
+
+}
+
+namespace S100Framework.AttributeModel.S131
+{
+	using System.Text.Json;
+	using S100Framework.AttributeModel.S131.SimpleAttributes;
+	using S100Framework.AttributeModel.S131.ComplexAttributes;
+	using S100Framework.AttributeModel.S131.FeatureTypes;
+
+	public static class Extensions {
+		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
+			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "code",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(administrativeDivision), typeDiscriminator: "administrativeDivision"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(applicableLoadLineZone), typeDiscriminator: "applicableLoadLineZone"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(applicationProfile), typeDiscriminator: "applicationProfile"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(approachDescription), typeDiscriminator: "approachDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(associatedFeatureName), typeDiscriminator: "associatedFeatureName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(availableBerthingLength), typeDiscriminator: "availableBerthingLength"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(berthingAssistance), typeDiscriminator: "berthingAssistance"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(bollardDescription), typeDiscriminator: "bollardDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(bollardNumber), typeDiscriminator: "bollardNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(callName), typeDiscriminator: "callName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(callSign), typeDiscriminator: "callSign"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cardinalDirection), typeDiscriminator: "cardinalDirection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cargoService), typeDiscriminator: "cargoService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfAnchorage), typeDiscriminator: "categoryOfAnchorage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfAuthority), typeDiscriminator: "categoryOfAuthority"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfBerthLocation), typeDiscriminator: "categoryOfBerthLocation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfCargo), typeDiscriminator: "categoryOfCargo"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfCommunicationPreference), typeDiscriminator: "categoryOfCommunicationPreference"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfDangerousOrHazardousCargo), typeDiscriminator: "categoryOfDangerousOrHazardousCargo"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfDepthsDescription), typeDiscriminator: "categoryOfDepthsDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfDolphin), typeDiscriminator: "categoryOfDolphin"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfFrequency), typeDiscriminator: "categoryOfFrequency"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfHarbourFacility), typeDiscriminator: "categoryOfHarbourFacility"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfMooringWarpingFacility), typeDiscriminator: "categoryOfMooringWarpingFacility"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfPlug), typeDiscriminator: "categoryOfPlug"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfPortSection), typeDiscriminator: "categoryOfPortSection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfRelationship), typeDiscriminator: "categoryOfRelationship"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfSchedule), typeDiscriminator: "categoryOfSchedule"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfShorePowerFacility), typeDiscriminator: "categoryOfShorePowerFacility"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfTemporalVariation), typeDiscriminator: "categoryOfTemporalVariation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfTerminal), typeDiscriminator: "categoryOfTerminal"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfText), typeDiscriminator: "categoryOfText"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfVesselRegistry), typeDiscriminator: "categoryOfVesselRegistry"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfVoltage), typeDiscriminator: "categoryOfVoltage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cathodicProtectionSystem), typeDiscriminator: "cathodicProtectionSystem"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cityName), typeDiscriminator: "cityName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(communicationChannel), typeDiscriminator: "communicationChannel"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(comparisonOperator), typeDiscriminator: "comparisonOperator"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(condition), typeDiscriminator: "condition"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(contactInstructions), typeDiscriminator: "contactInstructions"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(countryName), typeDiscriminator: "countryName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateEnd), typeDiscriminator: "dateEnd"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateFixed), typeDiscriminator: "dateFixed"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateStart), typeDiscriminator: "dateStart"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dateVariable), typeDiscriminator: "dateVariable"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dayOfWeek), typeDiscriminator: "dayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dayOfWeekIsRange), typeDiscriminator: "dayOfWeekIsRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(deliveryPoint), typeDiscriminator: "deliveryPoint"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(destination), typeDiscriminator: "destination"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(development), typeDiscriminator: "development"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(distance), typeDiscriminator: "distance"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(dynamicResource), typeDiscriminator: "dynamicResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(elevation), typeDiscriminator: "elevation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(entranceDescription), typeDiscriminator: "entranceDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fileLocator), typeDiscriminator: "fileLocator"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fileReference), typeDiscriminator: "fileReference"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(firefightingService), typeDiscriminator: "firefightingService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyShoreStationReceives), typeDiscriminator: "frequencyShoreStationReceives"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyShoreStationTransmits), typeDiscriminator: "frequencyShoreStationTransmits"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(gLNExtension), typeDiscriminator: "gLNExtension"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(globalLocationNumber), typeDiscriminator: "globalLocationNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(headline), typeDiscriminator: "headline"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(heavingLinesFromShore), typeDiscriminator: "heavingLinesFromShore"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(height), typeDiscriminator: "height"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(horizontalDistanceUncertainty), typeDiscriminator: "horizontalDistanceUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(iDCode), typeDiscriminator: "iDCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(inBallast), typeDiscriminator: "inBallast"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(interoperabilityIdentifier), typeDiscriminator: "interoperabilityIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(iSPSLevel), typeDiscriminator: "iSPSLevel"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(language), typeDiscriminator: "language"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(linkage), typeDiscriminator: "linkage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(localKnowledgeDescription), typeDiscriminator: "localKnowledgeDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(locationByText), typeDiscriminator: "locationByText"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(locationMRN), typeDiscriminator: "locationMRN"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(logicalConnectives), typeDiscriminator: "logicalConnectives"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(manifoldNumber), typeDiscriminator: "manifoldNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(maximumDisplayScale), typeDiscriminator: "maximumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(maximumPermittedDraught), typeDiscriminator: "maximumPermittedDraught"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(maximumPermittedVesselLength), typeDiscriminator: "maximumPermittedVesselLength"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(medicalService), typeDiscriminator: "medicalService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(membership), typeDiscriminator: "membership"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(methodOfSecuring), typeDiscriminator: "methodOfSecuring"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(metreMarkNumber), typeDiscriminator: "metreMarkNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minimumBerthDepth), typeDiscriminator: "minimumBerthDepth"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(minimumDisplayScale), typeDiscriminator: "minimumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(mMSICode), typeDiscriminator: "mMSICode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(name), typeDiscriminator: "name"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nameOfResource), typeDiscriminator: "nameOfResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nameUsage), typeDiscriminator: "nameUsage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(nationality), typeDiscriminator: "nationality"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(onlineFunction), typeDiscriminator: "onlineFunction"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(onlineResourceDescription), typeDiscriminator: "onlineResourceDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(optimumDisplayScale), typeDiscriminator: "optimumDisplayScale"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(orientationUncertainty), typeDiscriminator: "orientationUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(orientationValue), typeDiscriminator: "orientationValue"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictorialRepresentation), typeDiscriminator: "pictorialRepresentation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictureCaption), typeDiscriminator: "pictureCaption"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pictureInformation), typeDiscriminator: "pictureInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(pilotMovement), typeDiscriminator: "pilotMovement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(portFacilityNumber), typeDiscriminator: "portFacilityNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(postalCode), typeDiscriminator: "postalCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(product), typeDiscriminator: "product"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(protocol), typeDiscriminator: "protocol"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(protocolRequest), typeDiscriminator: "protocolRequest"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(qualityOfHorizontalMeasurement), typeDiscriminator: "qualityOfHorizontalMeasurement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(radius), typeDiscriminator: "radius"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(rampNumber), typeDiscriminator: "rampNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(repairService), typeDiscriminator: "repairService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(reportedDate), typeDiscriminator: "reportedDate"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(safeWorkingLoad), typeDiscriminator: "safeWorkingLoad"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(scaleMinimum), typeDiscriminator: "scaleMinimum"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(shipSanitationControl), typeDiscriminator: "shipSanitationControl"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(shorePowerDescription), typeDiscriminator: "shorePowerDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(shorePowerServiceProvider), typeDiscriminator: "shorePowerServiceProvider"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sillDepth), typeDiscriminator: "sillDepth"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sMDGTerminalCode), typeDiscriminator: "sMDGTerminalCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(source), typeDiscriminator: "source"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sourceDate), typeDiscriminator: "sourceDate"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sourceType), typeDiscriminator: "sourceType"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(supplyService), typeDiscriminator: "supplyService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(technicalPortService), typeDiscriminator: "technicalPortService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunicationCarrier), typeDiscriminator: "telecommunicationCarrier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunicationIdentifier), typeDiscriminator: "telecommunicationIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunicationService), typeDiscriminator: "telecommunicationService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(terminalIdentifier), typeDiscriminator: "terminalIdentifier"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(text), typeDiscriminator: "text"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textOffsetBearing), typeDiscriminator: "textOffsetBearing"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textOffsetDistance), typeDiscriminator: "textOffsetDistance"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textRotation), typeDiscriminator: "textRotation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textType), typeDiscriminator: "textType"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(thicknessOfIceCapability), typeDiscriminator: "thicknessOfIceCapability"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeOfDayEnd), typeDiscriminator: "timeOfDayEnd"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeOfDayStart), typeDiscriminator: "timeOfDayStart"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(tugInformation), typeDiscriminator: "tugInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uNLocationCode), typeDiscriminator: "uNLocationCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uncertaintyFixed), typeDiscriminator: "uncertaintyFixed"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(uncertaintyVariableFactor), typeDiscriminator: "uncertaintyVariableFactor"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalClearanceValue), typeDiscriminator: "verticalClearanceValue"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalDatum), typeDiscriminator: "verticalDatum"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalLength), typeDiscriminator: "verticalLength"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselPerformance), typeDiscriminator: "vesselPerformance"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristics), typeDiscriminator: "vesselsCharacteristics"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristicsUnit), typeDiscriminator: "vesselsCharacteristicsUnit"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselsCharacteristicsValue), typeDiscriminator: "vesselsCharacteristicsValue"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(visitorsMooring), typeDiscriminator: "visitorsMooring"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(wasteDisposalService), typeDiscriminator: "wasteDisposalService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(actionOrActivity), typeDiscriminator: "actionOrActivity"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfRxN), typeDiscriminator: "categoryOfRxN"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfVessel), typeDiscriminator: "categoryOfVessel"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(securitySafetyEmergencyService), typeDiscriminator: "securitySafetyEmergencyService"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(transportConnection), typeDiscriminator: "transportConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(contactAddress), typeDiscriminator: "contactAddress"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureName), typeDiscriminator: "featureName"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fixedDateRange), typeDiscriminator: "fixedDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(frequencyPair), typeDiscriminator: "frequencyPair"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(horizontalPositionUncertainty), typeDiscriminator: "horizontalPositionUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(information), typeDiscriminator: "information"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(onlineResource), typeDiscriminator: "onlineResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(orientation), typeDiscriminator: "orientation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(periodicDateRange), typeDiscriminator: "periodicDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(rxNCode), typeDiscriminator: "rxNCode"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(sourceIndication), typeDiscriminator: "sourceIndication"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(surveyDateRange), typeDiscriminator: "surveyDateRange"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(telecommunications), typeDiscriminator: "telecommunications"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(textContent), typeDiscriminator: "textContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(timeIntervalsByDayOfWeek), typeDiscriminator: "timeIntervalsByDayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(usefulMarkDescription), typeDiscriminator: "usefulMarkDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalUncertainty), typeDiscriminator: "verticalUncertainty"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(vesselMeasurementsSpecification), typeDiscriminator: "vesselMeasurementsSpecification"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(weatherResource), typeDiscriminator: "weatherResource"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(bearingInformation), typeDiscriminator: "bearingInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(cargoServicesDescription), typeDiscriminator: "cargoServicesDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(constructionInformation), typeDiscriminator: "constructionInformation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(depthsDescription), typeDiscriminator: "depthsDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(facilitiesLayoutDescription), typeDiscriminator: "facilitiesLayoutDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(generalPortDescription), typeDiscriminator: "generalPortDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(graphic), typeDiscriminator: "graphic"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(landmarkDescription), typeDiscriminator: "landmarkDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(limitsDescription), typeDiscriminator: "limitsDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(majorLightDescription), typeDiscriminator: "majorLightDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(markedBy), typeDiscriminator: "markedBy"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(offshoreMarkDescription), typeDiscriminator: "offshoreMarkDescription"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(scheduleByDayOfWeek), typeDiscriminator: "scheduleByDayOfWeek"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(spatialAccuracy), typeDiscriminator: "spatialAccuracy"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(generalHarbourInformation), typeDiscriminator: "generalHarbourInformation"));
+				}
+			});
+			jsonSerializerOptions.TypeInfoResolver = resolver;
+			return jsonSerializerOptions;
+		}
+	}
+}

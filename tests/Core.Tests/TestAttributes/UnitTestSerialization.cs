@@ -1,6 +1,7 @@
 using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Reflection;
 using System.Text.Json;
@@ -39,6 +40,27 @@ namespace TestAttributes
             var json = System.Text.Json.JsonSerializer.Serialize(complexAttribute, jsonSerializerOptions);
 
             System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_AttributeAssignment() {
+            var drval1 = 10d;
+            var drval2 = default(double?);
+
+            var instance = new DepthArea {
+                depthRangeMinimumValue = drval1,
+                depthRangeMaximumValue = drval2.GetValueOrDefault(),
+                interoperabilityIdentifier = "",
+            };
+            instance.interoperabilityIdentifier(new interoperabilityIdentifier {
+                value = "ID:1234"
+            });
+        }
+    }
+
+    public static class Extension {
+        public static DepthArea interoperabilityIdentifier(this DepthArea instance, interoperabilityIdentifier value) {            
+            return instance;
         }
     }
 }

@@ -56,6 +56,23 @@ namespace S100Framework.AttributeModel
                 return null;
             return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
         }
+
+        protected void AddAttributeValue(Attribute attribute) {
+            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributesOptional, value);
+                    this.attributesOptional[index] = attribute;
+                }
+            }
+            else {
+                this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
     }
 
     public abstract class FeatureType
@@ -76,6 +93,22 @@ namespace S100Framework.AttributeModel
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
+        protected void AddAttributeValue(Attribute attribute) {
+            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if(value == default) {
+                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributesOptional, value);
+                    this.attributesOptional[index] = attribute;
+                }
+            }
+            else {
+                this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
     }
 
     public class AttributeBinding
