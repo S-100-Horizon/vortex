@@ -8,7 +8,6 @@ using Xunit.Abstractions;
 
 namespace TestAttributes
 {
-    using S100Framework.AttributeModel.S123.SimpleAttributes;
     using S100Framework.DomainModel;
     using System.Reflection;
     using System.Security.Cryptography;
@@ -333,7 +332,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
                             if (permittedValues is not null)
                                 roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
-
+                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
                             //roslyn.AppendLine($"\t\t\t\t\tFreeSeats =");
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
@@ -460,6 +459,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
                             if (permittedValues is not null)
                                 roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
+                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
                         roslyn.AppendLine($"\t\t\t];");
@@ -585,6 +585,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
                             if (permittedValues is not null)
                                 roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
+                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
                         roslyn.AppendLine($"\t\t\t];");

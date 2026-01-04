@@ -11,13 +11,6 @@ using System.Xml.Linq;
 
 namespace S100Framework.WPF
 {
-    public class FeatureType
-    {
-        public string Code { get; set; } = "UNKNOWN";
-
-        public AttributeBinding[] attributeBindings { get; set; } = [];
-    }
-
     public abstract class AttributeViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
@@ -75,6 +68,8 @@ namespace S100Framework.WPF
     {
         public SimpleAttributeViewModel(SimpleAttribute attribute) : base(attribute) {
             this._attribute = attribute;
+
+            this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
 
         public string valueType => this._attribute!.valueType;
@@ -178,13 +173,18 @@ namespace S100Framework.WPF
 
         public ICommand CreateAttributeCommand { get; }
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         protected void OnCreateAttributeCommand(object? parameter) {
             if (parameter is AttributeBinding attributeBinding) {
-                this.SelectedObject?.attributeValues.Add(new ComplexAttributeViewModel(new zoneOfConfidence()));
+                var instance = attributeBinding.CreateInstance();
+                if (instance is SimpleAttribute simpleAttribute)
+                    this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
+                else if (instance is ComplexAttribute complexAttribute)
+                    this.SelectedObject?.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
+                else
+                    throw new NotImplementedException();
             }
         }
 

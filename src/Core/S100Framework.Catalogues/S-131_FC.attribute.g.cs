@@ -2945,26 +2945,31 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(deliveryPoint),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new deliveryPoint(),
 				},
 				new AttributeBinding {
 					attribute = nameof(cityName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new cityName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(administrativeDivision),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new administrativeDivision(),
 				},
 				new AttributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new countryName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(postalCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new postalCode(),
 				},
 			];
 
@@ -2999,17 +3004,20 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new language(),
 				},
 				new AttributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new name(),
 				},
 				new AttributeBinding {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new nameUsage(),
 				},
 			];
 
@@ -3035,11 +3043,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new dateStart(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new dateEnd(),
 				},
 			];
 
@@ -3069,11 +3079,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(frequencyShoreStationReceives),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new frequencyShoreStationReceives(),
 				},
 				new AttributeBinding {
 					attribute = nameof(frequencyShoreStationTransmits),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new frequencyShoreStationTransmits(),
 				},
 			];
 
@@ -3102,11 +3114,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new uncertaintyFixed(),
 				},
 				new AttributeBinding {
 					attribute = nameof(uncertaintyVariableFactor),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
 
@@ -3132,26 +3146,31 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(fileLocator),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fileLocator(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fileReference),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fileReference(),
 				},
 				new AttributeBinding {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new headline(),
 				},
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new language(),
 				},
 				new AttributeBinding {
 					attribute = nameof(text),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new text(),
 				},
 			];
 
@@ -3183,37 +3202,44 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(linkage),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new linkage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(protocol),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new protocol(),
 				},
 				new AttributeBinding {
 					attribute = nameof(applicationProfile),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new applicationProfile(),
 				},
 				new AttributeBinding {
 					attribute = nameof(nameOfResource),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new nameOfResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResourceDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new onlineResourceDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineFunction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,4,5,6,7,8,9,10,11],
+					CreateInstance = () => new onlineFunction(),
 				},
 				new AttributeBinding {
 					attribute = nameof(protocolRequest),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new protocolRequest(),
 				},
 			];
 
@@ -3247,11 +3273,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new orientationUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new orientationValue(),
 				},
 			];
 
@@ -3283,11 +3311,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(dateStart),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new dateStart(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new dateEnd(),
 				},
 			];
 
@@ -3313,17 +3343,20 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
+					CreateInstance = () => new categoryOfRxN(),
 				},
 				new AttributeBinding {
 					attribute = nameof(actionOrActivity),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+					CreateInstance = () => new actionOrActivity(),
 				},
 				new AttributeBinding {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new headline(),
 				},
 			];
 
@@ -3350,32 +3383,38 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(categoryOfAuthority),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new categoryOfAuthority(),
 				},
 				new AttributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new countryName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(source),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new source(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceType),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,7,8,9,10,11,12,13,14],
+					CreateInstance = () => new sourceType(),
 				},
 				new AttributeBinding {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new reportedDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 			];
 
@@ -3408,11 +3447,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new dateStart(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new dateEnd(),
 				},
 			];
 
@@ -3442,27 +3483,32 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new categoryOfCommunicationPreference(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunicationIdentifier),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new telecommunicationIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunicationCarrier),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new telecommunicationCarrier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new contactInstructions(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunicationService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8],
+					CreateInstance = () => new telecommunicationService(),
 				},
 			];
 
@@ -3491,21 +3537,25 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new sourceIndication(),
 				},
 			];
 
@@ -3533,21 +3583,25 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 7,
 					permitedValues = [1,2,3,4,5,6,7],
+					CreateInstance = () => new dayOfWeek(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dayOfWeekIsRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new dayOfWeekIsRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(timeOfDayStart),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new timeOfDayStart(),
 				},
 				new AttributeBinding {
 					attribute = nameof(timeOfDayEnd),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new timeOfDayEnd(),
 				},
 			];
 
@@ -3576,6 +3630,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3603,11 +3658,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new uncertaintyFixed(),
 				},
 				new AttributeBinding {
 					attribute = nameof(uncertaintyVariableFactor),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
 
@@ -3646,23 +3703,27 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new comparisonOperator(),
 				},
 				new AttributeBinding {
 					attribute = nameof(vesselsCharacteristics),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,6,7,8,9,10,11,12,13],
+					CreateInstance = () => new vesselsCharacteristics(),
 				},
 				new AttributeBinding {
 					attribute = nameof(vesselsCharacteristicsValue),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new vesselsCharacteristicsValue(),
 				},
 				new AttributeBinding {
 					attribute = nameof(vesselsCharacteristicsUnit),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,3,4,5,6,7,9],
+					CreateInstance = () => new vesselsCharacteristicsUnit(),
 				},
 			];
 
@@ -3687,17 +3748,20 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dynamicResource),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new dynamicResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3726,21 +3790,25 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+					CreateInstance = () => new cardinalDirection(),
 				},
 				new AttributeBinding {
 					attribute = nameof(distance),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new distance(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(orientation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new orientation(),
 				},
 			];
 
@@ -3771,6 +3839,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3798,27 +3867,32 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fixedDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
+					CreateInstance = () => new condition(),
 				},
 				new AttributeBinding {
 					attribute = nameof(development),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new development(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3853,11 +3927,13 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfDepthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3885,6 +3961,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3912,6 +3989,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -3939,26 +4017,31 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(pictorialRepresentation),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new pictorialRepresentation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(pictureCaption),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new pictureCaption(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sourceDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(pictureInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new pictureInformation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(bearingInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new bearingInformation(),
 				},
 			];
 
@@ -3990,6 +4073,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4017,6 +4101,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4044,6 +4129,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4071,6 +4157,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4098,6 +4185,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(textContent),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4126,16 +4214,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfSchedule(),
 				},
 				new AttributeBinding {
 					attribute = nameof(text),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new text(),
 				},
 				new AttributeBinding {
 					attribute = nameof(timeIntervalsByDayOfWeek),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new timeIntervalsByDayOfWeek(),
 				},
 			];
 
@@ -4162,16 +4253,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fixedDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new horizontalPositionUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
 
@@ -4199,31 +4293,37 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					attribute = nameof(generalPortDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new generalPortDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(facilitiesLayoutDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new facilitiesLayoutDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(limitsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new limitsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(constructionInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new constructionInformation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(cargoServicesDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new cargoServicesDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(weatherResource),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new weatherResource(),
 				},
 			];
 
@@ -4260,26 +4360,31 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fixedDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new periodicDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(graphic),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new graphic(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new sourceIndication(),
 				},
 			];
 
@@ -4306,16 +4411,19 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+					CreateInstance = () => new categoryOfAuthority(),
 				},
 				new AttributeBinding {
 					attribute = nameof(rxNCode),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new rxNCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4341,61 +4449,72 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(inBallast),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new inBallast(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,5,6,7,8,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfCargo(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfDangerousOrHazardousCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+					CreateInstance = () => new categoryOfDangerousOrHazardousCargo(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfVessel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+					CreateInstance = () => new categoryOfVessel(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfVesselRegistry),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
+					CreateInstance = () => new categoryOfVesselRegistry(),
 				},
 				new AttributeBinding {
 					attribute = nameof(logicalConnectives),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
+					CreateInstance = () => new logicalConnectives(),
 				},
 				new AttributeBinding {
 					attribute = nameof(thicknessOfIceCapability),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new thicknessOfIceCapability(),
 				},
 				new AttributeBinding {
 					attribute = nameof(vesselPerformance),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new vesselPerformance(),
 				},
 				new AttributeBinding {
 					attribute = nameof(destination),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new destination(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(vesselMeasurementsSpecification),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new vesselMeasurementsSpecification(),
 				},
 			];
 
@@ -4431,11 +4550,13 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					lower = 1,
 					upper = 1,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+					CreateInstance = () => new categoryOfAuthority(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4462,76 +4583,89 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new firefightingService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(medicalService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5],
+					CreateInstance = () => new medicalService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(repairService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+					CreateInstance = () => new repairService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(technicalPortService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new technicalPortService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(shipSanitationControl),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new shipSanitationControl(),
 				},
 				new AttributeBinding {
 					attribute = nameof(transportConnection),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,8,9,11,12,13],
+					CreateInstance = () => new transportConnection(),
 				},
 				new AttributeBinding {
 					attribute = nameof(berthingAssistance),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new berthingAssistance(),
 				},
 				new AttributeBinding {
 					attribute = nameof(cargoService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new cargoService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(securitySafetyEmergencyService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8],
+					CreateInstance = () => new securitySafetyEmergencyService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(wasteDisposalService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+					CreateInstance = () => new wasteDisposalService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(supplyService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+					CreateInstance = () => new supplyService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(tugInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new tugInformation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4557,62 +4691,74 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(callName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new callName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(callSign),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new callSign(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCommunicationPreference),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new categoryOfCommunicationPreference(),
 				},
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new communicationChannel(),
 				},
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new contactInstructions(),
 				},
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new language(),
 				},
 				new AttributeBinding {
 					attribute = nameof(mMSICode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new mMSICode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(contactAddress),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new contactAddress(),
 				},
 				new AttributeBinding {
 					attribute = nameof(frequencyPair),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new frequencyPair(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunications),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new telecommunications(),
 				},
 			];
 
@@ -4642,51 +4788,61 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(entranceDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new entranceDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(associatedFeatureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new associatedFeatureName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(localKnowledgeDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new localKnowledgeDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(approachDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new approachDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(landmarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new landmarkDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(offshoreMarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new offshoreMarkDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(majorLightDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new majorLightDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(usefulMarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new usefulMarkDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -4733,16 +4889,19 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(dateFixed),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new dateFixed(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dateVariable),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new dateVariable(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -4827,11 +4986,13 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					attribute = nameof(scheduleByDayOfWeek),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new scheduleByDayOfWeek(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -4857,11 +5018,13 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
+					CreateInstance = () => new qualityOfHorizontalMeasurement(),
 				},
 				new AttributeBinding {
 					attribute = nameof(spatialAccuracy),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new spatialAccuracy(),
 				},
 			];
 
@@ -4894,51 +5057,61 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(locationMRN),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationMRN(),
 				},
 				new AttributeBinding {
 					attribute = nameof(globalLocationNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new globalLocationNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new interoperabilityIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fixedDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new periodicDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(rxNCode),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new rxNCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(graphic),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new graphic(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new sourceIndication(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textContent),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new textContent(),
 				},
 			];
 
@@ -5043,17 +5216,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,9,10,14],
+					CreateInstance = () => new categoryOfAnchorage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfCargo(),
 				},
 				new AttributeBinding {
 					attribute = nameof(radius),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new radius(),
 				},
 			];
 
@@ -5080,33 +5256,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,9,10,14,15],
+					CreateInstance = () => new categoryOfAnchorage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfCargo(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 			];
 
@@ -5157,116 +5339,138 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(availableBerthingLength),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new availableBerthingLength(),
 				},
 				new AttributeBinding {
 					attribute = nameof(bollardDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new bollardDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(safeWorkingLoad),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new safeWorkingLoad(),
 				},
 				new AttributeBinding {
 					attribute = nameof(minimumBerthDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new minimumBerthDepth(),
 				},
 				new AttributeBinding {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new elevation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(cathodicProtectionSystem),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new cathodicProtectionSystem(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfBerthLocation),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new categoryOfBerthLocation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(portFacilityNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new portFacilityNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(bollardNumber),
 					lower = 0,
 					upper = 2,
+					CreateInstance = () => new bollardNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(gLNExtension),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new gLNExtension(),
 				},
 				new AttributeBinding {
 					attribute = nameof(metreMarkNumber),
 					lower = 0,
 					upper = 2,
+					CreateInstance = () => new metreMarkNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(manifoldNumber),
 					lower = 0,
 					upper = 2,
+					CreateInstance = () => new manifoldNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(rampNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new rampNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(methodOfSecuring),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+					CreateInstance = () => new methodOfSecuring(),
 				},
 				new AttributeBinding {
 					attribute = nameof(uNLocationCode),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new uNLocationCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(terminalIdentifier),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new terminalIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(shorePowerDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new shorePowerDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfFrequency),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2],
+					CreateInstance = () => new categoryOfFrequency(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfVoltage),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+					CreateInstance = () => new categoryOfVoltage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfPlug),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new categoryOfPlug(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfCargo(),
 				},
 			];
 
@@ -5305,31 +5509,37 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(bollardNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new bollardNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(gLNExtension),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new gLNExtension(),
 				},
 				new AttributeBinding {
 					attribute = nameof(metreMarkNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new metreMarkNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(manifoldNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new manifoldNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(rampNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new rampNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 			];
 
@@ -5360,11 +5570,13 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new height(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalLength(),
 				},
 			];
 
@@ -5391,22 +5603,26 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -5435,11 +5651,13 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(sillDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sillDepth(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
 
@@ -5470,6 +5688,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new categoryOfDolphin(),
 				},
 			];
 
@@ -5494,22 +5713,26 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -5538,6 +5761,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(orientation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new orientation(),
 				},
 			];
 
@@ -5563,6 +5787,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(sillDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sillDepth(),
 				},
 			];
 
@@ -5588,11 +5813,13 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(sillDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sillDepth(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
 
@@ -5619,33 +5846,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(uNLocationCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new uNLocationCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new nationality(),
 				},
 				new AttributeBinding {
 					attribute = nameof(applicableLoadLineZone),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new applicableLoadLineZone(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfHarbourFacility),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,7,8,9,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfHarbourFacility(),
 				},
 				new AttributeBinding {
 					attribute = nameof(generalHarbourInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new generalHarbourInformation(),
 				},
 			];
 
@@ -5676,23 +5909,27 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,8,9,11,12],
+					CreateInstance = () => new categoryOfPortSection(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfHarbourFacility),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,6,9,14,15,16,17],
+					CreateInstance = () => new categoryOfHarbourFacility(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 				new AttributeBinding {
 					attribute = nameof(facilitiesLayoutDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new facilitiesLayoutDescription(),
 				},
 			];
 
@@ -5720,22 +5957,26 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -5783,6 +6024,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(sillDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sillDepth(),
 				},
 			];
 
@@ -5808,6 +6050,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(sillDepth),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sillDepth(),
 				},
 			];
 
@@ -5833,21 +6076,25 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new maximumPermittedDraught(),
 				},
 				new AttributeBinding {
 					attribute = nameof(maximumPermittedVesselLength),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new maximumPermittedVesselLength(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalLength(),
 				},
 				new AttributeBinding {
 					attribute = nameof(visitorsMooring),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new visitorsMooring(),
 				},
 			];
 
@@ -5883,26 +6130,31 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					permitedValues = [4,5,6],
+					CreateInstance = () => new categoryOfMooringWarpingFacility(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iDCode),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new iDCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(bollardDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new bollardDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(safeWorkingLoad),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new safeWorkingLoad(),
 				},
 				new AttributeBinding {
 					attribute = nameof(heavingLinesFromShore),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new heavingLinesFromShore(),
 				},
 			];
 
@@ -5934,37 +6186,44 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfShorePowerFacility(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iDCode),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new iDCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(shorePowerDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new shorePowerDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfVoltage),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+					CreateInstance = () => new categoryOfVoltage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfFrequency),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new categoryOfFrequency(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfPlug),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new categoryOfPlug(),
 				},
 				new AttributeBinding {
 					attribute = nameof(shorePowerServiceProvider),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new shorePowerServiceProvider(),
 				},
 			];
 
@@ -5992,31 +6251,37 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(limitsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new limitsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(landmarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new landmarkDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(offshoreMarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new offshoreMarkDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(majorLightDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new majorLightDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(usefulMarkDescription),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new usefulMarkDescription(),
 				},
 			];
 
@@ -6042,28 +6307,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(pilotMovement),
 					lower = 0,
 					upper = 3,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new pilotMovement(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -6092,22 +6362,26 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -6136,6 +6410,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(verticalClearanceValue),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
 
@@ -6180,39 +6455,46 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(portFacilityNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new portFacilityNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfTerminal),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,7,8,10,11],
+					CreateInstance = () => new categoryOfTerminal(),
 				},
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,5,6,7,8,10,11,12,13,14,15],
+					CreateInstance = () => new categoryOfCargo(),
 				},
 				new AttributeBinding {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+					CreateInstance = () => new product(),
 				},
 				new AttributeBinding {
 					attribute = nameof(terminalIdentifier),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new terminalIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sMDGTerminalCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sMDGTerminalCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(uNLocationCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new uNLocationCode(),
 				},
 			];
 
@@ -6242,22 +6524,26 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSPSLevel),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new iSPSLevel(),
 				},
 			];
 
@@ -6290,21 +6576,25 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,3,8,9,11,12],
+					CreateInstance = () => new categoryOfPortSection(),
 				},
 				new AttributeBinding {
 					attribute = nameof(depthsDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new depthsDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(locationByText),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new locationByText(),
 				},
 				new AttributeBinding {
 					attribute = nameof(markedBy),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new markedBy(),
 				},
 			];
 
@@ -6338,21 +6628,25 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(maximumDisplayScale),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new maximumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(minimumDisplayScale),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new minimumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(optimumDisplayScale),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new optimumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new interoperabilityIdentifier(),
 				},
 			];
 
@@ -6379,46 +6673,55 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new categoryOfTemporalVariation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(horizontalDistanceUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new horizontalDistanceUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new horizontalPositionUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new orientationUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new interoperabilityIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sourceIndication(),
 				},
 				new AttributeBinding {
 					attribute = nameof(surveyDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new surveyDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new verticalUncertainty(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -6454,11 +6757,13 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44],
+					CreateInstance = () => new verticalDatum(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -6487,11 +6792,13 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
+					CreateInstance = () => new verticalDatum(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -6525,27 +6832,32 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					attribute = nameof(textOffsetBearing),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new textOffsetBearing(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textOffsetDistance),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new textOffsetDistance(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textRotation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new textRotation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(textType),
 					lower = 1,
 					upper = 2,
 					permitedValues = [1],
+					CreateInstance = () => new textType(),
 				},
 				new AttributeBinding {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new scaleMinimum(),
 				},
 			];
 

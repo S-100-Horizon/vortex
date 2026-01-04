@@ -1,6 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
+#nullable enable
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
 namespace S100Framework.AttributeModel
 {
     public record listedValue(string label, string defintion, int code);
@@ -161,6 +164,8 @@ namespace S100Framework.AttributeModel
         public bool IsOptional => this.lower == 0;
 
         public int FreeSeats { get; set; } = int.MaxValue;
+
+        public Func<Attribute?> CreateInstance { get; init; } = () => null;
     }
 
     //public abstract class AttributeValue

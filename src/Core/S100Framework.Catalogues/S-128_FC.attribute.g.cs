@@ -1746,26 +1746,31 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(administrativeDivision),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new administrativeDivision(),
 				},
 				new AttributeBinding {
 					attribute = nameof(cityName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new cityName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new countryName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(deliveryPoint),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new deliveryPoint(),
 				},
 				new AttributeBinding {
 					attribute = nameof(postalCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new postalCode(),
 				},
 			];
 
@@ -1800,11 +1805,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(paperWidth),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new paperWidth(),
 				},
 				new AttributeBinding {
 					attribute = nameof(paperLength),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new paperLength(),
 				},
 			];
 
@@ -1835,16 +1842,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(characterEncoding),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new characterEncoding(),
 				},
 				new AttributeBinding {
 					attribute = nameof(countryName),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new countryName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new language(),
 				},
 			];
 
@@ -1873,16 +1883,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new language(),
 				},
 				new AttributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new name(),
 				},
 				new AttributeBinding {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new nameUsage(),
 				},
 			];
 
@@ -1909,26 +1922,31 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(fileLocator),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fileLocator(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fileReference),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new fileReference(),
 				},
 				new AttributeBinding {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new headline(),
 				},
 				new AttributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new language(),
 				},
 				new AttributeBinding {
 					attribute = nameof(text),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new text(),
 				},
 			];
 
@@ -1960,31 +1978,37 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(applicationProfile),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new applicationProfile(),
 				},
 				new AttributeBinding {
 					attribute = nameof(linkage),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new linkage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(nameOfResource),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new nameOfResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new onlineDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(protocol),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new protocol(),
 				},
 				new AttributeBinding {
 					attribute = nameof(protocolRequest),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new protocolRequest(),
 				},
 			];
 
@@ -2020,11 +2044,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new dateEnd(),
 				},
 				new AttributeBinding {
 					attribute = nameof(dateStart),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new dateStart(),
 				},
 			];
 
@@ -2055,16 +2081,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(contractPeriod),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new contractPeriod(),
 				},
 				new AttributeBinding {
 					attribute = nameof(currency),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new currency(),
 				},
 				new AttributeBinding {
 					attribute = nameof(price),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new price(),
 				},
 			];
 
@@ -2091,11 +2120,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
+					CreateInstance = () => new iSO216(),
 				},
 				new AttributeBinding {
 					attribute = nameof(customPaperSize),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new customPaperSize(),
 				},
 			];
 
@@ -2131,21 +2162,25 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new editionDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSSN),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new iSSN(),
 				},
 				new AttributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new name(),
 				},
 				new AttributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new version(),
 				},
 			];
 
@@ -2180,16 +2215,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new editionDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new name(),
 				},
 				new AttributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new version(),
 				},
 			];
 
@@ -2223,16 +2261,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new editionDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new name(),
 				},
 				new AttributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new version(),
 				},
 			];
 
@@ -2258,32 +2299,38 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+					CreateInstance = () => new categoryOfAuthority(),
 				},
 				new AttributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new countryName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new reportedDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(source),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new source(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceType),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,7,8,9,10,11,12,13,14,15],
+					CreateInstance = () => new sourceType(),
 				},
 				new AttributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 			];
 
@@ -2319,17 +2366,20 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(contactInstructions),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new contactInstructions(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunicationIdentifier),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new telecommunicationIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunicationService),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8],
+					CreateInstance = () => new telecommunicationService(),
 				},
 			];
 
@@ -2361,11 +2411,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new typeOfTimeIntervalUnit(),
 				},
 				new AttributeBinding {
 					attribute = nameof(valueOfTime),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new valueOfTime(),
 				},
 			];
 
@@ -2396,11 +2448,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(weekNumber),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new weekNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(yearNumber),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new yearNumber(),
 				},
 			];
 
@@ -2425,11 +2479,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new periodicDateRange(),
 				},
 				new AttributeBinding {
 					attribute = nameof(timeIntervalOfCycle),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new timeIntervalOfCycle(),
 				},
 			];
 
@@ -2459,26 +2515,31 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(printAgency),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new printAgency(),
 				},
 				new AttributeBinding {
 					attribute = nameof(printNation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new printNation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(reprintEdition),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new reprintEdition(),
 				},
 				new AttributeBinding {
 					attribute = nameof(reprintNation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new reprintNation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(printSize),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new printSize(),
 				},
 			];
 
@@ -2528,65 +2589,77 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(comment),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new comment(),
 				},
 				new AttributeBinding {
 					attribute = nameof(digitalSignatureReference),
 					lower = 1,
 					upper = 1,
 					permitedValues = [8],
+					CreateInstance = () => new digitalSignatureReference(),
 				},
 				new AttributeBinding {
 					attribute = nameof(digitalSignatureValue),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
+					CreateInstance = () => new digitalSignatureValue(),
 				},
 				new AttributeBinding {
 					attribute = nameof(editionNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new editionNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fileLocator),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new fileLocator(),
 				},
 				new AttributeBinding {
 					attribute = nameof(fileName),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new fileName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(issueDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new issueDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(otherDataTypeDescription),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new otherDataTypeDescription(),
 				},
 				new AttributeBinding {
 					attribute = nameof(supportFileFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,100],
+					CreateInstance = () => new supportFileFormat(),
 				},
 				new AttributeBinding {
 					attribute = nameof(supportFilePurpose),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new supportFilePurpose(),
 				},
 				new AttributeBinding {
 					attribute = nameof(defaultLocale),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new defaultLocale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(supportFileSpecification),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new supportFileSpecification(),
 				},
 			];
 
@@ -2619,16 +2692,19 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(expirationDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new expirationDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(issueDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new issueDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(issuanceCycle),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new issuanceCycle(),
 				},
 			];
 
@@ -2658,11 +2734,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 					attribute = nameof(publicationDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new publicationDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(weekOfYear),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new weekOfYear(),
 				},
 			];
 
@@ -2698,16 +2776,19 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(catalogueSectionNumber),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new catalogueSectionNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(catalogueSectionTitle),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new catalogueSectionTitle(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new information(),
 				},
 			];
 
@@ -2737,31 +2818,37 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(contactInstructions),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new contactInstructions(),
 				},
 				new AttributeBinding {
 					attribute = nameof(contactAddress),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new contactAddress(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(telecommunications),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new telecommunications(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new sourceIndication(),
 				},
 			];
 
@@ -2786,16 +2873,19 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(domesticCarriageRequirements),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new domesticCarriageRequirements(),
 				},
 				new AttributeBinding {
 					attribute = nameof(internationalCarriageRequirements),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new internationalCarriageRequirements(),
 				},
 				new AttributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 			];
 
@@ -2822,21 +2912,25 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(pricing),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new pricing(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new sourceIndication(),
 				},
 			];
 
@@ -2864,11 +2958,13 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
 				new AttributeBinding {
 					attribute = nameof(agencyName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new agencyName(),
 				},
 			];
 
@@ -2897,6 +2993,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 					attribute = nameof(distributorName),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new distributorName(),
 				},
 			];
 
@@ -2934,61 +3031,73 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
 				new AttributeBinding {
 					attribute = nameof(catalogueElementClassification),
 					lower = 1,
 					upper = 2147483647,
+					CreateInstance = () => new catalogueElementClassification(),
 				},
 				new AttributeBinding {
 					attribute = nameof(catalogueElementIdentifier),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new catalogueElementIdentifier(),
 				},
 				new AttributeBinding {
 					attribute = nameof(classification),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new classification(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iMOMaritimeService),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new iMOMaritimeService(),
 				},
 				new AttributeBinding {
 					attribute = nameof(notForNavigation),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new notForNavigation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new featureName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new information(),
 				},
 				new AttributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new onlineResource(),
 				},
 				new AttributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new sourceIndication(),
 				},
 				new AttributeBinding {
 					attribute = nameof(supportFile),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new supportFile(),
 				},
 				new AttributeBinding {
 					attribute = nameof(timeIntervalOfProduct),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new timeIntervalOfProduct(),
 				},
 			];
 
@@ -3019,85 +3128,101 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					attribute = nameof(approximateGridResolution),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new approximateGridResolution(),
 				},
 				new AttributeBinding {
 					attribute = nameof(compilationScale),
 					lower = 0,
 					upper = 2147483647,
+					CreateInstance = () => new compilationScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(distributionStatus),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
+					CreateInstance = () => new distributionStatus(),
 				},
 				new AttributeBinding {
 					attribute = nameof(editionNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new editionNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(maximumDisplayScale),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new maximumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(minimumDisplayScale),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new minimumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(navigationPurpose),
 					lower = 0,
 					upper = 3,
 					permitedValues = [1,2,3],
+					CreateInstance = () => new navigationPurpose(),
 				},
 				new AttributeBinding {
 					attribute = nameof(optimumDisplayScale),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new optimumDisplayScale(),
 				},
 				new AttributeBinding {
 					attribute = nameof(originalProductNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new originalProductNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(producerNation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new producerNation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(productNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new productNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(specificUsage),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new specificUsage(),
 				},
 				new AttributeBinding {
 					attribute = nameof(updateDate),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new updateDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(updateNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new updateNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(horizontalDatumEPSGCode),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new horizontalDatumEPSGCode(),
 				},
 				new AttributeBinding {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
+					CreateInstance = () => new verticalDatum(),
 				},
 			];
 
@@ -3141,32 +3266,38 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					attribute = nameof(compressionFlag),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new compressionFlag(),
 				},
 				new AttributeBinding {
 					attribute = nameof(datasetName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new datasetName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(issueDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new issueDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(issueTime),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new issueTime(),
 				},
 				new AttributeBinding {
 					attribute = nameof(typeOfProductFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
+					CreateInstance = () => new typeOfProductFormat(),
 				},
 				new AttributeBinding {
 					attribute = nameof(productSpecification),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new productSpecification(),
 				},
 			];
 
@@ -3198,31 +3329,37 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
+					CreateInstance = () => new editionDate(),
 				},
 				new AttributeBinding {
 					attribute = nameof(iSBN),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new iSBN(),
 				},
 				new AttributeBinding {
 					attribute = nameof(publicationNumber),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new publicationNumber(),
 				},
 				new AttributeBinding {
 					attribute = nameof(typeOfPhysicalProduct),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new typeOfPhysicalProduct(),
 				},
 				new AttributeBinding {
 					attribute = nameof(printInformation),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new printInformation(),
 				},
 				new AttributeBinding {
 					attribute = nameof(referenceToNM),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new referenceToNM(),
 				},
 			];
 
@@ -3255,33 +3392,39 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 					attribute = nameof(compressionFlag),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new compressionFlag(),
 				},
 				new AttributeBinding {
 					attribute = nameof(serviceName),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new serviceName(),
 				},
 				new AttributeBinding {
 					attribute = nameof(serviceStatus),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
+					CreateInstance = () => new serviceStatus(),
 				},
 				new AttributeBinding {
 					attribute = nameof(typeOfProductFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
+					CreateInstance = () => new typeOfProductFormat(),
 				},
 				new AttributeBinding {
 					attribute = nameof(serviceSpecification),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new serviceSpecification(),
 				},
 				new AttributeBinding {
 					attribute = nameof(productSpecification),
 					lower = 0,
 					upper = 1,
+					CreateInstance = () => new productSpecification(),
 				},
 			];
 
