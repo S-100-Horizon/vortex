@@ -2673,6 +2673,239 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 
 }
 
+namespace S100Framework.AttributeModel.S128.InformationTypes
+{
+	using S100Framework.AttributeModel.S128.SimpleAttributes;
+	using S100Framework.AttributeModel.S128.ComplexAttributes;
+
+	/// <summary>
+	/// A header identifying a section within a catalogue.
+	/// </summary>
+	public class CatalogueSectionHeader : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(CatalogueSectionHeader);
+		[JsonIgnore]
+		public override string S100FC_name => "Catalogue Section Header";
+		[JsonIgnore]
+		public catalogueSectionNumber catalogueSectionNumber { get; init; } = new catalogueSectionNumber();
+		public override Attribute[] attributes => [
+				catalogueSectionNumber,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(catalogueSectionNumber),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(catalogueSectionTitle),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? catalogueSectionTitle { set { base.AddAttributeValue(new catalogueSectionTitle { value = value }); } }
+		public information? information { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
+	/// </summary>
+	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ContactDetails);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Details";
+		[JsonIgnore]
+		public contactInstructions contactInstructions { get; init; } = new contactInstructions();
+		public override Attribute[] attributes => [
+				contactInstructions,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(contactInstructions),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(contactAddress),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunications),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// An indication of the type or justification of a carriage requirement.
+	/// </summary>
+	public class IndicationOfCarriageRequirement : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(IndicationOfCarriageRequirement);
+		[JsonIgnore]
+		public override string S100FC_name => "Indication of Carriage Requirement";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(domesticCarriageRequirements),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(internationalCarriageRequirements),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(featureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? domesticCarriageRequirements { set { base.AddAttributeValue(new domesticCarriageRequirements { value = value }); } }
+		public String? internationalCarriageRequirements { set { base.AddAttributeValue(new internationalCarriageRequirements { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Pricing information of nautical products.
+	/// </summary>
+	public class PriceInformation : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(PriceInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Price Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(pricing),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Information about the authority responsible for production.
+	/// </summary>
+	public class ProducerInformation : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ProducerInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Producer Information";
+		[JsonIgnore]
+		public agencyResponsibleForProduction agencyResponsibleForProduction { get; init; } = new agencyResponsibleForProduction();
+		public override Attribute[] attributes => [
+				agencyResponsibleForProduction,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(agencyResponsibleForProduction),
+					lower = 1,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(agencyName),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public String? agencyName { set { base.AddAttributeValue(new agencyName { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Information related to a distributor.
+	/// </summary>
+	public class DistributorInformation : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(DistributorInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Distributor Information";
+		[JsonIgnore]
+		public distributorName distributorName { get; init; } = new distributorName();
+		public override Attribute[] attributes => [
+				distributorName,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(distributorName),
+					lower = 1,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+}
+
 namespace S100Framework.AttributeModel.S128.FeatureTypes
 {
 	using S100Framework.AttributeModel.S128.SimpleAttributes;

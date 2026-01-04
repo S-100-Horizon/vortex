@@ -4238,6 +4238,640 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 
 }
 
+namespace S100Framework.AttributeModel.S131.InformationTypes
+{
+	using S100Framework.AttributeModel.S131.SimpleAttributes;
+	using S100Framework.AttributeModel.S131.ComplexAttributes;
+
+	/// <summary>
+	/// Generalized information type which carries all the common attributes.
+	/// </summary>
+	public class InformationType : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(InformationType);
+		[JsonIgnore]
+		public override string S100FC_name => "Information Type";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(featureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(graphic),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(sourceIndication),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
+	/// </summary>
+	public class AbstractRxN : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(AbstractRxN);
+		[JsonIgnore]
+		public override string S100FC_name => "AbstractRxN";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfAuthority),
+					lower = 0,
+					upper = 1,
+					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+				},
+				new AttributeBinding {
+					attribute = nameof(rxNCode),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? categoryOfAuthority { set { base.AddAttributeValue(new categoryOfAuthority { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
+	/// </summary>
+	public class Applicability : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Applicability);
+		[JsonIgnore]
+		public override string S100FC_name => "Applicability";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(inBallast),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [2,5,6,7,8,10,11,12,13,14,15],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfDangerousOrHazardousCargo),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfVessel),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfVesselRegistry),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2],
+				},
+				new AttributeBinding {
+					attribute = nameof(logicalConnectives),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2],
+				},
+				new AttributeBinding {
+					attribute = nameof(thicknessOfIceCapability),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselPerformance),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(destination),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(vesselMeasurementsSpecification),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public Boolean? inBallast { set { base.AddAttributeValue(new inBallast { value = value }); } }
+		public int? categoryOfVessel { set { base.AddAttributeValue(new categoryOfVessel { value = value }); } }
+		public int? categoryOfVesselRegistry { set { base.AddAttributeValue(new categoryOfVesselRegistry { value = value }); } }
+		public int? logicalConnectives { set { base.AddAttributeValue(new logicalConnectives { value = value }); } }
+		public int? thicknessOfIceCapability { set { base.AddAttributeValue(new thicknessOfIceCapability { value = value }); } }
+		public String? vesselPerformance { set { base.AddAttributeValue(new vesselPerformance { value = value }); } }
+		public String? destination { set { base.AddAttributeValue(new destination { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// A person or organisation having political or administrative power and control.
+	/// </summary>
+	public class Authority : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Authority);
+		[JsonIgnore]
+		public override string S100FC_name => "Authority";
+		[JsonIgnore]
+		public categoryOfAuthority categoryOfAuthority { get; init; } = new categoryOfAuthority();
+		public override Attribute[] attributes => [
+				categoryOfAuthority,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(categoryOfAuthority),
+					lower = 1,
+					upper = 1,
+					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public textContent? textContent { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Services that are available for a given port.
+	/// </summary>
+	public class AvailablePortServices : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(AvailablePortServices);
+		[JsonIgnore]
+		public override string S100FC_name => "Available Port Services";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(firefightingService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(medicalService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5],
+				},
+				new AttributeBinding {
+					attribute = nameof(repairService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+				},
+				new AttributeBinding {
+					attribute = nameof(technicalPortService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(shipSanitationControl),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3],
+				},
+				new AttributeBinding {
+					attribute = nameof(transportConnection),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [2,3,4,5,6,8,9,11,12,13],
+				},
+				new AttributeBinding {
+					attribute = nameof(berthingAssistance),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6],
+				},
+				new AttributeBinding {
+					attribute = nameof(cargoService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(securitySafetyEmergencyService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8],
+				},
+				new AttributeBinding {
+					attribute = nameof(wasteDisposalService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+				},
+				new AttributeBinding {
+					attribute = nameof(supplyService),
+					lower = 0,
+					upper = 2147483647,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10],
+				},
+				new AttributeBinding {
+					attribute = nameof(tugInformation),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? tugInformation { set { base.AddAttributeValue(new tugInformation { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
+	/// </summary>
+	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ContactDetails);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Details";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(callName),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(callSign),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(categoryOfCommunicationPreference),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+				},
+				new AttributeBinding {
+					attribute = nameof(communicationChannel),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(contactInstructions),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(language),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(mMSICode),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(contactAddress),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyPair),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunications),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? callName { set { base.AddAttributeValue(new callName { value = value }); } }
+		public String? callSign { set { base.AddAttributeValue(new callSign { value = value }); } }
+		public int? categoryOfCommunicationPreference { set { base.AddAttributeValue(new categoryOfCommunicationPreference { value = value }); } }
+		public String? contactInstructions { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
+		public String? mMSICode { set { base.AddAttributeValue(new mMSICode { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The seaward end of a channel, harbour, dock, etc.
+	/// </summary>
+	public class Entrance : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Entrance);
+		[JsonIgnore]
+		public override string S100FC_name => "Entrance";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(entranceDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(associatedFeatureName),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(localKnowledgeDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(approachDescription),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(markedBy),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(landmarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(offshoreMarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(majorLightDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(usefulMarkDescription),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(textContent),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? entranceDescription { set { base.AddAttributeValue(new entranceDescription { value = value }); } }
+		public String? localKnowledgeDescription { set { base.AddAttributeValue(new localKnowledgeDescription { value = value }); } }
+		public String? approachDescription { set { base.AddAttributeValue(new approachDescription { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Nautical information about a related area or facility.
+	/// </summary>
+	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NauticalInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Nautical Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
+	/// </summary>
+	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NonStandardWorkingDay);
+		[JsonIgnore]
+		public override string S100FC_name => "Non-Standard Working Day";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateFixed),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateVariable),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Recommendations for a related area or facility.
+	/// </summary>
+	public class Recommendations : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Recommendations);
+		[JsonIgnore]
+		public override string S100FC_name => "Recommendations";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Regulations for a related area or facility.
+	/// </summary>
+	public class Regulations : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Regulations);
+		[JsonIgnore]
+		public override string S100FC_name => "Regulations";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// Restrictions for a related area or facility.
+	/// </summary>
+	public class Restrictions : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(Restrictions);
+		[JsonIgnore]
+		public override string S100FC_name => "Restrictions";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The time when a service is available and known exceptions.
+	/// </summary>
+	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ServiceHours);
+		[JsonIgnore]
+		public override string S100FC_name => "Service Hours";
+		[JsonIgnore]
+		public scheduleByDayOfWeek scheduleByDayOfWeek { get; init; } = new scheduleByDayOfWeek();
+		public override Attribute[] attributes => [
+				scheduleByDayOfWeek,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(scheduleByDayOfWeek),
+					lower = 1,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		#endregion
+	}
+
+	/// <summary>
+	/// The indication of the quality of the locational information for features in a dataset.
+	/// </summary>
+	public class SpatialQuality : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SpatialQuality);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Quality";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(qualityOfHorizontalMeasurement),
+					lower = 0,
+					upper = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
+				},
+				new AttributeBinding {
+					attribute = nameof(spatialAccuracy),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? qualityOfHorizontalMeasurement { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
+		#endregion
+	}
+
+}
+
 namespace S100Framework.AttributeModel.S131.FeatureTypes
 {
 	using S100Framework.AttributeModel.S131.SimpleAttributes;

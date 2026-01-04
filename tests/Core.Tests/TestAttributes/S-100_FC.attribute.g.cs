@@ -75,6 +75,42 @@ namespace S100Framework.AttributeModel
         }
     }
 
+    public abstract class InformationType
+    {
+        [JsonIgnore]
+        public abstract string S100FC_code { get; }
+        [JsonIgnore]
+        public abstract string S100FC_name { get; }
+
+        public abstract Attribute[] attributes { get; }
+
+        [JsonIgnore]
+        public Attribute[] attributesOptional { get; set; } = [];
+
+        public abstract AttributeBinding[] attributeBindings();
+
+        public AttributeBinding[] mandatoryBindings() {
+            return [.. this.attributeBindings().Where(e => e.lower > 0)];
+        }
+
+        protected void AddAttributeValue(Attribute attribute) {
+            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributesOptional, value);
+                    this.attributesOptional[index] = attribute;
+                }
+            }
+            else {
+                this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
+    }
+
     public abstract class FeatureType
     {
         [JsonIgnore]

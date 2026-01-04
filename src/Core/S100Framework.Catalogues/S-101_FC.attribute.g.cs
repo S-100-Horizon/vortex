@@ -6534,6 +6534,236 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 }
 
+namespace S100Framework.AttributeModel.S101.InformationTypes
+{
+	using S100Framework.AttributeModel.S101.SimpleAttributes;
+	using S100Framework.AttributeModel.S101.ComplexAttributes;
+
+	/// <summary>
+	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
+	/// </summary>
+	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ContactDetails);
+		[JsonIgnore]
+		public override string S100FC_name => "Contact Details";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(callSign),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(communicationChannel),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(contactInstructions),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(frequencyPair),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(mMSICode),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(onlineResource),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(telecommunications),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public String? callSign { set { base.AddAttributeValue(new callSign { value = value }); } }
+		public String? contactInstructions { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? mMSICode { set { base.AddAttributeValue(new mMSICode { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The time when a service is available and known exceptions.
+	/// </summary>
+	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(ServiceHours);
+		[JsonIgnore]
+		public override string S100FC_name => "Service Hours";
+		[JsonIgnore]
+		public scheduleByDayOfWeek scheduleByDayOfWeek { get; init; } = new scheduleByDayOfWeek();
+		public override Attribute[] attributes => [
+				scheduleByDayOfWeek,
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(scheduleByDayOfWeek),
+					lower = 1,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
+	/// </summary>
+	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NonStandardWorkingDay);
+		[JsonIgnore]
+		public override string S100FC_name => "Non-Standard Working Day";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(dateFixed),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(dateVariable),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// Nautical information about a related area or facility.
+	/// </summary>
+	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NauticalInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Nautical Information";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(fixedDateRange),
+					lower = 0,
+					upper = 1,
+				},
+				new AttributeBinding {
+					attribute = nameof(periodicDateRange),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(information),
+					lower = 0,
+					upper = 2147483647,
+				},
+				new AttributeBinding {
+					attribute = nameof(pictorialRepresentation),
+					lower = 0,
+					upper = 1,
+				},
+			];
+
+		#region Optional Attributes
+		public fixedDateRange? fixedDateRange { set { base.AddAttributeValue(value); } }
+		public String? pictorialRepresentation { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		#endregion
+	}
+
+	/// <summary>
+	/// The indication of the quality of the locational information for features in a dataset.
+	/// </summary>
+	public class SpatialQuality : S100Framework.AttributeModel.InformationType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SpatialQuality);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Quality";
+		public override Attribute[] attributes => [
+				.. base.attributesOptional,
+			];
+		public override AttributeBinding[] attributeBindings() => [
+				new AttributeBinding {
+					attribute = nameof(qualityOfHorizontalMeasurement),
+					lower = 0,
+					upper = 1,
+					permitedValues = [4],
+				},
+				new AttributeBinding {
+					attribute = nameof(spatialAccuracy),
+					lower = 0,
+					upper = 2147483647,
+				},
+			];
+
+		#region Optional Attributes
+		public int? qualityOfHorizontalMeasurement { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
+		#endregion
+	}
+
+}
+
 namespace S100Framework.AttributeModel.S101.FeatureTypes
 {
 	using S100Framework.AttributeModel.S101.SimpleAttributes;
