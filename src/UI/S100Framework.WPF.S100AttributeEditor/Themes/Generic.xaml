@@ -96,6 +96,51 @@
         </Setter>
     </Style>
 
+    <Style x:Key="DeleteIconButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Path x:Name="Icon"
+                          Stretch="Uniform"
+                          Fill="#E53935"
+                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
+
+                        <Path x:Name="X"
+                          Fill="White"
+                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#D32F2F"/>
+                        </Trigger>
+
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#B71C1C"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Icon" Property="Fill" Value="#FFCCCCCC"/>
+                            <Setter TargetName="X" Property="Fill" Value="#FFEEEEEE"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="ButtonLikeComboBox" TargetType="ComboBox">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
