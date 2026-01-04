@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Images\minus.png" />
     <None Remove="Images\plus.png" />
+    <None Remove="S100Framework.WPF.S100AttributeEditor.csproj.bak" />
   </ItemGroup>
 
   <ItemGroup>

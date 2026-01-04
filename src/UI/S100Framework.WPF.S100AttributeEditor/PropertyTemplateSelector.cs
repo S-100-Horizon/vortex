@@ -18,7 +18,7 @@ namespace S100Framework.WPF
         public DataTemplate ComplexEditorTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
-            if (item is SimpleAttribute simpleAttribute) {
+            if (item is SimpleAttributeViewModel simpleAttribute) {
                 if (simpleAttribute.valueType.Equals("boolean"))
                     return BooleanEditorTemplate;
                 if (simpleAttribute.valueType.Equals("integer"))
@@ -27,7 +27,7 @@ namespace S100Framework.WPF
                     return EnumEditorTemplate;
             }
 
-            if (item is ComplexAttribute complextAttribute) {
+            if (item is ComplexAttributeViewModel complextAttribute) {
                 return ComplexEditorTemplate;
             }
 

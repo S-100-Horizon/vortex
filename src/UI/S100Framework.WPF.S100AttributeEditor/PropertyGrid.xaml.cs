@@ -24,7 +24,7 @@ namespace S100Framework.WPF
     /// </summary>
     public partial class PropertyGrid : UserControl, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged = default;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -36,29 +36,29 @@ namespace S100Framework.WPF
         public static readonly DependencyProperty SelectedObjectProperty =
             DependencyProperty.Register(
                 nameof(SelectedObject),
-                typeof(SelectedObject),
+                typeof(ComplexAttributeViewModel),
                 typeof(PropertyGrid),
                 new PropertyMetadata(null, OnSelectedObjectChanged));
 
-        public SelectedObject? SelectedObject {
-            get => GetValue(SelectedObjectProperty) as SelectedObject;
+        public ComplexAttributeViewModel? SelectedObject {
+            get => GetValue(SelectedObjectProperty) as ComplexAttributeViewModel;
             set => SetValue(SelectedObjectProperty, value);
         }
 
         #region Properties
-        public ObservableCollection<AttributeBinding> AttributeBindings { get; set; } = new ObservableCollection<AttributeBinding>();
+        //public ObservableCollection<AttributeBinding> AttributeBindings { get; set; } = new ObservableCollection<AttributeBinding>();
 
-        public ObservableCollection<AttributeModel.Attribute> PropertyValues { get; set; } = new ObservableCollection<AttributeModel.Attribute>();
+        //public ObservableCollection<AttributeModel.Attribute> PropertyValues { get; set; } = new ObservableCollection<AttributeModel.Attribute>();
 
-        private string _title = string.Empty;
+        //private string _title = string.Empty;
 
-        public string Title {
-            get => _title;
-            set {
-                _title = value;
-                OnPropertyChanged(); // Notifies the UI to update
-            }
-        }
+        //public string Title {
+        //    get => _title;
+        //    set {
+        //        _title = value;
+        //        OnPropertyChanged(); // Notifies the UI to update
+        //    }
+        //}
         #endregion
 
         public PropertyGrid() {
@@ -67,20 +67,20 @@ namespace S100Framework.WPF
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is PropertyGrid grid) {
-                grid._selectedObject = e.NewValue as SelectedObject;
+                grid._selectedObject = e.NewValue as ComplexAttributeViewModel;
 
-                grid.Title = grid._selectedObject!.code;
+                //grid.Title = grid._selectedObject!.code;
 
-                grid.AttributeBindings.Clear();
-                foreach (var p in grid._selectedObject!.attributeBindings)
-                    grid.AttributeBindings.Add(p);
+                //grid.AttributeBindings.Clear();
+                //foreach (var p in grid._selectedObject!.attributeBindings)
+                //    grid.AttributeBindings.Add(p);
 
-                grid.PropertyValues.Clear();
-                foreach (var p in grid._selectedObject!.attributeValues)
-                    grid.PropertyValues.Add(p);
+                //grid.PropertyValues.Clear();
+                //foreach (var p in grid._selectedObject!.attributeValues)
+                //    grid.PropertyValues.Add(p);
             }
         }
 
-        private SelectedObject? _selectedObject;
+        private ComplexAttributeViewModel? _selectedObject;
     }
 }

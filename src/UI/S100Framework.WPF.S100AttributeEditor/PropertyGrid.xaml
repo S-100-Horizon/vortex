@@ -23,13 +23,13 @@
 
         <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
             <ComboBox DockPanel.Dock="Right" 
-                             ItemsSource="{Binding AttributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" 
+                             ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" 
                              DisplayMemberPath="attribute"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" />
+            <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" />
         </DockPanel>
 
         <ItemsControl Grid.Row="1"
-                      ItemsSource="{Binding PropertyValues, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                      ItemsSource="{Binding SelectedObject.attributeValues, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                       ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
     </Grid>
 

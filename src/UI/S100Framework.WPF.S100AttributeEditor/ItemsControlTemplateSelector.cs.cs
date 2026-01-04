@@ -18,7 +18,7 @@ namespace S100Framework.WPF
         //public DataTemplate? FeatureTypeControlTemplate { get; set; } = default;
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
-            if (item is ComplexAttribute complexAttribute) {
+            if (item is ComplexAttributeViewModel complexAttribute) {
                 return ComplexItemControlTemplate!;
             }
             if (item is FeatureType featureType) {

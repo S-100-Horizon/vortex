@@ -59,7 +59,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding S100FC_code}" Margin="5" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center"/>
 
                 <ContentPresenter Grid.Column="1" 
                               Content="{Binding}" 

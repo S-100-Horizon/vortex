@@ -46,11 +46,13 @@ namespace SelectorUI
             featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured.value = false;
             featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData.value = 1;
 
-            var selectedObject = new SelectedObject {
-                code = featureType.S100FC_name,
-                attributeBindings = featureType.attributeBindings(),
-                attributeValues = [.. featureType.attributes],
-            };            
+            var selectedObject = new S100AttributeEditorViewModel(featureType);
+
+            //var selectedObject = new SelectedObject {
+            //    code = featureType.S100FC_name,
+            //    attributeBindings = featureType.attributeBindings(),
+            //    attributeValues = [.. featureType.attributes],
+            //};            
 
             this.PropertyGrid.SelectedObject = selectedObject;
 

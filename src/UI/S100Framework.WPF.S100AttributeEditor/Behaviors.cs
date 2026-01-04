@@ -26,8 +26,12 @@ namespace S100Framework.WPF
         }
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (Command?.CanExecute(AssociatedObject.SelectedItem) == true) {
-                Command.Execute(AssociatedObject.SelectedItem);
+            if (AssociatedObject.SelectedItem != null) {
+                if (Command?.CanExecute(AssociatedObject.SelectedItem) == true) {
+                    Command.Execute(AssociatedObject.SelectedItem);
+
+                    AssociatedObject.SelectedItem = null;
+                }
             }
         }
     }
