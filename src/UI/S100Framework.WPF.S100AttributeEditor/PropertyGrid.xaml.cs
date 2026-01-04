@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using S100Framework.AttributeModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace S100Framework.WPF
 {
@@ -8,6 +10,41 @@ namespace S100Framework.WPF
     /// </summary>
     public partial class PropertyGrid : UserControl
     {
+        public ICommand CreateAttributeCommand { get; }
+
+        public ICommand DeleteAttributeCommand { get; }
+
+        protected void OnCreateAttributeCommand(object? parameter) {
+            if (parameter is AttributeBinding attributeBinding) {
+                var instance = attributeBinding.CreateInstance();
+                if (instance is SimpleAttribute simpleAttribute)
+                    this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
+                else if (instance is ComplexAttribute complexAttribute)
+                    this.SelectedObject?.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
+                else
+                    throw new NotImplementedException();
+            }
+        }
+
+        protected void OnDeleteAttributeCommand(object? parameter) {
+            if (parameter is ClickedBehavior.DeleteAttributeCommandEventArgs e) {
+                if (e.parameter is AttributeViewModel attributeViewModel) {
+                    if (e.parent is PropertyGrid propertyGrid) {
+                        var index = propertyGrid.SelectedObject?.attributeValues.IndexOf(attributeViewModel);
+                        if (index >= 0) {
+                            propertyGrid.SelectedObject?.attributeValues.RemoveAt(index.Value);
+                        }
+                    }
+                    else if (e.parent is S100AttributeEditor attributeEditor) {
+                        var index = attributeEditor.SelectedObject?.attributeValues.IndexOf(attributeViewModel);
+                        if (index >= 0) {
+                            attributeEditor.SelectedObject?.attributeValues.RemoveAt(index.Value);
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// The object whose properties are being edited
         /// </summary>
@@ -25,6 +62,9 @@ namespace S100Framework.WPF
 
         public PropertyGrid() {
             InitializeComponent();
+
+            this.CreateAttributeCommand = new RelayCommand(this.OnCreateAttributeCommand);
+            this.DeleteAttributeCommand = new RelayCommand(this.OnDeleteAttributeCommand);
         }
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {

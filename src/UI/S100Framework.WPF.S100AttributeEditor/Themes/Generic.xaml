@@ -10,6 +10,160 @@
     <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
     <converters:SelectedObjectSourceConverter x:Key="SelectedObjectSourceConverter"/>
 
+    <Style x:Key="DeleteIconButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Path x:Name="Icon"
+                          Stretch="Uniform"
+                          Fill="#E53935"
+                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
+
+                        <Path x:Name="X"
+                          Fill="White"
+                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#D32F2F"/>
+                        </Trigger>
+
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#B71C1C"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Icon" Property="Fill" Value="#FFCCCCCC"/>
+                            <Setter TargetName="X" Property="Fill" Value="#FFEEEEEE"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DeleteContentItemButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Path x:Name="Icon"
+                          Stretch="Uniform"
+                          Fill="#E53935"
+                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
+
+                        <Path x:Name="X"
+                          Fill="White"
+                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#D32F2F"/>
+                        </Trigger>
+
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="Fill" Value="#B71C1C"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Icon" Property="Fill" Value="#FFCCCCCC"/>
+                            <Setter TargetName="X" Property="Fill" Value="#FFEEEEEE"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Visibility" Value="Hidden"/>
+        
+        <Style.Triggers>
+            <!-- Show when hovering the TextBox -->
+            <DataTrigger Binding="{Binding IsMouseOver, ElementName=ContentItem}" Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+
+            <!-- Keep visible when hovering the button itself -->
+            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="ButtonLikeComboBox" TargetType="ComboBox">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <!-- MAIN BUTTON SURFACE -->
+                        <ToggleButton
+                x:Name="ToggleButton"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Focusable="False"
+                IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                ClickMode="Press">
+                            <Grid Width="18" Height="18">
+                                <Path Fill="#4CAF50" Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z" />
+                                <Path Fill="White" Data="M8,4 H10 V8 H14 V10 H10 V14 H8 V10 H4 V8 H8 Z" />
+                            </Grid>
+                        </ToggleButton>
+
+                        <Popup
+                x:Name="Popup"
+                Placement="Bottom"
+                AllowsTransparency="True"
+                Focusable="False"
+                IsOpen="{TemplateBinding IsDropDownOpen}"
+                PopupAnimation="Slide">
+
+                            <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ScrollViewer>
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+
+                    <!-- VISUAL STATES -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ToggleButton" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">
         <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
@@ -61,9 +215,13 @@
 
                 <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center"/>
 
-                <ContentPresenter Grid.Column="1" 
-                              Content="{Binding}" 
-                              ContentTemplateSelector="{StaticResource PropSelector}"/>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
+                    </Button>
+                    <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
+                                  Content="{Binding}" 
+                                  ContentTemplateSelector="{StaticResource PropSelector}"/>
+                </DockPanel>
             </Grid>
         </Border>
     </DataTemplate>
@@ -91,102 +249,6 @@
                             </Border>
                         </Popup>
                     </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="DeleteIconButtonStyle" TargetType="Button">
-        <Setter Property="Width" Value="18"/>
-        <Setter Property="Height" Value="18"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Cursor" Value="Hand"/>
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <Path x:Name="Icon"
-                          Stretch="Uniform"
-                          Fill="#E53935"
-                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
-
-                        <Path x:Name="X"
-                          Fill="White"
-                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
-                    </Grid>
-
-                    <ControlTemplate.Triggers>
-                        <!-- Hover -->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Icon" Property="Fill" Value="#D32F2F"/>
-                        </Trigger>
-
-                        <!-- Pressed -->
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Icon" Property="Fill" Value="#B71C1C"/>
-                        </Trigger>
-
-                        <!-- Disabled -->
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Icon" Property="Fill" Value="#FFCCCCCC"/>
-                            <Setter TargetName="X" Property="Fill" Value="#FFEEEEEE"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-
-    <Style x:Key="ButtonLikeComboBox" TargetType="ComboBox">
-        <Setter Property="Focusable" Value="False"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <!-- MAIN BUTTON SURFACE -->
-                        <ToggleButton
-                x:Name="ToggleButton"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Focusable="False"
-                IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                ClickMode="Press">
-                            <Grid Width="18" Height="18">
-                                <Path Fill="#4CAF50" Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z" />
-                                <Path Fill="White" Data="M8,4 H10 V8 H14 V10 H10 V14 H8 V10 H4 V8 H8 Z" />
-                            </Grid>
-                        </ToggleButton>
-
-                        <Popup
-                x:Name="Popup"
-                Placement="Bottom"
-                AllowsTransparency="True"
-                Focusable="False"
-                IsOpen="{TemplateBinding IsDropDownOpen}"
-                PopupAnimation="Slide">
-
-                            <Border
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
-                                <ScrollViewer>
-                                    <ItemsPresenter/>
-                                </ScrollViewer>
-                            </Border>
-                        </Popup>
-                    </Grid>
-
-                    <!-- VISUAL STATES -->
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="ToggleButton" Property="Opacity" Value="0.5"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

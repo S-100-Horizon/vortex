@@ -33,6 +33,9 @@
                     </i:Interaction.Behaviors>
                 </ComboBox>
                 <Button Style="{StaticResource DeleteIconButtonStyle}">
+                    <i:Interaction.Behaviors>
+                        <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" Parameter="{Binding}"  Parent="{Binding RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}" />
+                    </i:Interaction.Behaviors>                    
                 </Button>
             </StackPanel>
             <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" />
