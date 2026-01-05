@@ -414,3 +414,5 @@ FodyWeavers.xsd
 /tests/Core.Tests/TestAttributes/S-127_FC.attribute.g.cs
 /tests/Core.Tests/TestAttributes/S-128_FC.attribute.g.cs
 /tests/Core.Tests/TestAttributes/S-131_FC.attribute.g.cs
+/tests/Core.Tests/TestAttributes/S-124_FC.attribute.g.cs
+/tests/Core.Tests/TestAttributes/S-125_FC.attribute.g.cs
