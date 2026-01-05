@@ -24643,6 +24643,15 @@ namespace S100Framework.AttributeModel.S101
 	using S100Framework.AttributeModel.S101.ComplexAttributes;
 	using S100Framework.AttributeModel.S101.FeatureTypes;
 
+	public class Summary : ISummary
+	{
+		public static string Name => "Electronic Navigational Chart";
+		public static string Scope => "Ocean, Coastal, Ports and Harbors. Excludes Inland waters.";
+		public static string ProductId => "S-101";
+		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2024-10-16", "yyyy-MM-dd");
+	}
+
 	public static class Extensions {
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();

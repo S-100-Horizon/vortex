@@ -4923,6 +4923,15 @@ namespace S100Framework.AttributeModel.S123
 	using S100Framework.AttributeModel.S123.ComplexAttributes;
 	using S100Framework.AttributeModel.S123.FeatureTypes;
 
+	public class Summary : ISummary
+	{
+		public static string Name => "Marine Radio Services";
+		public static string Scope => "Global";
+		public static string ProductId => "S-123";
+		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-10", "yyyy-MM-dd");
+	}
+
 	public static class Extensions {
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();

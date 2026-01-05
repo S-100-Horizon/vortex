@@ -5140,6 +5140,15 @@ namespace S100Framework.AttributeModel.S127
 	using S100Framework.AttributeModel.S127.ComplexAttributes;
 	using S100Framework.AttributeModel.S127.FeatureTypes;
 
+	public class Summary : ISummary
+	{
+		public static string Name => "Feature Catalogue for S-127";
+		public static string Scope => "Global coverage of maritime areas";
+		public static string ProductId => "S-127";
+		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-07", "yyyy-MM-dd");
+	}
+
 	public static class Extensions {
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();

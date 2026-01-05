@@ -48,7 +48,7 @@ namespace S100Framework.AttributeModel
         public Attribute[] attributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] attributeBindings();
-        
+
         public AttributeBinding[] mandatoryBindings() {
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
@@ -136,7 +136,7 @@ namespace S100Framework.AttributeModel
             var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
-                if(value == default) {
+                if (value == default) {
                     this.attributesOptional = [.. this.attributesOptional, attribute];
                 }
                 else {
@@ -168,13 +168,12 @@ namespace S100Framework.AttributeModel
         public Func<Attribute?> CreateInstance { get; init; } = () => null;
     }
 
-    //public abstract class AttributeValue
-    //{
-
-    //}
-
-    //public class AttributeValue<TAttribute> : AttributeValue where TAttribute : Attribute
-    //{
-    //    public TAttribute? Value { get; set; } = default;
-    //}
+    public interface ISummary
+    {
+        public static string Name => string.Empty;
+        public static string Scope => string.Empty;
+        public static string ProductId => string.Empty;
+        public static Version Version => throw new NotImplementedException();
+        public static DateOnly VersionDate => throw new NotImplementedException();
+    }
 }

@@ -50,11 +50,11 @@ namespace TestAttributes
             var instance = new DepthArea {
                 depthRangeMinimumValue = drval1,
                 depthRangeMaximumValue = drval2.GetValueOrDefault(),
-                interoperabilityIdentifier = "",
+                interoperabilityIdentifier = "ID:1234",
             };
-            instance.interoperabilityIdentifier(new interoperabilityIdentifier {
-                value = "ID:1234"
-            });
+            //instance.interoperabilityIdentifier(new interoperabilityIdentifier {
+            //    value = "ID:1234"
+            //});
         }
     }
 
