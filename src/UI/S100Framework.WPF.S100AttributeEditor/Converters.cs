@@ -31,7 +31,7 @@ namespace S100Framework.WPF.Converters
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if(value is SimpleAttributeViewModel simpleAttributeViewModel) {
-                if (simpleAttributeViewModel._attribute is SimpleEnumerationAttribute propertyValue) {
+                if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {
                     return propertyValue.listedValues;
                 }
             }

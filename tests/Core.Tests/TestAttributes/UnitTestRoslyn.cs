@@ -156,7 +156,7 @@ namespace TestAttributes
 
                     if (valueType.Equals("enumeration")) {
                         attributesKnownTypes.Add(code, "int");
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.SimpleEnumerationAttribute");
+                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.EnumerationAttribute");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -182,7 +182,7 @@ namespace TestAttributes
                     }
                     else if (valueType.Equals("S100_CodeList")) {
                         attributesKnownTypes.Add(code, "int");
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.SimpleEnumerationAttribute");
+                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.CodeListAttribute");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -221,8 +221,26 @@ namespace TestAttributes
                             "uri" => "String",
                             _ => throw new InvalidDataException(),
                         };
+
+                        var type = valueType.ToLowerInvariant() switch {
+                            "boolean" => "BooleanAttribute",
+                            "real" => "RealAttribute",
+                            "text" => "TextAttribute",
+                            //"s100_truncateddate" => "DateOnly",
+                            "s100_truncateddate" => "S100_TruncatedDateAttribute",
+                            "date" => "DateAttribute",
+                            "dateonly" => "DateOnlyAttribute",
+                            "datetime" => "DateTimeAttribute",
+                            "time" => "TimeAttribute",
+                            "integer" => "IntegerAttribute",
+                            "urn" => "UrnTimeAttribute",
+                            "url" => "UrlTimeAttribute",
+                            "uri" => "UriTimeAttribute",
+                            _ => throw new InvalidDataException(),
+                        };
+
                         attributesKnownTypes.Add(code, prefix);
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.SimpleAttribute");
+                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.{type}");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -230,7 +248,7 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string valueType => \"{valueType}\";");
-                        roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
+                        //roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix} value) => new {code} {{ value = value }};");
                         roslyn.AppendLine($"\t}}");

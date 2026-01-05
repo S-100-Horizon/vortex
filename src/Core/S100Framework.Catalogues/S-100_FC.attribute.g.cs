@@ -12,6 +12,7 @@ namespace S100Framework.AttributeModel
     {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
+
         [JsonIgnore]
         public abstract string S100FC_name { get; }
     }
@@ -22,29 +23,121 @@ namespace S100Framework.AttributeModel
         public abstract string valueType { get; }
     }
 
-    public abstract class SimpleEnumerationAttribute : SimpleAttribute
+    public abstract class BooleanAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "boolean";
+
+        public Boolean? value { get; set; } = default;
+    }
+
+    public abstract class IntegerAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "integer";
+
+        public int? value { get; set; } = default;
+    }
+
+    public abstract class RealAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "real";
+
+        public double? value { get; set; } = default;
+    }
+
+    public abstract class TextAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "text";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class S100_TruncatedDateAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "S100_TruncatedDate";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class DateAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "date";
+
+        public DateOnly? value { get; set; } = default;
+    }
+
+    public abstract class DateTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "datetime";
+
+        public DateTime? value { get; set; } = default;
+    }
+
+    public abstract class TimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "time";
+
+        public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+    }
+
+    public abstract class UrnTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URN";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class UrlTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URL";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class UriTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URI";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class EnumerationAttribute : SimpleAttribute
     {
         [JsonIgnore]
         public override string valueType => "enumeration";
 
         [JsonIgnore]
         public abstract listedValue[] listedValues { get; }
+
+        public int? value { get; set; } = default;
     }
 
-    public abstract class SimpleCodeListAttribute : SimpleAttribute
+    public abstract class CodeListAttribute : SimpleAttribute
     {
         [JsonIgnore]
         public override string valueType => "S100_CodeList";
 
         [JsonIgnore]
         public abstract listedValue[] listedValues { get; }
+
+        public int? value { get; set; } = default;
     }
 
     public abstract class ComplexAttribute : Attribute
     {
+        [JsonIgnore]
         public abstract Attribute[] attributes { get; }
 
-        [JsonIgnore]
         public Attribute[] attributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] attributeBindings();
@@ -82,12 +175,13 @@ namespace S100Framework.AttributeModel
     {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
+
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
+        [JsonIgnore]
         public abstract Attribute[] attributes { get; }
 
-        [JsonIgnore]
         public Attribute[] attributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] attributeBindings();
@@ -118,12 +212,13 @@ namespace S100Framework.AttributeModel
     {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
+
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
+        [JsonIgnore]
         public abstract Attribute[] attributes { get; }
 
-        [JsonIgnore]
         public Attribute[] attributesOptional { get; set; } = [];
 
         public abstract AttributeBinding[] attributeBindings();
