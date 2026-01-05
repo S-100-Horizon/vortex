@@ -1,6 +1,6 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.InformationTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

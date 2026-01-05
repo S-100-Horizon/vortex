@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Geometry;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

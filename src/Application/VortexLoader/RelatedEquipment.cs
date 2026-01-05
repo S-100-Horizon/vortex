@@ -3,9 +3,9 @@ using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using System.Data;
 
 namespace S100Framework.Applications
@@ -24,7 +24,7 @@ namespace S100Framework.Applications
             this._target = target;
         }
 
-        internal topmark? GetTopMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
+        internal topmark? GetTopMark<TType>(AidsToNavigationP structure) where TType : AttributeModel.FeatureType {
             var topmarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
 
             if (topmarks == null || topmarks.Count() == 0) {
@@ -39,7 +39,7 @@ namespace S100Framework.Applications
 
             if (relatedTopmark != null) {
 
-                List<colour>? topmarkColours = null;
+                int?[]? topmarkColours = null;
 
                 colourPattern? topmarkColourPattern = null;
 
@@ -52,21 +52,21 @@ namespace S100Framework.Applications
                 }
 
                 var topmark = new topmark() {
-                    topmarkDaymarkShape = default,
+                    //topmarkDaymarkShape = default,
                     // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
 
                 };
 
                 if (topmarkColours != null) {
-                    topmark.colour = topmarkColours;
+                    topmark.colour_optional = topmarkColours;
                 }
 
-                if (topmarkColourPattern.HasValue) {
-                    topmark.colourPattern = topmarkColourPattern.Value;
+                if (topmarkColourPattern is not null) {
+                    topmark.colourPattern_optional = topmarkColourPattern.value;
                 }
 
                 if (relatedTopmark.TOPSHP.HasValue) {
-                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmark, topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
+                    topmark.topmarkDaymarkShape.value = EnumHelper.GetEnumValue(relatedTopmark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
@@ -230,7 +230,8 @@ namespace S100Framework.Applications
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         if (instance is FeatureNode) {
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
-                        } else {
+                        }
+                        else {
                             ;
                         }
 
@@ -381,7 +382,7 @@ namespace S100Framework.Applications
 
                 }
                 else {
-                    Logger.Current.DataError(-1, relatedObject.PLTS_Frel.TableName! ,"", $"Broken FREL relationship {relatedObject.PLTS_Frel.SRC_FC}::{relatedObject.PLTS_Frel.SRC_LNAM} -> {relatedObject.PLTS_Frel.DEST_FC}::{relatedObject.PLTS_Frel.DEST_LNAM}");
+                    Logger.Current.DataError(-1, relatedObject.PLTS_Frel.TableName!, "", $"Broken FREL relationship {relatedObject.PLTS_Frel.SRC_FC}::{relatedObject.PLTS_Frel.SRC_LNAM} -> {relatedObject.PLTS_Frel.DEST_FC}::{relatedObject.PLTS_Frel.DEST_LNAM}");
                     continue;
                     //throw new NotSupportedException("Relation without related object or related object Type information.");
                 }
@@ -712,7 +713,7 @@ namespace S100Framework.Applications
 
             foreach (var plts in totalRelated) {
                 if (!ConversionAnalytics.Instance.IsConverted(Guid.Parse(plts.PLTS_Frel.DEST_UID))) {
-                    Logger.Current.DataError(-1, plts.PLTS_Frel.TableName!, "" , $"Broken FREL relationship {plts.PLTS_Frel.SRC_FC}::{plts.PLTS_Frel.SRC_LNAM} -> {plts.PLTS_Frel.DEST_FC}::{plts.PLTS_Frel.DEST_LNAM}")
+                    Logger.Current.DataError(-1, plts.PLTS_Frel.TableName!, "", $"Broken FREL relationship {plts.PLTS_Frel.SRC_FC}::{plts.PLTS_Frel.SRC_LNAM} -> {plts.PLTS_Frel.DEST_FC}::{plts.PLTS_Frel.DEST_LNAM}")
                     // TODO: handle missing related - TOMOREDO: REFACTURE!!!
                     ;
                 }

@@ -1,4 +1,4 @@
-﻿using S100Framework.DomainModel.S101.ComplexAttributes;
+﻿using S100Framework.AttributeModel.S101.ComplexAttributes;
 using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications

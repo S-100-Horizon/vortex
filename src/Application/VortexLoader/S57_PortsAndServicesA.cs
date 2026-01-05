@@ -1,9 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 //using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 

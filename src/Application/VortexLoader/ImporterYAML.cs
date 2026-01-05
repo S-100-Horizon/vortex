@@ -2,7 +2,7 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
+using S100Framework.AttributeModel.S101;
 using Serilog;
 using System.Collections.Generic;
 using System.Text.Json;

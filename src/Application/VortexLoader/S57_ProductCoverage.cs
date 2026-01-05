@@ -2,7 +2,7 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using VortexLoader.Singletons;
 
 namespace S100Framework.Applications
@@ -98,29 +98,29 @@ namespace S100Framework.Applications
                 dsnm = "101DK00" + dsnm!.Substring(2);
 
                 var specificUsage = dsnm[7] switch {
-                    '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                    '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                    '3' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                    '2' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                    '1' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                    '5' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeHarbour,
+                    '4' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeApproach,
+                    '3' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeCoastal,
+                    '2' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeGeneral,
+                    '1' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeOverview,
                     _ => throw new InvalidDataException(),
                 };
 
-                var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
-                    catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
-                                S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
+                var instance = new S100Framework.AttributeModel.S128.FeatureTypes.ElectronicProduct {
+                    catalogueElementClassification = new List<S100Framework.AttributeModel.S128.catalogueElementClassification> {
+                                S100Framework.AttributeModel.S128.catalogueElementClassification.Enc,
                             },
                     editionNumber = edtn,
                     updateNumber = updn,
                     issueDate = DateOnly.FromDateTime(isdt),
                     notForNavigation = true,
-                    typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
+                    typeOfProductFormat = S100Framework.AttributeModel.S128.typeOfProductFormat.IsoIec8211,
                     datasetName = dsnm,
                     specificUsage = specificUsage,
-                    productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
-                        editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-                        name = S100Framework.DomainModel.S101.Summary.ProductId,
-                        version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
+                    productSpecification = new S100Framework.AttributeModel.S128.ComplexAttributes.productSpecification {
+                        editionDate = S100Framework.AttributeModel.S101.Summary.VersionDate,
+                        name = S100Framework.AttributeModel.S101.Summary.ProductId,
+                        version = S100Framework.AttributeModel.S101.Summary.Version.ToString(),
                     },
                 };
 

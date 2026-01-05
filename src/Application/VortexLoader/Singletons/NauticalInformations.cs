@@ -2,10 +2,10 @@
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationAssociations;
-using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.AttributeModel.S101;
+using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.InformationAssociations;
+using S100Framework.AttributeModel.S101.InformationTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

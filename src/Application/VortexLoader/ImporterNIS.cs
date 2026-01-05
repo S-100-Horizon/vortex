@@ -5,10 +5,11 @@ using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.AttributeModel.S101;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.InformationTypes;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -48,9 +49,9 @@ namespace S100Framework.Applications
         //internal static int _compilationScale = -1;
         internal static string _scaminFilesPath = "";
 
-        internal static string ps101 = S100Framework.DomainModel.S101.Summary.ProductId;
-        internal static string ps128 = S100Framework.DomainModel.S128.Summary.ProductId;
-        internal static string s101version = S100Framework.DomainModel.S101.Summary.Version.ToString();
+        internal static string ps101 = S100Framework.AttributeModel.S101.Summary.ProductId;
+        internal static string ps128 = S100Framework.AttributeModel.S128.Summary.ProductId;
+        internal static string s101version = S100Framework.AttributeModel.S101.Summary.Version.ToString();
         internal static Geodatabase? _geodatabase;
 
         internal static bool createBridgesAndRelations = true;
@@ -720,22 +721,24 @@ namespace S100Framework.Applications
 
             lightCharacteristic? lightCharacteristicsValue = default;
 
-            if (current.LITCHR.HasValue) {
-                lightCharacteristicsValue = EnumHelper.GetEnumValue<rhythmOfLight, lightCharacteristic>(current.LITCHR.Value);
-            }
+            //if (current.LITCHR.HasValue) {
+            //    lightCharacteristicsValue = EnumHelper.GetEnumValue(current.LITCHR.Value);
+            //}
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
 
             var rhythmOfLight = new rhythmOfLight() {
-                lightCharacteristic = lightCharacteristicsValue,
-                signalGroup = parenthesisParts,
+                //lightCharacteristic = lightCharacteristicsValue,
+                signalGroup = [..parenthesisParts],
                 signalPeriod = signalPeriodN,
-                signalSequence = signalSequences
+                signalSequence = [.. signalSequences],
             };
+            if (lightCharacteristicsValue != null)
+                rhythmOfLight.lightCharacteristic.value = EnumHelper.GetEnumValue(current.LITCHR);
             return rhythmOfLight;
         }
 
-        internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
+        internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : AttributeModel.FeatureType {
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
@@ -743,9 +746,9 @@ namespace S100Framework.Applications
             */
 
             if (VerticalDatumConverter.ContainsKey(value)) {
-                return EnumHelper.GetEnumValue<TType, verticalDatum>(VerticalDatumConverter[value]);
+                return EnumHelper.GetEnumValue(VerticalDatumConverter[value]);
             }
-            return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+            return EnumHelper.GetEnumValue(value);
 
             //if (value != 3) {
             //    return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
@@ -753,8 +756,8 @@ namespace S100Framework.Applications
 
             //return verticalDatum.BalticSeaChartDatum2000;
         }
-        internal static verticalDatum? GetSoundingDatum<TType>(int value) where TType : DomainModel.FeatureNode {
-            return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+        internal static verticalDatum? GetSoundingDatum<TType>(int value) where TType : AttributeModel.FeatureType {
+            return EnumHelper.GetEnumValue(value);
         }
 
         //internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
@@ -778,7 +781,7 @@ namespace S100Framework.Applications
                         // Interval of light
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
-                            signalStatus = signalStatus.LitSound
+                            signalStatus = 1,   //signalStatus.LitSound
                         });
                     }
                     else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
@@ -786,7 +789,7 @@ namespace S100Framework.Applications
                         // Eclipse
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
-                            signalStatus = signalStatus.EclipsedSilent
+                            signalStatus = 2,   //signalStatus.EclipsedSilent
                         });
                     }
                 }
@@ -794,11 +797,8 @@ namespace S100Framework.Applications
             return signalSequences;
         }
 
-        internal static List<colour> GetColours<TType>(string color) where TType : class {//DomainModel.FeatureNode{
-            if (color == "-32767") {
-                return new List<colour>() { (colour)(-1) };
-            }
-            return EnumHelper.GetEnumValues<TType, colour>(color);
+        internal static int?[]? GetColours<TType>(string color) where TType : class {//DomainModel.FeatureNode{
+            return EnumHelper.GetEnumValues(color);
 
 
             //List<colour> colours = new List<colour>();
@@ -846,15 +846,15 @@ namespace S100Framework.Applications
         //    };
         //}
 
-        internal static colourPattern GetColourPattern(string colorPattern) {
+        internal static colourPattern? GetColourPattern(string colorPattern) {
             var colourPat = colorPattern switch {
-                "1" => colourPattern.HorizontalStripes,
-                "2" => colourPattern.VerticalStripes,
-                "3" => colourPattern.DiagonalStripes,
-                "4" => colourPattern.Squared,
-                "5" => colourPattern.StripesDirectionUnknown,
-                "6" => colourPattern.BorderStripe,
-                "-32767" => (colourPattern)(-1),
+                "1" => 1,   //colourPattern.HorizontalStripes,
+                "2" => 2,   //colourPattern.VerticalStripes,
+                "3" => 3,   //colourPattern.DiagonalStripes,
+                "4" => 4,   //colourPattern.Squared,
+                "5" => 5,   //colourPattern.StripesDirectionUnknown,
+                "6" => 6,   //colourPattern.BorderStripe,
+                "-32767" => default,
                 _ => throw new IndexOutOfRangeException($"Colourpattern value is not legal {colorPattern}")
             };
             return colourPat;
@@ -866,8 +866,8 @@ namespace S100Framework.Applications
 
         }
 
-        internal static List<status> GetStatus(string statuses) {
-            List<status> statusList = new List<status>();
+        internal static int?[] GetStatus(string statuses) {
+            List<int?> statusList = new List<int?>();
 
             var featureStatus = statuses.Trim();
 
@@ -905,26 +905,26 @@ namespace S100Framework.Applications
                     other than the allowable values will not be converted across to S-101. Data Producers are advised to
                     check any populated values for STATUS on LNDARE and amend appropriately. */
                 foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                    status? e = c.ToLowerInvariant() switch {
-                        "1" => status.Permanent,
-                        "2" => status.Occasional,
-                        "3" => status.Recommended,
-                        "4" => status.NotInUse,
-                        "5" => status.PeriodicIntermittent,
-                        "6" => status.Reserved,
-                        "7" => status.Temporary,
-                        "8" => status.Private,
-                        "9" => status.Mandatory,
-                        "11" => status.Extinguished,
-                        "12" => status.Illuminated,
-                        "13" => status.Historic,
-                        "14" => status.Public,
-                        "15" => status.Synchronized,
-                        "16" => status.Watched,
-                        "17" => status.Unwatched,
-                        "18" => status.ExistenceDoubtful,
+                    int? e = c.ToLowerInvariant() switch {
+                        "1" => 1,   //status.Permanent,
+                        "2" => 2,   //status.Occasional,
+                        "3" => 3,   //status.Recommended,
+                        "4" => 4,   //status.NotInUse,
+                        "5" => 5,   //status.PeriodicIntermittent,
+                        "6" => 6,   //status.Reserved,
+                        "7" => 7,   //status.Temporary,
+                        "8" => 8,   //status.Private,
+                        "9" => 9,   //status.Mandatory,
+                        "11" => 11,   //status.Extinguished,
+                        "12" => 12,   //status.Illuminated,
+                        "13" => 13,   //status.Historic,
+                        "14" => 14,   //status.Public,
+                        "15" => 15,   //status.Synchronized,
+                        "16" => 16,   //status.Watched,
+                        "17" => 17,   //status.Unwatched,
+                        "18" => 18,   //status.ExistenceDoubtful,
                         //"28" => ??, // TODO: what to do? STATUS 28
-                        "-32767" => (status)(-1),
+                        "-32767" => default,
                         _ => throw new IndexOutOfRangeException(),
                     };
                     if (e.HasValue) {
@@ -933,7 +933,7 @@ namespace S100Framework.Applications
                 }
 
             }
-            return statusList;
+            return statusList.ToArray();
         }
 
 
@@ -968,40 +968,42 @@ namespace S100Framework.Applications
 
         public static condition GetCondition(int conditionValue) {
             return conditionValue switch {
-                1 => condition.UnderConstruction,      // under construction
-                2 => condition.Ruined,                 // ruined
-                3 => condition.UnderReclamation,       // under reclamation
-                5 => condition.PlannedConstruction,    // planned construction
+                1 => 1,    // under construction
+                2 => 2,    // ruined
+                3 => 3,    // under reclamation
+                5 => 5,    // planned construction
                 -32767 => (condition)(-1),                        // unknown or no condition
                 _ => throw new IndexOutOfRangeException("Invalid condition value.")  // Invalid condition value
             };
         }
 
 
-        internal static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
+        internal static featureName[] GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();
             if (objname != default) {
                 var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
-                    featureName.Add(new featureName {
+                    var item = new featureName {
                         language = "eng",
-                        nameUsage = nameUsage.DefaultNameDisplay,
                         name = objnam,
-                    });
+                    };
+                    item.nameUsage_optional = 1;    //nameUsage.DefaultNameDisplay,
+                    featureName.Add(item);
                 }
             }
             if (nobjnme != default) {
                 var nobjnm = nobjnme.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
-                    featureName.Add(new featureName {
+                    var item = new featureName {
                         language = "dan",
-                        nameUsage = nameUsage.AlternateNameDisplay,
                         name = nobjnm,
-                    });
+                    };
+                    item.nameUsage_optional = 2;    //nameUsage.AlternateNameDisplay,
+                    featureName.Add(item);
                 }
             }
 
-            return featureName;
+            return featureName.ToArray();
         }
 
         internal static InformationResult BindNauticalInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {

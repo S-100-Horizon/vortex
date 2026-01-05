@@ -1,8 +1,137 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+namespace S100Framework.DomainModel.S100
+{
+    [JsonConverter(typeof(TimeJsonConverter))]
+    public readonly struct Time
+    {
+        private readonly long _ticks;
+
+        private const long MinTimeTicks = 0;
+
+        private const long MaxTimeTicks = 863_999_999_999 + 1;
+
+        public const long MinutesPerHour = TicksPerHour / TicksPerMinute;                           //              60
+
+        /// <summary>
+        /// Represents the smallest possible value of Time.
+        /// </summary>
+        public static Time MinValue => new Time((ulong)MinTimeTicks);
+
+        /// <summary>
+        /// Represents the largest possible value of Time.
+        /// </summary>
+        public static Time MaxValue => new Time((ulong)MaxTimeTicks);
+
+        /// <summary>
+        /// Initializes a new instance of the Time structure to the specified hour and the minute.
+        /// </summary>
+        /// <param name="hour">The hours (0 through 23).</param>
+        /// <param name="minute">The minutes (0 through 59).</param>
+        public Time(int hour, int minute) : this(Time.TimeToTicks(hour, minute)) { }
+
+        /// <summary>
+        /// Initializes a new instance of the Time structure using a specified number of ticks.
+        /// </summary>
+        /// <param name="ticks">A time of day expressed in the number of 100-nanosecond units since 00:00:00.0000000.</param>
+        public Time(long ticks) {
+            if ((ulong)ticks > MaxTimeTicks) {
+                throw new ArgumentOutOfRangeException(nameof(ticks), "Ticks must be between 0 and and Time.MaxValue.Ticks.");
+            }
+
+            _ticks = ticks;
+        }
+
+        public int Hours => _ticks == MaxTimeTicks ? 24 : (int)(_ticks / TicksPerHour % HoursPerDay);
+
+        public int Minutes => (int)(_ticks / TicksPerMinute % MinutesPerHour);
+
+        internal Time(ulong ticks) => _ticks = (long)ticks;
+
+        internal const int MicrosecondsPerMillisecond = 1000;
+        private const long TicksPerMicrosecond = 10;
+        private const long TicksPerMillisecond = TicksPerMicrosecond * MicrosecondsPerMillisecond;
+
+        private const int HoursPerDay = 24;
+        private const long TicksPerSecond = TicksPerMillisecond * 1000;
+        private const long TicksPerMinute = TicksPerSecond * 60;
+        private const long TicksPerHour = TicksPerMinute * 60;
+        private const long TicksPerDay = TicksPerHour * HoursPerDay;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static ulong TimeToTicks(int hour, int minute) {
+            if ((uint)hour > 24 || (uint)minute >= 60) {
+                throw new System.ArgumentOutOfRangeException(null, "Hour and Minute parameters describe an un-representable TimeOfDay.");
+            }
+
+            int totalSeconds = hour * 3600 + minute * 60;
+            return (uint)totalSeconds * (ulong)TicksPerSecond;
+        }
+
+        internal DateTime ToDateTime() => new DateTime(_ticks);
+
+        internal TimeSpan ToTimeSpan() => new TimeSpan(_ticks);
+
+        public override string ToString() => $"{Hours:00}:{Minutes:00}";
+
+        public static Time Parse(string s) {
+            var values = s.Split(':');
+            if (values.Length >= 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
+                return new Time(int.Parse(values[0]), int.Parse(values[1]));
+            throw new JsonException("Expected time in 'hh:mm' format.");
+        }
+    }
+
+    public class TimeJsonConverter : JsonConverter<Time>
+    {
+        public override Time Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+            if (reader.TokenType == JsonTokenType.String) {
+                var timeString = reader.GetString();
+                var values = timeString.Split(':');
+                if (values.Length == 2 && int.TryParse(values[0], out int hours) && int.TryParse(values[1], out int minutes))
+                    return new Time(int.Parse(values[0]), int.Parse(values[1]));
+            }
+            throw new JsonException("Expected time in 'hh:mm' format.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, Time value, JsonSerializerOptions options) {
+            writer.WriteStringValue(value.ToString());
+        }
+    }
+
+    [Serializable]
+    [XmlType(Namespace = "http://www.iho.int/s100/xc/5.2")]
+    public enum S100_SupportFileFormat
+    {
+        [XmlEnum("TXT_UTF-8")]
+        TXT,
+        [XmlEnum("JPEG2000")]
+        JPEG2000,
+        [XmlEnum("HTML")]
+        HTML,
+        [XmlEnum("XML")]
+        XML,
+        [XmlEnum("XSLT")]
+        XSLT,
+        [XmlEnum("VIDEO")]
+        VIDEO,
+        [XmlEnum("TIFF")]
+        TIFF,
+        [XmlEnum("PDF/AorUA")]
+        PDF,
+        [XmlEnum("LUA")]
+        LUA,
+        [XmlEnum("other")]
+        other,
+
+    }
+}
 
 namespace S100Framework.AttributeModel
 {
@@ -116,8 +245,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public override string valueType => "enumeration";
 
-        [JsonIgnore]
-        public abstract listedValue[] listedValues { get; }
+        //[JsonIgnore]
+        //public abstract listedValue[] listedValues { get; }
 
         public int? value { get; set; } = default;
     }
@@ -127,8 +256,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public override string valueType => "S100_CodeList";
 
-        [JsonIgnore]
-        public abstract listedValue[] listedValues { get; }
+        //[JsonIgnore]
+        //public abstract listedValue[] listedValues { get; }
 
         public int? value { get; set; } = default;
     }
@@ -153,7 +282,8 @@ namespace S100Framework.AttributeModel
             return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
         }
 
-        protected void AddAttributeValue(Attribute attribute) {
+        protected void AddAttributeValue(Attribute? attribute) {
+            if (attribute == null) return;
             var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
@@ -167,6 +297,25 @@ namespace S100Framework.AttributeModel
             }
             else {
                 this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
+
+        protected void AddAttributeValue(Attribute[] attribute) {
+            foreach (var a in attribute) {
+                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributesOptional = [.. this.attributesOptional, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributesOptional, value);
+                        this.attributesOptional[index] = a;
+                    }
+                }
+                else {
+                    this.attributesOptional = [.. this.attributesOptional, a];
+                }
             }
         }
     }
@@ -190,7 +339,8 @@ namespace S100Framework.AttributeModel
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
-        protected void AddAttributeValue(Attribute attribute) {
+        protected void AddAttributeValue(Attribute? attribute) {
+            if (attribute == null) return;
             var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
@@ -204,6 +354,25 @@ namespace S100Framework.AttributeModel
             }
             else {
                 this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
+
+        protected void AddAttributeValue(Attribute[] attribute) {
+            foreach (var a in attribute) {
+                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributesOptional = [.. this.attributesOptional, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributesOptional, value);
+                        this.attributesOptional[index] = a;
+                    }
+                }
+                else {
+                    this.attributesOptional = [.. this.attributesOptional, a];
+                }
             }
         }
     }
@@ -227,7 +396,8 @@ namespace S100Framework.AttributeModel
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
-        protected void AddAttributeValue(Attribute attribute) {
+        protected void AddAttributeValue(Attribute? attribute) {
+            if (attribute == null) return;
             var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
@@ -241,6 +411,25 @@ namespace S100Framework.AttributeModel
             }
             else {
                 this.attributesOptional = [.. this.attributesOptional, attribute];
+            }
+        }
+
+        protected void AddAttributeValue(Attribute[] attribute) {
+            foreach (var a in attribute) {
+                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributesOptional = [.. this.attributesOptional, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributesOptional, value);
+                        this.attributesOptional[index] = a;
+                    }
+                }
+                else {
+                    this.attributesOptional = [.. this.attributesOptional, a];
+                }
             }
         }
     }

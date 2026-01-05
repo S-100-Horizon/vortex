@@ -1,7 +1,44 @@
-﻿namespace S100Framework.Applications
+﻿using System;
+
+namespace S100Framework.Applications
 {
     public static class EnumHelper
     {
+        public static int? GetEnumValue(object? value) {
+            if (value is null) return null;
+            if (value is string strValue) {
+                if (strValue.Equals("-32767"))
+                    return null;
+                if (int.TryParse(strValue, out int result))
+                    return result;
+                throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {strValue}");
+            }
+            if (value is int intValue) {
+                if (intValue == -32767)
+                    return null;
+                return intValue;
+            }
+            throw new ArgumentException($"Value must be of type string or int. Provided value type: {typeof(TType).Name}::{typeof(TEnum).Name} - {value.GetType().Name}");
+        }
+
+        public static int?[]? GetEnumValues(object? value) {
+            if (value is null) return null;
+            int?[]? array = default;
+
+            if (value is string strValue) {
+                array = [];
+                var values = strValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < values.Length; i++) {
+                    var v = GetEnumValue(values[i]);
+                    array = [.. array, GetEnumValue(values[i])];
+                }
+            }
+            if (value is int intValue) {
+                array = new int?[] { GetEnumValue(intValue) };
+            }
+            return array;
+        }
+
         public static TEnum? GetEnumValue<TType, TEnum>(object value) where TEnum : struct, Enum where TType : class {
 
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
