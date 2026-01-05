@@ -32,6 +32,8 @@ namespace TestAttributes
             Test_S101_Build();
             Test_S122_Build();
             Test_S123_Build();
+            Test_S124_Build();
+            Test_S125_Build();
             Test_S127_Build();
             Test_S128_Build();
             Test_S131_Build();
@@ -71,6 +73,28 @@ namespace TestAttributes
         }
 
         [Fact]
+        public void Test_S124_Build() {
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-124 Navigational Warnings\FC\124_FC_2.0.0.xml"));
+
+            var roslyn = RoslynBuilder(ps);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-124_FC.attribute.g.cs", output, Encoding.UTF8);
+        }
+
+        [Fact]
+        public void Test_S125_Build() {
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml"));
+
+            var roslyn = RoslynBuilder(ps, "S125");
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-125_FC.attribute.g.cs", output, Encoding.UTF8);
+        }
+
+        [Fact]
         public void Test_S127_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-127-Product-Specification-Development\FC\127_FC_2.0.0.20251207.xml"));
 
@@ -103,7 +127,7 @@ namespace TestAttributes
             File.WriteAllText(@".\..\..\..\S-131_FC.attribute.g.cs", output, Encoding.UTF8);
         }
 
-        private StringBuilder RoslynBuilder(XDocument ps) {
+        private StringBuilder RoslynBuilder(XDocument ps, string? id = null) {
             var roslyn = new StringBuilder();
 
             roslyn.AppendLine("using System;");
@@ -123,6 +147,8 @@ namespace TestAttributes
                 xmlNamespaceManager.AddNamespace(s.Key, s.Value);
 
             var productId = ps.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+            if (id is not null)
+                productId = id;
 
             var versionNumber = ps.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
             var versionDate = ps.XPathSelectElement("//S100FC:versionDate", xmlNamespaceManager)!.Value;
@@ -172,10 +198,24 @@ namespace TestAttributes
 
                             listedValueDefinition = listedValueDefinition.Replace("\"", "\\\"");
 
-                            roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{listedValueDefinition}\",{listedValueCode}),");
+                            if (string.IsNullOrEmpty(listedValueDefinition)) {
+                                roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"\",{listedValueCode}),");
+                            }
+                            else {
+                                var multiline = listedValueDefinition.Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+                                if (multiline.Length == 1)
+                                    roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{multiline[0]}\",{listedValueCode}),");
+                                else {
+                                    roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{multiline[0]}\" +");
+                                    for (int i = 1; i < multiline.Length - 1; i++)
+                                        roslyn.AppendLine($"\t\t\t\t\t\t\t\t\t\t\"{multiline[i]}\" +");
+                                    roslyn.AppendLine($"\t\t\t\t\t\t\t\t\t\t\"{multiline[^1]}\",{listedValueCode}),");
+                                }
+                            }
                         }
                         roslyn.AppendLine($"\t\t\t];");
-                        roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
+                        //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}(int? value) => new {code} {{ value = value }};");
                         roslyn.AppendLine($"\t}}");
@@ -196,12 +236,19 @@ namespace TestAttributes
                             var listedValueDefinition = listedValue.Element(XName.Get("definition", scopes["S100FC"]))!.Value!;
                             var listedValueCode = listedValue.Element(XName.Get("code", scopes["S100FC"]))!.Value!;
 
-                            listedValueDefinition = listedValueDefinition.Replace("\"", "\\\"");
+                            var multiline = listedValueDefinition.Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
-                            roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{listedValueDefinition}\",{listedValueCode}),");
+                            if (multiline.Length == 1)
+                                roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{multiline[0]}\",{listedValueCode}),");
+                            else {
+                                roslyn.AppendLine($"\t\t\t\tnew listedValue(\"{listedValueLabel}\", \"{multiline[0]}\" +");
+                                for (int i = 1; i < multiline.Length - 1; i++)
+                                    roslyn.AppendLine($"\t\t\t\t\t\t\t\t\t\t\"{multiline[i]}\" +");
+                                roslyn.AppendLine($"\t\t\t\t\t\t\t\t\t\t\"{multiline[^1]}\",{listedValueCode}),");
+                            }
                         }
                         roslyn.AppendLine($"\t\t\t];");
-                        roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
+                        //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
                         roslyn.AppendLine($"\t}}");
                     }
                     else {
@@ -246,8 +293,8 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string valueType => \"{valueType}\";");
+                        //roslyn.AppendLine("\t\t[JsonIgnore]");
+                        //roslyn.AppendLine($"\t\tpublic override string valueType => \"{valueType}\";");
                         //roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix} value) => new {code} {{ value = value }};");
@@ -538,7 +585,7 @@ namespace TestAttributes
 
                         var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
                         if (superType != null) {
-                            if (!featureTypesKnown.Contains(superType.Value)) {
+                            if (!featureTypesKnown.Any(e=>e.Equals(superType.Value, StringComparison.InvariantCultureIgnoreCase))) {
                                 notFinished = true;
                                 continue;
                             }

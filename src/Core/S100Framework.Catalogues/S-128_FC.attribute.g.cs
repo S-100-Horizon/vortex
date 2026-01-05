@@ -15,8 +15,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(administrativeDivision);
 		[JsonIgnore]
 		public override string S100FC_name => "Administrative Division";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator administrativeDivision(String value) => new administrativeDivision { value = value };
 	}
@@ -30,8 +28,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(agencyName);
 		[JsonIgnore]
 		public override string S100FC_name => "Agency Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator agencyName(String value) => new agencyName { value = value };
 	}
@@ -45,8 +41,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(agencyResponsibleForProduction);
 		[JsonIgnore]
 		public override string S100FC_name => "Agency Responsible for Production";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator agencyResponsibleForProduction(String value) => new agencyResponsibleForProduction { value = value };
 	}
@@ -60,8 +54,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(applicationProfile);
 		[JsonIgnore]
 		public override string S100FC_name => "Application Profile";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator applicationProfile(String value) => new applicationProfile { value = value };
 	}
@@ -75,8 +67,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(approximateGridResolution);
 		[JsonIgnore]
 		public override string S100FC_name => "Approximate Grid Resolution";
-		[JsonIgnore]
-		public override string valueType => "real";
 
 		public static implicit operator approximateGridResolution(double value) => new approximateGridResolution { value = value };
 	}
@@ -106,7 +96,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Nautical Publication", "A (nautical chart or) nautical publication is a \"a special-purpose map or book, or a specially compiled database from which such a map or book is derived, that is issued officially by or on the authority of a Government, authorized Hydrographic Office or other relevant government institution and is designed to meet the requirements of marine navigation\".",12),
 				new listedValue("Printed Nautical Chart", "A printed nautical chart is a \"a special-purpose map , that is issued officially by or on the authority of a Government, authorized Hydrographic Office or other relevant government institution and is designed to meet the requirements of marine navigation\".",13),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator catalogueElementClassification(int? value) => new catalogueElementClassification { value = value };
 	}
@@ -120,8 +109,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(catalogueElementIdentifier);
 		[JsonIgnore]
 		public override string S100FC_name => "Catalogue Element Identifier";
-		[JsonIgnore]
-		public override string valueType => "URN";
 
 		public static implicit operator catalogueElementIdentifier(String value) => new catalogueElementIdentifier { value = value };
 	}
@@ -135,8 +122,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(catalogueSectionNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Catalogue Section Number";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator catalogueSectionNumber(int value) => new catalogueSectionNumber { value = value };
 	}
@@ -150,8 +135,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(catalogueSectionTitle);
 		[JsonIgnore]
 		public override string S100FC_name => "Catalogue Section Title";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator catalogueSectionTitle(String value) => new catalogueSectionTitle { value = value };
 	}
@@ -186,7 +169,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("RENC", "Regional ENC Coordination Centre.",18),
 				new listedValue("VARs", "Value Added Resellers (VARs), who are able to offer comprehensive end-use services that bring together various navigational products into one package.",19),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator categoryOfAuthority(int? value) => new categoryOfAuthority { value = value };
 	}
@@ -200,8 +182,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(characterEncoding);
 		[JsonIgnore]
 		public override string S100FC_name => "Character Encoding";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator characterEncoding(String value) => new characterEncoding { value = value };
 	}
@@ -215,8 +195,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(cityName);
 		[JsonIgnore]
 		public override string S100FC_name => "City Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator cityName(String value) => new cityName { value = value };
 	}
@@ -230,8 +208,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(classification);
 		[JsonIgnore]
 		public override string S100FC_name => "Classification";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator classification(String value) => new classification { value = value };
 	}
@@ -245,8 +221,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(comment);
 		[JsonIgnore]
 		public override string S100FC_name => "Comment";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator comment(String value) => new comment { value = value };
 	}
@@ -260,8 +234,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(compilationScale);
 		[JsonIgnore]
 		public override string S100FC_name => "Compilation Scale";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator compilationScale(int value) => new compilationScale { value = value };
 	}
@@ -275,8 +247,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(compressionFlag);
 		[JsonIgnore]
 		public override string S100FC_name => "Compression Flag";
-		[JsonIgnore]
-		public override string valueType => "boolean";
 
 		public static implicit operator compressionFlag(Boolean value) => new compressionFlag { value = value };
 	}
@@ -290,8 +260,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(contactInstructions);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Instructions";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator contactInstructions(String value) => new contactInstructions { value = value };
 	}
@@ -305,8 +273,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(contractPeriod);
 		[JsonIgnore]
 		public override string S100FC_name => "Contract Period";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator contractPeriod(String value) => new contractPeriod { value = value };
 	}
@@ -320,8 +286,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(countryName);
 		[JsonIgnore]
 		public override string S100FC_name => "Country Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator countryName(String value) => new countryName { value = value };
 	}
@@ -335,8 +299,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(currency);
 		[JsonIgnore]
 		public override string S100FC_name => "Currency";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator currency(String value) => new currency { value = value };
 	}
@@ -350,8 +312,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(datasetName);
 		[JsonIgnore]
 		public override string S100FC_name => "Dataset Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator datasetName(String value) => new datasetName { value = value };
 	}
@@ -365,8 +325,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(dateEnd);
 		[JsonIgnore]
 		public override string S100FC_name => "Date End";
-		[JsonIgnore]
-		public override string valueType => "S100_TruncatedDate";
 
 		public static implicit operator dateEnd(String value) => new dateEnd { value = value };
 	}
@@ -380,8 +338,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(dateStart);
 		[JsonIgnore]
 		public override string S100FC_name => "Date Start";
-		[JsonIgnore]
-		public override string valueType => "S100_TruncatedDate";
 
 		public static implicit operator dateStart(String value) => new dateStart { value = value };
 	}
@@ -395,8 +351,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(deliveryPoint);
 		[JsonIgnore]
 		public override string S100FC_name => "Delivery Point";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator deliveryPoint(String value) => new deliveryPoint { value = value };
 	}
@@ -415,7 +369,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("ID", "Meta data record identifier for QualityOfBathymetric Coverage",1),
 				new listedValue("Digital Signature Reference", "Specifies the algorithm used to compute digital signature value.",2),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator digitalSignatureValue(int? value) => new digitalSignatureValue { value = value };
 	}
@@ -435,7 +388,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Alternate Name Display", "The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.",2),
 				new listedValue("No Chart Display", "The name or text is not intended to be displayed.",3),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator nameUsage(int? value) => new nameUsage { value = value };
 	}
@@ -454,7 +406,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Production", "A product or service that is currently in production.",1),
 				new listedValue("Withdrawn", "A product or service that has been withdrawn.",2),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator distributionStatus(int? value) => new distributionStatus { value = value };
 	}
@@ -468,8 +419,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(distributorName);
 		[JsonIgnore]
 		public override string S100FC_name => "Distributor Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator distributorName(String value) => new distributorName { value = value };
 	}
@@ -483,8 +432,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(domesticCarriageRequirements);
 		[JsonIgnore]
 		public override string S100FC_name => "Domestic Carriage Requirements";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator domesticCarriageRequirements(String value) => new domesticCarriageRequirements { value = value };
 	}
@@ -498,8 +445,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(editionDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Edition Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator editionDate(DateOnly value) => new editionDate { value = value };
 	}
@@ -513,8 +458,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(editionNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Edition Number";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator editionNumber(int value) => new editionNumber { value = value };
 	}
@@ -528,8 +471,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(expirationDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Expiration Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator expirationDate(DateOnly value) => new expirationDate { value = value };
 	}
@@ -543,8 +484,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(fileLocator);
 		[JsonIgnore]
 		public override string S100FC_name => "File Locator";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator fileLocator(String value) => new fileLocator { value = value };
 	}
@@ -558,8 +497,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(fileName);
 		[JsonIgnore]
 		public override string S100FC_name => "File Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator fileName(String value) => new fileName { value = value };
 	}
@@ -573,8 +510,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(fileReference);
 		[JsonIgnore]
 		public override string S100FC_name => "File Reference";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator fileReference(String value) => new fileReference { value = value };
 	}
@@ -588,8 +523,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(headline);
 		[JsonIgnore]
 		public override string S100FC_name => "Headline";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator headline(String value) => new headline { value = value };
 	}
@@ -622,7 +555,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Real-Time Hydrographic and Environmental Information Service", "A service providing hydrographic and environmental observations and forecasts, such as water level and surface current information.",15),
 				new listedValue("Search and Rescue Service", "A service aimed at providing information about and assist with Search and Rescue functions.",16),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator iMOMaritimeService(int? value) => new iMOMaritimeService { value = value };
 	}
@@ -636,8 +568,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(internationalCarriageRequirements);
 		[JsonIgnore]
 		public override string S100FC_name => "International Carriage Requirements";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator internationalCarriageRequirements(String value) => new internationalCarriageRequirements { value = value };
 	}
@@ -651,8 +581,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(iSBN);
 		[JsonIgnore]
 		public override string S100FC_name => "ISBN";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator iSBN(String value) => new iSBN { value = value };
 	}
@@ -677,7 +605,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("A6", "The seventh size as output size on nautical paper chart. Referring to ISO 216.",7),
 				new listedValue("A7", "The eighth size as output size on nautical paper chart. Referring to ISO 216.",8),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator iSO216(int? value) => new iSO216 { value = value };
 	}
@@ -691,8 +618,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(iSSN);
 		[JsonIgnore]
 		public override string S100FC_name => "ISSN";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator iSSN(String value) => new iSSN { value = value };
 	}
@@ -706,8 +631,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(issueDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Issue Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator issueDate(DateOnly value) => new issueDate { value = value };
 	}
@@ -721,8 +644,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(issueTime);
 		[JsonIgnore]
 		public override string S100FC_name => "Issue Time";
-		[JsonIgnore]
-		public override string valueType => "time";
 
 		public static implicit operator issueTime(S100Framework.DomainModel.S100.Time value) => new issueTime { value = value };
 	}
@@ -736,8 +657,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(language);
 		[JsonIgnore]
 		public override string S100FC_name => "Language";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator language(String value) => new language { value = value };
 	}
@@ -751,8 +670,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(linkage);
 		[JsonIgnore]
 		public override string S100FC_name => "Linkage";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator linkage(String value) => new linkage { value = value };
 	}
@@ -773,7 +690,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Recommended Enhancement Provider", "A recommended additional product or service, that provides added value to another.",3),
 				new listedValue("Recommended Enhancement User", "A product or service, that is recommended to make use of added value provided by another product or service.",4),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator categoryOfProductMapping(int? value) => new categoryOfProductMapping { value = value };
 	}
@@ -787,8 +703,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(maximumDisplayScale);
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Display Scale";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator maximumDisplayScale(int value) => new maximumDisplayScale { value = value };
 	}
@@ -802,8 +716,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(minimumDisplayScale);
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Display Scale";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator minimumDisplayScale(int value) => new minimumDisplayScale { value = value };
 	}
@@ -817,8 +729,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(name);
 		[JsonIgnore]
 		public override string S100FC_name => "Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator name(String value) => new name { value = value };
 	}
@@ -832,8 +742,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(nameOfResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Name of Resource";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator nameOfResource(String value) => new nameOfResource { value = value };
 	}
@@ -847,8 +755,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(notForNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Not For Navigation";
-		[JsonIgnore]
-		public override string valueType => "boolean";
 
 		public static implicit operator notForNavigation(Boolean value) => new notForNavigation { value = value };
 	}
@@ -862,8 +768,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(onlineDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Description";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator onlineDescription(String value) => new onlineDescription { value = value };
 	}
@@ -877,8 +781,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(optimumDisplayScale);
 		[JsonIgnore]
 		public override string S100FC_name => "Optimum Display Scale";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator optimumDisplayScale(int value) => new optimumDisplayScale { value = value };
 	}
@@ -892,8 +794,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(originalProductNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Original Product Number";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator originalProductNumber(String value) => new originalProductNumber { value = value };
 	}
@@ -907,8 +807,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(otherDataTypeDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Other Data Type Description";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator otherDataTypeDescription(String value) => new otherDataTypeDescription { value = value };
 	}
@@ -922,8 +820,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(postalCode);
 		[JsonIgnore]
 		public override string S100FC_name => "Postal Code";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator postalCode(String value) => new postalCode { value = value };
 	}
@@ -937,8 +833,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(price);
 		[JsonIgnore]
 		public override string S100FC_name => "Price";
-		[JsonIgnore]
-		public override string valueType => "real";
 
 		public static implicit operator price(double value) => new price { value = value };
 	}
@@ -952,8 +846,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(printAgency);
 		[JsonIgnore]
 		public override string S100FC_name => "Print Agency";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator printAgency(String value) => new printAgency { value = value };
 	}
@@ -967,8 +859,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(printNation);
 		[JsonIgnore]
 		public override string S100FC_name => "Print Nation";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator printNation(String value) => new printNation { value = value };
 	}
@@ -982,8 +872,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(producerNation);
 		[JsonIgnore]
 		public override string S100FC_name => "Producer Nation";
-		[JsonIgnore]
-		public override string valueType => "URN";
 
 		public static implicit operator producerNation(String value) => new producerNation { value = value };
 	}
@@ -997,8 +885,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(productNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Product Number";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator productNumber(String value) => new productNumber { value = value };
 	}
@@ -1012,8 +898,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(productReference);
 		[JsonIgnore]
 		public override string S100FC_name => "Product Reference";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator productReference(String value) => new productReference { value = value };
 	}
@@ -1027,8 +911,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(protocol);
 		[JsonIgnore]
 		public override string S100FC_name => "Protocol";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator protocol(String value) => new protocol { value = value };
 	}
@@ -1042,8 +924,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(protocolRequest);
 		[JsonIgnore]
 		public override string S100FC_name => "Protocol Request";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator protocolRequest(String value) => new protocolRequest { value = value };
 	}
@@ -1057,8 +937,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(publicationNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Publication Number";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator publicationNumber(String value) => new publicationNumber { value = value };
 	}
@@ -1072,8 +950,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(reprintEdition);
 		[JsonIgnore]
 		public override string S100FC_name => "Reprint Edition";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator reprintEdition(String value) => new reprintEdition { value = value };
 	}
@@ -1087,8 +963,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(reprintNation);
 		[JsonIgnore]
 		public override string S100FC_name => "Reprint Nation";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator reprintNation(String value) => new reprintNation { value = value };
 	}
@@ -1102,8 +976,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(reportedDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Reported Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator reportedDate(DateOnly value) => new reportedDate { value = value };
 	}
@@ -1121,7 +993,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override listedValue[] listedValues => [
 				new listedValue("ECDSA-384-SHA2", "Elliptic Curve Digital Signature Algorithm (ECDSA) that uses signatures based on the issuing certificate and generated using the issuer’s P-384 elliptic curve key.",8),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator digitalSignatureReference(int? value) => new digitalSignatureReference { value = value };
 	}
@@ -1141,7 +1012,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Transit", "For coast and planning purposes.",2),
 				new listedValue("Overview", "For ocean crossing and planning purposes.",3),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator navigationPurpose(int? value) => new navigationPurpose { value = value };
 	}
@@ -1168,7 +1038,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("LUA", "Lua programming language.",9),
 				new listedValue("Other", "Being the one or ones distinct from that or those first mentioned or implied.",100),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator supportFileFormat(int? value) => new supportFileFormat { value = value };
 	}
@@ -1188,7 +1057,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Replacement", "A file which replaces an existing file.",2),
 				new listedValue("Deletion", "Deletes an existing file.",3),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator supportFilePurpose(int? value) => new supportFilePurpose { value = value };
 	}
@@ -1202,8 +1070,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(serviceName);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Name";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator serviceName(String value) => new serviceName { value = value };
 	}
@@ -1224,7 +1090,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Deprecated", "Indicates that a feature, method, product, or component is no longer recommended for use but is still available.",3),
 				new listedValue("Deleted", "Indicates that a feature, method, product, or component is no longer available or has been permanently removed.",4),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator serviceStatus(int? value) => new serviceStatus { value = value };
 	}
@@ -1238,8 +1103,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(source);
 		[JsonIgnore]
 		public override string S100FC_name => "Source";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator source(String value) => new source { value = value };
 	}
@@ -1253,8 +1116,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(sourceDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Source Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator sourceDate(DateOnly value) => new sourceDate { value = value };
 	}
@@ -1282,7 +1143,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Traffic Data", "Information obtained from the analysis of traffic data.",14),
 				new listedValue("Maritime", "A national or regional authority charged with administration of maritime affairs.",15),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator sourceType(int? value) => new sourceType { value = value };
 	}
@@ -1305,7 +1165,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Navigational Purpose Harbour", "Used for entering and leaving harbours, selecting anchorage, studying harbour topography, and carrying out the construction of harbours.",5),
 				new listedValue("Navigational Purpose Berthing", "For ships berthing.",6),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator specificUsage(int? value) => new specificUsage { value = value };
 	}
@@ -1319,8 +1178,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(telecommunicationIdentifier);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunication Identifier";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator telecommunicationIdentifier(String value) => new telecommunicationIdentifier { value = value };
 	}
@@ -1345,7 +1202,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Telegraph", "An apparatus, system or process for communication at a distance by electric transmission over wire.",7),
 				new listedValue("Email", "Messages and other data exchanged between individuals using computers in a network.",8),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator telecommunicationService(int? value) => new telecommunicationService { value = value };
 	}
@@ -1359,8 +1215,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(text);
 		[JsonIgnore]
 		public override string S100FC_name => "Text";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator text(String value) => new text { value = value };
 	}
@@ -1374,8 +1228,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(typeOfPhysicalProduct);
 		[JsonIgnore]
 		public override string S100FC_name => "Type Of Physical Product";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator typeOfPhysicalProduct(String value) => new typeOfPhysicalProduct { value = value };
 	}
@@ -1404,7 +1256,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("XML", "Extensible Markup Language.",11),
 				new listedValue("PNG", "Portable Network Graphics format.",12),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator typeOfProductFormat(int? value) => new typeOfProductFormat { value = value };
 	}
@@ -1425,7 +1276,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Month", "A measure of time based on the motion of the moon in its orbit.",3),
 				new listedValue("Year", "A period of one revolution of the earth around the sun.",4),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator typeOfTimeIntervalUnit(int? value) => new typeOfTimeIntervalUnit { value = value };
 	}
@@ -1439,8 +1289,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(updateDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Update Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator updateDate(DateOnly value) => new updateDate { value = value };
 	}
@@ -1454,8 +1302,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(updateNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Update Number";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator updateNumber(int value) => new updateNumber { value = value };
 	}
@@ -1469,8 +1315,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(valueOfTime);
 		[JsonIgnore]
 		public override string S100FC_name => "Value Of Time";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator valueOfTime(int value) => new valueOfTime { value = value };
 	}
@@ -1484,8 +1328,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(version);
 		[JsonIgnore]
 		public override string S100FC_name => "Version";
-		[JsonIgnore]
-		public override string valueType => "text";
 
 		public static implicit operator version(String value) => new version { value = value };
 	}
@@ -1499,8 +1341,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(paperWidth);
 		[JsonIgnore]
 		public override string S100FC_name => "Paper Width";
-		[JsonIgnore]
-		public override string valueType => "real";
 
 		public static implicit operator paperWidth(double value) => new paperWidth { value = value };
 	}
@@ -1514,8 +1354,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(paperLength);
 		[JsonIgnore]
 		public override string S100FC_name => "Paper Length";
-		[JsonIgnore]
-		public override string valueType => "real";
 
 		public static implicit operator paperLength(double value) => new paperLength { value = value };
 	}
@@ -1529,8 +1367,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(publicationDate);
 		[JsonIgnore]
 		public override string S100FC_name => "Publication Date";
-		[JsonIgnore]
-		public override string valueType => "date";
 
 		public static implicit operator publicationDate(DateOnly value) => new publicationDate { value = value };
 	}
@@ -1544,8 +1380,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(weekNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Week Number";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator weekNumber(int value) => new weekNumber { value = value };
 	}
@@ -1559,8 +1393,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 		public override string S100FC_code => nameof(yearNumber);
 		[JsonIgnore]
 		public override string S100FC_name => "Year Number";
-		[JsonIgnore]
-		public override string valueType => "integer";
 
 		public static implicit operator yearNumber(int value) => new yearNumber { value = value };
 	}
@@ -1580,7 +1412,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("EPSG3857 (Pseudo-Mercator)", "A popular web mapping projection used by Google Maps, OpenStreetMap, and Bing Maps. Distorts at the poles but is widely used in online maps.",3857),
 				new listedValue("EPSG4326 (WGS84)", "World Geodetic System 1984, used globally for GPS and geographic coordinates. Specifies coordinates in latitude and longitude degrees.",4326),
 			];
-		public int? value { get; set; } = default;
 	}
 
 	/// <summary>
@@ -1643,7 +1474,6 @@ namespace S100Framework.AttributeModel.S128.SimpleAttributes
 				new listedValue("Sea Surface", "A two-dimensional (in the horizontal plane) field representing the air-sea interface, with high-frequency fluctuations such as wind waves and swell, but not astronomical tides, filtered out.",48),
 				new listedValue("Hydrographic Zero", "A vertical reference near the lowest astronomical tide (LAT), below which the sea level falls only very exceptionally.",49),
 			];
-		public int? value { get; set; } = default;
 
 		public static implicit operator verticalDatum(int? value) => new verticalDatum { value = value };
 	}
