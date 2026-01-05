@@ -251,6 +251,22 @@
             <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="0"/>
+            <Style.Triggers>
+                <!-- Selection with focus -->
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="#E5F3FF"/>
+                </Trigger>
+                <!-- Selection without focus (inactive) -->
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="True"/>
+                        <Condition Property="IsSelectionActive" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="#F0F0F0"/>
+                </MultiTrigger>
+            </Style.Triggers>
         </Style>
     </UserControl.Resources>
 
@@ -293,6 +309,22 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Margin" Value="0"/>
                     <Setter Property="Padding" Value="0"/>
+                    <Style.Triggers>
+                        <!-- Selection with focus -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Background" Value="#E5F3FF"/>
+                        </Trigger>
+                        <!-- Selection without focus (inactive) -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="IsSelectionActive" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Background" Value="#F0F0F0"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>
